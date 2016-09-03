@@ -1,0 +1,212 @@
+\documentclass[11pt,leqno,oneside]{amsart}
+%\usepackage{amsmath,amsthm}
+\usepackage{amssymb,mathrsfs}
+%\usepackage{ytableau}
+%\ytableausetup{smalltableaux,centertableaux}
+\usepackage{tikz}
+\usepackage{upgreek}
+
+%\usepackage[nohead,nofoot,centering]{geometry}
+
+\usepackage{color} 
+%% Some user-defined colors
+      \definecolor{mydefi}{cmyk}{1,0,0,.5}
+      \definecolor{myred}{rgb}{.7,.1,.1}
+      \definecolor{myblue}{rgb}{.1,.1,.6}
+      \definecolor{mygreen}{rgb}{.1,.6,.1}
+
+\usepackage[urlbordercolor={1 1 1}, pdfborder={0 0 0}, bookmarks=true,
+  colorlinks=true, linkcolor=myblue, citecolor=myblue,
+  urlcolor=myblue, hyperfootnotes=false]{hyperref}
+
+\usepackage[alphabetic,abbrev]{amsrefs} % use AMS ref scheme
+
+\addtolength{\footskip}{2\baselineskip} % to lower the page numbers
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  MACRO DEFINITIONS:  Co-authors -- PLEASE use these! 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\N}{{\mathbb N}} % natural numbers
+\newcommand{\Z}{{\mathbb Z}} % integers
+\newcommand{\Q}{{\mathbb Q}} % rational numbers
+\newcommand{\R}{{\mathbb R}} % real numbers
+\newcommand{\C}{{\mathbb C}} % complex numbers
+\newcommand{\End}{\operatorname{End}} % endomorphisms
+\newcommand{\Hom}{\operatorname{Hom}} % homomorphisms
+\newcommand{\GL}{\operatorname{GL}} % general linear group
+\newcommand{\B}{\mathfrak{B}} % use for the Brauer algebra
+\newcommand{\Sym}{\mathfrak{S}} % symmetic group
+\newcommand{\sgn}{\operatorname{sgn}} % sign
+\newcommand{\T}{\mathsf{T}} % use for tableaux
+\newcommand{\U}{\mathsf{U}} % use for tableaux
+\newcommand{\V}{\mathsf{V}} % use for tableaux
+\newcommand{\TA}{\mathsf{A}} % use for tableaux
+\newcommand{\TB}{\mathsf{B}} % use for tableaux
+\newcommand{\TC}{\mathsf{C}} % use for tableaux
+\newcommand{\TS}{\mathsf{S}} % use for tableaux
+\newcommand{\shape}{\operatorname{shape}} % shape of a tableau
+\newcommand{\col}[2]{\genfrac{}{}{0pt}{1}{#1}{#2}} % column of bitableau
+\newcommand{\ov}{\overline} % shorthand for a bar on a symbol
+\newcommand{\dd}{\partial} % use for diagram basis; e.g. d(V_l)
+\newcommand{\X}{\mathcal{X}} % use for the Gelfand-Tsetlin subalgebra
+\newcommand{\JM}{\mathcal{J}} % a subalgebra of the GT-subalgebra
+\newcommand{\Std}{\operatorname{Std}} % set of standard tableaux
+\newcommand{\StdB}{\operatorname{StdB}} % set of standard bitableaux
+\newcommand{\Orb}{\mathcal{O}} % use for orbits
+\newcommand{\OS}{\ov{\Orb}} % use for orbit sums
+\newcommand{\OSS}{\ov{\OS}} % use for double bar orbit sums
+\newcommand{\OR}{\mathscr{R}} % orbit representatives
+\newcommand{\Stab}{\operatorname{Stab}} % stabilizer
+\newcommand{\rev}{\operatorname{rev}} % reverse of a cycle
+\newcommand{\A}{\mathcal{A}} % the algebra
+\newcommand{\fraka}{\mathfrak{a}} % Young symmetrizer
+\newcommand{\frakb}{\mathfrak{b}} % Young symmetrizer
+\newcommand{\frakc}{\varphi} % canonical basis
+\newcommand{\yy}{\mathsf{y}} % Young symmetrizer; scaled
+\newcommand{\idem}{\varepsilon} % primitive central idem in symm gp
+\newcommand{\cA}{\mathcal{A}} % group algebra of symmetric group
+\newcommand{\Tab}{\operatorname{Tab}} % trails in branching graph from source
+\newcommand{\BG}{\mathbf{B}} % branching graph
+\newcommand{\bb}{\varnothing} % the unique element of \Irr(0) 
+\newcommand{\res}{\operatorname{res}} % restriction
+\newcommand{\Irr}{\operatorname{Irr}} % irreps
+\newcommand{\Wt}{\operatorname{Wt}} % possible content vectors for an irrep
+\newcommand{\trace}{\operatorname{trace}} % the trace
+\newcommand{\type}{\operatorname{type}} % type = generalized shape
+\newcommand{\gen}[1]{\langle #1 \rangle} % use for generating sets
+\newcommand{\parm}{\updelta} % Brauer algebra parameter
+\newcommand{\sep}{\,|\,} % separator for two partitions - used in tables 
+\newcommand{\covered}{\lessdot}
+\newcommand{\qand}{\quad\hbox{and}\quad}
+\newcommand{\Arg}{\operatorname{Arg}}
+\swapnumbers %% put numbers in front of proclamations
+\newtheorem{thm}{Theorem}[section]
+\newtheorem*{thm*}{Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem*{lem*}{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem*{prop*}{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem*{cor*}{Corollary}
+\newtheorem{conj}[thm]{Conjecture}
+\newtheorem*{conj*}{Conjecture}
+
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem*{defn*}{Definition}
+\newtheorem{example}[thm]{Example}
+\newtheorem*{example*}{Example}
+\newtheorem{examples}[thm]{Examples}
+\newtheorem*{examples*}{Examples}
+\newtheorem{alg}[thm]{Algorithm}
+\newtheorem*{alg*}{Algorithm}
+%\theoremstyle{remark}
+\newtheorem{rmk}[thm]{Remark}
+\newtheorem*{rmk*}{Remark}
+\newtheorem{rmks}[thm]{Remarks}
+\newtheorem*{rmks*}{Remarks}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\numberwithin{equation}{section} 
+%% The following avoids conflict between numbers of proclamations 
+%% and numbers of equations
+\renewcommand{\theequation}{\thesection\alph{equation}} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\parskip = 2pt
+\allowdisplaybreaks
+\renewcommand{\labelenumi}{(\theenumi)} % use round brackets
+\renewcommand{\theenumi}{\alph{enumi}} % use alphabetic enumerations
+
+
+\pagestyle{plain} % suppress the running head - for working document
+
+\title[Complex Analysis]{Complex Analysis}
+\author{George H. Seelinger (inspired from class by David Sherman)}
+\date{Fall 2016}
+\begin{document}
+\maketitle
+\section{Lecture 1}
+What makes complex analysis different than calculus and real analysis?
+
+\begin{enumerate}
+    \item Over the complex field, all polynomials factor completely.
+    \item All the functions are infinitely differentiable and can thus be written as a power series.
+    \item It is easier to describe important physics problems using complex analysis to solve partial differential equations.
+    \item Some integrals can be solved using visual tricks and some integrals that are not solvable using calculus/real analysis omit solutions using complex analysis.
+
+\end{enumerate}
+\begin{example}
+    The polynomial $x^2+10x+100$ cannot be factored in terms of real factors since its discriminant is negative. However, this can be factored over the complexes.
+\end{example}
+\begin{example}
+    Describing physical phenemenon, such as the flow of a river over a log, is much easier using complex analysis.
+\end{example}
+\begin{example}
+    Solving $\int_{-\infty}^{\infty} \frac{\cos 2x}{x^2+1} dx$ is almost impossible for a standard calculus student and in real analysis, one can show that the integral is finite, but solving it is difficult. In complex analysis, one can easily show that it is $\pi^2/e$. 
+\end{example}
+\begin{example}
+    $\int_{\gamma} \frac{\cos z}{z} dz = 2 \pi i $ times the number of counter clockwise rotations around $(0,0)$ in the complex plane.
+\end{example}
+\section{Lecture 2}
+When doing complex analysis, it is important to develop a geometric intuition
+for what is happening when you see functions of complex variables. The
+following are some examples:
+\begin{table}
+    \centering
+    \begin{tabular}{|c|c|}
+        \hline
+        $|z-w|$ & The distance from $z$ to $w$ \\
+        $|z-1|=|z-i|$ & The locus of points equidistance from $1$ and $i$, ie a line. \\
+        $|z-1|=3-|z-i|$ & The distance from $z$ to 1 and $z$ to $i$ add to 3, ie a parabola. \\
+        $|z-1|=3+|z-i|$ & The upper part of a hyperbols (because the complex ordering). \\
+        $|z-1|=2|z-i|$ & A circle (points that are twice as far from $1$ as from $i$). \\
+        $|z-1|=\frac{2}{|z-i|}$ & An oval shape called a Cassini oval (product of distances is constant). \\
+        \hline
+    \end{tabular}
+    \caption{Some real functions in complex form}
+    \label{tab:func-descs}
+\end{table}
+Also note that $\ov{z}$ is $z$ reflected over the x-axis. 
+
+In $\R$, there are many ways to define $e^x$. One way is $e^x =
+\sum_{n=0}^\infty \frac{x^n}{n!}$. Also, recall the taylor series expansions of
+$\sin x$ and $\cos x$. We can define all these functions in complex $x$ using
+the taylor series expansions. 
+\[
+    e^{ix} = 1 + ix + \frac{(ix)^2}{2!} + \frac{(ix)^3}{3!} + \cdots = \cos x + i \sin x
+\]
+When $x$ is real, $|e^{ix}| = |\cos x + i \sin x| = \sqrt{\cos^2 x + \sin^2 x}
+= 1$, so our rules in $\R$ still hold. 
+
+This formulation allows us to come up with the polar form of looking at complex
+numbers. This boils down to $z = r e^{i \theta}$ where $r = |z|$ and $\theta
+\in \arg z$. Note that $\arg z$ is the \emph{set} of (real) $\theta$ that solve
+the equation. However, since $\arg$ is multi-valued, we say that $\Arg \in
+\arg$ is the value that is between $(-\pi, \pi]$. 
+
+From this description, we get that $e^z e^w = e^{z+w}$ (follows from the power series). In particular, $(e^z)^n = e^{nz}, n \in \N$, This gives us \[
+    \cos n \theta + i \sin n \theta = e^{in\theta} = (e^{i\theta})^n = (\cos \theta + i \sin \theta)^n
+\]
+This formula is often called \emph{DeMoivre's formula} and from it, we can
+recover trig identities by expanding and equating the real and imaginary parts. 
+
+Overall, polar form is good for understanding multiplication and powers. For example, $\frac{1}{z} = \frac{1}{r} \exp{-i \theta}$. 
+
+We can also take roots effectively using polar form (look it up).
+
+Finally, we can look at the stereographic projection (see textbook for picture) using the one-point compactification of $\C$, namely $\C^* = \C \cup \{\infty\} \cong S^2$. 
+
+We also get some nice correspondances from actions on the sphere as in the table.
+    \begin{tabular}{|c|c|}
+        \hline
+        Equator & $|z| = 1$ \\
+        Upper hemisphere & $\{|z| > 1\} \cup \{\infty\}$ \\
+        Lines of lattitude & Circle centered at origin \\
+        Lines of longitude & Rays from origin \\
+        Circles on $S^2$ that do not contain the north pole & Circles on $C^*$ \\
+        Circles on $S^2$ that contain the north pole & Lines on $C^*$ \\
+        \hline
+    \end{tabular}
+
+\end{document}

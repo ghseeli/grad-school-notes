@@ -1,0 +1,294 @@
+\documentclass[11pt,leqno,oneside]{amsart}
+%\usepackage{amsmath,amsthm}
+\usepackage{amssymb,mathrsfs}
+%\usepackage{ytableau}
+%\ytableausetup{smalltableaux,centertableaux}
+\usepackage{tikz}
+\usepackage{upgreek}
+\usepackage{enumitem}
+%\usepackage[nohead,nofoot,centering]{geometry}
+
+\usepackage{color} 
+%% Some user-defined colors
+      \definecolor{mydefi}{cmyk}{1,0,0,.5}
+      \definecolor{myred}{rgb}{.7,.1,.1}
+      \definecolor{myblue}{rgb}{.1,.1,.6}
+      \definecolor{mygreen}{rgb}{.1,.6,.1}
+
+\usepackage[urlbordercolor={1 1 1}, pdfborder={0 0 0}, bookmarks=true,
+  colorlinks=true, linkcolor=myblue, citecolor=myblue,
+  urlcolor=myblue, hyperfootnotes=false]{hyperref}
+
+\usepackage[alphabetic,abbrev]{amsrefs} % use AMS ref scheme
+
+\addtolength{\footskip}{2\baselineskip} % to lower the page numbers
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  MACRO DEFINITIONS:  Co-authors -- PLEASE use these! 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\N}{{\mathbb N}} % natural numbers
+\newcommand{\Z}{{\mathbb Z}} % integers
+\newcommand{\Q}{{\mathbb Q}} % rational numbers
+\newcommand{\R}{{\mathbb R}} % real numbers
+\newcommand{\C}{{\mathbb C}} % complex numbers
+\newcommand{\End}{\operatorname{End}} % endomorphisms
+\newcommand{\Hom}{\operatorname{Hom}} % homomorphisms
+\newcommand{\GL}{\operatorname{GL}} % general linear group
+\newcommand{\B}{\mathfrak{B}} % use for the Brauer algebra
+\newcommand{\Sym}{\mathfrak{S}} % symmetic group
+\newcommand{\sgn}{\operatorname{sgn}} % sign
+\newcommand{\T}{\mathsf{T}} % use for tableaux
+\newcommand{\U}{\mathsf{U}} % use for tableaux
+\newcommand{\V}{\mathsf{V}} % use for tableaux
+\newcommand{\TA}{\mathsf{A}} % use for tableaux
+\newcommand{\TB}{\mathsf{B}} % use for tableaux
+\newcommand{\TC}{\mathsf{C}} % use for tableaux
+\newcommand{\TS}{\mathsf{S}} % use for tableaux
+\newcommand{\shape}{\operatorname{shape}} % shape of a tableau
+\newcommand{\col}[2]{\genfrac{}{}{0pt}{1}{#1}{#2}} % column of bitableau
+\newcommand{\ov}{\overline} % shorthand for a bar on a symbol
+\newcommand{\dd}{\partial} % use for diagram basis; e.g. d(V_l)
+\newcommand{\X}{\mathcal{X}} % use for the Gelfand-Tsetlin subalgebra
+\newcommand{\JM}{\mathcal{J}} % a subalgebra of the GT-subalgebra
+\newcommand{\Std}{\operatorname{Std}} % set of standard tableaux
+\newcommand{\StdB}{\operatorname{StdB}} % set of standard bitableaux
+\newcommand{\Orb}{\mathcal{O}} % use for orbits
+\newcommand{\OS}{\ov{\Orb}} % use for orbit sums
+\newcommand{\OSS}{\ov{\OS}} % use for double bar orbit sums
+\newcommand{\OR}{\mathscr{R}} % orbit representatives
+\newcommand{\Stab}{\operatorname{Stab}} % stabilizer
+\newcommand{\rev}{\operatorname{rev}} % reverse of a cycle
+\newcommand{\A}{\mathcal{A}} % the algebra
+\newcommand{\fraka}{\mathfrak{a}} % Young symmetrizer
+\newcommand{\frakb}{\mathfrak{b}} % Young symmetrizer
+\newcommand{\frakc}{\varphi} % canonical basis
+\newcommand{\yy}{\mathsf{y}} % Young symmetrizer; scaled
+\newcommand{\idem}{\varepsilon} % primitive central idem in symm gp
+\newcommand{\cA}{\mathcal{A}} % group algebra of symmetric group
+\newcommand{\Tab}{\operatorname{Tab}} % trails in branching graph from source
+\newcommand{\BG}{\mathbf{B}} % branching graph
+\newcommand{\bb}{\varnothing} % the unique element of \Irr(0) 
+\newcommand{\res}{\operatorname{res}} % restriction
+\newcommand{\Irr}{\operatorname{Irr}} % irreps
+\newcommand{\Wt}{\operatorname{Wt}} % possible content vectors for an irrep
+\newcommand{\trace}{\operatorname{trace}} % the trace
+\newcommand{\type}{\operatorname{type}} % type = generalized shape
+\newcommand{\gen}[1]{\langle #1 \rangle} % use for generating sets
+\newcommand{\parm}{\updelta} % Brauer algebra parameter
+\newcommand{\sep}{\,|\,} % separator for two partitions - used in tables 
+\newcommand{\covered}{\lessdot}
+\newcommand{\qand}{\quad\hbox{and}\quad}
+\newcommand{\subgroup}{\mathrel{<}}
+\newcommand{\normsubgroup}{\mathrel{\unlhd}}
+\swapnumbers %% put numbers in front of proclamations
+\newtheorem{thm}{Theorem}[section]
+\newtheorem*{thm*}{Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem*{lem*}{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem*{prop*}{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem*{cor*}{Corollary}
+\newtheorem{conj}[thm]{Conjecture}
+\newtheorem*{conj*}{Conjecture}
+
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem*{defn*}{Definition}
+\newtheorem{example}[thm]{Example}
+\newtheorem*{example*}{Example}
+\newtheorem{examples}[thm]{Examples}
+\newtheorem*{examples*}{Examples}
+\newtheorem{alg}[thm]{Algorithm}
+\newtheorem*{alg*}{Algorithm}
+%\theoremstyle{remark}
+\newtheorem{rmk}[thm]{Remark}
+\newtheorem*{rmk*}{Remark}
+\newtheorem{rmks}[thm]{Remarks}
+\newtheorem*{rmks*}{Remarks}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\numberwithin{equation}{section} 
+%% The following avoids conflict between numbers of proclamations 
+%% and numbers of equations
+\renewcommand{\theequation}{\thesection\alph{equation}} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\parskip = 2pt
+\allowdisplaybreaks
+\renewcommand{\labelenumi}{(\theenumi)} % use round brackets
+\renewcommand{\theenumi}{\alph{enumi}} % use alphabetic enumerations
+
+
+\pagestyle{plain} % suppress the running head - for working document
+
+\title[Abstract Algebra]{Abstract Algebra}
+\author{George H. Seelinger (inspired from class by Abramenko)}
+\date{Fall 2016}
+\begin{document}
+\maketitle
+\section{Lecture 1: Normalizers and Centralizers}
+\begin{defn}
+    For $A \subset G$, we set $N_G(A) := \{g \in G | gAg^{-1} = A\}$ and
+    $C_G(A) := \{g \in G | gag^{-1} = a, \forall a \in A\}$. 
+\end{defn}
+Note that $C_G(A) \subset N_G(A)$.
+\begin{rmk}
+    If $A \subgroup G$, then $A \normsubgroup N_G(A)$. In fact, $N_G(A)$ is the
+    largest subgroup of $G$ in which $A$ is normal.
+\end{rmk}
+    The first part of this remark follows from the definition of $N_G(A)$. The
+    second part follows by assuming that $N_G(A)$ is not the largest and then
+    showing the ``largest'' is contained in $N_G(A)$.
+\begin{rmk}
+    If $A \subgroup G$, then $A \normsubgroup G$ if $N_G(A) = G$.
+\end{rmk}
+    This follows from the second part of the remark above.
+    Now for some remakrs about centralizers.
+    \begin{rmk}
+        If $A \subgroup G$, then $A$ is abelian if and only if $A \subset
+        C_G(A)$. Furthermore, if $A \subgroup Z(G)$, then $A \normsubgroup G$.
+        This follows using basic commutativity arguments.
+    \end{rmk}
+    \begin{example}
+        $Z(S_n) = \{ id \}$ if $n \geq 3$. To prove this, prove $\sigma \in S_n, \sigma \neq id \implies \sigma \notin Z(S_n)$. 
+
+        $\sigma \neq id \implies \exists i,j \in \{1, \ldots, n\}$ where $i
+        \neq j$ such that $\sigma(i) = j$. Now, choose $k \in \{1, \ldots, n\}$
+        such that $k \neq i,j$. Now, let $\pi = \sigma(i,k)\sigma^{-1} =
+        (\sigma(i), \sigma(j)) = (j, \sigma(k))$. So now, $\pi(j) = \sigma(k)
+        \neq \sigma(i) = j$. However, $(ik)(j)=j$ since $j \neq i,k$. This
+        means $\pi \neq (ik)$, but if $\sigma$ were in the center, then it
+        would have. So, we have that $\sigma \notin C_{S_n}( (ik) ) \implies
+        \sigma \notin Z(S_n)$.
+    \end{example}
+    \begin{lem}
+        Let $G$ be a group and $H \subgroup Z(G)$. Note this means $H
+        \normsubgroup G$. If $G/H$ is cyclic, then $G$ is abelian.
+    \end{lem}
+    \begin{proof}
+        Since $G/H$ is cyclic, this means $\exists g \in G$ such that
+        $G/H=\langle gH \rangle$. Now, let $x,y \in G$. Then, there are $n,m
+        \in \Z$ such that $xH = (gH)^n = g^nH$ and, similarly, $yH = (gH)^m =
+        g^mH$. This means $\exists h,h' \in H$ such that $x=g^nh$ and
+        $y=g^mh'$. Thus, we get $xy = g^nhg^mh' = g^ng^mhh' = g^{n+m}hh'$ and
+        $yx = g^mh'g^nh = g^mg^nh'h = g^{n+m}h'h = g^{n+m}hh'$. Thus, we have
+        our commutativity, thereby showing $G$ is abelian.
+    \end{proof}\begin{rmk}
+        Note, simply having $H \subgroup Z(G)$ and $G/H$ abelian does not imply
+        $G$ is abelian. For a counter-example, look at $Q_8 = \{\pm 1, \pm i,
+        \pm j, \pm k\}$, the standard quaternion group. It is easy to compute
+        that $Z(Q_8) = \{\pm 1\}$. Now, $Q_8/Z(Q_8) \cong \Z_2 \times \Z_2$,
+        the Klien-4 group, which is abelian. However, $Q_8$ is not abelian!
+    \end{rmk}
+    \begin{defn}
+        Let $A,B \subgroup G$, then \begin{itemize}
+            \item $A^{-1} = \{a^{-1} | a \in A\}$.
+            \item $AB = \{ab | a \in A, b \in B\}$.
+        \end{itemize}
+    \end{defn}
+    \begin{lem}
+        Let $G$ be a group with $A,B \subgroup G$. Then,
+        \begin{enumerate}
+            \item $AB \subgroup G$ if and only if $AB = BA$.
+            \item If $A \subgroup N_G(B)$ or $B \subgroup N_G(A)$, then $AB =
+                BA$ and hence $AB \subgroup G$ by 1. 
+        \end{enumerate}
+    \end{lem}
+    \begin{proof}
+        ($\Rightarrow$) Let $AB \subgroup G$. Then, $AB = (AB)^{-1} =
+        B^{-1}A^{-1} = BA$.
+
+        ($\Leftarrow$) Let $AB = BA$. Then, we simply must show that $AB$ has
+        group properties.\begin{enumerate}
+            \item $e \in A, e \in B \implies e = ee \in AB$.
+            \item This is the same as above. $(AB)^{-1} = B^{-1}A^{-1} = B! = AB$.
+            \item $(AB)(AB) = A(BA)B = A(AB)B = (AA)(BB) = AB$.
+        \end{enumerate}. Thus, $AB \subgroup G$.
+
+        Now, for the second part, let $A \subgroup N_G(B)$. Then, let $a \in A,
+        b \in B$. We know $a,a^{-1} \in A \subset N_G(B)$. Then, we have $ab =
+        aba^{-1}a = (aba^{-1})a$. However, we know $aba^{-1} \in B$ from the
+        definition of $N_G(B)$. So, $AB \subset BA$. Similar logic shows $BA
+        \subset AB$ and thus $AB = BA$.
+    \end{proof}
+
+    \section{Lecture 2}
+    \begin{rmk}
+        \begin{enumerate}
+            \item If $A,B \subgroup G$ and if $A \normsubgroup G$ or $B \normsubgroup G$, then $AB \subgroup G$.
+            \item If $A,B \normsubgroup G$, then $AB \normsubgroup G$.
+        \end{enumerate}
+    \end{rmk}
+    \begin{proof}
+        The first remark can be done by $(ab)(a'b') = aba'b^{-1}bb' = aa'b' = (aba'b^{-1})b' \in AB$ because $a$ and $ba'b^{-1}$ are in $A$ and $b \in B$. Also, $(ab)^{-1} = b^{-1}a^{-1} = (b^{1}a^{-1}b)b^{-1} \in AB$. The identity inclusion is obvious.
+        The second remark is proven by, for $g \in G$, $gABg^{-1} = gAg^{-1}gBg^{-1} = AB$. 
+    \end{proof}
+
+    \subsection{Index Computations}
+
+    \begin{lem}
+        Let $A,B \subgroup G$ and $|A|, |B| < \infty$. Then, $|AB| = \frac{|A| \cdot |B|}{A \cap B}$.
+    \end{lem}
+    \begin{proof}
+        Consider $A/(A \cap B)$. Take a complete set of coset representatives $A' = \{a_1, \ldots, a_n\}$. Then, $n = |A/(A \cap B)| = [A : A \cap B] = \frac{|A|}{|A \cap B|}$ by Lagrange's Theorem.
+
+        Now, consider $f: A' \times B \to AB$ defined by $(a_i,b) \to a_ib$. If
+        we show that $f$ is bijective, then we will have that $|A'| \cdot |B| =
+        |A' \times B| = |AB|$, which will allow us to finish the proof.
+        To show $f$ is injective, let us take \begin{align*}
+            a_ib = a_jb' (1 \leq i,j \leq n; b,b' \in B) & \ \implies \ a_j^{-1} a_i = b'b^{-1} \in A\cap B\\
+            \ & \ \implies \ a_i(A \cap B) = a_j(A \cap B) \\
+            \ & \ \implies \ a_i = a_j \\
+            a_ib = a_jb' & \ \implies b = b' \\
+            \ & \ \implies (a_i, b) = (a_j, b')
+        \end{align*}
+
+        To show $f$ is surjective, we let $a \in A, b \in B$. Then $\exists i
+        (1 \leq i \leq n)$ such that $a=a_ix$ with $x \in A \cup B$. This
+        implies that $xb \in B$ so $ab = a_ixb = f( (a_i,xb) )$.
+
+        Thus, we have that $f$ is bijective, and so we conclude that $n \cdot
+        |B| = \frac{|A|}{|A \cap B|} \cdot |B|$ giving us our result when we
+        divide by $|B|$.
+    \end{proof}
+    \begin{example}
+        (a) $G = \S_3, A = \langle (12) \rangle, B = \langle (13) \rangle
+        \subgroup G$. Then, $A \cap B = \{ id \} \implies |AB| = 2 \cdot 2 = 4$
+        which does not divide $6 = |\S_3|$. Thus, $AB$ is not a subgroup of
+        $\S_3$. 
+        (b) Let $G=\S_4, A = S_3 \to S_4, B = \langle (1234) \rangle$. Then, $A \cap B = \{id\} \implies |AB| = |A||B| = 6 \cdot 4 = 24 = |\S_4|$. This means that $AB = \S_4$ but note that $A \not\subset N_G(B)$ and $B \not\subset N_G(A)$. 
+    \end{example}
+    \begin{lem}
+        (Lemma 1.1.9) Let $G$ be a group and $A,B \subgroup G$. Then
+        \begin{enumerate}[label=\Alph*]
+            \item If $A \subgroup B$, then $[G:A] = [G:B][B:A]$
+            \item $[A: A \cup B] \leq [G:B]$
+            \item $[G: A \cup B] \leq [G:A][G:B]$
+        \end{enumerate}
+    \end{lem}
+    \begin{proof}
+       For the first part, fix a set of coset representatives (using the Axiom of Choice in the infinite case) for $G/A$. Then, given a coset $gA$, we can TODO 
+\end{proof}
+\subsection{The Isomorphism Theorems}
+\begin{thm}
+    (1.1.10 First Isomorphism Theorem) If $\phi: G \to H$ is a group homomorphism, then $G/\ker \phi \cong \phi(G) \subgroup H$.
+\end{thm}
+\begin{proof}
+    Set $N = \ker \phi \normsubgroup G$. Then, consider $\widetilde{\phi}: G/N \to \phi(G)$ defined by $\widetilde{\phi}(gN) = \phi(g)$. First, we check that $\widetilde{\phi}$ is well-defined.
+
+    Assume $gN = g'N, g,g' \in G$. Then, there exists $n \ in N$ such that $g' = gn$. This tells us that $\phi(g') = \phi(gn) = \phi(g)\phi(n) = \phi(g)e = \phi(g)$. Now, we show that $\widetilde{\phi}$ is a group homomorphism.
+
+    Check $\widetilde{\phi}( (gN)(g'N) ) = \widetilde{\phi}(gg'N) = \phi(gg') = \phi(g)\phi(g') = \widetilde{\phi}(gN) \widetilde{\phi}(g'N)$.
+
+    We know $\widetilde{\phi}$ is surjective by definition. 
+
+    To show $\widetilde{\phi}$ is injective, it suffices to show that $\ker \widetilde{\phi} = \{\widetilde{e} = eN\}$. If $\widetilde{\phi}(gN) = \phi(g) = e \in H$, then $g \in \ker \phi = N$ and therefore $gN = N = \widetilde{e}$
+\end{proof}
+\begin{cor}
+    (1.1.11 Second Isomorphism Theorem) If $A,B \subgroup G$ and $A \subgroup N_G(B)$, then $AB/B \cong A/A\cap B$.
+\end{cor}
+\begin{proof}
+
+\end{proof}<++>
+\end{document}
