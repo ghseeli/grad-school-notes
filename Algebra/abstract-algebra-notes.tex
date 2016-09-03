@@ -81,8 +81,9 @@
 \newcommand{\qand}{\quad\hbox{and}\quad}
 \newcommand{\subgroup}{\mathrel{<}}
 \newcommand{\normsubgroup}{\mathrel{\unlhd}}
+\newcommand{\isom}{\mathrel{\cong}}
 \swapnumbers %% put numbers in front of proclamations
-\newtheorem{thm}{Theorem}[section]
+\newtheorem{thm}{Theorem}[subsection]
 \newtheorem*{thm*}{Theorem}
 \newtheorem{lem}[thm]{Lemma}
 \newtheorem*{lem*}{Lemma}
@@ -127,29 +128,31 @@
 \date{Fall 2016}
 \begin{document}
 \maketitle
-\section{Lecture 1: Normalizers and Centralizers}
+\section{Group Theory}
+\subsection{Basic Facts}
+\subsection*{Lecture 1: Normalizers and Centralizers}
 \begin{defn}
     For $A \subset G$, we set $N_G(A) := \{g \in G | gAg^{-1} = A\}$ and
     $C_G(A) := \{g \in G | gag^{-1} = a, \forall a \in A\}$. 
 \end{defn}
 Note that $C_G(A) \subset N_G(A)$.
-\begin{rmk}
+\begin{rmk*}
     If $A \subgroup G$, then $A \normsubgroup N_G(A)$. In fact, $N_G(A)$ is the
     largest subgroup of $G$ in which $A$ is normal.
-\end{rmk}
+\end{rmk*}
     The first part of this remark follows from the definition of $N_G(A)$. The
     second part follows by assuming that $N_G(A)$ is not the largest and then
     showing the ``largest'' is contained in $N_G(A)$.
-\begin{rmk}
+\begin{rmk*}
     If $A \subgroup G$, then $A \normsubgroup G$ if $N_G(A) = G$.
-\end{rmk}
+\end{rmk*}
     This follows from the second part of the remark above.
     Now for some remakrs about centralizers.
-    \begin{rmk}
+    \begin{rmk*}
         If $A \subgroup G$, then $A$ is abelian if and only if $A \subset
         C_G(A)$. Furthermore, if $A \subgroup Z(G)$, then $A \normsubgroup G$.
         This follows using basic commutativity arguments.
-    \end{rmk}
+    \end{rmk*}
     \begin{example}
         $Z(S_n) = \{ id \}$ if $n \geq 3$. To prove this, prove $\sigma \in S_n, \sigma \neq id \implies \sigma \notin Z(S_n)$. 
 
@@ -174,13 +177,14 @@ Note that $C_G(A) \subset N_G(A)$.
         $y=g^mh'$. Thus, we get $xy = g^nhg^mh' = g^ng^mhh' = g^{n+m}hh'$ and
         $yx = g^mh'g^nh = g^mg^nh'h = g^{n+m}h'h = g^{n+m}hh'$. Thus, we have
         our commutativity, thereby showing $G$ is abelian.
-    \end{proof}\begin{rmk}
+    \end{proof}
+    \begin{rmk*}
         Note, simply having $H \subgroup Z(G)$ and $G/H$ abelian does not imply
         $G$ is abelian. For a counter-example, look at $Q_8 = \{\pm 1, \pm i,
         \pm j, \pm k\}$, the standard quaternion group. It is easy to compute
         that $Z(Q_8) = \{\pm 1\}$. Now, $Q_8/Z(Q_8) \cong \Z_2 \times \Z_2$,
         the Klien-4 group, which is abelian. However, $Q_8$ is not abelian!
-    \end{rmk}
+    \end{rmk*}
     \begin{defn}
         Let $A,B \subgroup G$, then \begin{itemize}
             \item $A^{-1} = \{a^{-1} | a \in A\}$.
@@ -213,7 +217,7 @@ Note that $C_G(A) \subset N_G(A)$.
         \subset AB$ and thus $AB = BA$.
     \end{proof}
 
-    \section{Lecture 2}
+    \subsection*{Lecture 2}
     \begin{rmk}
         \begin{enumerate}
             \item If $A,B \subgroup G$ and if $A \normsubgroup G$ or $B \normsubgroup G$, then $AB \subgroup G$.
@@ -225,7 +229,7 @@ Note that $C_G(A) \subset N_G(A)$.
         The second remark is proven by, for $g \in G$, $gABg^{-1} = gAg^{-1}gBg^{-1} = AB$. 
     \end{proof}
 
-    \subsection{Index Computations}
+    \subsubsection*{Index Computations}
 
     \begin{lem}
         Let $A,B \subgroup G$ and $|A|, |B| < \infty$. Then, $|AB| = \frac{|A| \cdot |B|}{A \cap B}$.
@@ -270,25 +274,180 @@ Note that $C_G(A) \subset N_G(A)$.
     \begin{proof}
        For the first part, fix a set of coset representatives (using the Axiom of Choice in the infinite case) for $G/A$. Then, given a coset $gA$, we can TODO 
 \end{proof}
-\subsection{The Isomorphism Theorems}
+\subsection*{The Isomorphism Theorems}
 \begin{thm}
-    (1.1.10 First Isomorphism Theorem) If $\phi: G \to H$ is a group homomorphism, then $G/\ker \phi \cong \phi(G) \subgroup H$.
+    (First Isomorphism Theorem) If $\phi: G \to H$ is a group homomorphism, then $G/\ker \phi \cong \phi(G) \subgroup H$.
 \end{thm}
 \begin{proof}
-    Set $N = \ker \phi \normsubgroup G$. Then, consider $\widetilde{\phi}: G/N \to \phi(G)$ defined by $\widetilde{\phi}(gN) = \phi(g)$. First, we check that $\widetilde{\phi}$ is well-defined.
+    Set $N = \ker \phi \normsubgroup G$. Then, consider $\widetilde{\phi}: G/N
+    \to \phi(G)$ defined by $\widetilde{\phi}(gN) = \phi(g)$. First, we check
+    that $\widetilde{\phi}$ is well-defined.
 
-    Assume $gN = g'N, g,g' \in G$. Then, there exists $n \ in N$ such that $g' = gn$. This tells us that $\phi(g') = \phi(gn) = \phi(g)\phi(n) = \phi(g)e = \phi(g)$. Now, we show that $\widetilde{\phi}$ is a group homomorphism.
+    Assume $gN = g'N, g,g' \in G$. Then, there exists $n \in N$ such that $g'
+    = gn$. This tells us that $\phi(g') = \phi(gn) = \phi(g)\phi(n) = \phi(g)e
+    = \phi(g)$. Now, we show that $\widetilde{\phi}$ is a group homomorphism.
 
-    Check $\widetilde{\phi}( (gN)(g'N) ) = \widetilde{\phi}(gg'N) = \phi(gg') = \phi(g)\phi(g') = \widetilde{\phi}(gN) \widetilde{\phi}(g'N)$.
+    Check $\widetilde{\phi}( (gN)(g'N) ) = \widetilde{\phi}(gg'N) = \phi(gg') =
+    \phi(g)\phi(g') = \widetilde{\phi}(gN) \widetilde{\phi}(g'N)$.
 
     We know $\widetilde{\phi}$ is surjective by definition. 
 
-    To show $\widetilde{\phi}$ is injective, it suffices to show that $\ker \widetilde{\phi} = \{\widetilde{e} = eN\}$. If $\widetilde{\phi}(gN) = \phi(g) = e \in H$, then $g \in \ker \phi = N$ and therefore $gN = N = \widetilde{e}$
+    To show $\widetilde{\phi}$ is injective, it suffices to show that $\ker
+    \widetilde{\phi} = \{\widetilde{e} = eN\}$. If $\widetilde{\phi}(gN) =
+    \phi(g) = e \in H$, then $g \in \ker \phi = N$ and therefore $gN = N =
+    \widetilde{e}$
 \end{proof}
 \begin{cor}
-    (1.1.11 Second Isomorphism Theorem) If $A,B \subgroup G$ and $A \subgroup N_G(B)$, then $AB/B \cong A/A\cap B$.
+    (Second Isomorphism Theorem) If $A,B \subgroup G$ and $A \subgroup N_G(B)$,
+    then $AB/B \cong A/A\cap B$.
 \end{cor}
 \begin{proof}
+    First, we know since $A \subgroup N_G(B)$ that $AB \subgroup N_G(B)$. Then,
+    by definition of normalizer, $B \normsubgroup AB$. Now, define a group
+    homomorphism $\phi: A \to AB/B$ by $\phi(a) = aB$. Then, we can use the
+    first isomorphism theorem to get that $A/\ker \phi \cong \phi(A)$. Now,
+    $\ker \phi$ is the set of all $a \in A$ that map to an element in $B$. This
+    clearly only happens when $a \in B$. So, $\ker \phi = A \cap B$.
+    Furthermore, it is clear $\phi(A) = AB/B$ (as opposed to $A/B$) because $B$
+    need not be a subset of $A$. Thus, elements of the form $aB$ where $a \in A$
+    are in $AB/B$. (This part is still unclear to me.) Thus, we get $A/A \cap B
+\cong AB/B$. 
+\end{proof}
+The second isomorphism theorem is sometimes referred to as the ``diamond
+theorem'' because if you draw a diagram of what is happening, it is a diamond
+with $A, B, AB$, and $A \cap B$. 
+\begin{cor}
+    (Third Isomorphism Theorem) If $A,B \normsubgroup G$ and $A \subgroup B$, then $G/B \isom (G/A)/(A/B)$.
+\end{cor}
+\begin{proof}
+    Let us define a group homomorphism $\phi: G/A \to G/B$ by $\phi(gA) = gB$.
+    Then, let us examine $\ker \phi$. We note that if $g \in B \subgroup A$,
+    then $\phi(gA) = B$. Thus, $\ker \phi = A/B$. Now, applying the first
+    isomorphism theorem with $\phi$, we get that $(G/A)/(A/B) \isom \phi(gA)$.
+    $\phi$ is clearly surjective because $B \subgroup A$, so we conclude that
+    $(G/A)/(G/B) \isom B/A$.
+\end{proof}
 
-\end{proof}<++>
+These isomorphism theorems are useful in many proof techniques and there are
+analogues for many different algebraic structures. Next, we consider the
+Correspondance Theorem which is sometimes referred to as the fourth isomorphism
+theorem. The fundamental idea of the correspondance theorem is that the
+structure of subgroups of $G/N$ for $N \normsubgroup G$ is the same as the
+structore of the subgroups of $G$ containing $N$ where $N$ is ``collapsed'' as
+the identity element.
+
+\begin{thm}
+    Let $G$ be a group, $N \subgroup G$, and $\overline{G} = G/N$. Next, let
+    $\phi_N = \{ A \subgroup G | N \subgroup A \}$ and $\overline{\phi}$ be the
+    set of all subgroups of $\overline{G}$. Then, all the following are true for $A,B \in \phi_N$.
+    \begin{enumerate}[label=(\alph*)]
+        \item $A \subgroup B$ if and only if $\overline{A} \subgroup \overline{B}$.
+        \item $A \normsubgroup B$ if and only if $\overline{A} \normsubgroup
+            \overline{B}$.
+        \item If $A \subgroup B$, then $[B:A] = [\overline{B}:\overline{A}]$.
+        \item $\overline{A \cap B} = \overline{A} \cap \overline{B}$.
+        \item The map $\rho: \phi_N \to \overline{\phi}$ where $\rho(A) =
+            \overline{A}$ is bijective.
+        \item A map from $\{ A \in \phi_N | A \normsubgroup G\}$ to the set of
+            normal subgroups of $\overline{G}$ defined by $A \mapsto
+            \overline{A}$ is bijective.
+    \end{enumerate}
+\end{thm}
+\begin{proof}
+    Proofs for (a) -- (d) were left as an exercise (to be filled in later). 
+    For (e), let $\pi: G \twoheadrightarrow \overline{G}$ be the surjective group homomorphism defined by $\pi(g) = gN$. Now, consider $\psi: \overline{\phi} \to \phi_N$ defined by $\psi(H) = \pi^{-1}(H) \subgroup G$. Then, we want to show that $\rho \circ \psi = id_{\overline{\phi}}$ and $\psi \circ \rho = id_{\phi_N}$ because then we will know $\rho$ is invertible and thus bijective. 
+
+    Examine $\rho \circ \psi$. We know that $(\rho \circ \psi)(H) = \rho(\pi^{-1}(H))$. Now, note that $\rho(A)$ is the image of $\pi(A)$, so we get $\rho(\pi^{-1}(H)) = \pi(\pi^{-1}(H)) = H$ because $\pi$ is surjective. 
+
+    Next, examine $\psi \circ \rho$. We then get that $(\psi \circ \rho)(A) = \pi^{-1}(\pi(A))$ for $A \subgroup G$. We would like for this to be equal $A$. It is clear that $A \subset \pi^{-1}(\pi(A))$ because the pre-image of $A/N$ under $\pi$ must at least contain $A$. So, we still need to show that $\pi^{-1}(\pi(A)) \subset A$. To do this, take $x \in \pi^{-1}(A/N)$. Then, $xN = \pi(x) \in A/B$, so $xN = aN$ for some $a \in A$. This means that there exists an $n \in N$ such that $x = an$ since $N \subgroup A$. So, $\pi^{-1}(A/N) \subset A$.
+
+    Thus, we have shown that $\rho$ and $\psi$ are bijective maps that are inverse to each other and we have proven (e). \\
+
+    (f) follows from the same proof technique as (e), I believe.
+\end{proof}
+
+\subsubsection*{Commutators}
+
+\begin{defn}
+    The commutator of two elements $x,y \in G$ is defined as \[
+        [x,y] = xyx^{-1}y^{-1}
+    \]
+\end{defn}
+
+Note that mathematicians have not completely agreed on the definition and thus some references will say $[x,y] = x^{-1}y^{-1}xy$. In essence, the commutator of two elements indicates how ``close'' elements are to commuting. This can be seen in the following lemma.
+
+\begin{lem}
+    For $x,y,z \in G$, we obtain
+    \begin{enumerate}[label=(\alph*)]
+        \item $[x,y] = e$ if and only if $xy=yx$ if and only if $[x^{-1},y^{-1}] = e$.
+        \item $[x,y]^{-1} = [y,x]$.
+        \item $z[x,y]z^{-1} = [zxz^{-1},zyz^{-1}]$.
+        \item If $\phi: G \to H$ is a group homoromorphism, then $[\phi(g),\phi(h)] = \phi([g,h])$.
+        \item $xy = [x,y]yx = yx[x^{-1},y^{-1}]$.
+        \item $[xy,z] = x[y,z]x^{-1}[x,z]$
+        \item $[x,yz] = [x,y]y[x,z]z^{-1}$.
+    \end{enumerate}
+\end{lem}
+\begin{proof}
+    All proofs are straightforward computations.
+\end{proof}
+\subsection*{Lecture 3: Continuing with Commutators}
+\begin{defn}
+    Let $A, B \subgroup G$. Then, the \emph{commutator} of $A$ and $B$ is the subgroup of $G$ denoted $[A,B] = \langle \{[a,b] | a \in A, b \in B\} \rangle$. Also note that $[G,G]$ is called the \emph{commutator subgroup of $G$}.
+\end{defn}
+\begin{rmk}
+    Let $A,B \subgroup G$. Then
+    \begin{enumerate}
+        \item $[A,B] = \{e\}$ if and only if $ab = ba \forall a \in A, b \in B$ if and only if $A \subgroup C_G(B)$ if and only if $B \subgroup C_G(A)$. In this case, we say that $A$ and $B$ commute.
+        \item $[G,G] = \{e\}$ if and only if $G$ is abelian if and only if $Z(G) = G$.
+        \item $[A,B] = [B,A]$ since $[a,b]^{-1} = [b,a]$.
+    \end{enumerate}
+\end{rmk}
+\begin{example}
+    \begin{enumerate}
+        \item $[Q_8,Q_8] = \{1,-1\} = [\langle i \rangle, \langle j \rangle]$. This can be seen because $[i,j] = iji^{-1}j^{-1} = ij(-i)(-j) = ij(-i)(-j) = iij(-j) = -i^2j^2 = -1$. 
+        \item $[A_n, \langle (12) \rangle] = A_n$ for $n geq 2$. This follows because, for $i \geq 3$, we get $[(1i2),(12)] = (1i2)(12)(2i1)(12) = (12i)$. This tells us that $A_n = \langle \{(12i) | 3 \leq i \leq n\} \rangle \subset [A_n, \langle (12)\rangle$.
+        \item $[S_n,S_n] = A_n$ for $n \geq 2$. To show this, for ($\subset$) we have \begin{align*}
+                \sgn( [\sigma,\tau] ) & = \sgn(\sigma \tau \sigma^{-1} \tau^{-1}) \\
+                \ & = \sgn(\sigma) \sgn(\tau) \sgn(\sigma)^{-1} \sgn(\tau)^{-1} \\
+                \ & = 1 \forall \sigma, \tau \in S_n
+            \end{align*}
+            For ($\supset$), see the previous item.
+        \item $[A_n,A_n] = A_n$ for $n \geq 5$. This is because every 3 cycle is a commutator. For instance $[(ijk),(klm)] = (ilk)$ for 5 distinct elements $i,j,k,l,m \in \{1, \ldots, n\}$. Also note that $[A_3,A_3] = \{e\}$ and $[A_4,A_4] = \Z_2 \times \Z_2$, the set of all elements of the form $(ij)(kl)$. 
+    \end{enumerate}
+\end{example}
+\begin{lem}
+    Let $A,B \subgroup G$. Then,
+    \begin{enumerate}[label=(\alph*)]
+        \item $A \subgroup N_G(B)$ if and only if $[A,B] \subgroup B$.
+        \item $B \subgroup N_G(A)$ if and only if $[A,B] \subgroup A$.
+        \item If $A,B \normsubgroup G$ then $[A,B] \normsubgroup G$ and $[A,B] \subgroup A \cap B$
+    \end{enumerate}
+\end{lem}
+\begin{proof}
+    The forward direction of $A$ is given by the fact that $[a,b] =
+    aba^{-1}b^{-1}$ but $aba^{-1} \in B$ since $A$ normalizes $B$. Thus, $[a,b]
+    \in B \forall a \in A, b \in B$ so $[A,B] \subgroup B$. To do the other
+    direction, we have that, we have that $aba^{-1}b^{-1} \in B, \forall a \in A,
+    \forall b \in B$. Well, $(aba^{-1}b^{-1})b = aba^{-1} \in B$, so $A$
+    normalizes $B$, so $A \subgroup N_G(B)$. \\
+
+    (b) is similar to (a). \\
+
+    Now, given that $A,B \normsubgroup G$, then $g[a,b]g^{-1} = gaba^{-1}b^{-1}g^{-1} = gag^{-1}gbg^{-1}ga^{-1}g^{-1}gb^{-1}g^{-1}$. Now note that $gag^{-1} \in A$ since $A \normsubgroup G$ and $(gag^{-1})^{-1} = ga^{-1}g^{-1}$. Similarly for $b$. So, we have that $g[a,b]g^{-1} \in [A,B] \implies [A,B] \normsubgroup G$. Finally, an element of the form $aba^{-1}b^{-1} \in A$ because $ba^{-1}b^{-1} \in A$ since $A$ is normal in $G$ and similarly $aba^{-1} \in B$. So, $[A,B] \subgroup A \cap B$. This final fact also follows from the first two items in the lemma. 
+\end{proof}
+
+This lemma also gives us the important fact that $[G,G] \normsubgroup G$. This follows easily from the third item.
+
+\begin{prop}
+    If $H \subgroup G$, then $[G,G] \subgroup H$ if and only if $H \normsubgroup G$ and $G/H$ is abelian.
+\end{prop}
+\begin{proof}
+    Let $[G,G] \subgroup H$. Then, if $a,b \in G$, $aba^{-1}b^{-1} \in H$. Now, in particular, if $b \in H$, then $aba^{-1}b^{-1} \cdot b = aba^{-1} \in H$ so $H \normsubgroup G$. More concisely, we have that $[G,H] \subgroup [G,G] \subgroup H \implies G \subgroup N_G(H)$ so $H \normsubgroup G$. To show $G/H$ is abelian, take a map $[a,b] \mapsto [aH,bH] = (aH)(bH)(aH)^{-1}(bH)^{-1} = aba^{-1}b^{-1}H = [x,y]H = H = e_{G/H}$. So, then $[G/H,G/H] = \{e\}$. 
+
+    To prove the other direction, let $G/H$ be abelian and $H \normsubgroup G$. Since $G/H$ is abelian, we have that $[aH,bH] = [a,b]H = H$. This means that $[a,b] \in H$ which implies that $[G,G] \in H$. (Where is the normalcy of $H$ used?!)
+\end{proof}
+
+\subsubsection*{Direct Products}
+
 \end{document}
