@@ -8,7 +8,7 @@
 
 %\usepackage[nohead,nofoot,centering]{geometry}
 
-\usepackage{color} 
+\usepackage{color}
 %% Some user-defined colors
       \definecolor{mydefi}{cmyk}{1,0,0,.5}
       \definecolor{myred}{rgb}{.7,.1,.1}
@@ -25,7 +25,7 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%  MACRO DEFINITIONS:  Co-authors -- PLEASE use these! 
+%%  MACRO DEFINITIONS:  Co-authors -- PLEASE use these!
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand{\N}{{\mathbb N}} % natural numbers
 \newcommand{\Z}{{\mathbb Z}} % integers
@@ -68,7 +68,7 @@
 \newcommand{\cA}{\mathcal{A}} % group algebra of symmetric group
 \newcommand{\Tab}{\operatorname{Tab}} % trails in branching graph from source
 \newcommand{\BG}{\mathbf{B}} % branching graph
-\newcommand{\bb}{\varnothing} % the unique element of \Irr(0) 
+\newcommand{\bb}{\varnothing} % the unique element of \Irr(0)
 \newcommand{\res}{\operatorname{res}} % restriction
 \newcommand{\Irr}{\operatorname{Irr}} % irreps
 \newcommand{\Wt}{\operatorname{Wt}} % possible content vectors for an irrep
@@ -76,7 +76,7 @@
 \newcommand{\type}{\operatorname{type}} % type = generalized shape
 \newcommand{\gen}[1]{\langle #1 \rangle} % use for generating sets
 \newcommand{\parm}{\updelta} % Brauer algebra parameter
-\newcommand{\sep}{\,|\,} % separator for two partitions - used in tables 
+\newcommand{\sep}{\,|\,} % separator for two partitions - used in tables
 \newcommand{\covered}{\lessdot}
 \newcommand{\qand}{\quad\hbox{and}\quad}
 \swapnumbers %% put numbers in front of proclamations
@@ -107,10 +107,10 @@
 \newtheorem*{rmks*}{Remarks}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\numberwithin{equation}{section} 
-%% The following avoids conflict between numbers of proclamations 
+\numberwithin{equation}{section}
+%% The following avoids conflict between numbers of proclamations
 %% and numbers of equations
-\renewcommand{\theequation}{\thesection\alph{equation}} 
+\renewcommand{\theequation}{\thesection\alph{equation}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \parskip = 2pt
 \allowdisplaybreaks
@@ -129,8 +129,8 @@
 
 What is differential topology? Topology is concerned with objects called
 topological spaces and continuous functions between them. However, the name
-differential topology suggests that calculus is somehow involed. The objects of
-study in differential topology are manifolds. Manifods are topological spaces
+differential topology suggests that calculus is somehow involved. The objects of
+study in differential topology are manifolds. Manifolds are topological spaces
 that ``locally'' look like $\R^n$.
 
 \begin{example}
@@ -161,11 +161,11 @@ that ``locally'' look like $\R^n$.
     \in T_{\vec{x}} S^2\} = \{(\vec{x},\vec{v}) : ||\vec{x}|| = 1, \vec{x}
     \cdot \vec{v} = 0\} \subset S^2 \times \R^3 \subset \R^3 \times \R^3$.
     Finally, consider that there exists a function $p$ such that $p: TS^2 \to
-    S^2$ by $(x,v) \to x$. Then, we have that $p^{-1}(x) = T_{\vec{x}}S^2$. 
+    S^2$ by $(x,v) \to x$. Then, we have that $p^{-1}(x) = T_{\vec{x}}S^2$.
 \end{example}
 
 Now, let $M$ be any differential manifold. Studying the function $p: TM \to M$
-can tell us a lot about $M$. 
+can tell us a lot about $M$.
 
 \begin{example}
     A \emph{section} of $p: TS^2 \to S^2$ is a function $s: S^2 \to TS^2$ such
@@ -179,12 +179,12 @@ A famous topological question is: could $s(x) \neq \vec{0} \in T_{\vec{x}}S^2$
 for all $x \in S^2$? The famous answer is no. This is analogous to the
 so-called ``hairy-ball theorem''. By contrast, the answer would be yes if $S^2$
 were replaced by a circle ($S^1$), a 3-sphere ($S^3 \subset \R^4$), or a torus
-($T^2$). 
+($T^2$).
 
 Given this result, clearly $TS^2$ is not $S^2 \times \R^2$. This is because,
 for $S^2 \times \R^2$, we could define $s(\vec{x}) = (\vec{x}, \vec{0})$ and
 $p( (\vec{x},\vec{y}) ) = \vec{x}$ which gives us $(p \circ s)(\vec{x}) =
-p(s(\vec{x})) = p( (\vec{x}, \vec{0}) )= \vec{x}$.  
+p(s(\vec{x})) = p( (\vec{x}, \vec{0}) )= \vec{x}$.
 
 
 In differential topology, one can also do ``fiberwise'' linear algebra. Let
@@ -209,7 +209,7 @@ Now, recall \begin{enumerate}
         construction of the product topology.
     \item Let $B_r(a) = \{x \in \R^n : ||x-a|| < r\}$. Then, $f$ is continuous
         if and only if, given open set $U \subset \R^m$, $f^{-1}(U)$ is open in
-        $\R^n$. 
+        $\R^n$.
     \item If $f: Z \to X \times Y$, $f$ is continuous if and only if $f_1: Z
         \to X$ and $f_2: Z \to Y$ are continuous, where $f_1, f_2$ are the
         obvious restrictions.
@@ -223,3 +223,134 @@ Now, let us define what it means for a function to be differentiable.
     \vec{x})||}{||\delta \vec{x}||} = 0$.
 \end{defn}
 \end{document}
+
+
+
+
+
+{
+    name: a-b-dimensional tangent plane,
+    thm: Given a function $f : \\mathbb{R}^a \\to \mathbb{R}^b$ and its slope matrix $f^\prime(v)$ at a vector $v \in \mathbb{R}^a$, then the equation for the plane tangent to $f$ at $v$ is $L_v(w) = f(v) + f'(v)(w-v)$ or, in point-slope form, $\frac{L_v(w)-f(v)}{w-v} = f'(v)$.,
+    dependencies: [function, derivative, tangent],
+}
+{
+    def: The __$n$-sphere__, denoted $S^n$, is $\{x \in \R^{n+1} | \; ||x||=1 \}$.,
+    note: The *surface* of the $n$-sphere has dimension $n$.,
+    dependencies: [reals],
+}
+{
+    def: The __tangent bundle__ of a manifold $M$, denoted $TM$, is $\{ (x,v) |\; x \in M and v \in T_xM \}$.,
+}
+{
+    def: If $p$ is a function from $TM$ to $M$, then a __section__ of $p$ is a right inverse of $p$.,
+}
+// {
+//  hmm
+//  For each $x \in M$, we can use a section $s$ to associate a vector $s(x)$.  This creates a vector field.
+// }
+{
+    name: billiard ball,
+    thm: A continuously differentiable section $s$ on $TS^2$ with $s(x) \neq 0$ for all $x \in S^2$ does not exist.,
+    intuition: Can you draw a continuously differentiable, always nonzero vector field on a billiard ball?  No.,
+    // NO --> apparently TS^2 not isomorphic to S^2 \times \R^2.
+    // Ts^2 \subseteq S^2 \times \R^3 \subseteq \R^3 \times \R^3.
+}
+{
+    name: continuously differentiable sections,
+    thm: A continuously differentiable section $s$ on $TM$ with $s(x) \neq 0$ for all $x \in M$ exists for the following possible $M$: $S^1$ (circle), $S^3$, $T^2$ (torus).,
+}
+{
+ def: The set $U$ is __open__ if it can be written as a union of open balls $B$.,
+}
+{
+ thm: The set $U$ is open iff for all points in $U$, there exists an open ball around the point that's entirely contained in $U$ (the regular definition).,
+}
+{
+ name: continuity and openness,
+ thm: $f$ is continuous iff for every open set $U$ in \R^m$, $f^{-1}(U)$ is open in $\R^n$.,
+}
+{
+ thm: finite intersections of open sets are open,
+}
+{
+ thm: any union of open sets is open,
+}
+{
+ thm: the empty set is open,
+}
+{
+ thm: the entire space is open,
+}
+{
+ def: $f :Rn to Rm$ is __differentiable__ at $x \in Rn$ if there exists a linear function $L : Rn \to Rm$  such that $lim_{h \to 0} \frac{|| (f(x)-f(x+h)) - (L(x+h)) ||}{||h||} = 0$. (see multivar calc review PDF),
+}
+{
+ def: If $f$ is differentiable at $x$ by a linear function $L$, then $L$ is the __differential__ of $f$ at $x$.,
+ synonym: slope matrix,
+ denotation: [$f'(x)$, $df_x$],
+}
+{
+ thm: If $f$ is differentiable, then the differential $df_x$ is equal to $lim_{t \to 0} \frac{f(a+tv) - f(a)}{t}$.,
+}
+{
+ thm: For any $k$, $f$ has class $C^k$ iff all of its coordinate functions $f_i$ have class $C^k$.,
+}
+{
+ def: Given a set $V$, a __distance__ is a function $D : V \times V \to \R$ that satisfies, for all $v, w, z \in V$:
+
+   1. $D(v,v) = 0$
+   2. (positivity) If $v \neq w$, then $D(v,w) > 0$
+   3. (symmetry) $D(v,w) = D(w,v)$
+   4. (triangle inequality) $D(x,z) <= D(x,y) + D(y,z)$
+ ,
+}
+{
+ def: A __metric space__ is $(X, D)$ where $X$ is a set and $D$ is a distance function on $X$.,
+}
+{
+ name: analytic functions,
+ // not sure what this is (def? thm?)
+ def: A function $f$ is analytic if for every point $x$ in the domain, there exists a taylor series centered at $x$ which converges to $f$ in a neighborhood of $x$.,
+ thm: The class of analytic functions, denoted $C^\omega$, is a subset of $C^\infty$.,
+ counterexample: The function $f(x) = \begin{cases} \item $e^{-1/x^2}$ if $x \neq 0$ \item $0$ if $x=0$ is in $C^\infty$, but it is NOT analytic.,
+}
+
+{
+    def: $K$ subset $X$ is __compact__ in $X$ if whenever $K \subseteq union_{i \in I} O$ of open sets, then there exists $J$ finite subset of $I$ such that $K \subseteq union_{j \in J} O$.,
+}
+{
+    thm: If K is compact in X and f:X \to Y is continuous, then f(X) is compact in Y.,
+}
+thm: If O is open in Y and f:X \to Y is continuous, then f^{-1}(O) is open in X
+
+thm: If O is closed in Y and f:X \to Y is continuous, then f^{-1}(O) is closed in X
+
+// create a term like openocity that describes the state of being open, closed, half-open, neither, etc, and then state the above as an iff statement
+
+thm: If K is compact in X and C is closed in X, then K intersect C is compact in X
+
+def: A set/space X is Hausdorff if for every a \neq b in X, there exists an open neighborhood A of a and an open neighborhood B of b such that A intersect B = {}.
+synonym: seperable
+
+lemma: If X is Hausdorff and K is compact in X, then K is closed in X.
+notation: T_2
+
+def: f is an __open__ function if the image of all open sets under f are open.
+
+def: f is a __closed__ function if (ditto)
+
+corr: If f : X to Y is continuous, X is compact, and Y is Hausdorff, then f is a closed function.
+
+corr: If f : X to Y is a continuous bijection, and X is compact and Y is Hausdorff, then f is a homeomorphism. (f inverse is continuous).
+
+thm: A compact subspace of a Hausdorff space is closed
+
+thm: If X and Y are compact, then X \times Y is compact.
+
+thm: X is top space and ~ is an equiv rel on X.  Then there is a topology on X/~ (the set of quiv classes) as follows.  S subset X/~ is open iff (let backwards(S) : X/~ to X) backwards(S) is open in X.  [[ f: X/~ to Y is continuous iff f of g : X to Y is contniuous.
+
+def: A top group is a group, a top space
+
+
+
+

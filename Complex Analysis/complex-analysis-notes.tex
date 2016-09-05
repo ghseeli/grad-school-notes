@@ -8,7 +8,7 @@
 
 %\usepackage[nohead,nofoot,centering]{geometry}
 
-\usepackage{color} 
+\usepackage{color}
 %% Some user-defined colors
       \definecolor{mydefi}{cmyk}{1,0,0,.5}
       \definecolor{myred}{rgb}{.7,.1,.1}
@@ -25,7 +25,7 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%  MACRO DEFINITIONS:  Co-authors -- PLEASE use these! 
+%%  MACRO DEFINITIONS:  Co-authors -- PLEASE use these!
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand{\N}{{\mathbb N}} % natural numbers
 \newcommand{\Z}{{\mathbb Z}} % integers
@@ -68,7 +68,7 @@
 \newcommand{\cA}{\mathcal{A}} % group algebra of symmetric group
 \newcommand{\Tab}{\operatorname{Tab}} % trails in branching graph from source
 \newcommand{\BG}{\mathbf{B}} % branching graph
-\newcommand{\bb}{\varnothing} % the unique element of \Irr(0) 
+\newcommand{\bb}{\varnothing} % the unique element of \Irr(0)
 \newcommand{\res}{\operatorname{res}} % restriction
 \newcommand{\Irr}{\operatorname{Irr}} % irreps
 \newcommand{\Wt}{\operatorname{Wt}} % possible content vectors for an irrep
@@ -76,7 +76,7 @@
 \newcommand{\type}{\operatorname{type}} % type = generalized shape
 \newcommand{\gen}[1]{\langle #1 \rangle} % use for generating sets
 \newcommand{\parm}{\updelta} % Brauer algebra parameter
-\newcommand{\sep}{\,|\,} % separator for two partitions - used in tables 
+\newcommand{\sep}{\,|\,} % separator for two partitions - used in tables
 \newcommand{\covered}{\lessdot}
 \newcommand{\qand}{\quad\hbox{and}\quad}
 \newcommand{\Arg}{\operatorname{Arg}}
@@ -108,10 +108,10 @@
 \newtheorem*{rmks*}{Remarks}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\numberwithin{equation}{section} 
-%% The following avoids conflict between numbers of proclamations 
+\numberwithin{equation}{section}
+%% The following avoids conflict between numbers of proclamations
 %% and numbers of equations
-\renewcommand{\theequation}{\thesection\alph{equation}} 
+\renewcommand{\theequation}{\thesection\alph{equation}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \parskip = 2pt
 \allowdisplaybreaks
@@ -143,7 +143,7 @@ What makes complex analysis different than calculus and real analysis?
     Describing physical phenemenon, such as the flow of a river over a log, is much easier using complex analysis.
 \end{example}
 \begin{example}
-    Solving $\int_{-\infty}^{\infty} \frac{\cos 2x}{x^2+1} dx$ is almost impossible for a standard calculus student and in real analysis, one can show that the integral is finite, but solving it is difficult. In complex analysis, one can easily show that it is $\pi^2/e$. 
+    Solving $\int_{-\infty}^{\infty} \frac{\cos 2x}{x^2+1} dx$ is almost impossible for a standard calculus student and in real analysis, one can show that the integral is finite, but solving it is difficult. In complex analysis, one can easily show that it is $\pi^2/e$.
 \end{example}
 \begin{example}
     $\int_{\gamma} \frac{\cos z}{z} dz = 2 \pi i $ times the number of counter clockwise rotations around $(0,0)$ in the complex plane.
@@ -167,35 +167,35 @@ following are some examples:
     \caption{Some real functions in complex form}
     \label{tab:func-descs}
 \end{table}
-Also note that $\ov{z}$ is $z$ reflected over the x-axis. 
+Also note that $\ov{z}$ is $z$ reflected over the x-axis.
 
 In $\R$, there are many ways to define $e^x$. One way is $e^x =
 \sum_{n=0}^\infty \frac{x^n}{n!}$. Also, recall the taylor series expansions of
 $\sin x$ and $\cos x$. We can define all these functions in complex $x$ using
-the taylor series expansions. 
+the taylor series expansions.
 \[
     e^{ix} = 1 + ix + \frac{(ix)^2}{2!} + \frac{(ix)^3}{3!} + \cdots = \cos x + i \sin x
 \]
 When $x$ is real, $|e^{ix}| = |\cos x + i \sin x| = \sqrt{\cos^2 x + \sin^2 x}
-= 1$, so our rules in $\R$ still hold. 
+= 1$, so our rules in $\R$ still hold.
 
 This formulation allows us to come up with the polar form of looking at complex
 numbers. This boils down to $z = r e^{i \theta}$ where $r = |z|$ and $\theta
 \in \arg z$. Note that $\arg z$ is the \emph{set} of (real) $\theta$ that solve
 the equation. However, since $\arg$ is multi-valued, we say that $\Arg \in
-\arg$ is the value that is between $(-\pi, \pi]$. 
+\arg$ is the value that is between $(-\pi, \pi]$.
 
 From this description, we get that $e^z e^w = e^{z+w}$ (follows from the power series). In particular, $(e^z)^n = e^{nz}, n \in \N$, This gives us \[
     \cos n \theta + i \sin n \theta = e^{in\theta} = (e^{i\theta})^n = (\cos \theta + i \sin \theta)^n
 \]
 This formula is often called \emph{DeMoivre's formula} and from it, we can
-recover trig identities by expanding and equating the real and imaginary parts. 
+recover trig identities by expanding and equating the real and imaginary parts.
 
-Overall, polar form is good for understanding multiplication and powers. For example, $\frac{1}{z} = \frac{1}{r} \exp{-i \theta}$. 
+Overall, polar form is good for understanding multiplication and powers. For example, $\frac{1}{z} = \frac{1}{r} \exp{-i \theta}$.
 
 We can also take roots effectively using polar form (look it up).
 
-Finally, we can look at the stereographic projection (see textbook for picture) using the one-point compactification of $\C$, namely $\C^* = \C \cup \{\infty\} \cong S^2$. 
+Finally, we can look at the stereographic projection (see textbook for picture) using the one-point compactification of $\C$, namely $\C^* = \C \cup \{\infty\} \cong S^2$.
 
 We also get some nice correspondances from actions on the sphere as in the table.
     \begin{tabular}{|c|c|}
@@ -204,8 +204,8 @@ We also get some nice correspondances from actions on the sphere as in the table
         Upper hemisphere & $\{|z| > 1\} \cup \{\infty\}$ \\
         Lines of lattitude & Circle centered at origin \\
         Lines of longitude & Rays from origin \\
-        Circles on $S^2$ that do not contain the north pole & Circles on $C^*$ \\
-        Circles on $S^2$ that contain the north pole & Lines on $C^*$ \\
+        Circles on $S^2$ that do not contain the north pole & Circles on $\C^*$ \\
+        Circles on $S^2$ that contain the north pole & Lines on $\C^*$ \\
         \hline
     \end{tabular}
 
