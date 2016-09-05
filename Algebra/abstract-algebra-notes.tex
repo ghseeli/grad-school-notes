@@ -182,7 +182,7 @@ Note that $C_G(A) \subset N_G(A)$.
         Note, simply having $H \subgroup Z(G)$ and $G/H$ abelian does not imply
         $G$ is abelian. For a counter-example, look at $Q_8 = \{\pm 1, \pm i,
         \pm j, \pm k\}$, the standard quaternion group. It is easy to compute
-        that $Z(Q_8) = \{\pm 1\}$. Now, $Q_8/Z(Q_8) \cong \Z_2 \times \Z_2$,
+        that $Z(Q_8) = \{\pm 1\}$. Now, $Q_8/Z(Q_8) \isom \Z_2 \times \Z_2$,
         the Klien-4 group, which is abelian. However, $Q_8$ is not abelian!
     \end{rmk*}
     \begin{defn}
@@ -276,7 +276,7 @@ Note that $C_G(A) \subset N_G(A)$.
 \end{proof}
 \subsection*{The Isomorphism Theorems}
 \begin{thm}
-    (First Isomorphism Theorem) If $\phi: G \to H$ is a group homomorphism, then $G/\ker \phi \cong \phi(G) \subgroup H$.
+    (First Isomorphism Theorem) If $\phi: G \to H$ is a group homomorphism, then $G/\ker \phi \isom \phi(G) \subgroup H$.
 \end{thm}
 \begin{proof}
     Set $N = \ker \phi \normsubgroup G$. Then, consider $\widetilde{\phi}: G/N
@@ -299,19 +299,19 @@ Note that $C_G(A) \subset N_G(A)$.
 \end{proof}
 \begin{cor}
     (Second Isomorphism Theorem) If $A,B \subgroup G$ and $A \subgroup N_G(B)$,
-    then $AB/B \cong A/A\cap B$.
+    then $AB/B \isom A/A\cap B$.
 \end{cor}
 \begin{proof}
     First, we know since $A \subgroup N_G(B)$ that $AB \subgroup N_G(B)$. Then,
     by definition of normalizer, $B \normsubgroup AB$. Now, define a group
     homomorphism $\phi: A \to AB/B$ by $\phi(a) = aB$. Then, we can use the
-    first isomorphism theorem to get that $A/\ker \phi \cong \phi(A)$. Now,
+    first isomorphism theorem to get that $A/\ker \phi \isom \phi(A)$. Now,
     $\ker \phi$ is the set of all $a \in A$ that map to an element in $B$. This
     clearly only happens when $a \in B$. So, $\ker \phi = A \cap B$.
     Furthermore, it is clear $\phi(A) = AB/B$ (as opposed to $A/B$) because $B$
     need not be a subset of $A$. Thus, elements of the form $aB$ where $a \in A$
     are in $AB/B$. (This part is still unclear to me.) Thus, we get $A/A \cap B
-\cong AB/B$. 
+    \isom AB/B$. 
 \end{proof}
 The second isomorphism theorem is sometimes referred to as the ``diamond
 theorem'' because if you draw a diagram of what is happening, it is a diamond
@@ -355,13 +355,29 @@ the identity element.
 \end{thm}
 \begin{proof}
     Proofs for (a) -- (d) were left as an exercise (to be filled in later). 
-    For (e), let $\pi: G \twoheadrightarrow \overline{G}$ be the surjective group homomorphism defined by $\pi(g) = gN$. Now, consider $\psi: \overline{\phi} \to \phi_N$ defined by $\psi(H) = \pi^{-1}(H) \subgroup G$. Then, we want to show that $\rho \circ \psi = id_{\overline{\phi}}$ and $\psi \circ \rho = id_{\phi_N}$ because then we will know $\rho$ is invertible and thus bijective. 
+    For (e), let $\pi: G \twoheadrightarrow \overline{G}$ be the surjective
+    group homomorphism defined by $\pi(g) = gN$. Now, consider $\psi:
+    \overline{\phi} \to \phi_N$ defined by $\psi(H) = \pi^{-1}(H) \subgroup G$.
+    Then, we want to show that $\rho \circ \psi = id_{\overline{\phi}}$ and
+    $\psi \circ \rho = id_{\phi_N}$ because then we will know $\rho$ is
+    invertible and thus bijective. 
 
-    Examine $\rho \circ \psi$. We know that $(\rho \circ \psi)(H) = \rho(\pi^{-1}(H))$. Now, note that $\rho(A)$ is the image of $\pi(A)$, so we get $\rho(\pi^{-1}(H)) = \pi(\pi^{-1}(H)) = H$ because $\pi$ is surjective. 
+    Examine $\rho \circ \psi$. We know that $(\rho \circ \psi)(H) =
+    \rho(\pi^{-1}(H))$. Now, note that $\rho(A)$ is the image of $\pi(A)$, so
+    we get $\rho(\pi^{-1}(H)) = \pi(\pi^{-1}(H)) = H$ because $\pi$ is
+    surjective. 
 
-    Next, examine $\psi \circ \rho$. We then get that $(\psi \circ \rho)(A) = \pi^{-1}(\pi(A))$ for $A \subgroup G$. We would like for this to be equal $A$. It is clear that $A \subset \pi^{-1}(\pi(A))$ because the pre-image of $A/N$ under $\pi$ must at least contain $A$. So, we still need to show that $\pi^{-1}(\pi(A)) \subset A$. To do this, take $x \in \pi^{-1}(A/N)$. Then, $xN = \pi(x) \in A/B$, so $xN = aN$ for some $a \in A$. This means that there exists an $n \in N$ such that $x = an$ since $N \subgroup A$. So, $\pi^{-1}(A/N) \subset A$.
+    Next, examine $\psi \circ \rho$. We then get that $(\psi \circ \rho)(A) =
+    \pi^{-1}(\pi(A))$ for $A \subgroup G$. We would like for this to be equal
+    $A$. It is clear that $A \subset \pi^{-1}(\pi(A))$ because the pre-image of
+    $A/N$ under $\pi$ must at least contain $A$. So, we still need to show that
+    $\pi^{-1}(\pi(A)) \subset A$. To do this, take $x \in \pi^{-1}(A/N)$. Then,
+    $xN = \pi(x) \in A/B$, so $xN = aN$ for some $a \in A$. This means that
+    there exists an $n \in N$ such that $x = an$ since $N \subgroup A$. So,
+    $\pi^{-1}(A/N) \subset A$.
 
-    Thus, we have shown that $\rho$ and $\psi$ are bijective maps that are inverse to each other and we have proven (e). \\
+    Thus, we have shown that $\rho$ and $\psi$ are bijective maps that are
+    inverse to each other and we have proven (e). \\
 
     (f) follows from the same proof technique as (e), I believe.
 \end{proof}
@@ -374,7 +390,10 @@ the identity element.
     \]
 \end{defn}
 
-Note that mathematicians have not completely agreed on the definition and thus some references will say $[x,y] = x^{-1}y^{-1}xy$. In essence, the commutator of two elements indicates how ``close'' elements are to commuting. This can be seen in the following lemma.
+Note that mathematicians have not completely agreed on the definition and thus
+some references will say $[x,y] = x^{-1}y^{-1}xy$. In essence, the commutator
+of two elements indicates how ``close'' elements are to commuting. This can be
+seen in the following lemma.
 
 \begin{lem}
     For $x,y,z \in G$, we obtain
@@ -393,27 +412,42 @@ Note that mathematicians have not completely agreed on the definition and thus s
 \end{proof}
 \subsection*{Lecture 3: Continuing with Commutators}
 \begin{defn}
-    Let $A, B \subgroup G$. Then, the \emph{commutator} of $A$ and $B$ is the subgroup of $G$ denoted $[A,B] = \langle \{[a,b] | a \in A, b \in B\} \rangle$. Also note that $[G,G]$ is called the \emph{commutator subgroup of $G$}.
+    Let $A, B \subgroup G$. Then, the \emph{commutator} of $A$ and $B$ is the
+    subgroup of $G$ denoted $[A,B] = \langle \{[a,b] | a \in A, b \in B\}
+    \rangle$. Also note that $[G,G]$ is called the \emph{commutator subgroup of
+    $G$}.
 \end{defn}
 \begin{rmk}
     Let $A,B \subgroup G$. Then
     \begin{enumerate}
-        \item $[A,B] = \{e\}$ if and only if $ab = ba \forall a \in A, b \in B$ if and only if $A \subgroup C_G(B)$ if and only if $B \subgroup C_G(A)$. In this case, we say that $A$ and $B$ commute.
+        \item $[A,B] = \{e\}$ if and only if $ab = ba \forall a \in A, b \in B$
+            if and only if $A \subgroup C_G(B)$ if and only if $B \subgroup
+            C_G(A)$. In this case, we say that $A$ and $B$ commute.
         \item $[G,G] = \{e\}$ if and only if $G$ is abelian if and only if $Z(G) = G$.
         \item $[A,B] = [B,A]$ since $[a,b]^{-1} = [b,a]$.
     \end{enumerate}
 \end{rmk}
 \begin{example}
     \begin{enumerate}
-        \item $[Q_8,Q_8] = \{1,-1\} = [\langle i \rangle, \langle j \rangle]$. This can be seen because $[i,j] = iji^{-1}j^{-1} = ij(-i)(-j) = ij(-i)(-j) = iij(-j) = -i^2j^2 = -1$. 
-        \item $[A_n, \langle (12) \rangle] = A_n$ for $n geq 2$. This follows because, for $i \geq 3$, we get $[(1i2),(12)] = (1i2)(12)(2i1)(12) = (12i)$. This tells us that $A_n = \langle \{(12i) | 3 \leq i \leq n\} \rangle \subset [A_n, \langle (12)\rangle$.
-        \item $[S_n,S_n] = A_n$ for $n \geq 2$. To show this, for ($\subset$) we have \begin{align*}
+        \item $[Q_8,Q_8] = \{1,-1\} = [\langle i \rangle, \langle j \rangle]$.
+            This can be seen because $[i,j] = iji^{-1}j^{-1} = ij(-i)(-j) =
+            ij(-i)(-j) = iij(-j) = -i^2j^2 = -1$. 
+        \item $[A_n, \langle (12) \rangle] = A_n$ for $n geq 2$. This follows
+            because, for $i \geq 3$, we get $[(1i2),(12)] = (1i2)(12)(2i1)(12)
+            = (12i)$. This tells us that $A_n = \langle \{(12i) | 3 \leq i \leq
+            n\} \rangle \subset [A_n, \langle (12)\rangle$.
+        \item $[S_n,S_n] = A_n$ for $n \geq 2$. To show this, for ($\subset$)
+            we have \begin{align*}
                 \sgn( [\sigma,\tau] ) & = \sgn(\sigma \tau \sigma^{-1} \tau^{-1}) \\
                 \ & = \sgn(\sigma) \sgn(\tau) \sgn(\sigma)^{-1} \sgn(\tau)^{-1} \\
                 \ & = 1 \forall \sigma, \tau \in S_n
             \end{align*}
             For ($\supset$), see the previous item.
-        \item $[A_n,A_n] = A_n$ for $n \geq 5$. This is because every 3 cycle is a commutator. For instance $[(ijk),(klm)] = (ilk)$ for 5 distinct elements $i,j,k,l,m \in \{1, \ldots, n\}$. Also note that $[A_3,A_3] = \{e\}$ and $[A_4,A_4] = \Z_2 \times \Z_2$, the set of all elements of the form $(ij)(kl)$. 
+        \item $[A_n,A_n] = A_n$ for $n \geq 5$. This is because every 3 cycle
+            is a commutator. For instance $[(ijk),(klm)] = (ilk)$ for 5
+            distinct elements $i,j,k,l,m \in \{1, \ldots, n\}$. Also note that
+            $[A_3,A_3] = \{e\}$ and $[A_4,A_4] = \Z_2 \times \Z_2$, the set of
+            all elements of the form $(ij)(kl)$. 
     \end{enumerate}
 \end{example}
 \begin{lem}
@@ -421,7 +455,8 @@ Note that mathematicians have not completely agreed on the definition and thus s
     \begin{enumerate}[label=(\alph*)]
         \item $A \subgroup N_G(B)$ if and only if $[A,B] \subgroup B$.
         \item $B \subgroup N_G(A)$ if and only if $[A,B] \subgroup A$.
-        \item If $A,B \normsubgroup G$ then $[A,B] \normsubgroup G$ and $[A,B] \subgroup A \cap B$
+        \item If $A,B \normsubgroup G$ then $[A,B] \normsubgroup G$ and $[A,B]
+            \subgroup A \cap B$
     \end{enumerate}
 \end{lem}
 \begin{proof}
@@ -434,20 +469,163 @@ Note that mathematicians have not completely agreed on the definition and thus s
 
     (b) is similar to (a). \\
 
-    Now, given that $A,B \normsubgroup G$, then $g[a,b]g^{-1} = gaba^{-1}b^{-1}g^{-1} = gag^{-1}gbg^{-1}ga^{-1}g^{-1}gb^{-1}g^{-1}$. Now note that $gag^{-1} \in A$ since $A \normsubgroup G$ and $(gag^{-1})^{-1} = ga^{-1}g^{-1}$. Similarly for $b$. So, we have that $g[a,b]g^{-1} \in [A,B] \implies [A,B] \normsubgroup G$. Finally, an element of the form $aba^{-1}b^{-1} \in A$ because $ba^{-1}b^{-1} \in A$ since $A$ is normal in $G$ and similarly $aba^{-1} \in B$. So, $[A,B] \subgroup A \cap B$. This final fact also follows from the first two items in the lemma. 
+    Now, given that $A,B \normsubgroup G$, then $g[a,b]g^{-1} =
+    gaba^{-1}b^{-1}g^{-1} = gag^{-1}gbg^{-1}ga^{-1}g^{-1}gb^{-1}g^{-1}$. Now
+    note that $gag^{-1} \in A$ since $A \normsubgroup G$ and $(gag^{-1})^{-1} =
+    ga^{-1}g^{-1}$. Similarly for $b$. So, we have that $g[a,b]g^{-1} \in [A,B]
+    \implies [A,B] \normsubgroup G$. Finally, an element of the form
+    $aba^{-1}b^{-1} \in A$ because $ba^{-1}b^{-1} \in A$ since $A$ is normal in
+    $G$ and similarly $aba^{-1} \in B$. So, $[A,B] \subgroup A \cap B$. This
+    final fact also follows from the first two items in the lemma. 
 \end{proof}
 
-This lemma also gives us the important fact that $[G,G] \normsubgroup G$. This follows easily from the third item.
+This lemma also gives us the important fact that $[G,G] \normsubgroup G$. This
+follows easily from the third item.
 
 \begin{prop}
-    If $H \subgroup G$, then $[G,G] \subgroup H$ if and only if $H \normsubgroup G$ and $G/H$ is abelian.
+    If $H \subgroup G$, then $[G,G] \subgroup H$ if and only if $H
+    \normsubgroup G$ and $G/H$ is abelian.
 \end{prop}
 \begin{proof}
-    Let $[G,G] \subgroup H$. Then, if $a,b \in G$, $aba^{-1}b^{-1} \in H$. Now, in particular, if $b \in H$, then $aba^{-1}b^{-1} \cdot b = aba^{-1} \in H$ so $H \normsubgroup G$. More concisely, we have that $[G,H] \subgroup [G,G] \subgroup H \implies G \subgroup N_G(H)$ so $H \normsubgroup G$. To show $G/H$ is abelian, take a map $[a,b] \mapsto [aH,bH] = (aH)(bH)(aH)^{-1}(bH)^{-1} = aba^{-1}b^{-1}H = [x,y]H = H = e_{G/H}$. So, then $[G/H,G/H] = \{e\}$. 
+    Let $[G,G] \subgroup H$. Then, if $a,b \in G$, $aba^{-1}b^{-1} \in H$. Now,
+    in particular, if $b \in H$, then $aba^{-1}b^{-1} \cdot b = aba^{-1} \in H$
+    so $H \normsubgroup G$. More concisely, we have that $[G,H] \subgroup [G,G]
+    \subgroup H \implies G \subgroup N_G(H)$ so $H \normsubgroup G$. To show
+    $G/H$ is abelian, take a map $[a,b] \mapsto [aH,bH] =
+    (aH)(bH)(aH)^{-1}(bH)^{-1} = aba^{-1}b^{-1}H = [x,y]H = H = e_{G/H}$. So,
+    then $[G/H,G/H] = \{e\}$. 
 
-    To prove the other direction, let $G/H$ be abelian and $H \normsubgroup G$. Since $G/H$ is abelian, we have that $[aH,bH] = [a,b]H = H$. This means that $[a,b] \in H$ which implies that $[G,G] \in H$. (Where is the normalcy of $H$ used?!)
+    To prove the other direction, let $G/H$ be abelian and $H \normsubgroup G$.
+    Since $G/H$ is abelian, we have that $[aH,bH] = [a,b]H = H$. This means
+    that $[a,b] \in H$ which implies that $[G,G] \in H$. (Where is the normalcy
+    of $H$ used?!)
 \end{proof}
 
 \subsubsection*{Direct Products}
 
+\begin{defn}
+    The (external) direct product of two groups $A$ and $B$ is defined as the set (Cartesian product) \[
+        A \times B = \{(a,b) | a \in A, b \in B \}
+    \] with multiplication $(a_1,b_1) \cdot (a_2,b_2) = (a_1a_2,b_1b_2)$. With this multiplication ,it is clear that $A \times B$ is a group by direct computation.
+\end{defn}
+
+Direct products provide us with a way to build new groups from known groups.
+
+\begin{lem}
+    Let $G_1, G_2$ be groups and let $H_1 \subgroup G_1$ and $H_2 \subgroup G_2$. Then
+    \begin{enumerate}[label=(\alph*)]
+        \item $H_1 \times H_2 = \{(h_1,h_2) | h_1 \in H_1, h_2 \in H_2\} \subgroup G_1 \times G_2$.
+        \item $H_1 \times H_2 \normsubgroup G_1 \times G_2$ if and only if $H_1 \normsubgroup G_1$ and $H_2 \normsubgroup G_2$. In this case, $(G_1 \times G_2)/(H_1 \times H_2) \isom (G_1/H_1) \times (G_2/H_2)$. 
+    \end{enumerate}
+\end{lem}
+\begin{proof}
+    For the first item, the proof is a clear from the definition of subgroup. \\
+
+    For the second item, examine the fact that
+    $(g_1,g_2)(h_1,h_2)(g_1,g_2)^{-1} = (g_1h_1g_1^{-1},g_2h_2g_2^{-1})$. Then,
+    if $H_1 \normsubgroup G_1$ and $H_2 \normsubgroup G_2$, we get
+    $(g_1,g_2)(h_1,h_2)(g_1,g_2)^{-1} = (h_1,h_2)$, so $H_1 \times H_2
+    \normsubgroup G_1 \times G_2$. Going the other direction is similar, but
+    reducing the left hand side instead.
+
+    Finally, we can show the final equivalence using $\phi: G_1 \times G_2 \to
+    G_1/H_1 \times G_2/H_2$ where $\phi( (g_1,g_2) ) = (g_1H_1, g_2H_2)$. It
+    is clear that $\phi$ is surjective and a group homomorphism, and we note
+    that $\ker \phi = H_1 \times H_2$. Thus, we apply the first isomorphism
+    theorem to get our equivalence. 
+\end{proof}
+
+A note of warning is that not every subgroup of a direct product needs to be
+of the form $H_1 \times H_2$ where $H_1 \subgroup G_1$ and $H_2 \subgroup G_2$.
+
+\begin{example*}
+    Examine $\Z_2 = \{0,1\}$. Then, $\Z_2 \times \Z_2 =
+    \{(0,0),(0,1),(1,0),(1,1)\}$.  However, $H = \{(0,0),(1,1)\} \subgroup \Z_2
+    \times \Z_2$ but is not of the form $H_1 \times H_2$.  
+\end{example*}
+
+\begin{rmk}
+    (Universal Property) Let $A \times B$ be the direct product of two groups
+    $A$, $B$. Then, there are natural projections (surjective group
+    homomorphisms) defined by $\pi_A: A \times B \to A$ by $\pi( (a,b) ) = a$
+    and similarly for $\pi_B$. They satisfy the following universal property. \\
+
+    For any group $G$, and any pairs of homomorphisms $\phi_A: G \to A$ and 
+    $\phi_B: G \to B$, there exists a \emph{unique} homomorphism $\phi: G \to A
+    \times B$ such that $\pi_A \circ \phi = \phi_A$ and $\pi_b \circ \phi =
+    \phi_B$. Indeed, if $\phi(g) = (a,b)$ for $g \in G$, then $a = \pi_A( (a,b)
+    ) = \pi_A(\phi(g)) = \phi_A(g)$ and similarly for $b = \phi_B(g)$. \\
+
+    The only possible map with these properties is given by $\phi: G \to A
+    \times B$ where $\phi(g) = (\phi_A(g), \phi_B(g))$. 
+
+    We now check that $\phi$ so defined is a homomorphism with the properties
+    $\pi_A \circ \phi = \phi_A$ and $\pi_B \circ \phi = \phi_B$.
+\end{rmk}
+\begin{proof}
+    Let $\phi$ be defined as above. Then, $\phi( (a_1,b_1)(a_2,b_2) ) =
+    (\phi_A(a_1a_2), \phi_B(b_1b_2)) =
+    (\phi_A(a_1),\phi_B(b_1))(\phi_A(a_2),\phi_B(b_2)) = \phi( (a_1,b_1) )\phi(
+    (a_2,b_2) )$. The other homomorphism properties clearly follow. \\
+
+    $\pi_A \circ \phi( (a,b) ) = \pi_A( (\phi_A(a), \phi_B(b)) ) = \phi_A(a)$.
+    Similarly for $\pi_B \circ \phi( (a,b))$. \\
+\end{proof}
+It is an exercise to generalize this for any $I$ index set with $(A_i)_{i \in
+I}$ a family of groups to then generalize the unversal property to the direct
+product of these groups, say $\times_{i \in I} A_i = \{(a_i) | a_i \in A_i
+\forall i \in I\}$. \\
+
+Now, let $A \times B$ be the external direct product of groups $A$ and $B$.
+Then, we know $A \isom A' = \{(a,e_B) | a \in A\} \subgroup A \times B$ and
+similarly for $B \isom B'$. Then, $A',B'$ have the following properties.
+\begin{itemize}
+    \item $A'B' = A \times B$.
+    \item $A' \cap B' = \{e\}$.
+    \item $A', B' \normsubgroup A \times B$.
+\end{itemize}
+
+Let us next discuss internal direct products.
+
+\begin{defn}
+    A group $G$ is the \emph{internal direct product} of two subgroups $A,B
+    \subgroup G$ if the following conditions are satisfied:
+    \begin{enumerate}[label=\roman*)]
+        \item $AB = G$
+        \item $A \cap B = \{e\}$
+        \item $A,B \normsubgroup G$
+    \end{enumerate}
+\end{defn}
+\begin{rmk*}
+    If $A \times B$ is an external direct product, then it is the internal
+    direct product of $A'$ and $B'$ above.
+\end{rmk*}
+\begin{example}
+    \begin{enumerate}[label=(\alph*)]
+        \item Let $G = \Z_6, A = \{\overline{0}, \overline{3}\} \subgroup G, B
+            = \{\overline{0}, \overline{2}, \overline{4}\} \subgroup G$. Then,
+            we have that $A \cap B = \{ \overline{0} \} \implies |AB|=|A||B| =
+            6 = |G|$. Thus, $AB = G$. In abelian groups, all subgroups are
+            normal, so $G = A \times B$. In fact, we can prove that $\Z_{mn}
+            \isom \Z_m \times \Z_n$ when $\gcd(m,n) = 1$ using the same
+            argument where we take $A = \{\overline{0}, \overline{n},
+            \overline{2n}, \ldots, \overline{(m-1)n}\}$ and similarly $B =
+            \{\overline{0}, \overline{m}, \ldots, \overline{(n-1)m}\}$ and
+            showing that $A \cap B = \{\overline{0}\}$ since $\gcd(m,n) = 1$.
+        \item $V = \{e, (12)(34), (13)(24), (14)(23)\} \normsubgroup S_4$. This
+            is clearly true since conjugating by a permutation is like applying
+            the permutation to the numbers of the cycle, which will not change
+            the cycle structure. Now, let $A = \{e, (12)(24)\}, B = \{e.
+            (13)(24)\}$, then $A \cap B = \{e\}$ and $A,B \normsubgroup V$. So,
+            we get that $|AB| = 2\cdot 2 = 4 = |B| \implies V = AB$ so then $V
+            = A \times B \isom \Z_2 \times \Z_2$.
+        \item $S_4 = VS_3$. We know that $S_3$ can be embedded into $S_4$
+            easily and $V \cap S_4 = \{e\}$. So, for this to happen $|VS_3| =
+            24 = |S_4|$. From above, we know $V \normsubgroup S_3$, but it is
+            easy to see that $S_3 \not\normsubgroup S_4$. So, we have found an
+            example of a product of groups that is not a direct product but
+            still forms a group. This leads us into our discussion of
+            semi-direct products.
+    \end{enumerate}
+\end{example}
 \end{document}

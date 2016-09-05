@@ -80,6 +80,7 @@
 \newcommand{\covered}{\lessdot}
 \newcommand{\qand}{\quad\hbox{and}\quad}
 \newcommand{\Arg}{\operatorname{Arg}}
+\newcommand{\Log}{\operatorname{Log}}
 \swapnumbers %% put numbers in front of proclamations
 \newtheorem{thm}{Theorem}[section]
 \newtheorem*{thm*}{Theorem}
@@ -197,7 +198,7 @@ We can also take roots effectively using polar form (look it up).
 
 Finally, we can look at the stereographic projection (see textbook for picture) using the one-point compactification of $\C$, namely $\C^* = \C \cup \{\infty\} \cong S^2$.
 
-We also get some nice correspondances from actions on the sphere as in the table.
+We also get some nice correspondances from actions on the sphere as in the table. \\
     \begin{tabular}{|c|c|}
         \hline
         Equator & $|z| = 1$ \\
@@ -208,5 +209,111 @@ We also get some nice correspondances from actions on the sphere as in the table
         Circles on $S^2$ that contain the north pole & Lines on $\C^*$ \\
         \hline
     \end{tabular}
+\section{Lecture 3}
 
+Let us continue to understand some basic functions in on $\C$. \\
+\begin{tabular}{|c|c|}
+    \hline
+    $f(z) = iz$ & Rotation counter-clockwise by $\frac{\pi}{2}$. \\
+    $f(z) = (1+i)z$ & Rotation counter-clockwise by $\frac{\pi}{4}$ and dilation by $\sqrt{2}$. \\
+    $f(z) = z^2$ & Squares modulus and doubles the argument. \\
+   \hline 
+\end{tabular} \\
+Let us also examine $f(z) = z^{\frac{1}{2}} = \{w | w^2=z\}$. This is a multivalued function satisfying 
+\begin{align*}
+    (|w|e^{i\theta})^2 = |z|e^{i \arg z} & \implies \begin{cases}
+        |w|^2 = |z| \implies |w| = \sqrt{|z|} \\
+        2\theta \in \arg z \implies \theta = \frac{\Arg z}{2}, \frac{\Arg z + 2\pi}{2}
+    \end{cases} \\
+    \ & \ \implies \ w = \sqrt{|z|}e^{\frac{\Arg z}{2}i}, \sqrt{|z|}e^{\frac{\Arg z + 2\pi}{2} i}
+\end{align*}
+\begin{defn}
+    A branch of a multivalued function is a (continuous) choice of output on some domain.
+\end{defn}
+\begin{example}
+    $z \mapsto \sqrt{|z|}e^{\frac{\Arg z}{2}i}$ is the principal branch of
+    $z^{\frac{1}{2}}$ on $\C \textbackslash (-\infty,0]$.
+\end{example}
+
+Now, let us consider $f(z) = e^z$. This is $f(z) = e^{x+iy} = e^x(\cos y +
+i\sin y)$. Notice that $e^x$ is the modulus and $\cos y + i \sin y$ is the
+argument. We also note that $e^z$ maps a grid of cartesian coordinates into a
+grid of polar coordinates. 
+
+Next, consider the inverse of $e^z$, namely $\log z$ on $\C \textbackslash
+\{0\}$. We get that $\log z = w \implies e^w = z = e^{\Re w} \cdot e^{i \Im w}
+= |z|e^{i \arg z}$. Thus we get that $\Re w = \ln|z|$ and $\Im w \in \arg z$.
+When we take $\Im w = \Arg z$, we get $\Log z$. It is instructive to look at a
+picture of $\Log z$'s graph.
+
+From the above, we also note that $\cos z = \frac{e^{iz}+e^{-iz}}{2}$ and $\sin
+z = \frac{e^{iz}-e^{-iz}}{2i}$. These identities are also useful for finding
+$\cos^{-1}$ and $\sin^{-1}$. Also note that $\cosh z = \frac{e^z+e^{-z}}{2}$
+and $\sinh z = \frac{e^z-e^{-z}}{2}$. In this sense, $\cosh$ and $\sinh$ are
+rotations of $\cos$ and $\sin$ in the complex plane.
+
+Coming back to the function $z^{\frac{1}{2}}$, it is important to discuss the
+branch cut of the function. This creates a 1 dimensional complex manifold or
+2 dimensional real manifold (plus some structure). A good treatement of this
+will not be found here, but refer to any standard complex analysis textbook.
+
+\section{Lecture 4}
+When considering the stereographic projection representation of the complex
+plane, consider that the following actions on the sphere have the following
+effects in $z$.
+
+\begin{tabular}{|c|c|}
+    \hline
+    Reflection over $xy$ & $f(z) = \frac{1}{\overline{z}}$ \\
+    Reflection over $yz$ & $f(z) = -\overline{z}$ \\
+    Reflection over $xz$ & $f(z) = \overline{z}$ \\
+    Rotation by $\pi$ around $x$ & $f(z) = \frac{1}{z}$ \\
+    Rotation by $\pi$ around $y$ & $f(z) = \frac{-1}{z}$ \\
+    Rotation by $\pi$ around $z$ & $f(z) = -z$ \\
+    \hline
+\end{tabular}
+
+To get a group out of these actions, one needs to add $f(z) = z$ and $f(z) = \frac{-1}{\overline{z}}$. This forms a certain group of isometries on the surface of a sphere ($\cong \Z_2 \times \Z_2 \times \Z_2$). This means that these maps will map circles on a sphere to other circles on a sphere, which also means that circles and lines on a complex plane will be mapped ot circles and lines on a complex plane. 
+
+Actually note that the group $O(3)$ (of 3 by 3 matrices) is the group of all isometries of the sphere. Geometrically, there are 4 types of isometries 
+\begin{enumerate}
+    \item The identity
+    \item Reflection over a plane
+    \item Rotation around an axis
+    \item A glide reflection (rotation then reflection over the equator).
+\end{enumerate}
+Note, just items 1 and 3 form the group $SO(3)$. 
+
+\begin{defn}
+    Functions of $z$ that are orientation perserving are known as conformal maps and are also analytic. Similarly, functions of $\overline{z}$ are orientation flipping and are thus anti-conformal maps and are also anti-analytic.
+\end{defn}
+
+Treatment of phase factors is skipped because it is difficult to write up without pictures.
+
+\section*{Analysis Review}
+
+\begin{defn}
+A domain in $\C$ is convex if, for any two points in the domain, the line between them is also contained in the domain. 
+\end{defn}
+\begin{defn}
+    A domain in $\C$ is star-shaped if there exists a point for which, when a line is drawn between it and any other point in the domain, the line is in the domain. Note that all convex domains are star-shaped, but not the other way around.
+\end{defn}
+\begin{defn}
+    Let $f: \C \to \C$ be defined on a domain containing $z$. If $\lim_{\delta z \to 0} \frac{f(z+\delta z) - f(z)}{\delta z}$ exists in $\C$, this number is called the \emph{derivative of $f$} at $z$ and we say that $f$ is differentiable at $z$. 
+\end{defn}
+
+```Usual examples'' include $f(z) = z^n \implies f'(z) = nz^{n-1}$. Also note that $f(z) = \overline{z}$ is not differentiable anywhere because the value of the limit changes depending on if you approach in the real direction or the imaginary direction. 
+\begin{defn}
+    $f$ is \emph{analytic} on a domain if it is differentiable at all point on the domain and $f'(z)$ is continuous.
+\end{defn}
+We will see that the second assumption is superflous when we prove Goursat's theorem later.
+
+\begin{thm}
+    Let $f(x+iy) = u(x,y)+iv(x,y)$ be defined on a domain. Then it is analytic if and only if $u,v$ satisfy the Cauchy-Riemann equations $u_x = v_y, u_y = v_x$ and these partials are continuous. 
+\end{thm}
+\begin{proof}
+    Assume $f$ is analytic. Then, take the limits of $\delta z$ along the imaginary axis and the real axis and then equate. This should yield the Cauchy-Riemann equations.
+
+    Conversely, take the Cauchy-Riemann equations and show that the limit exists using Cauchy-Riemann equations.
+\end{proof}
 \end{document}
