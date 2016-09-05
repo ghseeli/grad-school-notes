@@ -10,10 +10,10 @@
 
 \usepackage{color}
 %% Some user-defined colors
-      \definecolor{mydefi}{cmyk}{1,0,0,.5}
-      \definecolor{myred}{rgb}{.7,.1,.1}
-      \definecolor{myblue}{rgb}{.1,.1,.6}
-      \definecolor{mygreen}{rgb}{.1,.6,.1}
+	  \definecolor{mydefi}{cmyk}{1,0,0,.5}
+	  \definecolor{myred}{rgb}{.7,.1,.1}
+	  \definecolor{myblue}{rgb}{.1,.1,.6}
+	  \definecolor{mygreen}{rgb}{.1,.6,.1}
 
 \usepackage[urlbordercolor={1 1 1}, pdfborder={0 0 0}, bookmarks=true,
   colorlinks=true, linkcolor=myblue, citecolor=myblue,
@@ -134,45 +134,50 @@ study in differential topology are manifolds. Manifolds are topological spaces
 that ``locally'' look like $\R^n$.
 
 \begin{example}
-    Consider the set $S^2 = \{ \vec{x} \in \R^3: ||x||=1\}$. This is a sphere
-    in 3 dimensions and thus can also be written as $S^2 = \{(x,y,z) :
-    x^2+y^2+z^2=1\}$. The convention for $S^2$ or ``two-sphere'' comes from the
-    fact that a small space of $S^2$ looks like $\R^2$.
+	Consider the set $S^2 = \{ \vec{x} \in \R^3: ||x||=1\}$. This is a sphere
+	in 3 dimensions and thus can also be written as $S^2 = \{(x,y,z) :
+	x^2+y^2+z^2=1\}$. The convention for $S^2$ or ``two-sphere'' comes from the
+	fact that a small space of $S^2$ looks like $\R^2$.
 
-    To make this explicit, consider two maps. The first is a map from $R^2$ to
-    a disk by $f(\vec{x}) = \frac{||x||^2}{1+||x||^2} \vec{x}$. Then consider a
-    map $g(x,y) = (x,y,\sqrt{1-x^2-y^2})$. Composing these two maps will map
-    $R^2$ onto part of $S^2$. Variations on the same theme can be used to get
-    other parts of the sphere.
+	To make this explicit, consider two maps. The first is a map from $\R^2$ to
+	a disk by $f(\vec{x}) = \frac{||x||^2}{1+||x||^2} \vec{x}$. Then consider a
+	map $g(x,y) = (x,y,\sqrt{1-x^2-y^2})$. Composing these two maps will map
+	$\R^2$ onto part of $S^2$. Variations on the same theme can be used to get
+	other parts of the sphere.
 \end{example}
-
+\begin{defn}
+	The \emph{$n$-sphere}, denoted $S^n$, is $\{x \in \R^{n+1} |\; ||x||=1 \}$. Note: The *surface* of the $n$-sphere has dimension $n$.,
+\end{defn}
 \begin{example}
-    Continuing with the sphere, consider the tangent plane of $S^2$ at some
-    point $\vec{x}$. We will denote this $T_{\vec{x}}S^2$. Note that this is a
-    real vector space. Using symmetry arguments, we can see that, if $\vec{v}
-    \in T_{\vec{x}}S^2$, then $\vec{v}$ is perpendicular to $\vec{x}$ and thus
-    $\vec{v} \cdot \vec{x} = 0$. So, to use a concrete point,
-    $T_{(1/3,2/3,2/3)} S^2 = \{(x,y,z) : x+2y+2z=0\}$.
+	Continuing with the sphere, consider the tangent plane of $S^2$ at some
+	point $\vec{x}$. We will denote this $T_{\vec{x}}S^2$. Note that this is a
+	real vector space. Using symmetry arguments, we can see that, if $\vec{v}
+	\in T_{\vec{x}}S^2$, then $\vec{v}$ is perpendicular to $\vec{x}$ and thus
+	$\vec{v} \cdot \vec{x} = 0$. So, to use a concrete point,
+	$T_{(1/3,2/3,2/3)} S^2 = \{(x,y,z) : x+2y+2z=0\}$.
 \end{example}
 \begin{example}
-    Now, to think globally, consider the collection of all tangent planes of
-    $S^2$. We call this the \emph{tangent bundle} of $S^2$ and denote it
-    $TS^2$. We can see $TS^2 = \{(\vec{x}, \vec{v}): \vec{x} \in S^2, \vec{v}
-    \in T_{\vec{x}} S^2\} = \{(\vec{x},\vec{v}) : ||\vec{x}|| = 1, \vec{x}
-    \cdot \vec{v} = 0\} \subset S^2 \times \R^3 \subset \R^3 \times \R^3$.
-    Finally, consider that there exists a function $p$ such that $p: TS^2 \to
-    S^2$ by $(x,v) \to x$. Then, we have that $p^{-1}(x) = T_{\vec{x}}S^2$.
+	Now, to think globally, consider the collection of all tangent planes of
+	$S^2$. We call this the \emph{tangent bundle} of $S^2$ and denote it
+	$TS^2$. We can see $TS^2 = \{(\vec{x}, \vec{v}): \vec{x} \in S^2, \vec{v}
+	\in T_{\vec{x}} S^2\} = \{(\vec{x},\vec{v}) : ||\vec{x}|| = 1, \vec{x}
+	\cdot \vec{v} = 0\} \subset S^2 \times \R^3 \subset \R^3 \times \R^3$.
+	Finally, consider that there exists a function $p$ such that $p: TS^2 \to
+	S^2$ by $(x,v) \to x$. Then, we have that $p^{-1}(x) = T_{\vec{x}}S^2$.
 \end{example}
+\begin{defn}
+	The \emph{tangent bundle} of a manifold $M$, denoted $TM$, is $\{ (x,v) |\; x \in M and v \in T_xM \}$.
+\end{defn}
 
 Now, let $M$ be any differential manifold. Studying the function $p: TM \to M$
 can tell us a lot about $M$.
 
 \begin{example}
-    A \emph{section} of $p: TS^2 \to S^2$ is a function $s: S^2 \to TS^2$ such
-    that $p \circ s =$ identity. In other words, $\forall x \in S^2, s(x) \in
-    T_{\vec{x}}S^2$. Note that this is a vector field. Furthermore, to be
-    interesting in differential topology, $s$ should be continuous or
-    differentiable.
+	A \emph{section} of $p: TS^2 \to S^2$ is a function $s: S^2 \to TS^2$ such
+	that $p \circ s =$ identity. In other words, $\forall x \in S^2, s(x) \in
+	T_{\vec{x}}S^2$. Note that this is a vector field. Furthermore, to be
+	interesting in differential topology, $s$ should be continuous or
+	differentiable.
 \end{example}
 
 A famous topological question is: could $s(x) \neq \vec{0} \in T_{\vec{x}}S^2$
@@ -199,28 +204,28 @@ us move on to introducing various sorts of functions
 \subsection{Functions}
 
 \begin{defn}
-    A function $f: \R^n \to \R^m$ is continuous at $\vec{a}$ if $\forall
-    \epsilon > 0, \exists \delta > 0$ such that $||\vec{x}-\vec{a}|| < \delta
-    \implies ||f(\vec{x}) - f(\vec{a})|| < \epsilon$.
+	A function $f: \R^n \to \R^m$ is continuous at $\vec{a}$ if $\forall
+	\epsilon > 0, \exists \delta > 0$ such that $||\vec{x}-\vec{a}|| < \delta
+	\implies ||f(\vec{x}) - f(\vec{a})|| < \epsilon$.
 \end{defn}
 Now, recall \begin{enumerate}
-    \item If $f(x) = (f_1(x), \ldots, f_m(x))$, then $f$ is continuous if and
-        only if each $f_i$ is continuous. This fact follows from the basic
-        construction of the product topology.
-    \item Let $B_r(a) = \{x \in \R^n : ||x-a|| < r\}$. Then, $f$ is continuous
-        if and only if, given open set $U \subset \R^m$, $f^{-1}(U)$ is open in
-        $\R^n$.
-    \item If $f: Z \to X \times Y$, $f$ is continuous if and only if $f_1: Z
-        \to X$ and $f_2: Z \to Y$ are continuous, where $f_1, f_2$ are the
-        obvious restrictions.
+	\item If $f(x) = (f_1(x), \ldots, f_m(x))$, then $f$ is continuous if and
+		only if each $f_i$ is continuous. This fact follows from the basic
+		construction of the product topology.
+	\item Let $B_r(a) = \{x \in \R^n : ||x-a|| < r\}$. Then, $f$ is continuous
+		if and only if, given open set $U \subset \R^m$, $f^{-1}(U)$ is open in
+		$\R^n$.
+	\item If $f: Z \to X \times Y$, $f$ is continuous if and only if $f_1: Z
+		\to X$ and $f_2: Z \to Y$ are continuous, where $f_1, f_2$ are the
+		obvious restrictions.
 \end{enumerate}
 
 Now, let us define what it means for a function to be differentiable.
 \begin{defn}
-    $f: \R^n \to \R^m$ is differentiable at $\vec{x} \in \R^n$ if there exists
-    a linear function $L: \R^n \to \R^m$ so that $\lim_{\delta \vec{x} \to
-    \vec{0}} \frac{||f(\vec{x}+\delta \vec{x}) - f(\vec{x}) - L(\delta
-    \vec{x})||}{||\delta \vec{x}||} = 0$.
+	$f: \R^n \to \R^m$ is differentiable at $\vec{x} \in \R^n$ if there exists
+	a linear function $L: \R^n \to \R^m$ so that $\lim_{\delta \vec{x} \to
+	\vec{0}} \frac{||f(\vec{x}+\delta \vec{x}) - f(\vec{x}) - L(\delta
+	\vec{x})||}{||\delta \vec{x}||} = 0$.
 \end{defn}
 \end{document}
 
@@ -228,99 +233,90 @@ Now, let us define what it means for a function to be differentiable.
 
 
 
-{
-    name: a-b-dimensional tangent plane,
-    thm: Given a function $f : \\mathbb{R}^a \\to \mathbb{R}^b$ and its slope matrix $f^\prime(v)$ at a vector $v \in \mathbb{R}^a$, then the equation for the plane tangent to $f$ at $v$ is $L_v(w) = f(v) + f'(v)(w-v)$ or, in point-slope form, $\frac{L_v(w)-f(v)}{w-v} = f'(v)$.,
-    dependencies: [function, derivative, tangent],
-}
-{
-    def: The __$n$-sphere__, denoted $S^n$, is $\{x \in \R^{n+1} | \; ||x||=1 \}$.,
-    note: The *surface* of the $n$-sphere has dimension $n$.,
-    dependencies: [reals],
-}
-{
-    def: The __tangent bundle__ of a manifold $M$, denoted $TM$, is $\{ (x,v) |\; x \in M and v \in T_xM \}$.,
-}
-{
-    def: If $p$ is a function from $TM$ to $M$, then a __section__ of $p$ is a right inverse of $p$.,
-}
+\begin{thm}[a-b-dimensional tangent plane]
+	thm: Given a function $f : \\mathbb{R}^a \\to \mathbb{R}^b$ and its slope matrix $f^\prime(v)$ at a vector $v \in \mathbb{R}^a$, then the equation for the plane tangent to $f$ at $v$ is $L_v(w) = f(v) + f'(v)(w-v)$ or, in point-slope form, $\frac{L_v(w)-f(v)}{w-v} = f'(v)$.,
+	dependencies: [function, derivative, tangent],
+\end{}
+\begin{}
+	def: If $p$ is a function from $TM$ to $M$, then a \emph{section} of $p$ is a right inverse of $p$.,
+\end{}
 // {
 //  hmm
 //  For each $x \in M$, we can use a section $s$ to associate a vector $s(x)$.  This creates a vector field.
 // }
-{
-    name: billiard ball,
-    thm: A continuously differentiable section $s$ on $TS^2$ with $s(x) \neq 0$ for all $x \in S^2$ does not exist.,
-    intuition: Can you draw a continuously differentiable, always nonzero vector field on a billiard ball?  No.,
-    // NO --> apparently TS^2 not isomorphic to S^2 \times \R^2.
-    // Ts^2 \subseteq S^2 \times \R^3 \subseteq \R^3 \times \R^3.
-}
-{
-    name: continuously differentiable sections,
-    thm: A continuously differentiable section $s$ on $TM$ with $s(x) \neq 0$ for all $x \in M$ exists for the following possible $M$: $S^1$ (circle), $S^3$, $T^2$ (torus).,
-}
-{
- def: The set $U$ is __open__ if it can be written as a union of open balls $B$.,
-}
-{
+\begin{}
+	name: billiard ball,
+	thm: A continuously differentiable section $s$ on $TS^2$ with $s(x) \neq 0$ for all $x \in S^2$ does not exist.,
+	intuition: Can you draw a continuously differentiable, always nonzero vector field on a billiard ball?  No.,
+	// NO --> apparently TS^2 not isomorphic to S^2 \times \R^2.
+	// Ts^2 \subseteq S^2 \times \R^3 \subseteq \R^3 \times \R^3.
+\end{}
+\begin{}
+	name: continuously differentiable sections,
+	thm: A continuously differentiable section $s$ on $TM$ with $s(x) \neq 0$ for all $x \in M$ exists for the following possible $M$: $S^1$ (circle), $S^3$, $T^2$ (torus).,
+\end{}
+\begin{}
+ def: The set $U$ is \emph{open} if it can be written as a union of open balls $B$.,
+\end{}
+\begin{}
  thm: The set $U$ is open iff for all points in $U$, there exists an open ball around the point that's entirely contained in $U$ (the regular definition).,
-}
-{
+\end{}
+\begin{}
  name: continuity and openness,
  thm: $f$ is continuous iff for every open set $U$ in \R^m$, $f^{-1}(U)$ is open in $\R^n$.,
-}
-{
+\end{}
+\begin{}
  thm: finite intersections of open sets are open,
-}
-{
+\end{}
+\begin{}
  thm: any union of open sets is open,
-}
-{
+\end{}
+\begin{}
  thm: the empty set is open,
-}
-{
+\end{}
+\begin{}
  thm: the entire space is open,
-}
-{
- def: $f :Rn to Rm$ is __differentiable__ at $x \in Rn$ if there exists a linear function $L : Rn \to Rm$  such that $lim_{h \to 0} \frac{|| (f(x)-f(x+h)) - (L(x+h)) ||}{||h||} = 0$. (see multivar calc review PDF),
-}
-{
- def: If $f$ is differentiable at $x$ by a linear function $L$, then $L$ is the __differential__ of $f$ at $x$.,
+\end{}
+\begin{}
+ def: $f :Rn to Rm$ is \emph{differentiable} at $x \in Rn$ if there exists a linear function $L : Rn \to Rm$  such that $lim_{h \to 0} \frac{|| (f(x)-f(x+h)) - (L(x+h)) ||}{||h||} = 0$. (see multivar calc review PDF),
+\end{}
+\begin{}
+ def: If $f$ is differentiable at $x$ by a linear function $L$, then $L$ is the \emph{differential} of $f$ at $x$.,
  synonym: slope matrix,
  denotation: [$f'(x)$, $df_x$],
-}
-{
+\end{}
+\begin{}
  thm: If $f$ is differentiable, then the differential $df_x$ is equal to $lim_{t \to 0} \frac{f(a+tv) - f(a)}{t}$.,
-}
-{
+\end{}
+\begin{}
  thm: For any $k$, $f$ has class $C^k$ iff all of its coordinate functions $f_i$ have class $C^k$.,
-}
-{
- def: Given a set $V$, a __distance__ is a function $D : V \times V \to \R$ that satisfies, for all $v, w, z \in V$:
+\end{}
+\begin{}
+ def: Given a set $V$, a \emph{distance} is a function $D : V \times V \to \R$ that satisfies, for all $v, w, z \in V$:
 
    1. $D(v,v) = 0$
    2. (positivity) If $v \neq w$, then $D(v,w) > 0$
    3. (symmetry) $D(v,w) = D(w,v)$
    4. (triangle inequality) $D(x,z) <= D(x,y) + D(y,z)$
  ,
-}
-{
- def: A __metric space__ is $(X, D)$ where $X$ is a set and $D$ is a distance function on $X$.,
-}
-{
+\end{}
+\begin{}
+ def: A \emph{metric space} is $(X, D)$ where $X$ is a set and $D$ is a distance function on $X$.,
+\end{}
+\begin{}
  name: analytic functions,
  // not sure what this is (def? thm?)
  def: A function $f$ is analytic if for every point $x$ in the domain, there exists a taylor series centered at $x$ which converges to $f$ in a neighborhood of $x$.,
  thm: The class of analytic functions, denoted $C^\omega$, is a subset of $C^\infty$.,
  counterexample: The function $f(x) = \begin{cases} \item $e^{-1/x^2}$ if $x \neq 0$ \item $0$ if $x=0$ is in $C^\infty$, but it is NOT analytic.,
-}
+\end{}
 
-{
-    def: $K$ subset $X$ is __compact__ in $X$ if whenever $K \subseteq union_{i \in I} O$ of open sets, then there exists $J$ finite subset of $I$ such that $K \subseteq union_{j \in J} O$.,
-}
-{
-    thm: If K is compact in X and f:X \to Y is continuous, then f(X) is compact in Y.,
-}
+\begin{}
+	def: $K$ subset $X$ is \emph{compact} in $X$ if whenever $K \subseteq union_{i \in I} O$ of open sets, then there exists $J$ finite subset of $I$ such that $K \subseteq union_{j \in J} O$.,
+\end{}
+\begin{}
+	thm: If K is compact in X and f:X \to Y is continuous, then f(X) is compact in Y.,
+\end{}
 thm: If O is open in Y and f:X \to Y is continuous, then f^{-1}(O) is open in X
 
 thm: If O is closed in Y and f:X \to Y is continuous, then f^{-1}(O) is closed in X
@@ -335,9 +331,9 @@ synonym: seperable
 lemma: If X is Hausdorff and K is compact in X, then K is closed in X.
 notation: T_2
 
-def: f is an __open__ function if the image of all open sets under f are open.
+def: f is an \emph{open} function if the image of all open sets under f are open.
 
-def: f is a __closed__ function if (ditto)
+def: f is a \emph{closed} function if (ditto)
 
 corr: If f : X to Y is continuous, X is compact, and Y is Hausdorff, then f is a closed function.
 
