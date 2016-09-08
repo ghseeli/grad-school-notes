@@ -257,7 +257,7 @@ For each $x \in M$, we can use a section $s$ to associate a vector $s(x)$.  This
 	$f$ is continuous iff for every open set $U \in \R^m$, $f^{-1}(U)$ is open in $\R^n$.
 \end{thm}
 \begin{defn}
-	A \emph{topological space} is a set $X$ and a set $O$ of subsets of $X$ that satisfy the following conditions.  Every element of $O$ is ``open'' by definition.  Further:
+	A \emph{topological space} (a.k.a \emph{space}) is a set $X$ and a set $O$ of subsets of $X$ that satisfy the following conditions.  Every element of $O$ is ``open'' by definition.  Further:
 	\begin{itemize}
 		\item Arbitrary unions of open sets are open.
 		\item Finite intersections of open sets are open.
@@ -344,7 +344,12 @@ For each $x \in M$, we can use a section $s$ to associate a vector $s(x)$.  This
 	$X$ is a top space and $~$ is an equivalence relation on $X$.  Then there is a topology on $X/~$ (the set of equivalence classes) as follows.  $S \subseteq X/~$ is open iff (let backwards(S) : X/~ to X) backwards(S) is open in X.  [[ f: X/~ to Y is continuous iff f of g : X to Y is contniuous.
 \end{thm}
 \begin{defn}
-	A \emph{topological group} $G$ is a group, a topological space, and has that $m$ and $i$ are continuous for the functions $m : G \times G \to G$ defined by $m((g,h)) = gh$ and $i(g)$ the inverse function.
+	A \emph{topological group} is a seperable space $G$ that is also a group, which satisfies:
+	\begin{enumerate}
+		\item The function $m : G \times G \to G$ defined by $m((g,h)) = gh$ is continuous.
+		\item The function $i : G \to G$ defined by $i(g) = g^{-1}$ is continuous.
+	\end{enumerate}
+	See Bredon I.15 for more related definitions.
 \end{defn}
 
 
