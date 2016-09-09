@@ -316,4 +316,61 @@ We will see that the second assumption is superflous when we prove Goursat's the
 
     Conversely, take the Cauchy-Riemann equations and show that the limit exists using Cauchy-Riemann equations.
 \end{proof}
+\section{(9/6/2016) Lecture 5: Landau Notation and Cauchy-Riemann Equations}
+\begin{rmk*}
+    An aside at the beginning of lecture: recall $|z+i||z-i|=c$ from homework. It is true that any equation of the form $|p(z)| = c$ where $p$ is a complex polynomial and $c$ a nonnegative constant forms curves called ovals of Cassini. These are generally called polynomial lemniscetes. An open Erdos conjecture is as follows: \\
+
+    Amonth monic polynomials od degree $n$, the length of the polynomial lemniscete $|p(z)|=1$ is maximized by $z^n-1$.
+\end{rmk*}
+
+    A second aside about confusion concerning branch points and branch cuts. The general situation is that we have a multivalued function and we want to define a branch of it on some domain. Some things that could happen at 0: \\
+    \begin{tabular}{c|c}
+        \hline
+        $\frac{1}{z}$ & Singly valued on $\C \textbackslash \{0\}$, 0 is not a branch point. \\
+        $z^{\frac{1}{2}}$ & Defined on 0, but 0 is a branch point. This yields a phase factor of $-1$. \\
+        $\log z$ & 0 is a branch point, but there is no phase factor. Instead you add $2\pi i$ on a counter-clockwise loop. 
+    \end{tabular}
+    Recall that a branch point is a point where the one cannot define a continuous branch in a deleted neighborhood of the point. The minimum situation for all these listed functions with 0 as a branch point is that one can remove path from 0 to $-\infty$ from the domain.
+
+    To emphasize further, ``the branch of $z^\frac{1}{2}$ on $\Re z > 1$ that is negative at 2'' is a valid sentence.
+
+    \subsection*{Landau (``big oh'') notation}
+    The idea behind Landau notation is that we want to bound one function in terms of another as the input $x$ goes to some $c$ (typically either 0 or $\infty$). This idea is used a lot in computer science and is an integral part of complexity analysis.
+
+    \begin{defn}
+        Say that $f$ is $O(g)$ if there is a positive $M$ in a neighborhood of $c$ where $|f(x)| \leq M|g(x)|$.
+    \end{defn}
+    Note, if there is a neighborhood where $g \neq 0$, this say that $\frac{|f(x)|}{|g(x)|}$ is bounded near $c$.
+    \begin{defn}
+        $f$ is $o(g)$ if $\forall \epsilon > 0$, there is a neighborhood of $c$ where $|f(x)| < \epsilon |g(x)|$. 
+    \end{defn}
+    Here, if there is a neighborhood where $g \neq 0$, this says that $\frac{|f(x)|}{|g(x)|} \to 0$.\\
+
+    It is important to note that language here gets abused frequently. 
+
+    \begin{example}
+        (At $\infty$), $f$ is $O(x^6)$, $g$ is $O(x^4)$. Then, $f+g$ is $O(x^6)$ and $fg$ is $O(x^10)$.
+    \end{example}
+
+    Some further consequences are that $f$ is bounded is the same as saying $f$ is $O(1)$ and that saying $f$ goes to 0 is the same as saying $f$ is $o(1)$. 
+
+    \subsection*{Returning to differentiation}
+
+    \begin{defn}
+        A restatement of differentiability is that $f$ is differentiable at $x$ if and only if $\exists c$ such that $f(x+\delta x) = f(x) + c \delta x + o(\delta x)$ and if $f$ is differentiable, $c$ is the derivative of $f$ at $x$. Note that the $o(c)$ captures the essential notion of the derivative, since it essentially states that the error must go to zero and must be $o(\delta x)$, ie, the error must approach zero faster than $\delta x$. 
+    \end{defn}
+    Note that the statement for complex differentiability is the same, but replace all $\delta x$ by $\delta z$ and replace $o(\delta x)$ with $o(| \delta z|)$. Now for an application: prove the Leibniz rule (product rule of differentiation) using landau notation.
+    \begin{proof}
+        \begin{align*}
+            f(x+\delta x)g(x+\delta x) & = (f(x)+f'(x)\delta x + o(\delta x))(g(x)+g'(x) \delta x + o(\delta x)) \\
+            \ & = f(x)g(x) + \delta x(f'(x)g(x)+g'(x)f(x)) + f'(x)f'(x)(\delta x)^2 + f'(x)(\delta x)o(\delta x) + \dots \\
+            & = f(x)g(x) + \delta x(f'(x)g(x) + g'(x)f(x)) + o(\delta x)
+        \end{align*}
+        Note the abusive notation, but it gets the desired result since the $o(\delta x)$ terms go to 0 and thus the derivative is $f'(x)g(x)+g'(x)f(x)$. 
+    \end{proof}
+
+    Now, recall that we had a theorem stating that a function is analytic if and only if it satisfies the Cauchy-Reimann equation. 
+    \begin{proof}
+        Let us examine $f'(z) = \lim_{\delta z \to 0} \frac{f(z+\delta z) - f(z)}{\delta z}$. Taking $\delta z = \delta x$ real, then $f'(z) = \lim_{\delta x \to 0} \frac{u(x+\delta x, y)+iv(x+\delta x,y) - (u(x,y)+iv(x,y))}{\delta x} = u_x(x,y)_iv_x(x,y)$. 
+    \end{proof}
 \end{document}
