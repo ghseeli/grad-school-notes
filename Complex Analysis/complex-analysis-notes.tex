@@ -273,9 +273,15 @@ effects in $z$.
     \hline
 \end{tabular}
 
-To get a group out of these actions, one needs to add $f(z) = z$ and $f(z) = \frac{-1}{\overline{z}}$. This forms a certain group of isometries on the surface of a sphere ($\cong \Z_2 \times \Z_2 \times \Z_2$). This means that these maps will map circles on a sphere to other circles on a sphere, which also means that circles and lines on a complex plane will be mapped ot circles and lines on a complex plane. 
+To get a group out of these actions, one needs to add $f(z) = z$ and $f(z) =
+\frac{-1}{\overline{z}}$. This forms a certain group of isometries on the
+surface of a sphere ($\cong \Z_2 \times \Z_2 \times \Z_2$). This means that
+these maps will map circles on a sphere to other circles on a sphere, which
+also means that circles and lines on a complex plane will be mapped ot circles
+and lines on a complex plane. 
 
-Actually note that the group $O(3)$ (of 3 by 3 matrices) is the group of all isometries of the sphere. Geometrically, there are 4 types of isometries 
+Actually note that the group $O(3)$ (of 3 by 3 matrices) is the group of all
+isometries of the sphere. Geometrically, there are 4 types of isometries 
 \begin{enumerate}
     \item The identity
     \item Reflection over a plane
@@ -285,92 +291,304 @@ Actually note that the group $O(3)$ (of 3 by 3 matrices) is the group of all iso
 Note, just items 1 and 3 form the group $SO(3)$. 
 
 \begin{defn}
-    Functions of $z$ that are orientation perserving are known as conformal maps and are also analytic. Similarly, functions of $\overline{z}$ are orientation flipping and are thus anti-conformal maps and are also anti-analytic.
+    Functions of $z$ that are orientation perserving are known as conformal
+    maps and are also analytic. Similarly, functions of $\overline{z}$ are
+    orientation flipping and are thus anti-conformal maps and are also
+    anti-analytic.
 \end{defn}
 
-Treatment of phase factors is skipped because it is difficult to write up without pictures.
+Treatment of phase factors is skipped because it is difficult to write up
+without pictures.
 
 \section*{Analysis Review}
 
 \begin{defn}
-A domain in $\C$ is convex if, for any two points in the domain, the line between them is also contained in the domain. 
+A domain in $\C$ is convex if, for any two points in the domain, the line
+between them is also contained in the domain. 
 \end{defn}
 \begin{defn}
-    A domain in $\C$ is star-shaped if there exists a point for which, when a line is drawn between it and any other point in the domain, the line is in the domain. Note that all convex domains are star-shaped, but not the other way around.
+    A domain in $\C$ is star-shaped if there exists a point for which, when a
+    line is drawn between it and any other point in the domain, the line is in
+    the domain. Note that all convex domains are star-shaped, but not the other
+    way around.
 \end{defn}
 \begin{defn}
-    Let $f: \C \to \C$ be defined on a domain containing $z$. If $\lim_{\delta z \to 0} \frac{f(z+\delta z) - f(z)}{\delta z}$ exists in $\C$, this number is called the \emph{derivative of $f$} at $z$ and we say that $f$ is differentiable at $z$. 
+    Let $f: \C \to \C$ be defined on a domain containing $z$. If $\lim_{\Delta
+    z \to 0} \frac{f(z+\Delta z) - f(z)}{\Delta z}$ exists in $\C$, this number
+    is called the \emph{derivative of $f$} at $z$ and we say that $f$ is
+    differentiable at $z$. 
 \end{defn}
 
-```Usual examples'' include $f(z) = z^n \implies f'(z) = nz^{n-1}$. Also note that $f(z) = \overline{z}$ is not differentiable anywhere because the value of the limit changes depending on if you approach in the real direction or the imaginary direction. 
+```Usual examples'' include $f(z) = z^n \implies f'(z) = nz^{n-1}$. Also note
+that $f(z) = \overline{z}$ is not differentiable anywhere because the value of
+the limit changes depending on if you approach in the real direction or the
+imaginary direction. 
 \begin{defn}
-    $f$ is \emph{analytic} on a domain if it is differentiable at all point on the domain and $f'(z)$ is continuous.
+    $f$ is \emph{analytic} on a domain if it is differentiable at all point on
+    the domain and $f'(z)$ is continuous.
 \end{defn}
-We will see that the second assumption is superflous when we prove Goursat's theorem later.
+We will see that the second assumption is superflous when we prove Goursat's
+theorem later.
 
 \begin{thm}
-    Let $f(x+iy) = u(x,y)+iv(x,y)$ be defined on a domain. Then it is analytic if and only if $u,v$ satisfy the Cauchy-Riemann equations $u_x = v_y, u_y = v_x$ and these partials are continuous. 
+    Let $f(x+iy) = u(x,y)+iv(x,y)$ be defined on a domain. Then it is analytic
+    if and only if $u,v$ satisfy the Cauchy-Riemann equations $u_x = v_y, u_y =
+    v_x$ and these partials are continuous. 
 \end{thm}
 \begin{proof}
-    Assume $f$ is analytic. Then, take the limits of $\delta z$ along the imaginary axis and the real axis and then equate. This should yield the Cauchy-Riemann equations.
+    Assume $f$ is analytic. Then, take the limits of $\Delta z$ along the
+    imaginary axis and the real axis and then equate. This should yield the
+    Cauchy-Riemann equations.
 
-    Conversely, take the Cauchy-Riemann equations and show that the limit exists using Cauchy-Riemann equations.
+    Conversely, take the Cauchy-Riemann equations and show that the limit
+    exists using Cauchy-Riemann equations.
 \end{proof}
 \section{(9/6/2016) Lecture 5: Landau Notation and Cauchy-Riemann Equations}
 \begin{rmk*}
-    An aside at the beginning of lecture: recall $|z+i||z-i|=c$ from homework. It is true that any equation of the form $|p(z)| = c$ where $p$ is a complex polynomial and $c$ a nonnegative constant forms curves called ovals of Cassini. These are generally called polynomial lemniscetes. An open Erdos conjecture is as follows: \\
+    An aside at the beginning of lecture: recall $|z+i||z-i|=c$ from homework.
+    It is true that any equation of the form $|p(z)| = c$ where $p$ is a
+    complex polynomial and $c$ a nonnegative constant forms curves called ovals
+    of Cassini. These are generally called polynomial lemniscetes. An open
+    Erdos conjecture is as follows: \\
 
-    Amonth monic polynomials od degree $n$, the length of the polynomial lemniscete $|p(z)|=1$ is maximized by $z^n-1$.
+    All monic polynomials of degree $n$, the length of the polynomial
+    lemniscete $|p(z)|=1$ is maximized by $z^n-1$.
 \end{rmk*}
 
-    A second aside about confusion concerning branch points and branch cuts. The general situation is that we have a multivalued function and we want to define a branch of it on some domain. Some things that could happen at 0: \\
-    \begin{tabular}{c|c}
+    A second aside about confusion concerning branch points and branch cuts.
+    The general situation is that we have a multivalued function and we want to
+    define a branch of it on some domain. Some things that could happen at 0:
+    \\
+    \begin{tabular}{|c|c|}
         \hline
-        $\frac{1}{z}$ & Singly valued on $\C \textbackslash \{0\}$, 0 is not a branch point. \\
-        $z^{\frac{1}{2}}$ & Defined on 0, but 0 is a branch point. This yields a phase factor of $-1$. \\
-        $\log z$ & 0 is a branch point, but there is no phase factor. Instead you add $2\pi i$ on a counter-clockwise loop. 
+        $\frac{1}{z}$ & Singly valued on $\C \textbackslash \{0\}$, 0 is not a
+        branch point. \\
+        $z^{\frac{1}{2}}$ & Defined on 0, but 0 is a branch point. This yields
+        a phase factor of $-1$. \\
+        $\log z$ & 0 is a branch point, but there is no phase factor. \\ \ & Instead
+        you add $2\pi i$ on a counter-clockwise loop. \\
+        \hline
     \end{tabular}
-    Recall that a branch point is a point where the one cannot define a continuous branch in a deleted neighborhood of the point. The minimum situation for all these listed functions with 0 as a branch point is that one can remove path from 0 to $-\infty$ from the domain.
+    Recall that a branch point is a point where the one cannot define a
+    continuous branch in a deleted neighborhood of the point. The minimum
+    situation for all these listed functions with 0 as a branch point is that
+    one can remove path from 0 to $-\infty$ from the domain.
 
-    To emphasize further, ``the branch of $z^\frac{1}{2}$ on $\Re z > 1$ that is negative at 2'' is a valid sentence.
+    To emphasize further, ``the branch of $z^\frac{1}{2}$ on $\Re z > 1$ that
+    is negative at 2'' is a valid sentence.
 
     \subsection*{Landau (``big oh'') notation}
-    The idea behind Landau notation is that we want to bound one function in terms of another as the input $x$ goes to some $c$ (typically either 0 or $\infty$). This idea is used a lot in computer science and is an integral part of complexity analysis.
+    The idea behind Landau notation is that we want to bound one function in
+    terms of another as the input $x$ goes to some $c$ (typically either 0 or
+    $\infty$). This idea is used a lot in computer science and is an integral
+    part of complexity analysis.
 
     \begin{defn}
-        Say that $f$ is $O(g)$ if there is a positive $M$ in a neighborhood of $c$ where $|f(x)| \leq M|g(x)|$.
+        Say that $f$ is $O(g)$ if there is a positive $M$ in a neighborhood of
+        $c$ where $|f(x)| \leq M|g(x)|$.
     \end{defn}
-    Note, if there is a neighborhood where $g \neq 0$, this say that $\frac{|f(x)|}{|g(x)|}$ is bounded near $c$.
+    Note, if there is a neighborhood where $g \neq 0$, this say that
+    $\frac{|f(x)|}{|g(x)|}$ is bounded near $c$.
     \begin{defn}
-        $f$ is $o(g)$ if $\forall \epsilon > 0$, there is a neighborhood of $c$ where $|f(x)| < \epsilon |g(x)|$. 
+        $f$ is $o(g)$ if $\forall \epsilon > 0$, there is a neighborhood of $c$
+        where $|f(x)| < \epsilon |g(x)|$. 
     \end{defn}
-    Here, if there is a neighborhood where $g \neq 0$, this says that $\frac{|f(x)|}{|g(x)|} \to 0$.\\
+    Here, if there is a neighborhood where $g \neq 0$, this says that
+    $\frac{|f(x)|}{|g(x)|} \to 0$.\\
 
     It is important to note that language here gets abused frequently. 
 
     \begin{example}
-        (At $\infty$), $f$ is $O(x^6)$, $g$ is $O(x^4)$. Then, $f+g$ is $O(x^6)$ and $fg$ is $O(x^10)$.
+        (At $\infty$), $f$ is $O(x^6)$, $g$ is $O(x^4)$. Then, $f+g$ is
+        $O(x^6)$ and $fg$ is $O(x^10)$.
     \end{example}
 
-    Some further consequences are that $f$ is bounded is the same as saying $f$ is $O(1)$ and that saying $f$ goes to 0 is the same as saying $f$ is $o(1)$. 
+    Some further consequences are that $f$ is bounded is the same as saying $f$
+    is $O(1)$ and that saying $f$ goes to 0 is the same as saying $f$ is
+    $o(1)$. 
 
     \subsection*{Returning to differentiation}
 
     \begin{defn}
-        A restatement of differentiability is that $f$ is differentiable at $x$ if and only if $\exists c$ such that $f(x+\delta x) = f(x) + c \delta x + o(\delta x)$ and if $f$ is differentiable, $c$ is the derivative of $f$ at $x$. Note that the $o(c)$ captures the essential notion of the derivative, since it essentially states that the error must go to zero and must be $o(\delta x)$, ie, the error must approach zero faster than $\delta x$. 
+        A restatement of differentiability is that $f$ is differentiable at $x$
+        if and only if $\exists c$ such that $f(x+\Delta x) = f(x) + c \Delta x
+        + o(\Delta x)$ and if $f$ is differentiable, $c$ is the derivative of
+        $f$ at $x$. Note that the $o(c)$ captures the essential notion of the
+        derivative, since it essentially states that the error must go to zero
+        and must be $o(\Delta x)$, ie, the error must approach zero faster than
+        $\Delta x$. 
     \end{defn}
-    Note that the statement for complex differentiability is the same, but replace all $\delta x$ by $\delta z$ and replace $o(\delta x)$ with $o(| \delta z|)$. Now for an application: prove the Leibniz rule (product rule of differentiation) using landau notation.
+    Note that the statement for complex differentiability is the same, but
+    replace all $\Delta x$ by $\Delta z$ and replace $o(\Delta x)$ with $o(|
+    \Delta z|)$. Now for an application: prove the Leibniz rule (product rule
+    of differentiation) using landau notation.
     \begin{proof}
         \begin{align*}
-            f(x+\delta x)g(x+\delta x) & = (f(x)+f'(x)\delta x + o(\delta x))(g(x)+g'(x) \delta x + o(\delta x)) \\
-            \ & = f(x)g(x) + \delta x(f'(x)g(x)+g'(x)f(x)) + f'(x)f'(x)(\delta x)^2 + f'(x)(\delta x)o(\delta x) + \dots \\
-            & = f(x)g(x) + \delta x(f'(x)g(x) + g'(x)f(x)) + o(\delta x)
+            f(x+\Delta x)g(x+\Delta x) & = (f(x)+f'(x)\Delta x + o(\Delta
+            x))(g(x)+g'(x) \Delta x + o(\Delta x)) \\
+            \ & = f(x)g(x) + \Delta x(f'(x)g(x)+g'(x)f(x)) \\
+            \ & \ + f'(x)f'(x)(\Delta
+            x)^2 + f'(x)(\Delta x)o(\Delta x) + \dots \\
+            & = f(x)g(x) + \Delta x(f'(x)g(x) + g'(x)f(x)) + o(\Delta x)
         \end{align*}
-        Note the abusive notation, but it gets the desired result since the $o(\delta x)$ terms go to 0 and thus the derivative is $f'(x)g(x)+g'(x)f(x)$. 
+        Note the abusive notation, but it gets the desired result since the
+        $o(\Delta x)$ terms go to 0 and thus the derivative is
+        $f'(x)g(x)+g'(x)f(x)$. 
     \end{proof}
 
-    Now, recall that we had a theorem stating that a function is analytic if and only if it satisfies the Cauchy-Reimann equation. 
+    Now, recall that we had a theorem stating that a function is analytic if
+    and only if it satisfies the Cauchy-Reimann equation. 
     \begin{proof}
-        Let us examine $f'(z) = \lim_{\delta z \to 0} \frac{f(z+\delta z) - f(z)}{\delta z}$. Taking $\delta z = \delta x$ real, then $f'(z) = \lim_{\delta x \to 0} \frac{u(x+\delta x, y)+iv(x+\delta x,y) - (u(x,y)+iv(x,y))}{\delta x} = u_x(x,y)_iv_x(x,y)$. 
+        Let us examine $f'(z) = \lim_{\Delta z \to 0} \frac{f(z+\Delta z) -
+        f(z)}{\Delta z}$. Taking $\Delta z = \Delta x$ real, then $f'(z) =
+        \lim_{\Delta x \to 0} \frac{u(x+\Delta x, y)+iv(x+\Delta x,y) -
+        (u(x,y)+iv(x,y))}{\Delta x} = u_x(x,y)_iv_x(x,y)$. 
+
+        Similarly, taking $\Delta z = i \Delta y$, we get $f'(z) = \frac{u(x,
+        y+ \Delta y) + iv(x+,y+\Delta y)}{i\Delta y} = -iu_y+v_y$. Thus,
+        setting both parts equal, we get $v_x = -u_y$ and $u_x = v_y$.
+
+        We will now prove the converse using Landau notation instead of limits.
+        Now, we know that $f(z+\Delta z) = 
+        u(x + \Delta x, y + \Delta y) + iv(x+\Delta x, y + \Delta y)$. We will
+        choose to work with the real part first. 
+        \begin{align*}
+            u(x+\Delta x, y + \Delta y)  & = u(x, y+ \Delta y) + \Delta x
+            u_x(x,y+\Delta y) + o(\Delta x) \\
+            \ & \text{ using the }x\text{ derivative.} \\
+            \ & = u(x,y) + \Delta y u_y(x,y) + o(\Delta y) + \Delta x
+            u_x(x,y+\Delta y) + o(\Delta x) \\
+            \ & \text{ using the }y\text{ derivative.} \\
+            \ & = u(x,y) + \Delta y u_y(x,y) + o(\Delta y) + \Delta x
+            (u_x(x,y)+o(1)) + o(\Delta x) \\ 
+            \ & \text{ using the continuity of }u_x\\
+            \ & = u + \Delta y u_y + \Delta x u_x + o(\Delta y) + o(1)\Delta x
+            + o(\Delta x) \\
+            \ & = u + \Delta y u_y + \Delta x u_x + o(|\Delta z|)
+        \end{align*}
+        Similarly, we can do this to get $iv(x+\Delta x, y + \Delta y) =
+        i(v+\Delta y v_y + \Delta x v_x + o(|\Delta z|))$. So now, continuing
+        with $f$ and applying the Cauchy-Riemann equations, we get
+        \begin{align*}
+            f(z+\Delta z) & = u + iv + \Delta y (-v_x) + \Delta x u_x + i\Delta
+            y u_x + i \Delta x v_x + o(|\Delta z|) \\
+            \ & = u + iv + \Delta z(u_x+iv_x)+o(|\Delta z|)
+        \end{align*}
+        So, $f'(z) = u_x+iv_x$, which we assumed continuous, so $f$ is analytic. 
     \end{proof}
-\end{document}
+    \section{(9/8/2016) Lecture 6: Developing Intuition for Complex Differentiation}
+    In class, we first completed an exercise imagining the graph of $2i$
+    raised to various powers. The end result was that these graphs always
+    produce (possibly degenerate) spirals. Two graphs are provided here,
+    but once raised to a complex power, the graphs produce spirals that
+    increase their modulus exponentially, and so, at scale, the graph is rather
+    unenlightening. 
+
+    \begin{figure}[h]
+        \centering
+        \includegraphics[scale=0.2]{images/2i-to-one-third.png}
+        \caption{$2i^{\frac{1}{3}}$}
+        \label{fig:2i13}
+    \end{figure}
+    \begin{figure}[h]
+        \centering
+        \includegraphics[scale=0.2]{images/2i-to-1-over-pi.png}
+        \caption{$2i^{\frac{1}{\pi}}$ first $k = 0,1, \ldots, 100$}
+        \label{fig:2i1pi}
+    \end{figure}
+
+    Now, a general definition of differentiability for $\R^n$ spaces is as
+    follows.
+    \begin{defn}
+        A function $f: \R^m \to \R^n$ is differentiable at $x$ if $f(x+h) =
+        f(x)+D(h)+o(h)$ where $D: \R^m \to \R^n$ is linear (a matrix). In fact,
+        $D$ is the Jacobian matrix of partial derivatives and $f(x)+D(h)$ is
+        the tangent plane. 
+    \end{defn}
+    For a complex function $f: \C \to \C$, we write $f = u+iv$ where $u,v: \R^2
+    \to \R$. When $u,v \in C^1$, $D = \left( \begin{array}{cc}
+        u_x & u_y \\
+        v_x & v_y 
+    \end{array}\right)$. As a reminder, complex differentiability happens when
+    we have real differentiability plus the function satisfied the
+    Cauchy-Riemann equations. Then, note that $\det D = u_x^2 + v_x^2 =
+    |u_x+iv_x|^2 = |f'(z)|^2$. Thus a function $z+h \mapsto f(z) + f'(z)h$
+    dilates $h$ by $|f'(z)|$ and rotates it by $\arg f'(z)$. The consequence of
+    this is that analytic maps take squares in the input to squares in the
+    output and they are orientation preserving. Thus, we get the following
+    \begin{rmk}
+        If $f$ is analytic on $D$, $z \in D, f'(z) = 0$, then there is a
+        neighborhood $U$ with $z \in U \subset D$ on which $f$ is one-to-one
+        with analytic inverse satisfying $f^{-1}(f(z))' = \frac{1}{f'(z)}$.
+        This is the inverse function theorem and it applies since the Jacobian
+        is invertible.
+    \end{rmk}
+    A natural question to then ask is how are branches affected by
+    differentiation. Let us show a few examples.
+    \begin{example}
+        \begin{enumerate}
+            \item $\frac{d}{dz}(\log z) = \frac{1}{z}$ where we are using any
+                branch of $\log$. $z = e^{\log z} \implies 1 = e^{\log z} \cdot
+                (\log z)' \implies \frac{1}{z} = (\log z)'$. Thus, the choice
+                of branch for $\log$ does not affect the derivative in this
+                case.
+            \item $\frac{d}{dz}(z^{\frac{1}{2}})$ depends on the branch. $z =
+                (z^{\frac{1}{2}})^2 \implies 1 =
+                2(z^{\frac{1}{2}}(z^{\frac{1}{2}})'$ which gives us
+                $(z^{\frac{1}{2}})' = \frac{1}{2(z^\frac{1}{2})}$. Thus, the
+                $z^\frac{1}{2}$ in the final result is the same branch as the
+                branch that was differentiated.
+        \end{enumerate}
+    \end{example}
+
+    \begin{defn}
+        A function $u: \R^n \to \R$ is \emph{harmonic} if it is a $C^2$
+        solution to $\Delta u = 0$. Note that $\nabla^2u = \Delta u$ and is
+        called the Laplacian. 
+    \end{defn}
+    Harmonic functions will turn out to be $C^\infty$, but we cannot prove this
+    yet. Note also that if $f = u_iv$ is analytic, then $u$ is harmonic. This
+    follow because $u_{xx}+u_{yy} = u_{xx}+(-v_x)_y = u_{xx}-v_{yx} =
+    u_{xx}-u_{xx} = 0$. There is an almost converse which states that ``a
+    harmonic function is locally the real part of an analytic function.'' That
+    is, on a neighborhood of any point, there is a $v$ with $u+iv$ analytic.
+    Such a $v$ is called a \emph{harmonic conjugate} (unique up to additive
+    constant.) eg, there is an $x$ such that $u=xy$ satisfying \[ 
+        \begin{cases}
+ v_x = -u_y = x \\
+ v_y = u_x = y.
+    \end{cases}
+\]
+This is a PDE satisfied by the solution $\frac{y^2-x^2}{2} + C$. So, we get
+that $xy+i\left( \frac{y^2-x^2}{2} \right)$ is analytic. In terms of $z$, this
+conjugate is $f(x) = \frac{-iz^2}{2}$. Also note that the local part of the
+definition is necessary. For instance $\frac{1}{2} \log(x^2+y^2)$ is harmonic
+on $\R^2 \textbackslash \{(0,0)\}$. \\
+
+Some follow up facts to note are 
+\begin{itemize}
+    \item All harmonic functions of $\R$ have the form $ax+b$.
+    \item $u+v$ is harmonic.
+    \item $uv$ is not harmonic.
+    \item $u_x$ is harmonic.
+    \item If $v$ is a harmonic conjugate of $u$, the harmonic conjugate of $v$
+        is $-u$. Thus, note that harmonic conjugation is not an unordered pair.
+    \item $u+iv$ is analytic implies that $v-iu$ is analytic.
+\end{itemize}
+\subsection*{Conformal Maps}
+\begin{defn}
+    If $f$ is analytic in a neighborhood at $z_0$ and $f'(z_0) \neq 0$, then
+    $f$ is \emph{conformal} at $z_0$. This is the same as saying directed
+    angles are preserved by $f$ at $z_0$. 
+\end{defn}
+\begin{defn}
+    A \emph{conformal mapping} between domains is a one-to-one $C^1$ function
+    that is conformal at each point.
+\end{defn}
+Note the following implications. 
+\begin{itemize}
+    \item $f: D \to V$ that is one-to-one and analytic is conformal.
+    \item If $f$ is analytic at $z_0$ and $f'(z_0) \neq 0$, then $f$ maps a
+        neighborhood of $z_0$ conformally onto the image. 
+\end{itemize}
+    \end{document}
