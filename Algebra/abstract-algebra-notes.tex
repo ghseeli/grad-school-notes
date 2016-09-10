@@ -82,6 +82,10 @@
 \newcommand{\subgroup}{\mathrel{<}}
 \newcommand{\normsubgroup}{\mathrel{\unlhd}}
 \newcommand{\isom}{\mathrel{\cong}}
+\newcommand{\Aut}{\text{Aut}}
+
+\newcommand{\primedecomposition}[3]{#1_1^{#2_1} \cdots {#1_{#3}}^{#2_{#3}}}
+
 \swapnumbers %% put numbers in front of proclamations
 \newtheorem{thm}{Theorem}[subsection]
 \newtheorem*{thm*}{Theorem}
@@ -124,7 +128,7 @@
 \pagestyle{plain} % suppress the running head - for working document
 
 \title[Abstract Algebra]{Abstract Algebra}
-\author{George H. Seelinger (inspired from class by Abramenko)}
+\author{George H. Seelinger, Chris Lloyd\\ (inspired from class by Abramenko)}
 \date{Fall 2016}
 \begin{document}
 \maketitle
@@ -628,4 +632,94 @@ Let us next discuss internal direct products.
             semi-direct products.
     \end{enumerate}
 \end{example}
+\subsection*{Lecture 5: Finite Cyclic Groups}
+We start by recounting some basic facts about finite cyclic groups. If
+\(G=\langle x\rangle\) where \(|x|=n\) then \(G \isom \Z_n\) with the map
+\[x^n \longleftrightarrow \bar{a}.\] Then the order of \(\bar{a}\) is given by
+\[|\bar{a}|=\frac{n}{(n,a)}.\] We now show that the generators of \(\Z_n\) are
+those elements relatively prime to \(n\).
+\begin{align*}
+  \Z_n = \langle \bar{a} \rangle &\iff |\bar{a}|=n\\
+                                 &\iff \frac{n}{(n,a)}=n\\
+                                 &\iff (n,a)=1.
+\end{align*}
+Another fact is that \(\Z_n\) has a unique subgroup of order \(d\) for each
+divisor \(d\) of \(n\).
+\begin{lem*}[1.2.1] Let \(R\) be a ring with \(1\).
+  \begin{enumerate}
+  \item[(a)] For any \(r \in R\) the map
+    \begin{align*}
+      \lambda_r \colon R &\to R\\
+      r &\mapsto rx
+    \end{align*}
+    defines a homomorphism of the abelian group \((R,+)\).
+  \item[(b)] For any \(r \in R^\times\), \(\lambda_r \in \Aut(R,+)\) and
+    \begin{align*}
+      \lambda \colon R^\times &\to \Aut(R,+)\\
+      r &\mapsto \lambda_r
+    \end{align*}
+    is an injective group homomorphism.
+  \end{enumerate}
+      
+\end{lem*}
+\begin{prop*}[1.2.2]
+  \[\Aut(\Z_n) \isom \Z_n^\times\]
+\end{prop*}
+\begin{proof}
+  By Lemma 1.2.1 we have \(\lambda \colon \bar{a} \mapsto \lambda_{\bar{a}}\) is
+  an injective group homomorphism. Thus we simply must show that it is
+  surjective, we will use an order argument. Take any \(\alpha \in \Aut(\Z_n)\)
+  since \(|\bar{1}|=n\) this means that \(|\alpha(\bar{1})|=n\). Thus
+  \(|\Aut(\Z_n)| \le \varphi(n)\).
+\end{proof}
+
+\begin{prop*}[1.2.3]{Chinese Reminder Theorem}
+  Let \(m,n \in \N\).
+  \begin{enumerate}
+  \item[(a)] The map
+    \begin{align*}
+      f \colon \Z_{mn} &\to \Z_n \times \Z_m\\
+      [a]_{mn}&\mapsto [a]_m \times [a]_n
+    \end{align*}
+    is a ring homomorphism.
+  \item[(b)] If \((m,n)=1\) then \(f\) is a ring isomorphism.
+  \end{enumerate}
+\end{prop*}
+\begin{proof}[Proof of (a)]
+  Just a routine calculation.
+\end{proof}
+Notice that this homomorphism sends \(1\) to \(1\), which needn't be the case in
+general for a ring homomorphism.
+\begin{proof}[Proof of (b)]
+  Notice that \(f\) is surjective through order considerations. Now check that
+  the kernel is trivial.
+\end{proof}
+Consequences of b: If \(n=\primedecomposition{p}{e}{r}\) where
+\(p_1,\ldots,p_r\) are distinct primes and \(e_i \in \N\). Then
+\[\Z_n \isom \prod_{i-1}^r \Z_{{p_i}^{e_i}}.\]
+One can prove this by using the Chinese Reminder Theorem and induction on r.
+\begin{cor*}[1.2.4]
+  Let \(m,n \in \N\) with \((m,n)=1\).
+  \begin{enumerate}
+  \item[(a)] \(Z_{mn}^\times \isom \Z_m^\times \times \Z_n^\times\). If
+    \(n=\primedecomposition{p}{e}{r}\) then
+    \[\Z_n^\times \isom \prod_{i-1}^r \Z^\times_{{p_i}^{e_i}}.\]
+  \item[(b)]
+    \(\varphi(mn)=|\Z_{mn}^\times|=|\Z_{n}^\times\times
+    \Z_{n}^\times|=|\Z_{m}^\times||\Z_{n}^\times|=\varphi(m)\varphi(n)\).
+  \end{enumerate}
+\end{cor*}
+\begin{prop*}[1.2.5]
+  For \(e \in \N\)
+  \begin{enumerate}
+    \item[(a)] \(\Z_{2^e}^\times \isom \Z_2 \times Z_{2^{e-1}},\ e \ge 2\)
+    \item[(b)] \(\Z_p^\times \isom \Z_{p-1}\) for every prime \(p\)
+    \item[(c)] \(\Z_{p^e}^\times \isom \Z_{p^{e-1}(p-1)}\)
+  \end{enumerate}
+\end{prop*}
 \end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
