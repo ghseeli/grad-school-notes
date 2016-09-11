@@ -715,6 +715,37 @@ One can prove this by using the Chinese Reminder Theorem and induction on r.
     \item[(c)] \(\Z_{p^e}^\times \isom \Z_{p^{e-1}(p-1)}\)
   \end{enumerate}
 \end{prop*}
+
+\subsection*{Lecture 6: Fundamental Theorem of Finitely Generated Abelian Groups}
+
+\begin{thm*}[1.2.6 (Cauchy's Theorem)]
+  Let \(A\) be an abelian group of finite order. If a prime \(p\) divides the
+  order of \(A\), there exists an element \(a \in A\) of order \(p\).
+\end{thm*}
+
+\begin{proof}
+  We will proceed by induction on \(|A|\). If \(|A|=p\), then \(A \isom \Z_p\),
+  which means every non-trivial element has order \(p\). If \(|A| > p\) we may
+  choose an \(x \in A/\{e\}\). Notice that \(|x| > 1\).
+  
+  \noindent Case 1:\\ \(p \mid n \implies |a|=p\) for \(a=x^{\frac{n}{p}} \in \langle x
+  \rangle \subset A\)\\
+  
+  \noindent Case 2:\\ \(p\) does not divide \(n\). Let \(B=\langle x \rangle
+  \normsubgroup A\), and \(\bar{A}=A /B\). Then
+  \[|\bar{A}|=\frac{|A|}{|B|}=\frac{|A|}{n}.\]
+  Furthermore since \(p \mid |A|\) 
+  \[p \mid |A| \implies p \mid \frac{n|A|}{n}\]
+  but since \(p\) does not divide \(n\) we have that 
+  \[p \mid \frac{|A|}{n}\implies p \mid |\bar{A}|.\]
+  Now \(|\bar{A}|\) is a small group than \(A\), hence we may apply the
+  inductive hypothesis, that is there exists some \(y \in \bar{A}\) of order
+  \(p\). As the projection map \(\pi\) is surjective there must exist some \(z
+  \in A\) such that \(\pi(z)=y\). Since \(\pi\) is a homomorphism \(|y| \mid
+  |z|\), which means \(p \mid z\), hence \(z=pm\) for some \(m \in \Z\). Thus
+  \(a=z^{\frac{m}{p}}\) is an element of order \(p\) in \(A\).
+\end{proof}
+
 \end{document}
 
 %%% Local Variables:
