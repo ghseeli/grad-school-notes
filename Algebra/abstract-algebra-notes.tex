@@ -8,7 +8,7 @@
 \usepackage{enumitem}
 %\usepackage[nohead,nofoot,centering]{geometry}
 
-\usepackage{color} 
+\usepackage{color}
 %% Some user-defined colors
       \definecolor{mydefi}{cmyk}{1,0,0,.5}
       \definecolor{myred}{rgb}{.7,.1,.1}
@@ -25,7 +25,7 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%  MACRO DEFINITIONS:  Co-authors -- PLEASE use these! 
+%%  MACRO DEFINITIONS:  Co-authors -- PLEASE use these!
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand{\N}{{\mathbb N}} % natural numbers
 \newcommand{\Z}{{\mathbb Z}} % integers
@@ -68,7 +68,7 @@
 \newcommand{\cA}{\mathcal{A}} % group algebra of symmetric group
 \newcommand{\Tab}{\operatorname{Tab}} % trails in branching graph from source
 \newcommand{\BG}{\mathbf{B}} % branching graph
-\newcommand{\bb}{\varnothing} % the unique element of \Irr(0) 
+\newcommand{\bb}{\varnothing} % the unique element of \Irr(0)
 \newcommand{\res}{\operatorname{res}} % restriction
 \newcommand{\Irr}{\operatorname{Irr}} % irreps
 \newcommand{\Wt}{\operatorname{Wt}} % possible content vectors for an irrep
@@ -76,7 +76,7 @@
 \newcommand{\type}{\operatorname{type}} % type = generalized shape
 \newcommand{\gen}[1]{\langle #1 \rangle} % use for generating sets
 \newcommand{\parm}{\updelta} % Brauer algebra parameter
-\newcommand{\sep}{\,|\,} % separator for two partitions - used in tables 
+\newcommand{\sep}{\,|\,} % separator for two partitions - used in tables
 \newcommand{\covered}{\lessdot}
 \newcommand{\qand}{\quad\hbox{and}\quad}
 \newcommand{\subgroup}{\mathrel{<}}
@@ -110,10 +110,10 @@
 \newtheorem*{rmks*}{Remarks}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\numberwithin{equation}{section} 
-%% The following avoids conflict between numbers of proclamations 
+\numberwithin{equation}{section}
+%% The following avoids conflict between numbers of proclamations
 %% and numbers of equations
-\renewcommand{\theequation}{\thesection\alph{equation}} 
+\renewcommand{\theequation}{\thesection\alph{equation}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \parskip = 2pt
 \allowdisplaybreaks
@@ -133,7 +133,7 @@
 \subsection*{Lecture 1: Normalizers and Centralizers}
 \begin{defn}
     For $A \subset G$, we set $N_G(A) := \{g \in G | gAg^{-1} = A\}$ and
-    $C_G(A) := \{g \in G | gag^{-1} = a, \forall a \in A\}$. 
+    $C_G(A) := \{g \in G | gag^{-1} = a, \forall a \in A\}$.
 \end{defn}
 Note that $C_G(A) \subset N_G(A)$.
 \begin{rmk*}
@@ -154,7 +154,7 @@ Note that $C_G(A) \subset N_G(A)$.
         This follows using basic commutativity arguments.
     \end{rmk*}
     \begin{example}
-        $Z(S_n) = \{ id \}$ if $n \geq 3$. To prove this, prove $\sigma \in S_n, \sigma \neq id \implies \sigma \notin Z(S_n)$. 
+        $Z(S_n) = \{ id \}$ if $n \geq 3$. To prove this, prove $\sigma \in S_n, \sigma \neq id \implies \sigma \notin Z(S_n)$.
 
         $\sigma \neq id \implies \exists i,j \in \{1, \ldots, n\}$ where $i
         \neq j$ such that $\sigma(i) = j$. Now, choose $k \in \{1, \ldots, n\}$
@@ -166,8 +166,8 @@ Note that $C_G(A) \subset N_G(A)$.
         \sigma \notin Z(S_n)$.
     \end{example}
     \begin{lem}
-        Let $G$ be a group and $H \subgroup Z(G)$. Note this means $H
-        \normsubgroup G$. If $G/H$ is cyclic, then $G$ is abelian.
+        Let $G$ be a group and $H \subgroup Z(G)$. (Note this implies $H
+        \normsubgroup G$.) If $G/H$ is cyclic, then $G$ is abelian.
     \end{lem}
     \begin{proof}
         Since $G/H$ is cyclic, this means $\exists g \in G$ such that
@@ -196,7 +196,7 @@ Note that $C_G(A) \subset N_G(A)$.
         \begin{enumerate}
             \item $AB \subgroup G$ if and only if $AB = BA$.
             \item If $A \subgroup N_G(B)$ or $B \subgroup N_G(A)$, then $AB =
-                BA$ and hence $AB \subgroup G$ by 1. 
+                BA$ and hence $AB \subgroup G$ by 1.
         \end{enumerate}
     \end{lem}
     \begin{proof}
@@ -226,13 +226,13 @@ Note that $C_G(A) \subset N_G(A)$.
     \end{rmk}
     \begin{proof}
         The first remark can be done by $(ab)(a'b') = aba'b^{-1}bb' = aa'b' = (aba'b^{-1})b' \in AB$ because $a$ and $ba'b^{-1}$ are in $A$ and $b \in B$. Also, $(ab)^{-1} = b^{-1}a^{-1} = (b^{1}a^{-1}b)b^{-1} \in AB$. The identity inclusion is obvious.
-        The second remark is proven by, for $g \in G$, $gABg^{-1} = gAg^{-1}gBg^{-1} = AB$. 
+        The second remark is proven by, for $g \in G$, $gABg^{-1} = gAg^{-1}gBg^{-1} = AB$.
     \end{proof}
 
     \subsubsection*{Index Computations}
 
     \begin{lem}
-        Let $A,B \subgroup G$ and $|A|, |B| < \infty$. Then, $|AB| = \frac{|A| \cdot |B|}{A \cap B}$.
+        Let $A,B \subgroup G$ and $|A|, |B| < \infty$. Then, $|AB| = \frac{|A| \cdot |B|}{|A \cap B|}$.
     \end{lem}
     \begin{proof}
         Consider $A/(A \cap B)$. Take a complete set of coset representatives $A' = \{a_1, \ldots, a_n\}$. Then, $n = |A/(A \cap B)| = [A : A \cap B] = \frac{|A|}{|A \cap B|}$ by Lagrange's Theorem.
@@ -260,19 +260,19 @@ Note that $C_G(A) \subset N_G(A)$.
         (a) $G = \S_3, A = \langle (12) \rangle, B = \langle (13) \rangle
         \subgroup G$. Then, $A \cap B = \{ id \} \implies |AB| = 2 \cdot 2 = 4$
         which does not divide $6 = |\S_3|$. Thus, $AB$ is not a subgroup of
-        $\S_3$. 
-        (b) Let $G=\S_4, A = S_3 \to S_4, B = \langle (1234) \rangle$. Then, $A \cap B = \{id\} \implies |AB| = |A||B| = 6 \cdot 4 = 24 = |\S_4|$. This means that $AB = \S_4$ but note that $A \not\subset N_G(B)$ and $B \not\subset N_G(A)$. 
+        $\S_3$.
+        (b) Let $G=\S_4, A = S_3 \to S_4, B = \langle (1234) \rangle$. Then, $A \cap B = \{id\} \implies |AB| = |A||B| = 6 \cdot 4 = 24 = |\S_4|$. This means that $AB = \S_4$ but note that $A \not\subset N_G(B)$ and $B \not\subset N_G(A)$.
     \end{example}
     \begin{lem}
-        (Lemma 1.1.9) Let $G$ be a group and $A,B \subgroup G$. Then
-        \begin{enumerate}[label=\Alph*]
+        Let $G$ be a group and $A,B \subgroup G$. Then
+        \begin{enumerate}
             \item If $A \subgroup B$, then $[G:A] = [G:B][B:A]$
-            \item $[A: A \cup B] \leq [G:B]$
-            \item $[G: A \cup B] \leq [G:A][G:B]$
+            \item $[A: A \cap B] \leq [G:B]$
+            \item $[G: A \cap B] \leq [G:A][G:B]$
         \end{enumerate}
     \end{lem}
     \begin{proof}
-       For the first part, fix a set of coset representatives (using the Axiom of Choice in the infinite case) for $G/A$. Then, given a coset $gA$, we can TODO 
+       For the first part, fix a set of coset representatives (using the Axiom of Choice in the infinite case) for $G/A$. Then, given a coset $gA$, we can TODO
 \end{proof}
 \subsection*{The Isomorphism Theorems}
 \begin{thm}
@@ -290,7 +290,7 @@ Note that $C_G(A) \subset N_G(A)$.
     Check $\widetilde{\phi}( (gN)(g'N) ) = \widetilde{\phi}(gg'N) = \phi(gg') =
     \phi(g)\phi(g') = \widetilde{\phi}(gN) \widetilde{\phi}(g'N)$.
 
-    We know $\widetilde{\phi}$ is surjective by definition. 
+    We know $\widetilde{\phi}$ is surjective by definition.
 
     To show $\widetilde{\phi}$ is injective, it suffices to show that $\ker
     \widetilde{\phi} = \{\widetilde{e} = eN\}$. If $\widetilde{\phi}(gN) =
@@ -311,21 +311,21 @@ Note that $C_G(A) \subset N_G(A)$.
     Furthermore, it is clear $\phi(A) = AB/B$ (as opposed to $A/B$) because $B$
     need not be a subset of $A$. Thus, elements of the form $aB$ where $a \in A$
     are in $AB/B$. (This part is still unclear to me.) Thus, we get $A/A \cap B
-    \isom AB/B$. 
+    \isom AB/B$.
 \end{proof}
 The second isomorphism theorem is sometimes referred to as the ``diamond
 theorem'' because if you draw a diagram of what is happening, it is a diamond
-with $A, B, AB$, and $A \cap B$. 
+with $A, B, AB$, and $A \cap B$.
 \begin{cor}
-    (Third Isomorphism Theorem) If $A,B \normsubgroup G$ and $A \subgroup B$, then $G/B \isom (G/A)/(A/B)$.
+    (Third Isomorphism Theorem) If $A,B \normsubgroup G$ and $A \subgroup B$, then $(G/A)/(B/A) \isom G/B$.
 \end{cor}
 \begin{proof}
     Let us define a group homomorphism $\phi: G/A \to G/B$ by $\phi(gA) = gB$.
-    Then, let us examine $\ker \phi$. We note that if $g \in B \subgroup A$,
-    then $\phi(gA) = B$. Thus, $\ker \phi = A/B$. Now, applying the first
-    isomorphism theorem with $\phi$, we get that $(G/A)/(A/B) \isom \phi(gA)$.
-    $\phi$ is clearly surjective because $B \subgroup A$, so we conclude that
-    $(G/A)/(G/B) \isom B/A$.
+    Then, let us examine $\ker \phi$. We note that if $t \in B$,
+    then $\phi(tA) = B$. Thus, $\ker \phi = \{tA | t \in B\} = B/A$. Now, applying the first
+    isomorphism theorem with $\phi$, we get that $(G/A)/(B/A) \isom \phi(G/A)$.
+    $\phi$ is clearly surjective because $A \subgroup B$, so we conclude that
+    $(G/A)/(B/A) \isom G/B$.
 \end{proof}
 
 These isomorphism theorems are useful in many proof techniques and there are
@@ -337,7 +337,7 @@ structore of the subgroups of $G$ containing $N$ where $N$ is ``collapsed'' as
 the identity element.
 
 \begin{thm}
-    Let $G$ be a group, $N \subgroup G$, and $\overline{G} = G/N$. Next, let
+    Let $G$ be a group, $N \normsubgroup G$, and $\overline{G} = G/N$. Next, let
     $\phi_N = \{ A \subgroup G | N \subgroup A \}$ and $\overline{\phi}$ be the
     set of all subgroups of $\overline{G}$. Then, all the following are true for $A,B \in \phi_N$.
     \begin{enumerate}[label=(\alph*)]
@@ -354,18 +354,18 @@ the identity element.
     \end{enumerate}
 \end{thm}
 \begin{proof}
-    Proofs for (a) -- (d) were left as an exercise (to be filled in later). 
+    Proofs for (a) -- (d) were left as an exercise (to be filled in later).
     For (e), let $\pi: G \twoheadrightarrow \overline{G}$ be the surjective
     group homomorphism defined by $\pi(g) = gN$. Now, consider $\psi:
     \overline{\phi} \to \phi_N$ defined by $\psi(H) = \pi^{-1}(H) \subgroup G$.
     Then, we want to show that $\rho \circ \psi = id_{\overline{\phi}}$ and
     $\psi \circ \rho = id_{\phi_N}$ because then we will know $\rho$ is
-    invertible and thus bijective. 
+    invertible and thus bijective.
 
     Examine $\rho \circ \psi$. We know that $(\rho \circ \psi)(H) =
     \rho(\pi^{-1}(H))$. Now, note that $\rho(A)$ is the image of $\pi(A)$, so
     we get $\rho(\pi^{-1}(H)) = \pi(\pi^{-1}(H)) = H$ because $\pi$ is
-    surjective. 
+    surjective.
 
     Next, examine $\psi \circ \rho$. We then get that $(\psi \circ \rho)(A) =
     \pi^{-1}(\pi(A))$ for $A \subgroup G$. We would like for this to be equal
@@ -431,7 +431,7 @@ seen in the following lemma.
     \begin{enumerate}
         \item $[Q_8,Q_8] = \{1,-1\} = [\langle i \rangle, \langle j \rangle]$.
             This can be seen because $[i,j] = iji^{-1}j^{-1} = ij(-i)(-j) =
-            ij(-i)(-j) = iij(-j) = -i^2j^2 = -1$. 
+            ij(-i)(-j) = iij(-j) = -i^2j^2 = -1$.
         \item $[A_n, \langle (12) \rangle] = A_n$ for $n geq 2$. This follows
             because, for $i \geq 3$, we get $[(1i2),(12)] = (1i2)(12)(2i1)(12)
             = (12i)$. This tells us that $A_n = \langle \{(12i) | 3 \leq i \leq
@@ -447,7 +447,7 @@ seen in the following lemma.
             is a commutator. For instance $[(ijk),(klm)] = (ilk)$ for 5
             distinct elements $i,j,k,l,m \in \{1, \ldots, n\}$. Also note that
             $[A_3,A_3] = \{e\}$ and $[A_4,A_4] = \Z_2 \times \Z_2$, the set of
-            all elements of the form $(ij)(kl)$. 
+            all elements of the form $(ij)(kl)$.
     \end{enumerate}
 \end{example}
 \begin{lem}
@@ -460,7 +460,7 @@ seen in the following lemma.
     \end{enumerate}
 \end{lem}
 \begin{proof}
-    The forward direction of $A$ is given by the fact that $[a,b] =
+    The forward direction of $(a)$ is given by the fact that $[a,b] =
     aba^{-1}b^{-1}$ but $aba^{-1} \in B$ since $A$ normalizes $B$. Thus, $[a,b]
     \in B \forall a \in A, b \in B$ so $[A,B] \subgroup B$. To do the other
     direction, we have that, we have that $aba^{-1}b^{-1} \in B, \forall a \in A,
@@ -476,7 +476,7 @@ seen in the following lemma.
     \implies [A,B] \normsubgroup G$. Finally, an element of the form
     $aba^{-1}b^{-1} \in A$ because $ba^{-1}b^{-1} \in A$ since $A$ is normal in
     $G$ and similarly $aba^{-1} \in B$. So, $[A,B] \subgroup A \cap B$. This
-    final fact also follows from the first two items in the lemma. 
+    final fact also follows from the first two items in the lemma.
 \end{proof}
 
 This lemma also gives us the important fact that $[G,G] \normsubgroup G$. This
@@ -493,7 +493,7 @@ follows easily from the third item.
     \subgroup H \implies G \subgroup N_G(H)$ so $H \normsubgroup G$. To show
     $G/H$ is abelian, take a map $[a,b] \mapsto [aH,bH] =
     (aH)(bH)(aH)^{-1}(bH)^{-1} = aba^{-1}b^{-1}H = [x,y]H = H = e_{G/H}$. So,
-    then $[G/H,G/H] = \{e\}$. 
+    then $[G/H,G/H] = \{e\}$.
 
     To prove the other direction, let $G/H$ be abelian and $H \normsubgroup G$.
     Since $G/H$ is abelian, we have that $[aH,bH] = [a,b]H = H$. This means
@@ -515,7 +515,7 @@ Direct products provide us with a way to build new groups from known groups.
     Let $G_1, G_2$ be groups and let $H_1 \subgroup G_1$ and $H_2 \subgroup G_2$. Then
     \begin{enumerate}[label=(\alph*)]
         \item $H_1 \times H_2 = \{(h_1,h_2) | h_1 \in H_1, h_2 \in H_2\} \subgroup G_1 \times G_2$.
-        \item $H_1 \times H_2 \normsubgroup G_1 \times G_2$ if and only if $H_1 \normsubgroup G_1$ and $H_2 \normsubgroup G_2$. In this case, $(G_1 \times G_2)/(H_1 \times H_2) \isom (G_1/H_1) \times (G_2/H_2)$. 
+        \item $H_1 \times H_2 \normsubgroup G_1 \times G_2$ if and only if $H_1 \normsubgroup G_1$ and $H_2 \normsubgroup G_2$. In this case, $(G_1 \times G_2)/(H_1 \times H_2) \isom (G_1/H_1) \times (G_2/H_2)$.
     \end{enumerate}
 \end{lem}
 \begin{proof}
@@ -532,7 +532,7 @@ Direct products provide us with a way to build new groups from known groups.
     G_1/H_1 \times G_2/H_2$ where $\phi( (g_1,g_2) ) = (g_1H_1, g_2H_2)$. It
     is clear that $\phi$ is surjective and a group homomorphism, and we note
     that $\ker \phi = H_1 \times H_2$. Thus, we apply the first isomorphism
-    theorem to get our equivalence. 
+    theorem to get our equivalence.
 \end{proof}
 
 A note of warning is that not every subgroup of a direct product needs to be
@@ -541,7 +541,7 @@ of the form $H_1 \times H_2$ where $H_1 \subgroup G_1$ and $H_2 \subgroup G_2$.
 \begin{example*}
     Examine $\Z_2 = \{0,1\}$. Then, $\Z_2 \times \Z_2 =
     \{(0,0),(0,1),(1,0),(1,1)\}$.  However, $H = \{(0,0),(1,1)\} \subgroup \Z_2
-    \times \Z_2$ but is not of the form $H_1 \times H_2$.  
+    \times \Z_2$ but is not of the form $H_1 \times H_2$.
 \end{example*}
 
 \begin{rmk}
@@ -550,14 +550,14 @@ of the form $H_1 \times H_2$ where $H_1 \subgroup G_1$ and $H_2 \subgroup G_2$.
     homomorphisms) defined by $\pi_A: A \times B \to A$ by $\pi( (a,b) ) = a$
     and similarly for $\pi_B$. They satisfy the following universal property. \\
 
-    For any group $G$, and any pairs of homomorphisms $\phi_A: G \to A$ and 
+    For any group $G$, and any pairs of homomorphisms $\phi_A: G \to A$ and
     $\phi_B: G \to B$, there exists a \emph{unique} homomorphism $\phi: G \to A
     \times B$ such that $\pi_A \circ \phi = \phi_A$ and $\pi_b \circ \phi =
     \phi_B$. Indeed, if $\phi(g) = (a,b)$ for $g \in G$, then $a = \pi_A( (a,b)
     ) = \pi_A(\phi(g)) = \phi_A(g)$ and similarly for $b = \phi_B(g)$. \\
 
     The only possible map with these properties is given by $\phi: G \to A
-    \times B$ where $\phi(g) = (\phi_A(g), \phi_B(g))$. 
+    \times B$ where $\phi(g) = (\phi_A(g), \phi_B(g))$.
 
     We now check that $\phi$ so defined is a homomorphism with the properties
     $\pi_A \circ \phi = \phi_A$ and $\pi_B \circ \phi = \phi_B$.
@@ -597,8 +597,7 @@ Let us next discuss internal direct products.
     \end{enumerate}
 \end{defn}
 \begin{rmk*}
-    If $A \times B$ is an external direct product, then it is the internal
-    direct product of $A'$ and $B'$ above.
+    In which case, $AB \isom A \times B$.
 \end{rmk*}
 \begin{example}
     \begin{enumerate}[label=(\alph*)]
@@ -615,9 +614,8 @@ Let us next discuss internal direct products.
         \item $V = \{e, (12)(34), (13)(24), (14)(23)\} \normsubgroup S_4$. This
             is clearly true since conjugating by a permutation is like applying
             the permutation to the numbers of the cycle, which will not change
-            the cycle structure. Now, let $A = \{e, (12)(24)\}, B = \{e.
-            (13)(24)\}$, then $A \cap B = \{e\}$ and $A,B \normsubgroup V$. So,
-            we get that $|AB| = 2\cdot 2 = 4 = |B| \implies V = AB$ so then $V
+            the cycle structure. Now, let $A = \{e, (12)(34)\}, B = \{e, (13)(24)\}$, then $A \cap B = \{e\}$ and $A,B \normsubgroup V$. So,
+            we get that $|AB| = 2\cdot 2 = 4 = |V| \implies V = AB$ so then $V
             = A \times B \isom \Z_2 \times \Z_2$.
         \item $S_4 = VS_3$. We know that $S_3$ can be embedded into $S_4$
             easily and $V \cap S_4 = \{e\}$. So, for this to happen $|VS_3| =
