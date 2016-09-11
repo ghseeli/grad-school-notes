@@ -763,6 +763,27 @@ If \(A\)   is a finite abelian group and \(m \in \N\) with \(m \mid |A|\), then
   \[|H|=\frac{m}{p}=\frac{|H|}{|B|}=\frac{|H|}{p} \implies |H|=m.\]
 \end{proof}
 
+\begin{cor*}[1.2.8]
+  Given a finite abelian group \(A\) with \(|A|=\primedecomposition{p}{e}{r}\) there exists subgroups \(B_i \le A\) for
+  \(1 \le i \le r\) with \(|B_i|=p_i^{e_i}\) and
+  \[A = B_1 \times \ldots B_r\]
+  moreover \(B_i = \{a \mid |a| \text{ is a power of } p_i\}\).
+\end{cor*}
+
+\begin{proof}
+  Subgroups \(B_i\) with \(|B_i|=p_i^{e_i}\) exist due to 1.2.7. 
+  \[A \text{ is abelian} \implies B_i \normsubgroup A,\ \forall 1 \le i \le r\]
+  \[\prod|B_i| = |A| \qquad \bigcap B_i = \{e\} \implies A = B_1 \times \ldots \times B_r\]
+  Now we show uniqueness: \(A \isom B_1 \times \ldots \times B_r\) as an external direct product which means elemetns of
+  \(A\) come as tuples \((b_1,\ldots,b_r)\), then 
+  \[|a|=|(b_1,\ldots,b_r)|=\text{lcm}(b_1,\ldots,b_r),\]
+  which means \(|a|\) is a power of \(p_i\). (this needs clarification)
+\end{proof}
+
+\begin{rmk*}
+  \(B_i\) are Sylow \(p_i\)-subgroups of \(A\)
+\end{rmk*}
+
 \end{document}
 
 %%% Local Variables:
