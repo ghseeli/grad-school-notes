@@ -746,6 +746,23 @@ One can prove this by using the Chinese Reminder Theorem and induction on r.
   \(a=z^{\frac{m}{p}}\) is an element of order \(p\) in \(A\).
 \end{proof}
 
+\begin{prop*}[1.2.7]
+If \(A\)   is a finite abelian group and \(m \in \N\) with \(m \mid |A|\), then
+\(A\) has a subgroup of order \(m\).
+\end{prop*}
+\begin{proof}
+  We again proceed by induction. The case in which \(|A|=1\) is trivial. Assume \(|A|>1\) and \(m>1\). Choose
+  any prime divisor \(p\) of \(m\). By Cauchy's Theorem there exists an \(a \in
+  A\) of order \(p\). Set \(B=\langle a\rangle \unlhd A\), then
+  \[|\bar{A}|=\frac{|A|}{|B|}=\frac{|A|}{p}.\]
+  As \(m \mid |A|\) we have that
+  \[\frac{m}{p} \mid \frac{|A|}{p} \implies \frac{m}{p} \mid
+    \frac{|A|}{|\bar{A}|}.\]
+  Now apply the inductive hypothesis on \(\bar{A}\), that is, there exists a subgroup \(\bar{H} \le \bar{A}\) of order
+  \(p\). We now invoke the Correspondence Theorem, thus there exists \(H \le A\) with \(\bar{H}=H/B\). Then 
+  \[|H|=\frac{m}{p}=\frac{|H|}{|B|}=\frac{|H|}{p} \implies |H|=m.\]
+\end{proof}
+
 \end{document}
 
 %%% Local Variables:
