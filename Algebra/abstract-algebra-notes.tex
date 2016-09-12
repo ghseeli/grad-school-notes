@@ -32,6 +32,7 @@
 \newcommand{\Q}{{\mathbb Q}} % rational numbers
 \newcommand{\R}{{\mathbb R}} % real numbers
 \newcommand{\C}{{\mathbb C}} % complex numbers
+\newcommand{\Fp}{{\mathbb{F}_p}} % finite field of order p
 \newcommand{\End}{\operatorname{End}} % endomorphisms
 \newcommand{\Hom}{\operatorname{Hom}} % homomorphisms
 \newcommand{\GL}{\operatorname{GL}} % general linear group
@@ -82,7 +83,7 @@
 \newcommand{\subgroup}{\mathrel{<}}
 \newcommand{\normsubgroup}{\mathrel{\unlhd}}
 \newcommand{\isom}{\mathrel{\cong}}
-\newcommand{\Aut}{\text{Aut}}
+\newcommand{\Aut}{\text{Aut}}  % automorphism group
 
 \newcommand{\primedecomposition}[3]{#1_1^{#2_1} \cdots {#1_{#3}}^{#2_{#3}}}
 
@@ -800,6 +801,85 @@ If \(A\)   is a finite abelian group and \(m \in \N\) with \(m \mid |A|\), then
 \begin{proof}
   Homework Three
 \end{proof}
+
+\begin{thm*}[1.2.10 (The Fundamental Theorem of Finitely Generated Abelian Groups)]
+  Let \(A\) be a finite abelian group with \(|A|=\primedecomposition{p}{e}{r}\). Then for each \(i\) there exists a
+  uniquely determined \(l_i \in \N\) such that \(m_{i1} < m_{i2} < \ldots < m_{il_i}\) that partitions \(e_i\) by
+  \(e_i=m_{1i}+\ldots+m_{il_i}\) and
+  \[A \isom (\Z_{{p_1}^{m_{11}}} \times \Z_{{p_1}^{m_{12}}} \cdots \times \Z_{{p_1}^{m_{1l_1}}}) \times \cdots \times 
+   (\Z_{{p_r}^{m_{r1}}} \times \Z_{{p_r}^{m_{r2}}} \cdots \times \Z_{{p_r}^{m_{rl_r}}}).\]
+\end{thm*}
+
+\begin{rmk*}
+  Checkout Dummit and Foote 6.1 page 197. For a proof that every abelian \(p\)-group is a direct product of cyclic
+  \(p\)-groups.
+\end{rmk*}
+
+\begin{example*}
+  Classification up to isomorphism of all abelian groups of order \(75\). First notice that \(72=2^3 \cdot 3^2\). The
+  looking at the partitions of the exponents yields:
+  \[\Z_8,\ \Z_4 \times \Z_2,\ \Z_2 \times \Z_2 \times \Z_2\]
+  and,
+  \[\Z_9, \Z_3 \times \Z_3.\]
+  This yields six total possibilities, furthermore by uniqueness these are exactly the abelian groups of order \(75\).
+\end{example*}
+
+\begin{rmk*}[1.2.11]
+  Every abelian group is also a \(\Z\)-module. (which is a generalization of a vector space, instead of working with a
+  field, we weaken the condition to working with a ring).
+  \begin{align*}
+    \Z \times A &\longrightarrow A\\
+    (m,a)& \mapsto ma
+  \end{align*}
+  Where
+  \[ma =
+    \begin{cases}
+      \underbrace{a+a+\ldots+a}_{m \text{ times}} & m > 0\\
+      0 & m=0\\
+      \underbrace{(-a)+(-a)+\ldots+(-a)}_{-m \text{ times}} & m < 0
+    \end{cases}.
+\]
+\end{rmk*}
+One can check that this construction satisfies the axioms of a \(\Z\)-module. An abelian group is finitely generated if
+and only if the corresponding \(\Z\)-module is finitely generated. That is to say the structure of finitely generated
+abelian groups is determined by finitely generated \(Z\)-modules.
+
+\begin{defn*}[1.2.12]
+  An abelian group is called an elementary abelian \(p-group\) if \(|a|=p\) for all \(a \in A\{e\}\).
+\end{defn*}
+
+\begin{rmk*}[1.2.13]
+  A is an elementary \(p\)-group if it is also a vector space over \(\Fp\). This allows us to import linear algebra. We
+  define the scalar multiplication by
+  \begin{align*}
+    \Fp \times A &\longrightarrow A\\
+     (\bar{m},a) &\longmapsto ma
+  \end{align*}
+  This is well defined since if \(\bar{m} = n \in \Fp\) then there exists \(k\) such that \(n=m+kp\) which means
+  \(na=(m+kp)a=ma+k(pa)=ma+k(0)=ma\). Next notice that nay group homomorphism \(f \colon A \to A\) is automatically
+  \(\Fp\)-linear: \(f(\bar{m}a)=\bar{m}f(a)\).
+\end{rmk*}
+
+\begin{cor}[1.2.14]
+Let \(A\) be an elementary abelian \(p\)-group.
+\begin{enumerate}
+\item[(a)] \(A\) is a direct sum of copies of \(\Z_p\)
+\item[(b)] \(\Aut(A) \isom \GL(A)=\{f \colon A \to A \mid f \text{ is a bijection}\}\)
+\end{enumerate}
+\end{cor}
+
+Implications for elementary abelian \(p\)-groups: \(\Aut(A) \isom \GL(\Fp)\)
+\begin{enumerate}
+\item[a] \(A\) has a basis \(\{x_i \mid i \in I\}\) 
+\item[b] Any additive group is \(\Fp\) linear. \[\GL(A) \subseteq \Aut(A),\ \Aut(A) \subseteq \GL.\]
+\end{enumerate}
+
+\begin{example*}
+  \begin{gather*}
+    \Aut(\Z_2 \times \Z_2) \isom S_3 \isom \GL_2(\mathbb{F}_2)\\
+    \Aut(\Z_2 \times \Z_2 \times Z_2) \isom \GL_3(\mathbb{F}_2) \rightsquigarrow \text{order 168}
+  \end{gather*}
+\end{example*}
 
 \end{document}
 
