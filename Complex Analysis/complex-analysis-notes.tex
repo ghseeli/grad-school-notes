@@ -217,9 +217,9 @@ Let us continue to understand some basic functions in on $\C$. \\
     $f(z) = iz$ & Rotation counter-clockwise by $\frac{\pi}{2}$. \\
     $f(z) = (1+i)z$ & Rotation counter-clockwise by $\frac{\pi}{4}$ and dilation by $\sqrt{2}$. \\
     $f(z) = z^2$ & Squares modulus and doubles the argument. \\
-   \hline 
+   \hline
 \end{tabular} \\
-Let us also examine $f(z) = z^{\frac{1}{2}} = \{w | w^2=z\}$. This is a multivalued function satisfying 
+Let us also examine $f(z) = z^{\frac{1}{2}} = \{w | w^2=z\}$. This is a multivalued function satisfying
 \begin{align*}
     (|w|e^{i\theta})^2 = |z|e^{i \arg z} & \implies \begin{cases}
         |w|^2 = |z| \implies |w| = \sqrt{|z|} \\
@@ -232,15 +232,15 @@ Let us also examine $f(z) = z^{\frac{1}{2}} = \{w | w^2=z\}$. This is a multival
 \end{defn}
 \begin{example}
     $z \mapsto \sqrt{|z|}e^{\frac{\Arg z}{2}i}$ is the principal branch of
-    $z^{\frac{1}{2}}$ on $\C \textbackslash (-\infty,0]$.
+    $z^{\frac{1}{2}}$ on $\C \smallsetminus (-\infty,0]$.
 \end{example}
 
 Now, let us consider $f(z) = e^z$. This is $f(z) = e^{x+iy} = e^x(\cos y +
 i\sin y)$. Notice that $e^x$ is the modulus and $\cos y + i \sin y$ is the
 argument. We also note that $e^z$ maps a grid of cartesian coordinates into a
-grid of polar coordinates. 
+grid of polar coordinates.
 
-Next, consider the inverse of $e^z$, namely $\log z$ on $\C \textbackslash
+Next, consider the inverse of $e^z$, namely $\log z$ on $\C \smallsetminus
 \{0\}$. We get that $\log z = w \implies e^w = z = e^{\Re w} \cdot e^{i \Im w}
 = |z|e^{i \arg z}$. Thus we get that $\Re w = \ln|z|$ and $\Im w \in \arg z$.
 When we take $\Im w = \Arg z$, we get $\Log z$. It is instructive to look at a
@@ -278,17 +278,17 @@ To get a group out of these actions, one needs to add $f(z) = z$ and $f(z) =
 surface of a sphere ($\cong \Z_2 \times \Z_2 \times \Z_2$). This means that
 these maps will map circles on a sphere to other circles on a sphere, which
 also means that circles and lines on a complex plane will be mapped ot circles
-and lines on a complex plane. 
+and lines on a complex plane.
 
 Actually note that the group $O(3)$ (of 3 by 3 matrices) is the group of all
-isometries of the sphere. Geometrically, there are 4 types of isometries 
+isometries of the sphere. Geometrically, there are 4 types of isometries
 \begin{enumerate}
     \item The identity
     \item Reflection over a plane
     \item Rotation around an axis
     \item A glide reflection (rotation then reflection over the equator).
 \end{enumerate}
-Note, just items 1 and 3 form the group $SO(3)$. 
+Note, just items 1 and 3 form the group $SO(3)$.
 
 \begin{defn}
     Functions of $z$ that are orientation perserving are known as conformal
@@ -304,7 +304,7 @@ without pictures.
 
 \begin{defn}
 A domain in $\C$ is convex if, for any two points in the domain, the line
-between them is also contained in the domain. 
+between them is also contained in the domain.
 \end{defn}
 \begin{defn}
     A domain in $\C$ is star-shaped if there exists a point for which, when a
@@ -316,13 +316,13 @@ between them is also contained in the domain.
     Let $f: \C \to \C$ be defined on a domain containing $z$. If $\lim_{\Delta
     z \to 0} \frac{f(z+\Delta z) - f(z)}{\Delta z}$ exists in $\C$, this number
     is called the \emph{derivative of $f$} at $z$ and we say that $f$ is
-    differentiable at $z$. 
+    differentiable at $z$.
 \end{defn}
 
 ```Usual examples'' include $f(z) = z^n \implies f'(z) = nz^{n-1}$. Also note
 that $f(z) = \overline{z}$ is not differentiable anywhere because the value of
 the limit changes depending on if you approach in the real direction or the
-imaginary direction. 
+imaginary direction.
 \begin{defn}
     $f$ is \emph{analytic} on a domain if it is differentiable at all point on
     the domain and $f'(z)$ is continuous.
@@ -333,7 +333,7 @@ theorem later.
 \begin{thm}
     Let $f(x+iy) = u(x,y)+iv(x,y)$ be defined on a domain. Then it is analytic
     if and only if $u,v$ satisfy the Cauchy-Riemann equations $u_x = v_y, u_y =
-    v_x$ and these partials are continuous. 
+    v_x$ and these partials are continuous.
 \end{thm}
 \begin{proof}
     Assume $f$ is analytic. Then, take the limits of $\Delta z$ along the
@@ -361,7 +361,7 @@ theorem later.
     \\
     \begin{tabular}{|c|c|}
         \hline
-        $\frac{1}{z}$ & Singly valued on $\C \textbackslash \{0\}$, 0 is not a
+        $\frac{1}{z}$ & Singly valued on $\C \smallsetminus \{0\}$, 0 is not a
         branch point. \\
         $z^{\frac{1}{2}}$ & Defined on 0, but 0 is a branch point. This yields
         a phase factor of $-1$. \\
@@ -391,12 +391,12 @@ theorem later.
     $\frac{|f(x)|}{|g(x)|}$ is bounded near $c$.
     \begin{defn}
         $f$ is $o(g)$ if $\forall \epsilon > 0$, there is a neighborhood of $c$
-        where $|f(x)| < \epsilon |g(x)|$. 
+        where $|f(x)| < \epsilon |g(x)|$.
     \end{defn}
     Here, if there is a neighborhood where $g \neq 0$, this says that
     $\frac{|f(x)|}{|g(x)|} \to 0$.\\
 
-    It is important to note that language here gets abused frequently. 
+    It is important to note that language here gets abused frequently.
 
     \begin{example}
         (At $\infty$), $f$ is $O(x^6)$, $g$ is $O(x^4)$. Then, $f+g$ is
@@ -405,7 +405,7 @@ theorem later.
 
     Some further consequences are that $f$ is bounded is the same as saying $f$
     is $O(1)$ and that saying $f$ goes to 0 is the same as saying $f$ is
-    $o(1)$. 
+    $o(1)$.
 
     \subsection*{Returning to differentiation}
 
@@ -416,7 +416,7 @@ theorem later.
         $f$ at $x$. Note that the $o(c)$ captures the essential notion of the
         derivative, since it essentially states that the error must go to zero
         and must be $o(\Delta x)$, ie, the error must approach zero faster than
-        $\Delta x$. 
+        $\Delta x$.
     \end{defn}
     Note that the statement for complex differentiability is the same, but
     replace all $\Delta x$ by $\Delta z$ and replace $o(\Delta x)$ with $o(|
@@ -433,25 +433,25 @@ theorem later.
         \end{align*}
         Note the abusive notation, but it gets the desired result since the
         $o(\Delta x)$ terms go to 0 and thus the derivative is
-        $f'(x)g(x)+g'(x)f(x)$. 
+        $f'(x)g(x)+g'(x)f(x)$.
     \end{proof}
 
     Now, recall that we had a theorem stating that a function is analytic if
-    and only if it satisfies the Cauchy-Reimann equation. 
+    and only if it satisfies the Cauchy-Reimann equation.
     \begin{proof}
         Let us examine $f'(z) = \lim_{\Delta z \to 0} \frac{f(z+\Delta z) -
         f(z)}{\Delta z}$. Taking $\Delta z = \Delta x$ real, then $f'(z) =
         \lim_{\Delta x \to 0} \frac{u(x+\Delta x, y)+iv(x+\Delta x,y) -
-        (u(x,y)+iv(x,y))}{\Delta x} = u_x(x,y)_iv_x(x,y)$. 
+        (u(x,y)+iv(x,y))}{\Delta x} = u_x(x,y)_iv_x(x,y)$.
 
         Similarly, taking $\Delta z = i \Delta y$, we get $f'(z) = \frac{u(x,
         y+ \Delta y) + iv(x+,y+\Delta y)}{i\Delta y} = -iu_y+v_y$. Thus,
         setting both parts equal, we get $v_x = -u_y$ and $u_x = v_y$.
 
         We will now prove the converse using Landau notation instead of limits.
-        Now, we know that $f(z+\Delta z) = 
+        Now, we know that $f(z+\Delta z) =
         u(x + \Delta x, y + \Delta y) + iv(x+\Delta x, y + \Delta y)$. We will
-        choose to work with the real part first. 
+        choose to work with the real part first.
         \begin{align*}
             u(x+\Delta x, y + \Delta y)  & = u(x, y+ \Delta y) + \Delta x
             u_x(x,y+\Delta y) + o(\Delta x) \\
@@ -460,7 +460,7 @@ theorem later.
             u_x(x,y+\Delta y) + o(\Delta x) \\
             \ & \text{ using the }y\text{ derivative.} \\
             \ & = u(x,y) + \Delta y u_y(x,y) + o(\Delta y) + \Delta x
-            (u_x(x,y)+o(1)) + o(\Delta x) \\ 
+            (u_x(x,y)+o(1)) + o(\Delta x) \\
             \ & \text{ using the continuity of }u_x\\
             \ & = u + \Delta y u_y + \Delta x u_x + o(\Delta y) + o(1)\Delta x
             + o(\Delta x) \\
@@ -474,7 +474,7 @@ theorem later.
             y u_x + i \Delta x v_x + o(|\Delta z|) \\
             \ & = u + iv + \Delta z(u_x+iv_x)+o(|\Delta z|)
         \end{align*}
-        So, $f'(z) = u_x+iv_x$, which we assumed continuous, so $f$ is analytic. 
+        So, $f'(z) = u_x+iv_x$, which we assumed continuous, so $f$ is analytic.
     \end{proof}
     \section{(9/8/2016) Lecture 6: Developing Intuition for Complex Differentiation}
     In class, we first completed an exercise imagining the graph of $2i$
@@ -482,7 +482,7 @@ theorem later.
     produce (possibly degenerate) spirals. Two graphs are provided here,
     but once raised to a complex power, the graphs produce spirals that
     increase their modulus exponentially, and so, at scale, the graph is rather
-    unenlightening. 
+    unenlightening.
 
     \begin{figure}[h]
         \centering
@@ -503,12 +503,12 @@ theorem later.
         A function $f: \R^m \to \R^n$ is differentiable at $x$ if $f(x+h) =
         f(x)+D(h)+o(h)$ where $D: \R^m \to \R^n$ is linear (a matrix). In fact,
         $D$ is the Jacobian matrix of partial derivatives and $f(x)+D(h)$ is
-        the tangent plane. 
+        the tangent plane.
     \end{defn}
     For a complex function $f: \C \to \C$, we write $f = u+iv$ where $u,v: \R^2
     \to \R$. When $u,v \in C^1$, $D = \left( \begin{array}{cc}
         u_x & u_y \\
-        v_x & v_y 
+        v_x & v_y
     \end{array}\right)$. As a reminder, complex differentiability happens when
     we have real differentiability plus the function satisfied the
     Cauchy-Riemann equations. Then, note that $\det D = u_x^2 + v_x^2 =
@@ -544,28 +544,28 @@ theorem later.
     \begin{defn}
         A function $u: \R^n \to \R$ is \emph{harmonic} if it is a $C^2$
         solution to $\Delta u = 0$. Note that $\nabla^2u = \Delta u$ and is
-        called the Laplacian. 
+        called the Laplacian.
     \end{defn}
     Harmonic functions will turn out to be $C^\infty$, but we cannot prove this
-    yet. Note also that if $f = u_iv$ is analytic, then $u$ is harmonic. This
-    follow because $u_{xx}+u_{yy} = u_{xx}+(-v_x)_y = u_{xx}-v_{yx} =
+    yet. Note also that if $f = u+iv$ is analytic, then $u$ is harmonic. This
+    follows because $u_{xx}+u_{yy} = u_{xx}+(-v_x)_y = u_{xx}-v_{yx} =
     u_{xx}-u_{xx} = 0$. There is an almost converse which states that ``a
     harmonic function is locally the real part of an analytic function.'' That
-    is, on a neighborhood of any point, there is a $v$ with $u+iv$ analytic.
-    Such a $v$ is called a \emph{harmonic conjugate} (unique up to additive
-    constant.) eg, there is an $x$ such that $u=xy$ satisfying \[ 
+    is, on a neighborhood of any point, there is a $v$ with $u+iv$ analytic locally.
+    Such a $v$ is called a \emph{harmonic conjugate} (unique up to an additive
+    constant), e.g., there is an $x$ such that $u=xy$ satisfying \[
         \begin{cases}
- v_x = -u_y = x \\
- v_y = u_x = y.
+ u_x = v_y = y \\
+ u_y = -v_x = x. \\
     \end{cases}
 \]
 This is a PDE satisfied by the solution $\frac{y^2-x^2}{2} + C$. So, we get
 that $xy+i\left( \frac{y^2-x^2}{2} \right)$ is analytic. In terms of $z$, this
 conjugate is $f(x) = \frac{-iz^2}{2}$. Also note that the local part of the
 definition is necessary. For instance $\frac{1}{2} \log(x^2+y^2)$ is harmonic
-on $\R^2 \textbackslash \{(0,0)\}$. \\
+on $\R^2 \smallsetminus \{(0,0)\}$. \\
 
-Some follow up facts to note are 
+Some follow up facts to note are
 \begin{itemize}
     \item All harmonic functions of $\R$ have the form $ax+b$.
     \item $u+v$ is harmonic.
@@ -579,16 +579,16 @@ Some follow up facts to note are
 \begin{defn}
     If $f$ is analytic in a neighborhood at $z_0$ and $f'(z_0) \neq 0$, then
     $f$ is \emph{conformal} at $z_0$. This is the same as saying directed
-    angles are preserved by $f$ at $z_0$. 
+    angles are preserved by $f$ at $z_0$.
 \end{defn}
 \begin{defn}
     A \emph{conformal mapping} between domains is a one-to-one $C^1$ function
     that is conformal at each point.
 \end{defn}
-Note the following implications. 
+Note the following implications.
 \begin{itemize}
     \item $f: D \to V$ that is one-to-one and analytic is conformal.
     \item If $f$ is analytic at $z_0$ and $f'(z_0) \neq 0$, then $f$ maps a
-        neighborhood of $z_0$ conformally onto the image. 
+        neighborhood of $z_0$ conformally onto the image.
 \end{itemize}
     \end{document}

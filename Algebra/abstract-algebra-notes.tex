@@ -658,7 +658,7 @@ divisor \(d\) of \(n\).
     \end{align*}
     is an injective group homomorphism.
   \end{enumerate}
-      
+
 \end{lem*}
 \begin{prop*}[1.2.2]
   \[\Aut(\Z_n) \isom \Z_n^\times\]
@@ -703,16 +703,16 @@ One can prove this by using the Chinese Reminder Theorem and induction on r.
     \(n=\primedecomposition{p}{e}{r}\) then
     \[\Z_n^\times \isom \prod_{i-1}^r \Z^\times_{{p_i}^{e_i}}.\]
   \item[(b)]
-    \(\varphi(mn)=|\Z_{mn}^\times|=|\Z_{n}^\times\times
+    \(\varphi(mn)=|\Z_{mn}^\times|=|\Z_{m}^\times\times
     \Z_{n}^\times|=|\Z_{m}^\times||\Z_{n}^\times|=\varphi(m)\varphi(n)\).
   \end{enumerate}
 \end{cor*}
 \begin{prop*}[1.2.5]
   For \(e \in \N\)
   \begin{enumerate}
-    \item[(a)] \(\Z_{2^e}^\times \isom \Z_2 \times Z_{2^{e-1}},\ e \ge 2\)
+    \item[(a)] \(\Z_{2^e}^\times \isom \Z_2 \times \Z_{2^{e-2}},\ e \ge 2\)
     \item[(b)] \(\Z_p^\times \isom \Z_{p-1}\) for every prime \(p\)
-    \item[(c)] \(\Z_{p^e}^\times \isom \Z_{p^{e-1}(p-1)}\)
+    \item[(c)] \(\Z_{p^e}^\times \isom \Z_{p^{e-1}(p-1)} \isom \Z_{p^{e-1}} \times \Z_{p-1} \) for every prime p
   \end{enumerate}
 \end{prop*}
 \end{document}
