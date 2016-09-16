@@ -413,9 +413,23 @@ For each $x \in M$, we can use a section $s$ to associate a vector $s(x)$.  This
 \begin{thm}[local submersion theorem]
 	Synonym: implicit function theorem.
 	Note: This theorem is equivalent to the inverse function theorem.
+
+	function $f : \R^{k+m} \to \R^m$ is $C^1$.
+	Let $x \in \R^{k+m}$ and $z \in \R^m$.
+	Suppose $f'(x)$ has rank $m$.
+	Then there exists $W$ nbd $x$ and $V$ nbd $z$ and $U$ open in $\R^k$ and a diffeomorphism $I : W \to U \times V$
+	s.t. $f = I.\pi$ where $\pi$ is the projection from $U \times V$ onto $V$.
+
 \end{thm}
 \begin{thm}[local immersion theorem]
 	This is very similar to the local submersion theorem (more soon...)
+
+	function $f : \R^{m} \to \R^{m+k}$ is $C^1$.
+	Let $x \in \R^{m}$ and $z \in \R^{m+k}$.
+	Suppose $f'(x)$ has rank $m$.
+	Then there exists $V$ nbd $x$ and $W$ nbd $z$ and $U$ open in $\R^k$ and a diffeomorphism $I : U \times V \to W$
+	s.t. $f = in.I$ where $in$ is the inclusion from $V$ to $U \times V$.
+
 \end{thm}
 \begin{thm}
 	If $f$ is locally diffeomorphic at $x$, then the slope matrix of $f^{-1}$ at $f(x)$ is given by $(f^{-1})^\prime(f(x)) = (f^\prime(a))^{-1}$.
@@ -436,7 +450,7 @@ For each $x \in M$, we can use a section $s$ to associate a vector $s(x)$.  This
 \end{defn}
 
 \begin{defn}
-	A space $M$ is an $n$-dim top \emph{manifold} if $M$ is seperable and 2nd-countable, and $M$ has an open cover $\{U_i\}_{i \in I}$ such that each $U_i$ is homeomorphic (via $phi_i$) to an open set in $\R^n$.  $\{ U_i, \phi_i \}$ is called an \emph{atlas} for $M$.
+	A space $M$ is an $n$-dim top \emph{manifold} if $M$ is seperable and 2nd-countable, and $M$ has an open cover $\{U_i\}_{i \in I}$ such that each $U_i$ is homeomorphic (via $phi_i$) to an open set in $\R^n$.  Then $\{ U_i, \phi_i \}$ is called an \emph{atlas} for $M$.
 \end{defn}
 \begin{thm}
 	The union of any amount of atlases is itself an atlas.
@@ -447,7 +461,7 @@ For each $x \in M$, we can use a section $s$ to associate a vector $s(x)$.  This
 \end{defn}
 
 \begin{defn}
-	Two smooth atlases $A$ and $A^\prime$ are \emph{equivalent} if each $phi_\beta^\prime$ of $phi_\alpha^{-1}$ is $C^\infty$ both ways.
+	Two smooth atlases $A$ and $A^\prime$ are \emph{equivalent} if for each $\alpha$, $\beta$, $phi_\beta^\prime$ of $phi_\alpha^{-1}$ is $C^\infty$ both ways.
 \end{defn}
 \begin{rmk}
 	It can be verified that the above definition really is an equivalence relation.
@@ -475,6 +489,53 @@ For each $x \in M$, we can use a section $s$ to associate a vector $s(x)$.  This
 	$M = S^1$.  $A = {U_l, U_r, U_t, U_b}$.  For $U_t$, for example, we choose $phi_t$ to be a projection of the semicircle with open endpoints to a line segment with open endpoints.  Do the same for the others.  Looking at $\phi^{-1}$ of $\phi$'s will reveal that their composition is $C^\infty$, so we conclude that $A$ is smooth.
 \end{example}
 
+\begin{defn}
+	An \emph{n-}manifold or \emph{n-dimensional} manifold is a manifold that is locally homeomorphic to $\R^n$.  ("n-" is the adjective to "manifold".)
+\end{defn}
+
+
+\begin{defn}
+	Given $M$ smooth manifold w/ atlas $A = \{ U_a, \,  \phi_a : U_a \to \R^m \}$.
+	Given $N$ smooth manifold w/ atlas $B = \{ O_b, \,  \phi_b : U_b \to \R^n \}$.
+	A cont function $f : M \to N$ is \emph{smooth} if for all $a$, for all $b$, $\phi_a^{-1}.f.\psi_b$ is $C^\infty$.
+\end{defn}
+\begin{defn}
+	Given the same givens as above.
+	$N$ and $M$ are \emph{diffeomorphic} if there exists $f : M \to N$ and $g : N \to M$ both smooth such that $f.g = id_M$ and $g.f = id_N$.
+\end{defn}
+
+\begin{rmk}
+	Some manifolds have NO smooth atlases.
+
+	Some manifolds have 2 (or morse) smooth atlases that are not equivalent to each other.
+\end{rmk}
+
+
+\begin{thm}
+	$\R^4$ has an uncountable number of smooth structures (equivalence classes of smooth atlases).  (But all other $\R^n$ have a unique smooth structure.)
+\end{thm}
+
+\begin{rmk}
+	If $(M,A)$ is a smooth $n$-manifold, and $U$ an open set in $M$, then $(U,A_U)$ is a smooth $n$-manifold, where $A_U$ is like $A$, but intersecting each set with $U$, and restricting the $\phi$ functions accordingly.
+\end{rmk}
+
+\begin{defn}
+	Given $M$ smooth $m$-manifold with atlas $A = \{ U_a, \,\phi_a : U_a \to \R^m \}$.
+	Given $N$ smooth $n$-manifold with atlas $B = \{ V_b, \,\psi_b : V_b \to \R^n \}$.
+	WLOG $m <=n$.
+	A smooth function $f : M \to N$  is an \emph{immersion} if given any $a, b, x \in (V_b.f^{-1} \cap U_a)$, THEN $x.\phi_a^{-1}.f.\psi_b$ is BLANK.  BLANK?
+\end{defn}
+
+\begin{defn}
+	$M$ is a submanifold of $N$ if there exists an immersion from $M$ to $N$.
+\end{defn}
+
+\begin{defn}
+	An \emph{embedding} is an immersion that is injective and proper.
+\end{defn}
+
+
+
 
 
 
@@ -484,4 +545,3 @@ For each $x \in M$, we can use a section $s$ to associate a vector $s(x)$.  This
 
 
 \end{document}
-
