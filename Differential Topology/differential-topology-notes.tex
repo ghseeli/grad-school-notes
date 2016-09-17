@@ -166,7 +166,7 @@ that ``locally'' look like $\R^n$.
 	S^2$ by $(x,v) \to x$. Then, we have that $p^{-1}(x) = T_{\vec{x}}S^2$.
 \end{example}
 \begin{defn}
-	The \emph{tangent bundle} of a manifold $M$, denoted $TM$, is $\{ (x,v) |\; x \in M and v \in T_xM \}$.
+	The \emph{tangent bundle} of a manifold $M$, denoted $TM$, is $\{ (x,v) |\; x \in M \;\text{and}\; v \in T_xM \}$.
 \end{defn}
 
 Now, let $M$ be any differential manifold. Studying the function $p: TM \to M$
@@ -180,26 +180,7 @@ can tell us a lot about $M$.
 	differentiable.
 \end{example}
 
-A famous topological question is: could $s(x) \neq \vec{0} \in T_{\vec{x}}S^2$
-for all $x \in S^2$? The famous answer is no. This is analogous to the
-so-called ``hairy-ball theorem''. By contrast, the answer would be yes if $S^2$
-were replaced by a circle ($S^1$), a 3-sphere ($S^3 \subset \R^4$), or a torus
-($T^2$).
 
-Given this result, clearly $TS^2$ is not $S^2 \times \R^2$. This is because,
-for $S^2 \times \R^2$, we could define $s(\vec{x}) = (\vec{x}, \vec{0})$ and
-$p( (\vec{x},\vec{y}) ) = \vec{x}$ which gives us $(p \circ s)(\vec{x}) =
-p(s(\vec{x})) = p( (\vec{x}, \vec{0}) )= \vec{x}$.
-
-
-In differential topology, one can also do ``fiberwise'' linear algebra. Let
-$T^*M$ be a collection of the deual vector spaces $(T_{\vec{x}}M)^*$ where $V^* =
-\{L: V \to \R\}$ with $L$ linear. A section of $T^*M \to M$ is given by $(x,L)
-\to x$ where $L: T_{\vec{x}}M \to \R$ in this case. Now, we call $w: M \to
-T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \emph{1-forms}.
-
-These ideas are just a preview of what is to come in future lectures. Now, let
-us move on to introducing various sorts of functions
 
 \subsection{Functions}
 
@@ -222,21 +203,19 @@ Now, recall \begin{enumerate}
 
 Now, let us define what it means for a function to be differentiable.
 \begin{defn}
-	$f: \R^n \to \R^m$ is differentiable at $\vec{x} \in \R^n$ if there exists
-	a linear function $L: \R^n \to \R^m$ so that $\lim_{\delta \vec{x} \to
-	\vec{0}} \frac{||f(\vec{x}+\delta \vec{x}) - f(\vec{x}) - L(\delta
-	\vec{x})||}{||\delta \vec{x}||} = 0$.
+	$f :\R^n \to \R^m$ is \emph{differentiable} at $x \in R^n$ if there exists a linear function $df_x : \R^n \to \R^m$  such that $\lim_{h \to 0} \frac{|| (f(x)-f(x+h)) - (df_x(h)) ||}{||h||} = 0$.  Note that $h$ is a vector, as well as $x$.
 \end{defn}
+\begin{defn}
+	If $f$ is differentiable at $x$ by a linear function $L$, then $L$ is the \emph{differential} of $f$ at $x$.  This is denoted $df_x$.  Using the standard basis, the differential can be expressed as a slope matrix, which is denoted $f'(x)$.
+\end{defn}
+\begin{thm}
+	If $f$ is differentiable at $x$, then the differential $df_x$ in the $v$ direction is equal to $\lim_{t \to 0} \frac{f(x+tv) - f(x)}{t}$.
+\end{thm}
 
 \begin{thm}[a-b-dimensional tangent plane]
-	Given a function $f : \\mathbb{R}^a \\to \mathbb{R}^b$ and its slope matrix $f^\prime(v)$ at a vector $v \in \mathbb{R}^a$, then the equation for the plane tangent to $f$ at $v$ is $T_v(w) = f(v) + f'(v)(w-v)$ or, in point-slope form, $\frac{T_v(w)-f(v)}{w-v} = f'(v)$.,
+	Given a function $f : \R^a \to \R^b$ and its slope matrix $f^\prime(v)$ at a vector $v \in \R^a$, then the equation for the plane tangent to $f$ at $v$ is $T_v(w) = f(v) + f'(v)(w-v)$ or, in point-slope form, $\frac{T_v(w)-f(v)}{w-v} = f'(v)$.
 	% dependencies: [function, derivative, tangent],
 \end{thm}
-\begin{defn}
-	If $p$ is a function from $TM$ to $M$, then a \emph{section} of $p$ is a right inverse of $p$.,
-\end{defn}
-
-For each $x \in M$, we can use a section $s$ to associate a vector $s(x)$.  This creates a vector field.
 
 \begin{thm}[billiard ball theorem]
 	A continuously differentiable section $s$ on $TS^2$ with $s(x) \neq 0$ for all $x \in S^2$ does not exist.,
@@ -244,9 +223,26 @@ For each $x \in M$, we can use a section $s$ to associate a vector $s(x)$.  This
 	% // NO --> apparently TS^2 not isomorphic to S^2 \times \R^2.
 	% // Ts^2 \subseteq S^2 \times \R^3 \subseteq \R^3 \times \R^3.
 \end{thm}
-\begin{thm}[continuously differentiable sections]
-	A continuously differentiable section $s$ on $TM$ with $s(x) \neq 0$ for all $x \in M$ exists for the following possible $M$: $S^1$ (circle), $S^3$, $T^2$ (torus).
-\end{thm}
+
+A famous topological question is: could $s(x) \neq \vec{0} \in T_{\vec{x}}S^2$
+for all $x \in S^2$? The famous answer is no. This is analogous to the
+so-called ``hairy-ball theorem''. By contrast, the answer would be yes if $S^2$
+were replaced by a circle ($S^1$), a 3-sphere ($S^3 \subset \R^4$), or a torus
+($T^2$).
+
+Given this result, clearly $TS^2$ is not $S^2 \times \R^2$. This is because,
+for $S^2 \times \R^2$, we could define $s(\vec{x}) = (\vec{x}, \vec{0})$ and
+$p( (\vec{x},\vec{y}) ) = \vec{x}$ which gives us $(p \circ s)(\vec{x}) =
+p(s(\vec{x})) = p( (\vec{x}, \vec{0}) )= \vec{x}$.
+
+
+In differential topology, one can also do ``fiberwise'' linear algebra. Let
+$T^*M$ be a collection of the dual vector spaces $(T_{\vec{x}}M)^*$ where $V^* =
+\{L: V \to \R\}$ with $L$ linear. A section of $T^*M \to M$ is given by $(x,L)
+\to x$ where $L: T_{\vec{x}}M \to \R$ in this case. Now, we call $w: M \to
+T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \emph{1-forms}.
+
+
 \begin{defn}
 	The set $U$ is \emph{open} if it can be written as a union of open balls $B$.
 \end{defn}
@@ -266,16 +262,7 @@ For each $x \in M$, we can use a section $s$ to associate a vector $s(x)$.  This
 	\end{itemize}
 \end{defn}
 \begin{defn}
-	$f :\R^n \to \R^m$ is \emph{differentiable} at $x \in R^n$ if there exists a linear function $df_x : \R^n \to \R^m$  such that $lim_{h \to 0} \frac{|| (f(x)-f(x+h)) - (df_x(x+h)) ||}{||h||} = 0$.  Note that $h$ is a vector.
-\end{defn}
-\begin{defn}
-	If $f$ is differentiable at $x$ by a linear function $L$, then $L$ is the \emph{differential} of $f$ at $x$.  This is denoted $df_x$.  Using the standard basis, the differential can be expressed as a slope matrix, which is denoted $f'(x)$.
-\end{defn}
-\begin{thm}
-	If $f$ is differentiable at $x$, then the differential $df_x$ in the $v$ direction is equal to $lim_{t \to 0} \frac{f(x+tv) - f(x)}{t}$.
-\end{thm}
-\begin{defn}
-	For any $k \in \mathbb{N}$, a function $f:\mathbb{R}^n \\to \\mathbb{R}^m$ is \emph{$k$-continuously-differentiable}, denoted $f \in C^k$, if all iterated partial derivatives of $f$ of order $k$ exist and are continuous.
+	For any $k \in \N$, a function $f:\R^n \to \R^m$ is \emph{$k$-continuously-differentiable}, denoted $f \in C^k$, if all iterated partial derivatives of $f$ of order $k$ exist and are continuous.
 \end{defn}
 \begin{thm}
 	For any $k \in \N$, the function $f$ has class $C^k$ iff all of its coordinate functions $f_i$ have class $C^k$.
@@ -364,33 +351,33 @@ For each $x \in M$, we can use a section $s$ to associate a vector $s(x)$.  This
 
 
 \begin{defn}[derivative of multivariable function]
-	The \emph{tangent plane} to function $f : \mathbb{R}^n \\to \mathbb{R}^m$ at point $a$, denoted $df_a$ or $f^{\prime}(a)$, is the unique function that satisfies $\lim_{h\\to 0} \\frac{||f(a+h) - f(a) - df_a(h)||}{||h||} = 0$.
+	The \emph{tangent plane} to function $f : \R^n \to \R^m$ at point $a$, denoted $df_a$ or $f^{\prime}(a)$, is the unique function that satisfies $\lim_{h\to 0} \frac{||f(a+h) - f(a) - df_a(h)||}{||h||} = 0$.
 \end{defn}
 \begin{defn}
-	The \emph{directional derivative} of $f$ at $x$ in the $v$ direction is $df_x(v)$ which is $\lim_{h\\to 0} \\frac{f(x+hv) - f(x)}{h}$.
+	The \emph{directional derivative} of $f$ at $x$ in the $v$ direction is $df_x(v)$ which is $\lim_{h\to 0} \frac{f(x+hv) - f(x)}{h}$.
 \end{defn}
 \begin{defn}
-	Let $U$ and $V$ be open sets in $\mathbb{R}^n$ (topological spaces, soon).  A function $f:U\\to V$ is a \emph{homeomorphism} iff it is a bijection and both $f$ and $f^{-1}$ are continuous.
+	Let $U$ and $V$ be open sets in $\R^n$ (topological spaces, soon).  A function $f:U\to V$ is a \emph{homeomorphism} iff it is a bijection and both $f$ and $f^{-1}$ are continuous.
 	Synonym: bi-continuous function.
 \end{defn}
 \begin{defn}
-	Let $U$ and $V$ be open sets in $\mathbb{R}^n$.  A function $f:U\\to V$ is a \emph{$C^r$-diffeomorphism} iff it is a bijection and both $f$ and $f^{-1}$ are $r$-continuously-differentiable.
+	Let $U$ and $V$ be open sets in $\R^n$.  A function $f:U\to V$ is a \emph{$C^r$-diffeomorphism} iff it is a bijection and both $f$ and $f^{-1}$ are $r$-continuously-differentiable.
 \end{defn}
 \begin{defn}
-	Let $U$ and $V$ be open sets in $\mathbb{R}^n$.  A function $f:U\\to V$ is a \emph{diffeomorphism} iff it is a bijection and both $f$ and $f^{-1}$ are differentiable.
+	Let $U$ and $V$ be open sets in $\R^n$.  A function $f:U\to V$ is a \emph{diffeomorphism} iff it is a bijection and both $f$ and $f^{-1}$ are differentiable.
 	Synonym: bi-differentiable function.
 \end{defn}
 \begin{defn}
-	A function $f:\mathbb{R}^n \\to \\mathbb{R}^m$ is \emph{smooth}, denoted $C^\infty$ if $f$ is $C^k$ for all $k \in \mathbb{N}$.
+	A function $f:\R^n \to \R^m$ is \emph{smooth}, denoted $C^\infty$ if $f$ is $C^k$ for all $k \in \N$.
 	Synonym: $\infty$-continuous.
 \end{defn}
 \begin{thm}
-	If $f:\mathbb{R}^n \\to \\mathbb{R}^m$ is $C^1$ in a neighborhood of $x$, then $f$ is differentiable at $x$.
+	If $f:\R^n \to \R^m$ is $C^1$ in a neighborhood of $x$, then $f$ is differentiable at $x$.
 	% // no proof :(
 	% // need to understand this better
 \end{thm}
 \begin{thm}
-	If $f:\mathbb{R}^n \\to \\mathbb{R}^m$ is $C^2$ in a neighborhood of $x$, then for all $i$ and $j$, $\\frac{\partial^2f}{\partial x_i \partial x_j}(x) = \\frac{\partial^2f}{\partial x_j \partial x_i}(x)$.
+	If $f:\R^n \to \R^m$ is $C^2$ in a neighborhood of $x$, then for all $i$ and $j$, $\frac{\partial^2f}{\partial x_i \partial x_j}(x) = \frac{\partial^2f}{\partial x_j \partial x_i}(x)$.
 	% // no proof :(
 \end{thm}
 
@@ -400,7 +387,7 @@ For each $x \in M$, we can use a section $s$ to associate a vector $s(x)$.  This
 	If $f$ is differentiable at $a$ and $g$ is differentiable at $f(a)$, then $(g \circ f)$ is differentiable at $a$, and $(g \circ f)'(a) = g'(f(a))f'(a)$.
 \end{thm}
 \begin{thm}[inverse function theorem]
-	For any $k \in \mathbb{N}^+$, if $f:\mathbb{R}^n \\to \\mathbb{R}^n$ is $C^k$ and $f^\prime(x)$ is invertible for some $x$, then $f$ is locally a diffeomorphism of class $C^k$ at $x$.
+	For any $k \in \N^+$, if $f:\R^n \to \R^n$ is $C^k$ and $f^\prime(x)$ is invertible for some $x$, then $f$ is locally a diffeomorphism of class $C^k$ at $x$.
 \end{thm}
 \begin{example}
 	Counterexample: Let $$f(x) =
@@ -461,7 +448,7 @@ For each $x \in M$, we can use a section $s$ to associate a vector $s(x)$.  This
 \end{defn}
 
 \begin{defn}
-	Two smooth atlases $A$ and $A^\prime$ are \emph{equivalent} if for each $\alpha$, $\beta$, $phi_\beta^\prime$ of $phi_\alpha^{-1}$ is $C^\infty$ both ways.
+	Two smooth atlases $A$ and $A^\prime$ are \emph{equivalent} if for each $\alpha$, $\beta$, $\phi_\beta^\prime$ of $\phi_\alpha^{-1}$ is $C^\infty$ both ways.
 \end{defn}
 \begin{rmk}
 	It can be verified that the above definition really is an equivalence relation.
