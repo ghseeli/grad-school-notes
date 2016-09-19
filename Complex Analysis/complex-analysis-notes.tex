@@ -591,5 +591,71 @@ orthogonality.
     exact. Let $v$ be a primitive. Then $v_x = -u_y, v_y=u_x$. Thus, $u+iv$ is
     analytic. (Check this proof.)
   \end{proof}
+  \section{(9/15/2016) Lecture 8}
+  Integrals of closed forms $\{Pdx+Qdy, Q_x = P_y\}$ are invariant
+  when
+  \begin{itemize}
+  \item the path is deformed, fixing endpoints.
+  \item a loop is deformed.
+  \end{itemize}
+
+  A physical application would be with fluid flow. The example
+  provided in class is a the top half of a log lying at the bottom of
+  a riverbed. We can create a conformal equivalence with $f(z) =
+  z+\frac{1}{z}$ between the flow lines of this river and the flow
+  lines of a river with no log.
+
+  \begin{defn}
+    A function on $\R^2$ (or $\R^n$) has the \emph{mean-value
+      property} (MVP) on a domain if its value at any point is the
+    average of its values on any sufficiently small circle (or sphere)
+    centered at the point. In other words, $u(z_0) = \frac{1}{2\pi}
+    \int_0^{2\pi} u(z_0+re^{i\theta}) d\theta$.
+  \end{defn}
+  An amazing consequence of this definition is that it is the same
+  thing as being harmonic. In Gamelin, there is a treatment about how
+  harmonic on $\R^2$ implies MVP. The idea is that $\frac{d}{dr}$(
+  average on circle of radius $r$) $=0$. Then, the average is
+  continuous as $r \to 0$, so the averages must all be $u(z_0)$. \\
+
+  Note that, in $\R$, MVP implies harmonic (linear).
+
+  \subsection*{Maximum Principles}
+
+  \begin{thm}[``Strict Maximum Principle'' for real harmonic functions]
+    If $u$ is a harmonic, real-valued function and $u \leq M$ on a
+    domain and $u(z_0) = M$ for some $z_0$, then $u \equiv M$. This is
+    the same as saying ``no peaks or pits.''
+  \end{thm}
+  \begin{proof}
+    By MVP, $u(z_0)$ is the average of its values at a sufficiently
+    small circle centered at $z_0$, but these values are all $\leq M$,
+    so they must all be $M$. So, $u \equiv M$ on a small disk centered
+    at $z_0$. So $\{u = m\}$ is open. It is also open by continuity of
+    $u$. A non-empty clopen subset of a domain is the whole domain, so
+    $u \equiv M$. 
+  \end{proof}
+
+  \begin{thm}[Strict maximum principle for complex harmonic functions]
+    Same as above principle, except $|f(z)| \leq M$ and $|f(z_0)| =
+    M$. 
+  \end{thm}
+  \begin{proof}
+    We may assume $M \neq 0$. Then $|f(z_0)| = M \implies f(z_0) =
+    Me^{i\theta}$. Consider the same hypothesis holds for
+    $e^{-i\theta}f$, so $u = \Re e^{-i\theta}f$. Then, $u \leq M$ and
+    $u(z_0) = M$. So by previous theorem, $u \equiv M$, $M \geq
+    |e^{-i\theta}f| \geq u \equiv M$. This tells us that
+    $e^{-i\theta}f \equiv M \implies f = Me^{i\theta}$.
+  \end{proof}
+  \begin{thm}[``Maximum modulus principle'']
+    If $f$ is complex harmonic on a bounded domain and extends
+    continuously to the boundary, then $f$ attains its maximum modulus
+    on the boundary. 
+  \end{thm}
+  \begin{proof}
+    $|f|$ is continuous on compact $D$, so the maximum is attained
+    somwhere ?? in 0, so $f$ is constant by previous theorem. CHECK THIS!
+  \end{proof}
 
 \end{document}
