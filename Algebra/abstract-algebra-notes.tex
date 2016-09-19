@@ -873,7 +873,7 @@ Implications for elementary abelian
 
 \subsection*{Lecture 7: Nilpotent and Solvable Groups}
 
-\begin{defn}[1.3.1]
+\begin{defn*}[1.3.1]
   \begin{enumerate}
   \item[(a)] The \emph{lower central series} is defined inductively as follows:
     \begin{align*}
@@ -893,23 +893,68 @@ Implications for elementary abelian
     \end{align*}
     \(G\) is called \emph{solvable} if there exists \(n \in \N\) such that \(G^{(n)}=1\).
   \end{enumerate}
-\end{defn}
-\begin{rmk}[1.3.2]
+\end{defn*}
+\begin{rmk*}[1.3.2]
   The next facts are obvious:
   \begin{enumerate}
   \item \(G^{(i)} \subset G^{[i]}\). This means that nilpotent \(\implies\) solvable.
   \item \(G\) abelian \(\implies [G,G]=e \implies \) G is nilpotent.
   \item \(G\) is nilpotent of class \(2\) \(\iff\) \([G,G] \neq 1\) and \([G,G^{[1]}]=e\) \(\iff G^{[1]} \le Z(G)\).
   \end{enumerate}
-\end{rmk}
+\end{rmk*}
 
-\begin{lem}[1.3.3]
+\begin{lem*}[1.3.3]
   Take \(G \neq 1\). 
   \begin{enumerate}
   \item[(a)] \(G\) is nilpotent \(\implies\) \(Z(g) \neq 1\)
   \item[(b)] \(G\) is solvable \(\implies\) there exists and abelian subgroup \(A \neq 1\) with A characteristic in \(G\).
   \end{enumerate}
-\end{lem}
+\end{lem*}
+
+\begin{example*}[1.3.4]
+  \begin{enumerate}
+  \item[] % make spacing nicer
+  \item[(a)] \(Z(Q)=\{-1,1\}=[Q,Q]\), hence \(Q\) is nilpotent of class \(2\).
+  \item[(b)] \(S_n\) is not nilpotent \(n \ge 3\). Since \(Z(S_n)=1\). \(S_3,S_4\) are solvable. \(S_3^{(1)}=A_3\) and
+    \(S_3^{(2)}=1\). \([S_n,S_n]=A_n,[A_n,A_n]=A)n\).
+  \item[(c)] \(A_4\) is solvable, non-nilpotent. \(S_n,A_n\) are not solvable \(n \ge 5\).
+  \item[(e)] If \(|G| < 60\) and simple, then \(G\) is solvable. If \(|G|=60\), then \(G\) is not solvable and \(G \isom
+    A_5\).
+  \item[(f)] Let \(F\) be a field, then define
+    \[U_n(F) := \left\{
+       \left( \begin{array}{c c c}
+          1 & & \star\\
+           & \ddots \\
+          0& & 1
+        \end{array}\right) | \ \star \in F \right\} \le \GL_n.\]
+  \(U_n(F)\) is nilpotent.
+  \item[(g)] Define \(B_n(F)\) as above, but instead of 1s on the diagonal allow any unit of \(F\). \(B_n(F)\) is
+    solvable, but not nilpotent for \(n \ge 2\) and \(F \neq F_2\).
+  \end{enumerate}
+\end{example*}
+\begin{prop*}
+  If \(G\) is a finite \(p\)-group, then \(G\) is nilpotent.
+\end{prop*}
+\begin{thm}[Burnside's Theorem]
+  If \(|G|=p^mq^n\), then \(G\) is solvable.
+\end{thm}
+This means that Every finite group of odd order is solvable.
+\begin{prop*}[1.3.5]
+  If \(G\) is nilpotent and \(H < G\), then \(N_G(H)\neq H\).
+\end{prop*}
+\begin{defn*}[1.3.6]
+A sequence of homomorphisms 
+\[\ldots \to \ldots  G_{i-1} \xrightarrow{f_{i-1}}G_i \xrightarrow{f_i} G_{i+1} \to \ldots \to \ldots\]
+is called \emph{exact} if \(\text{im}(f_{i-1})=\ker(f_i)\) for each \(i\). A sequence is a short exact sequence
+(SES) if it is exact and takes the form:
+\[1 \to N \xrightarrow{f_1} G \xrightarrow{f_2} Q \to 1.\]
+\end{defn*}
+Exactness means:
+\begin{enumerate}
+\item \(f_1\) is injective
+\item \(f_2\) is surjective
+\item \(G/f_1(N) \isom Q\)
+\end{enumerate}
 \end{document}
 
 %%% Local Variables:
