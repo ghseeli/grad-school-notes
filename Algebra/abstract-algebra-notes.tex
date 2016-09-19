@@ -341,15 +341,16 @@ structure of subgroups of $G/N$ for $N \normsubgroup G$ is the same as the
 structore of the subgroups of $G$ containing $N$ where $N$ is ``collapsed'' as
 the identity element.
 
-\begin{thm}
+\begin{thm}[Lattice Isomorphism Theorem]
     Let $G$ be a group, $N \normsubgroup G$, and $\overline{G} = G/N$. Next, let
     $\phi_N = \{ A \subgroup G | N \subgroup A \}$ and $\overline{\phi}$ be the
     set of all subgroups of $\overline{G}$. Then, all the following are true for $A,B \in \phi_N$.
     \begin{enumerate}[label=(\alph*)]
-        \item $A \subgroup B$ if and only if $\overline{A} \subgroup \overline{B}$.
+        \item $A \subgroup B$ if and only if $\overline{A} \subgroup \overline{B}$..
         \item $A \normsubgroup B$ if and only if $\overline{A} \normsubgroup
             \overline{B}$.
         \item If $A \subgroup B$, then $[B:A] = [\overline{B}:\overline{A}]$.
+        \item $\overline{\langle A, B \rangle} = \langle \overline{A}, \overline{B} \rangle$
         \item $\overline{A \cap B} = \overline{A} \cap \overline{B}$.
         \item The map $\rho: \phi_N \to \overline{\phi}$ where $\rho(A) =
             \overline{A}$ is bijective.
