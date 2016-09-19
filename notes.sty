@@ -1,0 +1,121 @@
+\usepackage[utf8x]{inputenc} % try to encode as UTF-8 extended.  Remove the 'x' for regular UTF-8.  See https://en.wikibooks.org/wiki/LaTeX/Special_Characters#A_technical_matter
+%\usepackage{amsmath,amsthm}
+\usepackage{amssymb,mathrsfs}
+%\usepackage{ytableau}
+%\ytableausetup{smalltableaux,centertableaux}
+\usepackage{tikz}
+\usepackage{upgreek}
+
+%\usepackage[nohead,nofoot,centering]{geometry}
+
+\usepackage{color}
+%% Some user-defined colors
+	\definecolor{mydefi}{cmyk}{1,0,0,.5}
+	\definecolor{myred}{rgb}{.7,.1,.1}
+	\definecolor{myblue}{rgb}{.1,.1,.6}
+	\definecolor{mygreen}{rgb}{.1,.6,.1}
+
+\usepackage[urlbordercolor={1 1 1}, pdfborder={0 0 0}, bookmarks=true,
+  colorlinks=true, linkcolor=myblue, citecolor=myblue,
+  urlcolor=myblue, hyperfootnotes=false]{hyperref}
+
+\usepackage[alphabetic,abbrev]{amsrefs} % use AMS ref scheme
+
+\addtolength{\footskip}{2\baselineskip} % to lower the page numbers
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  MACRO DEFINITIONS:  Co-authors -- PLEASE use these!
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\N}{{\mathbb N}} % natural numbers
+\newcommand{\Z}{{\mathbb Z}} % integers
+\newcommand{\Q}{{\mathbb Q}} % rational numbers
+\newcommand{\R}{{\mathbb R}} % real numbers
+\newcommand{\C}{{\mathbb C}} % complex numbers
+\newcommand{\End}{\operatorname{End}} % endomorphisms
+\newcommand{\Hom}{\operatorname{Hom}} % homomorphisms
+\newcommand{\GL}{\operatorname{GL}} % general linear group
+\newcommand{\B}{\mathfrak{B}} % use for the Brauer algebra
+\newcommand{\Sym}{\mathfrak{S}} % symmetic group
+\newcommand{\sgn}{\operatorname{sgn}} % sign
+\newcommand{\T}{\mathsf{T}} % use for tableaux
+\newcommand{\U}{\mathsf{U}} % use for tableaux
+\newcommand{\V}{\mathsf{V}} % use for tableaux
+\newcommand{\TA}{\mathsf{A}} % use for tableaux
+\newcommand{\TB}{\mathsf{B}} % use for tableaux
+\newcommand{\TC}{\mathsf{C}} % use for tableaux
+\newcommand{\TS}{\mathsf{S}} % use for tableaux
+\newcommand{\shape}{\operatorname{shape}} % shape of a tableau
+\newcommand{\col}[2]{\genfrac{}{}{0pt}{1}{#1}{#2}} % column of bitableau
+\newcommand{\ov}{\overline} % shorthand for a bar on a symbol
+\newcommand{\dd}{\partial} % use for diagram basis; e.g. d(V_l)
+\newcommand{\X}{\mathcal{X}} % use for the Gelfand-Tsetlin subalgebra
+\newcommand{\JM}{\mathcal{J}} % a subalgebra of the GT-subalgebra
+\newcommand{\Std}{\operatorname{Std}} % set of standard tableaux
+\newcommand{\StdB}{\operatorname{StdB}} % set of standard bitableaux
+\newcommand{\Orb}{\mathcal{O}} % use for orbits
+\newcommand{\OS}{\ov{\Orb}} % use for orbit sums
+\newcommand{\OSS}{\ov{\OS}} % use for double bar orbit sums
+\newcommand{\OR}{\mathscr{R}} % orbit representatives
+\newcommand{\Stab}{\operatorname{Stab}} % stabilizer
+\newcommand{\rev}{\operatorname{rev}} % reverse of a cycle
+\newcommand{\A}{\mathcal{A}} % the algebra
+\newcommand{\fraka}{\mathfrak{a}} % Young symmetrizer
+\newcommand{\frakb}{\mathfrak{b}} % Young symmetrizer
+\newcommand{\frakc}{\varphi} % canonical basis
+\newcommand{\yy}{\mathsf{y}} % Young symmetrizer; scaled
+\newcommand{\idem}{\varepsilon} % primitive central idem in symm gp
+\newcommand{\cA}{\mathcal{A}} % group algebra of symmetric group
+\newcommand{\Tab}{\operatorname{Tab}} % trails in branching graph from source
+\newcommand{\BG}{\mathbf{B}} % branching graph
+\newcommand{\bb}{\varnothing} % the unique element of \Irr(0)
+\newcommand{\res}{\operatorname{res}} % restriction
+\newcommand{\Irr}{\operatorname{Irr}} % irreps
+\newcommand{\Wt}{\operatorname{Wt}} % possible content vectors for an irrep
+\newcommand{\trace}{\operatorname{trace}} % the trace
+\newcommand{\type}{\operatorname{type}} % type = generalized shape
+\newcommand{\gen}[1]{\langle #1 \rangle} % use for generating sets
+\newcommand{\parm}{\updelta} % Brauer algebra parameter
+\newcommand{\sep}{\,|\,} % separator for two partitions - used in tables
+\newcommand{\covered}{\lessdot}
+\newcommand{\qand}{\quad\hbox{and}\quad}
+\swapnumbers %% put numbers in front of proclamations
+\newtheorem{thm}{Theorem}[section]
+\newtheorem*{thm*}{Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem*{lem*}{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem*{prop*}{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem*{cor*}{Corollary}
+\newtheorem{conj}[thm]{Conjecture}
+\newtheorem*{conj*}{Conjecture}
+
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem*{defn*}{Definition}
+\newtheorem{example}[thm]{Example}
+\newtheorem*{example*}{Example}
+\newtheorem{examples}[thm]{Examples}
+\newtheorem*{examples*}{Examples}
+\newtheorem{alg}[thm]{Algorithm}
+\newtheorem*{alg*}{Algorithm}
+%\theoremstyle{remark}
+\newtheorem{rmk}[thm]{Remark}
+\newtheorem*{rmk*}{Remark}
+\newtheorem{rmks}[thm]{Remarks}
+\newtheorem*{rmks*}{Remarks}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\numberwithin{equation}{section}
+%% The following avoids conflict between numbers of proclamations
+%% and numbers of equations
+\renewcommand{\theequation}{\thesection\alph{equation}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\parskip = 2pt
+\allowdisplaybreaks
+\renewcommand{\labelenumi}{(\theenumi)} % use round brackets
+\renewcommand{\theenumi}{\alph{enumi}} % use alphabetic enumerations
+
+
+\pagestyle{plain} % suppress the running head - for working document
