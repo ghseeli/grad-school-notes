@@ -455,7 +455,7 @@ Some follow up facts to note are
     \item $uv$ is not harmonic.
     \item $u_x$ is harmonic.
     \item If $v$ is a harmonic conjugate of $u$, the harmonic conjugate of $v$
-        is $-u$. Thus, note that harmonic conjugation is not an unordered pair.
+       is $-u$. Thus, note that harmonic conjugation is not an unordered pair.
     \item $u+iv$ is analytic implies that $v-iu$ is analytic.
 \end{itemize}
 \subsection*{Conformal Maps}
@@ -475,27 +475,187 @@ Note the following implications.
         neighborhood of $z_0$ conformally onto the image.
 \end{itemize}
 
+\section{(9/13/2016) Lecture 7}
+In general, a real differentiable function from $\R^2 \to \R^2$ will map some
+small square to some small parallelogram modulo a small
+perturbation. Furthermore, the ratio of the areas is the determinant of the
+Jacobian. Now, if $f: \C \to \C$ is analytic and if $f'(z) \neq 0$, the map will
+map a small square to another square modulo a small amount of error. This is an
+essential difference between these types of functions. Thus, analytic maps are
+conformal where $f' \neq 0$. \\
 
-\section{Fractional Linear Transformations}
+What if $f' = 0$?
+\begin{example}
+  Take $f(z) = z^2$ at 0. Then, $f(z)$ doubles angles, and is thus not angle
+  preserving and thus not conformal at 0.
+\end{example}
+
 \begin{defn}
-    A \emph{linear transformation} is of the form az + b.
+  A \emph{conformal equivalence} between domains is a one to one onto
+  conformal/analytic map between them.
+\end{defn}
+\begin{example}
+  $\{-\frac{\pi}{2} < \Im z < \frac{\pi}{2}\}$ is conformall equivalent to
+  $\{\Re z > 0\}$ using the map $f(z) = e^z$.
+\end{example}
+
+A general question in complex analysis is ``given two domains, find a conformal
+equivalence if one exists.''
+
+Since conformal maps preserve angles, it is key to note they preserve
+orthogonality.
+
+\begin{rmk}
+  Harmonic functions are exactly the functions that are locally the real parts
+  of analytic functions. That is, given $u$, there exists on a neighborhood of
+  any point and a $v$ defined on that neighborhood such that $u+iv$ is
+  analytic.
+\end{rmk}
+
+\begin{example}
+  \textbf{Non-example}: $\ln r$ on $\R^2 \textbackslash \{(0,0)\}$. There is no
+  harmonic conjugate that works for the entire domain. A harmonic conjugate
+  would be a branch of $\arg$, so $z \mapsto \ln|z|+i\arg z$ would have to be
+  analytic. However, that is not possible since no branch of $\arg$ can be
+  continuous for the entire domain.
+\end{example}
+
+\subsection{Linear Fractional Transformations}
+\begin{defn}
+    A \emph{linear transformation} is of the form $az + b$ with $a,b \in \C$.
 \end{defn}
 \begin{defn}
     An \emph{affine transformation} is a nonzero linear transformation.
 \end{defn}
 \begin{defn}
-    A \emph{fractional linear transformation} is a nonconstant rational function whose numerator and denominator are each a linear transformation.  This is also called a \emph{Möbius transformation}.
-\end{defn}
+    A \emph{linear fractional transformation} is a map of the form $z \mapsto
+    \frac{az+b}{cz+d}$ with $a,b,c,d \in \C$ and $ad-bc \neq 0$. These are also
+    called fractional linear transformations and M{\"o}bius transformations.
+  \end{defn}
 
+  Some facts about LFTs:
+  \begin{itemize}
+  \item LFTs are unchanged if $a,b,c,d$ all multiplied by $\lambda \neq 0$.
+  \item LFTs are defined at $\infty$.
+  \item LFTs are one-to-one, onto maps from $\hat{\C} \to \hat{\C}$ with
+    derivative non-zero. Thus, they are exactly the conformal equivalences from
+    $\hat{\C} \to \hat{\C}$.
+  \item LFTs are closed under inverse and composition. Thus, they have a group
+    structure. A good treatment of this is in Gamelin in section II.7.
+  \item Given distinct $z_1,z_2,z_3$ and distinct $w_1,w_2,w_3$, these exists a
+    unique LFT taking $z_i$ to $w_i$.
+    \item An LFT is a composition of linear maps and the inversion
+      $\frac{1}{z}$. So, an LFT takes circles in $\hat{\C}$ to circles in
+      $\hat{\C}$.
+  \end{itemize}
 
-
-\section{Line Integrals}
+  \subsection{Line Integrals}
+  Line integrals are integrals of the form $\int_\gamma Pdx + Qdy$ where
+  $\gamma$ is a path. To solve these, one usually parametrizes the path or uses
+  theorems such as Green's theorem.
+  \begin{defn}
+    We call the integrand \emph{closed} if $P_y = Q_x$. We call the integrand
+    \emph{exact} if there exists an $h(x,y)$ such that $h_x = P, h_y = Q$. Thus,
+    if we have $h_xdx+h_ydy$, we would say this is an ``exact differential with
+    $h$ as a primitive.''
+  \end{defn}
+  Note that if a vector field is exact, that is the same as saying it is
+  independent of path or that integrals over loops are 0.
+  \begin{rmk}
+    \begin{itemize}
+    \item If a differential is exact, then it is closed.
+    \item If a differential is closed on a star-shaped domain, it is exact
+    \end{itemize}
+  \end{rmk}
+  \begin{example}
+    $\frac{-ydx+xdy}{x^2+y^2} = \Im \frac{1}{z}dz$ on $\R^2 \textbackslash
+    \{(0,0)\}$ is closed but not exact.
+  \end{example}
+  Finally, to make notions of path precise, we have the following.
 \begin{defn}
-    A \emph{path} is a continuous parametrized function $f:[a,b] \to \C$.  A path is \emph{simple} if it is injective (ignoring the endpoint).  A path is \emph{closed} if $f(a) = f(b)$.  The \emph{trace} of a path is its image $f([a,b])$.  A path is \emph{smooth} if $f(t)$ can be expressed as $(x(t), y(t))$ for $x$ and $y$ smooth (such a path is also called a \emph{curve}).  A \emph{piecewise} path is a concatenation of paths (two paths must share an endpoint to be concatenated).
-\end{defn}
+    A \emph{path} is a continuous parametrized function $f:[a,b] \to \C$.  A
+    path is \emph{simple} if it is injective (ignoring the endpoint).  A path is
+    \emph{closed} if $f(a) = f(b)$.  The \emph{trace} of a path is its image
+    $f([a,b])$.  A path is \emph{smooth} if $f(t)$ can be expressed as $(x(t),
+    y(t))$ for $x$ and $y$ smooth (such a path is also called a \emph{curve}).
+    A \emph{piecewise} path is a concatenation of paths (two paths must share an
+    endpoint to be concatenated).
+  \end{defn}
 
+  Finally, we conclude with the following
+  \begin{thm}
+    A harmonic function on a star shaped domain has a harmonic conjugate.
+  \end{thm}
+  \begin{proof}
+    Suppose $u$ is harmonic, then $-u_ydx+u_xdy$ is closed. So, it is also
+    exact. Let $v$ be a primitive. Then $v_x = -u_y, v_y=u_x$. Thus, $u+iv$ is
+    analytic. (Check this proof.)
+  \end{proof}
+  \section{(9/15/2016) Lecture 8}
+  Integrals of closed forms $\{Pdx+Qdy, Q_x = P_y\}$ are invariant
+  when
+  \begin{itemize}
+  \item the path is deformed, fixing endpoints.
+  \item a loop is deformed.
+  \end{itemize}
 
+  A physical application would be with fluid flow. The example
+  provided in class is a the top half of a log lying at the bottom of
+  a riverbed. We can create a conformal equivalence with $f(z) =
+  z+\frac{1}{z}$ between the flow lines of this river and the flow
+  lines of a river with no log.
 
+  \begin{defn}
+    A function on $\R^2$ (or $\R^n$) has the \emph{mean-value
+      property} (MVP) on a domain if its value at any point is the
+    average of its values on any sufficiently small circle (or sphere)
+    centered at the point. In other words, $u(z_0) = \frac{1}{2\pi}
+    \int_0^{2\pi} u(z_0+re^{i\theta}) d\theta$.
+  \end{defn}
+  An amazing consequence of this definition is that it is the same
+  thing as being harmonic. In Gamelin, there is a treatment about how
+  harmonic on $\R^2$ implies MVP. The idea is that $\frac{d}{dr}$(
+  average on circle of radius $r$) $=0$. Then, the average is
+  continuous as $r \to 0$, so the averages must all be $u(z_0)$. \\
 
+  Note that, in $\R$, MVP implies harmonic (linear).
+
+  \subsection*{Maximum Principles}
+
+  \begin{thm}[``Strict Maximum Principle'' for real harmonic functions]
+    If $u$ is a harmonic, real-valued function and $u \leq M$ on a
+    domain and $u(z_0) = M$ for some $z_0$, then $u \equiv M$. This is
+    the same as saying ``no peaks or pits.''
+  \end{thm}
+  \begin{proof}
+    By MVP, $u(z_0)$ is the average of its values at a sufficiently
+    small circle centered at $z_0$, but these values are all $\leq M$,
+    so they must all be $M$. So, $u \equiv M$ on a small disk centered
+    at $z_0$. So $\{u = m\}$ is open. It is also open by continuity of
+    $u$. A non-empty clopen subset of a domain is the whole domain, so
+    $u \equiv M$. 
+  \end{proof}
+
+  \begin{thm}[Strict maximum principle for complex harmonic functions]
+    Same as above principle, except $|f(z)| \leq M$ and $|f(z_0)| =
+    M$. 
+  \end{thm}
+  \begin{proof}
+    We may assume $M \neq 0$. Then $|f(z_0)| = M \implies f(z_0) =
+    Me^{i\theta}$. Consider the same hypothesis holds for
+    $e^{-i\theta}f$, so $u = \Re e^{-i\theta}f$. Then, $u \leq M$ and
+    $u(z_0) = M$. So by previous theorem, $u \equiv M$, $M \geq
+    |e^{-i\theta}f| \geq u \equiv M$. This tells us that
+    $e^{-i\theta}f \equiv M \implies f = Me^{i\theta}$.
+  \end{proof}
+  \begin{thm}[``Maximum modulus principle'']
+    If $f$ is complex harmonic on a bounded domain and extends
+    continuously to the boundary, then $f$ attains its maximum modulus
+    on the boundary. 
+  \end{thm}
+  \begin{proof}
+    $|f|$ is continuous on compact $D$, so the maximum is attained
+    somwhere ?? in 0, so $f$ is constant by previous theorem. CHECK THIS!
+  \end{proof}
 
 \end{document}
