@@ -366,17 +366,20 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \emph{1-forms}.
 \begin{defn}
 	Given $M$ smooth manifold w/ atlas $A = \{ U_a, \,  \phi_a : U_a \to \R^m \}$.
 	Given $N$ smooth manifold w/ atlas $B = \{ O_b, \,  \phi_b : U_b \to \R^n \}$.
-	A cont function $f : M \to N$ is \emph{smooth} if for all $a$, for all $b$, $\phi_a^{-1}.f.\psi_b$ is $C^\infty$.
+	A cont function $f : M \to N$ is \emph{smooth} if for all $a$, for all $b$, $\phi_a^{-1}.f.\psi_b$ is smooth.  You might call $f$ a \emph{mersion}.
 \end{defn}
 \begin{defn}
 	Given the same givens as above.
 	$N$ and $M$ are \emph{diffeomorphic} if there exists $f : M \to N$ and $g : N \to M$ both smooth such that $f.g = id_M$ and $g.f = id_N$.
 \end{defn}
+\begin{defn}[Matt's version]
+	$N$ and $M$ are \emph{diffeomorphic} if they are bimersive.  (That is, there exists a bimersion between them.)
+\end{defn}
 
 \begin{rmk}
 	Some manifolds have NO smooth atlases.
 
-	Some manifolds have 2 (or morse) smooth atlases that are not equivalent to each other.
+	Some manifolds have 2 (or more) smooth atlases that are not equivalent to each other.
 \end{rmk}
 
 
@@ -391,92 +394,86 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \emph{1-forms}.
 \begin{defn}
 	Given $M$ smooth $m$-manifold with atlas $A = \{ U_a, \,\phi_a : U_a \to \R^m \}$.
 	Given $N$ smooth $n$-manifold with atlas $B = \{ V_b, \,\psi_b : V_b \to \R^n \}$.
-	WLOG $m <=n$.
-	A smooth function $f : M \to N$  is an \emph{immersion} if given any $a, b$ such that $\phi_a: U_a \to \R^m$,$\psi_b: V_b \to \R^n$, and $x \in \phi_a(U_a \cap V_b.f^{-1})$, then $x.(\phi_a^{-1}.f.\psi_b)'$ has rank $m$.
+	$m <=n$.
+	A smooth function $f : M \to N$  is an \emph{immersion} if given any $a, b$ such that $\phi_a: U_a \to \R^m$, $\psi_b: V_b \to \R^n$, and any $x \in \phi_a(U_a \cap V_b.f^{-1})$, then $x.(\phi_a^{-1}.f.\psi_b)'$ has rank $m$.
 \end{defn}
 
 \begin{defn}
-	$M$ is a submanifold of $N$ if there exists an immersion from $M$ to $N$.
+	$M$ is a \emph{submanifold} of $N$ if there exists an immersion from $M$ to $N$.
 \end{defn}
 
 \begin{thm}
-	$RP^n \isom RP^{n-1} \cup R^n$.
-	\textbf{Proof.}  In $\R^{n+1}$, draw a flat "plane" above the origin.  Each line in $RP^n$ that has a nonzero "z" component will intersect this plane.  So each line maps to its intersection with this plane, and this plane is $R^n$.  The remaining lines are all in $RP^{n-1}$.  Wow!
+	$\R P^n \isom \R P^{n-1} \cup \R^n$.
+	\textbf{Proof.}  In $\R^{n+1}$, draw a flat "plane" above the origin.  Each line in $\R P^n$ that has a nonzero "z" component will intersect this plane.  So each line maps to its intersection with this plane, and this plane is $R^n$.  The remaining lines are all in $\R P^{n-1}$.  Wow!
 \end{thm}
 
 
-	Given $M$ smooth manifold w/ atlas $A = \{ U_a, \,  \phi_a : U_a \to \R^m \}$.
-	Given $N$ smooth manifold w/ atlas $B = \{ O_b, \,  \phi_b : U_b \to \R^n \}$.
-	A cont function $f : M \to N$ is \emph{smooth} if for all $a$, for all $b$, $\phi_a^{-1}.f.\psi_b$ is $C^\infty$.
 
-	If $f$ is smooth, then we can differentiate, getting the linear map
-	$d_x(\phi_a^{-1}.f.\psi_b): R^m \to R^n$
+If $f$ is a mersion, then we can differentiate, getting the linear map $d_x(\phi_a^{-1}.f.\psi_b): R^m \to R^n$.
 
-\begin{thm}f is smooth
-	$f$ is an \emph{immersion} if $d_x$ above is injective.  (this is *local* injectivity of f) (m <= n)
+\begin{thm}
+	$f$ is a mersion.
+	$f$ is an \emph{immersion} if forall $x$, $d_x$ above is injective.  (Note: this is *local* injectivity of f) ($m \leq n$)
 \end{thm}
 
 \begin{defn}
-	$f$ is a \emph{submersion} if $d_x$ above is surjective.  (this is *local* surjectivity of f) (m >= n)
+	$f$ is a mersion.
+	$f$ is a \emph{submersion} if forall $x$, $d_x$ above is surjective.  (Note: this is *local* surjectivity of f) ($m \geq n$)
 \end{defn}
 
 \begin{defn}
-	An \emph{embedding} is an immersion that is injective and proper. (MY DEF)
+	An \emph{embedding} $f$ is an immersion s.t. $f : M \to f(M)$ is a homeomorphism.  Here is an equivalent, ``minimal'' definition:  An \emph{embedding} is an immersion that is injective and proper.
+\end{defn}
+
+An immersion is locally injective.  An embedding is globally injective.
+
+\begin{thm}
+	$f$ from $M^m$ to $N^n$ is a submersion, and $f(x) = y$.  Then $f^{-1}(y)$ is a smooth $(m-n)$ dimensional manifold.
+\end{thm}
+
+\begin{defn}
+	$f$ is a mersion.
+	$\phi_a(x) \in M$ is a \emph{regular} point if $d_x(\phi^{-1}.f.\psi)$ is onto.  Otherwise, $\phi_a(x)$ is a \emph{critical} point.
 \end{defn}
 
 \begin{defn}
-	An \emph{embedding} $f$ is an immersion s.t. $f : M \to f(M)$ is a homeomorphism. (HIS DEF)
+	$f$ is a mersion.
+	$y \in N$ is a \emph{regular} value if every point in $f^{-1}(y)$ is regular.  Otherwise, $y$ is a \emph{critical} value.  Note: values $y$ *not* in the image of $f$ are vacuously regular.
 \end{defn}
 
 \begin{thm}
-	f from M^m to N^n is a submersion, and f(x) = y.  Then f^{-1}(y) is a smooth $m-n$ dimensional manifold.
-\end{thm}
-
-\begin{defn}
-	y \in N is a \emph{regular} value for $f$ if for every $x$ in $f^{-1}(y)$, we have that d_{\phi(x)}(\phi^{-1}.f.\psi) is ONTO.  If y is not regular, it is a \emph{critical} value instead.  In which case, x is a \emph{critical} point.  Note: values $y$ *not* in the image of $f$ are vacuously regular.
-\end{defn}
-
-
-
-\begin{thm}
-	This comes from the Local Submersion Theorem.  If y \in N is a regular value, then f^{-1}(y) is a smooth submanifold of M of dim m-n.
+	This comes from the Local Submersion Theorem.  If $y \in N$ is a regular value, then $f^{-1}(y)$ is a smooth submanifold of $M$ of dimension $m-n$.
 \end{thm}
 
 \begin{example}
-	Mn(R) vectors of dim n^2.  Sn(R) the symmetric matrices.  Note that the matrix A^T A is always symmetric.  O(n) group ortho matrices.
+	$M_n(\R)$ vectors of dim $n^2$.  $S_n(\R)$ the symmetric matrices.  Note that the matrix $A^T A$ is always symmetric.  $O(n)$ group ortho matrices.
 
-	Let f from Mn(R) to Sn(R) given by f(A) = A^T A.
+	Let $f$ from $M_n(\R)$ to $S_n(\R)$ given by $f(A) = A^T A$.
 
-	THEN I in Sn(R) is a regular value.  Here's why...
+	THEN $I_n$ in $S_n(\R)$ is a regular value.  Here's why...
 
-	Corr. O(n) = finverse(I) is a smooth manifold of dimension n^2 - n(n+1)/2 = n choose 2.
+	Corr. $O(n) = f^{-1}(I_n)$ is a smooth manifold of dimension $n^2 - \frac{n(n+1)}{2}$ = $\binom n2$.
 
 	and
 
-	O(n) = SO(n) disjoiunt union SO(n)Diagmatrix(-1 1 1 1 1 1 1 1 1)
+	$O(n) = SO(n)$ disjoiunt union $SO(n)Diagmatrix(-1 1 1 1 1 1 1 1 1)$
 
+	proof of claim
 
+	Given $A$ in $M_n$, find a formula $df_A$ from $M_n$ to $S_n$ ...
 
-proof of claim
+	$df_A(B) = \lim \frac{f(A+tB) - f(A)}{t} = \ldots = B^T A + A^T B$
+	is indeed in $S_n$! (it is symmetric)
 
-Given A in Mn, find a formula d_Af from Mn to Sn ...
+	If $A^T A = I_n$, can every symmetric matric $C$ be written in the form $C = B^T A + A^T B$.
 
-df_A(B) = lim f(A+tB) - f(A) over t = (.... = B^T A + A^T B
-is indeed in Sn! (it is symmetric)
-
-If A^T A = I, can every symmetric matric C be written in the form C = B^T A + A^T B.
-
-sneaky trick
-Guess A^T B = 1/2 C.
-This is possible if we let B = 1/2 AC.
-Then it works!
-
-
-
-
-
-
+	sneaky trick
+	Guess $A^T B = \frac12 C$.
+	This is possible if we let $B = \frac12 AC$.
+	Then it works!
 \end{example}
+
+
 
 
 
