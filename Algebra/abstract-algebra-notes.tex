@@ -7,6 +7,18 @@
 \newcommand{\normsubgroup}{\mathrel{\unlhd}}
 \newcommand{\Aut}{\text{Aut}}  % automorphism group
 \newcommand{\primedecomposition}[3]{#1_1^{#2_1} \cdots {#1_{#3}}^{#2_{#3}}}
+\newcommand{\funcdeclaration}[5]{
+  \begin{align*}
+    #1 \colon #2 &\to #3\\
+              #4 &\mapsto #5
+  \end{align*}
+}
+\newcommand{\lambdadeclaration}[4]{
+  \begin{align*}
+              #1 &\to #2\\
+              #3 &\mapsto #4
+  \end{align*}
+}
 %%%%%%%%%%%%%% BEGIN CONTENT: %%%%%%%%%%%%%%
 
 \title[Abstract Algebra]{Abstract Algebra}
@@ -954,6 +966,65 @@ Exactness means:
 \item \(f_2\) is surjective
 \item \(G/f_1(N) \isom Q\)
 \end{enumerate}
+
+(still more to be said)
+
+\subsection{I.5 Group Actions}
+
+\begin{defn*}[1.5.1]
+  Given a group \(G\) and set \(X\) we say that \(G\) \emph{acts} on \(X\) (on the left)
+  if 
+  \begin{align*}
+    G &\times X \to X\\
+      &(g,x) \mapsto g\cdot x
+  \end{align*}
+  \begin{enumerate}
+  \item[i.] \(g(h\cdot x)=(gh)\cdot x\) for all \(g,h \in G\) and \(x \in X\)
+  \item[ii.] \(e\cdot x = x\)
+  \end{enumerate}
+\end{defn*}
+\noindent Consequences:\\
+For each \(g \in G\), we have a map 
+\begin{align*}
+  \pi_g &\colon X \to X\\
+  x &\mapsto g \cdot x
+\end{align*}
+\begin{enumerate}
+\item[(i)] says that \(\pi_g \circ \pi_h = \pi_{gh}\)
+\item[(ii)] says that \(\pi_g \pi_{g^{-1}} = 1_X\)
+\end{enumerate}
+Thus we have that \(\pi_g\) is a bijection, hence \(\pi_g\) really is a permutation of \(X\). 
+\[\varphi \colon G \to S(X)=\{G \colon X \to X | G \text{ is a bijection}\}\]
+Hence \(\varphi\) is a group homomorphism.
+\begin{align*}
+  G \times X &\to X\\
+  (g,x) &\mapsto \varphi(g)(x)
+\end{align*}
+Concepts: G acts on \(X\) \(\iff\) there is a homomorphism from \(G \to S(X)\).
+\begin{defn*}[1.5.2]
+  The action of \(G\)on \(X\) is faithful if \(\ker\varphi = 1\).
+\end{defn*}
+\begin{example}[1.5.4]
+  \begin{enumerate}
+  \item[a.] \(S_n\) acts on \(X=\{1,\ldots,n\}\), \(\varphi\) is the identity 
+  \item[b.] \(\GL_n(\mathbb{F})\) acts on \(\mathbb{F}^n\) (column vectors)
+  \item[c.] IF \(G\) acts on \(X\), and \(H \le G\) then \(G\) acts on \(H\) also 
+    \begin{align*}
+      \varphi \colon G &\to S(X)\\
+      \varphi|_H \colon H &\to S(X)
+    \end{align*}
+  \item[d.] \(G\) acts on the set \(X=G\) by left multiplication
+    \begin{align*}
+      G \times G &\to X\\
+      (g,x) &\mapsto gx
+    \end{align*}
+    Here \(\pi_g\) is just a permutation, and not a group homomorphism we ignore the extra structure.
+  \item[e.] If \(H \le G\) we can consider action \(G\) on \(X=G/H\), by left multiplication.
+    \lambdadeclaration{G\times G/H}{G/H}{(g,g'H)}{(gg')H}
+  \item[f.] \(G\) acts on the group. \(X=G\) by conjugation
+    \lambdadeclaration{G \times G}{G}{(g,x)}{gxg^{-1}}
+  \end{enumerate}
+\end{example}
 \end{document}
 
 %%% Local Variables:
