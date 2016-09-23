@@ -180,32 +180,49 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \emph{1-forms}.
 	$K \subseteq X$ is \emph{compact} in $X$ if whenever $K \subseteq \cup_{i \in I} O$ of open sets, then there exists $J$ finite subset of $I$ such that $K \subseteq union_{j \in J} O$.
 \end{defn}
 \begin{thm}
-	If $K$ is compact in $X$ and $f:X \to Y$ is continuous, then $f(X)$ is compact in $Y$.
-\end{thm}
-\begin{thm}
-	If $O$ is open (closed) in $Y$ and $f:X \to Y$ is continuous, then $f^{-1}(O)$ is open (closed) in $X$.
-\end{thm}
-\begin{thm}
 	If $K$ is compact in $X$ and $C$ is closed in $X$, then $K \cap C$ is compact in $X$.
 \end{thm}
+\begin{thm}
+	If $K$ is compact and has the discrete topology, then $K$ is finite.
+\end{thm}
 \begin{defn}
-	A topological space $X$ is \emph{Hausdorff} if for every $a \neq b$ in $X$, there exists an open neighborhood $A$ of $a$ and an open neighborhood $B$ of $b$ such that $A \cap B = {}$.  Synonym: seperable.  Notation: $T_2$ is the set of all Hausdorff topological spaces.
+	Given a space $X$, the following are all equivalent:
+	\begin{itemize}
+		\item $X$ is T1.
+		\item For all $a \in X$, for all $b \in X$, there exists an open neighborhood of $a$ disjoint from $b$.
+		\item Every singleton subset of $X$ is closed.
+		\item Every finite subset of $X$ is closed.
+		\item For every subset $S$ of $X$, $S$ equals the intersection of all open sets containing it.
+	\end{itemize}
 \end{defn}
-\begin{lem}
-	If $X$ is Hausdorff and $K$ is compact in $X$, then $K$ is closed in $X$.
-\end{lem}
 \begin{defn}
-	$f$ is an \emph{open} (\emph{closed}) function if the image of every open (closed) set under $f$ is open (closed).
+	A topological space $X$ is \emph{Hausdorff} (or \emph{T1}) if for every $a \neq b$ in $X$, there exists an open neighborhood $A$ of $a$ and an open neighborhood $B$ of $b$ such that $A \cap B = {}$.  Synonyms: seperated.  Notation: $T_2$ is the set of all Hausdorff topological spaces.
+
+	Properties of Hausdorff spaces $H$:
+	\begin{itemize}
+		\item All properties of T1 spaces apply, since a T2 space is T1.
+		\item Every compact subset of $H$ is closed in $H$.
+	\end{itemize}
 \end{defn}
+\begin{defn}
+	$f$ is an \emph{open} (\emph{closed}) (\emph{compact}) map if the image of every open (closed) (compact) set under $f$ is open (closed) (compact).
+\end{defn}
+\begin{thm}
+	Properties of continuous functions ($f$):
+	\begin{itemize}
+		\item $f^{-1}$ is open.
+		\item $f^{-1}$ is closed.
+		\item $f$ is compact.
+	\end{itemize}
+\end{thm}
 \begin{cor}
-	If $f : X \to Y$ is continuous, $X$ is compact ((wait, is X a subset of Y??)), and $Y$ is Hausdorff, then $f$ is a closed function.
+	If $f : X \to Y$ is continuous, $X$ is compact, and $Y$ is Hausdorff, then $f$ is a closed function *and* $f^{-1}$ is compact.  (basically we get all the benefits that we would get if $f^{-1}$ was a continuous function, except for the "function" part.)
+
+	\textbf{Note.} Let $C$ be a closed subset of $X$.  $X$ is compact, so $C$ is compact.  $f$ is continuous, so $f(C)$ is compact.  $Y$ is Hausdorff, so $f(C)$ is closed.  $f$ is continuous, so $f^{-1}(f(C)) = C$ is closed.  This is a useful cycle, but it does not imply "closed iff compact".  The one case to be wary of is $K$ compact in $X$.  It will follow that $f^{-1}(f(K))$ is closed in $X$, but it is possible that $f^{-1}(f(K)) \neq K$, so we can't conclude that $K$ is closed.
 \end{cor}
 \begin{cor}
 	If $f : X \to Y$ is a continuous bijection, and $X$ is compact and $Y$ is Hausdorff, then $f$ is a homeomorphism. (That is, $f^{-1}$ is continuous).
 \end{cor}
-\begin{thm}
-	A compact top subspace of a Hausdorff space is closed. ((ermmmm))
-\end{thm}
 \begin{thm}
 	If $X$ and $Y$ are compact, then $X \times Y$ is compact.
 \end{thm}
@@ -213,7 +230,7 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \emph{1-forms}.
 	$X$ is a top space and $~$ is an equivalence relation on $X$.  Then there is a topology on $X/~$ (the set of equivalence classes) as follows.  $S \subseteq X/~$ is open iff (let backwards(S) : X/~ to X) backwards(S) is open in X.  [[ f: X/~ to Y is continuous iff f of g : X to Y is contniuous.
 \end{thm}
 \begin{defn}
-	A \emph{topological group} is a seperable space $G$ that is also a group, which satisfies:
+	A \emph{topological group} is a Hausdorff space $G$ that is also a group, which satisfies:
 	\begin{enumerate}
 		\item The function $m : G \times G \to G$ defined by $m((g,h)) = gh$ is continuous.
 		\item The function $i : G \to G$ defined by $i(g) = g^{-1}$ is continuous.
@@ -319,7 +336,16 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \emph{1-forms}.
 \end{defn}
 
 \begin{defn}
-	A space $M$ is an $n$-dim top \emph{manifold} if $M$ is seperable and 2nd-countable, and $M$ has an open cover $\{U_i\}_{i \in I}$ such that each $U_i$ is homeomorphic (via $phi_i$) to an open set in $\R^n$.  Then $\{ U_i, \phi_i \}$ is called an \emph{atlas} for $M$.
+	A space is \emph{2nd-countable} if it has a countable basis.
+\end{defn}
+\begin{defn}
+	A space is \emph{seperable} is it has a countable dense subset.
+\end{defn}
+\begin{thm}
+	Every 2nd-countable space is seperable.
+\end{thm}
+\begin{defn}
+	A space $M$ is an $n$-dim top \emph{manifold} if $M$ is Hausdorff and 2nd-countable, and $M$ has an open cover $\{U_i\}_{i \in I}$ such that each $U_i$ is homeomorphic (via $\phi_i$, which is itself called a \emph{chart}) to an open set in $\R^n$.  Then $\{ U_i, \phi_i \}$ is called an \emph{atlas} for $M$.
 \end{defn}
 \begin{thm}
 	The union of any amount of atlases is itself an atlas.
@@ -409,17 +435,20 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \emph{1-forms}.
 
 
 
-If $f$ is a mersion, then we can differentiate, getting the linear map $d_x(\phi_a^{-1}.f.\psi_b): R^m \to R^n$.
+If $f$ is a smooth map of manifolds, then we can differentiate, getting the linear map $d_x(\phi_a^{-1}.f.\psi_b): R^m \to R^n$.
 
 \begin{thm}
-	$f$ is a mersion.
+	$f$ is a smooth map of manifolds.
 	$f$ is an \emph{immersion} if forall $x$, $d_x$ above is injective.  (Note: this is *local* injectivity of f) ($m \leq n$)
 \end{thm}
 
 \begin{defn}
-	$f$ is a mersion.
+	$f$ is a smooth map of manifolds.
 	$f$ is a \emph{submersion} if forall $x$, $d_x$ above is surjective.  (Note: this is *local* surjectivity of f) ($m \geq n$)
 \end{defn}
+\begin{prop}
+	Every submersion is open.
+\end{prop}
 
 \begin{defn}
 	An \emph{embedding} $f$ is an immersion s.t. $f : M \to f(M)$ is a homeomorphism.  Here is an equivalent, ``minimal'' definition:  An \emph{embedding} is an immersion that is injective and proper.
@@ -432,12 +461,12 @@ An immersion is locally injective.  An embedding is globally injective.
 \end{thm}
 
 \begin{defn}
-	$f$ is a mersion.
+	$f$ is a smooth map of manifolds.
 	$\phi_a(x) \in M$ is a \emph{regular} point if $d_x(\phi^{-1}.f.\psi)$ is onto.  Otherwise, $\phi_a(x)$ is a \emph{critical} point.
 \end{defn}
 
 \begin{defn}
-	$f$ is a mersion.
+	$f$ is a smooth map of manifolds.
 	$y \in N$ is a \emph{regular} value if every point in $f^{-1}(y)$ is regular.  Otherwise, $y$ is a \emph{critical} value.  Note: values $y$ *not* in the image of $f$ are vacuously regular.
 \end{defn}
 
@@ -472,6 +501,54 @@ An immersion is locally injective.  An embedding is globally injective.
 	This is possible if we let $B = \frac12 AC$.
 	Then it works!
 \end{example}
+
+\begin{thm}[Matt's]
+	If $M$ and $N$ are diffeomorphic manifolds, then $M$ and $N$ are smooth.
+\end{thm}
+
+
+Wed, Sept 21, 2016
+
+Given $f:M \to N$ smooth, then there exists a $df$ (but we could call it anything) s.t. $df : TM \to TN$ and $df.P_N = P_M.f$.  (Where $P_M$ is the projection from $TM$ to $M$)  (But is this magic df the same thing as our $df$ that we already know well?)
+
+\begin{example}
+	If $M = \R^2$, then for any $x$, the tangent vector space is $\R^2$ again.  (The flat plane in $\R^2$ at the point $x$ is $\R^2$).  Therefore, $T\R^2 = \R^2 \times \R^2 = \R^2$.  The same goes for $M = \R^m$, replacing all $2$'s with $m$'s.
+\end{example}
+
+We can take the disjoint union of these distinct open sets, then wherever we WANT these open sets to overlap, we define those pairs of points to be equivalent.  Therefore, the disjoint union, when viewed as a partition via the equivalence relation, recovers the manifold that we wanted.
+
+Let's take this a step further, using the tangent bundle too:
+
+disjoint union ( $U_i \times \R^n$ ) has elements $(i, x \in U_i, v \in \R^n) = (i, x, v)$.
+Then we define the equivalence relation as follows:
+$(i, x, v) ~ (j, y, w)$ iff $x=y$ and $v.d_x(\phi_i^{-1}.\phi_j) = w$.
+
+Note that the above $d_x$ is linear in $v$, so ~ is linear in $v$ too.
+
+So in the partition, the $v$'s form a vector space too!  So now we have a single vector space for all of the tangent bundles combined!  Maybe.
+
+yay!
+
+\begin{lem}
+	$T_A M$ has an atlas showing its a $2m$-dimensional manifold given
+	$T_A M \supset U_i x \R^n \to \R^n x \R^n$ (where the $\to$ function is ($\phi_i \times identity$))
+\end{lem}
+\begin{cor}
+	Suppose $A \subset B$ are atlases for $M$.  The ``canonical'' map
+
+	$T_A M = \sqcup_{i \in I_A} U \times \R^n/~ \to \sqcup (same but B) = T_B M$
+				$\to										\to$
+				$M 										M$
+	is a diffeo of manifolds.
+\end{cor}
+
+Some $f: M \to N$ induces $Tf : TM \to TN$ as follows:
+Given $\phi_i$ a chart for $M$ about $x$.
+Given $\psi_j$ a chart for $N$ about $f(x)$.
+THEN
+$Tf((i, x, v)) = (j, f(x), v.d_x(\phi_i^{-1}.f.\psi_j))$.
+
+And $T(M \times N)$ ``canonically'' identifies with $TM \times TN$.
 
 
 
