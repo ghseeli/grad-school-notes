@@ -1,9 +1,26 @@
 \documentclass[11pt,leqno,oneside]{amsart}
 
 \usepackage{../notes}
+%%% matt experiments with theorem style:
+\usepackage{amsthm}% http://ctan.org/pkg/amsthm
+
+
+\newtheoremstyle{mystyle}
+  {20pt plus 4pt minus 4pt} % Space above
+  {\topsep} % Space below
+  {} % Body font
+  {} % Indent amount
+  {\bfseries} % Theorem head font
+  {.} % Punctuation after theorem head
+  {.5em} % Space after theorem head
+  {} % Theorem head spec (can be left empty, meaning `normal')
+
+\theoremstyle{mystyle} \newtheorem{thrm}[thm]{Theorem}
+\theoremstyle{mystyle} \newtheorem{defi}[thm]{Definition}
+%%% end experimentation
 
 \title[Differential Topology]{Differential Topology}
-\author{George H. Seelinger (inspired from class by Nick Kuhn)}
+\author{George Seelinger, Matthew Lancellotti\\ (class notes for Nick Kuhn's MATH 7820)}
 \date{Fall 2016}
 \begin{document}
 \maketitle
@@ -27,9 +44,9 @@ that ``locally'' look like $\R^n$.
 	$\R^2$ onto part of $S^2$. Variations on the same theme can be used to get
 	other parts of the sphere.
 \end{example}
-\begin{defn}
+\begin{defi}
 	The \emph{$n$-sphere}, denoted $S^n$, is $\{x \in \R^{n+1} |\; ||x||=1 \}$. Note: The *surface* of the $n$-sphere has dimension $n$.,
-\end{defn}
+\end{defi}
 \begin{example}
 	Continuing with the sphere, consider the plane through the origin that is parallel to the tangent plane of $S^2$ at some
 	point $\vec{x}$. We will denote this $T_{\vec{x}}S^2$. Note that this is a
@@ -47,9 +64,9 @@ that ``locally'' look like $\R^n$.
 	Finally, consider that there exists a function $p$ such that $p: TS^2 \to
 	S^2$ by $(x,v) \to x$. Then, we have that $p^{-1}(x) = T_{\vec{x}}S^2$.
 \end{example}
-\begin{defn}
+\begin{defi}
 	The \emph{tangent bundle} of a manifold $M$, denoted $TM$, is $\{ (x,v) |\; x \in M \;\text{and}\; v \in T_xM \}$.
-\end{defn}
+\end{defi}
 
 Now, let $M$ be any differential manifold. Studying the function $p: TM \to M$
 can tell us a lot about $M$.
@@ -66,11 +83,11 @@ can tell us a lot about $M$.
 
 \subsection{Functions}
 
-\begin{defn}
+\begin{defi}
 	A function $f: \R^n \to \R^m$ is continuous at $\vec{a}$ if $\forall
 	\epsilon > 0, \exists \delta > 0$ such that $||\vec{x}-\vec{a}|| < \delta
 	\implies ||f(\vec{x}) - f(\vec{a})|| < \epsilon$.
-\end{defn}
+\end{defi}
 Now, recall \begin{enumerate}
 	\item If $f(x) = (f_1(x), \ldots, f_m(x))$, then $f$ is continuous if and
 		only if each $f_i$ is continuous. This fact follows from the basic
@@ -84,27 +101,27 @@ Now, recall \begin{enumerate}
 \end{enumerate}
 
 Now, let us define what it means for a function to be differentiable.
-\begin{defn}
+\begin{defi}
 	$f :\R^n \to \R^m$ is \emph{differentiable} at $x \in R^n$ if there exists a linear function $df_x : \R^n \to \R^m$  such that $\lim_{h \to 0} \frac{|| (f(x)-f(x+h)) - (df_x(h)) ||}{||h||} = 0$.  Note that $h$ is a vector, as well as $x$.
-\end{defn}
-\begin{defn}
+\end{defi}
+\begin{defi}
 	If $f$ is differentiable at $x$ by a linear function $L$, then $L$ is the \emph{differential} of $f$ at $x$.  This is denoted $df_x$.  Using the standard basis, the differential can be expressed as a slope matrix, which is denoted $f'(x)$.
-\end{defn}
-\begin{thm}
+\end{defi}
+\begin{thrm}
 	If $f$ is differentiable at $x$, then the differential $df_x$ in the $v$ direction is equal to $\lim_{t \to 0} \frac{f(x+tv) - f(x)}{t}$.
-\end{thm}
+\end{thrm}
 
-\begin{thm}[a-b-dimensional tangent plane]
+\begin{thrm}[a-b-dimensional tangent plane]
 	Given a function $f : \R^a \to \R^b$ and its slope matrix $f^\prime(v)$ at a vector $v \in \R^a$, then the equation for any point $w$ on the plane tangent to $f$ at $v$ is $g_v(w) = f(v) + f'(v)(w-v)$ or, in point-slope form, $\frac{g_v(w)-f(v)}{w-v} = f'(v)$.
 	% dependencies: [function, derivative, tangent],
-\end{thm}
+\end{thrm}
 
-\begin{thm}[billiard ball theorem]
+\begin{thrm}[billiard ball theorem]
 	A continuously differentiable section $s$ on $TS^2$ with $s(x) \neq 0$ for all $x \in S^2$ does not exist.,
 	intuition: Can you draw a continuously differentiable, always nonzero vector field on a billiard ball?  No.,
 	% // NO --> apparently TS^2 not isomorphic to S^2 \times \R^2.
 	% // Ts^2 \subseteq S^2 \times \R^3 \subseteq \R^3 \times \R^3.
-\end{thm}
+\end{thrm}
 
 A famous topological question is: could $s(x) \neq \vec{0} \in T_{\vec{x}}S^2$
 for all $x \in S^2$? The famous answer is no. This is analogous to the
@@ -125,16 +142,16 @@ $T^*M$ be a collection of the dual vector spaces $(T_{\vec{x}}M)^*$ where $V^* =
 T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \emph{1-forms}.
 
 
-\begin{defn}
+\begin{defi}
 	The set $U$ is \emph{open} if it can be written as a union of open balls $B$.
-\end{defn}
-\begin{thm}
+\end{defi}
+\begin{thrm}
 	The set $U$ is open iff for all points in $U$, there exists an open ball around the point that's entirely contained in $U$.
-\end{thm}
-\begin{thm}[continuity and openness]
+\end{thrm}
+\begin{thrm}[continuity and openness]
 	$f$ is continuous iff for every open set $U \in \R^m$, $f^{-1}(U)$ is open in $\R^n$.
-\end{thm}
-\begin{defn}
+\end{thrm}
+\begin{defi}
 	A \emph{topological space} (a.k.a \emph{space}) is a set $X$ and a set $O$ of subsets of $X$ that satisfy the following conditions.  Every element of $O$ is ``open'' by definition.  Further:
 	\begin{itemize}
 		\item Arbitrary unions of open sets are open.
@@ -142,14 +159,14 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \emph{1-forms}.
 		\item The empty set is open.
 		\item The entire space is open.
 	\end{itemize}
-\end{defn}
-\begin{defn}
+\end{defi}
+\begin{defi}
 	For any $k \in \N$, a function $f:\R^n \to \R^m$ is \emph{$k$-continuously-differentiable}, denoted $f \in C^k$, if all iterated partial derivatives of $f$ of order $k$ exist and are continuous.
-\end{defn}
-\begin{thm}
+\end{defi}
+\begin{thrm}
 	For any $k \in \N$, the function $f$ has class $C^k$ iff all of its coordinate functions $f_i$ have class $C^k$.
-\end{thm}
-\begin{defn}
+\end{thrm}
+\begin{defi}
 	Given a set $V$, a \emph{distance} is a function $D : V \times V \to \R$ that satisfies, for all $x, y, z \in V$:
 	\begin{enumerate}
 		\item $D(x,x) = 0$
@@ -157,16 +174,16 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \emph{1-forms}.
 		\item (symmetry) $D(x,y) = D(y,x)$
 		\item (triangle inequality) $D(x,z) <= D(x,y) + D(y,z)$
 	\end{enumerate}
-\end{defn}
-\begin{defn}
+\end{defi}
+\begin{defi}
 	A \emph{metric space} is $(X, D)$ where $X$ is a set and $D$ is a distance function on $X$.
-\end{defn}
-\begin{defn}[analytic functions]
+\end{defi}
+\begin{defi}[analytic functions]
 	A function $f$ is \emph{analytic} if for every point $x$ in the domain, there exists a taylor series centered at $x$ which converges to $f$ in a neighborhood of $x$.  Note: The class of analytic functions is denoted $C^\omega$.
-\end{defn}
-\begin{thm}
+\end{defi}
+\begin{thrm}
 	$C^\omega \subsetneq C^\infty \subsetneq \subsetneq \subsetneq C^n \subsetneq C^{n-1} \subsetneq \subsetneq \subsetneq C^0$
-\end{thm}
+\end{thrm}
 \begin{example}
 	The function $$f(x) =
 	\begin{cases}
@@ -176,16 +193,16 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \emph{1-forms}.
 	$$
 	is in $C^\infty$, but it is NOT analytic.
 \end{example}
-\begin{defn}
+\begin{defi}
 	$K \subseteq X$ is \emph{compact} in $X$ if whenever $K \subseteq \cup_{i \in I} O$ of open sets, then there exists $J$ finite subset of $I$ such that $K \subseteq union_{j \in J} O$.
-\end{defn}
-\begin{thm}
+\end{defi}
+\begin{thrm}
 	If $K$ is compact in $X$ and $C$ is closed in $X$, then $K \cap C$ is compact in $X$.
-\end{thm}
-\begin{thm}
+\end{thrm}
+\begin{thrm}
 	If $K$ is compact and has the discrete topology, then $K$ is finite.
-\end{thm}
-\begin{defn}
+\end{thrm}
+\begin{defi}
 	Given a space $X$, the following are all equivalent:
 	\begin{itemize}
 		\item $X$ is T1.
@@ -194,8 +211,8 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \emph{1-forms}.
 		\item Every finite subset of $X$ is closed.
 		\item For every subset $S$ of $X$, $S$ equals the intersection of all open sets containing it.
 	\end{itemize}
-\end{defn}
-\begin{defn}
+\end{defi}
+\begin{defi}
 	A topological space $X$ is \emph{Hausdorff} (or \emph{T1}) if for every $a \neq b$ in $X$, there exists an open neighborhood $A$ of $a$ and an open neighborhood $B$ of $b$ such that $A \cap B = {}$.  Synonyms: seperated.  Notation: $T_2$ is the set of all Hausdorff topological spaces.
 
 	Properties of Hausdorff spaces $H$:
@@ -203,18 +220,18 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \emph{1-forms}.
 		\item All properties of T1 spaces apply, since a T2 space is T1.
 		\item Every compact subset of $H$ is closed in $H$.
 	\end{itemize}
-\end{defn}
-\begin{defn}
+\end{defi}
+\begin{defi}
 	$f$ is an \emph{open} (\emph{closed}) (\emph{compact}) map if the image of every open (closed) (compact) set under $f$ is open (closed) (compact).
-\end{defn}
-\begin{thm}
+\end{defi}
+\begin{thrm}
 	Properties of continuous functions ($f$):
 	\begin{itemize}
 		\item $f^{-1}$ is open.
 		\item $f^{-1}$ is closed.
 		\item $f$ is compact.
 	\end{itemize}
-\end{thm}
+\end{thrm}
 \begin{cor}
 	If $f : X \to Y$ is continuous, $X$ is compact, and $Y$ is Hausdorff, then $f$ is a closed function *and* $f^{-1}$ is compact.  (basically we get all the benefits that we would get if $f^{-1}$ was a continuous function, except for the "function" part.)
 
@@ -223,20 +240,20 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \emph{1-forms}.
 \begin{cor}
 	If $f : X \to Y$ is a continuous bijection, and $X$ is compact and $Y$ is Hausdorff, then $f$ is a homeomorphism. (That is, $f^{-1}$ is continuous).
 \end{cor}
-\begin{thm}
+\begin{thrm}
 	If $X$ and $Y$ are compact, then $X \times Y$ is compact.
-\end{thm}
-\begin{thm}
+\end{thrm}
+\begin{thrm}
 	$X$ is a top space and $~$ is an equivalence relation on $X$.  Then there is a topology on $X/~$ (the set of equivalence classes) as follows.  $S \subseteq X/~$ is open iff (let backwards(S) : X/~ to X) backwards(S) is open in X.  [[ f: X/~ to Y is continuous iff f of g : X to Y is contniuous.
-\end{thm}
-\begin{defn}
+\end{thrm}
+\begin{defi}
 	A \emph{topological group} is a Hausdorff space $G$ that is also a group, which satisfies:
 	\begin{enumerate}
 		\item The function $m : G \times G \to G$ defined by $m((g,h)) = gh$ is continuous.
 		\item The function $i : G \to G$ defined by $i(g) = g^{-1}$ is continuous.
 	\end{enumerate}
 	See Bredon I.15 for more related definitions.
-\end{defn}
+\end{defi}
 
 
 
@@ -249,45 +266,45 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \emph{1-forms}.
 
 
 
-\begin{defn}[derivative of multivariable function]
+\begin{defi}[derivative of multivariable function]
 	The \emph{tangent plane} to function $f : \R^n \to \R^m$ at point $a$, denoted $df_a$ or $f^{\prime}(a)$, is the unique function that satisfies $\lim_{h\to 0} \frac{||f(a+h) - f(a) - df_a(h)||}{||h||} = 0$.
-\end{defn}
-\begin{defn}
+\end{defi}
+\begin{defi}
 	The \emph{directional derivative} of $f$ at $x$ in the $v$ direction is $df_x(v)$ which is $\lim_{h\to 0} \frac{f(x+hv) - f(x)}{h}$.
-\end{defn}
-\begin{defn}
+\end{defi}
+\begin{defi}
 	Let $U$ and $V$ be open sets in $\R^n$ (topological spaces, soon).  A function $f:U\to V$ is a \emph{homeomorphism} iff it is a bijection and both $f$ and $f^{-1}$ are continuous.
 	Synonym: bi-continuous function.
-\end{defn}
-\begin{defn}
+\end{defi}
+\begin{defi}
 	Let $U$ and $V$ be open sets in $\R^n$.  A function $f:U\to V$ is a \emph{$C^r$-diffeomorphism} iff it is a bijection and both $f$ and $f^{-1}$ are $r$-continuously-differentiable.
-\end{defn}
-\begin{defn}
+\end{defi}
+\begin{defi}
 	Let $U$ and $V$ be open sets in $\R^n$.  A function $f:U\to V$ is a \emph{diffeomorphism} iff it is a bijection and both $f$ and $f^{-1}$ are differentiable.
 	Synonym: bi-differentiable function.
-\end{defn}
-\begin{defn}
+\end{defi}
+\begin{defi}
 	A function $f:\R^n \to \R^m$ is \emph{smooth}, denoted $C^\infty$ if $f$ is $C^k$ for all $k \in \N$.
 	Synonym: $\infty$-continuous.
-\end{defn}
-\begin{thm}
+\end{defi}
+\begin{thrm}
 	If $f:\R^n \to \R^m$ is $C^1$ in a neighborhood of $x$, then $f$ is differentiable at $x$.
 	% // no proof :(
 	% // need to understand this better
-\end{thm}
-\begin{thm}
+\end{thrm}
+\begin{thrm}
 	If $f:\R^n \to \R^m$ is $C^2$ in a neighborhood of $x$, then for all $i$ and $j$, $\frac{\partial^2f}{\partial x_i \partial x_j}(x) = \frac{\partial^2f}{\partial x_j \partial x_i}(x)$.
 	% // no proof :(
-\end{thm}
+\end{thrm}
 
 
 
-\begin{thm}[chain rule]
+\begin{thrm}[chain rule]
 	If $f$ is differentiable at $a$ and $g$ is differentiable at $f(a)$, then $(g \circ f)$ is differentiable at $a$, and $(g \circ f)'(a) = g'(f(a))f'(a)$.
-\end{thm}
-\begin{thm}[inverse function theorem]
+\end{thrm}
+\begin{thrm}[inverse function theorem]
 	For any $k \in \N^+$, if $f:\R^n \to \R^n$ is $C^k$ and $f^\prime(x)$ is invertible for some $x$, then $f$ is locally a diffeomorphism of class $C^k$ at $x$.
-\end{thm}
+\end{thrm}
 \begin{example}
 	Counterexample: Let $$f(x) =
 	\begin{cases}
@@ -296,7 +313,7 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \emph{1-forms}.
 	\end{cases}
 	$$  We see that $f$ is differentiable, but the derivative is not continuous (i haven't verified this).  It turns out that $f$ is not one-to-one (and therefore not a bijection).
 \end{example}
-\begin{thm}[local submersion theorem]
+\begin{thrm}[local submersion theorem]
 	Synonym: implicit function theorem.
 	Note: This theorem is equivalent to the inverse function theorem.
 
@@ -306,8 +323,8 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \emph{1-forms}.
 	Then there exists $W$ nbd $x$ and $V$ nbd $z$ and $U$ open in $\R^k$ and a diffeomorphism $I : W \to U \times V$
 	s.t. $f = I.\pi$ where $\pi$ is the projection from $U \times V$ onto $V$.
 
-\end{thm}
-\begin{thm}[local immersion theorem]
+\end{thrm}
+\begin{thrm}[local immersion theorem]
 	This is very similar to the local submersion theorem (more soon...)
 
 	function $f : \R^{m} \to \R^{m+k}$ is $C^1$.
@@ -316,63 +333,63 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \emph{1-forms}.
 	Then there exists $V$ nbd $x$ and $W$ nbd $z$ and $U$ open in $\R^k$ and a diffeomorphism $I : U \times V \to W$
 	s.t. $f = in.I$ where $in$ is the inclusion from $V$ to $U \times V$.
 
-\end{thm}
-\begin{thm}
+\end{thrm}
+\begin{thrm}
 	If $f$ is locally diffeomorphic at $x$, then the slope matrix of $f^{-1}$ at $f(x)$ is given by $(f^{-1})^\prime(f(x)) = (f^\prime(a))^{-1}$.
 	Proof. $f$ is locally diffeomorphic at $x$, so $f^{-1}(f(x)) = x$.
 	Apply the chain rule: $(f^{-1})^\prime(f(x)) \cdot f^\prime(x) = 1$.
 	Finally: $(f^{-1})^\prime(f(x)) = (f^\prime(x))^{-1}$.
-\end{thm}
-\begin{thm}
+\end{thrm}
+\begin{thrm}
 	A function $f : \R^a \to \R^b$ is continuous iff each of its coordinate functions $f_i$, $1<= i <=b$, are continuous.
-\end{thm}
+\end{thrm}
 
-\begin{defn}
+\begin{defi}
 	$X$ is \emph{connected} if whenever $X = A \cup B$ ($A$ and $B$ are both open and nonempty), then $A \cap B$ is nonempty.
-\end{defn}
+\end{defi}
 
-\begin{defn}
+\begin{defi}
 	A top space $M$ is \emph{second countable} if there exists a countable basis of $M$.
-\end{defn}
+\end{defi}
 
-\begin{defn}
+\begin{defi}
 	A space is \emph{2nd-countable} if it has a countable basis.
-\end{defn}
-\begin{defn}
+\end{defi}
+\begin{defi}
 	A space is \emph{seperable} is it has a countable dense subset.
-\end{defn}
-\begin{thm}
+\end{defi}
+\begin{thrm}
 	Every 2nd-countable space is seperable.
-\end{thm}
-\begin{defn}
+\end{thrm}
+\begin{defi}
 	A space $M$ is an $n$-dim top \emph{manifold} if $M$ is Hausdorff and 2nd-countable, and $M$ has an open cover $\{U_i\}_{i \in I}$ such that each $U_i$ is homeomorphic (via $\phi_i$, which is itself called a \emph{chart}) to an open set in $\R^n$.  Then $\{ U_i, \phi_i \}$ is called an \emph{atlas} for $M$.
-\end{defn}
-\begin{thm}
+\end{defi}
+\begin{thrm}
 	The union of any amount of atlases is itself an atlas.
-\end{thm}
+\end{thrm}
 
-\begin{defn}
+\begin{defi}
 	An atlas for $M$ is \emph{smooth} if every $phi_\beta$ of $phi_\alpha^{-1}$ is $C^\infty$ both ways.
-\end{defn}
+\end{defi}
 
-\begin{defn}
+\begin{defi}
 	Two smooth atlases $A$ and $A^\prime$ are \emph{equivalent} if for each $\alpha$, $\beta$, $\phi_\beta^\prime$ of $\phi_\alpha^{-1}$ is $C^\infty$ both ways.
-\end{defn}
+\end{defi}
 \begin{rmk}
 	It can be verified that the above definition really is an equivalence relation.
 \end{rmk}
 
-\begin{defn}
+\begin{defi}
 	A \emph{smooth} manifold is just a manifold coupled with an equivalence class of smooth atlases.
-\end{defn}
+\end{defi}
 
 \begin{rmk}
 	closed manifold implies compact manifold.  i think.
 \end{rmk}
 
-\begin{thm}
+\begin{thrm}
 	There exist 4-dim manifolds that can't be smooth.
-\end{thm}
+\end{thrm}
 
 
 
@@ -384,23 +401,23 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \emph{1-forms}.
 	$M = S^1$.  $A = {U_l, U_r, U_t, U_b}$.  For $U_t$, for example, we choose $phi_t$ to be a projection of the semicircle with open endpoints to a line segment with open endpoints.  Do the same for the others.  Looking at $\phi^{-1}$ of $\phi$'s will reveal that their composition is $C^\infty$, so we conclude that $A$ is smooth.
 \end{example}
 
-\begin{defn}
+\begin{defi}
 	An \emph{n-}manifold or \emph{n-dimensional} manifold is a manifold that is locally homeomorphic to $\R^n$.  ("n-" is the adjective to "manifold".)
-\end{defn}
+\end{defi}
 
 
-\begin{defn}
+\begin{defi}
 	Given $M$ smooth manifold w/ atlas $A = \{ U_a, \,  \phi_a : U_a \to \R^m \}$.
 	Given $N$ smooth manifold w/ atlas $B = \{ O_b, \,  \phi_b : U_b \to \R^n \}$.
 	A cont function $f : M \to N$ is \emph{smooth} if for all $a$, for all $b$, $\phi_a^{-1}.f.\psi_b$ is smooth.  You might call $f$ a \emph{mersion}.
-\end{defn}
-\begin{defn}
+\end{defi}
+\begin{defi}
 	Given the same givens as above.
 	$N$ and $M$ are \emph{diffeomorphic} if there exists $f : M \to N$ and $g : N \to M$ both smooth such that $f.g = id_M$ and $g.f = id_N$.
-\end{defn}
-\begin{defn}[Matt's version]
+\end{defi}
+\begin{defi}[Matt's version]
 	$N$ and $M$ are \emph{diffeomorphic} if they are bimersive.  (That is, there exists a bimersion between them.)
-\end{defn}
+\end{defi}
 
 \begin{rmk}
 	Some manifolds have NO smooth atlases.
@@ -409,70 +426,70 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \emph{1-forms}.
 \end{rmk}
 
 
-\begin{thm}
+\begin{thrm}
 	$\R^4$ has an uncountable number of smooth structures (equivalence classes of smooth atlases).  (But all other $\R^n$ have a unique smooth structure.)
-\end{thm}
+\end{thrm}
 
 \begin{rmk}
 	If $(M,A)$ is a smooth $n$-manifold, and $U$ an open set in $M$, then $(U,A_U)$ is a smooth $n$-manifold, where $A_U$ is like $A$, but intersecting each set with $U$, and restricting the $\phi$ functions accordingly.
 \end{rmk}
 
-\begin{defn}
+\begin{defi}
 	Given $M$ smooth $m$-manifold with atlas $A = \{ U_a, \,\phi_a : U_a \to \R^m \}$.
 	Given $N$ smooth $n$-manifold with atlas $B = \{ V_b, \,\psi_b : V_b \to \R^n \}$.
 	$m <=n$.
 	A smooth function $f : M \to N$  is an \emph{immersion} if given any $a, b$ such that $\phi_a: U_a \to \R^m$, $\psi_b: V_b \to \R^n$, and any $x \in \phi_a(U_a \cap V_b.f^{-1})$, then $x.(\phi_a^{-1}.f.\psi_b)'$ has rank $m$.
-\end{defn}
+\end{defi}
 
-\begin{defn}
+\begin{defi}
 	$M$ is a \emph{submanifold} of $N$ if there exists an immersion from $M$ to $N$.
-\end{defn}
+\end{defi}
 
-\begin{thm}
+\begin{thrm}
 	$\R P^n \isom \R P^{n-1} \cup \R^n$.
 	\textbf{Proof.}  In $\R^{n+1}$, draw a flat "plane" above the origin.  Each line in $\R P^n$ that has a nonzero "z" component will intersect this plane.  So each line maps to its intersection with this plane, and this plane is $R^n$.  The remaining lines are all in $\R P^{n-1}$.  Wow!
-\end{thm}
+\end{thrm}
 
 
 
 If $f$ is a smooth map of manifolds, then we can differentiate, getting the linear map $d_x(\phi_a^{-1}.f.\psi_b): R^m \to R^n$.
 
-\begin{thm}
+\begin{thrm}
 	$f$ is a smooth map of manifolds.
 	$f$ is an \emph{immersion} if forall $x$, $d_x$ above is injective.  (Note: this is *local* injectivity of f) ($m \leq n$)
-\end{thm}
+\end{thrm}
 
-\begin{defn}
+\begin{defi}
 	$f$ is a smooth map of manifolds.
 	$f$ is a \emph{submersion} if forall $x$, $d_x$ above is surjective.  (Note: this is *local* surjectivity of f) ($m \geq n$)
-\end{defn}
+\end{defi}
 \begin{prop}
 	Every submersion is open.
 \end{prop}
 
-\begin{defn}
+\begin{defi}
 	An \emph{embedding} $f$ is an immersion s.t. $f : M \to f(M)$ is a homeomorphism.  Here is an equivalent, ``minimal'' definition:  An \emph{embedding} is an immersion that is injective and proper.
-\end{defn}
+\end{defi}
 
 An immersion is locally injective.  An embedding is globally injective.
 
-\begin{thm}
+\begin{thrm}
 	$f$ from $M^m$ to $N^n$ is a submersion, and $f(x) = y$.  Then $f^{-1}(y)$ is a smooth $(m-n)$ dimensional manifold.
-\end{thm}
+\end{thrm}
 
-\begin{defn}
+\begin{defi}
 	$f$ is a smooth map of manifolds.
 	$\phi_a(x) \in M$ is a \emph{regular} point if $d_x(\phi^{-1}.f.\psi)$ is onto.  Otherwise, $\phi_a(x)$ is a \emph{critical} point.
-\end{defn}
+\end{defi}
 
-\begin{defn}
+\begin{defi}
 	$f$ is a smooth map of manifolds.
 	$y \in N$ is a \emph{regular} value if every point in $f^{-1}(y)$ is regular.  Otherwise, $y$ is a \emph{critical} value.  Note: values $y$ *not* in the image of $f$ are vacuously regular.
-\end{defn}
+\end{defi}
 
-\begin{thm}
+\begin{thrm}
 	This comes from the Local Submersion Theorem.  If $y \in N$ is a regular value, then $f^{-1}(y)$ is a smooth submanifold of $M$ of dimension $m-n$.
-\end{thm}
+\end{thrm}
 
 \begin{example}
 	$M_n(\R)$ vectors of dim $n^2$.  $S_n(\R)$ the symmetric matrices.  Note that the matrix $A^T A$ is always symmetric.  $O(n)$ group ortho matrices.
@@ -502,9 +519,9 @@ An immersion is locally injective.  An embedding is globally injective.
 	Then it works!
 \end{example}
 
-\begin{thm}[Matt's]
+\begin{thrm}[Matt's]
 	If $M$ and $N$ are diffeomorphic manifolds, then $M$ and $N$ are smooth.
-\end{thm}
+\end{thrm}
 
 
 Wed, Sept 21, 2016
