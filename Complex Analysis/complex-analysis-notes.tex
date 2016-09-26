@@ -716,4 +716,89 @@ orthogonality.
     since it is on a star-shaped domain. Thus, we have $F = U+iV$ that
     is analytic and note that $F' = U_x + iV_x = U_x-iU_y = u+iv = f$. 
   \end{proof}
+  Note that in this situation, we have $F(z) = \int_{z_0 \to z}
+  f(z)dz$ is well-defined where $z_0 \to z$ is any path from $z_0$ to
+  $z$.
+  \section{(9/22/2016) Lecture 10: Integral Formulas}
+  Continuing from above, we ask what happens if the domain is not
+  simply connected eith $f = u+iv$ where $u,v \in C^1$? We have that
+  $f(z)dz$ is closed, which gives us $(u+iv)(dx+idy) =
+  (u+iv)dx+(-v+iu)dy$. Next, we have $u_y+iv_y = -v_x+iu_x$, giving us
+  the Cauchy-Riemann equations. Thus $f$ is analytic.
+  \begin{thm}[Cauchy Integral Theorem]
+    If $f$ is analytic on a bounded domain with piecewise smooth
+    boundary and $f$ extends continuously to the boundary, then
+    $\int_{\partial D} f(z)dz = 0$
+  \end{thm}
+  \begin{proof}
+    By Green's Theorem
+  \end{proof}
+  Note that $\partial D$ is oriented with domain on the left. So, on
+  an annulus, the boundary is counter clockwise on the outer boundary
+  and clockwise on the inner boundary.
+  \begin{example}
+    Does $\frac{1}{z}$ of $\frac{1}{z^2}$ have an anti-derivative on
+    punctured plane or slit plane? \\
+
+    Both have an anti-derivative on the slit plane because the slit
+    plane is star-shaped. On the punctured plane, $\frac{1}{z^2}$
+    clearly has anti-derivative $\frac{-1}{z}$, but $\frac{1}{z}$ does
+    not because $\oint_{|z|=1} \frac{1}{z}dz \neq 0$. 
+  \end{example}
+
+  \begin{thm}[Cauchy Integral Formula]
+    Let $f$ be analytic on a bounded domain $D$ with piecewise smooth
+    boundary where $f$ extends continuously to the boundary. Then, for
+    any point $z \in D$, we have $\frac{1}{2\pi i} \int_{\partial D}
+    \frac{f(w)}{w-z}dw = f(z)$. 
+  \end{thm}
+  The amazing thing about this formula is that the values of $f$ on
+  the boundary completely determine $f$ on the interior. Such a
+  property does not exist for real functions in general.
+  \begin{proof}
+    Find $\epsilon > 0$ small enough so $D_\epsilon(z) \subset D$. By
+    the Cauchy Integral Formula,
+    \[0 = \int_{D \textbackslash \overline{D_\epsilon(z)}}
+      \frac{f(w)}{w-z}dw = \int_D \frac{f(w)}{w-z}dw -
+      \int_{C_\epsilon} \frac{f(w)}{w-z}dw.\]
+    So, it suffices to show $\frac{1}{2 \pi i}\int_{C_\epsilon}
+    \frac{f(w)}{w-z}dw = f(z)$. So, let us parametrize $w(\theta) =
+    z+\epsilon e^{i\theta}, \theta \in [0,2 \pi)$. Then, we get that
+    $\frac{1}{2 \pi i}\int_{C_\epsilon} \frac{f(w)}{w-z}dw =
+    \frac{1}{2\pi i}\int_0^{2 \pi} \frac{f(z+\epsilon
+      e^{i\theta}}{\epsilon e^{i\theta}} i \epsilon e^{i \theta}
+    d\theta = \frac{1}{2\pi}\int_0^{2 \pi} f(z+\epsilon e^{i \theta})
+    d \theta = f(z)$ by the mean value property. 
+  \end{proof}
+  Note that we could have also proceeded by saying, for small
+  $\epsilon$, we have that $f(z+\epsilon e^{i \theta}) \cong f(z)$ by
+  continuity, so the integral divided by $2 \pi$ is arbitrarily close
+  to $f(z)$.
+
+  \begin{thm}[Generalized Cauchy Integral Formula]
+    Same hypotheses as the Cauchy Integral Formula, but let $m \in
+    \N$. Then, $f^{(m)}(z) = \frac{m!}{2 \pi i} \int_{\partial D} \frac{f(w)}{(w-z)^{m+1}}dw$
+  \end{thm}
+  \begin{cor}
+    Analytic functions are $C^{\infty}$ and harmonic functions are $C^{\infty}$.
+  \end{cor}
+  \begin{proof}[``Proof'']
+    $u$ harmonic implies there exists a harmonic conjugate $v$ on a
+    neighborhood. Thus, $u+iv$ is analytic, so it is $C^{\infty}$ and
+    thus $u$ is $C^{\infty}$. 
+  \end{proof}
+  \begin{proof}[Proof of Generalized Cauchy Integral Theorem]
+    (case $m=1$): We have $\frac{f(z+\Delta z)-f(z)}{\Delta z} =
+    \frac{1}{2 \pi i \Delta z} \int_{\partial D} \left[
+      \frac{f(w)}{w-(z+\Delta z)} - \frac{f(w)}{w-z} \right]
+    dz$. Multiplying to get a common denominator, we get that this is
+    $\frac{1}{2 \pi i \Delta z}\int_{\partial
+      D}\frac{f(w)(w-z)-f(w)(w-z-\Delta z)}{(w-z-\Delta
+      z)(w-z)}dw$. However, some quick cancellation yields that this
+    is equivalent to $\frac{1}{2 \pi i} \int_{\partial D}
+    \frac{f(w)}{(w-z-\Delta z)(w-z)}dw$. However, as $\Delta z \to 0$,
+    the integrand goes uniformly to $\frac{f(w)}{(w-z)^2}$ as a
+    function of $w$. Thus, we get the finaly result of $\frac{1}{2 \pi
+    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$. 
+  \end{proof}
 \end{document}
