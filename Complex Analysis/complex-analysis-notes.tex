@@ -657,5 +657,63 @@ orthogonality.
     $|f|$ is continuous on compact $D$, so the maximum is attained
     somwhere ?? in 0, so $f$ is constant by previous theorem. CHECK THIS!
   \end{proof}
+  \section{(9/20/2016) Lecture 9: Complex Line Integrals}
+  A complex line integral is an integral of the form $\int_\gamma
+  f(z)dz$ where $\gamma$ is some path in the complex plane, $f(z)$ is
+  some complex valued function, and $dz = dx + idy$. Just like a real
+  integral, it can be phrased as $\lim \sum_{i=1}^n
+  f(z_i^*)(z_{i+1}-z_i)$ and can be evaluated by parametrizing the
+  path and function. \\
 
+  We can also provide an upper bound on such integrals by noting the
+  following:
+  \begin{align*}
+    |\int_\gamma f(z)dz | & \cong |\sum f(z)(z_{i+1}-z_i)| \\
+    \ & \leq \sum |f(z_i^*)||s_{i+1}-z_i| \\
+    \ & \leq \max_\gamma |f(z)| \sum |z_{i+1}-z_i| \\
+    \ & \cong \max_\gamma |f(z)| \cdot \int_\gamma ds \\
+    \ & (\max |f(z)|)(\operatorname{length} \gamma)
+  \end{align*}
+  This is called the ML estimate.
+
+  \begin{example}
+    Consider $\oint_{|z|=R} z^n dz$. We can parametrize this with
+    $z(t) = Re^{it}, t \in (0,2\pi]$. Then, $z'(t) = iRe^{it}$ and we
+    get our integral to be $\int_0^{2\pi} (Re^{it})^n iRe^{it} dt =
+    R^{n+1} i \int_0^{2\pi} e^{it(n+1)} dt =
+    \begin{cases}
+      0 & \text{ if } n \neq -1 \\
+      2 \pi i & \text{ if } n=-1
+    \end{cases}.$
+  \end{example}
+  However, just like in calculus, we can also evaluate integrals using
+  primitives or anti-derivatives. A primitive for $f$ is an analytic
+  $F$ with $F'=f$.
+  \begin{thm}[Fundamental Theorem of Calculus (Complex Version)]
+    $\int_\gamma F'(z)dz = F(\text{end}) - F(\text{start})$
+  \end{thm}
+  This statement is exactly the same as the standard version.
+  \begin{example}
+    Consider $\oint_{|z|=R} z^n dz$. If $n \neq 1$, then $z^n$ has
+    primitive $\frac{z^{n+1}}{n+1}$ on $\C \textbackslash
+    \{0\}$. However, if $n=-1$, primitives of $\frac{1}{z}$ are
+    branches of $\log z$ and thus cannot be continuously defined on
+    $|z|=R$. 
+  \end{example}
+  In notes, there is a proof, but I am not sure why it is there...
+  \begin{thm}
+    If $f$ is analytic on a star-shaped (simply connected) domain,
+    then it has a primitive.
+  \end{thm}
+  \begin{proof}
+    Let $f=u_iv$. Consider $udz-vdy$. This differential is closed
+    because $u_x = v_y$ by the Cauchy-Riemann equations. Now, since it
+    is closed on a star-shaped domain, it is exact. So, there exists a
+    $U$ with $U_x = u$ and $U_y = -v$ by definition of exact. Now,
+    also note that $U$ is harmonic because $\Delta U = U_{xx} + U_{yy}
+    = u_x-v_y = 0$ where the last equality follows from the
+    Cauchy-Riemann equations. So, $U$ has a harmonic conjugate $V$
+    since it is on a star-shaped domain. Thus, we have $F = U+iV$ that
+    is analytic and note that $F' = U_x + iV_x = U_x-iU_y = u+iv = f$. 
+  \end{proof}
 \end{document}
