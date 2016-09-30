@@ -572,15 +572,78 @@ Monday, Sept 26, 2016
 
 
 
-df_x : TxM to TyN is onto
+$df_x : T_xM \to T_yN$ is onto.
 
-y is a regular value of f
+$y$ is a regular value of $f$.
 
-Let L = f^{-1}(y), a smooth (m-n) dimensional submanifold of M.
+Let $L = f^{-1}(y)$, a smooth ($m-n$) dimensional submanifold of $M$.
 
-TxL = kernel of df_x
+$T_xL = \ker df_x$
 
-x \in L \subset M
+$x \in L \subset M$
+
+
+Wednesday, Sept 28, 2016
+
+More elegant definition of regular:
+\begin{defi}
+	$f$ is a smooth map of manifolds.
+	$x \in M$ is a \emph{regular} point if $d_x : T_xM \to T_yN$ is onto.  Otherwise, $x$ is a \emph{critical} point.
+\end{defi}
+
+\begin{defi}
+	$f$ is a smooth map of manifolds.
+	$y \in N$ is a \emph{regular} value if every point in $f^{-1}(y)$ is regular.  Otherwise, $y$ is a \emph{critical} value.  Note: values $y$ *not* in the image of $f$ are vacuously regular.
+\end{defi}
+
+\begin{thrm}
+	$f$ is a smooth map of manifolds.
+	If $y$ is a regular value, then $f^{-1}(y)$ is a smooth submanifold of $M$.
+	Also, if $x \in f^{-1}(y)$, then $T_xf^{-1}(y) = \ker df_x$.
+	Also, $Tf^{-1}(y) = \{ (x,v) | f(x)=y, df_x(v) = 0\}$.
+\end{thrm}
+
+\begin{thrm}
+	$f$ is a smooth map of manifolds.
+	Let $L$ be a subset of $N$.
+	If $M$ is a submanifold of $N$, then $f^{-1}(y) = M \cap L$.
+\end{thrm}
+
+\begin{defi}
+	$f$ is \emph{transverse} to $L \subset N$, denoted $f \pitchfork L$, if $f$ is a smooth map of manifolds and whenever $f(x) = y \in L$, then $df_x(T_xM) + T_yL = T_yN$.  (yes, we are adding vector spaces).
+\end{defi}
+
+\begin{thrm}
+	If $f$ is transverse to $L$, then $ \dim(M) - \dim f^{-1}(L) = \dim(N) - \dim(L)$.
+
+	Furthermore, if $x \in K$ and $y = f(x)$, then $T_x K = df^{-1}_x(T_y L) \subset T_x M$.
+\end{thrm}
+
+\begin{thrm}
+	Given $f : U \to V$, and
+	$g : V \to W$ is onto.
+
+	Then ($f.g$ is onto iff $f(U) = \ker g$).
+\end{thrm}
+
+\begin{thrm}
+	Transversailty holds iff $d(f.p)$ is onto.
+
+	\textbf{Proof.}
+	Suppose $y \in L$.
+	By the local immersion thm,
+	there exists $O$ open nbd of $y$, and a submersion $p : O \to \R^{n-l}$
+	s.t. $p(y) = 0$ and $p^{-1}(0) = L \cap O$
+
+	$df_x : T_xM \to T_yN$.
+	$df_y : T_yN \to \R^{n-l}$.
+
+	By prior thm, we conclude $\ker df_y = T_yL$.
+\end{thrm}
+
+
+
+
 
 
 
