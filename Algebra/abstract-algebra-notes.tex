@@ -823,14 +823,13 @@ determined by finitely generated
 \(Z\)-modules.
 
 \begin{defn*}[1.2.12]
-  An abelian group is called an
-  elementary abelian \(p-group\) if
-  \(|a|=p\) for all \(a \in A\{e\}\).
+  An \emph{elementary abelian $p$-group}, $A$, is an abelian $p$-group such that
+  \(|a|=p\) for all \(a \in A \smallsetminus \{e\}\).
 \end{defn*}
 
 \begin{rmk*}[1.2.13]
-  A is an elementary \(p\)-group if it
-  is also a vector space over
+  $A$ is an elementary \(p\)-group iff it
+  is a vector space over
   \(\Fp\). This allows us to import
   linear algebra. We define the scalar
   multiplication by
@@ -843,7 +842,7 @@ determined by finitely generated
   exists \(k\) such that \(n=m+kp\)
   which means
   \(na=(m+kp)a=ma+k(pa)=ma+k(0)=ma\). Next
-  notice that nay group homomorphism
+  notice that any group homomorphism
   \(f \colon A \to A\) is automatically
   \(\Fp\)-linear:
   \(f(\bar{m}a)=\bar{m}f(a)\).
@@ -858,25 +857,25 @@ determined by finitely generated
   \item[(b)]
     \(\Aut(A) \isom \GL(A)=\{f \colon A
     \to A \mid f \text{ is a
-      bijection}\}\)
+      bijection}\}\) $<--$ this is not true.  not any permutation on the elements of A can be an automorphism of A.  Firstly, the identity must be fixed.  Secondly, if $f(a) = b$, then it is entirely necessary that $f(a+a) = b+b$.  So the choice of where one element gets sent will determine where other elements must be sent.  I think what was intended is this:  If A is written as the direct sum of copies of $Z_p$, then any permutation of the $Z_p$'s is an automorphism.
   \end{enumerate}
 \end{cor}
 
 Implications for elementary abelian
-\(p\)-groups: \(\Aut(A) \isom \GL(\Fp)\)
+\(p\)-groups: \(\Aut(A) \isom \GL_n(\Fp)\), where $n$ is the number of copies of $\Z_p$ in $A$.
 \begin{enumerate}
-\item[a] \(A\) has a basis
+\item[(a)] \(A\) has a basis
   \(\{x_i \mid i \in I\}\)
-\item[b] Any additive group is \(\Fp\)
+\item[(b)] Any additive group is \(\Fp\)
   linear.
   \[\GL(A) \subseteq \Aut(A),\ \Aut(A)
-    \subseteq \GL.\]
+    \subseteq \GL(A).\]
 \end{enumerate}
 
 \begin{example*}
   \begin{gather*}
     \Aut(\Z_2 \times \Z_2) \isom S_3 \isom \GL_2(\mathbb{F}_2)\\
-    \Aut(\Z_2 \times \Z_2 \times Z_2)
+    \Aut(\Z_2 \times \Z_2 \times \Z_2)
     \isom \GL_3(\mathbb{F}_2)
     \rightsquigarrow \text{order 168}
   \end{gather*}
@@ -915,7 +914,7 @@ Implications for elementary abelian
 \end{rmk*}
 
 \begin{lem*}[1.3.3]
-  Take \(G \neq 1\). 
+  Take \(G \neq 1\).
   \begin{enumerate}
   \item[(a)] \(G\) is nilpotent \(\implies\) \(Z(g) \neq 1\)
   \item[(b)] \(G\) is solvable \(\implies\) there exists and abelian subgroup \(A \neq 1\) with A characteristic in \(G\).
@@ -933,11 +932,11 @@ Implications for elementary abelian
     A_5\).
   \item[(f)] Let \(F\) be a field, then define
     \[U_n(F) := \left\{
-       \left( \begin{array}{c c c}
+       \left.\left( \begin{array}{c c c}
           1 & & \star\\
            & \ddots \\
           0& & 1
-        \end{array}\right) | \ \star \in F \right\} \le \GL_n.\]
+        \end{array}\right)\:\right\rvert \ \star \in F \right\} \le \GL_n.\]
   \(U_n(F)\) is nilpotent.
   \item[(g)] Define \(B_n(F)\) as above, but instead of 1s on the diagonal allow any unit of \(F\). \(B_n(F)\) is
     solvable, but not nilpotent for \(n \ge 2\) and \(F \neq F_2\).
@@ -954,7 +953,7 @@ This means that Every finite group of odd order is solvable.
   If \(G\) is nilpotent and \(H < G\), then \(N_G(H)\neq H\).
 \end{prop*}
 \begin{defn*}[1.3.6]
-A sequence of homomorphisms 
+A sequence of homomorphisms
 \[\ldots \to \ldots  G_{i-1} \xrightarrow{f_{i-1}}G_i \xrightarrow{f_i} G_{i+1} \to \ldots \to \ldots\]
 is called \emph{exact} if \(\text{im}(f_{i-1})=\ker(f_i)\) for each \(i\). A sequence is a short exact sequence
 (SES) if it is exact and takes the form:
@@ -973,7 +972,7 @@ Exactness means:
 
 \begin{defn*}[1.5.1]
   Given a group \(G\) and set \(X\) we say that \(G\) \emph{acts} on \(X\) (on the left)
-  if 
+  if
   \begin{align*}
     G &\times X \to X\\
       &(g,x) \mapsto g\cdot x
@@ -984,7 +983,7 @@ Exactness means:
   \end{enumerate}
 \end{defn*}
 \noindent Consequences:\\
-For each \(g \in G\), we have a map 
+For each \(g \in G\), we have a map
 \begin{align*}
   \pi_g &\colon X \to X\\
   x &\mapsto g \cdot x
@@ -993,7 +992,7 @@ For each \(g \in G\), we have a map
 \item[(i)] says that \(\pi_g \circ \pi_h = \pi_{gh}\)
 \item[(ii)] says that \(\pi_g \pi_{g^{-1}} = 1_X\)
 \end{enumerate}
-Thus we have that \(\pi_g\) is a bijection, hence \(\pi_g\) really is a permutation of \(X\). 
+Thus we have that \(\pi_g\) is a bijection, hence \(\pi_g\) really is a permutation of \(X\).
 \[\varphi \colon G \to S(X)=\{G \colon X \to X | G \text{ is a bijection}\}\]
 Hence \(\varphi\) is a group homomorphism.
 \begin{align*}
@@ -1002,13 +1001,13 @@ Hence \(\varphi\) is a group homomorphism.
 \end{align*}
 Concepts: G acts on \(X\) \(\iff\) there is a homomorphism from \(G \to S(X)\).
 \begin{defn*}[1.5.2]
-  The action of \(G\)on \(X\) is faithful if \(\ker\varphi = 1\).
+  The action of \(G\) on \(X\) is \emph{faithful} if \(\ker\varphi = 1\).
 \end{defn*}
 \begin{example}[1.5.4]
   \begin{enumerate}
-  \item[a.] \(S_n\) acts on \(X=\{1,\ldots,n\}\), \(\varphi\) is the identity 
+  \item[a.] \(S_n\) acts on \(X=\{1,\ldots,n\}\), \(\varphi\) is the identity
   \item[b.] \(\GL_n(\mathbb{F})\) acts on \(\mathbb{F}^n\) (column vectors)
-  \item[c.] IF \(G\) acts on \(X\), and \(H \le G\) then \(G\) acts on \(H\) also 
+  \item[c.] IF \(G\) acts on \(X\), and \(H \le G\) then \(G\) acts on \(H\) also
     \begin{align*}
       \varphi \colon G &\to S(X)\\
       \varphi|_H \colon H &\to S(X)
@@ -1025,7 +1024,7 @@ Concepts: G acts on \(X\) \(\iff\) there is a homomorphism from \(G \to S(X)\).
     \lambdadeclaration{G \times G}{G}{(g,x)}{gxg^{-1}}
   \end{enumerate}
 \end{example}
-\end{document}
+\end{document}%
 
 %%% Local Variables:
 %%% mode: latex
