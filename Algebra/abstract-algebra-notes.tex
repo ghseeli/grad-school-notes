@@ -324,6 +324,7 @@ seen in the following lemma.
             C_G(A)$. In this case, we say that $A$ and $B$ commute.
         \item $[G,G] = \{e\}$ if and only if $G$ is abelian if and only if $Z(G) = G$.
         \item $[A,B] = [B,A]$ since $[a,b]^{-1} = [b,a]$.
+        \item (matt) $[G,G]$ is characteristic in $G$.
     \end{enumerate}
 \end{rmk}
 \begin{example}
@@ -626,7 +627,7 @@ One can prove this by using the Chinese Reminder Theorem and induction on r.
   We will proceed by induction on
   \(|A|\). If \(|A|=p\), then
   \(A \isom \Z_p\), which means every
-  non-trivial element has order
+  nontrivial element has order
   \(p\). If \(|A| > p\) we may choose an
   \(x \in A/\{e\}\). Notice that
   \(|x| > 1\).
@@ -824,7 +825,7 @@ determined by finitely generated
 
 \begin{defn*}[1.2.12]
   An \emph{elementary abelian $p$-group}, $A$, is an abelian $p$-group such that
-  \(|a|=p\) for all \(a \in A \smallsetminus \{e\}\).
+  \(|a|=p\) for all \(a \in A \smallsetminus \{e\}\).  (In OUR class, p-groups are *finite* by definition, but elementary abelian p-groups *can* be infinite.  In the REAL WORLD, p-groups can be infinite by definition.)
 \end{defn*}
 
 \begin{rmk*}[1.2.13]
@@ -905,19 +906,20 @@ Implications for elementary abelian
   \end{enumerate}
 \end{defn*}
 \begin{rmk*}[1.3.2]
-  The next facts are obvious:
+  The next facts follow directly:
   \begin{enumerate}
   \item \(G^{(i)} \subset G^{[i]}\). This means that nilpotent \(\implies\) solvable.
   \item \(G\) abelian \(\implies [G,G]=e \implies \) G is nilpotent.
-  \item \(G\) is nilpotent of class \(2\) \(\iff\) \([G,G] \neq 1\) and \([G,G^{[1]}]=e\) \(\iff G^{[1]} \le Z(G)\).
+  \item \(G\) is nilpotent of class \(2\) \(\iff\) \([G,G] \neq 1\) and \([G,G^{[1]}]=e\) \(\implies G^{[1]} \le Z(G)\).
   \end{enumerate}
 \end{rmk*}
 
 \begin{lem*}[1.3.3]
   Take \(G \neq 1\).
   \begin{enumerate}
-  \item[(a)] \(G\) is nilpotent \(\implies\) \(Z(g) \neq 1\)
-  \item[(b)] \(G\) is solvable \(\implies\) there exists and abelian subgroup \(A \neq 1\) with A characteristic in \(G\).
+  \item[(a)] \(G\) is nilpotent \(\implies\) \(Z(G) \neq 1\)
+  \item[(matt)] Every term in a derived series is characteristic in $G$.  This is true because $[G,G]$ is characteristic in $G$, and ``characteristic'' is a transitive property, so we can induct downwards.
+  \item[(b)] \(G\) is solvable \(\implies\) there exists an abelian subgroup \(A \neq 1\) with A characteristic in \(G\).
   \end{enumerate}
 \end{lem*}
 
@@ -925,11 +927,12 @@ Implications for elementary abelian
   \begin{enumerate}
   \item[] % make spacing nicer
   \item[(a)] \(Z(Q)=\{-1,1\}=[Q,Q]\), hence \(Q\) is nilpotent of class \(2\).
-  \item[(b)] \(S_n\) is not nilpotent \(n \ge 3\). Since \(Z(S_n)=1\). \(S_3,S_4\) are solvable. \(S_3^{(1)}=A_3\) and
-    \(S_3^{(2)}=1\). \([S_n,S_n]=A_n,[A_n,A_n]=A)n\).
-  \item[(c)] \(A_4\) is solvable, non-nilpotent. \(S_n,A_n\) are not solvable \(n \ge 5\).
-  \item[(e)] If \(|G| < 60\) and simple, then \(G\) is solvable. If \(|G|=60\), then \(G\) is not solvable and \(G \isom
+  \item[(b)] \(S_n\) is potent \(n \ge 3\). Since \(Z(S_n)=1\). \(S_3,S_4\) are solvable. \(S_3^{(1)}=A_3\) and
+    \(S_3^{(2)}=1\). \([S_n,S_n]=A_n,[A_n,A_n]=A_n\).  The very last statement is false.  This is because \([A_3,A_3]=1\).  Maybe he meant to add the condition that $ n \geq 5$.
+  \item[(c)] \(A_4\) is solvable, potent. \(S_n,A_n\) are not solvable \(n \ge 5\).
+  \item[(e)] If \(|G| < 60\), then \(G\) is solvable. If \(|G|=60\) and \(G\) is not solvable, then \(G \isom
     A_5\).
+  \item[(matt)] Every solvable simple group is solvable of class 1. (And nilpotent of class 1)
   \item[(f)] Let \(F\) be a field, then define
     \[U_n(F) := \left\{
        \left.\left( \begin{array}{c c c}
@@ -939,7 +942,7 @@ Implications for elementary abelian
         \end{array}\right)\:\right\rvert \ \star \in F \right\} \le \GL_n.\]
   \(U_n(F)\) is nilpotent.
   \item[(g)] Define \(B_n(F)\) as above, but instead of 1s on the diagonal allow any unit of \(F\). \(B_n(F)\) is
-    solvable, but not nilpotent for \(n \ge 2\) and \(F \neq F_2\).
+    solvable, but potent for \(n \ge 2\) and \(F \neq F_2\).
   \end{enumerate}
 \end{example*}
 \begin{prop*}
@@ -948,7 +951,9 @@ Implications for elementary abelian
 \begin{thm}[Burnside's Theorem]
   If \(|G|=p^mq^n\), then \(G\) is solvable.
 \end{thm}
-This means that Every finite group of odd order is solvable.
+\begin{thm}[Feit–Thompson theorem]
+    Every finite group of odd order is solvable.  (this is an extension of the previous theorem)
+\end{thm}
 \begin{prop*}[1.3.5]
   If \(G\) is nilpotent and \(H < G\), then \(N_G(H)\neq H\).
 \end{prop*}

@@ -54,12 +54,18 @@ following are some examples:
 Also note that $\ov{z}$ is $z$ reflected over the x-axis.
 
 In $\R$, there are many ways to define $e^x$. One way is $e^x =
-\sum_{n=0}^\infty \frac{x^n}{n!}$. Also, recall the taylor series expansions of
-$\sin x$ and $\cos x$. We can define all these functions in complex $x$ using
-the taylor series expansions.
+\sum_{n=0}^\infty \frac{x^n}{n!}$. We can define $\sin$, $\cos$, and other functions in complex $x$ using taylor series expansions.
 \[
     e^{ix} = 1 + ix + \frac{(ix)^2}{2!} + \frac{(ix)^3}{3!} + \cdots = \cos x + i \sin x
 \]
+By splitting $e^{ix}$ into its real and imaginary parts, we obtain power series for $\sin(x)$ and $\cos(x)$.
+\begin{align}
+  e^{ix} =& \sum_{n=0}^\infty \frac{(ix)^n}{n!}  \\
+  =& \sum_{n\ \text{even}}^\infty \frac{(ix)^n}{n!} + \sum_{n\ \text{odd}}^\infty \frac{(ix)^n}{n!} \\
+  =& \sum_{n\ \text{even}}^\infty \frac{i^n x^n}{n!} + i\sum_{n\ \text{odd}}^\infty \frac{i^{n-1} x^n}{n!} \\
+  =& \cos(x) + i \sin(x)
+\end{align}
+
 When $x$ is real, $|e^{ix}| = |\cos x + i \sin x| = \sqrt{\cos^2 x + \sin^2 x}
 = 1$, so our rules in $\R$ still hold.
 
@@ -402,7 +408,7 @@ theorem later.
     \begin{rmk}
         If $f$ is analytic on $D$, $z \in D, f'(z) = 0$, then there is a
         neighborhood $U$ with $z \in U \subset D$ on which $f$ is one-to-one
-        with analytic inverse satisfying $f^{-1}(f(z))' = \frac{1}{f'(z)}$.
+        with analytic inverse satisfying $(f^{-1})'(f(z)) = \frac{1}{f'(z)}$.
         This is the inverse function theorem and it applies since the Jacobian
         is invertible.
     \end{rmk}
