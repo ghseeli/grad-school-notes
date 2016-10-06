@@ -3,7 +3,7 @@
 \usepackage{../notes}
 %%% matt experiments with theorem style:
 \usepackage{amsthm}% http://ctan.org/pkg/amsthm
-
+\newcommand{\Der}{\text{Der}}
 
 \newtheoremstyle{mystyle}
   {20pt plus 4pt minus 4pt} % Space above
@@ -639,6 +639,106 @@ More elegant definition of regular:
 	$df_y : T_yN \to \R^{n-l}$.
 
 	By prior thm, we conclude $\ker df_y = T_yL$.
+\end{thrm}
+
+Wednesday, Oct 5, 2016
+
+\begin{defi}
+	$C^\infty(M) := \{ f:M \to \R | f is smooth \}$
+\end{defi}
+\begin{thrm}
+	$C^\infty(M)$ is a commutative $\R$-algebra. (It's a ring, a V.S., has a bilinear prod)
+\end{thrm}
+\begin{thrm}
+	If $U$ is a submanifold of $M$, then $C^\infty(U)$ is also an $\R$-algebra.
+	(is this true?  i don't know!)
+\end{thrm}
+\begin{thrm}
+	If $U$ and $V$ both open and $U \subset V \subset M$, then
+	the restriction from $C(V)$ to $C(V)$ is a morphism of $\R$-algebras.
+\end{thrm}
+\begin{prop}[sheaf property]
+	If $U$ = union of $A$
+	and $f_i$ in $C(A_i)$ s.t. $f|_{A_i \cap A_j} = f_j|_{A_i \cap A_j}$ for all $i, j$
+	then there exists a UNIQUE $f \in C(U)$ s.t. $f|_{A_i} = f_i$ for all $i$.
+\end{prop}
+
+a bunch of stuff i can't read
+
+Fix $p \in M$.
+Put an equivalence relation on all smooth functions $\{ f : U \to \R | \text{smooth}\}$
+with $U$ is a neighborhood of $p$.
+
+$f:U \to \R \sim g:V \to \R$
+iff
+there exists $W$ s.t. $p \in W \subset U \cap V$ where $f|_W = g|_W$.
+
+Let $C^\infty(M,p)$ = the set of equiv classes.  This is called the \emph{stalk} of the sheaf at point $p$.  Or the \emph{germ} of a function about $p$.
+
+direct limit
+$= c\lim C^\infty(U)$.
+for open nieghborhoods of $p$.
+
+If $\phi : M to N$ in smooth and $\phi(p) = q$, then we get an induced ring morhpism
+$\phi^* : C_\infty(N,q) \to C_\infty(M,p)$ by
+$\phi^*([f]) = [\phi.f]$
+
+$\psi : L \to M$
+$\phi : M \to N$
+
+$(\psi.\phi)^* = \phi*.\psi* : C_\infty(n,q) \to C_\infty(L,r)$
+
+Given $v \in T_pM$, want to define
+$D_v : C_\infty(M,p) \to R$
+"directional derivative in the $v$-direction" at $p$
+
+Example for $M = \R_n$, $p \in \R_n$, and $v \in T_p\R_n = \R_n$.
+
+$D_v : C_\infty(\R_n, p) \to \R$
+
+$D_v([f]) = \lim \frac{f(p + tv) - f(p)}{t}$
+
+properties
+\begin{prop}
+	\begin{enumerate}
+		\item $D_{av + bw} = aD_{v} + bD_{w}$
+		\item $D_v$ is linear
+		\item $D_v(fg) = f*D(g) + D(f)*g$
+	\end{enumerate}
+\end{prop}
+\begin{thrm}
+	Suppose $D : C_infty(\R^n,p) \to \R$
+	s.t. $D$ satisfies the properties above.  Then $D = D_v$ for some $v \in \R^n$.
+\end{thrm}
+proof not shown.
+\begin{lem}
+	Given $U \subset \R^m$ and $V \subset \R^n$ open.
+	$\phi : U \to V$ is smooth.
+	$p \in U$
+	$q = \phi(p)$
+	Let
+	$w = d \phi_p(v)$ in $\R_n$
+
+	Then
+	$D_w = D_v of \phi^* : C_\infty(\R^n,q) \to \R$
+
+	$M$ is an $n$-dimensional manifold, $p \in M$, $v \in T_pM$.
+	want to define
+	$D_v : C_\infty(M,p) \to R$
+	given $\phi: M \supseteq U \to \R_n$ let $D_v$ be the composit
+	$C_\infty(M, p)$ to by ${\phi^{-1}}^*$ to $C_\infty(\R^n,q)$ to $D_w$ to $\R$.
+
+	independent of coordinate chart, by lemma
+\end{lem}
+\begin{defi}
+	$D: C_\infty(M,p) \to \R$ is a \emph{derivation} if it is linear and $D$ satisfies the product rule.
+
+	The $\Der(M,p)$ is the set of all such derivations.
+\end{defi}
+\begin{thrm}
+	The map $T_pM$ to $\Der(M,p)$
+	that sends $v$ to $D_v$
+	is an isomorphism of vector spaces.
 \end{thrm}
 
 
