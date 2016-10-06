@@ -1010,23 +1010,23 @@ Concepts: G acts on \(X\) \(\iff\) there is a homomorphism from \(G \to S(X)\).
 \end{defn*}
 \begin{example}[1.5.4]
   \begin{enumerate}
-  \item[a.] \(S_n\) acts on \(X=\{1,\ldots,n\}\), \(\varphi\) is the identity
-  \item[b.] \(\GL_n(\mathbb{F})\) acts on \(\mathbb{F}^n\) (column vectors)
-  \item[c.] IF \(G\) acts on \(X\), and \(H \le G\) then \(G\) acts on \(H\) also
-    \begin{align*}
-      \varphi \colon G &\to S(X)\\
-      \varphi|_H \colon H &\to S(X)
-    \end{align*}
-  \item[d.] \(G\) acts on the set \(X=G\) by left multiplication
-    \begin{align*}
-      G \times G &\to X\\
-      (g,x) &\mapsto gx
-    \end{align*}
-    Here \(\pi_g\) is just a permutation, and not a group homomorphism we ignore the extra structure.
-  \item[e.] If \(H \le G\) we can consider action \(G\) on \(X=G/H\), by left multiplication.
-    \lambdadeclaration{G\times G/H}{G/H}{(g,g'H)}{(gg')H}
-  \item[f.] \(G\) acts on the group. \(X=G\) by conjugation
-    \lambdadeclaration{G \times G}{G}{(g,x)}{gxg^{-1}}
+    \item[a.] \(S_n\) acts on \(X=\{1,\ldots,n\}\), \(\varphi\) is the identity
+    \item[b.] \(\GL_n(\mathbb{F})\) acts on \(\mathbb{F}^n\) (column vectors)
+    \item[c.] IF \(G\) acts on \(X\), and \(H \le G\) then \(G\) acts on \(H\) also
+      \begin{align*}
+        \varphi \colon G &\to S(X)\\
+        \varphi|_H \colon H &\to S(X)
+      \end{align*}
+    \item[d.] \(G\) acts on the set \(X=G\) by left multiplication
+      \begin{align*}
+        G \times G &\to G\\
+        (g,x) &\mapsto gx
+      \end{align*}
+      Here \(\pi_g\) is just a permutation, and not a group homomorphism we ignore the extra structure.
+    \item[e.] If \(H \le G\) we can consider action \(G\) on \(X=G/H\), by left multiplication.
+      \lambdadeclaration{G\times G/H}{G/H}{(g,g'H)}{(gg')H}
+    \item[f.] \(G\) acts on the group. \(X=G\) by conjugation
+      \lambdadeclaration{G \times G}{G}{(g,x)}{gxg^{-1}}
   \end{enumerate}
 \end{example}
 \end{document}%
