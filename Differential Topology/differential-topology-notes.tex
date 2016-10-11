@@ -102,7 +102,7 @@ Now, recall \begin{enumerate}
 
 Now, let us define what it means for a function to be differentiable.
 \begin{defi}
-	$f :\R^n \to \R^m$ is \emph{differentiable} at $x \in R^n$ if there exists a linear function $df_x : \R^n \to \R^m$  such that $\lim_{h \to 0} \frac{|| (f(x)-f(x+h)) - (df_x(h)) ||}{||h||} = 0$.  Note that $h$ is a vector, as well as $x$.
+	$f :\R^n \to \R^m$ is \emph{differentiable} at $x \in \R^n$ if there exists a linear function $df_x : \R^n \to \R^m$  such that $\lim_{h \to 0} \frac{|| (f(x)-f(x+h)) - (df_x(h)) ||}{||h||} = 0$.  Note that $h$ is a vector, as well as $x$.
 \end{defi}
 \begin{defi}
 	If $f$ is differentiable at $x$ by a linear function $L$, then $L$ is the \emph{differential} of $f$ at $x$.  This is denoted $df_x$.  Using the standard basis, the differential can be expressed as a slope matrix, which is denoted $f'(x)$.
@@ -111,7 +111,7 @@ Now, let us define what it means for a function to be differentiable.
 	If $f$ is differentiable at $x$, then the differential $df_x$ in the $v$ direction is equal to $\lim_{t \to 0} \frac{f(x+tv) - f(x)}{t}$.
 \end{thrm}
 
-\begin{thrm}[a-b-dimensional tangent plane]
+\begin{thrm}[a-b-dimensional tangent plane (warning, this is not used in our class)]
 	Given a function $f : \R^a \to \R^b$ and its slope matrix $f^\prime(v)$ at a vector $v \in \R^a$, then the equation for any point $w$ on the plane tangent to $f$ at $v$ is $g_v(w) = f(v) + f'(v)(w-v)$ or, in point-slope form, $\frac{g_v(w)-f(v)}{w-v} = f'(v)$.
 	% dependencies: [function, derivative, tangent],
 \end{thrm}
@@ -143,15 +143,6 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \emph{1-forms}.
 
 
 \begin{defi}
-	The set $U$ is \emph{open} if it can be written as a union of open balls $B$.
-\end{defi}
-\begin{thrm}
-	The set $U$ is open iff for all points in $U$, there exists an open ball around the point that's entirely contained in $U$.
-\end{thrm}
-\begin{thrm}[continuity and openness]
-	$f$ is continuous iff for every open set $U \in \R^m$, $f^{-1}(U)$ is open in $\R^n$.
-\end{thrm}
-\begin{defi}
 	A \emph{topological space} (a.k.a \emph{space}) is a set $X$ and a set $O$ of subsets of $X$ that satisfy the following conditions.  Every element of $O$ is ``open'' by definition.  Further:
 	\begin{itemize}
 		\item Arbitrary unions of open sets are open.
@@ -160,6 +151,15 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \emph{1-forms}.
 		\item The entire space is open.
 	\end{itemize}
 \end{defi}
+\begin{thrm}
+	The set $U$ is open iff for all points in $U$, there exists an open neighborhood of the point that's entirely contained in $U$.
+\end{thrm}
+\begin{defi}
+	$f$ is an \emph{open} (\emph{closed}) (\emph{compact}) map if the image of every open (closed) (compact) set under $f$ is open (closed) (compact).
+\end{defi}
+\begin{thrm}[continuity and openness]
+	$f$ is continuous iff the inverse map $f^{-1}$ is open.
+\end{thrm}
 \begin{defi}
 	For any $k \in \N$, a function $f:\R^n \to \R^m$ is \emph{$k$-continuously-differentiable}, denoted $f \in C^k$, if all iterated partial derivatives of $f$ of order $k$ exist and are continuous.
 \end{defi}
@@ -172,11 +172,15 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \emph{1-forms}.
 		\item $D(x,x) = 0$
 		\item If $x \neq y$, then $D(x,y) > 0$
 		\item (symmetry) $D(x,y) = D(y,x)$
-		\item (triangle inequality) $D(x,z) <= D(x,y) + D(y,z)$
+		\item (triangle inequality) $D(x,z) \leq D(x,y) + D(y,z)$
 	\end{enumerate}
 \end{defi}
 \begin{defi}
 	A \emph{metric space} is $(X, D)$ where $X$ is a set and $D$ is a distance function on $X$.
+\end{defi}
+\begin{defi}
+	A function $f:\R^n \to \R^m$ is \emph{smooth}, denoted $C^\infty$, if $f$ is $C^k$ for all $k \in \N$.
+	Synonym: $\infty$-continuously-differentiable.
 \end{defi}
 \begin{defi}[analytic functions]
 	A function $f$ is \emph{analytic} if for every point $x$ in the domain, there exists a taylor series centered at $x$ which converges to $f$ in a neighborhood of $x$.  Note: The class of analytic functions is denoted $C^\omega$.
@@ -191,14 +195,17 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \emph{1-forms}.
 		0 &\text{if $x=0$} \\
 	\end{cases}
 	$$
-	is in $C^\infty$, but it is NOT analytic.
+	is smooth, but it is NOT analytic.
 \end{example}
 \begin{defi}
-	$K \subseteq X$ is \emph{compact} in $X$ if whenever $K \subseteq \cup_{i \in I} O$ of open sets, then there exists $J$ finite subset of $I$ such that $K \subseteq union_{j \in J} O$.
+	$K \subseteq X$ is \emph{compact} in $X$ if whenever $${K \subseteq \bigcup_{i \in I} O_i}$$ of open sets, then there exists $J$ finite subset of $I$ such that $$K \subseteq \bigcup_{j \in J} O_j$$.
 \end{defi}
 \begin{thrm}
 	If $K$ is compact in $X$ and $C$ is closed in $X$, then $K \cap C$ is compact in $X$.
 \end{thrm}
+\begin{defi}
+	The space $X$ has the \emph{discrete topology} if every singleton contained in $X$ is open.
+\end{defi}
 \begin{thrm}
 	If $K$ is compact and has the discrete topology, then $K$ is finite.
 \end{thrm}
@@ -210,19 +217,17 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \emph{1-forms}.
 		\item Every singleton subset of $X$ is closed.
 		\item Every finite subset of $X$ is closed.
 		\item For every subset $S$ of $X$, $S$ equals the intersection of all open sets containing it.
+		\item For every subset $S$ of $X$, $x \in \bar{S} \smallsetminus S$ iff every open neighborhood of $x$ contains infinitely many points in $S$.
 	\end{itemize}
 \end{defi}
 \begin{defi}
-	A topological space $X$ is \emph{Hausdorff} (or \emph{T1}) if for every $a \neq b$ in $X$, there exists an open neighborhood $A$ of $a$ and an open neighborhood $B$ of $b$ such that $A \cap B = {}$.  Synonyms: seperated.  Notation: $T_2$ is the set of all Hausdorff topological spaces.
+	A topological space $X$ is \emph{Hausdorff} if for every $a \neq b$ in $X$, there exists an open neighborhood $A$ of $a$ and an open neighborhood $B$ of $b$ such that $A \cap B = \{\}$.  Synonyms: seperated.  $T_2$.
 
 	Properties of Hausdorff spaces $H$:
 	\begin{itemize}
 		\item All properties of T1 spaces apply, since a T2 space is T1.
 		\item Every compact subset of $H$ is closed in $H$.
 	\end{itemize}
-\end{defi}
-\begin{defi}
-	$f$ is an \emph{open} (\emph{closed}) (\emph{compact}) map if the image of every open (closed) (compact) set under $f$ is open (closed) (compact).
 \end{defi}
 \begin{thrm}
 	Properties of continuous functions ($f$):
@@ -233,9 +238,9 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \emph{1-forms}.
 	\end{itemize}
 \end{thrm}
 \begin{cor}
-	If $f : X \to Y$ is continuous, $X$ is compact, and $Y$ is Hausdorff, then $f$ is a closed function *and* $f^{-1}$ is compact.  (basically we get all the benefits that we would get if $f^{-1}$ was a continuous function, except for the "function" part.)
+	If $f : X \to Y$ is continuous, $X$ is compact, and $Y$ is Hausdorff, then $f$ is a closed function *and* $f^{-1}$ is compact.  (basically we get all the benefits that we would get if $f^{-1}$ was a continuous function, except for the ``function'' part.)
 
-	\textbf{Note.} Let $C$ be a closed subset of $X$.  $X$ is compact, so $C$ is compact.  $f$ is continuous, so $f(C)$ is compact.  $Y$ is Hausdorff, so $f(C)$ is closed.  $f$ is continuous, so $f^{-1}(f(C)) = C$ is closed.  This is a useful cycle, but it does not imply "closed iff compact".  The one case to be wary of is $K$ compact in $X$.  It will follow that $f^{-1}(f(K))$ is closed in $X$, but it is possible that $f^{-1}(f(K)) \neq K$, so we can't conclude that $K$ is closed.
+	\textbf{Note.} Let $C$ be a closed subset of $X$.  $X$ is compact, so $C$ is compact.  $f$ is continuous, so $f(C)$ is compact.  $Y$ is Hausdorff, so $f(C)$ is closed.  $f$ is continuous, so $f^{-1}(f(C)) = C$ is closed.  This is a useful cycle, but it does not imply ``closed iff compact''.  The one case to be wary of is $K$ compact in $X$.  It will follow that $f^{-1}(f(K))$ is closed in $X$, but it is possible that $f^{-1}(f(K)) \neq K$, so we can't conclude that $K$ is closed.
 \end{cor}
 \begin{cor}
 	If $f : X \to Y$ is a continuous bijection, and $X$ is compact and $Y$ is Hausdorff, then $f$ is a homeomorphism. (That is, $f^{-1}$ is continuous).
@@ -282,10 +287,6 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \emph{1-forms}.
 \begin{defi}
 	Let $U$ and $V$ be open sets in $\R^n$.  A function $f:U\to V$ is a \emph{diffeomorphism} iff it is a bijection and both $f$ and $f^{-1}$ are differentiable.
 	Synonym: bi-differentiable function.
-\end{defi}
-\begin{defi}
-	A function $f:\R^n \to \R^m$ is \emph{smooth}, denoted $C^\infty$ if $f$ is $C^k$ for all $k \in \N$.
-	Synonym: $\infty$-continuous.
 \end{defi}
 \begin{thrm}
 	If $f:\R^n \to \R^m$ is $C^1$ in a neighborhood of $x$, then $f$ is differentiable at $x$.
@@ -341,7 +342,7 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \emph{1-forms}.
 	Finally: $(f^{-1})^\prime(f(x)) = (f^\prime(x))^{-1}$.
 \end{thrm}
 \begin{thrm}
-	A function $f : \R^a \to \R^b$ is continuous iff each of its coordinate functions $f_i$, $1<= i <=b$, are continuous.
+	A function $f : \R^a \to \R^b$ is continuous iff each of its coordinate functions $f_i$, $1\leq i \leq b$, are continuous.
 \end{thrm}
 
 \begin{defi}
@@ -349,11 +350,7 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \emph{1-forms}.
 \end{defi}
 
 \begin{defi}
-	A top space $M$ is \emph{second countable} if there exists a countable basis of $M$.
-\end{defi}
-
-\begin{defi}
-	A space is \emph{2nd-countable} if it has a countable basis.
+	A space is \emph{second-countable} if it has a countable basis.  Synonym: \emph{2nd-countable}.
 \end{defi}
 \begin{defi}
 	A space is \emph{seperable} is it has a countable dense subset.
@@ -369,23 +366,19 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \emph{1-forms}.
 \end{thrm}
 
 \begin{defi}
-	An atlas for $M$ is \emph{smooth} if every $phi_\beta$ of $phi_\alpha^{-1}$ is $C^\infty$ both ways.
+	An atlas for $M$ is \emph{smooth} if every $\phi_\alpha^{-1}.\phi_\beta$ is $C^\infty$ both ways.
 \end{defi}
 
 \begin{defi}
-	Two smooth atlases $A$ and $A^\prime$ are \emph{equivalent} if for each $\alpha$, $\beta$, $\phi_\beta^\prime$ of $\phi_\alpha^{-1}$ is $C^\infty$ both ways.
+	Two smooth atlases $A$ and $A^\prime$ are \emph{equivalent} if for each $\alpha$, $\beta$, $\phi_\alpha^{-1}.\phi_\beta^\prime$ is $C^\infty$ both ways.
 \end{defi}
 \begin{rmk}
 	It can be verified that the above definition really is an equivalence relation.
 \end{rmk}
 
 \begin{defi}
-	A \emph{smooth} manifold is just a manifold coupled with an equivalence class of smooth atlases.
+	A \emph{smooth} manifold ("smooth structure") is just a manifold coupled with an equivalence class of smooth atlases.
 \end{defi}
-
-\begin{rmk}
-	closed manifold implies compact manifold.  i think.
-\end{rmk}
 
 \begin{thrm}
 	There exist 4-dim manifolds that can't be smooth.
@@ -402,7 +395,7 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \emph{1-forms}.
 \end{example}
 
 \begin{defi}
-	An \emph{n-}manifold or \emph{n-dimensional} manifold is a manifold that is locally homeomorphic to $\R^n$.  ("n-" is the adjective to "manifold".)
+	An \emph{n-}manifold or \emph{n-dimensional} manifold is a manifold that is locally homeomorphic to $\R^n$.  (``n-'' is the adjective to ``manifold''.)
 \end{defi}
 
 
@@ -437,7 +430,7 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \emph{1-forms}.
 \begin{defi}
 	Given $M$ smooth $m$-manifold with atlas $A = \{ U_a, \,\phi_a : U_a \to \R^m \}$.
 	Given $N$ smooth $n$-manifold with atlas $B = \{ V_b, \,\psi_b : V_b \to \R^n \}$.
-	$m <=n$.
+	$m \leq n$.
 	A smooth function $f : M \to N$  is an \emph{immersion} if given any $a, b$ such that $\phi_a: U_a \to \R^m$, $\psi_b: V_b \to \R^n$, and any $x \in \phi_a(U_a \cap V_b.f^{-1})$, then $x.(\phi_a^{-1}.f.\psi_b)'$ has rank $m$.
 \end{defi}
 
@@ -447,12 +440,12 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \emph{1-forms}.
 
 \begin{thrm}
 	$\R P^n \isom \R P^{n-1} \cup \R^n$.
-	\textbf{Proof.}  In $\R^{n+1}$, draw a flat "plane" above the origin.  Each line in $\R P^n$ that has a nonzero "z" component will intersect this plane.  So each line maps to its intersection with this plane, and this plane is $R^n$.  The remaining lines are all in $\R P^{n-1}$.  Wow!
+	\textbf{Proof.}  In $\R^{n+1}$, draw a flat ``plane'' above the origin.  Each line in $\R P^n$ that has a nonzero ``z'' component will intersect this plane.  So each line maps to its intersection with this plane, and this plane is $\R^n$.  The remaining lines are all in $\R P^{n-1}$.  Wow!
 \end{thrm}
 
 
 
-If $f$ is a smooth map of manifolds, then we can differentiate, getting the linear map $d_x(\phi_a^{-1}.f.\psi_b): R^m \to R^n$.
+If $f$ is a smooth map of manifolds, then we can differentiate, getting the linear map $d_x(\phi_a^{-1}.f.\psi_b): \R^m \to \R^n$.
 
 \begin{thrm}
 	$f$ is a smooth map of manifolds.
@@ -614,7 +607,9 @@ More elegant definition of regular:
 \end{defi}
 
 \begin{thrm}
-	If $f$ is transverse to $L$, then $ \dim(M) - \dim f^{-1}(L) = \dim(N) - \dim(L)$.
+	If $f$ is transverse to $L$, then $$\dim(M) + \dim(L) = \dim(N) + \dim f^{-1}(L)$$.
+	If $M$ is transverse to $L$, then $$\dim(M) + \dim(L) = \dim(N) + \dim(M \cap L)$$.
+	I think this may generalize to $$\dim(M) + \dim(L) = \dim(M \cup L) + \dim(M \cap L)$$, if the notion of taking the union of $M$ and $L$ corresponds to taking the direct sum of the tangent spaces of $M$ and $L$.
 
 	Furthermore, if $x \in K$ and $y = f(x)$, then $T_x K = df^{-1}_x(T_y L) \subset T_x M$.
 \end{thrm}
@@ -680,21 +675,21 @@ $= c\lim C^\infty(U)$.
 for open nieghborhoods of $p$.
 
 If $\phi : M to N$ in smooth and $\phi(p) = q$, then we get an induced ring morhpism
-$\phi^* : C_\infty(N,q) \to C_\infty(M,p)$ by
+$\phi^* : C^\infty(N,q) \to C^\infty(M,p)$ by
 $\phi^*([f]) = [\phi.f]$
 
 $\psi : L \to M$
 $\phi : M \to N$
 
-$(\psi.\phi)^* = \phi*.\psi* : C_\infty(n,q) \to C_\infty(L,r)$
+$(\psi.\phi)^* = \phi*.\psi* : C^\infty(n,q) \to C^\infty(L,r)$
 
 Given $v \in T_pM$, want to define
-$D_v : C_\infty(M,p) \to R$
-"directional derivative in the $v$-direction" at $p$
+$D_v : C^\infty(M,p) \to \R$
+``directional derivative in the $v$-direction'' at $p$
 
 Example for $M = \R_n$, $p \in \R_n$, and $v \in T_p\R_n = \R_n$.
 
-$D_v : C_\infty(\R_n, p) \to \R$
+$D_v : C^\infty(\R_n, p) \to \R$
 
 $D_v([f]) = \lim \frac{f(p + tv) - f(p)}{t}$
 
@@ -720,20 +715,21 @@ proof not shown.
 	$w = d \phi_p(v)$ in $\R_n$
 
 	Then
-	$D_w = D_v of \phi^* : C_\infty(\R^n,q) \to \R$
+	$D_w = D_v of \phi^* : C^\infty(\R^n,q) \to \R$
 
 	$M$ is an $n$-dimensional manifold, $p \in M$, $v \in T_pM$.
 	want to define
-	$D_v : C_\infty(M,p) \to R$
+	$D_v : C^\infty(M,p) \to \R$
 	given $\phi: M \supseteq U \to \R_n$ let $D_v$ be the composit
-	$C_\infty(M, p)$ to by ${\phi^{-1}}^*$ to $C_\infty(\R^n,q)$ to $D_w$ to $\R$.
+	$C^\infty(M, p)$ to by ${\phi^{-1}}^*$ to $C^\infty(\R^n,q)$ to $D_w$ to $\R$.
 
 	independent of coordinate chart, by lemma
 \end{lem}
 \begin{defi}
-	$D: C_\infty(M,p) \to \R$ is a \emph{derivation} if it is linear and $D$ satisfies the product rule.
-
-	The $\Der(M,p)$ is the set of all such derivations.
+	A \emph{derivation} is a function that is linear and satisfies the product rule.
+\end{defi}
+\begin{defi}
+	$\Der(M,p)$ is the set of all such derivations $D$ of the form $D: C^\infty(M,p) \to \R$.
 \end{defi}
 \begin{thrm}
 	The map $T_pM$ to $\Der(M,p)$
@@ -741,12 +737,103 @@ proof not shown.
 	is an isomorphism of vector spaces.
 \end{thrm}
 
+Monday, October 10, 2016
+
+$M^n$ is a Manifold.
+$v \in T_xM$ gives you a direction in which to take dir derivatives.
+$D_v$ directional derivative in $v$-direction
+
+\begin{defi}
+	Given $p: TM \to M$, a \emph{smooth vector field} on $M$ is a smooth section to $p$.
+\end{defi}
+\begin{example}
+	The zero function is a smooth vector field on $M$.
+\end{example}
+\begin{example}
+	$V$ open (and connected?) in $\R^n$ is a smooth $n$-dim manifold.
+
+	Recall that $TV \isom   V \times \R^n$.  Let $p:TV \to V$ and $\pi:V \times \R^n \to V$.
+
+	The following map is a bijection:
+	$\{\text{vector fields}\} \to \{\text{smooth functions}\}$
+	$        X: V \to TV      \mapsto     X: V \to \R^n$
+\end{example}
+\begin{example}
+	$C^\infty(M,x)$ is the set of germs about $x$.
+	Each germ is an equiv class.
+	The germs make up a V.S., that is, $C^\infty(M,x)$ is a V.S. over $\R$ (the operation is function multiplication).  Moreso, it is a commutative $\R$-algebra.
+
+	Define $C^\infty(M, TM)$ as the set of vector fields on $M$.  (That is, the set of smooth $f: M \to TM$ with $f(x) \in T_xM$.)  We can add these vector fields together, and multiply them by constants in $\R$.  So we have another V.S.
+
+	Let $F$ be one of these vector fields and $g \in C^\infty(M)$.
+	Let $(gF)(x) = g(x)F(x)$.
+	So $C^\infty(M)$ is a ring and $C^\infty(M, TM)$ is module over $C^\infty(M)$.  Or, more succinctly, ``$C^\infty(M, TM)$ is a $C^\infty(M)$-module''.
+
+	Let $F_i : V to ((TV = Vx\R^n))$
+	Let $Fi : V to \R^n$ be the constant vector field $Fi(x) = (((x,ei) or just ei))$ = the ith basis vector.
+
+	then cool things happen that i missed :(
+\end{example}
+\begin{defi}
+	A \emph{derivation} of a commutative algebra $A$ is derivation of the form $D: A \to A$.
+
+	$\Der(A)$ is the set of all such derivations.
+\end{defi}
+\begin{thrm}
+	The set of derivations $\Der(A)$ of a commutative algebra $A$ is an $A$-module.  That is, $\Der(A)$ is a commutative additive group, and this is a module over $A$.  (Observe that if $c \in A$, then $(cD)(x) = cD(x)$).
+\end{thrm}
+
+\begin{prop}
+	vector fields on $M ---------->$ derivations on $C^\infty(M)$
+	$C^\infty(M,TM) ------------> Der(C^\infty(M))$
+	$x |-----------> Dx$
+
+	This is an isomorphism of $C^\infty(M)$-modules!
+\end{prop}
+
+
+\begin{defi}
+	The \emph{Lie bracket} of $A$ and $B$, denoted $[A,B]$, is $AB - BA$.
+\end{defi}
+\begin{thrm}
+	Derivations admit a Lie bracket.
+\end{thrm}
+\begin{proof}
+	For any two derivations of $A$, is
+	Is $D \circ C$ in $\Der(A)$ too?
+	\begin{align}
+		(DC)(ab) &= D(C(a))b + C(a)D(b) + D(a)D(b) + aD(C(b)) \\
+		\text{look at reverse} \\
+		(CD)(ab) &= C(D(a))b + D(a)C(b) + C(a)C(b) + aC(D(b)) \\
+		\text{Then} \\
+		(DC - CD)(ab) &= (DC - CD)(a)b + a(DC - CD)(b)
+	\end{align}
+	So $(DC - CD) \in \Der(A)$.
+	So $[D,C] \in \Der(A)$.
+	Use some law of commutators to show that $D.C$ in $\Der(A)$ too?
+\end{proof}
 
 
 
+\begin{example}
+	Vector fields admit a Lie bracket (because they are derivations)
+	$X, Y \in C^\infty(M, TM)$ implies that $[X,Y] \in C^\infty(M, TM)$
+\end{example}
+\begin{proof}
+	First write $X$ and $Y$ as derivations.  Then use the above theorem, or repeat the work of the above theorem as follows:
 
+	Let $X(x,y) = f(x,y)d/dx$
+	Let $Y(x,y) = g(x,y)d/dx$
+	so $Y(h) = g(x,y)d/dx(h) = g(x,y)dh/dx$  (not $Y$ OF $h$, but $Y$ applied to $h$)
 
+	Then $X(Y(h)) = f dg/dx dh/y + fg d2h/dxdy$
+	Then $Y(X(h)) = g df/dx dh/y + gf d2h/dxdy$
 
+	Then $(XY - YX)(h)$ = compute
+	$[X,Y](h) = f dg/dx dh/y - g df/dx dh/y$
+	in general:
+	$[X,Y] = f dg/dx d/y - g df/dx d/y$
+\end{proof}
 
 
 
