@@ -203,6 +203,12 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \emph{1-forms}.
 \begin{thrm}
 	If $K$ is compact in $X$ and $C$ is closed in $X$, then $K \cap C$ is compact in $X$.
 \end{thrm}
+\begin{thrm}[Matt]
+	If $K$ is compact in $X$ and $K \subseteq S \subseteq X$, then $K$ is compact in $S$.
+\end{thrm}
+\begin{conj}[Matt]
+	I conjecture that the theorem above is also true for "open" instead of "compact".  Also for "closed" and ANY other topological property.  I will give 10 dollars to whoever proves or disproves this theorem.
+\end{conj}
 \begin{defi}
 	The space $X$ has the \emph{discrete topology} if every singleton contained in $X$ is open.
 \end{defi}
@@ -834,6 +840,155 @@ $D_v$ directional derivative in $v$-direction
 	in general:
 	$[X,Y] = f dg/dx d/y - g df/dx d/y$
 \end{proof}
+
+Wednesday, October 12, 2016
+
+Q1
+Given M, does there exists a vector field X on M s.t. for all $x \in M$, X(x) \neq 0 ?
+
+example
+M = S1.  TS1 = { (z,v) | z in S1, z dot v = 0 }
+yup!
+X(z) = X(x,y) = (z, (-y,z)) works!
+
+example
+M = S2.
+no!
+
+example
+M = S3 \subseteq \C x \C
+S3 = { (z1,z2) | |z1|^2 + |z2|^2 = 1 }
+yes!
+X(z) = (z, iz) works!
+
+example
+M = S^{2n-1}
+yes!
+use the same trick!
+
+Q2
+Given M, what is the maximum number $k$ of vector fields X1,,,Xk that for every $x \in M$, {X1(x),,,Xk(x)} is linearly independent?
+
+k = n = dim M is best possible
+
+example
+M \subseteq S3 \subseteq \H (has 4 dim)
+q = x*1 + y*i + z*j + w*k
+Let
+X1(q) = (q, iq)
+X2(q) = (q, jq)
+X3(q) = (q, kq)
+yes!
+
+\begin{thrm}[J.F. Adams]
+	Given n \in \N and write n = odd*2^{4d+c}
+	Let p(n) = 2^c + 8d
+	Then S^{n-1} admits p(n)-1 linearly independent vector fields, but not p(n).
+\end{thrm}
+
+consider we have k = n, best possible
+
+
+\begin{defi}
+	M is __parallelizable__ if there exists a function phi s.t.
+	phi : M x Rn to TM
+	by (x, t1,,,tn) mapsto (x, t1X1(x),,,tnXn(x))
+	and phi is a diffeomorphism that commutes with
+
+	phi : M x Rn to TM
+	M x Rn ---pi---> M
+	p: TM ----------> M
+\end{defi}
+\begin{thrm}
+	M is \emph{parallelizable} iff the maximum number of lin. ind. vector fields = n = dim M.
+\end{thrm}
+
+weaker than parallelizable
+-------------------------------
+
+An n-dim M is __framed__ if there exists k and a vector bundle isomorphism f s.t.
+
+TM x Rk ----f----> M x R{n+k}
+TM x Rk ----p----> M
+M x R{n+k} -----q----> M
+
+s.t. f is smooth and each map TxM x Rk -----> R{n+k} is a linear isomorphism. (that is, f is a diffeomorphism)
+pinverse(x) -----f-----> qinverse(x)
+
+
+
+
+
+example
+S2 is frames with k=1 by
+f : TS2 x R --------> S2 x R3
+((x,v), t) mapsto (x, v + tx)
+<x>
+
+observe that
+TS2 \not\isom S2 x R2
+but
+TS2 x R \isom S2 x R3
+wow!
+
+or in general, we have
+R = Coo(S2)
+M = C(S2, TS2)
+M is an R-module
+then
+M \not\isom R directsum R, as R-module
+but
+M directsum R \isom R directsum R directsum R, as R-module
+wow!
+
+example
+RP2 not framed
+CP2 not framed
+
+
+
+dfx in (TxM)*, called the __dual vector space__ of TxM
+
+def
+cotangent bundle
+----------------------
+T*M = \bigcup_{x \in M} (TxM)*
+
+
+observe
+TM = \sqcup (Ui x Rn)/~
+where (i, x, v) ~ (j, x, d(\phi_i of phi_i inverse)_x(v))
+analagously,
+T*M = \sqcup (Ui x (Rn)*)/~
+where (j, x, w) ~ (i, x, d(\phi_j of phi_j inverse)_x(w))
+
+\begin{defi}
+	A __1-form__ on M is a section of T*M ----> M.
+
+	in other words, for all x in M, w(x): TxM --> R and this varies "smoothly" in x
+\end{defi}
+notation
+omega'(M) = Coo(M, T*M) = set of all 1-forms
+
+example
+U \subseteq Rn
+A general vector field on U had the form
+f1 d/dx1 +++ fn d/dxn
+where fi : U to Rn
+then
+A general 1-form on U has the form
+f1 dx1 +++ fn dxn
+(observe that dx1 is dual to d/dx1, etc)
+
+
+
+
+
+
+
+
+
+
 
 
 
