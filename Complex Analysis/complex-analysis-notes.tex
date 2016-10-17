@@ -805,12 +805,66 @@ orthogonality.
     \frac{f(w)}{(w-z-\Delta z)(w-z)}dw$. However, as $\Delta z \to 0$,
     the integrand goes uniformly to $\frac{f(w)}{(w-z)^2}$ as a
     function of $w$. Thus, we get the finaly result of $\frac{1}{2 \pi
-    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
+z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
   \end{proof}
   \begin{thm}[Cauchy Estimate]
     Given the same conditions as the above Cauchy theorems, we have the following bound.
     $$ \lvert f^{(n)}(z) \rvert \leq \frac{n!M}{R^n}$$
     where $R$ is the radius of the circle and $M$ is the maximum value $|f|$ attains along the boundary of the circle.  (To prove this, just apply the ML-estimate to the Generalized Cauchy Integral Formula).
   \end{thm}
-
+  \section{(9/27/2016) Lecture 11}
+  \begin{defn}
+    A function that is analytic on all of $\C$ is called \emph{entire}.
+  \end{defn}
+  \begin{example}
+    Polynomials, $e^z, \sin z, \cos z$ are all entire functions.
+  \end{example}
+  Now, we formulate a useful theorem for entire functions.
+  \begin{thm}[Liouville's Theorem]
+    A bounded entire function is constant. 
+  \end{thm}
+  \begin{proof}
+    Let $|f(z)| \leq M$ for all $z \in \C$. Take any $z$. For any
+    circle with radius $R >
+    0$ ,we have the Cauchy estimate $|f'(z)| \leq \frac{M}{R}$ which
+    is true for all $R$. Thus, if we take $R \to \infty$, we get
+    $f'(z) = 0$. This works for all $z$ so $f' \equiv 0$ and thus $f$
+    is constant. 
+  \end{proof}
+  This leads to a proof of the fundamental theorem of algebra, for
+  which there are many.
+  \begin{thm}[Fundamental Theorem of Algebra]
+    If $p(z)$ is a non-constant polynomial, then it has a root. A
+    quick corollary is that it factors completely because the theorem
+    gives us that $p(z) = (z-z_1)p_1(z)$ and one can apply the theorem iteratively.
+  \end{thm}
+  \begin{proof}
+    Suppose $p(z)$ is a nonconstant polynomia and has no root. If
+    $p(z)$ is degree $n$, then $p$ is $O(z^n)$ at $\infty$, so
+    $\frac{1}{p(z)} \to 0$ as $z \to \infty$. It follows that
+    $\frac{1}{p(z)}$ is entire and bounded. Thus, by Liouville's
+    theorem, it is constant. However, this is a contradiction because
+    we assumed it was not constant.
+  \end{proof}
+  \begin{thm}[Morera's Theorem]
+    If $f$ is a continuous complex function on $D$ and
+    $\oint_{\partial R} f(z)dz = 0$ for any rectangle with horizontal
+    and vertical sides entirely in $D$, then $f$ is analytic.
+  \end{thm}
+  This theorem provides a method for dealing with complex functions
+  where it is not assumed the real and imaginary parts are
+  differentiable and is a generalization of the idea that $f(z)dz$ is
+  closed if and only if $f$ is analytic.
+  \begin{thm}[Liouville's Theorem for Harmonic Functions]
+    If $u$ is harmonic on $\R^2$ and bounded above by $M$, then $u$ is
+    constant. 
+  \end{thm}
+  \begin{proof}
+    The strategy of this proof is to relate $u$ to an entire function
+    whose modulus is related to $u$. Since $u$ is harmonic, it has a
+    harmonic conjugate $v$. Then, $u+iv$ is entire and so is
+    $e^{u+iv}$. However, $|e^{u+iv}| = e^u \leq e^M$. Thus, by
+    Liouville's theorem, $e^{u+iv}$ is constant so $e^u$ is constant
+    and thus $u$ is constant.
+  \end{proof}
 \end{document}
