@@ -22,36 +22,41 @@
 %%%%%%%%%%%%%% BEGIN CONTENT: %%%%%%%%%%%%%%
 
 \title[Abstract Algebra]{Abstract Algebra}
-\author{George H. Seelinger, Chris Lloyd\\ (inspired from class by Abramenko)}
+\author{Chris Lloyd, George H. Seelinger\\ (inspired from class by
+  Peter Abramenko)}
 \date{Fall 2016}
 \begin{document}
 \maketitle
 \section{Group Theory}
 \subsection{Basic Facts}
 \subsection*{Lecture 1: Normalizers and Centralizers}
-\begin{defn}
+\begin{defn*}[1.1.1]
     For $A \subset G$, we set $N_G(A) := \{g \in G | gAg^{-1} = A\}$ and
     $C_G(A) := \{g \in G | gag^{-1} = a, \forall a \in A\}$.
-\end{defn}
-Note that $C_G(A) \subset N_G(A)$.
-\begin{rmk*}
+\end{defn*}
+Note that $C_G(A) \subset N_G(A)$ and $Z(G) = C_G(G)$. 
+\begin{rmk*}[1.1.2a]
     If $A \subgroup G$, then $A \normsubgroup N_G(A)$. In fact, $N_G(A)$ is the
     largest subgroup of $G$ in which $A$ is normal.
 \end{rmk*}
     The first part of this remark follows from the definition of $N_G(A)$. The
     second part follows by assuming that $N_G(A)$ is not the largest and then
     showing the ``largest'' is contained in $N_G(A)$.
-\begin{rmk*}
+\begin{rmk*}[1.1.2b]
     If $A \subgroup G$, then $A \normsubgroup G$ if $N_G(A) = G$.
 \end{rmk*}
     This follows from the second part of the remark above.
     Now for some remakrs about centralizers.
-    \begin{rmk*}
-        If $A \subgroup G$, then $A$ is abelian if and only if $A \subset
-        C_G(A)$. Furthermore, if $A \subgroup Z(G)$, then $A \normsubgroup G$.
+    \begin{rmk*}[1.1.3]
+      \begin{enumerate}
+      \item If $A \subgroup G$, then $A$ is abelian if and only if $A \subset
+        C_G(A)$.
+      \item Furthermore, if $A \subgroup Z(G)$, then $A \normsubgroup G$.
         This follows using basic commutativity arguments.
+      \end{enumerate}
+        
     \end{rmk*}
-    \begin{example}
+    \begin{example}[1.1.4]
         $Z(S_n) = \{ id \}$ if $n \geq 3$. To prove this, prove $\sigma \in S_n, \sigma \neq id \implies \sigma \notin Z(S_n)$.
 
         $\sigma \neq id \implies \exists i,j \in \{1, \ldots, n\}$ where $i
@@ -63,7 +68,7 @@ Note that $C_G(A) \subset N_G(A)$.
         would have. So, we have that $\sigma \notin C_{S_n}( (ik) ) \implies
         \sigma \notin Z(S_n)$.
     \end{example}
-    \begin{lem}
+    \begin{lem}[1.1.5]
         Let $G$ be a group and $H \subgroup Z(G)$. (Note this implies $H
         \normsubgroup G$.) If $G/H$ is cyclic, then $G$ is abelian.
     \end{lem}
@@ -89,7 +94,7 @@ Note that $C_G(A) \subset N_G(A)$.
             \item $AB = \{ab | a \in A, b \in B\}$.
         \end{itemize}
     \end{defn}
-    \begin{lem}
+    \begin{lem}[1.1.6]
         Let $G$ be a group with $A,B \subgroup G$. Then,
         \begin{enumerate}
             \item $AB \subgroup G$ if and only if $AB = BA$.
@@ -106,7 +111,7 @@ Note that $C_G(A) \subset N_G(A)$.
             \item $e \in A, e \in B \implies e = ee \in AB$.
             \item This is the same as above. $(AB)^{-1} = B^{-1}A^{-1} = B! = AB$.
             \item $(AB)(AB) = A(BA)B = A(AB)B = (AA)(BB) = AB$.
-        \end{enumerate}. Thus, $AB \subgroup G$.
+        \end{enumerate} Thus, $AB \subgroup G$.
 
         Now, for the second part, let $A \subgroup N_G(B)$. Then, let $a \in A,
         b \in B$. We know $a,a^{-1} \in A \subset N_G(B)$. Then, we have $ab =
@@ -114,17 +119,24 @@ Note that $C_G(A) \subset N_G(A)$.
         definition of $N_G(B)$. So, $AB \subset BA$. Similar logic shows $BA
         \subset AB$ and thus $AB = BA$.
     \end{proof}
-
     \subsection*{Lecture 2}
-    \begin{rmk}
+    \begin{rmk*}
         \begin{enumerate}
-            \item If $A,B \subgroup G$ and if $A \normsubgroup G$ or $B \normsubgroup G$, then $AB \subgroup G$.
-            \item If $A,B \normsubgroup G$, then $AB \normsubgroup G$.
+            \item If $A,B \subgroup G$ and if $A \normsubgroup G$ or
+              $B \normsubgroup G$, then $AB \subgroup G$. 
+            \item If $A,B \normsubgroup G$, then $AB \normsubgroup
+              G$.
         \end{enumerate}
-    \end{rmk}
+    \end{rmk*}
     \begin{proof}
-        The first remark can be done by $(ab)(a'b') = aba'b^{-1}bb' = aa'b' = (aba'b^{-1})b' \in AB$ because $a$ and $ba'b^{-1}$ are in $A$ and $b \in B$. Also, $(ab)^{-1} = b^{-1}a^{-1} = (b^{1}a^{-1}b)b^{-1} \in AB$. The identity inclusion is obvious.
-        The second remark is proven by, for $g \in G$, $gABg^{-1} = gAg^{-1}gBg^{-1} = AB$.
+        The first remark can be done by $(ab)(a'b') = aba'b^{-1}bb' =
+        aa'b' = (aba'b^{-1})b' \in AB$ because $a$ and $ba'b^{-1}$ are
+        in $A$ and $b \in B$. Also, $(ab)^{-1} = b^{-1}a^{-1} =
+        (b^{1}a^{-1}b)b^{-1} \in AB$. The identity inclusion is
+        obvious.
+        
+        The second remark is proven by, for $g \in G$, $gABg^{-1} =
+        gAg^{-1}gBg^{-1} = AB$. 
     \end{proof}
 
     \subsubsection*{Index Computations}
@@ -173,8 +185,9 @@ Note that $C_G(A) \subset N_G(A)$.
        For the first part, fix a set of coset representatives (using the Axiom of Choice in the infinite case) for $G/A$. Then, given a coset $gA$, we can TODO
 \end{proof}
 \subsection*{The Isomorphism Theorems}
-\begin{thm}
-    (First Isomorphism Theorem) If $\phi: G \to H$ is a group homomorphism, then $G/\ker \phi \isom \phi(G) \subgroup H$.
+\begin{thm}[1.1.10 First Isomorphism Theorem]
+    If $\phi: G \to H$ is a group homomorphism, then $G/\ker \phi
+    \isom \phi(G) \subgroup H$.
 \end{thm}
 \begin{proof}
     Set $N = \ker \phi \normsubgroup G$. Then, consider $\widetilde{\phi}: G/N
