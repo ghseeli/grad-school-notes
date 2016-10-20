@@ -5,7 +5,8 @@
 \newcommand{\Fp}{{\mathbb{F}_p}} % finite field of order p
 \newcommand{\subgroup}{\mathrel{<}}
 \newcommand{\normsubgroup}{\mathrel{\unlhd}}
-\newcommand{\Aut}{\text{Aut}}  % automorphism group
+\newcommand{\Aut}{\operatorname{Aut}}  % automorphism group
+\newcommand{\Char}{\mathrel{\operatorname{char}}}
 \newcommand{\primedecomposition}[3]{#1_1^{#2_1} \cdots {#1_{#3}}^{#2_{#3}}}
 \newcommand{\funcdeclaration}[5]{
   \begin{align*}
@@ -332,7 +333,7 @@ seen in the following lemma.
 \begin{rmk}
     Let $A,B \subgroup G$. Then
     \begin{enumerate}
-        \item $[A,B] = \{e\}$ if and only if $ab = ba \forall a \in A, b \in B$
+        \item $[A,B] = \{e\}$ if and only if $ab = ba, \forall a \in A, b \in B$
             if and only if $A \subgroup C_G(B)$ if and only if $B \subgroup
             C_G(A)$. In this case, we say that $A$ and $B$ commute.
         \item $[G,G] = \{e\}$ if and only if $G$ is abelian if and only if $Z(G) = G$.
@@ -353,7 +354,7 @@ seen in the following lemma.
             we have \begin{align*}
                 \sgn( [\sigma,\tau] ) & = \sgn(\sigma \tau \sigma^{-1} \tau^{-1}) \\
                 \ & = \sgn(\sigma) \sgn(\tau) \sgn(\sigma)^{-1} \sgn(\tau)^{-1} \\
-                \ & = 1 \forall \sigma, \tau \in S_n
+                \ & = 1, \forall \sigma, \tau \in S_n
             \end{align*}
             For ($\supset$), see the previous item.
         \item $[A_n,A_n] = A_n$ for $n \geq 5$. This is because every 3 cycle
@@ -375,7 +376,7 @@ seen in the following lemma.
 \begin{proof}
     The forward direction of $(a)$ is given by the fact that $[a,b] =
     aba^{-1}b^{-1}$ but $aba^{-1} \in B$ since $A$ normalizes $B$. Thus, $[a,b]
-    \in B \forall a \in A, b \in B$ so $[A,B] \subgroup B$. To do the other
+    \in B, \forall a \in A, b \in B$ so $[A,B] \subgroup B$. To do the other
     direction, we have that, we have that $aba^{-1}b^{-1} \in B, \forall a \in A,
     \forall b \in B$. Well, $(aba^{-1}b^{-1})b = aba^{-1} \in B$, so $A$
     normalizes $B$, so $A \subgroup N_G(B)$. \\
@@ -417,9 +418,12 @@ follows easily from the third item.
 \subsubsection*{Direct Products}
 
 \begin{defn}
-    The (external) direct product of two groups $A$ and $B$ is defined as the set (Cartesian product) \[
+    The (external) direct product of two groups $A$ and $B$ is defined
+    as the set (Cartesian product)  \[
         A \times B = \{(a,b) | a \in A, b \in B \}
-    \] with multiplication $(a_1,b_1) \cdot (a_2,b_2) = (a_1a_2,b_1b_2)$. With this multiplication ,it is clear that $A \times B$ is a group by direct computation.
+    \] with multiplication $(a_1,b_1) \cdot (a_2,b_2) =
+    (a_1a_2,b_1b_2)$. With this multiplication, it is clear that $A
+    \times B$ is a group by direct computation. 
 \end{defn}
 
 Direct products provide us with a way to build new groups from known groups.
@@ -539,6 +543,115 @@ Let us next discuss internal direct products.
             semi-direct products.
     \end{enumerate}
 \end{example}
+
+\begin{prop*}[1.1.26]
+  If $G$ is the internal direct product of two subgroups $A,B
+  \subgroup G$, then $G$ and the external product $A \times B$ are
+  isomorphic.
+\end{prop*}
+\begin{proof}
+  Proof was done in class but omitted here.
+\end{proof}
+\begin{cor*}[1.1.27]
+  If $G = A \times B$, internal direct product, then
+  \begin{enumerate}
+  \item $A$ and $B$ commute.
+  \item Any $g$ can be uniquely writen in the form $g = ab$ with $a
+    \in A, b \in B$.
+  \end{enumerate}
+\end{cor*}
+\begin{proof}
+  Both of these statements follow easily from the proof of the
+  proposition above.
+\end{proof}
+
+\subsubsection*{Automorphisms}
+\begin{defn*}[1.1.28]
+  An automorphism of a group $G$ is a bijective homomorphism from $G$
+  onto $G$. \[
+    \Aut(G) = \{\alpha: G \to G : \alpha \text{ is an automorphism.}\}
+  \]
+  is a group with respect to composition as multiplication.
+\end{defn*}
+\begin{example*}[1.1.29]
+  \begin{enumerate}
+  \item $\Aut(\Z) \isom \{1,-1\}$
+  \item $\Aut(\Z_n) \isom \Z^\times_n \implies |\Aut(\Z_n)| = \phi(n)$
+    where $\phi(n)$ is Euler's phi function.
+  \item If $A,B$ are groups, then $\Aut(A) \times \Aut(B) \subgroup
+    \Aut(A \times B)$.
+  \item $\Aut(\Z_2 \times \Z_2) \isom \Sym_3$. Any permutations of
+    $a,b,c$ yields an automorphism of $\Z_2 \times \Z_2$.
+  \item For any group $G$ and any $g \in G$, conjugation with $g$
+    defines an automorphism $\kappa_g: G \to G$ such that $x \mapsto
+    gxg_{-1}$ called an inner automorphism. 
+  \end{enumerate} 
+\end{example*}
+\begin{defn*}[1.1.30]
+  An automorphism is called an inner automorphism if there exists a $g
+  \in G$ such that $\alpha = \kappa_g$. We set \[
+    \operatorname{Inn}(G) = \{\kappa_g : g \in G\} \subgroup \Aut(G).
+  \]
+\end{defn*}
+\begin{lem*}
+  \begin{enumerate}
+  \item $\operatorname{Inn}(G) \isom G/Z(G)$
+  \item $\operatorname{Inn}(G) \normsubgroup \Aut(G)$
+  \end{enumerate}
+\end{lem*}
+Also note that the quotient $\Aut(G)/\operatorname{Inn}(G)$ is called
+the group of outer automorphisms of $G$.
+\begin{proof}
+  Proved in class but ommitted here.
+\end{proof}
+\begin{example*}[1.1.32]
+  \begin{enumerate}
+  \item $G$ group, $\operatorname{Inn}(G) = \{id\}$ if and only if $G
+    = Z(G)$ if and only if $G$ is abelian.
+  \item $\operatorname{Inn}(\Sym_n) \isom \Sym_n$ if $n \geq 3$ since
+    $Z(\Sym_n) = id$ by 1.1.4.
+  \item $\Aut(\Sym_3) = \operatorname{Inn}(\Sym_3)$.
+  \item With some more work, one can show that
+    $\operatorname{Inn}(\Sym_n) = \Aut(\Sym_n)$ if $n \geq 3$ and $n
+    \neq 6$. Also, $\Sym_6$ has 2 outer automorphisms.
+  \end{enumerate}
+\end{example*}
+\begin{rmk*}[1.1.33]
+  \begin{enumerate}
+  \item If $\alpha \in \Aut(G)$ and $g \in G$, then $|\alpha(g)| =
+    |g|$.
+  \item $\alpha \in \Aut(G) \implies \alpha(Z(G)) = Z(G)$.
+  \item $\alpha \in \Aut(G) \implies \alpha([G,G]) = [G,G]$.
+  \end{enumerate}
+\end{rmk*}
+Proofs of these remarks were discussed in class but omitted here.
+\begin{defn*}
+  A subgroup $H \subgroup G$ is called a characteristic subgroup of
+  $G$ if $\alpha(H) = H, \forall \alpha \in \Aut(G)$. We denote this $
+  H \Char G$.
+\end{defn*}
+Some examples are $\{e\}, G, Z(G), [G,G]$.
+\begin{lem*}[1.1.35]
+  Let $G$ be a group and $A,B,H \subgroup G$.
+  \begin{enumerate}
+  \item $H \Char G \implies H \normsubgroup G$.
+  \item $A \subgroup H, A \Char H \Char G \implies A \Char G$.
+  \item $A \subgroup H, A \Char H \normsubgroup G \implies A
+    \normsubgroup G$.
+  \item $A \Char G, B \Char G \implies [A,B] \Char G$.
+  \end{enumerate}
+\end{lem*}
+\begin{example*}[1.1.36]
+  \item $G = \Z_2 \times \Z_2$. Then, any rder 2 subgroup of $G$ is
+    normal but not characteristic. 
+  \item $G = \Sym_4, H = \{id, (12)(34), (13)(24), (14)(23)\}
+    \normsubgroup \Sym_4$. Then $H = [A_4,A_4] \Char A_4 =
+    [\Sym_4,\Sym_4] \Char \Sym_4$ so we get that $H \Char
+    \Sym_4$. Take heed, though. Let $A = \{id, (12)(34)\}
+    \normsubgroup H \Char \Sym_4$. This does not mean $A \normsubgroup
+    \Sym_4$. In fact, this is false. In particular, $\normsubgroup$ is
+    not a transitive relationship. 
+\end{example*}
 \subsection*{Lecture 5: Finite Cyclic Groups}
 We start by recounting some basic facts about finite cyclic groups. If
 \(G=\langle x\rangle\) where \(|x|=n\) then \(G \isom \Z_n\) with the map
@@ -712,7 +825,7 @@ One can prove this by using the Chinese Reminder Theorem and induction on r.
   there exists subgroups \(B_i \le A\)
   for \(1 \le i \le r\) with
   \(|B_i|=p_i^{e_i}\) and
-  \[A = B_1 \times \ldots B_r\] moreover
+  \[A = B_1 \times \ldots \times B_r\] moreover
   \(B_i = \{a \mid |a| \text{ is a power
     of } p_i\}\).
 \end{cor*}
