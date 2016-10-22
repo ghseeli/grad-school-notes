@@ -955,5 +955,99 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
   Morera's theorem because the integral over a rectangle passes to
   uniform limits.
 \section{(10/6/2016) Lecture 13}
-  Starting with a function of $(x,y)$ like $u+iv$.
+  Starting with a function of $(x,y)$ like $u+iv$, it is interesting
+  to note that it makes sense to define the following
+  \begin{defn}
+    \begin{align*}
+      \frac{\partial}{\partial z} & = \frac{1}{2}
+                                    \left(
+                                    \frac{\partial}{\partial x} -
+                                    i\frac{\partial}{\partial y}
+                                    \right) \\
+      \frac{\partial}{\partial \ov{z}} & = \frac{1}{2} 
+                                         \left(
+                                         \frac{\partial}{\partial x} +
+                                         i\frac{\partial}{\partial y}
+                                         \right)
+    \end{align*}
+  \end{defn}
+  Why does this make sense? To answer this, let us answer the question
+  of what does it mean for $\frac{\partial f}{\partial \ov{z}} =
+  0$? \[
+    0 = 
+    \left(
+      \frac{\partial}{\partial x} + i\frac{\partial}{\partial y}
+    \right)(u+iv) = (u_x-v_y)+i(u_y+v_x)
+  \]
+  This satisfies the Cauchy-Riemann equations, so all analytic
+  functions satisfy this differential equation. This can be clearly
+  seen by noting that, if $f$ is analytic
+  \begin{align*}
+    f' = u_x+iv_x & = \frac{\partial}{\partial x}(f) \\
+    ~ = v_y-iu_y & = -i\frac{\partial}{\partial y}(f)\\
+     \ & = \frac{1}{2}
+            \left(
+            \frac{\partial}{\partial x}-i\frac{\partial}{\partial y}
+            \right)(f) \\
+     \ & = \frac{\partial f}{\partial z}
+  \end{align*}
+  So, we get that $f$ is analytic if and only if it satisfies
+  $\frac{\partial f}{\partial \ov{z}} = 0$ if and only if $\frac{\partial
+    f}{\partial z} = f'$. It is worth noting that in higher dimensions
+  $(\C^n)$, we have the following equation.
+  \begin{align*}
+    f \text{ is analytic } &\iff \frac{\partial f}{\partial \ov{z_i}} =
+    0  \eqname{(``D-bar equation'')} 
+  \end{align*}
+  Now, this also gives rise to a version of the Cauchy integral formula for
+  general non-analytic functions of the form $f=u+iv$ called Pompeiu's
+  formula. It has an extra term involving $\frac{\partial f}{\partial
+    \ov{z}}$ but is not recorded here.
+  \begin{example}
+    Show that if $f$ is entire and nonsconstant, then its range must
+    be dense in $\C$. \\
+
+    We can show this by assuming the range is not dense. Then, there
+    is some $w \in \C$ such that $\operatorname{Range}(f) \cap
+    B_\epsilon(w) = \varnothing$. Consider $\frac{1}{f(z)-w}$ is an
+    entire function but bounded by $\frac{1}{\epsilon}$. Then,
+    Liouville's function implies that $\frac{1}{f(z)-w}$ is constant,
+    thus implying that $f(z)$ is constant and violating our assumption.
+  \end{example}
+  \subsection*{Series}
+  We will now switch to a discussion of power series of complex
+  functions. We will start by enumerating a few facts about absolute
+  versus conditional convergence for series in $\C$.
+  \begin{enumerate}
+  \item In $\R$, if $\sum_{j=1}^\infty x_j$ converges conditionally,
+    then it can be arranged to sum to any number in $[-\infty,
+    +\infty]$ by Riemann's theorem. What happens in $\C$? In general,
+    a conditionally convergence sequence in $\C$ cannot be rearranged
+    to any complex number, but it can be rearranged to diverge to
+    $\infty$.
+  \item The uniform limit of analytic functions is analytic. This is a
+    direct result of Morera's theorem. One notes that if $f_n \to f$,
+    then $\int_R f = \lim \int_R f_n = 0$ for a rectangle $R$ and so
+    $f$ is analytic.
+  \item \begin{defn}
+      $f_n$ \emph{converges normally} to $f$ on $D$ if it converges uniformly
+      on compact subsets of $D$ (or closed disks in $D$). 
+    \end{defn}
+    A normal limit of analytic functions is analytic. This follows
+    from the generalized Cauchy integral formula by noting that if
+    $f_n \to f$ normally, then $f_n^{(m)} \to f^{(m)}$ normally as
+    well.
+  \item For a power series $\sum_{n=0}^\infty a_n(z-z_0)^n$, there
+    exist $R$ such that the series diverges for $|z-z_0| > R$ and
+    converges normally for $|z-z_0| < R$. What happens at $|z-z_0|=R$
+    is dependent on the specific series.
+  \item As a normal limit of
+    polynomials, the series is analytic on $|z-z_0| < R$, and so we
+    can take derivatives or path integrals term by term.
+  \item Finally, we note that we can determine the radius of
+    convergence using the following.
+    \begin{align*}
+      R = \frac{1}{\lim\sup|a_n|^{1/n}}. \eqname{(Hadamard's formula)}
+    \end{align*}
+  \end{enumerate}
 \end{document}
