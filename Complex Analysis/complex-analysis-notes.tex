@@ -1014,7 +1014,7 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
     Liouville's function implies that $\frac{1}{f(z)-w}$ is constant,
     thus implying that $f(z)$ is constant and violating our assumption.
   \end{example}
-  \subsection*{Series}
+  \section*{Series}
   We will now switch to a discussion of power series of complex
   functions. We will start by enumerating a few facts about absolute
   versus conditional convergence for series in $\C$.
@@ -1157,5 +1157,57 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
     same power series as the composition of $f(z) = z^2$ and $g(z) =
     z^{1/2}$ (principal branch). 
   \end{example}
-  
+  \section{(10/13/2016) Lecture 15)}
+  \begin{defn}
+    An analytic function $f$ has a zero of order $N$ at $z_0$ if one
+    or all of the following hold:
+    \begin{itemize}
+    \item $0 = f(z_0) = f'(z_0) = \cdots = f^{(N-1)}(z_0)$, but
+      $f^{(N)}(z_0) \neq 0$.
+    \item $f(z) = (z-z_0)^N g(z)$ where analytic $g(z_0) \neq 0$.
+    \item Taylor series for $f$ at $z_0$ is $\sum_{k \geq N}
+      a_k(z-z_0)^k$ and $a_N \neq 0$.
+    \end{itemize}
+    The order of $\infty$ as a zero for $f$ is the order of 0 as a  zero
+    of $g(z) = f(\frac{1}{z})$. 
+  \end{defn}
+  \begin{example}
+    $e^z-1-z$ has a zero of order 2 at 0.
+  \end{example}
+  \begin{prop}
+    If $f$ is analytic on a domain and not the constant zero function,
+    then its zeros are isolated.
+  \end{prop}
+  \begin{proof}
+    Step 1: All zeros have finite order. Consider the set of infinite
+    order zeros. If $z_0$ is such a zero, then in a neighborhood of
+    $z_0$, $f$ equals its Taylor series at $z_0$, which is 0, so this
+    set is open. However, it is also closed since it is \[
+      \cap_{k \geq 0} (f^{(k)})^{-1}(0)
+    \]
+    each one of which is closed by continuity. Since we are in a
+    domain, this set is either empty or everything, but $f$ is not
+    identically zero, so it must be empty.\\
+    Step 2: If $z_0$ is a zero of finite order $N$, then near $z_0$,
+    $f(z) = (z-z_0)^N g(z)$ where $g(z) \neq 0$. By continuity of $g$,
+    there is a disk around $z_0$ where $g(z_0) \neq 0$. On this disk
+    minus $z_0$, $f(z) = (z-z_0)^N g(z) \neq 0$. Thus, the zeros are
+    isolated. 
+  \end{proof}
+  \begin{cor}
+    If $f$ and $g$ are analytic on a domain and $f=g$ on a set that
+    has an accumulation point, then $f=g$ everywhere on the domain.
+  \end{cor}
+  \begin{proof}
+    Apply the proposition to $f-g$. If $z_k \to z$, then values
+    $f(z_k)$ determine all $f^{(k)}(z)$. 
+  \end{proof}
+  Now, we note some consequences of this fact. First of all, $\sin^2 z
+  + \cos^2 z = 1$ for all $z \in \C$. The reason for this is that the
+  identity agrees for all real $z$, so it agrees
+  everywhere. Similarly, $\sin(z+w) = \sin z \cos w + \sin w \cos z$
+  for all $z,w \in \C$ by applying this same method twice, first
+  fixing a real $z$ and showing it applies for all $w$ and then
+  showing it applies for all $z,w$. This idea is called the
+  \emph{Principal of Permanence of Functional Equations}.
 \end{document}
