@@ -1210,4 +1210,114 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
   fixing a real $z$ and showing it applies for all $w$ and then
   showing it applies for all $z,w$. This idea is called the
   \emph{Principal of Permanence of Functional Equations}.
+  \section{(10/18/2016) Lecture 15}
+  \begin{example}
+    We compute the Taylor series for $\frac{z}{\sin z}$ at 0 (defined
+    to be 1 at 0).
+    \begin{align*}
+      \frac{z}{\sin z} =
+      \frac{z}{z-\frac{z^3}{3!}+\frac{z^5}{5!}-\cdots} & =
+                                                         \frac{1}{1-\frac{z^2}{3!}+\frac{z^4}{5!}-\cdots}
+      \\
+      \ & = \frac{1}{1-(\frac{z^2}{3!}-\frac{z^4}{5!}+\cdots)} \\
+      \ & = 1 + (\frac{z^2}{3!} - \frac{z^4}{5!} + \cdots) +
+          (\frac{z^2}{3!} - \frac{z^4}{5!} + \cdots)^2 + \cdots
+    \end{align*}
+    Note that one \emph{cannot} simply do $\frac{z}{\sin z} =
+    z(\frac{1}{1-(1-\sin z)})$ because $1-\sin z$ is not less than 1
+    in a neighborhood of 0.
+  \end{example}
+  The larger point of this example is that one has to be careful
+  composing power series. In this instance, composing $\frac{1}{1-z}$
+  with $1-\sin z$ does not take a neighborhood of 0 to a neighborhood
+  of 0. \\
+
+  Sometimes composition is okay, for instance $\sin z^2 = z^2 -
+  \frac{z^6}{3!} + \cdots$.
+  
+  \section*{Analytic Continuation}
+
+  A function extends analytically on disks such that the disks agree
+  on overlaps. If such an extension exists, it is unique. Here is a
+  picture illustrating this on the function $\log(z)$. The graphic is
+  from Wikipedia and created by Yamashita Makoto. \\
+  \includegraphics{images/Imaginary_log_analytic_continuation.png}
+  In general, a Riemann surface is equivalent to the set of analytic
+  continuations modulo the equivalence relation that two analytic
+  continuations yield the same function at the endpoint.
+
+  \section*{Laurent Series}
+  \begin{defn}
+    Let $f$ be an analytic function in annulus $\rho < |z-z_0| <
+    \sigma$. Then, $f$ has \emph{Laurent decomposition} $f(z) = f_0(z)
+    + f_1(z)$ where $f_0(z)$ is analytic on $|z-z_0| < \sigma$ and
+    $f_1(z)$ is analytic on $|z-z_0| > \rho$ with normalization $f_1(\infty) = 0$.
+  \end{defn}
+  The Laurent decomposition is given by
+  \begin{align*}
+    f(z) & = \frac{1}{2 \pi i} \int_{\text{boundary}} f \\
+    \ & = \frac{1}{2 \pi i} \int_{|z-z_0| = s} \frac{f(w)}{w-z} dw +
+        \left( \frac{-1}{2 \pi i} \int_{|z-z_0| = r}
+        \frac{f(w)}{w-z}dw \right), \ \rho < s < r < \sigma
+  \end{align*}
+  Where $f_0$ is the first summand and $f_1$ is the second
+  summand. We note that $f$ always has a unique Laurent decomposition
+  with the condition $f_1(\infty) = 0$. Now, we also note that $f_0$
+  is analytic on a disk and $f_1$ is analytic on an exterior domain,
+  so we get that 
+  \begin{align*}
+    f = f_0+f_1 & = \sum_{k \geq 0} a_k(z-z_0)^k + \sum_{k \leq -1}
+                  a_k(z-z_0)^k \\
+    \ & = \sum_{k=-\infty}^\infty a_k(z-z_0)^k
+  \end{align*}
+  The astute reader will note that this series is indeed only defined
+  on the annulus because the sum of these two power series $f_0$ and
+  $f_1$ can only be defined on the intersection of their respective
+  domains. We call this series the \emph{Laurent series}. The Laurent
+  series equals $f$ on the annulus $\rho < |z-z_0| < \sigma$ and it
+  converges uniformly on $r < |z-z_0| < s$ for $\rho < r < s <
+  \sigma$. To compute these coefficients, we note that
+  \begin{align*}
+    \oint_{|z-z_0|} \frac{f(z)}{|z-z_0|^{n+1}} dz
+    & = \sum_{k=-\infty}^\infty \int_{|z|=r} a_k \left(
+      \frac{(z-z_0)^k}{(z-z_0)^{n+1}} dz \right) \\
+    \ & = 2 \pi i a_n \\
+    \implies a_n & = \frac{1}{2 \pi i} \int_{|z-z_0|}
+                 \frac{f(z)}{(z-z_0)^{n+1}}dz                             
+  \end{align*}
+  Where the second to last equality comes from the fact that all those
+  integrals are 0 unless $k=n$. Note that we also already had this
+  result of power series on disks, $n \geq 0$.
+  \begin{example}
+    Consider $\frac{1}{z^2-z}$ on $0 < |z| < 1$. One way to find this
+    Laurent series would be to note that \[
+      \frac{1}{z^2-z} = \frac{-1}{z}\frac{1}{1-z} =
+      \frac{-1}{z}(1+z+z^2+\cdots) = \frac{-1}{z}-1-z-z^2-\cdots
+    \]
+    Another way would be to use partial fractions to get that \[
+      \frac{1}{z^2-z} = \frac{1}{z-1} - \frac{1}{z} =
+      (-1-z-z^2-\cdots) - \frac{1}{z}.
+    \]
+    What about the function on $\frac{1}{z^2-z}$ on $1 < |z| (<
+    \infty)$? We note that \[
+      \frac{1}{z^2-z} = \frac{1}{z-1} - \frac{1}{z} =
+      \frac{1}{z}\left(\frac{1}{1-\frac{1}{z}}\right) - \frac{1}{z} =
+      \frac{1}{z}\left( 1 + \frac{1}{z} + \frac{1}{z^2} + \cdots \right) -
+        \frac{1}{z} = \frac{1}{z^2} + \frac{1}{z^3} + \cdots
+    \]
+  \end{example}
+  Thus, the entire domain can be covered by 2 Laurent series centered
+  at 0 and $\infty$.  In general, it may require more series. For
+  instance, consider the Laurent series valid on annuli centered at
+  $z=i$. Since the function has problem points at $z=0,1$, it is clear
+  that 3 different Laurent series will be needed. More generally for
+  this function, the points 0,1, and $\Re z = \frac{1}{2}$ will only
+  require 2 Laurent series, but centering at any other point will
+  require 3. \\
+
+  Just as a power series for $f$ at $z_0$ converges on the largest
+  disk to which $f$ extends analytically, the Laurent series for $f$
+  centered at $z_0$ converges on the largest annulus to which $f$
+  extends analytically. 
+
 \end{document}
