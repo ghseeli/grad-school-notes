@@ -955,5 +955,369 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
   Morera's theorem because the integral over a rectangle passes to
   uniform limits.
 \section{(10/6/2016) Lecture 13}
-  Starting with a function of $(x,y)$ like $u+iv$.
+  Starting with a function of $(x,y)$ like $u+iv$, it is interesting
+  to note that it makes sense to define the following
+  \begin{defn}
+    \begin{align*}
+      \frac{\partial}{\partial z} & = \frac{1}{2}
+                                    \left(
+                                    \frac{\partial}{\partial x} -
+                                    i\frac{\partial}{\partial y}
+                                    \right) \\
+      \frac{\partial}{\partial \ov{z}} & = \frac{1}{2} 
+                                         \left(
+                                         \frac{\partial}{\partial x} +
+                                         i\frac{\partial}{\partial y}
+                                         \right)
+    \end{align*}
+  \end{defn}
+  Why does this make sense? To answer this, let us answer the question
+  of what does it mean for $\frac{\partial f}{\partial \ov{z}} =
+  0$? \[
+    0 = 
+    \left(
+      \frac{\partial}{\partial x} + i\frac{\partial}{\partial y}
+    \right)(u+iv) = (u_x-v_y)+i(u_y+v_x)
+  \]
+  This satisfies the Cauchy-Riemann equations, so all analytic
+  functions satisfy this differential equation. This can be clearly
+  seen by noting that, if $f$ is analytic
+  \begin{align*}
+    f' = u_x+iv_x & = \frac{\partial}{\partial x}(f) \\
+    ~ = v_y-iu_y & = -i\frac{\partial}{\partial y}(f)\\
+     \ & = \frac{1}{2}
+            \left(
+            \frac{\partial}{\partial x}-i\frac{\partial}{\partial y}
+            \right)(f) \\
+     \ & = \frac{\partial f}{\partial z}
+  \end{align*}
+  So, we get that $f$ is analytic if and only if it satisfies
+  $\frac{\partial f}{\partial \ov{z}} = 0$ if and only if $\frac{\partial
+    f}{\partial z} = f'$. It is worth noting that in higher dimensions
+  $(\C^n)$, we have the following equation.
+  \begin{align*}
+    f \text{ is analytic } &\iff \frac{\partial f}{\partial \ov{z_i}} =
+    0  \eqname{(``D-bar equation'')} 
+  \end{align*}
+  Now, this also gives rise to a version of the Cauchy integral formula for
+  general non-analytic functions of the form $f=u+iv$ called Pompeiu's
+  formula. It has an extra term involving $\frac{\partial f}{\partial
+    \ov{z}}$ but is not recorded here.
+  \begin{example}
+    Show that if $f$ is entire and nonsconstant, then its range must
+    be dense in $\C$. \\
+
+    We can show this by assuming the range is not dense. Then, there
+    is some $w \in \C$ such that $\operatorname{Range}(f) \cap
+    B_\epsilon(w) = \varnothing$. Consider $\frac{1}{f(z)-w}$ is an
+    entire function but bounded by $\frac{1}{\epsilon}$. Then,
+    Liouville's function implies that $\frac{1}{f(z)-w}$ is constant,
+    thus implying that $f(z)$ is constant and violating our assumption.
+  \end{example}
+  \section*{Series}
+  We will now switch to a discussion of power series of complex
+  functions. We will start by enumerating a few facts about absolute
+  versus conditional convergence for series in $\C$.
+  \begin{enumerate}
+  \item In $\R$, if $\sum_{j=1}^\infty x_j$ converges conditionally,
+    then it can be arranged to sum to any number in $[-\infty,
+    +\infty]$ by Riemann's theorem. What happens in $\C$? In general,
+    a conditionally convergence sequence in $\C$ cannot be rearranged
+    to any complex number, but it can be rearranged to diverge to
+    $\infty$.
+  \item The uniform limit of analytic functions is analytic. This is a
+    direct result of Morera's theorem. One notes that if $f_n \to f$,
+    then $\int_R f = \lim \int_R f_n = 0$ for a rectangle $R$ and so
+    $f$ is analytic.
+  \item \begin{defn}
+      $f_n$ \emph{converges normally} to $f$ on $D$ if it converges uniformly
+      on compact subsets of $D$ (or closed disks in $D$). Note that
+      this idea is stronger than pointwise convergence but weaker than
+      uniform convergence.
+    \end{defn}
+    A normal limit of analytic functions is analytic. This follows
+    from the generalized Cauchy integral formula by noting that if
+    $f_n \to f$ normally, then $f_n^{(m)} \to f^{(m)}$ normally as
+    well. 
+  \item For a power series $\sum_{n=0}^\infty a_n(z-z_0)^n$, there
+    exist $R$ such that the series diverges for $|z-z_0| > R$ and
+    converges normally for $|z-z_0| < R$. What happens at $|z-z_0|=R$
+    is dependent on the specific series.
+  \item As a normal limit of
+    polynomials, the series is analytic on $|z-z_0| < R$, and so we
+    can take derivatives or path integrals term by term.
+  \item Finally, we note that we can determine the radius of
+    convergence using the following.
+    \begin{align*}
+      R = \frac{1}{\lim\sup|a_n|^{1/n}}. \eqname{(Hadamard's formula)}
+    \end{align*}
+  \end{enumerate}
+  \section{(10/11/2016) Lecture 14}
+  \begin{thm}
+    If $f$ is analytic on $|z-z_0|<\rho$, then $f(z) = \sum_{n \geq 0}
+    a_n(z-z_0)^n$ where \[a_n = \frac{f^{(n)}(z_0)}{n!} =
+      \frac{1}{2\pi i}\int_{|\rho - z_0| < r}
+      \frac{f(\rho)}{(\rho-z_0)^{n+1}}d\rho \]
+    for $r < \rho$. 
+  \end{thm}
+  The upshot of this theorem is that analytic functions on a disk can
+  be written as a power series.
+  \begin{proof}[Idea of proof]
+    We make the simplifying assumption that $z_0 = 0$. Then, we get
+    that
+    \begin{align*}
+      f(z) & = \frac{1}{2 \pi i} \int_{|\rho| = r}
+             \frac{f(\rho)}{\rho-z}d\rho, \ \rho > r > |z| \\
+      \ & = \frac{1}{2\pi i} \int f(\rho)
+          \left(
+          \sum \frac{z^k}{\rho^{k+1}}
+          \right) d \rho \\
+      \ & = \sum_{k \geq 0} \frac{1}{2 \pi i}
+          \left(
+          \int_{|z|=r} \frac{f(\rho)}{\rho^{k+1}}d\rho
+          \right)z^k
+    \end{align*}
+    However, this is just a power series and the parenthesized
+    integral is just $\frac{f^{(k)}(0)}{k!}$ by the generalized Cauchy
+    integral formula.
+  \end{proof}
+  This gets us some of the following facts
+  \begin{itemize}
+  \item An analytic function $f$ on $|z-z_0| < \rho$ is entirely
+    determined by its derivative $f^{(k)}(z_0), \ k \geq 0$. This does
+    not happen for real functions!
+  \item If $f$ is analytic in a neighborhood of $z_0$, then its power
+    series converges on the largest disk $|z-z_0| < r$ to which $f$
+    extends analytically. This idea is best seen by some examples.
+  \end{itemize}
+  \begin{example}
+    Where does the series for $\frac{1}{z}$ at $2i$ converge? A circle
+    of radius 2 will touch a problem point at $z=0$ and so we get that
+    the series will converge on the disk $|z-2i| < 2$. 
+  \end{example}
+  \begin{example}
+    In calculus, we get that $\frac{1}{x^2+1}$ has power series
+    $1-x^2+x^4-x^6+\cdots$, but this series does not converge past $x
+    \in (-1,1)$. Why is this the case? If we consider the function
+    $\frac{1}{z^2+1}$ at 0, it has problems at $\pm i$ and so the
+    Taylor seires converges on $|z|<1$. 
+  \end{example}
+  For these functions, the radius of convergence is the ``distance to
+  the nearest singularity.''
+  \begin{example}
+    Consider $\frac{\sin z}{z}$ at $2i$. This function converges
+    everywhere even thought $\frac{\sin z}{z}$ is undefined at 0. In a
+    sense, it is still well-behaved at 0. We can get an idea of this
+    by examining that \[
+      \frac{\sin z}{z} = \frac{1}{z}(z-\frac{z^3}{3!}+\frac{z^5}{5!} -
+      \cdots) = 1 - \frac{z^2}{3!} + \frac{z^4}{5!} - \cdots
+    \]
+    This final series does not have a problem at 0, and so $\frac{\sin
+    z}{z}$ should extend to be analytic at 0. This idea is analogous
+    to $\frac{x^2-9}{x-3} = x+3$ with a hole at 3. 
+  \end{example}
+  \begin{example}
+    Consider $\Log z$ at $-2+i$. What is the largest open disk
+    centered at $-2+i$ on which the Taylor series is defined? The
+    answer is $|z-(-2+i)| < \sqrt{5}$ because there is a problem point
+    at $z=0$. However, this circle extends beyond the branch cut for
+    $\Log z$. This is not a problem for the Taylor series; it is still
+    well-defined at these points ``beyond'' the branch cut. 
+  \end{example}
+  Now, let us consider the following definition.
+  \begin{defn}
+    Suppose $f$ is analytic for $|z| > M$. We say that $f$ is analytic
+    at $\infty$ if $g(w) = f(\frac{1}{w})$ extends to be analytic at
+    0. If this happens, then $f(\infty) = g(0)$. 
+  \end{defn}
+  \begin{example}
+    Consider that $\frac{z^2}{z^2+1}$ is analytic at $\infty$. We show
+    this by noting \[
+      g(w) = f(\frac{1}{w}) = \frac{1/w^2}{1/w^2+1} = \frac{1}{1+w^2}
+    \]
+    which is nice at $w=0$. Now, $g$ has a Taylor series at $w=0$,
+    $g(w) = \sum a_kz^k$ The Taylor series for $f$ at $\infty$ is just
+    $f(z)=g(\frac{1}{z}) = \sum_{k \geq 0} a_kz^{-k}$. Computing this
+    explicitly,
+    \[
+      g(w) = 1-w^2+w^4-w^6+\cdots, \ |w|<1
+    \] so we get that \[
+      f(z) = 1-\frac{1}{z^2}+\frac{1}{z^4}-\frac{1}{z^6}+\cdots, \ |z|>1
+    \]
+    because $\frac{1}{1+\frac{1}{z^2}} =
+    \frac{z^2}{z^2+1}$ when $|\frac{1}{z^2}| < 1$.
+  \end{example}
+  Now, it is useful to note that we can manipulate power series. In
+  particular, we can add, multiply, divide, differentiate, and
+  integrate Taylor series. Under the right conditions, we can also
+  compose them; in general, this does not work, though.
+  \begin{example}
+    It is left to the reader to verify that the power series for
+    $(z^2)^{1/2}$ that is defined to take 1 to 1 does not yield the
+    same power series as the composition of $f(z) = z^2$ and $g(z) =
+    z^{1/2}$ (principal branch). 
+  \end{example}
+  \section{(10/13/2016) Lecture 15)}
+  \begin{defn}
+    An analytic function $f$ has a zero of order $N$ at $z_0$ if one
+    or all of the following hold:
+    \begin{itemize}
+    \item $0 = f(z_0) = f'(z_0) = \cdots = f^{(N-1)}(z_0)$, but
+      $f^{(N)}(z_0) \neq 0$.
+    \item $f(z) = (z-z_0)^N g(z)$ where analytic $g(z_0) \neq 0$.
+    \item Taylor series for $f$ at $z_0$ is $\sum_{k \geq N}
+      a_k(z-z_0)^k$ and $a_N \neq 0$.
+    \end{itemize}
+    The order of $\infty$ as a zero for $f$ is the order of 0 as a  zero
+    of $g(z) = f(\frac{1}{z})$. 
+  \end{defn}
+  \begin{example}
+    $e^z-1-z$ has a zero of order 2 at 0.
+  \end{example}
+  \begin{prop}
+    If $f$ is analytic on a domain and not the constant zero function,
+    then its zeros are isolated.
+  \end{prop}
+  \begin{proof}
+    Step 1: All zeros have finite order. Consider the set of infinite
+    order zeros. If $z_0$ is such a zero, then in a neighborhood of
+    $z_0$, $f$ equals its Taylor series at $z_0$, which is 0, so this
+    set is open. However, it is also closed since it is \[
+      \cap_{k \geq 0} (f^{(k)})^{-1}(0)
+    \]
+    each one of which is closed by continuity. Since we are in a
+    domain, this set is either empty or everything, but $f$ is not
+    identically zero, so it must be empty.\\
+    Step 2: If $z_0$ is a zero of finite order $N$, then near $z_0$,
+    $f(z) = (z-z_0)^N g(z)$ where $g(z) \neq 0$. By continuity of $g$,
+    there is a disk around $z_0$ where $g(z_0) \neq 0$. On this disk
+    minus $z_0$, $f(z) = (z-z_0)^N g(z) \neq 0$. Thus, the zeros are
+    isolated. 
+  \end{proof}
+  \begin{cor}
+    If $f$ and $g$ are analytic on a domain and $f=g$ on a set that
+    has an accumulation point, then $f=g$ everywhere on the domain.
+  \end{cor}
+  \begin{proof}
+    Apply the proposition to $f-g$. If $z_k \to z$, then values
+    $f(z_k)$ determine all $f^{(k)}(z)$. 
+  \end{proof}
+  Now, we note some consequences of this fact. First of all, $\sin^2 z
+  + \cos^2 z = 1$ for all $z \in \C$. The reason for this is that the
+  identity agrees for all real $z$, so it agrees
+  everywhere. Similarly, $\sin(z+w) = \sin z \cos w + \sin w \cos z$
+  for all $z,w \in \C$ by applying this same method twice, first
+  fixing a real $z$ and showing it applies for all $w$ and then
+  showing it applies for all $z,w$. This idea is called the
+  \emph{Principal of Permanence of Functional Equations}.
+  \section{(10/18/2016) Lecture 15}
+  \begin{example}
+    We compute the Taylor series for $\frac{z}{\sin z}$ at 0 (defined
+    to be 1 at 0).
+    \begin{align*}
+      \frac{z}{\sin z} =
+      \frac{z}{z-\frac{z^3}{3!}+\frac{z^5}{5!}-\cdots} & =
+                                                         \frac{1}{1-\frac{z^2}{3!}+\frac{z^4}{5!}-\cdots}
+      \\
+      \ & = \frac{1}{1-(\frac{z^2}{3!}-\frac{z^4}{5!}+\cdots)} \\
+      \ & = 1 + (\frac{z^2}{3!} - \frac{z^4}{5!} + \cdots) +
+          (\frac{z^2}{3!} - \frac{z^4}{5!} + \cdots)^2 + \cdots
+    \end{align*}
+    Note that one \emph{cannot} simply do $\frac{z}{\sin z} =
+    z(\frac{1}{1-(1-\sin z)})$ because $1-\sin z$ is not less than 1
+    in a neighborhood of 0.
+  \end{example}
+  The larger point of this example is that one has to be careful
+  composing power series. In this instance, composing $\frac{1}{1-z}$
+  with $1-\sin z$ does not take a neighborhood of 0 to a neighborhood
+  of 0. \\
+
+  Sometimes composition is okay, for instance $\sin z^2 = z^2 -
+  \frac{z^6}{3!} + \cdots$.
+  
+  \section*{Analytic Continuation}
+
+  A function extends analytically on disks such that the disks agree
+  on overlaps. If such an extension exists, it is unique. Here is a
+  picture illustrating this on the function $\log(z)$. The graphic is
+  from Wikipedia and created by Yamashita Makoto. \\
+  \includegraphics{images/Imaginary_log_analytic_continuation.png}
+  In general, a Riemann surface is equivalent to the set of analytic
+  continuations modulo the equivalence relation that two analytic
+  continuations yield the same function at the endpoint.
+
+  \section*{Laurent Series}
+  \begin{defn}
+    Let $f$ be an analytic function in annulus $\rho < |z-z_0| <
+    \sigma$. Then, $f$ has \emph{Laurent decomposition} $f(z) = f_0(z)
+    + f_1(z)$ where $f_0(z)$ is analytic on $|z-z_0| < \sigma$ and
+    $f_1(z)$ is analytic on $|z-z_0| > \rho$ with normalization $f_1(\infty) = 0$.
+  \end{defn}
+  The Laurent decomposition is given by
+  \begin{align*}
+    f(z) & = \frac{1}{2 \pi i} \int_{\text{boundary}} f \\
+    \ & = \frac{1}{2 \pi i} \int_{|z-z_0| = s} \frac{f(w)}{w-z} dw +
+        \left( \frac{-1}{2 \pi i} \int_{|z-z_0| = r}
+        \frac{f(w)}{w-z}dw \right), \ \rho < s < r < \sigma
+  \end{align*}
+  Where $f_0$ is the first summand and $f_1$ is the second
+  summand. We note that $f$ always has a unique Laurent decomposition
+  with the condition $f_1(\infty) = 0$. Now, we also note that $f_0$
+  is analytic on a disk and $f_1$ is analytic on an exterior domain,
+  so we get that 
+  \begin{align*}
+    f = f_0+f_1 & = \sum_{k \geq 0} a_k(z-z_0)^k + \sum_{k \leq -1}
+                  a_k(z-z_0)^k \\
+    \ & = \sum_{k=-\infty}^\infty a_k(z-z_0)^k
+  \end{align*}
+  The astute reader will note that this series is indeed only defined
+  on the annulus because the sum of these two power series $f_0$ and
+  $f_1$ can only be defined on the intersection of their respective
+  domains. We call this series the \emph{Laurent series}. The Laurent
+  series equals $f$ on the annulus $\rho < |z-z_0| < \sigma$ and it
+  converges uniformly on $r < |z-z_0| < s$ for $\rho < r < s <
+  \sigma$. To compute these coefficients, we note that
+  \begin{align*}
+    \oint_{|z-z_0|} \frac{f(z)}{|z-z_0|^{n+1}} dz
+    & = \sum_{k=-\infty}^\infty \int_{|z|=r} a_k \left(
+      \frac{(z-z_0)^k}{(z-z_0)^{n+1}} dz \right) \\
+    \ & = 2 \pi i a_n \\
+    \implies a_n & = \frac{1}{2 \pi i} \int_{|z-z_0|}
+                 \frac{f(z)}{(z-z_0)^{n+1}}dz                             
+  \end{align*}
+  Where the second to last equality comes from the fact that all those
+  integrals are 0 unless $k=n$. Note that we also already had this
+  result of power series on disks, $n \geq 0$.
+  \begin{example}
+    Consider $\frac{1}{z^2-z}$ on $0 < |z| < 1$. One way to find this
+    Laurent series would be to note that \[
+      \frac{1}{z^2-z} = \frac{-1}{z}\frac{1}{1-z} =
+      \frac{-1}{z}(1+z+z^2+\cdots) = \frac{-1}{z}-1-z-z^2-\cdots
+    \]
+    Another way would be to use partial fractions to get that \[
+      \frac{1}{z^2-z} = \frac{1}{z-1} - \frac{1}{z} =
+      (-1-z-z^2-\cdots) - \frac{1}{z}.
+    \]
+    What about the function on $\frac{1}{z^2-z}$ on $1 < |z| (<
+    \infty)$? We note that \[
+      \frac{1}{z^2-z} = \frac{1}{z-1} - \frac{1}{z} =
+      \frac{1}{z}\left(\frac{1}{1-\frac{1}{z}}\right) - \frac{1}{z} =
+      \frac{1}{z}\left( 1 + \frac{1}{z} + \frac{1}{z^2} + \cdots \right) -
+        \frac{1}{z} = \frac{1}{z^2} + \frac{1}{z^3} + \cdots
+    \]
+  \end{example}
+  Thus, the entire domain can be covered by 2 Laurent series centered
+  at 0 and $\infty$.  In general, it may require more series. For
+  instance, consider the Laurent series valid on annuli centered at
+  $z=i$. Since the function has problem points at $z=0,1$, it is clear
+  that 3 different Laurent series will be needed. More generally for
+  this function, the points 0,1, and $\Re z = \frac{1}{2}$ will only
+  require 2 Laurent series, but centering at any other point will
+  require 3. \\
+
+  Just as a power series for $f$ at $z_0$ converges on the largest
+  disk to which $f$ extends analytically, the Laurent series for $f$
+  centered at $z_0$ converges on the largest annulus to which $f$
+  extends analytically. 
+
 \end{document}
