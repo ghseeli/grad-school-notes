@@ -1031,12 +1031,14 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
     $f$ is analytic.
   \item \begin{defn}
       $f_n$ \emph{converges normally} to $f$ on $D$ if it converges uniformly
-      on compact subsets of $D$ (or closed disks in $D$). 
+      on compact subsets of $D$ (or closed disks in $D$). Note that
+      this idea is stronger than pointwise convergence but weaker than
+      uniform convergence.
     \end{defn}
     A normal limit of analytic functions is analytic. This follows
     from the generalized Cauchy integral formula by noting that if
     $f_n \to f$ normally, then $f_n^{(m)} \to f^{(m)}$ normally as
-    well.
+    well. 
   \item For a power series $\sum_{n=0}^\infty a_n(z-z_0)^n$, there
     exist $R$ such that the series diverges for $|z-z_0| > R$ and
     converges normally for $|z-z_0| < R$. What happens at $|z-z_0|=R$
@@ -1050,4 +1052,110 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
       R = \frac{1}{\lim\sup|a_n|^{1/n}}. \eqname{(Hadamard's formula)}
     \end{align*}
   \end{enumerate}
+  \section{(10/11/2016) Lecture 14}
+  \begin{thm}
+    If $f$ is analytic on $|z-z_0|<\rho$, then $f(z) = \sum_{n \geq 0}
+    a_n(z-z_0)^n$ where \[a_n = \frac{f^{(n)}(z_0)}{n!} =
+      \frac{1}{2\pi i}\int_{|\rho - z_0| < r}
+      \frac{f(\rho)}{(\rho-z_0)^{n+1}}d\rho \]
+    for $r < \rho$. 
+  \end{thm}
+  The upshot of this theorem is that analytic functions on a disk can
+  be written as a power series.
+  \begin{proof}[Idea of proof]
+    We make the simplifying assumption that $z_0 = 0$. Then, we get
+    that
+    \begin{align*}
+      f(z) & = \frac{1}{2 \pi i} \int_{|\rho| = r}
+             \frac{f(\rho)}{\rho-z}d\rho, \ \rho > r > |z| \\
+      \ & = \frac{1}{2\pi i} \int f(\rho)
+          \left(
+          \sum \frac{z^k}{\rho^{k+1}}
+          \right) d \rho \\
+      \ & = \sum_{k \geq 0} \frac{1}{2 \pi i}
+          \left(
+          \int_{|z|=r} \frac{f(\rho)}{\rho^{k+1}}d\rho
+          \right)z^k
+    \end{align*}
+    However, this is just a power series and the parenthesized
+    integral is just $\frac{f^{(k)}(0)}{k!}$ by the generalized Cauchy
+    integral formula.
+  \end{proof}
+  This gets us some of the following facts
+  \begin{itemize}
+  \item An analytic function $f$ on $|z-z_0| < \rho$ is entirely
+    determined by its derivative $f^{(k)}(z_0), \ k \geq 0$. This does
+    not happen for real functions!
+  \item If $f$ is analytic in a neighborhood of $z_0$, then its power
+    series converges on the largest disk $|z-z_0| < r$ to which $f$
+    extends analytically. This idea is best seen by some examples.
+  \end{itemize}
+  \begin{example}
+    Where does the series for $\frac{1}{z}$ at $2i$ converge? A circle
+    of radius 2 will touch a problem point at $z=0$ and so we get that
+    the series will converge on the disk $|z-2i| < 2$. 
+  \end{example}
+  \begin{example}
+    In calculus, we get that $\frac{1}{x^2+1}$ has power series
+    $1-x^2+x^4-x^6+\cdots$, but this series does not converge past $x
+    \in (-1,1)$. Why is this the case? If we consider the function
+    $\frac{1}{z^2+1}$ at 0, it has problems at $\pm i$ and so the
+    Taylor seires converges on $|z|<1$. 
+  \end{example}
+  For these functions, the radius of convergence is the ``distance to
+  the nearest singularity.''
+  \begin{example}
+    Consider $\frac{\sin z}{z}$ at $2i$. This function converges
+    everywhere even thought $\frac{\sin z}{z}$ is undefined at 0. In a
+    sense, it is still well-behaved at 0. We can get an idea of this
+    by examining that \[
+      \frac{\sin z}{z} = \frac{1}{z}(z-\frac{z^3}{3!}+\frac{z^5}{5!} -
+      \cdots) = 1 - \frac{z^2}{3!} + \frac{z^4}{5!} - \cdots
+    \]
+    This final series does not have a problem at 0, and so $\frac{\sin
+    z}{z}$ should extend to be analytic at 0. This idea is analogous
+    to $\frac{x^2-9}{x-3} = x+3$ with a hole at 3. 
+  \end{example}
+  \begin{example}
+    Consider $\Log z$ at $-2+i$. What is the largest open disk
+    centered at $-2+i$ on which the Taylor series is defined? The
+    answer is $|z-(-2+i)| < \sqrt{5}$ because there is a problem point
+    at $z=0$. However, this circle extends beyond the branch cut for
+    $\Log z$. This is not a problem for the Taylor series; it is still
+    well-defined at these points ``beyond'' the branch cut. 
+  \end{example}
+  Now, let us consider the following definition.
+  \begin{defn}
+    Suppose $f$ is analytic for $|z| > M$. We say that $f$ is analytic
+    at $\infty$ if $g(w) = f(\frac{1}{w})$ extends to be analytic at
+    0. If this happens, then $f(\infty) = g(0)$. 
+  \end{defn}
+  \begin{example}
+    Consider that $\frac{z^2}{z^2+1}$ is analytic at $\infty$. We show
+    this by noting \[
+      g(w) = f(\frac{1}{w}) = \frac{1/w^2}{1/w^2+1} = \frac{1}{1+w^2}
+    \]
+    which is nice at $w=0$. Now, $g$ has a Taylor series at $w=0$,
+    $g(w) = \sum a_kz^k$ The Taylor series for $f$ at $\infty$ is just
+    $f(z)=g(\frac{1}{z}) = \sum_{k \geq 0} a_kz^{-k}$. Computing this
+    explicitly,
+    \[
+      g(w) = 1-w^2+w^4-w^6+\cdots, \ |w|<1
+    \] so we get that \[
+      f(z) = 1-\frac{1}{z^2}+\frac{1}{z^4}-\frac{1}{z^6}+\cdots, \ |z|>1
+    \]
+    because $\frac{1}{1+\frac{1}{z^2}} =
+    \frac{z^2}{z^2+1}$ when $|\frac{1}{z^2}| < 1$.
+  \end{example}
+  Now, it is useful to note that we can manipulate power series. In
+  particular, we can add, multiply, divide, differentiate, and
+  integrate Taylor series. Under the right conditions, we can also
+  compose them; in general, this does not work, though.
+  \begin{example}
+    It is left to the reader to verify that the power series for
+    $(z^2)^{1/2}$ that is defined to take 1 to 1 does not yield the
+    same power series as the composition of $f(z) = z^2$ and $g(z) =
+    z^{1/2}$ (principal branch). 
+  \end{example}
+  
 \end{document}
