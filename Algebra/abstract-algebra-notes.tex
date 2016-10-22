@@ -1186,6 +1186,47 @@ Concepts: G acts on \(X\) \(\iff\) there is a homomorphism from \(G \to S(X)\).
 \begin{prop*}
   If \(|G|=p^em\) with \(m > p\) and \(p\) does not divide either \(m\) or \((m-1)!\) then \(G\) is not simple.
 \end{prop*}
+
+\newpage
+\section*{Free Groups and Presentations}
+
+Let \(X\) be a non-empty set. Define \(X^{-1}=\{x^{-1} \mid x \in X\}\) with \(X \cap X^{-1} = \emptyset\) and where
+there exists an injection \(X \to X^{-1}\). Set \(Y = X \coprod X^{-1}\). There define \(\iota \colon Y \to Y\) by
+\begin{align*}
+  x &\mapsto x^{-1}\\
+  x^{-1} &\mapsto x
+\end{align*}
+Think of \(Y\) as an alphabet and 
+\[W(X)=\{(y_1,\ldots,y_n) \mid n \in \N, y_i \in Y\}\]
+as the set of words over that alphabet. For convenience we write \(y_1\cdots y_n\) for \((y_1,\ldots,y_n)\). We may
+define an associative multiplication on \(W(x)\) by
+\[(y_1,\ldots,y_n)(y_{n+1},\ldots,y_m)=(y_1,\ldots,y_n,y_{n+1},\ldots,y_m).\]
+Then \(W(X)\) is a free monoid on \(Y\).
+
+\begin{defn*}
+  Words \(v,w \in W(X)\) are \emph{elementary equivalent} if either one of the following hold:
+  \begin{enumerate}
+  \item \(w=w_1w_2\) and \(v=w_1y y^{-1}w_2\)
+  \item \(w=w_1y^{-1}yw_2\) and \(v=w_1w_2\)
+  \end{enumerate}
+\end{defn*}
+
+\begin{defn}
+  \(v,w \in W(X)\) are \emph{equivalent} denote \(\sim\)if 
+  \begin{enumerate}
+  \item \(w=v\)
+  \item There exists a finite chain of elementary equivalences.
+  \end{enumerate}
+\end{defn}
+
+Denote the equivalence class of words equivalent to \(w\) by \([w]\). Now define 
+\[F(x)=W(x)/\sim\]
+where this is just given by the equivalence relation on the set \(W(X)\). Now define multiplication on \(F(x)\) by
+inheriting it 
+from \(W(X)\), that is set \([w][v]=[wv]\). Now inversion is well defined by \([w]^{-1}=[w^{-1}]\). 
+\begin{defn}
+  The set \(F(X)\) defined above together with the multiplication \([w][v]=[wv]\) is called the \emph{free group} on \(X\).
+\end{defn}
 \end{document}%
 
 %%% Local Variables:
