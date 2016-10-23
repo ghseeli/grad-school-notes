@@ -7,6 +7,7 @@
 \renewcommand{\bar}{\widebar}
 \newcommand{\grad}{\nabla}
 \newcommand{\Der}{\text{Der}}
+\newcommand{\supp}{\text{supp}}
 
 \newtheoremstyle{mystyle}
   {20pt plus 4pt minus 4pt} % Space above
@@ -879,8 +880,8 @@ Given $M$, what is the maximum number $k$ of vector fields $X_1,,,X_k$ that for 
 $k = n = \dim M$ is best possible
 
 \begin{example}
-	$M \subseteq S^3 \subseteq Quaternions$ (has 4 dim)
-	$q = x*1 + y*i + z*j + w*k$
+	$M \subseteq S^3 \subseteq \H$ (has 4 dim)
+	$q = x1 + yi + zj + wk$
 	Let
 	$X_1(q) = (q, iq)$
 	$X_2(q) = (q, jq)$
@@ -974,7 +975,7 @@ set of above over all smooth functions
 \end{defi}
 	notation
 	$\omega'(M) = C^\infty(M, T*M)$ = set of all 1-forms.
-\end{document}
+
 \begin{example}
 	$U \subseteq \R^n$
 	A general vector field on $U$ had the form
@@ -1005,10 +1006,12 @@ Monday, Oct 17, 2016
 	\begin{enumerate}
 		\item bilinear (note this implies $<0,0> = 0$)
 		\item symmetric
-		\item positive definite (if $v \not\eq 0$, $<v,v> > 0$)
+		\item positive definite (if $v \neq 0$, $<v,v> > 0$)
+	\end{enumerate}
 \end{defi}
 \begin{example}
-		The dot product is an inner product.
+	The dot product is an inner product.
+\end{example}
 \begin{thrm}
 	Any linear product on $\R^n$ has the form $<v,w> = v^T A w$, where $A$ is a symmetric matrix with positive eigenvalues.
 \end{thrm}
@@ -1016,15 +1019,16 @@ Monday, Oct 17, 2016
 	A \emph{Riemannian structure} in $M$ is an inner product $<,>_x \in T_xM$ for each $x \in M$ that is ``smooth'' in the following (equivalent) ways:
 	\begin{itemize}
 		\item
-	Given any two smooth Vector Fields $X$, $Y$ on $M$, then
-	the function $M \to \R$
-	$x \mapsto <X(x), Y(x)>$
-	is smooth.
+		Given any two smooth Vector Fields $X$, $Y$ on $M$, then
+		the function $M \to \R$
+		$x \mapsto <X(x), Y(x)>$
+		is smooth.
 		\item
-	The corresponding map $L$ in (below) is smooth (and an isomorphism)
-	$TM ----L-----> T*M$
-	$TM \to M$
-	$T*M \to M$
+		The corresponding map $L$ in (below) is smooth (and an isomorphism)
+		$TM ----L-----> T*M$
+		$TM \to M$
+		$T*M \to M$
+	\end{itemize}
 \end{defi}
 \begin{example}
 	Suppose $M^n$ is embedded in $\R^N$
@@ -1041,7 +1045,7 @@ Monday, Oct 17, 2016
 \end{example}
 \begin{example}
 	We can *define* a ``gradient'' vector field of $f$
-	$\grad f(x)$ \in T_xM$ to be the vector such that
+	$\grad f(x) \in T_xM$ to be the vector such that
 	$< \grad f (x), v > = df_x$ for all $v \in T_xM$
 \end{example}
 \begin{thrm}
@@ -1049,7 +1053,7 @@ Monday, Oct 17, 2016
 \end{thrm}
 \begin{proof}
 	We will prove the lesser theorem ``A compact smooth manifold $M^n$ embeds in $\R^N$ for $N$ large enough.'':
-	$M$ compact ==> there exists a finite atlas
+	$M$ compact implies there exists a finite atlas
 	ALL PHIS BELOW are actually $\phi_i$, for any $i$.  AS WELL AS LAMBDAS AND THETAS AND US AND VS
 	suppose $\phi$ extended to all of $M$, is
 
@@ -1063,13 +1067,14 @@ Monday, Oct 17, 2016
 
 	there exists smooth $\lambda : M \to [0,1]$
 	which is 1 on $V_i$, and has support $\subseteq U$ (this is possible since $V \in U$.  So 1 on $V$ and then dips down to 0 on or before bdry of $U$)
-	$\support(\lambda)$ is the points in the domain that don't map to 0
+	$\supp (\lambda)$ is the points in the domain that don't map to 0.
 
-	Let $\psi : M \to \R^n$ be
+	Let $\psi : M \to \R^n$ be $$
 	\begin{cases}
-		$\lambda(x)\phi(x)$ if $x \in U$
-		0 if x $not \in U$
+		\lambda(x)\phi(x) \text{if $x \in U$} \\
+		0 \text{if $x \not\in U$}
 	\end{cases}
+	$$
 	(or just $\lambda(x)\overset{~}{phi}(x)$ everywhere, but $\overset{~}{phi}$ was only in our minds)
 
 	$\theta: M \to (\R^{n+1})^r$ be
@@ -1093,8 +1098,8 @@ Monday, Oct 17, 2016
 		\item[(c)]
 		$\theta$ is 1-1:
 
-		$\theta(x) = \theta(y)$  ==>  for all i, $\lambda(x) = \lamda(y)$
-		If $x \in V$, then \lambda(x) = 1, so \lambda(y) = 1, so $y \in U$.
+		$\theta(x) = \theta(y)$ implies that for all i, $\lambda(x) = \lambda(y)$
+		If $x \in V$, then $\lambda(x) = 1$, so $\lambda(y) = 1$, so $y \in U$.
 		Then $\phi(x) = \psi(x) = \psi(y) = \phi(y)$
 		$\phi$ is injective, so $x = y$.
 		wohoo!
@@ -1117,20 +1122,20 @@ Monday, Oct 17, 2016
 
 Wednesday, Oct 19, 2016
 
-\secion{Normal and Paracompact spaces, and partitions of unity}
+\section{Normal and Paracompact spaces, and partitions of unity}
 
 \begin{defi}
-	$X$ is \emph{normal} (Axiom T_4) if given and $A$,$B$ closed and disjoint, there exists $U$,$V$ open, disjoint with $A \subseteq U$ and $B subseteq V$.
+	$X$ is \emph{normal} if for all $A$,$B$ closed and disjoint, there exists $U$,$V$ open, disjoint with $A \subseteq U$ and $B \subseteq V$.  (The "normal" condition is also called "Axiom T4".  But this is *not* the same as being a T4 space.  A T4 space is, by definition, T2 + Axiom T4.)
 \end{defi}
 \begin{rmk}
-	$T_2$ + compact ==> $T_4$
-	(but we prove even better, that $T_2$ + paracompact ==> $T_4$)
+	($T_2$ + compact) implies $T_4$
+	(but we prove even better, that ($T_2$ + paracompact) implies $T_4$)
 \end{rmk}
 \begin{thrm}
 	All paracompact manifolds are normal.
 \end{thrm}
 
-\begin{lem}[equiv def of T_4]
+\begin{lem}[equiv def of $T_4$]
 	$X$ is normal iff (Given $A \subseteq W \subseteq X$.  $A$ closed and $W$ open implies there exists $U$ open with $A \subseteq U \subseteq \bar{closure} \subseteq W$)
 \end{lem}
 \begin{thrm}[Urysohn's Lemma (Bredon section I.10)]
@@ -1143,7 +1148,7 @@ Wednesday, Oct 19, 2016
 
 
 \begin{prop}
-	If $X$ is $T_4$ and $\{U_1,,,U_r\}$ is a finite open cover of $X$, then for each $i$, there exists $V_i \subseteq \bar{V_i} \subseteq $U_i$ such that $\{V_1,,,V_r\}$ is a cover of $X$.
+	If $X$ is $T_4$ and $\{U_1,,,U_r\}$ is a finite open cover of $X$, then for each $i$, there exists $V_i \subseteq \bar{V_i} \subseteq U_i$ such that $\{V_1,,,V_r\}$ is a cover of $X$.
 \end{prop}
 \begin{proof}
 	$U_1 \supseteq (X \ (U_2 unionthrough U_r)) = C$, which is closed.
@@ -1164,7 +1169,7 @@ Wednesday, Oct 19, 2016
 	A $T_2$ space $X$ is \emph{paracompact} if every open cover has a locally finite refinement.
 \end{defi}
 \begin{thrm}
-	$X is T_2 and compact ==> $X$ is paracompact.
+	$X$ is $T_2$ and compact implies $X$ is paracompact.
 \end{thrm}
 \begin{prop}[Bredon, Thm I.12.5]
 	Every paracompact space is normal.
@@ -1172,7 +1177,7 @@ Wednesday, Oct 19, 2016
 
 
 \begin{thrm}
-	$X$ locally compact, $T_2$, and 2nd countable ==> $X$ is paracompact.
+	$X$ locally compact, $T_2$, and 2nd countable implies $X$ is paracompact.
 \end{thrm}
 \begin{cor}
 	All manifolds are paracompact.
@@ -1197,16 +1202,15 @@ Wednesday, Oct 19, 2016
 \begin{proof}
 	For each $U$, there exists open $W$, $V$ s.t. $W \subseteq \bar{W} \subseteq V \subseteq \bar{V} \subseteq U$, and $\{W_1,,,W_r\}$ still covers $X$.
 
-	For each $U$, There exists continuous $\lamda : X \to [0,1]$ with $\lamda|_W = 1$ and $\lambda|_{X\smallsetminus V} = 0$.
+	For each $U$, There exists continuous $\lambda : X \to [0,1]$ with $\lambda|_W = 1$ and $\lambda|_{X\smallsetminus V} = 0$.
 
 	then support $\supp(\lambda) \subseteq \bar{V} \subseteq U$.
 
 	Let $\lambda = \sum_{i=1}^{r} \lambda_i$, so $\lambda : X \to \R>=0$.
 
 	(we want all the $\phi_i$'s to add up to 1.  not sure if this is necessary)
-	Let $\phi_i = \frac{\lambda_i}{\lambda}.  Then $\{\phi_i\}$ is a partition of unity subordinate to $\{U_i\}$.
+	Let $\phi_i = \frac{\lambda_i}{\lambda}$.  Then $\{\phi_i\}$ is a partition of unity subordinate to $\{U_i\}$.
 \end{proof}
-
 
 
 
