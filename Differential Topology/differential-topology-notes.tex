@@ -3,6 +3,9 @@
 \usepackage{../notes}
 %%% matt experiments with theorem style:
 \usepackage{amsthm}% http://ctan.org/pkg/amsthm
+\newcommand{\x}{\times}
+\renewcommand{\bar}{\widebar}
+\newcommand{\grad}{\nabla}
 \newcommand{\Der}{\text{Der}}
 
 \newtheoremstyle{mystyle}
@@ -107,9 +110,14 @@ Now, let us define what it means for a function to be differentiable.
 \begin{defi}
 	If $f$ is differentiable at $x$ by a linear function $L$, then $L$ is the \emph{differential} of $f$ at $x$.  This is denoted $df_x$.  Using the standard basis, the differential can be expressed as a slope matrix, which is denoted $f'(x)$.
 \end{defi}
+\begin{cor}
+	If $f$ is linear, then $df = f$.  (This comes straight out of the definition of $df$!)
+\end{cor}
+
 \begin{thrm}
 	If $f$ is differentiable at $x$, then the differential $df_x$ in the $v$ direction is equal to $\lim_{t \to 0} \frac{f(x+tv) - f(x)}{t}$.
 \end{thrm}
+
 
 \begin{thrm}[a-b-dimensional tangent plane (warning, this is not used in our class)]
 	Given a function $f : \R^a \to \R^b$ and its slope matrix $f^\prime(v)$ at a vector $v \in \R^a$, then the equation for any point $w$ on the plane tangent to $f$ at $v$ is $g_v(w) = f(v) + f'(v)(w-v)$ or, in point-slope form, $\frac{g_v(w)-f(v)}{w-v} = f'(v)$.
@@ -207,7 +215,7 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \emph{1-forms}.
 	If $K$ is compact in $X$ and $K \subseteq S \subseteq X$, then $K$ is compact in $S$.
 \end{thrm}
 \begin{conj}[Matt]
-	I conjecture that the theorem above is also true for "open" instead of "compact".  Also for "closed" and ANY other topological property.  I will give 10 dollars to whoever proves or disproves this theorem.
+	I conjecture that the theorem above is also true for ``open'' instead of ``compact''.  Also for ``closed'' and ANY other topological property.  I will give 10 dollars to whoever proves or disproves this theorem.
 \end{conj}
 \begin{defi}
 	The space $X$ has the \emph{discrete topology} if every singleton contained in $X$ is open.
@@ -223,7 +231,7 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \emph{1-forms}.
 		\item Every singleton subset of $X$ is closed.
 		\item Every finite subset of $X$ is closed.
 		\item For every subset $S$ of $X$, $S$ equals the intersection of all open sets containing it.
-		\item For every subset $S$ of $X$, $x \in \bar{S} \smallsetminus S$ iff every open neighborhood of $x$ contains infinitely many points in $S$.
+		\item For every subset $S$ of $X$, $x \in \widebar{S} \smallsetminus S$ iff every open neighborhood of $x$ contains infinitely many points in $S$.
 	\end{itemize}
 \end{defi}
 \begin{defi}
@@ -383,7 +391,7 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \emph{1-forms}.
 \end{rmk}
 
 \begin{defi}
-	A \emph{smooth} manifold ("smooth structure") is just a manifold coupled with an equivalence class of smooth atlases.
+	A \emph{smooth} manifold (``smooth structure'') is just a manifold coupled with an equivalence class of smooth atlases.
 \end{defi}
 
 \begin{thrm}
@@ -843,153 +851,361 @@ $D_v$ directional derivative in $v$-direction
 
 Wednesday, October 12, 2016
 
-Q1
-Given M, does there exists a vector field X on M s.t. for all $x \in M$, X(x) \neq 0 ?
+Given $M$, does there exists a vector field $X$ on $M$ s.t. for all $x \in M$, $X(x) \neq 0$?
 
-example
-M = S1.  TS1 = { (z,v) | z in S1, z dot v = 0 }
-yup!
-X(z) = X(x,y) = (z, (-y,z)) works!
+\begin{example}
+	$M = S^1$.  $TS1 = \{ (z,v) | z \in S^1, z \dot v = 0 \}$
+	yup!
+	$X(z) = X(x,y) = (z, (-y,z))$ works!
+\end{example}
+\begin{example}
+	$M = S^2$.
+	no!
+\end{example}
+\begin{example}
+	$M = S^3 \subseteq \C \x \C$
+	$S^3 = \{ (z1,z2) | |z1|^2 + |z2|^2 = 1 \}$
+	yes!
+	$X(z) = (z, iz)$ works!
+\end{example}
+\begin{example}
+	$M = S^{2n-1}$
+	yes!
+	use the same trick!
+\end{example}
+Question 2:
+Given $M$, what is the maximum number $k$ of vector fields $X_1,,,X_k$ that for every $x \in M$, $\{X_1(x),,,X_k(x)\}$ is linearly independent?
 
-example
-M = S2.
-no!
+$k = n = \dim M$ is best possible
 
-example
-M = S3 \subseteq \C x \C
-S3 = { (z1,z2) | |z1|^2 + |z2|^2 = 1 }
-yes!
-X(z) = (z, iz) works!
-
-example
-M = S^{2n-1}
-yes!
-use the same trick!
-
-Q2
-Given M, what is the maximum number $k$ of vector fields X1,,,Xk that for every $x \in M$, {X1(x),,,Xk(x)} is linearly independent?
-
-k = n = dim M is best possible
-
-example
-M \subseteq S3 \subseteq \H (has 4 dim)
-q = x*1 + y*i + z*j + w*k
-Let
-X1(q) = (q, iq)
-X2(q) = (q, jq)
-X3(q) = (q, kq)
-yes!
-
+\begin{example}
+	$M \subseteq S^3 \subseteq Quaternions$ (has 4 dim)
+	$q = x*1 + y*i + z*j + w*k$
+	Let
+	$X_1(q) = (q, iq)$
+	$X_2(q) = (q, jq)$
+	$X_3(q) = (q, kq)$
+	yes!
+\end{example}
 \begin{thrm}[J.F. Adams]
-	Given n \in \N and write n = odd*2^{4d+c}
-	Let p(n) = 2^c + 8d
-	Then S^{n-1} admits p(n)-1 linearly independent vector fields, but not p(n).
+	Given $n \in \N$ and write $n = odd*2^{4d+c}$
+	Let $p(n) = 2^c + 8d$
+	Then $S^{n-1}$ has $p(n)-1$ linearly independent vector fields, but not $p(n)$.
 \end{thrm}
 
-consider we have k = n, best possible
+consider we have $k = n$, best possible
 
 
 \begin{defi}
-	M is __parallelizable__ if there exists a function phi s.t.
-	phi : M x Rn to TM
-	by (x, t1,,,tn) mapsto (x, t1X1(x),,,tnXn(x))
-	and phi is a diffeomorphism that commutes with
+	$M$ is \emph{parallelizable} if there exists a function $\phi$ s.t.
+	$\phi : M x \R^n \to TM$
+	by $(x, t_1,,,t_n) \mapsto (x, t_1X_1(x),,,t_nX_n(x))$
+	and $\phi$ is a diffeomorphism that commutes with
 
-	phi : M x Rn to TM
-	M x Rn ---pi---> M
-	p: TM ----------> M
+	$\phi : M \x \R^n to TM$
+	$M \x \R^n ---\pi---> M$
+	$p: TM ----------> M$
 \end{defi}
 \begin{thrm}
-	M is \emph{parallelizable} iff the maximum number of lin. ind. vector fields = n = dim M.
+	$M$ is \emph{parallelizable} iff the maximum number of lin. ind. vector fields $= n = dim M$.
 \end{thrm}
+\begin{defi}
+	An $n$-dim $M$ is \emph{framed} if there exists $k$ and a vector bundle isomorphism $f$ s.t.
 
-weaker than parallelizable
--------------------------------
+	$TM \x Rk ----f----> M \x \R{n+k}$
+	$TM \x Rk ----p----> M$
+	$M \x \R{n+k} -----q----> M$
 
-An n-dim M is __framed__ if there exists k and a vector bundle isomorphism f s.t.
+	s.t. $f$ is smooth and each map $T_xM \x R^k -----> \R{n+k}$ is a linear isomorphism. (that is, $f$ is a diffeomorphism)
+	$p^{-1}(x) -----f-----> q^{-1}(x)$
+\end{defi}
+\begin{thrm}
+	Every parallelizable manifold is framed. (I have not confirmed this)
+\end{thrm}
+\begin{example}
+	$S^2$ is frames with $k=1$ by
+	$f : TS^2 \x \R --------> S^2 x R^3$
+	$((x,v), t) \mapsto (x, v + tx)$
+	$<x>$
 
-TM x Rk ----f----> M x R{n+k}
-TM x Rk ----p----> M
-M x R{n+k} -----q----> M
+	observe that
+	$TS^2 \not\isom S^2 \x R^2$
+	but
+	$TS2 x \R \isom S^2 x \R^3$
+	wow!
 
-s.t. f is smooth and each map TxM x Rk -----> R{n+k} is a linear isomorphism. (that is, f is a diffeomorphism)
-pinverse(x) -----f-----> qinverse(x)
-
-
-
-
-
-example
-S2 is frames with k=1 by
-f : TS2 x R --------> S2 x R3
-((x,v), t) mapsto (x, v + tx)
-<x>
-
-observe that
-TS2 \not\isom S2 x R2
-but
-TS2 x R \isom S2 x R3
-wow!
-
-or in general, we have
-R = Coo(S2)
-M = C(S2, TS2)
-M is an R-module
-then
-M \not\isom R directsum R, as R-module
-but
-M directsum R \isom R directsum R directsum R, as R-module
-wow!
-
-example
-RP2 not framed
-CP2 not framed
+	or in general, we have
+	$\R = C^\infty(S^2)$
+	$M = C(S^2, TS2)$
+	$M$ is an $\R$-module
+	then
+	$M \not\isom \R \oplus \R$, as $\R$-module
+	but
+	$M \oplus \R \isom \R \oplus \R \oplus \R$, as $\R$-module
+	wow!
+\end{example}
+\begin{example}
+	$\R P^2$ not framed.
+	$\C P^2$ not framed.
+\end{example}
 
 
-
-dfx in (TxM)*, called the __dual vector space__ of TxM
-
-def
-cotangent bundle
-----------------------
-T*M = \bigcup_{x \in M} (TxM)*
-
-
-observe
-TM = \sqcup (Ui x Rn)/~
-where (i, x, v) ~ (j, x, d(\phi_i of phi_i inverse)_x(v))
-analagously,
-T*M = \sqcup (Ui x (Rn)*)/~
-where (j, x, w) ~ (i, x, d(\phi_j of phi_j inverse)_x(w))
+$df_x \in (T_xM)^*$, called the \emph{dual vector space} of $T_xM$
+$dg_x \in (T_xM)^*$ too
+set of above over all smooth functions
 
 \begin{defi}
-	A __1-form__ on M is a section of T*M ----> M.
+	cotangent bundle
+	----------------------
+	$T*M = \bigcup_{x \in M} (T_xM)*$
 
-	in other words, for all x in M, w(x): TxM --> R and this varies "smoothly" in x
+
+	observe
+	$TM = \sqcup (U_i x \R^n)/~$
+	where $(i, x, v) ~ (j, x, d(\phi_i of \phi_i inverse)_x(v))$
+	analagously,
+	$T*M = \sqcup (U_i x (\R^n)*)/~$
+	where $(j, x, w) ~ (i, x, d(\phi_j of \phi_j inverse)_x(w))$
 \end{defi}
-notation
-omega'(M) = Coo(M, T*M) = set of all 1-forms
+\begin{defi}
+	A \emph{1-form} on $M$ is a section of $T*M ----> M$.
 
-example
-U \subseteq Rn
-A general vector field on U had the form
-f1 d/dx1 +++ fn d/dxn
-where fi : U to Rn
-then
-A general 1-form on U has the form
-f1 dx1 +++ fn dxn
-(observe that dx1 is dual to d/dx1, etc)
+	in other words, for all $x \in M$, $w(x): T_xM --> \R$ and this varies ``smoothly'' in $x$
+\end{defi}
+	notation
+	$\omega'(M) = C^\infty(M, T*M)$ = set of all 1-forms.
+\end{document}
+\begin{example}
+	$U \subseteq \R^n$
+	A general vector field on $U$ had the form
+	$f_1 d/dx1 +++ fn d/dxn$
+	where $fi : U to \R^n$
+	then
+	A general 1-form on $U$ has the form
+	$f1 dx1 +++ fn dxn$
+	(observe that $dx1$ is dual to $d/dx1$, etc)
+\end{example}
+Monday, Oct 17, 2016
+
+\begin{thrm}
+	$V$, $W$, $U$ are V.S. over $F$.  Every bilinear $b:V \x W \to U$ corresponds to a linear map $b` : V \to Lin(W,U)$
+	such that $b`(v)(w) = b(v,w)$.
+\end{thrm}
+	In particular $<,> : V \x V \to \R$
+	corresponds to a linear map
+	$L: V \to V$*
+	$L(v)(w) = <v,w>$
+
+	If you have the POSITIVE DEFINITE property TOO, then $L$ is an isomorphism.
 
 
 
+\begin{defi}
+	$V$ is a finite dim real vector space.  Then an \emph{inner product} is a function $<,> : V \x V \to \R$ that is:
+	\begin{enumerate}
+		\item bilinear (note this implies $<0,0> = 0$)
+		\item symmetric
+		\item positive definite (if $v \not\eq 0$, $<v,v> > 0$)
+\end{defi}
+\begin{example}
+		The dot product is an inner product.
+\begin{thrm}
+	Any linear product on $\R^n$ has the form $<v,w> = v^T A w$, where $A$ is a symmetric matrix with positive eigenvalues.
+\end{thrm}
+\begin{defi}
+	A \emph{Riemannian structure} in $M$ is an inner product $<,>_x \in T_xM$ for each $x \in M$ that is ``smooth'' in the following (equivalent) ways:
+	\begin{itemize}
+		\item
+	Given any two smooth Vector Fields $X$, $Y$ on $M$, then
+	the function $M \to \R$
+	$x \mapsto <X(x), Y(x)>$
+	is smooth.
+		\item
+	The corresponding map $L$ in (below) is smooth (and an isomorphism)
+	$TM ----L-----> T*M$
+	$TM \to M$
+	$T*M \to M$
+\end{defi}
+\begin{example}
+	Suppose $M^n$ is embedded in $\R^N$
+	Then, given $x \in M$, $T_xM$ is a sub-vector space at $\R^N$
+	Restriction of the ``standard'' inner prod (dot prod) on $\R^N \to T_xM$ gives a Riemannian structure on $M$.
+\end{example}
+\begin{defi}
+	A \emph{Riemannian Manifold} is a smooth manifold paired with a Riemannian structure.
+\end{defi}
+\begin{example}
+	Given $\alpha : [0,1] \to M$ a smooth path
+	Given $\alpha' \in T_\alpha(t)M$
+	Then we can define the ``length'' of a path as $\int_0^1 <\alpha'(t), \alpha'(t)>^{1/2} dt$
+\end{example}
+\begin{example}
+	We can *define* a ``gradient'' vector field of $f$
+	$\grad f(x)$ \in T_xM$ to be the vector such that
+	$< \grad f (x), v > = df_x$ for all $v \in T_xM$
+\end{example}
+\begin{thrm}
+		Every smooth manifold $M^n$ can be embedded in $\R^N$ for some $N \in \N$.
+\end{thrm}
+\begin{proof}
+	We will prove the lesser theorem ``A compact smooth manifold $M^n$ embeds in $\R^N$ for $N$ large enough.'':
+	$M$ compact ==> there exists a finite atlas
+	ALL PHIS BELOW are actually $\phi_i$, for any $i$.  AS WELL AS LAMBDAS AND THETAS AND US AND VS
+	suppose $\phi$ extended to all of $M$, is
+
+	there exists $\\overset{~}{\phi} M \to \R^n$
+	s.t. $\\overset{~}{phi}|_U = \phi$
+
+	Then consider
+	$(\overset{~}{\phi_1},,,\overset{~}{\phi_r}) : M \to \R^n \x \x \x \R^n$ (r times)
+
+	There exists open $V \subseteq U$ with $\bar{V} = V_c \subseteq U$, and $M = \bigcup V_i$ is finite (a property of paracompact spaces).
+
+	there exists smooth $\lambda : M \to [0,1]$
+	which is 1 on $V_i$, and has support $\subseteq U$ (this is possible since $V \in U$.  So 1 on $V$ and then dips down to 0 on or before bdry of $U$)
+	$\support(\lambda)$ is the points in the domain that don't map to 0
+
+	Let $\psi : M \to \R^n$ be
+	\begin{cases}
+		$\lambda(x)\phi(x)$ if $x \in U$
+		0 if x $not \in U$
+	\end{cases}
+	(or just $\lambda(x)\overset{~}{phi}(x)$ everywhere, but $\overset{~}{phi}$ was only in our minds)
+
+	$\theta: M \to (\R^{n+1})^r$ be
+	$\theta() = (\psi_1(x), \lambda_1(x),,,, \psi_r(x), \lambda_r(x))$
+
+	\begin{enumerate}
+		\item[(a)]
+		we see that theta is smooth:
+
+		yes
+		\item[(b)]
+		we see that theta is an immersion:
+
+		For some $x \in V = V_i$
+
+		$M \to (\R^n x \R)^r$ ----ith projection$\to (\R^n x \R) \to \R^n$
+		$x \mapsto                                                      \psi(x)$
+
+		If $d\psi : T_xM \to \R^n$ is monic, then
+		$d\theta_x$ :
+		\item[(c)]
+		$\theta$ is 1-1:
+
+		$\theta(x) = \theta(y)$  ==>  for all i, $\lambda(x) = \lamda(y)$
+		If $x \in V$, then \lambda(x) = 1, so \lambda(y) = 1, so $y \in U$.
+		Then $\phi(x) = \psi(x) = \psi(y) = \phi(y)$
+		$\phi$ is injective, so $x = y$.
+		wohoo!
+	\end{enumerate}
+
+	$M$ is compact, together with a,b,c, proves the theorem!
+\end{proof}
 
 
+\begin{thrm}[Whitney Embedding Thm]
+	$N = 2n$ suffices (see above)
+\end{thrm}
+\begin{thrm}
+	Every smooth manifold has Riemannian structures.
+\end{thrm}
+\begin{thrm}[Nash Embedding Theorem]
+	Every Riemannian structure on $M$ arises in this way
+	(we will not prove this)
+\end{thrm}
+
+Wednesday, Oct 19, 2016
+
+\secion{Normal and Paracompact spaces, and partitions of unity}
+
+\begin{defi}
+	$X$ is \emph{normal} (Axiom T_4) if given and $A$,$B$ closed and disjoint, there exists $U$,$V$ open, disjoint with $A \subseteq U$ and $B subseteq V$.
+\end{defi}
+\begin{rmk}
+	$T_2$ + compact ==> $T_4$
+	(but we prove even better, that $T_2$ + paracompact ==> $T_4$)
+\end{rmk}
+\begin{thrm}
+	All paracompact manifolds are normal.
+\end{thrm}
+
+\begin{lem}[equiv def of T_4]
+	$X$ is normal iff (Given $A \subseteq W \subseteq X$.  $A$ closed and $W$ open implies there exists $U$ open with $A \subseteq U \subseteq \bar{closure} \subseteq W$)
+\end{lem}
+\begin{thrm}[Urysohn's Lemma (Bredon section I.10)]
+	If $X$ is $T_4$ and $A$,$B$ closed, disjoint, then there exists a continuous $f : X \to [0,1]$ with $f|_A = 0$ and $f|_B = 1$.
+\end{thrm}
+
+\begin{thrm}[Tietze Extension Theorem]
+	$X$ is $T_4$. A $closed \in X$.  If $f : A to \R$ is continuous, then $f$ extends to all of $X$.
+\end{thrm}
 
 
+\begin{prop}
+	If $X$ is $T_4$ and $\{U_1,,,U_r\}$ is a finite open cover of $X$, then for each $i$, there exists $V_i \subseteq \bar{V_i} \subseteq $U_i$ such that $\{V_1,,,V_r\}$ is a cover of $X$.
+\end{prop}
+\begin{proof}
+	$U_1 \supseteq (X \ (U_2 unionthrough U_r)) = C$, which is closed.
+	By lemma, $U_1 \subseteq V_1 \subseteq \bar{V_1} \subseteq C$.
+	So $\{V_1, U_2,,,,U_r \}$ is an open cover of $X$.
+	Repeat for all the other $U_s$.
+\end{proof}
+
+\section{Paracompactness}[(Bredon, section I.12)]
+
+\begin{defi}
+	An open cover $O = \{U_a\}$ (this is a family of $U$'s) of $X$ is \emph{locally finite} if given any $x$, the set $\{U_a | x \in U_a\}$ is finite.  Or equivalently, any infinite intersection of $U_a$'s is empty.
+\end{defi}
+\begin{defi}
+	Given $X$, an open cover $\{V_b\}$ refines an open cover $\{U_a\}$ if every $V_b$ is contained in some $U_a$.
+\end{defi}
+\begin{defi}
+	A $T_2$ space $X$ is \emph{paracompact} if every open cover has a locally finite refinement.
+\end{defi}
+\begin{thrm}
+	$X is T_2 and compact ==> $X$ is paracompact.
+\end{thrm}
+\begin{prop}[Bredon, Thm I.12.5]
+	Every paracompact space is normal.
+\end{prop}
 
 
+\begin{thrm}
+	$X$ locally compact, $T_2$, and 2nd countable ==> $X$ is paracompact.
+\end{thrm}
+\begin{cor}
+	All manifolds are paracompact.
+\end{cor}
 
+\begin{prop}[Bredon, prop I.12.9]
+	If $X$ is paracompact, and $\{U\}$ is a locally finite open cover, then there exists open sets $V_a$ with $V_a \subseteq \bar{V_a} \subseteq U_a$ with $\{V_a\}$ is an open cover.
+\end{prop}
+\begin{defi}
+	Given $\{U_a\}$ a locally finite open cover of $X$, then a \emph{partition of unity} subordinate to $\{U_a\}$ is a collection of continuous functions $\phi_a : X to [0,1]$ where for each $a$, the support of $\phi_a$ is contained in $U_a$.
+\end{defi}
 
+\begin{thrm}[Bredon, thm II.10.1]
+	Any smooth manifold has smooth partitions of unity for any locally finite open cover.
+\end{thrm}
+\begin{thrm}[Bredon, thm I.12.8]
+	If $X$ is paracompact and $\{U_a\}$ is any locally finite open cover of $X$, there exists a partition of unity subordinate to $\{U_a\}$.
+\end{thrm}
+\begin{prop}
+	If $X$ is $T_4$ and $\{U_1,,,U_r\}$ is a finite open cover of $X$, then there exists a partition of unity subordinate to $\{U_i\}$.
+\end{prop}
+\begin{proof}
+	For each $U$, there exists open $W$, $V$ s.t. $W \subseteq \bar{W} \subseteq V \subseteq \bar{V} \subseteq U$, and $\{W_1,,,W_r\}$ still covers $X$.
+
+	For each $U$, There exists continuous $\lamda : X \to [0,1]$ with $\lamda|_W = 1$ and $\lambda|_{X\smallsetminus V} = 0$.
+
+	then support $\supp(\lambda) \subseteq \bar{V} \subseteq U$.
+
+	Let $\lambda = \sum_{i=1}^{r} \lambda_i$, so $\lambda : X \to \R>=0$.
+
+	(we want all the $\phi_i$'s to add up to 1.  not sure if this is necessary)
+	Let $\phi_i = \frac{\lambda_i}{\lambda}.  Then $\{\phi_i\}$ is a partition of unity subordinate to $\{U_i\}$.
+\end{proof}
 
 
 
