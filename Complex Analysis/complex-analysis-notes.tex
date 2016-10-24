@@ -117,6 +117,9 @@ Let us also examine $f(z) = z^{\frac{1}{2}} = \{w | w^2=z\}$. This is a multival
     \ & \ \implies \ w = \sqrt{|z|}e^{\frac{\Arg z}{2}i}, \sqrt{|z|}e^{\frac{\Arg z + 2\pi}{2} i}
 \end{align*}
 \begin{defn}
+    A \emph{domain} is an open subset of $\C$ where every pair of points can be connected by a broken line segment.
+\end{defn}
+\begin{defn}
     A branch of a multivalued function is a (continuous) choice of output on some domain.
 \end{defn}
 \begin{example}
@@ -821,7 +824,7 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
   \end{example}
   Now, we formulate a useful theorem for entire functions.
   \begin{thm}[Liouville's Theorem]
-    A bounded entire function is constant. 
+    A bounded entire function is constant.
   \end{thm}
   \begin{proof}
     Let $|f(z)| \leq M$ for all $z \in \C$. Take any $z$. For any
@@ -829,7 +832,7 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
     0$ ,we have the Cauchy estimate $|f'(z)| \leq \frac{M}{R}$ which
     is true for all $R$. Thus, if we take $R \to \infty$, we get
     $f'(z) = 0$. This works for all $z$ so $f' \equiv 0$ and thus $f$
-    is constant. 
+    is constant.
   \end{proof}
   This leads to a proof of the fundamental theorem of algebra, for
   which there are many.
@@ -857,7 +860,7 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
   closed if and only if $f$ is analytic.
   \begin{thm}[Liouville's Theorem for Harmonic Functions]
     If $u$ is harmonic on $\R^2$ and bounded above by $M$, then $u$ is
-    constant. 
+    constant.
   \end{thm}
   \begin{proof}
     The strategy of this proof is to relate $u$ to an entire function
@@ -894,7 +897,7 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
     \]
     Thus, it is differentiable at $z$ with derivative $f(z)$, which we
     assumed to be continuous. So, $F$ is analytic on $D$ and we know
-    $f' = F'$ is also analytic on $D$. 
+    $f' = F'$ is also analytic on $D$.
   \end{proof}
   This allows us to move on ot Goursat's theorem, which allows us to
   drop from the definition of analytic the requirement that the
@@ -911,7 +914,7 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
     has \[
       \left|
         \int_{R_1}
-      \right| \leq 
+      \right| \leq
       \frac{1}{4}\left|
         \int_R
       \right|.
@@ -941,7 +944,7 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
     $\frac{P}{2^n}\epsilon_n$. Putting this together, we get that \[
       \left|
         \int_R f(z)dz
-      \right| \leq 4^n 
+      \right| \leq 4^n
       \left|
         \int_{R_n} f(z)dz
       \right| \leq 4^n \frac{P}{2^n}\frac{P \epsilon_n}{2^n} = P^2
@@ -964,7 +967,7 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
                                     \frac{\partial}{\partial x} -
                                     i\frac{\partial}{\partial y}
                                     \right) \\
-      \frac{\partial}{\partial \ov{z}} & = \frac{1}{2} 
+      \frac{\partial}{\partial \ov{z}} & = \frac{1}{2}
                                          \left(
                                          \frac{\partial}{\partial x} +
                                          i\frac{\partial}{\partial y}
@@ -974,7 +977,7 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
   Why does this make sense? To answer this, let us answer the question
   of what does it mean for $\frac{\partial f}{\partial \ov{z}} =
   0$? \[
-    0 = 
+    0 =
     \left(
       \frac{\partial}{\partial x} + i\frac{\partial}{\partial y}
     \right)(u+iv) = (u_x-v_y)+i(u_y+v_x)
@@ -997,7 +1000,7 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
   $(\C^n)$, we have the following equation.
   \begin{align*}
     f \text{ is analytic } &\iff \frac{\partial f}{\partial \ov{z_i}} =
-    0  \eqname{(``D-bar equation'')} 
+    0  \eqname{(``D-bar equation'')}
   \end{align*}
   Now, this also gives rise to a version of the Cauchy integral formula for
   general non-analytic functions of the form $f=u+iv$ called Pompeiu's
@@ -1038,9 +1041,9 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
     A normal limit of analytic functions is analytic. This follows
     from the generalized Cauchy integral formula by noting that if
     $f_n \to f$ normally, then $f_n^{(m)} \to f^{(m)}$ normally as
-    well. 
+    well.
   \item For a power series $\sum_{n=0}^\infty a_n(z-z_0)^n$, there
-    exist $R$ such that the series diverges for $|z-z_0| > R$ and
+    exists $R$ such that the series diverges for $|z-z_0| > R$ and
     converges normally for $|z-z_0| < R$. What happens at $|z-z_0|=R$
     is dependent on the specific series.
   \item As a normal limit of
@@ -1058,7 +1061,7 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
     a_n(z-z_0)^n$ where \[a_n = \frac{f^{(n)}(z_0)}{n!} =
       \frac{1}{2\pi i}\int_{|\rho - z_0| < r}
       \frac{f(\rho)}{(\rho-z_0)^{n+1}}d\rho \]
-    for $r < \rho$. 
+    for $r < \rho$.
   \end{thm}
   The upshot of this theorem is that analytic functions on a disk can
   be written as a power series.
@@ -1093,14 +1096,14 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
   \begin{example}
     Where does the series for $\frac{1}{z}$ at $2i$ converge? A circle
     of radius 2 will touch a problem point at $z=0$ and so we get that
-    the series will converge on the disk $|z-2i| < 2$. 
+    the series will converge on the disk $|z-2i| < 2$.
   \end{example}
   \begin{example}
     In calculus, we get that $\frac{1}{x^2+1}$ has power series
     $1-x^2+x^4-x^6+\cdots$, but this series does not converge past $x
     \in (-1,1)$. Why is this the case? If we consider the function
     $\frac{1}{z^2+1}$ at 0, it has problems at $\pm i$ and so the
-    Taylor seires converges on $|z|<1$. 
+    Taylor seires converges on $|z|<1$.
   \end{example}
   For these functions, the radius of convergence is the ``distance to
   the nearest singularity.''
@@ -1114,7 +1117,7 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
     \]
     This final series does not have a problem at 0, and so $\frac{\sin
     z}{z}$ should extend to be analytic at 0. This idea is analogous
-    to $\frac{x^2-9}{x-3} = x+3$ with a hole at 3. 
+    to $\frac{x^2-9}{x-3} = x+3$ with a hole at 3.
   \end{example}
   \begin{example}
     Consider $\Log z$ at $-2+i$. What is the largest open disk
@@ -1122,13 +1125,13 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
     answer is $|z-(-2+i)| < \sqrt{5}$ because there is a problem point
     at $z=0$. However, this circle extends beyond the branch cut for
     $\Log z$. This is not a problem for the Taylor series; it is still
-    well-defined at these points ``beyond'' the branch cut. 
+    well-defined at these points ``beyond'' the branch cut.
   \end{example}
   Now, let us consider the following definition.
   \begin{defn}
     Suppose $f$ is analytic for $|z| > M$. We say that $f$ is analytic
     at $\infty$ if $g(w) = f(\frac{1}{w})$ extends to be analytic at
-    0. If this happens, then $f(\infty) = g(0)$. 
+    0. If this happens, then $f(\infty) = g(0)$.
   \end{defn}
   \begin{example}
     Consider that $\frac{z^2}{z^2+1}$ is analytic at $\infty$. We show
@@ -1155,7 +1158,7 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
     It is left to the reader to verify that the power series for
     $(z^2)^{1/2}$ that is defined to take 1 to 1 does not yield the
     same power series as the composition of $f(z) = z^2$ and $g(z) =
-    z^{1/2}$ (principal branch). 
+    z^{1/2}$ (principal branch).
   \end{example}
   \section{(10/13/2016) Lecture 15)}
   \begin{defn}
@@ -1169,7 +1172,7 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
       a_k(z-z_0)^k$ and $a_N \neq 0$.
     \end{itemize}
     The order of $\infty$ as a zero for $f$ is the order of 0 as a  zero
-    of $g(z) = f(\frac{1}{z})$. 
+    of $g(z) = f(\frac{1}{z})$.
   \end{defn}
   \begin{example}
     $e^z-1-z$ has a zero of order 2 at 0.
@@ -1192,7 +1195,7 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
     $f(z) = (z-z_0)^N g(z)$ where $g(z) \neq 0$. By continuity of $g$,
     there is a disk around $z_0$ where $g(z_0) \neq 0$. On this disk
     minus $z_0$, $f(z) = (z-z_0)^N g(z) \neq 0$. Thus, the zeros are
-    isolated. 
+    isolated.
   \end{proof}
   \begin{cor}
     If $f$ and $g$ are analytic on a domain and $f=g$ on a set that
@@ -1200,7 +1203,7 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
   \end{cor}
   \begin{proof}
     Apply the proposition to $f-g$. If $z_k \to z$, then values
-    $f(z_k)$ determine all $f^{(k)}(z)$. 
+    $f(z_k)$ determine all $f^{(k)}(z)$.
   \end{proof}
   Now, we note some consequences of this fact. First of all, $\sin^2 z
   + \cos^2 z = 1$ for all $z \in \C$. The reason for this is that the
@@ -1234,7 +1237,7 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
 
   Sometimes composition is okay, for instance $\sin z^2 = z^2 -
   \frac{z^6}{3!} + \cdots$.
-  
+
   \section*{Analytic Continuation}
 
   A function extends analytically on disks such that the disks agree
@@ -1264,7 +1267,7 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
   summand. We note that $f$ always has a unique Laurent decomposition
   with the condition $f_1(\infty) = 0$. Now, we also note that $f_0$
   is analytic on a disk and $f_1$ is analytic on an exterior domain,
-  so we get that 
+  so we get that
   \begin{align*}
     f = f_0+f_1 & = \sum_{k \geq 0} a_k(z-z_0)^k + \sum_{k \leq -1}
                   a_k(z-z_0)^k \\
@@ -1283,7 +1286,7 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
       \frac{(z-z_0)^k}{(z-z_0)^{n+1}} dz \right) \\
     \ & = 2 \pi i a_n \\
     \implies a_n & = \frac{1}{2 \pi i} \int_{|z-z_0|}
-                 \frac{f(z)}{(z-z_0)^{n+1}}dz                             
+                 \frac{f(z)}{(z-z_0)^{n+1}}dz
   \end{align*}
   Where the second to last equality comes from the fact that all those
   integrals are 0 unless $k=n$. Note that we also already had this
@@ -1318,6 +1321,6 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
   Just as a power series for $f$ at $z_0$ converges on the largest
   disk to which $f$ extends analytically, the Laurent series for $f$
   centered at $z_0$ converges on the largest annulus to which $f$
-  extends analytically. 
+  extends analytically.
 
 \end{document}

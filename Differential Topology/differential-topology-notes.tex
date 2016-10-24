@@ -898,27 +898,32 @@ consider we have $k = n$, best possible
 
 
 \begin{defi}
-	$M$ is \emph{parallelizable} if there exists a function $\phi$ s.t.
-	$\phi : M x \R^n \to TM$
-	by $(x, t_1,,,t_n) \mapsto (x, t_1X_1(x),,,t_nX_n(x))$
-	and $\phi$ is a diffeomorphism that commutes with
+	$M$ is \emph{parallelizable} if there exists a diffeomorphism
+	$$\phi : M \x \R^n \to TM$$
+	$$(x, t_1,,,t_n) \mapsto (x, t_1X_1(x),,,t_nX_n(x))$$
+	and $\phi.p$ commutes with $\pi$ in
 
-	$\phi : M \x \R^n to TM$
-	$M \x \R^n ---\pi---> M$
-	$p: TM ----------> M$
+	$\phi : M \x \R^n \to TM$
+
+	$p: TM \to M$
+
+	$\pi: M \x \R^n \to M$
+
 \end{defi}
 \begin{thrm}
-	$M$ is \emph{parallelizable} iff the maximum number of lin. ind. vector fields $= n = dim M$.
+	$M$ is \emph{parallelizable} iff the maximum number of linearly independent vector fields is $\dim M$.
 \end{thrm}
 \begin{defi}
-	An $n$-dim $M$ is \emph{framed} if there exists $k$ and a vector bundle isomorphism $f$ s.t.
+	An $n$-dimensional manifold $M$ is \emph{framed} if there exists $k$ and a vector bundle isomorphism $f$ s.t.
 
-	$TM \x Rk ----f----> M \x \R{n+k}$
-	$TM \x Rk ----p----> M$
-	$M \x \R{n+k} -----q----> M$
+	$f : TM \x \R^k \to M \x \R^{n+k}$
 
-	s.t. $f$ is smooth and each map $T_xM \x R^k -----> \R{n+k}$ is a linear isomorphism. (that is, $f$ is a diffeomorphism)
-	$p^{-1}(x) -----f-----> q^{-1}(x)$
+	$q: M \x \R^{n+k} \to M$
+
+	$p: TM \x \R^k \to M$
+
+	s.t. $f$ is smooth and each map $T_xM \x \R^k \to \R^{n+k}$ is a linear isomorphism. (that is, $f$ is a diffeomorphism)
+	$f: p^{-1}(x) \to q^{-1}(x)$
 \end{defi}
 \begin{thrm}
 	Every parallelizable manifold is framed. (I have not confirmed this)
