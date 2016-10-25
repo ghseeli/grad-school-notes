@@ -45,7 +45,7 @@ following are some examples:
         $|z-w|$ & The distance from $z$ to $w$ \\
         $|z-1|=|z-i|$ & The locus of points equidistance from $1$ and $i$, ie a line. \\
         $|z-1|=3-|z-i|$ & The distance from $z$ to 1 and $z$ to $i$ add to 3, ie a parabola. \\
-        $|z-1|=3+|z-i|$ & The upper part of a hyperbols (because the complex ordering). \\
+        $|z-1|=3+|z-i|$ & The upper part of a hyperbola (because the complex ordering). \\
         $|z-1|=2|z-i|$ & A circle (points that are twice as far from $1$ as from $i$). \\
         $|z-1|=\frac{2}{|z-i|}$ & An oval shape called a Cassini oval (product of distances is constant). \\
         \hline
@@ -61,12 +61,12 @@ In $\R$, there are many ways to define $e^x$. One way is $e^x =
     e^{ix} = 1 + ix + \frac{(ix)^2}{2!} + \frac{(ix)^3}{3!} + \cdots = \cos x + i \sin x
 \]
 By splitting $e^{ix}$ into its real and imaginary parts, we obtain power series for $\sin(x)$ and $\cos(x)$.
-\begin{align}
+\begin{align*}
   e^{ix} =& \sum_{n=0}^\infty \frac{(ix)^n}{n!}  \\
   =& \sum_{n\ \text{even}}^\infty \frac{(ix)^n}{n!} + \sum_{n\ \text{odd}}^\infty \frac{(ix)^n}{n!} \\
   =& \sum_{n\ \text{even}}^\infty \frac{i^n x^n}{n!} + i\sum_{n\ \text{odd}}^\infty \frac{i^{n-1} x^n}{n!} \\
   =& \cos(x) + i \sin(x)
-\end{align}
+\end{align*}
 
 When $x$ is real, $|e^{ix}| = |\cos x + i \sin x| = \sqrt{\cos^2 x + \sin^2 x}
 = 1$, so our rules in $\R$ still hold.
@@ -896,9 +896,9 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
     \]
     Thus, it is differentiable at $z$ with derivative $f(z)$, which we
     assumed to be continuous. So, $F$ is analytic on $D$ and we know
-    $f' = F'$ is also analytic on $D$. 
+    $f = F'$ is also analytic on $D$. 
   \end{proof}
-  This allows us to move on ot Goursat's theorem, which allows us to
+  This allows us to move on to Goursat's theorem, which allows us to
   drop from the definition of analytic the requirement that the
   derivatives be continuous.
   \begin{thm}[Goursat's Theorem]
