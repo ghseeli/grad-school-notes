@@ -888,10 +888,10 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
     \end{align*}
     The first integral is $f(z)(z+\Delta z - z) = f(z) \Delta z$. To the
     second integral, we can apply an ML-estimate. Let $L \leq \sqrt{2}
-    | \Delta z|$ and $M = \max | f(\zeta) - f(z)| \to 0$ as $|\Delta
-    z| \to 0$. Furthermore, $|\zeta - z| \leq |\Delta z|$ so we get
+    | \Delta z|$ and $M = \max_{|\zeta - z| \leq |\Delta z|} | f(\zeta) - f(z)| \to 0$ as $|\Delta
+    z| \to 0$. So, we get
     that the modulus of the second integral is bounded by $ML$ which
-    is $o(|\Delta z|)$. So, we get that \[
+    is $o(|\Delta z|)$. Therefore, \[
       F(z+\Delta z) - F(z) = f(z) \Delta z + o(|\Delta z|).
     \]
     Thus, it is differentiable at $z$ with derivative $f(z)$, which we
