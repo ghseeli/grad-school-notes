@@ -210,12 +210,12 @@ between them is also contained in the domain.
     differentiable at $z$.
 \end{defn}
 
-```Usual examples'' include $f(z) = z^n \implies f'(z) = nz^{n-1}$. Also note
+``Usual examples'' include $f(z) = z^n \implies f'(z) = nz^{n-1}$. Also note
 that $f(z) = \overline{z}$ is not differentiable anywhere because the value of
 the limit changes depending on if you approach in the real direction or the
 imaginary direction.
 \begin{defn}
-    $f$ is \emph{analytic} on a domain if it is differentiable at all point on
+    $f$ is \emph{analytic} on a domain if it is differentiable at all points on
     the domain and $f'(z)$ is continuous.
 \end{defn}
 We will see that the second assumption is superflous when we prove Goursat's
@@ -224,7 +224,7 @@ theorem later.
 \begin{thm}
     Let $f(x+iy) = u(x,y)+iv(x,y)$ be defined on a domain. Then it is analytic
     if and only if $u,v$ satisfy the Cauchy-Riemann equations $u_x = v_y, u_y =
-    v_x$ and these partials are continuous.
+    -v_x$ and these partials are continuous.
 \end{thm}
 \begin{proof}
     Assume $f$ is analytic. Then, take the limits of $\Delta z$ along the
@@ -291,7 +291,7 @@ theorem later.
 
     \begin{example}
         (At $\infty$), $f$ is $O(x^6)$, $g$ is $O(x^4)$. Then, $f+g$ is
-        $O(x^6)$ and $fg$ is $O(x^10)$.
+        $O(x^6)$ and $fg$ is $O(x^{10})$.
     \end{example}
 
     Some further consequences are that $f$ is bounded is the same as saying $f$
@@ -1192,8 +1192,8 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
     domain, this set is either empty or everything, but $f$ is not
     identically zero, so it must be empty.\\
     Step 2: If $z_0$ is a zero of finite order $N$, then near $z_0$,
-    $f(z) = (z-z_0)^N g(z)$ where $g(z) \neq 0$. By continuity of $g$,
-    there is a disk around $z_0$ where $g(z_0) \neq 0$. On this disk
+    $f(z) = (z-z_0)^N g(z)$ where $g(z_0) \neq 0$. By continuity of $g$,
+    there is a disk around $z_0$ where $g(z) \neq 0$. On this disk
     minus $z_0$, $f(z) = (z-z_0)^N g(z) \neq 0$. Thus, the zeros are
     isolated. 
   \end{proof}
