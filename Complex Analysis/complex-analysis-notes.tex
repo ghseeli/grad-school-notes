@@ -912,18 +912,19 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
     sub-rectangles. One of these subrectangles, let us call it $R_1$,
     has \[
       \left|
-        \int_{R_1}
-      \right| \leq 
+        \int_{\partial R_1}
+      \right| \geq 
       \frac{1}{4}\left|
-        \int_R
+        \int_{\partial R}
       \right|.
     \]
-    Now iterate the process so that \[
+    Now iterate the process by choosing subrectangles that each have
+    their integrals as $\frac{1}{4}$th their containing rectangle so that \[
       \left|
-        \int_{R_n}
-      \right| \leq
+        \int_{\partial R_n}
+      \right| \geq
       \frac{1}{4^n}\left|
-        \int_R
+        \int_{\partial R}
       \right|.
     \]
     The intersection of $R_n$ with the interiors is a point $z_0 \in
@@ -942,10 +943,10 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
     \epsilon_n$ where $\epsilon_n \to 0$ so it is bounded by
     $\frac{P}{2^n}\epsilon_n$. Putting this together, we get that \[
       \left|
-        \int_R f(z)dz
+        \int_{\partial R} f(z)dz
       \right| \leq 4^n 
       \left|
-        \int_{R_n} f(z)dz
+        \int_{\partial R_n} f(z)dz
       \right| \leq 4^n \frac{P}{2^n}\frac{P \epsilon_n}{2^n} = P^2
       \epsilon_n \to 0 ~ (\text{as }n \to \infty).
     \]
