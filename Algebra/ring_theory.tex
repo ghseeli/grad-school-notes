@@ -2,9 +2,56 @@
 
 \begin{document}
 \section{Ring Theory}
+
+\newcommand{\F}{\mathbb{F}}
+
+% Lecture 10/27/2016
+
+\begin{defn*}
+  A \emph{ring} is set \(R\) together with two binary operations \(+\) and \(\cdot\) satisfying
+  \begin{enumerate}[label=(\roman*)]
+  \item \((R,+)\) is an abelian group (denote the additive identity by \(0\))
+  \item \(\cdot\) is associative, \((xy)z=x(yz)\) for all \(x,y \in R\)
+  \item There exists a multiplicative identity (denoted \(1 \in R\)).
+  \item Distribution laws hold:
+    \begin{align*}
+      x(y+z) &= xy + xz\\
+      (x+y)z &= xz+yz
+    \end{align*}
+  \end{enumerate}
+\end{defn*}
+
+\begin{defn*}
+  A \emph{commutative ring} is a ring with the additional property that \(xy=yx\) for all \(x,y \in R\).
+\end{defn*}
+Notice that if multiplication is commutative either distribution law implies the other. One of the most basic
+observations one can make is
+that \(R\) is the trivial ring \(\iff 1=0\).
+
+\begin{example*}
+  A few familiar rings: \[\Z,\Z_n,\Q,\R,\C\]
+  A non-commutative ring:
+  \[M_n(\F), n \ge 2\]
+  or more generally take any ring \(R\).
+\end{example*}
+
+\begin{defn*}
+  A \emph{skew field (or division ring)} is a ring \(R\) such that \(R \neq \{0\}\) and \(R \setminus \{0\}\) is a group
+  under multiplication.
+\end{defn*}
+
+\begin{defn*}
+  A \emph{field} is a commutative skew field.
+\end{defn*}
+
+\begin{example*}
+  An example of a skew field is
+  \[\H = \R + \R i + \R j + \R k\]
+\end{example*}
+
 \end{document}
 
 %%% Local Variables:
 %%% mode: latex
-%%% TeX-master: master.tex
+%%% TeX-master: "master.tex"
 %%% End:
