@@ -1,0 +1,43 @@
+\documentclass[11pt,leqno,oneside]{amsart}
+
+\usepackage{../notes}
+\usepackage{enumitem}
+\newcommand{\Fp}{{\mathbb{F}_p}} % finite field of order p
+\newcommand{\subgroup}{\mathrel{<}}
+\newcommand{\normsubgroup}{\mathrel{\unlhd}}
+\newcommand{\Aut}{\operatorname{Aut}}  % automorphism group
+\newcommand{\Char}{\mathrel{\operatorname{char}}}
+\newcommand{\primedecomposition}[3]{#1_1^{#2_1} \cdots {#1_{#3}}^{#2_{#3}}}
+\newcommand{\funcdeclaration}[5]{
+  \begin{align*}
+    #1 \colon #2 &\to #3\\
+              #4 &\mapsto #5
+  \end{align*}
+}
+\newcommand{\lambdadeclaration}[4]{
+  \begin{align*}
+              #1 &\to #2\\
+              #3 &\mapsto #4
+  \end{align*}
+}
+
+\usepackage{subfiles}
+
+%%%%%%%%%%%%%% BEGIN CONTENT: %%%%%%%%%%%%%%
+
+\title[Abstract Algebra]{Abstract Algebra}
+\author{Chris Lloyd, George H. Seelinger\\ (inspired from class by
+  Peter Abramenko)}
+\date{Fall 2016}
+\begin{document}
+\maketitle
+
+\subfile{group_theory}
+\subfile{ring_theory}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "master.tex"
+%%% End:

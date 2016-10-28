@@ -1,0 +1,1207 @@
+\documentclass[master.tex]{subfiles}
+
+%%%%%%%%%%%%%% BEGIN CONTENT: %%%%%%%%%%%%%%
+
+\begin{document}
+\section{Group Theory}
+\subsection{Basic Facts}
+\subsection*{Lecture 1: Normalizers and Centralizers}
+\begin{defn*}[1.1.1]
+    For $A \subset G$, we set $N_G(A) := \{g \in G | gAg^{-1} = A\}$ and
+    $C_G(A) := \{g \in G | gag^{-1} = a, \forall a \in A\}$.
+\end{defn*}
+Note that $C_G(A) \subset N_G(A)$ and $Z(G) = C_G(G)$. 
+\begin{rmk*}[1.1.2a]
+    If $A \subgroup G$, then $A \normsubgroup N_G(A)$. In fact, $N_G(A)$ is the
+    largest subgroup of $G$ in which $A$ is normal.
+\end{rmk*}
+    The first part of this remark follows from the definition of $N_G(A)$. The
+    second part follows by assuming that $N_G(A)$ is not the largest and then
+    showing the ``largest'' is contained in $N_G(A)$.
+\begin{rmk*}[1.1.2b]
+    If $A \subgroup G$, then $A \normsubgroup G$ if $N_G(A) = G$.
+\end{rmk*}
+    This follows from the second part of the remark above.
+    Now for some remakrs about centralizers.
+    \begin{rmk*}[1.1.3]
+      \begin{enumerate}
+      \item If $A \subgroup G$, then $A$ is abelian if and only if $A \subset
+        C_G(A)$.
+      \item Furthermore, if $A \subgroup Z(G)$, then $A \normsubgroup G$.
+        This follows using basic commutativity arguments.
+      \end{enumerate}
+        
+    \end{rmk*}
+    \begin{example}[1.1.4]
+        $Z(S_n) = \{ id \}$ if $n \geq 3$. To prove this, prove $\sigma \in S_n, \sigma \neq id \implies \sigma \notin Z(S_n)$.
+
+        $\sigma \neq id \implies \exists i,j \in \{1, \ldots, n\}$ where $i
+        \neq j$ such that $\sigma(i) = j$. Now, choose $k \in \{1, \ldots, n\}$
+        such that $k \neq i,j$. Now, let $\pi = \sigma(i,k)\sigma^{-1} =
+        (\sigma(i), \sigma(j)) = (j, \sigma(k))$. So now, $\pi(j) = \sigma(k)
+        \neq \sigma(i) = j$. However, $(ik)(j)=j$ since $j \neq i,k$. This
+        means $\pi \neq (ik)$, but if $\sigma$ were in the center, then it
+        would have. So, we have that $\sigma \notin C_{S_n}( (ik) ) \implies
+        \sigma \notin Z(S_n)$.
+    \end{example}
+    \begin{lem}[1.1.5]
+        Let $G$ be a group and $H \subgroup Z(G)$. (Note this implies $H
+        \normsubgroup G$.) If $G/H$ is cyclic, then $G$ is abelian.
+    \end{lem}
+    \begin{proof}
+        Since $G/H$ is cyclic, this means $\exists g \in G$ such that
+        $G/H=\langle gH \rangle$. Now, let $x,y \in G$. Then, there are $n,m
+        \in \Z$ such that $xH = (gH)^n = g^nH$ and, similarly, $yH = (gH)^m =
+        g^mH$. This means $\exists h,h' \in H$ such that $x=g^nh$ and
+        $y=g^mh'$. Thus, we get $xy = g^nhg^mh' = g^ng^mhh' = g^{n+m}hh'$ and
+        $yx = g^mh'g^nh = g^mg^nh'h = g^{n+m}h'h = g^{n+m}hh'$. Thus, we have
+        our commutativity, thereby showing $G$ is abelian.
+    \end{proof}
+    \begin{rmk*}
+        Note, simply having $H \subgroup Z(G)$ and $G/H$ abelian does not imply
+        $G$ is abelian. For a counter-example, look at $Q_8 = \{\pm 1, \pm i,
+        \pm j, \pm k\}$, the standard quaternion group. It is easy to compute
+        that $Z(Q_8) = \{\pm 1\}$. Now, $Q_8/Z(Q_8) \isom \Z_2 \times \Z_2$,
+        the Klien-4 group, which is abelian. However, $Q_8$ is not abelian!
+    \end{rmk*}
+    \begin{defn}
+        Let $A,B \subgroup G$, then \begin{itemize}
+            \item $A^{-1} = \{a^{-1} | a \in A\}$.
+            \item $AB = \{ab | a \in A, b \in B\}$.
+        \end{itemize}
+    \end{defn}
+    \begin{lem}[1.1.6]
+        Let $G$ be a group with $A,B \subgroup G$. Then,
+        \begin{enumerate}
+            \item $AB \subgroup G$ if and only if $AB = BA$.
+            \item If $A \subgroup N_G(B)$ or $B \subgroup N_G(A)$, then $AB =
+                BA$ and hence $AB \subgroup G$ by 1.
+        \end{enumerate}
+    \end{lem}
+    \begin{proof}
+        ($\Rightarrow$) Let $AB \subgroup G$. Then, $AB = (AB)^{-1} =
+        B^{-1}A^{-1} = BA$.
+
+        ($\Leftarrow$) Let $AB = BA$. Then, we simply must show that $AB$ has
+        group properties.\begin{enumerate}
+            \item $e \in A, e \in B \implies e = ee \in AB$.
+            \item This is the same as above. $(AB)^{-1} = B^{-1}A^{-1} = B! = AB$.
+            \item $(AB)(AB) = A(BA)B = A(AB)B = (AA)(BB) = AB$.
+        \end{enumerate} Thus, $AB \subgroup G$.
+
+        Now, for the second part, let $A \subgroup N_G(B)$. Then, let $a \in A,
+        b \in B$. We know $a,a^{-1} \in A \subset N_G(B)$. Then, we have $ab =
+        aba^{-1}a = (aba^{-1})a$. However, we know $aba^{-1} \in B$ from the
+        definition of $N_G(B)$. So, $AB \subset BA$. Similar logic shows $BA
+        \subset AB$ and thus $AB = BA$.
+    \end{proof}
+    \subsection*{Lecture 2}
+    \begin{rmk*}
+        \begin{enumerate}
+            \item If $A,B \subgroup G$ and if $A \normsubgroup G$ or
+              $B \normsubgroup G$, then $AB \subgroup G$. 
+            \item If $A,B \normsubgroup G$, then $AB \normsubgroup
+              G$.
+        \end{enumerate}
+    \end{rmk*}
+    \begin{proof}
+        The first remark can be done by $(ab)(a'b') = aba'b^{-1}bb' =
+        aa'b' = (aba'b^{-1})b' \in AB$ because $a$ and $ba'b^{-1}$ are
+        in $A$ and $b \in B$. Also, $(ab)^{-1} = b^{-1}a^{-1} =
+        (b^{1}a^{-1}b)b^{-1} \in AB$. The identity inclusion is
+        obvious.
+        
+        The second remark is proven by, for $g \in G$, $gABg^{-1} =
+        gAg^{-1}gBg^{-1} = AB$. 
+    \end{proof}
+
+    \subsubsection*{Index Computations}
+
+    \begin{lem}
+        Let $A,B \subgroup G$ and $|A|, |B| < \infty$. Then, $|AB| = \frac{|A| \cdot |B|}{|A \cap B|}$.
+    \end{lem}
+    \begin{proof}
+        Consider $A/(A \cap B)$. Take a complete set of coset representatives $A' = \{a_1, \ldots, a_n\}$. Then, $n = |A/(A \cap B)| = [A : A \cap B] = \frac{|A|}{|A \cap B|}$ by Lagrange's Theorem.
+
+        Now, consider $f: A' \times B \to AB$ defined by $(a_i,b) \to a_ib$. If
+        we show that $f$ is bijective, then we will have that $|A'| \cdot |B| =
+        |A' \times B| = |AB|$, which will allow us to finish the proof.
+        To show $f$ is injective, let us take \begin{align*}
+            a_ib = a_jb' (1 \leq i,j \leq n; b,b' \in B) & \ \implies \ a_j^{-1} a_i = b'b^{-1} \in A\cap B\\
+            \ & \ \implies \ a_i(A \cap B) = a_j(A \cap B) \\
+            \ & \ \implies \ a_i = a_j \\
+            a_ib = a_jb' & \ \implies b = b' \\
+            \ & \ \implies (a_i, b) = (a_j, b')
+        \end{align*}
+
+        To show $f$ is surjective, we let $a \in A, b \in B$. Then $\exists i
+        (1 \leq i \leq n)$ such that $a=a_ix$ with $x \in A \cup B$. This
+        implies that $xb \in B$ so $ab = a_ixb = f( (a_i,xb) )$.
+
+        Thus, we have that $f$ is bijective, and so we conclude that $n \cdot
+        |B| = \frac{|A|}{|A \cap B|} \cdot |B|$ giving us our result when we
+        divide by $|B|$.
+    \end{proof}
+    \begin{example}
+        (a) $G = \Sym_3, A = \langle (12) \rangle, B = \langle (13) \rangle
+        \subgroup G$. Then, $A \cap B = \{ id \} \implies |AB| = 2 \cdot 2 = 4$
+        which does not divide $6 = |\Sym_3|$. Thus, $AB$ is not a subgroup of
+        $\Sym_3$.
+        (b) Let $G=\Sym_4, A = \Sym_3 \to \Sym_4, B = \langle (1234) \rangle$. Then, $A \cap B = \{id\} \implies |AB| = |A||B| = 6 \cdot 4 = 24 = |\Sym_4|$. This means that $AB = \Sym_4$ but note that $A \not\subset N_G(B)$ and $B \not\subset N_G(A)$.
+    \end{example}
+    \begin{lem}
+        Let $G$ be a group and $A,B \subgroup G$. Then
+        \begin{enumerate}
+            \item If $A \subgroup B$, then $[G:A] = [G:B][B:A]$
+            \item $[A: A \cap B] \leq [G:B]$
+            \item $[G: A \cap B] \leq [G:A][G:B]$
+        \end{enumerate}
+    \end{lem}
+    \begin{proof}
+       For the first part, fix a set of coset representatives (using the Axiom of Choice in the infinite case) for $G/A$. Then, given a coset $gA$, we can TODO
+\end{proof}
+\subsection*{The Isomorphism Theorems}
+\begin{thm}[1.1.10 First Isomorphism Theorem]
+    If $\phi: G \to H$ is a group homomorphism, then $G/\ker \phi
+    \isom \phi(G) \subgroup H$.
+\end{thm}
+\begin{proof}
+    Set $N = \ker \phi \normsubgroup G$. Then, consider $\widetilde{\phi}: G/N
+    \to \phi(G)$ defined by $\widetilde{\phi}(gN) = \phi(g)$. First, we check
+    that $\widetilde{\phi}$ is well-defined.
+
+    Assume $gN = g'N, g,g' \in G$. Then, there exists $n \in N$ such that $g'
+    = gn$. This tells us that $\phi(g') = \phi(gn) = \phi(g)\phi(n) = \phi(g)e
+    = \phi(g)$. Now, we show that $\widetilde{\phi}$ is a group homomorphism.
+
+    Check $\widetilde{\phi}( (gN)(g'N) ) = \widetilde{\phi}(gg'N) = \phi(gg') =
+    \phi(g)\phi(g') = \widetilde{\phi}(gN) \widetilde{\phi}(g'N)$.
+
+    We know $\widetilde{\phi}$ is surjective by definition.
+
+    To show $\widetilde{\phi}$ is injective, it suffices to show that $\ker
+    \widetilde{\phi} = \{\widetilde{e} = eN\}$. If $\widetilde{\phi}(gN) =
+    \phi(g) = e \in H$, then $g \in \ker \phi = N$ and therefore $gN = N =
+    \widetilde{e}$
+\end{proof}
+\begin{cor}
+    (Second Isomorphism Theorem) If $A,B \subgroup G$ and $A \subgroup N_G(B)$,
+    then $AB/B \isom A/A\cap B$.
+\end{cor}
+\begin{proof}
+    First, we know since $A \subgroup N_G(B)$ that $AB \subgroup N_G(B)$. Then,
+    by definition of normalizer, $B \normsubgroup AB$. Now, define a group
+    homomorphism $\phi: A \to AB/B$ by $\phi(a) = aB$. Then, we can use the
+    first isomorphism theorem to get that $A/\ker \phi \isom \phi(A)$. Now,
+    $\ker \phi$ is the set of all $a \in A$ that map to an element in $B$. This
+    clearly only happens when $a \in B$. So, $\ker \phi = A \cap B$.
+    Furthermore, it is clear $\phi(A) = AB/B$ (as opposed to $A/B$) because $B$
+    need not be a subset of $A$. Thus, elements of the form $aB$ where $a \in A$
+    are in $AB/B$. (This part is still unclear to me.) Thus, we get $A/A \cap B
+    \isom AB/B$.
+\end{proof}
+The second isomorphism theorem is sometimes referred to as the ``diamond
+theorem'' because if you draw a diagram of what is happening, it is a diamond
+with $A, B, AB$, and $A \cap B$.
+\begin{cor}
+    (Third Isomorphism Theorem) If $A,B \normsubgroup G$ and $A \subgroup B$, then $(G/A)/(B/A) \isom G/B$.
+\end{cor}
+\begin{proof}
+    Let us define a group homomorphism $\phi: G/A \to G/B$ by $\phi(gA) = gB$.
+    Then, let us examine $\ker \phi$. We note that if $t \in B$,
+    then $\phi(tA) = B$. Thus, $\ker \phi = \{tA | t \in B\} = B/A$. Now, applying the first
+    isomorphism theorem with $\phi$, we get that $(G/A)/(B/A) \isom \phi(G/A)$.
+    $\phi$ is clearly surjective because $A \subgroup B$, so we conclude that
+    $(G/A)/(B/A) \isom G/B$.
+\end{proof}
+
+These isomorphism theorems are useful in many proof techniques and there are
+analogues for many different algebraic structures. Next, we consider the
+Correspondance Theorem which is sometimes referred to as the fourth isomorphism
+theorem. The fundamental idea of the correspondance theorem is that the
+structure of subgroups of $G/N$ for $N \normsubgroup G$ is the same as the
+structore of the subgroups of $G$ containing $N$ where $N$ is ``collapsed'' as
+the identity element.
+
+\begin{thm}[Lattice Isomorphism Theorem]
+    Let $G$ be a group, $N \normsubgroup G$, and $\overline{G} = G/N$. Next, let
+    $\phi_N = \{ A \subgroup G | N \subgroup A \}$ and $\overline{\phi}$ be the
+    set of all subgroups of $\overline{G}$. Then, all the following are true for $A,B \in \phi_N$.
+    \begin{enumerate}[label=(\alph*)]
+        \item $A \subgroup B$ if and only if $\overline{A} \subgroup \overline{B}$..
+        \item $A \normsubgroup B$ if and only if $\overline{A} \normsubgroup
+            \overline{B}$.
+        \item If $A \subgroup B$, then $[B:A] = [\overline{B}:\overline{A}]$.
+        \item $\overline{\langle A, B \rangle} = \langle \overline{A}, \overline{B} \rangle$
+        \item $\overline{A \cap B} = \overline{A} \cap \overline{B}$.
+        \item The map $\rho: \phi_N \to \overline{\phi}$ where $\rho(A) =
+            \overline{A}$ is bijective.
+        \item A map from $\{ A \in \phi_N | A \normsubgroup G\}$ to the set of
+            normal subgroups of $\overline{G}$ defined by $A \mapsto
+            \overline{A}$ is bijective.
+    \end{enumerate}
+\end{thm}
+\begin{proof}
+    Proofs for (a) -- (d) were left as an exercise (to be filled in later).
+    For (e), let $\pi: G \twoheadrightarrow \overline{G}$ be the surjective
+    group homomorphism defined by $\pi(g) = gN$. Now, consider $\psi:
+    \overline{\phi} \to \phi_N$ defined by $\psi(H) = \pi^{-1}(H) \subgroup G$.
+    Then, we want to show that $\rho \circ \psi = id_{\overline{\phi}}$ and
+    $\psi \circ \rho = id_{\phi_N}$ because then we will know $\rho$ is
+    invertible and thus bijective.
+
+    Examine $\rho \circ \psi$. We know that $(\rho \circ \psi)(H) =
+    \rho(\pi^{-1}(H))$. Now, note that $\rho(A)$ is the image of $\pi(A)$, so
+    we get $\rho(\pi^{-1}(H)) = \pi(\pi^{-1}(H)) = H$ because $\pi$ is
+    surjective.
+
+    Next, examine $\psi \circ \rho$. We then get that $(\psi \circ \rho)(A) =
+    \pi^{-1}(\pi(A))$ for $A \subgroup G$. We would like for this to be equal
+    $A$. It is clear that $A \subset \pi^{-1}(\pi(A))$ because the pre-image of
+    $A/N$ under $\pi$ must at least contain $A$. So, we still need to show that
+    $\pi^{-1}(\pi(A)) \subset A$. To do this, take $x \in \pi^{-1}(A/N)$. Then,
+    $xN = \pi(x) \in A/B$, so $xN = aN$ for some $a \in A$. This means that
+    there exists an $n \in N$ such that $x = an$ since $N \subgroup A$. So,
+    $\pi^{-1}(A/N) \subset A$.
+
+    Thus, we have shown that $\rho$ and $\psi$ are bijective maps that are
+    inverse to each other and we have proven (e). \\
+
+    (f) follows from the same proof technique as (e), I believe.
+\end{proof}
+
+\subsubsection*{Commutators}
+
+\begin{defn}
+    The commutator of two elements $x,y \in G$ is defined as \[
+        [x,y] = xyx^{-1}y^{-1}
+    \]
+\end{defn}
+
+Note that mathematicians have not completely agreed on the definition and thus
+some references will say $[x,y] = x^{-1}y^{-1}xy$. In essence, the commutator
+of two elements indicates how ``close'' elements are to commuting. This can be
+seen in the following lemma.
+
+\begin{lem}
+    For $x,y,z \in G$, we obtain
+    \begin{enumerate}[label=(\alph*)]
+        \item $[x,y] = e$ if and only if $xy=yx$ if and only if $[x^{-1},y^{-1}] = e$.
+        \item $[x,y]^{-1} = [y,x]$.
+        \item $z[x,y]z^{-1} = [zxz^{-1},zyz^{-1}]$.
+        \item If $\phi: G \to H$ is a group homoromorphism, then $[\phi(g),\phi(h)] = \phi([g,h])$.
+        \item $xy = [x,y]yx = yx[x^{-1},y^{-1}]$.
+        \item $[xy,z] = x[y,z]x^{-1}[x,z]$
+        \item $[x,yz] = [x,y]y[x,z]z^{-1}$.
+    \end{enumerate}
+\end{lem}
+\begin{proof}
+    All proofs are straightforward computations.
+\end{proof}
+\subsection*{Lecture 3: Continuing with Commutators}
+\begin{defn}
+    Let $A, B \subgroup G$. Then, the \emph{commutator} of $A$ and $B$ is the
+    subgroup of $G$ denoted $[A,B] = \langle \{[a,b] | a \in A, b \in B\}
+    \rangle$. Also note that $[G,G]$ is called the \emph{commutator subgroup of
+    $G$}.
+\end{defn}
+\begin{rmk}
+    Let $A,B \subgroup G$. Then
+    \begin{enumerate}
+        \item $[A,B] = \{e\}$ if and only if $ab = ba, \forall a \in A, b \in B$
+            if and only if $A \subgroup C_G(B)$ if and only if $B \subgroup
+            C_G(A)$. In this case, we say that $A$ and $B$ commute.
+        \item $[G,G] = \{e\}$ if and only if $G$ is abelian if and only if $Z(G) = G$.
+        \item $[A,B] = [B,A]$ since $[a,b]^{-1} = [b,a]$.
+        \item (matt) $[G,G]$ is characteristic in $G$.
+    \end{enumerate}
+\end{rmk}
+\begin{example}
+    \begin{enumerate}
+        \item $[Q_8,Q_8] = \{1,-1\} = [\langle i \rangle, \langle j \rangle]$.
+            This can be seen because $[i,j] = iji^{-1}j^{-1} = ij(-i)(-j) =
+            ij(-i)(-j) = iij(-j) = -i^2j^2 = -1$.
+        \item $[A_n, \langle (12) \rangle] = A_n$ for $n \geq 2$. This follows
+            because, for $i \geq 3$, we get $[(1i2),(12)] = (1i2)(12)(2i1)(12)
+            = (12i)$. This tells us that $A_n = \langle \{(12i) | 3 \leq i \leq
+            n\} \rangle \subset [A_n, \langle (12)\rangle$.
+        \item $[S_n,S_n] = A_n$ for $n \geq 2$. To show this, for ($\subset$)
+            we have \begin{align*}
+                \sgn( [\sigma,\tau] ) & = \sgn(\sigma \tau \sigma^{-1} \tau^{-1}) \\
+                \ & = \sgn(\sigma) \sgn(\tau) \sgn(\sigma)^{-1} \sgn(\tau)^{-1} \\
+                \ & = 1, \forall \sigma, \tau \in S_n
+            \end{align*}
+            For ($\supset$), see the previous item.
+        \item $[A_n,A_n] = A_n$ for $n \geq 5$. This is because every 3 cycle
+            is a commutator. For instance $[(ijk),(klm)] = (ilk)$ for 5
+            distinct elements $i,j,k,l,m \in \{1, \ldots, n\}$. Also note that
+            $[A_3,A_3] = \{e\}$ and $[A_4,A_4] = \Z_2 \times \Z_2$, the set of
+            all elements of the form $(ij)(kl)$.
+    \end{enumerate}
+\end{example}
+\begin{lem}
+    Let $A,B \subgroup G$. Then,
+    \begin{enumerate}[label=(\alph*)]
+        \item $A \subgroup N_G(B)$ if and only if $[A,B] \subgroup B$.
+        \item $B \subgroup N_G(A)$ if and only if $[A,B] \subgroup A$.
+        \item If $A,B \normsubgroup G$ then $[A,B] \normsubgroup G$ and $[A,B]
+            \subgroup A \cap B$
+    \end{enumerate}
+\end{lem}
+\begin{proof}
+    The forward direction of $(a)$ is given by the fact that $[a,b] =
+    aba^{-1}b^{-1}$ but $aba^{-1} \in B$ since $A$ normalizes $B$. Thus, $[a,b]
+    \in B, \forall a \in A, b \in B$ so $[A,B] \subgroup B$. To do the other
+    direction, we have that, we have that $aba^{-1}b^{-1} \in B, \forall a \in A,
+    \forall b \in B$. Well, $(aba^{-1}b^{-1})b = aba^{-1} \in B$, so $A$
+    normalizes $B$, so $A \subgroup N_G(B)$. \\
+
+    (b) is similar to (a). \\
+
+    Now, given that $A,B \normsubgroup G$, then $g[a,b]g^{-1} =
+    gaba^{-1}b^{-1}g^{-1} = gag^{-1}gbg^{-1}ga^{-1}g^{-1}gb^{-1}g^{-1}$. Now
+    note that $gag^{-1} \in A$ since $A \normsubgroup G$ and $(gag^{-1})^{-1} =
+    ga^{-1}g^{-1}$. Similarly for $b$. So, we have that $g[a,b]g^{-1} \in [A,B]
+    \implies [A,B] \normsubgroup G$. Finally, an element of the form
+    $aba^{-1}b^{-1} \in A$ because $ba^{-1}b^{-1} \in A$ since $A$ is normal in
+    $G$ and similarly $aba^{-1} \in B$. So, $[A,B] \subgroup A \cap B$. This
+    final fact also follows from the first two items in the lemma.
+\end{proof}
+
+This lemma also gives us the important fact that $[G,G] \normsubgroup G$. This
+follows easily from the third item.
+
+\begin{prop}
+    If $H \subgroup G$, then $[G,G] \subgroup H$ if and only if $H
+    \normsubgroup G$ and $G/H$ is abelian.
+\end{prop}
+\begin{proof}
+    Let $[G,G] \subgroup H$. Then, if $a,b \in G$, $aba^{-1}b^{-1} \in H$. Now,
+    in particular, if $b \in H$, then $aba^{-1}b^{-1} \cdot b = aba^{-1} \in H$
+    so $H \normsubgroup G$. More concisely, we have that $[G,H] \subgroup [G,G]
+    \subgroup H \implies G \subgroup N_G(H)$ so $H \normsubgroup G$. To show
+    $G/H$ is abelian, take a map $[a,b] \mapsto [aH,bH] =
+    (aH)(bH)(aH)^{-1}(bH)^{-1} = aba^{-1}b^{-1}H = [x,y]H = H = e_{G/H}$. So,
+    then $[G/H,G/H] = \{e\}$.
+
+    To prove the other direction, let $G/H$ be abelian and $H \normsubgroup G$.
+    Since $G/H$ is abelian, we have that $[aH,bH] = [a,b]H = H$. This means
+    that $[a,b] \in H$ which implies that $[G,G] \in H$. (Where is the normalcy
+    of $H$ used?!)
+\end{proof}
+
+\subsubsection*{Direct Products}
+
+\begin{defn}
+    The (external) direct product of two groups $A$ and $B$ is defined
+    as the set (Cartesian product)  \[
+        A \times B = \{(a,b) | a \in A, b \in B \}
+    \] with multiplication $(a_1,b_1) \cdot (a_2,b_2) =
+    (a_1a_2,b_1b_2)$. With this multiplication, it is clear that $A
+    \times B$ is a group by direct computation. 
+\end{defn}
+
+Direct products provide us with a way to build new groups from known groups.
+
+\begin{lem}
+    Let $G_1, G_2$ be groups and let $H_1 \subgroup G_1$ and $H_2 \subgroup G_2$. Then
+    \begin{enumerate}[label=(\alph*)]
+        \item $H_1 \times H_2 = \{(h_1,h_2) | h_1 \in H_1, h_2 \in H_2\} \subgroup G_1 \times G_2$.
+        \item $H_1 \times H_2 \normsubgroup G_1 \times G_2$ if and only if $H_1 \normsubgroup G_1$ and $H_2 \normsubgroup G_2$. In this case, $(G_1 \times G_2)/(H_1 \times H_2) \isom (G_1/H_1) \times (G_2/H_2)$.
+    \end{enumerate}
+\end{lem}
+\begin{proof}
+    For the first item, the proof is a clear from the definition of subgroup. \\
+
+    For the second item, examine the fact that
+    $(g_1,g_2)(h_1,h_2)(g_1,g_2)^{-1} = (g_1h_1g_1^{-1},g_2h_2g_2^{-1})$. Then,
+    if $H_1 \normsubgroup G_1$ and $H_2 \normsubgroup G_2$, we get
+    $(g_1,g_2)(h_1,h_2)(g_1,g_2)^{-1} = (h_1,h_2)$, so $H_1 \times H_2
+    \normsubgroup G_1 \times G_2$. Going the other direction is similar, but
+    reducing the left hand side instead.
+
+    Finally, we can show the final equivalence using $\phi: G_1 \times G_2 \to
+    G_1/H_1 \times G_2/H_2$ where $\phi( (g_1,g_2) ) = (g_1H_1, g_2H_2)$. It
+    is clear that $\phi$ is surjective and a group homomorphism, and we note
+    that $\ker \phi = H_1 \times H_2$. Thus, we apply the first isomorphism
+    theorem to get our equivalence.
+\end{proof}
+
+A note of warning is that not every subgroup of a direct product needs to be
+of the form $H_1 \times H_2$ where $H_1 \subgroup G_1$ and $H_2 \subgroup G_2$.
+
+\begin{example*}
+    Examine $\Z_2 = \{0,1\}$. Then, $\Z_2 \times \Z_2 =
+    \{(0,0),(0,1),(1,0),(1,1)\}$.  However, $H = \{(0,0),(1,1)\} \subgroup \Z_2
+    \times \Z_2$ but is not of the form $H_1 \times H_2$.
+\end{example*}
+
+\begin{rmk}
+    (Universal Property) Let $A \times B$ be the direct product of two groups
+    $A$, $B$. Then, there are natural projections (surjective group
+    homomorphisms) defined by $\pi_A: A \times B \to A$ by $\pi( (a,b) ) = a$
+    and similarly for $\pi_B$. They satisfy the following universal property. \\
+
+    For any group $G$, and any pairs of homomorphisms $\phi_A: G \to A$ and
+    $\phi_B: G \to B$, there exists a \emph{unique} homomorphism $\phi: G \to A
+    \times B$ such that $\pi_A \circ \phi = \phi_A$ and $\pi_b \circ \phi =
+    \phi_B$. Indeed, if $\phi(g) = (a,b)$ for $g \in G$, then $a = \pi_A( (a,b)
+    ) = \pi_A(\phi(g)) = \phi_A(g)$ and similarly for $b = \phi_B(g)$. \\
+
+    The only possible map with these properties is given by $\phi: G \to A
+    \times B$ where $\phi(g) = (\phi_A(g), \phi_B(g))$.
+
+    We now check that $\phi$ so defined is a homomorphism with the properties
+    $\pi_A \circ \phi = \phi_A$ and $\pi_B \circ \phi = \phi_B$.
+\end{rmk}
+\begin{proof}
+    Let $\phi$ be defined as above. Then, $\phi( (a_1,b_1)(a_2,b_2) ) =
+    (\phi_A(a_1a_2), \phi_B(b_1b_2)) =
+    (\phi_A(a_1),\phi_B(b_1))(\phi_A(a_2),\phi_B(b_2)) = \phi( (a_1,b_1) )\phi(
+    (a_2,b_2) )$. The other homomorphism properties clearly follow. \\
+
+    $\pi_A \circ \phi( (a,b) ) = \pi_A( (\phi_A(a), \phi_B(b)) ) = \phi_A(a)$.
+    Similarly for $\pi_B \circ \phi( (a,b))$. \\
+\end{proof}
+It is an exercise to generalize this for any $I$ index set with $(A_i)_{i \in
+I}$ a family of groups to then generalize the unversal property to the direct
+product of these groups, say $\times_{i \in I} A_i = \{(a_i) | a_i \in A_i
+\forall i \in I\}$. \\
+
+Now, let $A \times B$ be the external direct product of groups $A$ and $B$.
+Then, we know $A \isom A' = \{(a,e_B) | a \in A\} \subgroup A \times B$ and
+similarly for $B \isom B'$. Then, $A',B'$ have the following properties.
+\begin{itemize}
+    \item $A'B' = A \times B$.
+    \item $A' \cap B' = \{e\}$.
+    \item $A', B' \normsubgroup A \times B$.
+\end{itemize}
+
+Let us next discuss internal direct products.
+
+\begin{defn}
+    A group $G$ is the \emph{internal direct product} of two subgroups $A,B
+    \subgroup G$ if the following conditions are satisfied:
+    \begin{enumerate}[label=\roman*)]
+        \item $AB = G$
+        \item $A \cap B = \{e\}$
+        \item $A,B \normsubgroup G$
+    \end{enumerate}
+\end{defn}
+\begin{rmk*}
+    In which case, $AB \isom A \times B$.
+\end{rmk*}
+\begin{example}
+    \begin{enumerate}[label=(\alph*)]
+        \item Let $G = \Z_6, A = \{\overline{0}, \overline{3}\} \subgroup G, B
+            = \{\overline{0}, \overline{2}, \overline{4}\} \subgroup G$. Then,
+            we have that $A \cap B = \{ \overline{0} \} \implies |AB|=|A||B| =
+            6 = |G|$. Thus, $AB = G$. In abelian groups, all subgroups are
+            normal, so $G = A \times B$. In fact, we can prove that $\Z_{mn}
+            \isom \Z_m \times \Z_n$ when $\gcd(m,n) = 1$ using the same
+            argument where we take $A = \{\overline{0}, \overline{n},
+            \overline{2n}, \ldots, \overline{(m-1)n}\}$ and similarly $B =
+            \{\overline{0}, \overline{m}, \ldots, \overline{(n-1)m}\}$ and
+            showing that $A \cap B = \{\overline{0}\}$ since $\gcd(m,n) = 1$.
+        \item $V = \{e, (12)(34), (13)(24), (14)(23)\} \normsubgroup S_4$. This
+            is clearly true since conjugating by a permutation is like applying
+            the permutation to the numbers of the cycle, which will not change
+            the cycle structure. Now, let $A = \{e, (12)(34)\}, B = \{e, (13)(24)\}$, then $A \cap B = \{e\}$ and $A,B \normsubgroup V$. So,
+            we get that $|AB| = 2\cdot 2 = 4 = |V| \implies V = AB$ so then $V
+            = A \times B \isom \Z_2 \times \Z_2$.
+        \item $S_4 = VS_3$. We know that $S_3$ can be embedded into $S_4$
+            easily and $V \cap S_4 = \{e\}$. So, for this to happen $|VS_3| =
+            24 = |S_4|$. From above, we know $V \normsubgroup S_3$, but it is
+            easy to see that $S_3 \not\normsubgroup S_4$. So, we have found an
+            example of a product of groups that is not a direct product but
+            still forms a group. This leads us into our discussion of
+            semi-direct products.
+    \end{enumerate}
+\end{example}
+
+\begin{prop*}[1.1.26]
+  If $G$ is the internal direct product of two subgroups $A,B
+  \subgroup G$, then $G$ and the external product $A \times B$ are
+  isomorphic.
+\end{prop*}
+\begin{proof}
+  Proof was done in class but omitted here.
+\end{proof}
+\begin{cor*}[1.1.27]
+  If $G = A \times B$, internal direct product, then
+  \begin{enumerate}
+  \item $A$ and $B$ commute.
+  \item Any $g$ can be uniquely writen in the form $g = ab$ with $a
+    \in A, b \in B$.
+  \end{enumerate}
+\end{cor*}
+\begin{proof}
+  Both of these statements follow easily from the proof of the
+  proposition above.
+\end{proof}
+
+\subsubsection*{Automorphisms}
+\begin{defn*}[1.1.28]
+  An automorphism of a group $G$ is a bijective homomorphism from $G$
+  onto $G$. \[
+    \Aut(G) = \{\alpha: G \to G : \alpha \text{ is an automorphism.}\}
+  \]
+  is a group with respect to composition as multiplication.
+\end{defn*}
+\begin{example*}[1.1.29]
+  \begin{enumerate}
+  \item $\Aut(\Z) \isom \{1,-1\}$
+  \item $\Aut(\Z_n) \isom \Z^\times_n \implies |\Aut(\Z_n)| = \phi(n)$
+    where $\phi(n)$ is Euler's phi function.
+  \item If $A,B$ are groups, then $\Aut(A) \times \Aut(B) \subgroup
+    \Aut(A \times B)$.
+  \item $\Aut(\Z_2 \times \Z_2) \isom \Sym_3$. Any permutations of
+    $a,b,c$ yields an automorphism of $\Z_2 \times \Z_2$.
+  \item For any group $G$ and any $g \in G$, conjugation with $g$
+    defines an automorphism $\kappa_g: G \to G$ such that $x \mapsto
+    gxg_{-1}$ called an inner automorphism. 
+  \end{enumerate} 
+\end{example*}
+\begin{defn*}[1.1.30]
+  An automorphism is called an inner automorphism if there exists a $g
+  \in G$ such that $\alpha = \kappa_g$. We set \[
+    \operatorname{Inn}(G) = \{\kappa_g : g \in G\} \subgroup \Aut(G).
+  \]
+\end{defn*}
+\begin{lem*}
+  \begin{enumerate}
+  \item $\operatorname{Inn}(G) \isom G/Z(G)$
+  \item $\operatorname{Inn}(G) \normsubgroup \Aut(G)$
+  \end{enumerate}
+\end{lem*}
+Also note that the quotient $\Aut(G)/\operatorname{Inn}(G)$ is called
+the group of outer automorphisms of $G$.
+\begin{proof}
+  Proved in class but ommitted here.
+\end{proof}
+\begin{example*}[1.1.32]
+  \begin{enumerate}
+  \item $G$ group, $\operatorname{Inn}(G) = \{id\}$ if and only if $G
+    = Z(G)$ if and only if $G$ is abelian.
+  \item $\operatorname{Inn}(\Sym_n) \isom \Sym_n$ if $n \geq 3$ since
+    $Z(\Sym_n) = id$ by 1.1.4.
+  \item $\Aut(\Sym_3) = \operatorname{Inn}(\Sym_3)$.
+  \item With some more work, one can show that
+    $\operatorname{Inn}(\Sym_n) = \Aut(\Sym_n)$ if $n \geq 3$ and $n
+    \neq 6$. Also, $\Sym_6$ has 2 outer automorphisms.
+  \end{enumerate}
+\end{example*}
+\begin{rmk*}[1.1.33]
+  \begin{enumerate}
+  \item If $\alpha \in \Aut(G)$ and $g \in G$, then $|\alpha(g)| =
+    |g|$.
+  \item $\alpha \in \Aut(G) \implies \alpha(Z(G)) = Z(G)$.
+  \item $\alpha \in \Aut(G) \implies \alpha([G,G]) = [G,G]$.
+  \end{enumerate}
+\end{rmk*}
+Proofs of these remarks were discussed in class but omitted here.
+\begin{defn*}
+  A subgroup $H \subgroup G$ is called a characteristic subgroup of
+  $G$ if $\alpha(H) = H, \forall \alpha \in \Aut(G)$. We denote this $
+  H \Char G$.
+\end{defn*}
+Some examples are $\{e\}, G, Z(G), [G,G]$.
+\begin{lem*}[1.1.35]
+  Let $G$ be a group and $A,B,H \subgroup G$.
+  \begin{enumerate}
+  \item $H \Char G \implies H \normsubgroup G$.
+  \item $A \subgroup H, A \Char H \Char G \implies A \Char G$.
+  \item $A \subgroup H, A \Char H \normsubgroup G \implies A
+    \normsubgroup G$.
+  \item $A \Char G, B \Char G \implies [A,B] \Char G$.
+  \end{enumerate}
+\end{lem*}
+\begin{example*}[1.1.36]
+  \item $G = \Z_2 \times \Z_2$. Then, any rder 2 subgroup of $G$ is
+    normal but not characteristic. 
+  \item $G = \Sym_4, H = \{id, (12)(34), (13)(24), (14)(23)\}
+    \normsubgroup \Sym_4$. Then $H = [A_4,A_4] \Char A_4 =
+    [\Sym_4,\Sym_4] \Char \Sym_4$ so we get that $H \Char
+    \Sym_4$. Take heed, though. Let $A = \{id, (12)(34)\}
+    \normsubgroup H \Char \Sym_4$. This does not mean $A \normsubgroup
+    \Sym_4$. In fact, this is false. In particular, $\normsubgroup$ is
+    not a transitive relationship. 
+\end{example*}
+\subsection*{Lecture 5: Finite Cyclic Groups}
+We start by recounting some basic facts about finite cyclic groups. If
+\(G=\langle x\rangle\) where \(|x|=n\) then \(G \isom \Z_n\) with the map
+\[x^n \longleftrightarrow \bar{a}.\] Then the order of \(\bar{a}\) is given by
+\[|\bar{a}|=\frac{n}{(n,a)}.\] We now show that the generators of \(\Z_n\) are
+those elements relatively prime to \(n\).
+\begin{align*}
+  \Z_n = \langle \bar{a} \rangle &\iff |\bar{a}|=n\\
+                                 &\iff \frac{n}{(n,a)}=n\\
+                                 &\iff (n,a)=1.
+\end{align*}
+Another fact is that \(\Z_n\) has a unique subgroup of order \(d\) for each
+divisor \(d\) of \(n\).
+\begin{lem*}[1.2.1] Let \(R\) be a ring with \(1\).
+  \begin{enumerate}
+  \item[(a)] For any \(r \in R\) the map
+    \begin{align*}
+      \lambda_r \colon R &\to R\\
+      r &\mapsto rx
+    \end{align*}
+    defines a homomorphism of the abelian group \((R,+)\).
+  \item[(b)] For any \(r \in R^\times\), \(\lambda_r \in \Aut(R,+)\) and
+    \begin{align*}
+      \lambda \colon R^\times &\to \Aut(R,+)\\
+      r &\mapsto \lambda_r
+    \end{align*}
+    is an injective group homomorphism.
+  \end{enumerate}
+
+\end{lem*}
+\begin{prop*}[1.2.2]
+  \[\Aut(\Z_n) \isom \Z_n^\times\]
+\end{prop*}
+\begin{proof}
+  By Lemma 1.2.1 we have \(\lambda \colon \bar{a} \mapsto \lambda_{\bar{a}}\) is
+  an injective group homomorphism. Thus we simply must show that it is
+  surjective, we will use an order argument. Take any \(\alpha \in \Aut(\Z_n)\)
+  since \(|\bar{1}|=n\) this means that \(|\alpha(\bar{1})|=n\). Thus
+  \(|\Aut(\Z_n)| \le \varphi(n)\).
+\end{proof}
+
+\begin{prop*}[1.2.3]{Chinese Reminder Theorem}
+  Let \(m,n \in \N\).
+  \begin{enumerate}
+  \item[(a)] The map
+    \begin{align*}
+      f \colon \Z_{mn} &\to \Z_n \times \Z_m\\
+      [a]_{mn}&\mapsto [a]_m \times [a]_n
+    \end{align*}
+    is a ring homomorphism.
+  \item[(b)] If \((m,n)=1\) then \(f\) is a ring isomorphism.
+  \end{enumerate}
+\end{prop*}
+\begin{proof}[Proof of (a)]
+  Just a routine calculation.
+\end{proof}
+Notice that this homomorphism sends \(1\) to \(1\), which needn't be the case in
+general for a ring homomorphism.
+\begin{proof}[Proof of (b)]
+  Notice that \(f\) is surjective through order considerations. Now check that
+  the kernel is trivial.
+\end{proof}
+Consequences of b: If \(n=\primedecomposition{p}{e}{r}\) where
+\(p_1,\ldots,p_r\) are distinct primes and \(e_i \in \N\). Then
+\[\Z_n \isom \prod_{i-1}^r \Z_{{p_i}^{e_i}}.\]
+One can prove this by using the Chinese Reminder Theorem and induction on r.
+\begin{cor*}[1.2.4]
+  Let \(m,n \in \N\) with \((m,n)=1\).
+  \begin{enumerate}
+  \item[(a)] \(Z_{mn}^\times \isom \Z_m^\times \times \Z_n^\times\). If
+    \(n=\primedecomposition{p}{e}{r}\) then
+    \[\Z_n^\times \isom \prod_{i-1}^r \Z^\times_{{p_i}^{e_i}}.\]
+  \item[(b)]
+    \(\varphi(mn)=|\Z_{mn}^\times|=|\Z_{m}^\times\times
+    \Z_{n}^\times|=|\Z_{m}^\times||\Z_{n}^\times|=\varphi(m)\varphi(n)\).
+  \end{enumerate}
+\end{cor*}
+\begin{prop*}[1.2.5]
+  For \(e \in \N\)
+  \begin{enumerate}
+    \item[(a)] \(\Z_{2^e}^\times \isom \Z_2 \times \Z_{2^{e-2}},\ e \ge 2\)
+    \item[(b)] \(\Z_p^\times \isom \Z_{p-1}\) for every prime \(p\)
+    \item[(c)] \(\Z_{p^e}^\times \isom \Z_{p^{e-1}(p-1)} \isom \Z_{p^{e-1}} \times \Z_{p-1} \) for every prime p
+  \end{enumerate}
+\end{prop*}
+
+\subsection*{Lecture 6: Fundamental
+  Theorem of Finitely Generated Abelian
+  Groups}
+
+\begin{thm*}[1.2.6 (Cauchy's Theorem)]
+  Let \(A\) be an abelian group of
+  finite order. If a prime \(p\) divides
+  the order of \(A\), there exists an
+  element \(a \in A\) of order \(p\).
+\end{thm*}
+
+\begin{proof}
+  We will proceed by induction on
+  \(|A|\). If \(|A|=p\), then
+  \(A \isom \Z_p\), which means every
+  nontrivial element has order
+  \(p\). If \(|A| > p\) we may choose an
+  \(x \in A/\{e\}\). Notice that
+  \(|x| > 1\).
+
+  \noindent Case 1:\\
+  \(p \mid n \implies |a|=p\) for
+  \(a=x^{\frac{n}{p}} \in \langle x
+  \rangle \subset A\)\\
+
+  \noindent Case 2:\\ \(p\) does not
+  divide \(n\). Let
+  \(B=\langle x \rangle \normsubgroup
+  A\), and \(\bar{A}=A /B\). Then
+  \[|\bar{A}|=\frac{|A|}{|B|}=\frac{|A|}{n}.\]
+  Furthermore since \(p \mid |A|\)
+  \[p \mid |A| \implies p \mid
+    \frac{n|A|}{n}\] but since \(p\)
+  does not divide \(n\) we have that
+  \[p \mid \frac{|A|}{n}\implies p \mid
+    |\bar{A}|.\] Now \(|\bar{A}|\) is a
+  small group than \(A\), hence we may
+  apply the inductive hypothesis, that
+  is there exists some \(y \in \bar{A}\)
+  of order \(p\). As the projection map
+  \(\pi\) is surjective there must exist
+  some \(z \in A\) such that
+  \(\pi(z)=y\). Since \(\pi\) is a
+  homomorphism \(|y| \mid |z|\), which
+  means \(p \mid z\), hence \(z=pm\) for
+  some \(m \in \Z\). Thus
+  \(a=z^{\frac{m}{p}}\) is an element of
+  order \(p\) in \(A\).
+\end{proof}
+
+\begin{prop*}[1.2.7]
+  If \(A\) is a finite abelian group and
+  \(m \in \N\) with \(m \mid |A|\), then
+  \(A\) has a subgroup of order \(m\).
+\end{prop*}
+\begin{proof}
+  We again proceed by induction. The
+  case in which \(|A|=1\) is
+  trivial. Assume \(|A|>1\) and
+  \(m>1\). Choose any prime divisor
+  \(p\) of \(m\). By Cauchy's Theorem
+  there exists an \(a \in A\) of order
+  \(p\). Set
+  \(B=\langle a\rangle \unlhd A\), then
+  \[|\bar{A}|=\frac{|A|}{|B|}=\frac{|A|}{p}.\]
+  As \(m \mid |A|\) we have that
+  \[\frac{m}{p} \mid \frac{|A|}{p}
+    \implies \frac{m}{p} \mid
+    \frac{|A|}{|\bar{A}|}.\] Now apply
+  the inductive hypothesis on
+  \(\bar{A}\), that is, there exists a
+  subgroup \(\bar{H} \le \bar{A}\) of
+  order \(p\). We now invoke the
+  Correspondence Theorem, thus there
+  exists \(H \le A\) with
+  \(\bar{H}=H/B\). Then
+  \[|H|=\frac{m}{p}=\frac{|H|}{|B|}=\frac{|H|}{p}
+    \implies |H|=m.\]
+\end{proof}
+
+\begin{cor*}[1.2.8]
+  Given a finite abelian group \(A\)
+  with
+  \(|A|=\primedecomposition{p}{e}{r}\)
+  there exists subgroups \(B_i \le A\)
+  for \(1 \le i \le r\) with
+  \(|B_i|=p_i^{e_i}\) and
+  \[A = B_1 \times \ldots \times B_r\] moreover
+  \(B_i = \{a \mid |a| \text{ is a power
+    of } p_i\}\).
+\end{cor*}
+
+\begin{proof}
+  Subgroups \(B_i\) with
+  \(|B_i|=p_i^{e_i}\) exist due to
+  1.2.7.
+  \[A \text{ is abelian} \implies B_i
+    \normsubgroup A,\ \forall 1 \le i
+    \le r\]
+  \[\prod|B_i| = |A| \qquad \bigcap B_i
+    = \{e\} \implies A = B_1 \times
+    \ldots \times B_r\] Now we show
+  uniqueness:
+  \(A \isom B_1 \times \ldots \times
+  B_r\) as an external direct product
+  which means elemetns of \(A\) come as
+  tuples \((b_1,\ldots,b_r)\), then
+  \[|a|=|(b_1,\ldots,b_r)|=\text{lcm}(b_1,\ldots,b_r),\]
+  which means \(|a|\) is a power of
+  \(p_i\). (this needs clarification)
+\end{proof}
+
+\begin{rmk*}
+  \(B_i\) are Sylow \(p_i\)-subgroups of
+  \(A\)
+\end{rmk*}
+
+\begin{prop*}[1.2.9]
+  Let \(A\) be a finite abelian group of
+  order \(n\).
+  \begin{enumerate}
+  \item[(a)] If \(A\) is cyclic, and
+    \(m \in \N\), then
+    \[|\{a \in A \mid a^m = e\ (|a| \mid
+      m)\}| =
+      \begin{cases}
+        m   &  m \mid n\\
+        <m & m \text{ does not divide }
+        n
+      \end{cases}
+    \]
+  \item[(b)] If ( for every $m$ s.t. \(m \mid n\), we have
+    \(|\{a \in A \mid a^m = e\}| \le
+    m\)), then \(A\) is cyclic.
+  \end{enumerate}
+\end{prop*}
+\begin{proof}
+  Homework Three
+\end{proof}
+
+\begin{thm*}[1.2.10 (The Fundamental Theorem of Finitely Generated Abelian Groups)]
+  Let \(A\) be a finite abelian group
+  with
+  \(|A|=\primedecomposition{p}{e}{r}\). Then
+  for each \(i\) there exists a uniquely
+  determined \(l_i \in \N\) such that
+  \(m_{i1} < m_{i2} < \ldots <
+  m_{il_i}\) that partitions \(e_i\) by
+  \(e_i=m_{1i}+\ldots+m_{il_i}\) and
+  \[A \isom (\Z_{{p_1}^{m_{11}}} \times
+    \Z_{{p_1}^{m_{12}}} \cdots \times
+    \Z_{{p_1}^{m_{1l_1}}}) \times \cdots
+    \times (\Z_{{p_r}^{m_{r1}}} \times
+    \Z_{{p_r}^{m_{r2}}} \cdots \times
+    \Z_{{p_r}^{m_{rl_r}}}).\]
+\end{thm*}
+
+\begin{rmk*}
+  Checkout Dummit and Foote 6.1 page
+  197. For a proof that every abelian
+  \(p\)-group is a direct product of
+  cyclic \(p\)-groups.
+\end{rmk*}
+
+\begin{example*}
+  Classification up to isomorphism of
+  all abelian groups of order
+  \(75\). First notice that
+  \(72=2^3 \cdot 3^2\). The looking at
+  the partitions of the exponents
+  yields:
+  \[\Z_8,\ \Z_4 \times \Z_2,\ \Z_2
+    \times \Z_2 \times \Z_2\] and,
+  \[\Z_9, \Z_3 \times \Z_3.\]
+  This yields six total possibilities,
+  furthermore by uniqueness these are
+  exactly the abelian groups of order
+  \(75\).
+\end{example*}
+
+\begin{rmk*}[1.2.11]
+  Every abelian group is also a
+  \(\Z\)-module. (which is a
+  generalization of a vector space,
+  instead of working with a field, we
+  weaken the condition to working with a
+  ring).
+  \begin{align*}
+    \Z \times A &\longrightarrow A\\
+    (m,a)& \mapsto ma
+  \end{align*}
+  Where
+  \[ma =
+    \begin{cases}
+      \underbrace{a+a+\ldots+a}_{m \text{ times}} & m > 0\\
+      0 & m=0\\
+      \underbrace{(-a)+(-a)+\ldots+(-a)}_{-m
+        \text{ times}} & m < 0
+    \end{cases}.
+  \]
+\end{rmk*}
+One can check that this construction
+satisfies the axioms of a
+\(\Z\)-module. An abelian group is
+finitely generated if and only if the
+corresponding \(\Z\)-module is finitely
+generated. That is to say the structure
+of finitely generated abelian groups is
+determined by finitely generated
+\(Z\)-modules.
+
+\begin{defn*}[1.2.12]
+  An \emph{elementary abelian $p$-group}, $A$, is an abelian $p$-group such that
+  \(|a|=p\) for all \(a \in A \smallsetminus \{e\}\).  (In OUR class, p-groups are *finite* by definition, but elementary abelian p-groups *can* be infinite.  In the REAL WORLD, p-groups can be infinite by definition.)
+\end{defn*}
+
+\begin{rmk*}[1.2.13]
+  $A$ is an elementary \(p\)-group iff it
+  is a vector space over
+  \(\Fp\). This allows us to import
+  linear algebra. We define the scalar
+  multiplication by
+  \begin{align*}
+    \Fp \times A &\longrightarrow A\\
+    (\bar{m},a) &\longmapsto ma
+  \end{align*}
+  This is well defined since if
+  \(\bar{m} = n \in \Fp\) then there
+  exists \(k\) such that \(n=m+kp\)
+  which means
+  \(na=(m+kp)a=ma+k(pa)=ma+k(0)=ma\). Next
+  notice that any group homomorphism
+  \(f \colon A \to A\) is automatically
+  \(\Fp\)-linear:
+  \(f(\bar{m}a)=\bar{m}f(a)\).
+\end{rmk*}
+
+\begin{cor}[1.2.14]
+  Let \(A\) be an elementary abelian
+  \(p\)-group.
+  \begin{enumerate}
+  \item[(a)] \(A\) is a direct sum of
+    copies of \(\Z_p\)
+  \item[(b)]
+    \(\Aut(A) \isom \GL(A)=\{f \colon A
+    \to A \mid f \text{ is a
+      bijection}\}\) $<--$ this is not true.  not any permutation on the elements of A can be an automorphism of A.  Firstly, the identity must be fixed.  Secondly, if $f(a) = b$, then it is entirely necessary that $f(a+a) = b+b$.  So the choice of where one element gets sent will determine where other elements must be sent.  I think what was intended is this:  If A is written as the direct sum of copies of $Z_p$, then any permutation of the $Z_p$'s is an automorphism.
+  \end{enumerate}
+\end{cor}
+
+Implications for elementary abelian
+\(p\)-groups: \(\Aut(A) \isom \GL_n(\Fp)\), where $n$ is the number of copies of $\Z_p$ in $A$.
+\begin{enumerate}
+\item[(a)] \(A\) has a basis
+  \(\{x_i \mid i \in I\}\)
+\item[(b)] Any additive group is \(\Fp\)
+  linear.
+  \[\GL(A) \subseteq \Aut(A),\ \Aut(A)
+    \subseteq \GL(A).\]
+\end{enumerate}
+
+\begin{example*}
+  \begin{gather*}
+    \Aut(\Z_2 \times \Z_2) \isom S_3 \isom \GL_2(\mathbb{F}_2)\\
+    \Aut(\Z_2 \times \Z_2 \times \Z_2)
+    \isom \GL_3(\mathbb{F}_2)
+    \rightsquigarrow \text{order 168}
+  \end{gather*}
+\end{example*}
+
+\subsection*{Lecture 7: Nilpotent and Solvable Groups}
+
+\begin{defn*}[1.3.1]
+  \begin{enumerate}
+  \item[(a)] The \emph{lower central series} is defined inductively as follows:
+    \begin{align*}
+      G^{[0]} &:= G\\
+      G^{[1]} &:= [G,G]\\
+      &\vdots\\
+      G^{[i+1]} &:= [G,G^{[i]}].
+    \end{align*}
+    \(G\) is called \emph{nilpotent} if there exists \(n \in \N\) such that \(G^{[n]}=1\). And \(G\) is \emph{nilpotent}
+    of class \(c\), if \(c\) is the smallest natural number such that \(G^{[c]}=1\).
+  \item[(b)] The \emph{derived series} of \(G\) is defined inductively as follows:
+    \begin{align*}
+      G^{{0}} &:= G\\
+      G^{(1)} &:= [G,G]\\
+      &\vdots\\
+      G^{(i+1)} &:= [G^{(i)},G^{(i)}].
+    \end{align*}
+    \(G\) is called \emph{solvable} if there exists \(n \in \N\) such that \(G^{(n)}=1\).
+  \end{enumerate}
+\end{defn*}
+\begin{rmk*}[1.3.2]
+  The next facts follow directly:
+  \begin{enumerate}
+  \item \(G^{(i)} \subset G^{[i]}\). This means that nilpotent \(\implies\) solvable.
+  \item \(G\) abelian \(\implies [G,G]=e \implies \) G is nilpotent.
+  \item \(G\) is nilpotent of class \(2\) \(\iff\) \([G,G] \neq 1\) and \([G,G^{[1]}]=e\) \(\implies G^{[1]} \le Z(G)\).
+  \end{enumerate}
+\end{rmk*}
+
+\begin{lem*}[1.3.3]
+  Take \(G \neq 1\).
+  \begin{enumerate}
+  \item[(a)] \(G\) is nilpotent \(\implies\) \(Z(G) \neq 1\)
+  \item[(matt)] Every term in a derived series is characteristic in $G$.  This is true because $[G,G]$ is characteristic in $G$, and ``characteristic'' is a transitive property, so we can induct downwards.
+  \item[(b)] \(G\) is solvable \(\implies\) there exists an abelian subgroup \(A \neq 1\) with A characteristic in \(G\).
+  \end{enumerate}
+\end{lem*}
+
+\begin{example*}[1.3.4]
+  \begin{enumerate}
+  \item[] % make spacing nicer
+  \item[(a)] \(Z(Q)=\{-1,1\}=[Q,Q]\), hence \(Q\) is nilpotent of class \(2\).
+  \item[(b)] \(S_n\) is not nilpotent \(n \ge 3\). Since \(Z(S_n)=1\). \(S_3,S_4\) are solvable. \(S_3^{(1)}=A_3\) and
+    \(S_3^{(2)}=1\). \([S_n,S_n]=A_n,[A_n,A_n]=A_n\).  The very last statement is false.  This is because \([A_3,A_3]=1\).  Maybe he meant to add the condition that $ n \geq 5$.
+  \item[(c)] \(A_4\) is solvable, non-nilpotent. \(S_n,A_n\) are not solvable \(n \ge 5\).
+  \item[(e)] If \(|G| < 60\), then \(G\) is solvable. If \(|G|=60\) and \(G\) is not solvable, then \(G \isom
+    A_5\).
+  \item[(matt)] Every solvable simple group is solvable of class 1. (And nilpotent of class 1)
+  \item[(f)] Let \(F\) be a field, then define
+    \[U_n(F) := \left\{
+       \left.\left( \begin{array}{c c c}
+          1 & & \star\\
+           & \ddots \\
+          0& & 1
+        \end{array}\right)\:\right\rvert \ \star \in F \right\} \le \GL_n.\]
+  \(U_n(F)\) is nilpotent.
+  \item[(g)] Define \(B_n(F)\) as above, but instead of 1s on the diagonal allow any unit of \(F\). \(B_n(F)\) is
+    solvable, but potent for \(n \ge 2\) and \(F \neq F_2\).
+  \end{enumerate}
+\end{example*}
+\begin{prop*}
+  If \(G\) is a finite \(p\)-group, then \(G\) is nilpotent.
+\end{prop*}
+\begin{thm}[Burnside's Theorem]
+  If \(|G|=p^mq^n\), then \(G\) is solvable.
+\end{thm}
+\begin{thm}[Feit–Thompson theorem]
+    Every finite group of odd order is solvable.  (this is an extension of the previous theorem)
+\end{thm}
+\begin{prop*}[1.3.5]
+  If \(G\) is nilpotent and \(H < G\), then \(N_G(H)\neq H\).
+\end{prop*}
+\begin{defn*}[1.3.6]
+A sequence of homomorphisms
+\[\ldots \to \ldots  G_{i-1} \xrightarrow{f_{i-1}}G_i \xrightarrow{f_i} G_{i+1} \to \ldots \to \ldots\]
+is called \emph{exact} if \(\text{im}(f_{i-1})=\ker(f_i)\) for each \(i\). A sequence is a short exact sequence
+(SES) if it is exact and takes the form:
+\[1 \to N \xrightarrow{f_1} G \xrightarrow{f_2} Q \to 1.\]
+\end{defn*}
+Exactness means:
+\begin{enumerate}
+\item \(f_1\) is injective
+\item \(f_2\) is surjective
+\item \(G/f_1(N) \isom Q\)
+\end{enumerate}
+
+(still more to be said)
+
+\subsection{I.5 Group Actions}
+
+\begin{defn*}[1.5.1]
+  Given a group \(G\) and set \(X\) we say that \(G\) \emph{acts} on \(X\) (on the left)
+  if
+  \begin{align*}
+    G &\times X \to X\\
+      &(g,x) \mapsto g\cdot x
+  \end{align*}
+  \begin{enumerate}
+  \item[i.] \(g(h\cdot x)=(gh)\cdot x\) for all \(g,h \in G\) and \(x \in X\)
+  \item[ii.] \(e\cdot x = x\)
+  \end{enumerate}
+\end{defn*}
+\noindent Consequences:\\
+For each \(g \in G\), we have a map
+\begin{align*}
+  \pi_g &\colon X \to X\\
+  x &\mapsto g \cdot x
+\end{align*}
+\begin{enumerate}
+\item[(i)] says that \(\pi_g \circ \pi_h = \pi_{gh}\)
+\item[(ii)] says that \(\pi_g \pi_{g^{-1}} = 1_X\)
+\end{enumerate}
+Thus we have that \(\pi_g\) is a bijection, hence \(\pi_g\) really is a permutation of \(X\).
+\[\varphi \colon G \to S(X)=\{G \colon X \to X | G \text{ is a bijection}\}\]
+Hence \(\varphi\) is a group homomorphism.
+\begin{align*}
+  G \times X &\to X\\
+  (g,x) &\mapsto \varphi(g)(x)
+\end{align*}
+Concepts: G acts on \(X\) \(\iff\) there is a homomorphism from \(G \to S(X)\).
+\begin{defn*}[1.5.2]
+  The action of \(G\) on \(X\) is \emph{faithful} if \(\ker\varphi = 1\).
+\end{defn*}
+\begin{example}[1.5.4]
+  \begin{enumerate}
+    \item[a.] \(S_n\) acts on \(X=\{1,\ldots,n\}\), \(\varphi\) is the identity
+    \item[b.] \(\GL_n(\mathbb{F})\) acts on \(\mathbb{F}^n\) (column vectors)
+    \item[c.] IF \(G\) acts on \(X\), and \(H \le G\) then \(G\) acts on \(H\) also
+      \begin{align*}
+        \varphi \colon G &\to S(X)\\
+        \varphi|_H \colon H &\to S(X)
+      \end{align*}
+    \item[d.] \(G\) acts on the set \(X=G\) by left multiplication
+      \begin{align*}
+        G \times G &\to G\\
+        (g,x) &\mapsto gx
+      \end{align*}
+      Here \(\pi_g\) is just a permutation, and not a group homomorphism we ignore the extra structure.
+    \item[e.] If \(H \le G\) we can consider action \(G\) on \(X=G/H\), by left multiplication.
+      \lambdadeclaration{G\times G/H}{G/H}{(g,g'H)}{(gg')H}
+    \item[f.] \(G\) acts on the group. \(X=G\) by conjugation
+      \lambdadeclaration{G \times G}{G}{(g,x)}{gxg^{-1}}
+  \end{enumerate}
+\end{example}
+
+\subsection{Sylow Consequences to Know}
+\newcommand{\syl}{\text{Syl}}
+\begin{prop*}{1.7.6}
+  \(P \in \syl_p(G) \implies N_G(N_G(P))=N_G(P)\)
+\end{prop*}
+
+\begin{thm*}{1.7.7}
+  Let \(G \neq \{e\}\) be a finite group. If \(p_1, \ldots p_r\) are the distinct prime divisors of \(|G|\) then the
+  following are equivalent (where \(P_i \in \syl_{p_i}(G)\)):
+  \begin{enumerate}
+  \item \(G\) is nilpotent
+  \item \(H \neq N_G(H)\) for all \(H < G\)
+  \item \(\forall P_i \unlhd G \implies G = P_1 \times \ldots \times P_r\) 
+  \end{enumerate}
+\end{thm*}
+
+\begin{lem*}{1.7.8}
+  \(|G|=p^e m\) with \(p > m \implies n_p = 1\).
+\end{lem*}
+
+\begin{prop*}{1.7.9}
+  If \(|G|=pqr\) with \(p > q > r\) then \(P,PQ \unlhd G\) furthermore
+  \[G (P \rtimes Q) \rtimes R \cong (\Z_p \rtimes \Z_q) \rtimes \Z_r.\]
+\end{prop*}
+
+\begin{prop*}
+  If \(|G|=p^em\) with \(m > p\) and \(p\) does not divide either \(m\) or \((m-1)!\) then \(G\) is not simple.
+\end{prop*}
+
+\subsection*{Free Groups and Presentations}
+
+Let \(X\) be a non-empty set. Define \(X^{-1}=\{x^{-1} \mid x \in X\}\) with \(X \cap X^{-1} = \emptyset\) and where
+there exists an injection \(X \to X^{-1}\). Set \(Y = X \coprod X^{-1}\). There define \(\iota \colon Y \to Y\) by
+\begin{align*}
+  x &\mapsto x^{-1}\\
+  x^{-1} &\mapsto x
+\end{align*}
+Think of \(Y\) as an alphabet and 
+\[W(X)=\{(y_1,\ldots,y_n) \mid n \in \N, y_i \in Y\}\]
+as the set of words over that alphabet. For convenience we write \(y_1\cdots y_n\) for \((y_1,\ldots,y_n)\). We may
+define an associative multiplication on \(W(x)\) by
+\[(y_1,\ldots,y_n)(y_{n+1},\ldots,y_m)=(y_1,\ldots,y_n,y_{n+1},\ldots,y_m).\]
+Then \(W(X)\) is a free monoid on \(Y\).
+
+\begin{defn*}
+  Words \(v,w \in W(X)\) are \emph{elementary equivalent} if either one of the following hold:
+  \begin{enumerate}
+  \item \(w=w_1w_2\) and \(v=w_1y y^{-1}w_2\)
+  \item \(w=w_1y^{-1}yw_2\) and \(v=w_1w_2\)
+  \end{enumerate}
+\end{defn*}
+
+\begin{defn}
+  \(v,w \in W(X)\) are \emph{equivalent} denote \(\sim\)if 
+  \begin{enumerate}
+  \item \(w=v\)
+  \item There exists a finite chain of elementary equivalences.
+  \end{enumerate}
+\end{defn}
+
+Denote the equivalence class of words equivalent to \(w\) by \([w]\). Now define 
+\[F(x)=W(x)/\sim\]
+where this is just given by the equivalence relation on the set \(W(X)\). Now define multiplication on \(F(x)\) by
+inheriting it 
+from \(W(X)\), that is set \([w][v]=[wv]\). Now inversion is well defined by \([w]^{-1}=[w^{-1}]\). 
+\begin{defn}
+  The set \(F(X)\) defined above together with the multiplication \([w][v]=[wv]\) is called the \emph{free group} on \(X\).
+\end{defn}
+\end{document}%
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "master.tex"
+%%% End:
