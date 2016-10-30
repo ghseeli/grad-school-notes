@@ -121,7 +121,7 @@ Now, let us define what it means for a function to be differentiable.
 
 
 \begin{thrm}[a-b-dimensional tangent plane (warning, this is not used in our class)]
-	Given a function $f : \R^a \to \R^b$ and its slope matrix $f^\prime(v)$ at a vector $v \in \R^a$, then the equation for any point $w$ on the plane tangent to $f$ at $v$ is $g_v(w) = f(v) + f'(v)(w-v)$ or, in point-slope form, $\frac{g_v(w)-f(v)}{w-v} = f'(v)$.
+	Given a function $f : \R^a \to \R^b$ and its slope matrix $f'(v)$ at a vector $v \in \R^a$, then the equation for any point $w$ on the plane tangent to $f$ at $v$ is $g_v(w) = f(v) + f'(v)(w-v)$ or, in point-slope form, $\frac{g_v(w)-f(v)}{w-v} = f'(v)$.
 	% dependencies: [function, derivative, tangent],
 \end{thrm}
 
@@ -164,7 +164,14 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \emph{1-forms}.
 	The set $U$ is open iff for all points in $U$, there exists an open neighborhood of the point that's entirely contained in $U$.
 \end{thrm}
 \begin{defi}
-	$f$ is an \emph{open} (\emph{closed}) (\emph{compact}) map if the image of every open (closed) (compact) set under $f$ is open (closed) (compact).
+	$f$ is an \emph{open} map if the image of every open (closed) (compact) set under $f$ is open (closed) (compact).
+	For any topological space property, substitute ``open'' above with the name of that property, to get another definition.  Such properties include:
+	\begin{itemize}
+		\item closed
+		\item compact
+		\item connected
+		\item path-connected
+	\end{itemize}
 \end{defi}
 \begin{thrm}[continuity and openness]
 	$f$ is continuous iff the inverse map $f^{-1}$ is open.
@@ -207,7 +214,7 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \emph{1-forms}.
 	is smooth, but it is NOT analytic.
 \end{example}
 \begin{defi}
-	$K \subseteq X$ is \emph{compact} in $X$ if whenever $${K \subseteq \bigcup_{i \in I} O_i}$$ of open sets, then there exists $J$ finite subset of $I$ such that $$K \subseteq \bigcup_{j \in J} O_j$$.
+	$K \subseteq X$ is \emph{compact} in $X$ if whenever $${K \subseteq \bigcup_{i \in I} O_i}$$ of open sets, then there exists a finite $J \subseteq I$ such that $$K \subseteq \bigcup_{j \in J} O_j$$.
 \end{defi}
 \begin{thrm}
 	If $K$ is compact in $X$ and $C$ is closed in $X$, then $K \cap C$ is compact in $X$.
@@ -250,6 +257,8 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \emph{1-forms}.
 		\item $f^{-1}$ is open.
 		\item $f^{-1}$ is closed.
 		\item $f$ is compact.
+		\item $f$ is connected.
+		\item $f$ is path-connected.
 	\end{itemize}
 \end{thrm}
 \begin{cor}
@@ -319,7 +328,7 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \emph{1-forms}.
 	If $f$ is differentiable at $a$ and $g$ is differentiable at $f(a)$, then $(g \circ f)$ is differentiable at $a$, and $(g \circ f)'(a) = g'(f(a))f'(a)$.
 \end{thrm}
 \begin{thrm}[inverse function theorem]
-	For any $k \in \N^+$, if $f:\R^n \to \R^n$ is $C^k$ and $f^\prime(x)$ is invertible for some $x$, then $f$ is locally a diffeomorphism of class $C^k$ at $x$.
+	For any $k \in \N^+$, if $f:\R^n \to \R^n$ is $C^k$ and $f'(x)$ is invertible for some $x$, then $f$ is locally a diffeomorphism of class $C^k$ at $x$.
 \end{thrm}
 \begin{example}
 	Counterexample: Let $$f(x) =
@@ -351,10 +360,10 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \emph{1-forms}.
 
 \end{thrm}
 \begin{thrm}
-	If $f$ is locally diffeomorphic at $x$, then the slope matrix of $f^{-1}$ at $f(x)$ is given by $(f^{-1})^\prime(f(x)) = (f^\prime(a))^{-1}$.
+	If $f$ is locally diffeomorphic at $x$, then the slope matrix of $f^{-1}$ at $f(x)$ is given by $(f^{-1})'(f(x)) = (f'(a))^{-1}$.
 	Proof. $f$ is locally diffeomorphic at $x$, so $f^{-1}(f(x)) = x$.
-	Apply the chain rule: $(f^{-1})^\prime(f(x)) \cdot f^\prime(x) = 1$.
-	Finally: $(f^{-1})^\prime(f(x)) = (f^\prime(x))^{-1}$.
+	Apply the chain rule: $(f^{-1})'(f(x)) \cdot f'(x) = 1$.
+	Finally: $(f^{-1})'(f(x)) = (f'(x))^{-1}$.
 \end{thrm}
 \begin{thrm}
 	A function $f : \R^a \to \R^b$ is continuous iff each of its coordinate functions $f_i$, $1\leq i \leq b$, are continuous.
@@ -385,7 +394,7 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \emph{1-forms}.
 \end{defi}
 
 \begin{defi}
-	Two smooth atlases $A$ and $A^\prime$ are \emph{equivalent} if for each $\alpha$, $\beta$, $\phi_\alpha^{-1}.\phi_\beta^\prime$ is $C^\infty$ both ways.
+	Two smooth atlases $A$ and $A'$ are \emph{equivalent} if for each $\alpha$, $\beta$, $\phi_\alpha^{-1}.\phi_\beta'$ is $C^\infty$ both ways.
 \end{defi}
 \begin{rmk}
 	It can be verified that the above definition really is an equivalence relation.
@@ -754,24 +763,26 @@ proof not shown.
 
 Monday, October 10, 2016
 
+\begin{defi}
+	Given a differentiable manifold $M$ and the canonical $p: TM \to M$, a \emph{vector field} is a section of $p$.
+\end{defi}
+
+
 $M^n$ is a Manifold.
 $v \in T_xM$ gives you a direction in which to take dir derivatives.
 $D_v$ directional derivative in $v$-direction
 
-\begin{defi}
-	Given $p: TM \to M$, a \emph{smooth vector field} on $M$ is a smooth section to $p$.
-\end{defi}
 \begin{example}
 	The zero function is a smooth vector field on $M$.
 \end{example}
 \begin{example}
-	$V$ open (and connected?) in $\R^n$ is a smooth $n$-dim manifold.
+	$M$ open in $\R^n$ is a smooth $n$-dim manifold.
 
-	Recall that $TV \isom   V \times \R^n$.  Let $p:TV \to V$ and $\pi:V \times \R^n \to V$.
+	Recall that $TM \isom   M \times \R^n$.  Let $p:TM \to M$ and $\pi:M \times \R^n \to M$.
 
 	The following map is a bijection:
 	$\{\text{vector fields}\} \to \{\text{smooth functions}\}$
-	$        X: V \to TV      \mapsto     X: V \to \R^n$
+	$        X: M \to TM      \mapsto     X: M \to \R^n$
 \end{example}
 \begin{example}
 	$C^\infty(M,x)$ is the set of germs about $x$.
@@ -799,9 +810,13 @@ $D_v$ directional derivative in $v$-direction
 \end{thrm}
 
 \begin{prop}
-	vector fields on $M ---------->$ derivations on $C^\infty(M)$
-	$C^\infty(M,TM) ------------> Der(C^\infty(M))$
-	$x |-----------> Dx$
+	Ambiguous functions which I'll just call $g$.
+
+	$g : \{\text{smooth vector fields on $M$}\} \to $\{\text{derivations on $C^\infty(M)$}\}
+
+	$g : C^\infty(M,TM) \to \Der(C^\infty(M))$
+
+	$X \mapsto D_X$
 
 	This is an isomorphism of $C^\infty(M)$-modules!
 \end{prop}
@@ -811,62 +826,84 @@ $D_v$ directional derivative in $v$-direction
 	The \emph{Lie bracket} of $A$ and $B$, denoted $[A,B]$, is $AB - BA$.
 \end{defi}
 \begin{thrm}
-	Derivations admit a Lie bracket.
+	Derivations are closed under the Lie bracket.
 \end{thrm}
 \begin{proof}
-	For any two derivations of $A$, is
-	Is $D \circ C$ in $\Der(A)$ too?
-	\begin{align}
-		(DC)(ab) &= D(C(a))b + C(a)D(b) + D(a)D(b) + aD(C(b)) \\
-		\text{look at reverse} \\
-		(CD)(ab) &= C(D(a))b + D(a)C(b) + C(a)C(b) + aC(D(b)) \\
-		\text{Then} \\
-		(DC - CD)(ab) &= (DC - CD)(a)b + a(DC - CD)(b)
-	\end{align}
-	So $(DC - CD) \in \Der(A)$.
-	So $[D,C] \in \Der(A)$.
-	Use some law of commutators to show that $D.C$ in $\Der(A)$ too?
+	Let $D$ and $C$ be any two derivations of $A$.
+	\begin{itemize}
+		\item linear:
+		\begin{align}
+			& (DC - CD)(cx + y) \\
+			=& (DC)(cx + y) - (CD)(cx + y) \\
+			=& D(C(cx + y)) - C(D(cx + y)) \\
+			=& D(cC(x) + C(y)) - C(cD(x) + D(y)) \\
+			=& D(cC(x)) + D(C(y)) - C(cD(x)) - C(D(y))) \\
+			=& cD(C(x)) + D(C(y)) - cC(D(x)) - C(D(y))) \\
+			=& cD(C(x)) - cC(D(x))+  D(C(y)) - C(D(y))) \\
+			=& c(DC-CD)(x)      +    (DC-CD)(y)
+		\end{align}
+		\item product rule:
+		\begin{align}
+			(DC)(ab) &= D(C(a))b + C(a)D(b) + D(a)D(b) + aD(C(b)) \\
+			\text{look at reverse} \\
+			(CD)(ab) &= C(D(a))b + D(a)C(b) + C(a)C(b) + aC(D(b)) \\
+			\text{Then} \\
+			(DC - CD)(ab) &= (DC - CD)(a)b + a(DC - CD)(b)
+		\end{align}
+	\end{itemize}
+	Therefore,  $(DC - CD) \in \Der(A)$, so we conclude $[D,C] \in \Der(A)$.
 \end{proof}
 
 
 
 \begin{example}
-	Vector fields admit a Lie bracket (because they are derivations)
+	Vector fields are closed under the Lie bracket (because they are derivations).
+
 	$X, Y \in C^\infty(M, TM)$ implies that $[X,Y] \in C^\infty(M, TM)$
 \end{example}
 \begin{proof}
-	First write $X$ and $Y$ as derivations.  Then use the above theorem, or repeat the work of the above theorem as follows:
+	\begin{enumerate}
+		\item
+		First write $X$ and $Y$ as derivations.
 
-	Let $X(x,y) = f(x,y)d/dx$
-	Let $Y(x,y) = g(x,y)d/dx$
-	so $Y(h) = g(x,y)d/dx(h) = g(x,y)dh/dx$  (not $Y$ OF $h$, but $Y$ applied to $h$)
+		Let $X(x,y) = f(x,y)\frac{d}{dx}$
 
-	Then $X(Y(h)) = f dg/dx dh/y + fg d2h/dxdy$
-	Then $Y(X(h)) = g df/dx dh/y + gf d2h/dxdy$
+		Let $Y(x,y) = g(x,y)\frac{d}{dx}$
 
-	Then $(XY - YX)(h)$ = compute
-	$[X,Y](h) = f dg/dx dh/y - g df/dx dh/y$
-	in general:
-	$[X,Y] = f dg/dx d/y - g df/dx d/y$
+		(so $Y(h) = g(x,y)\frac{d}{dx}(h) = g(x,y)\frac{dh}{dx}$  (not $Y$ OF $h$, but $Y$ applied to $h$)
+
+Then use the above theorem, or repeat the work of the above theorem as follows:
+
+		Then $X(Y(h)) = f \frac{dg}{dx} \frac{dh}{dy} + fg \frac{d^2h}{dxdy}$
+		Then $Y(X(h)) = g \frac{df}{dx} \frac{dh}{dy} + gf \frac{d^2h}{dxdy}$
+
+		Then $(XY - YX)(h)$ = compute
+		$[X,Y](h) = f \frac{dg}{dx} \frac{dh}{dy} - g \frac{df}{dx} \frac{dh}{dy}$
+		in general:
+		$[X,Y] = f \frac{dg}{dx} \frac{d}{dy} - g \frac{df}{dx} \frac{d}{dy}$
+	\end{enumerate}
 \end{proof}
 
 Wednesday, October 12, 2016
 
-Given $M$, does there exists a vector field $X$ on $M$ s.t. for all $x \in M$, $X(x) \neq 0$?
+Given $M$, does there exists a smooth vector field $X$ on $M$ s.t. $\forall x \in M$, $X(x) \neq 0$?
 
 \begin{example}
-	$M = S^1$.  $TS1 = \{ (z,v) | z \in S^1, z \dot v = 0 \}$
-	yup!
-	$X(z) = X(x,y) = (z, (-y,z))$ works!
+	$M = S^1$.  $TS^1 = \{ (z,v) \mid z \in S^1, z \cdot v = 0 \}$
+	yup!  There exists
+	$X(z) = X((x,y)) = (z, (-y,x))$ works!
 \end{example}
 \begin{example}
 	$M = S^2$.
-	no!
+	no! (the billiard ball)
 \end{example}
 \begin{example}
 	$M = S^3 \subseteq \C \x \C$
-	$S^3 = \{ (z1,z2) | |z1|^2 + |z2|^2 = 1 \}$
+
+	$S^3 = \{ (z_1,z_2) \mid |z_1|^2 + |z_2|^2 = 1 \}$
+
 	yes!
+
 	$X(z) = (z, iz)$ works!
 \end{example}
 \begin{example}
@@ -930,12 +967,12 @@ consider we have $k = n$, best possible
 \end{thrm}
 \begin{example}
 	$S^2$ is frames with $k=1$ by
-	$f : TS^2 \x \R --------> S^2 x R^3$
+	$f : TS^2 \x \R \to S^2 x \R^3$
 	$((x,v), t) \mapsto (x, v + tx)$
 	$<x>$
 
 	observe that
-	$TS^2 \not\isom S^2 \x R^2$
+	$TS^2 \not\isom S^2 \x \R^2$
 	but
 	$TS2 x \R \isom S^2 x \R^3$
 	wow!
@@ -955,7 +992,6 @@ consider we have $k = n$, best possible
 	$\C P^2$ not framed.
 \end{example}
 
-
 $df_x \in (T_xM)^*$, called the \emph{dual vector space} of $T_xM$
 $dg_x \in (T_xM)^*$ too
 set of above over all smooth functions
@@ -974,9 +1010,9 @@ set of above over all smooth functions
 	where $(j, x, w) ~ (i, x, d(\phi_j of \phi_j inverse)_x(w))$
 \end{defi}
 \begin{defi}
-	A \emph{1-form} on $M$ is a section of $T*M ----> M$.
+	A \emph{1-form} on $M$ is a section of $T*M \to M$.
 
-	in other words, for all $x \in M$, $w(x): T_xM --> \R$ and this varies ``smoothly'' in $x$
+	in other words, for all $x \in M$, $w(x): T_xM \to \R$ and this varies ``smoothly'' in $x$
 \end{defi}
 	notation
 	$\omega'(M) = C^\infty(M, T*M)$ = set of all 1-forms.
@@ -1030,7 +1066,7 @@ Monday, Oct 17, 2016
 		is smooth.
 		\item
 		The corresponding map $L$ in (below) is smooth (and an isomorphism)
-		$TM ----L-----> T*M$
+		$TM ----L\to T*M$
 		$TM \to M$
 		$T*M \to M$
 	\end{itemize}
@@ -1063,7 +1099,7 @@ Monday, Oct 17, 2016
 	suppose $\phi$ extended to all of $M$, is
 
 	there exists $\\overset{~}{\phi} M \to \R^n$
-	s.t. $\\overset{~}{phi}|_U = \phi$
+	s.t. $\\overset{~}{\phi}|_U = \phi$
 
 	Then consider
 	$(\overset{~}{\phi_1},,,\overset{~}{\phi_r}) : M \to \R^n \x \x \x \R^n$ (r times)
@@ -1080,7 +1116,7 @@ Monday, Oct 17, 2016
 		0 \text{if $x \not\in U$}
 	\end{cases}
 	$$
-	(or just $\lambda(x)\overset{~}{phi}(x)$ everywhere, but $\overset{~}{phi}$ was only in our minds)
+	(or just $\lambda(x)\overset{~}{\phi}(x)$ everywhere, but $\overset{~}{\phi}$ was only in our minds)
 
 	$\theta: M \to (\R^{n+1})^r$ be
 	$\theta() = (\psi_1(x), \lambda_1(x),,,, \psi_r(x), \lambda_r(x))$
@@ -1130,7 +1166,7 @@ Wednesday, Oct 19, 2016
 \section{Normal and Paracompact spaces, and partitions of unity}
 
 \begin{defi}
-	$X$ is \emph{normal} if for all $A$,$B$ closed and disjoint, there exists $U$,$V$ open, disjoint with $A \subseteq U$ and $B \subseteq V$.  (The "normal" condition is also called "Axiom T4".  But this is *not* the same as being a T4 space.  A T4 space is, by definition, T2 + Axiom T4.)
+	$X$ is \emph{normal} if for all $A$,$B$ closed and disjoint, there exists $U$,$V$ open, disjoint with $A \subseteq U$ and $B \subseteq V$.  (The "normal" condition is also called "Axiom $T_4$".  But this is *not* the same as being a $T_4$ space.  A $T_4$ space is, by definition, $T_2$ $+$ Axiom $T_4$.)
 \end{defi}
 \begin{rmk}
 	($T_2$ + compact) implies $T_4$
@@ -1182,7 +1218,7 @@ Wednesday, Oct 19, 2016
 
 
 \begin{thrm}
-	$X$ locally compact, $T_2$, and 2nd countable implies $X$ is paracompact.
+	$X$ locally compact, $T_2$, and 2nd-countable implies $X$ is paracompact.
 \end{thrm}
 \begin{cor}
 	All manifolds are paracompact.
@@ -1216,6 +1252,249 @@ Wednesday, Oct 19, 2016
 	(we want all the $\phi_i$'s to add up to 1.  not sure if this is necessary)
 	Let $\phi_i = \frac{\lambda_i}{\lambda}$.  Then $\{\phi_i\}$ is a partition of unity subordinate to $\{U_i\}$.
 \end{proof}
+
+
+\begin{defi}
+	A set $S \subseteq \R^n$ has \emph{measure 0} if given any $\epsilon > 0$, there exist rectangular $n$-dimensional boxes $\{S_j\}_{j\in J}$, where $J$ is countable, s.t. $S \subseteq \bigcup_{j \in J} S_j$ and $\sum_{j \in J} \vol(S_j) < \epsilon$.
+\end{defi}
+\begin{lem}
+	For any smooth function $f : U \to \R^n$, where $U \subseteq \R^n$, if $S \subseteq U$ has $\mu(S) = 0$, then $\mu(f(S)) = 0$.
+\end{lem}
+
+\begin{proof}
+	Step 1
+
+	On any compact $K \subseteq U$, the partial derivatives $\frac{df_i}{df_j}$ are bounded, as well as their magnitudes, $|\frac{df_i}{df_j}|$.
+
+	By the Mean Value Theorem, there exists $M \in \R$ such that, for all $x,y \in K$, $|f(x) - f(y)| < M|x-y|$.
+
+	There exists $N \in \R$ s.t. for all boxes $S_j \subseteq K$,  $f(S_j) \subseteq S_j'$ where $S_j'$ is a box with $\vol(S') < N \vol(S)$.
+
+	Step 2
+
+	Take an open cover $\{U_i\}$ of $U$ such that $U_i \subseteq \bar{U_i} \subseteq U$, and each $\bar{U_i}$ is compact.
+
+	Let $S_i := S \cap U_i$
+
+	Then $\bar{S_i} \subseteq \bar{U_i}$, so $\{S_i\}$ is compact
+	$\bar{S_i}$.
+
+	apply step 1 to $U = W_i$, $k = S_i$,
+
+	there exists $N$
+
+	$\mu(S) = 0$ implies $\mu(S_i) = 0$.
+
+	% given \epsilon > 0, cover Si by Si s.t. SUMij vol(Sij) < \epsilon/N/2^i
+
+	% Then f(Si) is covered by S'ij s.t. SUM vol(S'ij) < \epsilon/2^i
+
+	% and so f(S) is something by SUM v.
+\end{proof}
+\end{document}
+\begin{cor}
+	Given any \subseteq $S$ of an n-dim smooth manifold $M$, then TFSE:
+	* There exists an atlas {U} for M s.t. for all i, mu(\phi_i(S \cap U_i)) = 0.
+	* For any (smooth) chart \phi:U to \R^n, mu(\phi(S \cap U)) = 0.
+In this case, we say $S$ has \emph{measure 0} in M, and write mu(S) = 0.
+
+\begin{thrm}
+	["Mini Sards Theorem"]
+Given smooth $f : M^m to N^n$, and
+if $m < n$, then $f(M)$ has measure $0$ in $N$
+\begin{proof}
+		Step 1
+		Reduce to case M = U open in \R^m, and N = \R^n:
+
+		{U} is an atlas for M.
+
+		If, for all i, mu(f(U_i)) = 0, then mu(f(M)) = 0
+
+		Let V_i = \phi_i(U_i) open in \R^n
+
+		' inverse
+		f(U_i) = (V_i.\phi'.f)  where \R^m supset V_i ----\phi'.f\toN^n
+
+		suffices to suppose M in \R^m
+
+	Step 2
+		\R^m supset U ----f\to \R^n
+		To show f(U) has measure 0 in \R^n
+
+		U x \R^n-m ----F---- \R^n
+		^
+		-
+		-
+		Ux{0} ------f------\R^n (above)
+
+		Let F(x,y) = f(x) + y
+
+		F|_{U x \{0\}} = f
+
+		U x {0} has measure $0 \in U$ x \R^n-m
+
+		So by lemma, mu(F(U)) = mu(F(U x {0})) = 0
+
+
+
+Now let's look at when m >= n.
+maybe understand just for m = n+1...
+\begin{proof}
+		C = { x in \R^m | dfx is not onto }
+
+	consider the function dfx.  Using THAT as our function...
+	C1 = {zeros of order 1}
+	C2 = {zeros of order 2}
+
+	C supset C1 supset C2 supset
+
+	lemma 1
+		If k > m/n = 1, then mu(f(Ck)) = 0
+		(proof sim. to lemma \to MVT + related estimates)
+	lemma 2
+		mu(f(C-C1)) = 0
+		hint, use Fubini for lemma 2 and lemma 3
+	lemma 3
+		mu(f(Ck-C{k+1})) = 0
+
+
+
+
+
+
+\begin{thrm}[Sard's Theorem]
+	If f is a smooth map of manifolds, then the set of critical values of f has measure $0 \in N$.
+\end{thrm}
+\begin{cor}
+	The regular values are $dense \in N$
+\begin{cor}
+	If m < n, then {cirt values} = f(M) has measure $0 \in N$.  In particular, f cannot be onto.
+
+\begin{example}
+	Let f : \R to S^1 x S^1 be f(t) = (t, sqrt(2)t) mod Z^2
+S^1 x S^1 = \R/Z x \R/Z = \R^2/Z^2
+f(\R) = {crit values} is $dense \in S$^1 x S^1
+
+counter\begin{example}
+	there exist continuous f : \R to \R x \R which are onto (space filling curves)
+
+
+Wednesday, Oct 26, 2016
+
+thm [Whitney Embedding thm]
+Every n-dim smooth manifold embeds in \R^{2n} and immerses in \R{2n-1}
+we will prove
+Every n-dim smooth manifold embeds in \R^{2n+1} and immerses in \R{2n}
+instead
+\begin{proof}
+		Assnume M embedded in RN for N>>0
+	start with 1-1 immersion f : Mn to RN
+	\pi_a
+
+	claim:
+	"If N > 2n + 1, then there exists nonzero a in RN s.t.
+		1. f: Mn to RN \pi_a <a>perp is still an immersion.
+		2. f.\pi_a is still 1-1.
+	If N > 2N, then can still do (1)."
+
+	\begin{proof}
+			Let g : TM to RN be g(x,v) = df_x(v)
+
+
+
+		dfx : T_xM to TRN = RN
+		Let h : M x M x \R to RN be
+		h(x,y,t) = t[f(x) - f(y)]
+
+		by Mini-Sards Thm, the Im(g) and Im(h) have measure 0
+		so Im(g) \cup Im(h) has measure 0
+		so there exists nonzero a s.t. a not in Im g union Im h.
+
+		verify this a works:
+		f.\pi_a is still an immersion?
+		d_x(f.\pi_a) = d_xf.\pi_a
+		Fact: 0 = d_x(f.\pi_a)(v) = \pi_a(df_x(v)) iff df_x(f(v)) in <a>
+		Fact: for all v,w, a \neq df_x(w) iff <a> = {0}
+
+		is f.\pi still 1-1?
+		consider x \neq $y \in M$
+		0 = x.f.\pi - y.f.\pi = (x.f - y.f).\pi
+		iff
+		x.f - y.f in <a>
+		(f monic implies f(x) - f(y) neq 0)
+		iff
+		there exists t in \R s.t. t[f(x) - f(y)] = a
+		iff
+		h(x,y,t) = a
+
+		Claim implies there exists 1-1 immersion f : M^n to \R{2n+1}
+
+		If M is compact, this would be an embedding.
+
+		If f is proper, this would be an embedding.
+
+		\begin{lem}
+				There exists a proper map p "(roe)" from M to \R.
+			\begin{proof}
+					Choose countable cover {U} of M with each Ubar compact.
+
+				Let {p_i : M to [0,1]} partition of unity w.r.t. {U}
+				Let p(x) = \sum_{i=1}^oo ip_i(x).
+				Claim: this p is proper.
+				Fix j
+				Suppose $x \in M$ and and p(x) < j implies there exists i < j s.t. p_i(x) > 0 iff there exists i < j with x in U_i.
+				Thus, p'([-j,j]) \subseteq union U_i \subseteq union Uibar, which is compact
+
+		Assume the given f has |f(x)| < 1 (we can always shrink f down with arctan)
+
+		Let F = (f,p) : M to \R{2n+1}
+
+		again find a nice nonzero a as before, and a not in <e_{2n+2}> (last basis vec) (a 0 in last coord)
+		claim
+		F.\pi : M to <a>perp = \R{2n+1} is proper.
+
+		x.F.\pi = (x.p, x.f).\pi
+		= (f(x), 0).\pi + (0, p(x)).\pi
+
+		ALL \PIS ARE \pi_a \subseteq THIS SECTION (INCLUDING ABOVE)
+
+		|a.F.\pi| <= |(x.f, 0).\pi| + |(0, x.p).\pi|
+				<= 1 + |(0, x.p).\pi|
+
+		|x_k| to oo, |p(x)| to oo implies \pi(0, p(x)) to oo implies |x_k.f.\pi| to oo
+
+\begin{thrm}
+	If M and L are not transverse, then you can wiggle M a little in the right direction, and then M+c and L WILL be transverse.
+
+\begin{lem}
+	Given $M \x S$ instead of $M$ and $F$ instead of $F$.  Suppose $F \pitchfork L$.  Then for almost all $s \in S$ (except for on a set of measure 0), the sunction $F_s: M \to N$ by $F_s(x) = F(x,s)$ is transverse to $L$.
+
+	\begin{proof}
+
+
+HW prove a specific example of \begin{lem}
+
+Given \R^n instead of N in setup.
+Let F : M x \R^n to \R^n be F(x,c) = f(x) + c
+	\begin{proof}
+		Fc = fc
+	F is "obviously" a submersion
+	T_(x,z)(M x \R^n ) dF_{x,c} \R^n
+	T_xM x \R^n to \R^n
+	by (v,w) \mapsto df(v,w)
+	``````````````````````````
+
+\begin{defi}
+	A property of a function $f : X \to Y$ is \emph{stable} if for every homotopy $H : X \x [0,1] \to Y$, there exists an $\epsilon > 0$ such that for all $t < \epsilon$, $H_t : X \to Y$ has the property.
+\end{defi}
+
+
+
+
+
+
+
+
 
 
 
