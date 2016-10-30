@@ -1,0 +1,177 @@
+\documentclass[master.tex]{subfiles}
+
+\setcounter{section}{1}
+
+\begin{document}
+\section{Ring Theory}
+
+\newcommand{\F}{\mathbb{F}}
+\newtheorem*{notation}{Notation}
+% Lecture 10/27/2016
+
+\begin{defn*}
+  A \emph{ring} is set \(R\) together with two binary operations \(+\) and \(\cdot\) satisfying
+  \begin{enumerate}[label=(\roman*)]
+  \item \((R,+)\) is an abelian group (denote the additive identity by \(0\))
+  \item \(\cdot\) is associative, \((xy)z=x(yz)\) for all \(x,y \in R\)
+  \item There exists a multiplicative identity (denoted \(1 \in R\)).
+  \item Distribution laws hold:
+    \begin{align*}
+      x(y+z) &= xy + xz\\
+      (x+y)z &= xz+yz
+    \end{align*}
+  \end{enumerate}
+\end{defn*}
+
+\begin{defn*}
+  A \emph{commutative ring} is a ring with the additional property that \(xy=yx\) for all \(x,y \in R\).
+\end{defn*}
+Notice that if multiplication is commutative either distribution law implies the other. One of the most basic
+observations one can make is that \(R\) is the trivial ring \(\iff 1=0\).
+
+\begin{example*}
+  A few familiar rings: \[\Z,\Z_n,\Q,\R,\C\] A non-commutative ring:
+  \[M_n(\F), n \ge 2\] or more generally take any ring \(R\).
+\end{example*}
+
+\begin{defn*}
+  A \emph{skew field (or division ring)} is a ring \(R\) such that \(R \neq \{0\}\) and \(R \setminus \{0\}\) is a group
+  under multiplication.
+\end{defn*}
+
+\begin{defn*}
+  A \emph{field} is a commutative skew field.
+\end{defn*}
+
+\begin{example*}
+  An example of a skew field is
+  \[\H = \R + \R i + \R j + \R k\]
+\end{example*}
+
+One may form direct products of rings in the usual manner.
+
+\begin{defn*}
+  A \emph{ring homomorphism} is map \(\varphi \colon R \to S\) between rings \(R\) and \(S\) satisfying
+  \begin{enumerate}[label=(\arabic*)]
+  \item \(\varphi(x+y)=\varphi(x)+\varphi(y)\)
+  \item \(\varphi(xy)=\varphi(x)\varphi(y)\)
+  \item \(\varphi(1_R)=1_S\)
+  \end{enumerate}
+\end{defn*}
+
+In keeping with our demand that all of rings have unity, we also force our homomorphisms to respect the unital
+structure. In particular our ring homomorphisms are morphisms in the category of commutative rings.
+
+\begin{example*}
+  For us a map \funcdeclaration{\varphi}{R}{R \times R}{r}{(r,0)} is not a ring homomorphism as
+  \(1_{R \times R} = (1,1)\) while \(\varphi(1)=(1,0)\).
+\end{example*}
+
+\begin{defn*}
+  A subset \(S\) of a ring \(R\) is a \emph{subring} of \(R\) if
+  \begin{enumerate}[label=(\arabic*)]
+  \item \(S\) is closed under both operations
+  \item \(1_R \in S\)
+  \end{enumerate}
+\end{defn*}
+
+\begin{example*}
+  Under this definition \(R \times \{0\}\) is not a subring of \(R \times R\) as \(1_R \not \in R \times R\) as long as
+  \(R\neq\{0\}\).
+\end{example*}
+
+\begin{defn*}
+  An element \(x \in R\) is said to be a \emph{zero divisor} of \(R\) if there exists an element \(y \in R\) such that
+  \(y \neq 0\) and
+  \[xy = 0 \qquad \text{ or } \qquad yx = 0.\]
+\end{defn*}
+
+\begin{defn*}
+  The commutative ring \(R\) is an \emph{integral domain} if its only zero divisor is \(0\).
+\end{defn*}
+
+\begin{example*}
+  \(\Z_n\) integral domain \(\iff n\) is prime
+\end{example*}
+
+\begin{prop*}
+  \(R\) finite integral domain \(\implies\) \(R\) is field.
+\end{prop*}
+
+\begin{defn*}
+  A \(x \in R\) is a \emph{unit} if \(xy=1\) and \(yx=1\).
+\end{defn*}
+
+\begin{defn*}
+  The group of units \(R^\times\) of a ring is
+  \[R^\times = \{x \in R \mid x\text{ is a unit}\}.\]
+\end{defn*}
+
+\begin{example*}
+  \begin{align*}
+    \Z^\times &= \{-1,1\}\\
+    \Z_n^\times &= \{\bar{a} \mid (a,n)=1\}
+  \end{align*}
+\end{example*}
+
+\begin{prop*}
+  If \(\varphi \colon R \to S\) is a homomorphism and \(x \in R^{\times}\) then \(\varphi(x) \in S^\times\). In
+  particular this means \(\varphi(R^\times) \le S^\times\).
+\end{prop*}
+
+Even if \(\varphi \colon R \twoheadrightarrow S\) the image \(\varphi(R^\times)\) might not equal \(S^\times\).
+
+\begin{example*}
+  Consider the surjective function
+  \funcdeclaration{\varphi}{\Z}{\Z_n}{a}{\bar{a}}
+  but \(|\Z_n^\times|=\varphi(n)>2\) if \(n \ge 7\)
+\end{example*}
+
+\begin{notation}
+  From this point onwards \(R\) denotes a \textbf{commutative ring}.
+\end{notation}
+
+\begin{defn*}
+  A non-empty subset \(I \subset R\) is an \emph{ideal} if 
+  \begin{enumerate}[label=(\roman*)]
+  \item  \(x,y \in I \implies x+y \in I \)
+  \item \(x \in I, r \in R \implies rx \in I\)
+  \end{enumerate}
+\end{defn*}
+Condition one may be rephrased as \((I,+)\) forms an abelian group.
+\begin{prop*}
+  An ideal \(I=R \iff 1 \in R \iff I \cap R^\times \neq \emptyset\)
+\end{prop*}
+
+\begin{notation}
+  If \(I\) is an ideal of \(R\) we denote it as \(I \unlhd R\).
+\end{notation}
+
+\begin{prop}
+  A ring homomorphism \(\varphi \colon R \to S\) if \(I \unlhd R\), \(J \unlhd S\) then
+  \[\varphi(I) \unlhd S \iff \varphi \text{ is surjective }\]
+  while
+  \[\varphi^{-1} \unlhd R \text{ is always true.}\]
+\end{prop}
+
+\begin{defn*}
+  Let \(I,J \unlhd R\) then we define
+  \begin{align*}
+    I+J &:= \{x+y \mid x \in I, y \in J\} \unlhd R\\
+    IJ  &:= \left\{\sum_{l=0}^nx_l y_l \mid n \in \N, x_l \in I, y_l \in J\right\}.
+  \end{align*}
+\end{defn*}
+We have defined \(IJ\) in the above manner to force \(IJ\) to be an abelian group, and hence an ideal.
+
+\begin{defn*}
+  Given an ideal \(I \unlhd R\) we may form the \emph{quotient ring} denote \(R/I\) as follows
+  \[R/I = \{a+I\mid a \in R\}.\]
+  This forms a ring under addition and multiplication by representatives.
+\end{defn*}
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+
+%%% TeX-master: "master.tex"
+%%% End:

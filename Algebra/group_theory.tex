@@ -1,33 +1,8 @@
-\documentclass[11pt,leqno,oneside]{amsart}
+\documentclass[master.tex]{subfiles}
 
-\usepackage{../notes}
-\usepackage{enumitem}
-\newcommand{\Fp}{{\mathbb{F}_p}} % finite field of order p
-\newcommand{\subgroup}{\mathrel{<}}
-\newcommand{\normsubgroup}{\mathrel{\unlhd}}
-\newcommand{\Aut}{\operatorname{Aut}}  % automorphism group
-\newcommand{\Char}{\mathrel{\operatorname{char}}}
-\newcommand{\primedecomposition}[3]{#1_1^{#2_1} \cdots {#1_{#3}}^{#2_{#3}}}
-\newcommand{\funcdeclaration}[5]{
-  \begin{align*}
-    #1 \colon #2 &\to #3\\
-              #4 &\mapsto #5
-  \end{align*}
-}
-\newcommand{\lambdadeclaration}[4]{
-  \begin{align*}
-              #1 &\to #2\\
-              #3 &\mapsto #4
-  \end{align*}
-}
 %%%%%%%%%%%%%% BEGIN CONTENT: %%%%%%%%%%%%%%
 
-\title[Abstract Algebra]{Abstract Algebra}
-\author{Chris Lloyd, George H. Seelinger\\ (inspired from class by
-  Peter Abramenko)}
-\date{Fall 2016}
 \begin{document}
-\maketitle
 \section{Group Theory}
 \subsection{Basic Facts}
 \subsection*{Lecture 1: Normalizers and Centralizers}
@@ -1156,9 +1131,7 @@ Concepts: G acts on \(X\) \(\iff\) there is a homomorphism from \(G \to S(X)\).
   \end{enumerate}
 \end{example}
 
-
-\newpage
-\section{Sylow Consequences to Know}
+\subsection{Sylow Consequences to Know}
 \newcommand{\syl}{\text{Syl}}
 \begin{prop*}{1.7.6}
   \(P \in \syl_p(G) \implies N_G(N_G(P))=N_G(P)\)
@@ -1187,8 +1160,7 @@ Concepts: G acts on \(X\) \(\iff\) there is a homomorphism from \(G \to S(X)\).
   If \(|G|=p^em\) with \(m > p\) and \(p\) does not divide either \(m\) or \((m-1)!\) then \(G\) is not simple.
 \end{prop*}
 
-\newpage
-\section*{Free Groups and Presentations}
+\subsection*{Free Groups and Presentations}
 
 Let \(X\) be a non-empty set. Define \(X^{-1}=\{x^{-1} \mid x \in X\}\) with \(X \cap X^{-1} = \emptyset\) and where
 there exists an injection \(X \to X^{-1}\). Set \(Y = X \coprod X^{-1}\). There define \(\iota \colon Y \to Y\) by
@@ -1231,5 +1203,5 @@ from \(W(X)\), that is set \([w][v]=[wv]\). Now inversion is well defined by \([
 
 %%% Local Variables:
 %%% mode: latex
-%%% TeX-master: t
+%%% TeX-master: "master.tex"
 %%% End:
