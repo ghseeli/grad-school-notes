@@ -4,9 +4,8 @@
 
 \begin{document}
 \section{Ring Theory}
-
-\newcommand{\F}{\mathbb{F}}
-\newtheorem*{notation}{Notation}
+\subsection{Basic Definitions}
+\newcommand{\F}{\mathbb{F}} \newtheorem*{notation}{Notation}
 % Lecture 10/27/2016
 
 \begin{defn*}
@@ -122,9 +121,8 @@ structure. In particular our ring homomorphisms are morphisms in the category of
 Even if \(\varphi \colon R \twoheadrightarrow S\) the image \(\varphi(R^\times)\) might not equal \(S^\times\).
 
 \begin{example*}
-  Consider the surjective function
-  \funcdeclaration{\varphi}{\Z}{\Z_n}{a}{\bar{a}}
-  but \(|\Z_n^\times|=\varphi(n)>2\) if \(n \ge 7\)
+  Consider the surjective function \funcdeclaration{\varphi}{\Z}{\Z_n}{a}{\bar{a}} but \(|\Z_n^\times|=\varphi(n)>2\) if
+  \(n \ge 7\)
 \end{example*}
 
 \begin{notation}
@@ -132,9 +130,9 @@ Even if \(\varphi \colon R \twoheadrightarrow S\) the image \(\varphi(R^\times)\
 \end{notation}
 
 \begin{defn*}
-  A non-empty subset \(I \subset R\) is an \emph{ideal} if 
+  A non-empty subset \(I \subset R\) is an \emph{ideal} if
   \begin{enumerate}[label=(\roman*)]
-  \item  \(x,y \in I \implies x+y \in I \)
+  \item \(x,y \in I \implies x+y \in I \)
   \item \(x \in I, r \in R \implies rx \in I\)
   \end{enumerate}
 \end{defn*}
@@ -165,13 +163,84 @@ We have defined \(IJ\) in the above manner to force \(IJ\) to be an abelian grou
 
 \begin{defn*}
   Given an ideal \(I \unlhd R\) we may form the \emph{quotient ring} denote \(R/I\) as follows
-  \[R/I = \{a+I\mid a \in R\}.\]
-  This forms a ring under addition and multiplication by representatives.
+  \[R/I = \{a+I\mid a \in R\}.\] This forms a ring under addition and multiplication by representatives.
 \end{defn*}
+
+\begin{thm}[Isomorphism Theorems For Rings] Given a ring homomorphism \(\varphi \colon R \to S\). Then
+  \begin{enumerate}[label=(\alph*)]
+  \item \(\varphi(R)\) is a subring of \(S\) and \(\ker(\varphi)=\{r \in R \mid \varphi(r)=0\} \unlhd R\)
+  \item \(R/\ker \varphi \isom \varphi(R)\)
+  \item \(I,J \unlhd R\) with \(I \subset J \implies\)
+    \[J/I\unlhd R/I\] and
+    \[(R/I)/(J/I) \isom R/S.\]
+  \end{enumerate}
+\end{thm}
+
+\begin{prop}{Correspondence Theorem}
+  Let \(I \unlhd R\) define \funcdeclaration{\pi}{R}{R/I}{a}{\bar{a}} Then there is a bijection
+  \[\{J \unlhd R \mid I \subset J\} \longleftrightarrow \{\text{Ideals of } R/I \}\] given by
+  \[J \longmapsto J/I\] and
+  \[L \longmapsto \pi^{-1}(L).\]
+\end{prop}
+
+\begin{proof}
+  First \(\bar{J}=J/I=\pi(J)\unlhd \bar{R}\) since \(\pi\) is surjective \(\pi^{-1}(L) \unlhd R\) and contains
+  \(I=\pi^{-1}(O)\). Claim: \(gf(J)=\pi^{-1}(J/I)=J\). Assume \(x \in R\) with \(x \in \pi^{-1}(J/I)\) then
+  \(\pi(x) \in J/I\). Then \(x+I=y+I\) for some \(y \in J\). Thus \(x \in y + I \subset J\). Lastly
+  \(fg(L)=\pi(\pi^{-1}(L))\) since \(\pi\) is surjective.
+\end{proof}
+
+\begin{defn}
+  A proper ideal \(I \lhd R\) is called
+  \begin{enumerate}
+  \item a \emph{prime ideal} if
+    \[xy \in I \implies x \in I \text{ or } y \in I.\]
+  \item a \emph{maximal ideal} if
+    \[\forall J \lhd R,\ I \subseteq J \implies I=J.\]
+  \end{enumerate}
+\end{defn}
+
+\begin{prop}
+  For every \(I \lhd R\) there exists a maximal ideal \(M\) such that \(I \subseteq M\) and \(M \lhd R\).
+\end{prop}
+
+\begin{proof}[Short Proof]
+  This follows from Zorn's Lemma.
+\end{proof}
+
+Here we will be pedantic and write out the proof in its entirety as it sets the flavor of proof for the existence of
+other maximal entities.
+
+\begin{lem*}[Zorn's Lemma]
+  If \(A\) is a nonempty partially ordered set such that every chain in \(A\) has an upper bound in \(A\), then \(A\)
+  contains a maximal element.
+\end{lem*}
+
+\begin{proof}[Detailed Proof]
+  Define set \(S=\{J \lhd R \mid I \subset J\} \neq \emptyset\). This set is never empty as \(I \in S\) by
+  construction. The set \(S\) is partially ordered \(j \le J' \iff J \subseteq J'\). Now check that every chain in \(S\)
+  has an upper bound. Let \((I_\alpha)_{\alpha in A}\) be a chain in \(S\) where \(\alpha, \beta \in A\) then
+  \(J_\alpha \subseteq J_\beta\) or \(J_\beta \subseteq J_\alpha\). Here we can compare any two elements. The candidate
+  for an upper bound is
+  \[J=\bigcup_{\alpha \in A} J_\alpha.\]
+  We must check the following requirements:
+  \begin{enumerate}[label=(\arabic*)]
+   \item \(I \subset J\)
+   \item \(J \unlhd R\)
+   \item \(J \neq R\).
+  \end{enumerate}
+  The condition (1) is immediate as \(I \subset J_\alpha\) for each \(\alpha \in A\). To see (2) let \(x,y \in J\) and
+  \(r \in R\). Then there exists \(\alpha, \beta \in A\) such for \(x \in I\) and \(y \in J_\beta\) without loss of
+  generality \(J_\alpha \subseteq J_\beta\). Then \(x+y \in J_\beta \subseteq J\). Since \(J_\alpha\) is an ideal for \(x
+  \in J_\alpha\) we have \(rx \in J_\alpha \subset J\). Thus \(J\) is an ideal of \(R\). Lastly to see (3) notice \(1
+  \not \in J\) since \(1 \not \in J_\alpha\) for all \(\alpha \in A\) as each of these ideals is proper. Recall an ideal
+  is the whole ring if and only if it contains unity, thus we have \(J \neq R\). We have shown that the conditions of
+  Zorn's Lemma hold, hence \(S\) has a maximal element.
+\end{proof}
+
 \end{document}
 
 %%% Local Variables:
 %%% mode: latex
-
 %%% TeX-master: "master.tex"
 %%% End:
