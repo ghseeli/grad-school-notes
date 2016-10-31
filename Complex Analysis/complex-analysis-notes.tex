@@ -3,6 +3,7 @@
 \usepackage{../notes}
 \newcommand{\Arg}{\operatorname{Arg}}
 \newcommand{\Log}{\operatorname{Log}}
+\newcommand{\Res}{\operatorname{Res}}
 \renewcommand{\Re}{\operatorname{Re}}
 \renewcommand{\Im}{\operatorname{Im}}
 %%%%%%%%%%%%%% BEGIN CONTENT: %%%%%%%%%%%%%%
@@ -1497,4 +1498,96 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
   \end{proof}
   Writing $f = p_\infty + \sum p_j$ is the partial fraction
   decomposition of $f$.
+  \section{(10/27/2016) Lecture 19}
+  So, we have now concluded that in complex analysis, a meromorphic
+  function on $\C^*$ is the sum of the principal parts at (finitely
+  many) poles.
+
+  \subsection*{Residues}
+  If $z_0$ is an isolated singularity of $f$, then $f(z) = \ldots
+  a_{-1}(z-z_0)^{-1} + a_0 + a_1(z-z_0)+\ldots$. So, we have that \[
+    \oint_{|z-z_0| = \epsilon} f(z)dz = \oint \sum_{-\infty}^{\infty}
+    a_k(z-z_0)^k = \sum a_k
+    \left(
+      \oint (z-z_0)^kdz
+    \right) = 2\pi i a_{-1}
+  \]
+  We say that $a_{-1}$ is the \emph{residue} of $f$ at $z_0$, written
+  $\Res[f,z_0]$. Some examples:
+  \begin{example}
+    \begin{itemize}
+    \item $\Res[\frac{10}{z},0] = 10$
+    \item $\Res[\frac{1}{z^2},0] = 0$. Notice that the residue can be
+      zero at a pole.
+    \item $\Res[\frac{1}{z^2}e^{1/z},0] = 0$ because $e^{\frac{1}{z}}
+      = 1 + \frac{1}{z} + \frac{1}{2!z^2} + \cdots$.
+    \item $\Res[e^{\frac{1}{z^2}},0] = 0$ because $e^{\frac{1}{z^2}} =
+      1+ \frac{1}{z^2} + \frac{1}{2! z^4} + \cdots$. 
+    \end{itemize}
+  \end{example}
+  \begin{thm}[Residue theorem]
+    Let $D$ be a bounded domain with piecewise smooth boundary. Let
+    $f$ be analytic on $D \cup \partial D$ except for finitely many
+    isolated singularities $z_1, \ldots, z_n$. Then, \[
+      \oint_{\partial D} f(z)dz = 2 \pi i \sum_{j=1}^k \Res[f,z_j]
+    \]
+  \end{thm}
+  The reason for this being true is to consider a path around the
+  boundary (oriented correctly) and then also around each of the
+  singularities (oriented clockwise). By the
+  Cauchy Integral Theorem, this should be 0 and so, the integral
+  around $\partial D$ is the same as the sum of the integrals around
+  these singularities.
+
+  Some rules for residues.
+  \begin{enumerate}
+  \item If $z_0$ is a simple pole of order $f$, then $\Res[f,z_0] =
+    \lim_{z \to z_0} (z-z_0)f(z)$. Why? $f(z) = a_{-1}(z-z_0)^{-1} +
+    a_0 + a_1(z-z_0) + \cdots$ so $(z-z_0) = a_{-1} + a_0(z-z_0) +
+    a_1(z-z_0)^2 + \cdots$.
+  \item If $z_0$ is a double pole of $f$, then $\Res[f,z_0] = \lim_{z
+      \to z_0} \frac{d}{dz}((z-z_0)^2f(z))$ etc for higher order
+    poles.
+  \item If $f(z) = \frac{g(z)}{h(z)}$ analytic and $h(z)$ has a simple
+    zero at $z_0$, then $\Res[f,z_0] = \frac{g(z_0)}{h'(z_0)}$.
+  \end{enumerate}
+  We can use these ideas to help us evaluate $\oint_{\partial D}
+  f(z)dz$ or even to help evaluate real integrals.
+  \begin{example}
+    Consider $\int_{-\infty}^\infty \frac{x^2}{(x^2+1)^2}dx$. The
+    solution is to consider $\int_{-\infty}^\infty
+    \frac{z^2}{(z^2+1)^2}dz$ around a semicircle in the top half plane
+    with radius $R$. We will call the circular part $C_R$. This way,
+    we only care about the singularity at $i$. The integral around the
+    whole boundary is $2 \pi i \sum \Res = 2 \pi i \Res[
+    \frac{z^2}{(z^2+1)^2}, i]$. We note that $i$ is a double pole
+    because we can factor $(z^2+1)^2 = (z+i)^2(z-i)^2$. So, we get
+    that \[
+      \Res[\frac{z^2}{(z^2+1)^2},i] = \frac{d}{dz}
+    \left(
+      \frac{z^2}{(z+i)^2}
+    \right)|_{z=i} = \frac{-8i+4i}{16} = \frac{-i}{4}.
+  \] Thus, the whole integral is $2 \pi i \frac{-i}{4} =
+  \frac{\pi}{2}$
+  Now, this gives us that \[
+    \frac{\pi}{2} = \oint \frac{z^2}{(z^2+1)^2}dz = \int_{-R}^R
+    \frac{x^2}{(x^2+1)^2}dx + \int_{C_R} \frac{z^2}{(z^2+1)^2}dz.
+  \]
+  We will attempt to bound the second integral by an ML-estimate. This
+  gives us that $L = \pi R$ and $M = \frac{R^2}{(R^2-1)^2}$ so the
+  integral is bounded by $\frac{\pi R^2}{(R^2-1)^2} \to 0$ as $R \to
+  \infty$. Thus, \[
+    \frac{\pi}{2} = \lim_{R \to \infty} \oint \frac{z^2}{(z^2+1)^2} dz =
+    \int_{-\infty}^\infty \frac{x^2}{(x^2+1)^2}dx + 0
+  \]
+  \end{example}
+  When doing such computations, make sure to do a reality check. When
+  doing a real integral, the answer should be real. Ask, should it be
+  positive? How big should it be?
+
+  In general, what was necessary for our techniques to work on an
+  integral of the form $\int_{-\infty}^\infty \frac{P(x)}{Q(x)}dx$? We
+  needed $\operatorname{deg} Q \geq 2 + \operatorname{deg} P$ and
+  $Q(x) \neq 0$ for $x \in \R$. The first condition was necessary so that our
+  ML-estimate would tend to 0.
 \end{document}
