@@ -1433,4 +1433,68 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
   \end{defn}
   Analytic is $f: D \to \C$ is also called holomorphic. Meromorphic is
   analogous on $f: D \to \C^*$.
+
+  \section{(10/25/2016) Lecture 18)}
+  As a summary of our results from the previous lecture, we have the
+  following table. \\
+  \begin{tabular}{|c|c|}
+    \hline
+    Type & Behavior \\
+    \hline
+    Removable & Bounded; Equivalently, has a limit. \\
+    Pole (with order) & $\lim_{z \to z_0} f(z) = \infty$ \\
+    Essential & $f(D_\epsilon(z_0) \setminus \{z_0\})$ is dense in
+                $\C$ for all $\epsilon$ \\
+    \hline
+  \end{tabular}
+  Also, note that $f(z)$ has an isolated singularity at $\infty$ if
+  and only if $f(\frac{1}{z})$ has an isolated singularity at 0. This
+  is because if the Laurent series for $f(\frac{1}{z}) = \sum a_k
+  z^k$, then $f(z) = \sum a_k z^{-k}$, which is the Laurent series for
+  $f$ at $\infty$. Thus, the singular part at $\infty$ is $\sum_{k
+    \leq 0} a_kz^{-k}$.
+  \begin{example}
+    If $f$ is a polynomial or any entire function, then $f$ is its own
+    singular part at $\infty$. Eg $z^3+z+2$. 
+  \end{example}
+  Now, returning to the idea of meromorphic, we have the following
+  examples.
+  \begin{example}
+    $\frac{1}{\sin z}$ is a meromorphic function on $\C$. It has
+    infinitely many poles of order 1, but they are all
+    isolated. However, this function is not meromorphic on
+    $\C^*$. Poles in $\C$ accumulate at $\infty$. 
+  \end{example}
+  \begin{example}
+    A polynomial is meromorphic on $\C^*$; it has one pole at
+    $\infty$. Rational functions are also meromorphic on $\C^*$ by
+    similar reasoning.
+  \end{example}
+  A fact worth noting. With $n = \max\{ \operatorname{deg} p(z),
+  \operatorname{deg} q(z) \}$ and $p,q$ relatively prime, $z \mapsto
+  \frac{p(z)}{q(z)}$ is $n$ to 1 from $\C^*$ to $\C^*$, including
+  multiplicity.
+  \begin{rmk}
+    One can add, multiply, divide (but not by 0) meromorphic functions
+    to get another meromorphic function. This follows from the fact
+    that the poles all have finite order.
+  \end{rmk}
+  \begin{prop}
+    All meromorphic functions on $\C^*$ are rational functions.
+  \end{prop}
+  \begin{proof}[Idea of proof]
+    First, there are only finitely many poles, otherwise they ware not
+    isolated because they would accumulate.
+
+    Second, let $\{z_1, \ldots, z_j\}$ be the poles in $\C$. Let
+    $p_j(z)$ be the principal part at $z_j$ and $p_\infty(z)$ be the
+    principal part at $\infty$. Then $f - (p_\infty + \sum p_j)$ is an
+    entire function that extends to be 0 at $\infty$.
+
+    Third, it is bounded. So,
+
+    fourth, by Liouville, it is zero. Thus, $p_\infty + \sum p_j$ is rational.
+  \end{proof}
+  Writing $f = p_\infty + \sum p_j$ is the partial fraction
+  decomposition of $f$.
 \end{document}
