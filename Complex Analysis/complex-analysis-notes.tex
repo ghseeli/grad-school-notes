@@ -1326,4 +1326,111 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
   centered at $z_0$ converges on the largest annulus to which $f$
   extends analytically.
 
+  \section{(10/20/2016) Lecture 16}
+  \subsection*{Isolated Singularities}
+  \begin{defn}
+    $z_0$ is an isolated singularity of $f$ if $f$ is analytic on $0 <
+    |z-z_0| < \epsilon$ for some $\epsilon$ but not at $z_0$.
+  \end{defn}
+  Given this situation, then $f$ has a Laurent series valid in a
+  punctured disk at $z_0$, $\sum_{-\infty}^\infty a_k(z-z_0)^k$. We
+  call the part with negative powers, $\sum_{k < 0} a_k(z-z_0)^k$ the
+  \emph{principal part} or \emph{singular part}.
+
+  \begin{itemize}
+  \item If the principal part is empty, we say $z_0$ is removable.
+  \item If the principal part has finitely many terms, we say $z_0$ is
+    a pole of order $N$, where $-N$ is the least $k$ with $a_k \neq
+    0$. e.g. $\frac{1}{z}+\frac{3}{z^2}$ has a pole of order 2 at 0.
+  \item If the principal part has infinitely many terms, we say $z_0$
+    is an essential singularity.
+  \end{itemize}
+  \begin{example}
+    $\frac{\sin z}{z}$ has a removable singularity at 0. This is
+    because its Laurent series is $\frac{z-\frac{z^3}{3!}+\cdots}{z} =
+    1-\frac{z^2}{3!}+\frac{z^4}{5!}\cdots$. 
+  \end{example}
+  \begin{example}
+    $\sin \frac{1}{z}$ has an essential singularity at 0. Examine its
+    Laurent series: $\frac{1}{z}-\frac{1}{3!z^3}+\frac{1}{5!z^5}\cdots$.
+  \end{example}
+  \begin{prop}
+    The following are equivalent for $f$ with isolated singularity at
+    $z_0$.
+    \begin{enumerate}[label=(\roman*)]
+    \item $z_0$ is removable.
+    \item $\lim_{z \to z_0} f(z)$ exists and is finite.
+    \item $f$ is bounded in a deleted neighborhood of $z_0$.
+    \end{enumerate}
+  \end{prop}
+  \begin{proof}
+    (iii) implies (i) is Riemann's Theorem on Removable Singularities
+    (see Gamelin p 172). We will prove this theorem. Assume $|f(z)|
+    \leq A$ near $z_0$. We need $a_k = 0$ for $k < 0$. We note that \[
+      a_k = \frac{1}{2 \pi i}\int_{|z-z_0|=r} \frac{f(z)}{(z-z_0)^{k+1}}dz
+    \]
+    where $r$ is small. Now, let us perform an ML-estimate on this
+    integral. We get that $M = \frac{A}{r^{k+1}}$ and $L = 2\pi
+    r$. Thus, \[
+      |a_k| = \frac{1}{2\pi} \cdot \frac{A}{r^{k+1}} \cdot 2 \pi r = Mr^{-k}.
+    \]
+    Since $k < 0$ and this estimate is valid for small $r$, we get
+    that $|a_k| = 0$.
+  \end{proof}
+  \begin{lem}
+    Let $z_0$ be an isolated singularity of $f$. Then, the following
+    are equivalent.
+    \begin{enumerate}[label=(\roman*)]
+    \item $z_0$ is a pole of order $N$.
+    \item $\frac{1}{f}$ extends to $z_0$ with a zero of order $N$ at
+      $z_0$.
+    \item $f(z) = \frac{g(z)}{(z-z_0)^N}$ for $g$ analytic in
+      neighborhood of $z_0$ where $g(z_0) \neq 0$. 
+    \end{enumerate}
+  \end{lem}
+  When considering this lemma, one should be thinking of functions
+  like $f(z) = \frac{1}{z^N}$.
+  \begin{prop}
+    Let $z_0$ be an isolated singularity of $f$. Then, $z_0$ is a pole
+    if and only if $\lim_{z\to z_0} |f(z)| = \infty$.
+  \end{prop}
+  \begin{proof}
+    The forward direction is obvious since it is part 3 of the
+    previous lemma. For the backward direction, consider
+    $\frac{1}{f}$. It is bounded near $z_0$, so $z_0$ is a removable
+    singularity of $\frac{1}{f}$, and its extension has a zero of some
+    order there. \[
+      \frac{1}{f(z)} = g(z)(z-z_0)^N, g(z_0) \neq 0
+    \]
+    So, $f(z) = \frac{1}{g(z)}\frac{1}{(z-z_0)^N}$. Since
+    $\frac{1}{g(z)}$ is analytic and not zero near $z_0$, this is a
+    pole of order $N$.
+  \end{proof}
+  \begin{thm}[Casorati-Weierstrass]
+    If $z_0$ is an essential singularity, then the image of any
+    deleted neighborhood is dense in $\C$.
+  \end{thm}
+  \begin{example}
+    Consider $e^{\frac{1}{z}}$ at $z=0$. 
+  \end{example}
+  \begin{proof}
+    Supposed $z_0$ is an isolated singularity and there is
+    $w,\delta,\epsilon$ so that $f(0 < |z-z_0| < \delta) \cap
+    D_\epsilon(w) = \varnothing$. Then, $|f(z)-w| > \epsilon$ on
+    $|z-z_0| < \delta$. This means that $\left| \frac{1}{f(z)-w}
+    \right| < \frac{1}{\epsilon}$ on the deleted neighborhood. Now, by
+    Riemann's theorem, $\frac{1}{f(z)-w}$ has a removable singularity
+    at $z_0$. Therefore, $\frac{1}{f(z)-w} = g(z)(z-z_0)^N$ for some
+    $N \geq 0$ and some analytic function $g(z)$ where $g(z_0) \neq
+    0$. Then, we have that $f(z) = w + \frac{1}{g(z)}(z-z_0)^N$. So,
+    if $N=0$, the singularity is removable. If $N > 0$, then the
+    singularity is a pole of that order. In either case, the
+    singularity is not essential, proving the contrapositive.
+  \end{proof}
+  \begin{defn}
+    A function $f$ is \emph{meromorphic} on a domain $D$ if its only
+    singularities are isolated points.
+  \end{defn}
+  Analytic is $f: D \to \C$ is also called holomorphic. Meromorphic is
+  analogous on $f: D \to \C^*$.
 \end{document}
