@@ -1,0 +1,16 @@
+before_install:
+- "sudo apt-get update && sudo apt-get install --no-install-recommends texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra texlive-latex-recommended dvipng"
+script:
+- mkdir _build
+- pdflatex -output-directory _build Algebra/master.tex
+- pdflatex -output-directory _build Complex\ Analysis/complex-analysis-notes.tex
+- pdflatex -output-directory _build Differential\ Topology/differential-topology-notes.tex
+deploy:
+  provider: releases
+  file:
+  - _build/master.pdf
+  - _build/complex-analysis-notes.pdf
+  - _build/differential-topology-notes.pdf
+  skip_cleanup: true
+  on:
+    tags: true
