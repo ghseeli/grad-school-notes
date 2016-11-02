@@ -2,7 +2,8 @@
 
 \usepackage{../notes}
 %%% matt experiments with theorem style:
-\usepackage{amsthm}% http://ctan.org/pkg/amsthm
+\usepackage{amsthm}% http://ctan.org/pkg/ams\begin{thrm}
+	\usetikzlibrary{cd}
 \newcommand{\x}{\times}
 \renewcommand{\bar}{\widebar}
 \newcommand{\grad}{\nabla}
@@ -35,10 +36,8 @@ topological spaces and continuous functions between them. However, the name
 differential topology suggests that calculus is somehow involved. The objects of
 study in differential topology are manifolds. Manifolds are topological spaces
 that ``locally'' look like $\R^n$.
-
 \begin{example}
-	Consider the set $S^2 = \{ \vec{x} \in \R^3: ||x||=1\}$. This is a sphere
-	in 3 dimensions and thus can also be written as $S^2 = \{(x,y,z) :
+	Consider the set $S^2 = \{ \vec{x} \in \R^3: ||x||=1\}$. This is a $sphere \in 3$ dimensions and thus can also be written as $S^2 = \{(x,y,z) :
 	x^2+y^2+z^2=1\}$. The convention for $S^2$ or ``two-sphere'' comes from the
 	fact that a small space of $S^2$ looks like $\R^2$.
 
@@ -128,7 +127,7 @@ Now, let us define what it means for a function to be differentiable.
 \begin{thrm}[billiard ball theorem]
 	A continuously differentiable section $s$ on $TS^2$ with $s(x) \neq 0$ for all $x \in S^2$ does not exist.,
 	intuition: Can you draw a continuously differentiable, always nonzero vector field on a billiard ball?  No.,
-	% // NO --> apparently TS^2 not isomorphic to S^2 \times \R^2.
+	% // NO \to apparently TS^2 not isomorphic to S^2 \times \R^2.
 	% // Ts^2 \subseteq S^2 \times \R^3 \subseteq \R^3 \times \R^3.
 \end{thrm}
 
@@ -167,10 +166,12 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \emph{1-forms}.
 	$f$ is an \emph{open} map if the image of every open (closed) (compact) set under $f$ is open (closed) (compact).
 	For any topological space property, substitute ``open'' above with the name of that property, to get another definition.  Such properties include:
 	\begin{itemize}
+		\item open
 		\item closed
 		\item compact
 		\item connected
 		\item path-connected
+		\item measure 0
 	\end{itemize}
 \end{defi}
 \begin{thrm}[continuity and openness]
@@ -234,7 +235,7 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \emph{1-forms}.
 \begin{defi}
 	Given a space $X$, the following are all equivalent:
 	\begin{itemize}
-		\item $X$ is T1.
+		\item $X$ is $T_1$.
 		\item For all $a \in X$, for all $b \in X$, there exists an open neighborhood of $a$ disjoint from $b$.
 		\item Every singleton subset of $X$ is closed.
 		\item Every finite subset of $X$ is closed.
@@ -247,7 +248,7 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \emph{1-forms}.
 
 	Properties of Hausdorff spaces $H$:
 	\begin{itemize}
-		\item All properties of T1 spaces apply, since a T2 space is T1.
+		\item All properties of $T_1$ spaces apply, since a $T_2$ space is $T_1$.
 		\item Every compact subset of $H$ is closed in $H$.
 	\end{itemize}
 \end{defi}
@@ -273,7 +274,7 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \emph{1-forms}.
 	If $X$ and $Y$ are compact, then $X \times Y$ is compact.
 \end{thrm}
 \begin{thrm}
-	$X$ is a top space and $~$ is an equivalence relation on $X$.  Then there is a topology on $X/~$ (the set of equivalence classes) as follows.  $S \subseteq X/~$ is open iff (let backwards(S) : X/~ to X) backwards(S) is open in X.  [[ f: X/~ to Y is continuous iff f of g : X to Y is contniuous.
+	$X$ is a top space and $~$ is an equivalence relation on $X$.  Then there is a topology on $X/~$ (the set of equivalence classes) as follows.  $S \subseteq X/~$ is open iff (let backwards(S) : X/~ to X) backwards(S) is $open \in X$.  [[ f: X/~ to Y is continuous iff f of $g: X \to Y$ is contniuous.
 \end{thrm}
 \begin{defi}
 	A \emph{topological group} is a Hausdorff space $G$ that is also a group, which satisfies:
@@ -331,9 +332,11 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \emph{1-forms}.
 	For any $k \in \N^+$, if $f:\R^n \to \R^n$ is $C^k$ and $f'(x)$ is invertible for some $x$, then $f$ is locally a diffeomorphism of class $C^k$ at $x$.
 \end{thrm}
 \begin{example}
-	Counterexample: Let $$f(x) =
+	Counter\end{example}
+\begin{example}
+	Let $$f(x) =
 	\begin{cases}
-		\frac x2 + x^2\sin\left(\frac 1x\right) \text{ if $x \neq 0$} \\
+		\frac{x}{2} + x^2\sin\left(\frac 1x\right) \text{ if $x \neq 0$} \\
 		0 \text{ if $x=0$} \\
 	\end{cases}
 	$$  We see that $f$ is differentiable, but the derivative is not continuous (i haven't verified this).  It turns out that $f$ is not one-to-one (and therefore not a bijection).
@@ -347,7 +350,6 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \emph{1-forms}.
 	Suppose $f'(x)$ has rank $m$.
 	Then there exists $W$ nbd $x$ and $V$ nbd $z$ and $U$ open in $\R^k$ and a diffeomorphism $I : W \to U \times V$
 	s.t. $f = I.\pi$ where $\pi$ is the projection from $U \times V$ onto $V$.
-
 \end{thrm}
 \begin{thrm}[local immersion theorem]
 	This is very similar to the local submersion theorem (more soon...)
@@ -357,7 +359,6 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \emph{1-forms}.
 	Suppose $f'(x)$ has rank $m$.
 	Then there exists $V$ nbd $x$ and $W$ nbd $z$ and $U$ open in $\R^k$ and a diffeomorphism $I : U \times V \to W$
 	s.t. $f = in.I$ where $in$ is the inclusion from $V$ to $U \times V$.
-
 \end{thrm}
 \begin{thrm}
 	If $f$ is locally diffeomorphic at $x$, then the slope matrix of $f^{-1}$ at $f(x)$ is given by $(f^{-1})'(f(x)) = (f'(a))^{-1}$.
@@ -415,7 +416,7 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \emph{1-forms}.
 \end{example}
 
 \begin{example}
-	$M = S^1$.  $A = {U_l, U_r, U_t, U_b}$.  For $U_t$, for example, we choose $phi_t$ to be a projection of the semicircle with open endpoints to a line segment with open endpoints.  Do the same for the others.  Looking at $\phi^{-1}$ of $\phi$'s will reveal that their composition is $C^\infty$, so we conclude that $A$ is smooth.
+	$M = S^1$.  $A = {U_l, U_r, U_t, U_b}$.  For $U_t$, for example, we choose $\phi_t$ to be a projection of the semicircle with open endpoints to a line segment with open endpoints.  Do the same for the others.  Looking at $\phi^{-1}$ of $\phi$'s will reveal that their composition is $C^\infty$, so we conclude that $A$ is smooth.
 \end{example}
 
 \begin{defi}
@@ -485,8 +486,11 @@ If $f$ is a smooth map of manifolds, then we can differentiate, getting the line
 \end{prop}
 
 \begin{defi}
-	An \emph{embedding} $f$ is an immersion s.t. $f : M \to f(M)$ is a homeomorphism.  Here is an equivalent, ``minimal'' definition:  An \emph{embedding} is an immersion that is injective and proper.
+	An \emph{embedding} $f$ is an immersion s.t. $f : M \to f(M)$ is a homeomorphism.
 \end{defi}
+\begin{thrm}[minimal criteria for an embedding]
+	$f$ is an \emph{embedding} iff $f$ is an immersion that is injective and proper.
+\end{thrm}
 
 An immersion is locally injective.  An embedding is globally injective.
 
@@ -698,7 +702,7 @@ direct limit
 $= c\lim C^\infty(U)$.
 for open nieghborhoods of $p$.
 
-If $\phi : M to N$ in smooth and $\phi(p) = q$, then we get an induced ring morhpism
+If $$\phi: M \to N$$ in smooth and $\phi(p) = q$, then we get an induced ring morhpism
 $\phi^* : C^\infty(N,q) \to C^\infty(M,p)$ by
 $\phi^*([f]) = [\phi.f]$
 
@@ -747,8 +751,9 @@ proof not shown.
 	given $\phi: M \supseteq U \to \R_n$ let $D_v$ be the composit
 	$C^\infty(M, p)$ to by ${\phi^{-1}}^*$ to $C^\infty(\R^n,q)$ to $D_w$ to $\R$.
 
-	independent of coordinate chart, by lemma
-\end{lem}
+	independent of coordinate chart, by \end{lem}
+\begin{lem}
+	\end{lem}
 \begin{defi}
 	A \emph{derivation} is a function that is linear and satisfies the product rule.
 \end{defi}
@@ -918,7 +923,7 @@ $k = n = \dim M$ is best possible
 
 \begin{example}
 	$M \subseteq S^3 \subseteq \H$ (has 4 dim)
-	$q = x1 + yi + zj + wk$
+	$q = x_1 + yi + zj + wk$
 	Let
 	$X_1(q) = (q, iq)$
 	$X_2(q) = (q, jq)$
@@ -936,15 +941,16 @@ consider we have $k = n$, best possible
 
 \begin{defi}
 	$M$ is \emph{parallelizable} if there exists a diffeomorphism
+
 	$$\phi : M \x \R^n \to TM$$
 	$$(x, t_1,,,t_n) \mapsto (x, t_1X_1(x),,,t_nX_n(x))$$
+
 	and $\phi.p$ commutes with $\pi$ in
 
-	$\phi : M \x \R^n \to TM$
-
-	$p: TM \to M$
-
-	$\pi: M \x \R^n \to M$
+	$$\begin{tikzcd}
+		M \x \R^n \arrow[r, "\phi"] \arrow[rd, "\pi"'] & TM \arrow[d, "p"] \\
+		 & M
+	\end{tikzcd}$$
 
 \end{defi}
 \begin{thrm}
@@ -953,11 +959,10 @@ consider we have $k = n$, best possible
 \begin{defi}
 	An $n$-dimensional manifold $M$ is \emph{framed} if there exists $k$ and a vector bundle isomorphism $f$ s.t.
 
-	$f : TM \x \R^k \to M \x \R^{n+k}$
-
-	$q: M \x \R^{n+k} \to M$
-
-	$p: TM \x \R^k \to M$
+	$$\begin{tikzcd}
+		TM \x \R^k \arrow[r, "f"] \arrow[rd, "p"'] & M \x \R^{n+k} \arrow[d, "q"] \\
+		           & M
+	\end{tikzcd}$$
 
 	s.t. $f$ is smooth and each map $T_xM \x \R^k \to \R^{n+k}$ is a linear isomorphism. (that is, $f$ is a diffeomorphism)
 	$f: p^{-1}(x) \to q^{-1}(x)$
@@ -966,15 +971,17 @@ consider we have $k = n$, best possible
 	Every parallelizable manifold is framed. (I have not confirmed this)
 \end{thrm}
 \begin{example}
-	$S^2$ is frames with $k=1$ by
-	$f : TS^2 \x \R \to S^2 x \R^3$
-	$((x,v), t) \mapsto (x, v + tx)$
+	$S^2$ is framed with $k=1$ by
+
+	$$f : TS^2 \x \R \to S^2_x \R^3$$
+	$$((x,v), t) \mapsto (x, v + tx)$$
+
 	$<x>$
 
 	observe that
 	$TS^2 \not\isom S^2 \x \R^2$
 	but
-	$TS2 x \R \isom S^2 x \R^3$
+	$TS^2 \x \R \isom S^2 \x \R^3$
 	wow!
 
 	or in general, we have
@@ -1020,12 +1027,12 @@ set of above over all smooth functions
 \begin{example}
 	$U \subseteq \R^n$
 	A general vector field on $U$ had the form
-	$f_1 d/dx1 +++ fn d/dxn$
+	$f_1 \frac{d}{dx}1 +++ fn \frac{d}{dx}n$
 	where $fi : U to \R^n$
 	then
 	A general 1-form on $U$ has the form
 	$f1 dx1 +++ fn dxn$
-	(observe that $dx1$ is dual to $d/dx1$, etc)
+	(observe that $dx1$ is dual to $\frac{d}{dx}1$, etc)
 \end{example}
 Monday, Oct 17, 2016
 
@@ -1095,7 +1102,7 @@ Monday, Oct 17, 2016
 \begin{proof}
 	We will prove the lesser theorem ``A compact smooth manifold $M^n$ embeds in $\R^N$ for $N$ large enough.'':
 	$M$ compact implies there exists a finite atlas
-	ALL PHIS BELOW are actually $\phi_i$, for any $i$.  AS WELL AS LAMBDAS AND THETAS AND US AND VS
+	ALL aPHIS BELOW are actually $\phi_i$, for any $i$.  AS WELL AS aLAMBDAS AND aTHETAS AND US AND VS
 	suppose $\phi$ extended to all of $M$, is
 
 	there exists $\\overset{~}{\phi} M \to \R^n$
@@ -1258,11 +1265,12 @@ Wednesday, Oct 19, 2016
 	A set $S \subseteq \R^n$ has \emph{measure 0} if given any $\epsilon > 0$, there exist rectangular $n$-dimensional boxes $\{S_j\}_{j\in J}$, where $J$ is countable, s.t. $S \subseteq \bigcup_{j \in J} S_j$ and $\sum_{j \in J} \vol(S_j) < \epsilon$.
 \end{defi}
 \begin{lem}
-	For any smooth function $f : U \to \R^n$, where $U \subseteq \R^n$, if $S \subseteq U$ has $\mu(S) = 0$, then $\mu(f(S)) = 0$.
+	If $f$ is a smooth function from an open subset of $\R^n$ to $\R^n$, then $f$ is measure 0.
 \end{lem}
-
 \begin{proof}
 	Step 1
+
+	$f : U \to \R^n$.
 
 	On any compact $K \subseteq U$, the partial derivatives $\frac{df_i}{df_j}$ are bounded, as well as their magnitudes, $|\frac{df_i}{df_j}|$.
 
@@ -1285,214 +1293,214 @@ Wednesday, Oct 19, 2016
 
 	$\mu(S) = 0$ implies $\mu(S_i) = 0$.
 
-	% given \epsilon > 0, cover Si by Si s.t. SUMij vol(Sij) < \epsilon/N/2^i
+	Given $\epsilon > 0$, cover each $S_i$ by $S_{i_k}$ s.t. $\sum_{k} \vol(S_{i_k}) < \frac{\epsilon}{N\cdot2^i}$.
 
-	% Then f(Si) is covered by S'ij s.t. SUM vol(S'ij) < \epsilon/2^i
+	Then $f(S_i)$ is covered by $S'_{i_k}$ s.t. $\sum_k \vol(S'_{i_k}) < \frac{\epsilon}{2^i}$.
 
-	% and so f(S) is something by SUM v.
+	And so $f(S)$ is covered by $\bigcup_{i,k} S'_{i_k}$ s.t. $\sum_{i,k} \vol(S'_{i_k}) < \epsilon$.
 \end{proof}
-\end{document}
 \begin{cor}
-	Given any \subseteq $S$ of an n-dim smooth manifold $M$, then TFSE:
-	* There exists an atlas {U} for M s.t. for all i, mu(\phi_i(S \cap U_i)) = 0.
-	* For any (smooth) chart \phi:U to \R^n, mu(\phi(S \cap U)) = 0.
-In this case, we say $S$ has \emph{measure 0} in M, and write mu(S) = 0.
-
-\begin{thrm}
-	["Mini Sards Theorem"]
-Given smooth $f : M^m to N^n$, and
-if $m < n$, then $f(M)$ has measure $0$ in $N$
+	Given any subset $S$ of an $n$-dim smooth manifold $M$, then TFAE:
+	\begin{itemize}
+		\item There exists an atlas $\{U\}$ for $M$ s.t. $\forall i$, $\mu(\phi_i(S \cap U_i)) = 0$.
+		\item For any (smooth) chart $\phi:U \to \R^n$, $\mu(\phi(S \cap U)) = 0$.
+	\end{itemize}
+	In this case, we say $S$ has \emph{measure 0} in $M$, and write $\mu(S) = 0$.
+\end{cor}
+\begin{thrm}["Mini Sards Theorem"]
+	If $f : M^m \to N^n$ is a smooth map of manifolds and $m < n$, then $f(M)$ has measure $0$.
+\end{thrm}
 \begin{proof}
-		Step 1
-		Reduce to case M = U open in \R^m, and N = \R^n:
+% 		Step 1
+% 		Reduce to case M = U open in \R^m, and N = \R^n:
 
-		{U} is an atlas for M.
+% 		{U} is an atlas for M.
 
-		If, for all i, mu(f(U_i)) = 0, then mu(f(M)) = 0
+% 		If, for all i, \mu(f(U_i)) = 0, then \mu(f(M)) = 0
 
-		Let V_i = \phi_i(U_i) open in \R^n
+% 		Let V_i = \phi_i(U_i) open in \R^n
 
-		' inverse
-		f(U_i) = (V_i.\phi'.f)  where \R^m supset V_i ----\phi'.f\toN^n
+% 		' inverse
+% 		f(U_i) = (V_i.\phi'.f)  where \R^m supset V_i ----\phi'.f\toN^n
 
-		suffices to suppose M in \R^m
+% 		suffices to suppose M in \R^m
 
-	Step 2
-		\R^m supset U ----f\to \R^n
-		To show f(U) has measure 0 in \R^n
+% 	Step 2
+% 		\R^m supset U ----f\to \R^n
+% 		To show f(U) has measure 0 in \R^n
 
-		U x \R^n-m ----F---- \R^n
-		^
-		-
-		-
-		Ux{0} ------f------\R^n (above)
+% 		U x \R^n-m ----F---- \R^n
+% 		^
+% 		-
+% 		-
+% 		Ux{0} ------f------\R^n (above)
 
-		Let F(x,y) = f(x) + y
+% 		Let F(x,y) = f(x) + y
 
-		F|_{U x \{0\}} = f
+% 		F|_{U x \{0\}} = f
 
-		U x {0} has measure $0 \in U$ x \R^n-m
+% 		U x {0} has measure $0 \in U$ x \R^n-m
 
-		So by lemma, mu(F(U)) = mu(F(U x {0})) = 0
+% 		So by lemma, \mu(F(U)) = \mu(F(U x {0})) = 0
 
 
 
-Now let's look at when m >= n.
-maybe understand just for m = n+1...
+% Now let's look at when m >= n.
+% maybe understand just for m = n+1...
+\end{proof}
 \begin{proof}
-		C = { x in \R^m | dfx is not onto }
+	$C = \{ x \in \R^m \mid df_x \text{ is not onto} \}$
 
-	consider the function dfx.  Using THAT as our function...
-	C1 = {zeros of order 1}
-	C2 = {zeros of order 2}
+	Consider the function $df_x$.  Using THAT as our function...
 
-	C supset C1 supset C2 supset
+	$C_1 = \{zeros of order 1\}$
+
+	$C_2 = \{zeros of order 2\}$
+
+	$C \supseteq C_1 \supseteq C_2 \supseteq \supseteq \supseteq$
 
 	lemma 1
-		If k > m/n = 1, then mu(f(Ck)) = 0
-		(proof sim. to lemma \to MVT + related estimates)
+		If $k > m/n = 1$, then $\mu(f(Ck)) = 0$.
+		(The proof is similar to Mean Value Theorem lemma + related estimates)
 	lemma 2
-		mu(f(C-C1)) = 0
-		hint, use Fubini for lemma 2 and lemma 3
+		$\mu(f(C-C1)) = 0$.
+		(hint, use Fubini for lemma 2 and lemma 3)
 	lemma 3
-		mu(f(Ck-C{k+1})) = 0
-
-
-
-
-
-
+		$\mu(f(Ck-C{k+1})) = 0$.
+\end{proof}
 \begin{thrm}[Sard's Theorem]
-	If f is a smooth map of manifolds, then the set of critical values of f has measure $0 \in N$.
+	If $f$ is a smooth map of manifolds, then the set of critical values of $f$ has measure $0$.
 \end{thrm}
 \begin{cor}
-	The regular values are $dense \in N$
+	The regular values are dense in $N$.
+\end{cor}
 \begin{cor}
-	If m < n, then {cirt values} = f(M) has measure $0 \in N$.  In particular, f cannot be onto.
-
+	If $m < n$, then $\{\text{critical values}\} = f(M)$, and $f(M)$ has measure 0.  In particular, $f$ cannot be onto.
+\end{cor}
 \begin{example}
-	Let f : \R to S^1 x S^1 be f(t) = (t, sqrt(2)t) mod Z^2
-S^1 x S^1 = \R/Z x \R/Z = \R^2/Z^2
-f(\R) = {crit values} is $dense \in S$^1 x S^1
-
-counter\begin{example}
-	there exist continuous f : \R to \R x \R which are onto (space filling curves)
+	Let
+	$$f : \R to S^1 \x S^1$$
+	$$f(t) = (t, \sqrt(2)t) \mod Z^2$$
+	and
+	$$S^1 \x S^1 = \R/\Z \x \R/\Z = \R^2/\Z^2$$
+	Then
+	$f(\R) = \{\text{critical values}\}$ is dense in $S^1 \x S^1$.
+\end{example}
+\begin{example}
+	There exists continuous $f : \R \to \R \x \R$ which are onto (space filling curves).
+\end{example}
 
 
 Wednesday, Oct 26, 2016
 
-thm [Whitney Embedding thm]
-Every n-dim smooth manifold embeds in \R^{2n} and immerses in \R{2n-1}
-we will prove
-Every n-dim smooth manifold embeds in \R^{2n+1} and immerses in \R{2n}
-instead
+\begin{thm}[Whitney Embedding thm]
+	Every $n$-dim smooth manifold embeds in $\R^{2n}$ and immerses in $\R{2n-1}$.
+\end{thm}
 \begin{proof}
-		Assnume M embedded in RN for N>>0
-	start with 1-1 immersion f : Mn to RN
-	\pi_a
+% 	We will only prove ``Every $n$-dim smooth manifold embeds in $\R^{2n+1}$ and immerses in $\R{2n}$
+% 	instead''...
 
-	claim:
-	"If N > 2n + 1, then there exists nonzero a in RN s.t.
-		1. f: Mn to RN \pi_a <a>perp is still an immersion.
-		2. f.\pi_a is still 1-1.
-	If N > 2N, then can still do (1)."
+% 	Assume $M$ embedded in $\R^N$ for $N>>0$.
 
-	\begin{proof}
-			Let g : TM to RN be g(x,v) = df_x(v)
+% 	Start with 1-1 immersion $f : M^n \to \R^N$
+
+% 	$\pi_a$
+
+% 	claim A:
+% 	"If N > 2n + 1, then there exists nonzero a in RN s.t.
+% 		1. f: Mn to RN \pi_a <a>perp is still an immersion.
+% 		2. f.\pi_a is still 1-1.
+% 	If N > 2N, then can still do (1)."
 
 
+% 		Claim implies there exists 1-1 immersion f : M^n to \R{2n+1}
 
-		dfx : T_xM to TRN = RN
-		Let h : M x M x \R to RN be
-		h(x,y,t) = t[f(x) - f(y)]
+% 		If M is compact, this would be an embedding.
 
-		by Mini-Sards Thm, the Im(g) and Im(h) have measure 0
-		so Im(g) \cup Im(h) has measure 0
-		so there exists nonzero a s.t. a not in Im g union Im h.
+% 		If f is proper, this would be an embedding.
 
-		verify this a works:
-		f.\pi_a is still an immersion?
-		d_x(f.\pi_a) = d_xf.\pi_a
-		Fact: 0 = d_x(f.\pi_a)(v) = \pi_a(df_x(v)) iff df_x(f(v)) in <a>
-		Fact: for all v,w, a \neq df_x(w) iff <a> = {0}
+% \end{proof}
+% \begin{proof}[Proof of Claim A]
+% 	Let g : TM to RN be g(x,v) = df_x(v)
 
-		is f.\pi still 1-1?
-		consider x \neq $y \in M$
-		0 = x.f.\pi - y.f.\pi = (x.f - y.f).\pi
-		iff
-		x.f - y.f in <a>
-		(f monic implies f(x) - f(y) neq 0)
-		iff
-		there exists t in \R s.t. t[f(x) - f(y)] = a
-		iff
-		h(x,y,t) = a
+% 	dfx : T_xM to TRN = RN
+% 	Let h : M x M x \R to RN be
+% 	h(x,y,t) = t[f(x) - f(y)]
 
-		Claim implies there exists 1-1 immersion f : M^n to \R{2n+1}
+% 	by Mini-Sards Thm, the Im(g) and Im(h) have measure 0
+% 	so Im(g) \cup Im(h) has measure 0
+% 	so there exists nonzero a s.t. a not in Im g union Im h.
 
-		If M is compact, this would be an embedding.
+% 	verify this a works:
+% 	f.\pi_a is still an immersion?
+% 	d_x(f.\pi_a) = d_xf.\pi_a
+% 	Fact: 0 = d_x(f.\pi_a)(v) = \pi_a(df_x(v)) iff df_x(f(v)) in <a>
+% 	Fact: for all v,w, a \neq df_x(w) iff <a> = {0}
 
-		If f is proper, this would be an embedding.
+% 	is f.\pi still 1-1?
+% 	consider x \neq $y \in M$
+% 	0 = x.f.\pi - y.f.\pi = (x.f - y.f).\pi
+% 	iff
+% 	x.f - y.f in <a>
+% 	(f monic implies f(x) - f(y) neq 0)
+% 	iff
+% 	there exists t in \R s.t. t[f(x) - f(y)] = a
+% 	iff
+% 	h(x,y,t) = a
+% \end{proof}
+% \begin{lem}
+% 	There exists a proper map p "(roe)" from M to \R.
+% \end{lem}
+% \begin{proof}
+% 					Choose countable cover {U} of M with each Ubar compact.
 
-		\begin{lem}
-				There exists a proper map p "(roe)" from M to \R.
-			\begin{proof}
-					Choose countable cover {U} of M with each Ubar compact.
+% 				Let {p_i : M to [0,1]} partition of unity w.r.t. {U}
+% 				Let p(x) = \sum_{i=1}^oo ip_i(x).
+% 				Claim: this p is proper.
+% 				Fix j
+% 				Suppose $x \in M$ and and p(x) < j implies there exists i < j s.t. p_i(x) > 0 iff there exists i < j with x in U_i.
+% 				Thus, p'([-j,j]) \subseteq union U_i \subseteq union Uibar, which is compact
 
-				Let {p_i : M to [0,1]} partition of unity w.r.t. {U}
-				Let p(x) = \sum_{i=1}^oo ip_i(x).
-				Claim: this p is proper.
-				Fix j
-				Suppose $x \in M$ and and p(x) < j implies there exists i < j s.t. p_i(x) > 0 iff there exists i < j with x in U_i.
-				Thus, p'([-j,j]) \subseteq union U_i \subseteq union Uibar, which is compact
+% 		Assume the given f has |f(x)| < 1 (we can always shrink f down with arctan)
 
-		Assume the given f has |f(x)| < 1 (we can always shrink f down with arctan)
+% 		Let F = (f,p) : M to \R{2n+1}
 
-		Let F = (f,p) : M to \R{2n+1}
+% 		again find a nice nonzero a as before, and a not in <e_{2n+2}> (last basis vec) (a 0 in last coord)
+% 		claim
+% 		F.\pi : M to <a>perp = \R{2n+1} is proper.
 
-		again find a nice nonzero a as before, and a not in <e_{2n+2}> (last basis vec) (a 0 in last coord)
-		claim
-		F.\pi : M to <a>perp = \R{2n+1} is proper.
+% 		x.F.\pi = (x.p, x.f).\pi
+% 		= (f(x), 0).\pi + (0, p(x)).\pi
 
-		x.F.\pi = (x.p, x.f).\pi
-		= (f(x), 0).\pi + (0, p(x)).\pi
+% 		ALL \PIS ARE \pi_a \subseteq THIS SECTION (INCLUDING ABOVE)
 
-		ALL \PIS ARE \pi_a \subseteq THIS SECTION (INCLUDING ABOVE)
+% 		|a.F.\pi| <= |(x.f, 0).\pi| + |(0, x.p).\pi|
+% 				<= 1 + |(0, x.p).\pi|
 
-		|a.F.\pi| <= |(x.f, 0).\pi| + |(0, x.p).\pi|
-				<= 1 + |(0, x.p).\pi|
+% 		|x_k| to oo, |p(x)| to oo implies \pi(0, p(x)) to oo implies |x_k.f.\pi| to oo
 
-		|x_k| to oo, |p(x)| to oo implies \pi(0, p(x)) to oo implies |x_k.f.\pi| to oo
-
+\end{proof}
 \begin{thrm}
-	If M and L are not transverse, then you can wiggle M a little in the right direction, and then M+c and L WILL be transverse.
-
+	If $M$ and $L$ are not transverse, then you can wiggle $M$ a little in the right direction, and then $M+c$ and $L$ WILL be transverse.
+\end{thrm}
 \begin{lem}
 	Given $M \x S$ instead of $M$ and $F$ instead of $F$.  Suppose $F \pitchfork L$.  Then for almost all $s \in S$ (except for on a set of measure 0), the sunction $F_s: M \to N$ by $F_s(x) = F(x,s)$ is transverse to $L$.
-
-	\begin{proof}
-
-
-HW prove a specific example of \begin{lem}
-
-Given \R^n instead of N in setup.
-Let F : M x \R^n to \R^n be F(x,c) = f(x) + c
-	\begin{proof}
-		Fc = fc
-	F is "obviously" a submersion
-	T_(x,z)(M x \R^n ) dF_{x,c} \R^n
-	T_xM x \R^n to \R^n
-	by (v,w) \mapsto df(v,w)
-	``````````````````````````
-
+\end{lem}
+\begin{lem}
+	% Given \R^n instead of N in setup.
+	% Let F : M x \R^n to \R^n be F(x,c) = f(x) + c
+\end{lem}
+\begin{proof}
+	% 	Fc = fc
+	% F is "obviously" a submersion
+	% T_(x,z)(M x \R^n ) dF_{x,c} \R^n
+	% T_xM x \R^n to \R^n
+	% by (v,w) \mapsto df(v,w)
+	% ``````````````````````````
+\end{proof}
 \begin{defi}
 	A property of a function $f : X \to Y$ is \emph{stable} if for every homotopy $H : X \x [0,1] \to Y$, there exists an $\epsilon > 0$ such that for all $t < \epsilon$, $H_t : X \to Y$ has the property.
 \end{defi}
-
-
-
-
-
-
 
 
 
