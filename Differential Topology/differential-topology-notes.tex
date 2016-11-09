@@ -1502,6 +1502,182 @@ Wednesday, Oct 26, 2016
 	A property of a function $f : X \to Y$ is \emph{stable} if for every homotopy $H : X \x [0,1] \to Y$, there exists an $\epsilon > 0$ such that for all $t < \epsilon$, $H_t : X \to Y$ has the property.
 \end{defi}
 
+Monday October 31, 2016 (Happy Halloween!)
+
+Guilleman & Pollock Trans thm:
+thm
+[Transversality Lemma]
+F: M x S to N supset L
+Given s in S, let Fs : M to N.
+If F \pitchfork L, then Fs \pitchfork L for all s, except for s in a set of measure 0.
+
+pf
+	Since F \pitchfork L, K = F'inverse(L) is a submanifold of M x delta
+
+	$$\begin{tikzcd}
+		K \arrow[r, "F"] \arrow[rd] \arrow[rdd, "p", bend left] & L \arrow[rd, "L"] \\
+		 & M x S \arrow[r, "F"] \arrow[d, "ps", "projection"] & N \\
+		 & S
+	\end{tikzcd}$$
+
+	claim: s in S is regular for p iff Fs transverse L.
+
+	claim follows from 2 steps:
+	1. s is regular for p iff i_s : M to M x S is i_s(x) = (x,s)
+
+	2. i_S transverse K implies Fs transverse L
+
+	check 1:
+
+	s is regular for K into M x S to(p_s) S
+	iff
+	given (x,s) in K, the composite T_{(x,s)}K subset TxM x TsS ---proj----> TsS is onto
+	iff
+	T_{(x,s)}K + TxM = TxM x TsS
+	iff
+	T_{(x,s)}K + T_{(x,s)}(M x {s}) = T_{(x,s)}(M x S)
+	iff
+	i_S transverse K and? d(i_s)_x(TxM)
+
+
+	check 2:
+
+	i_s transverse K
+	iff
+	forall (x,s) in K,
+	T_{(x,s)}K + TxM = T_{(x,s)}(M x S)
+	apply dF_{(x,s)} to both sides
+	implies
+	dF_{(x,s)}(T_{(x,s)}K) + dF_{(x,s)}(TxM) = TyN
+	implies
+	TyL + dF_{(x,s)}(TxM) = TyN
+	iff
+	Fs transverse L.
+
+example
+M, L IN Rn
+
+F: M x Rn to Rn
+
+F(x+v) = x+v.  F is "clearly" a submersion, so F transverse L for all L in Rn.  So for "almost" all v, M+v is transverse to L.
+
+example
+Suppose given
+delta : M to S^{n-1} IN Rn
+Define F~: M x Rn to Rn
+by F~(x,s) = f(x) + s
+F~|_{M x \{0\}} = f
+
+Let B_{1/2} be an open ball of radius 1/2.
+consider
+F~|_{M x B_{1/2}} = f
+
+f(x) in Sn-1
+s in B1/2 !=0
+
+so F~ restricts
+
+...
+
+other things to notice
+
+  * Since B1/2 is path connected, each Fs is homotopic to f = F0.
+  * non transverse maps are homotopic to transverse maps
+
+thm/corr?
+M compact.
+If original f is an embedding, so is Fs for all s small enough.
+
+def
+Two embeddings $f,g : M \to N$ are \emph{isotopic} if they are homotopic via some $H$, and for all $t \in [0,1]$, $H_t$ is an embedding.
+
+thm
+Homotopy Transversality Theorem
+Given smooth f : M to N supseteq L, there exists smooth g : M to N such that:
+\begin{enumerate}
+	\item g is smoothly homotopic to f
+	\item g transverse L
+\end{enumerate}
+Furthermore, if f is an embedding, then g is isotopic to f.
+
+pf
+	Provee assuming N ompcat and N into Rd.
+
+	Let F~: M x Rd to Rd
+
+	be F~(x,s) = f(x) + s
+
+	M x {0} ---f----> N
+	into             subseteq
+	M x Rd ----F~----> Rd
+
+	Let N(epsilon) = { y+s | y in N, |s| < epsilon } \subseteq Rd
+	B_{epsilon} = { s in Rd \mid |s| < epsilon }
+
+	If epsilon is small, enough, does there exist a smooth r from N(epsilon) to N s.t. r(y) = y for all y in N?
+
+	M x {0} ---f----> N
+	into             subseteq
+	M x Rd ----F~----> Rd ----r----> N
+
+	answer: Yes (for now just assume yes)
+
+	then
+	F~ is a submersion, r is a submersion
+
+	then F = r of F~ : M x Bepsilon ----> N is a submersion
+	implies
+	F transverse L for all L subset N
+	implies
+	Fs transverse L for almost s in Bepsilon
+	Fs homotopic F0 = f
+
+Mon Nov 7
+
+prop
+(use "smooth" everywhere, if you wish)
+N compact. V vector field on N.
+Then there exists f : N to N s.t.
+	i) f homotopic to id
+	ii) { fixed pts of f } = { V(x) = 0 }
+pf
+	Normalize V with v(x) = V(x)/mag(V(x))*e are vectors of mag epsilon.
+	r is the retraction back onto N.
+	Let H(x,t) = r(x + t*v(x)) for t goes from 0 to e.
+	tadaa!
+corr [Bredon, 9]
+If N has a noewhere vanishing vector field, then there exists f : N to N with *no* fixed points, and f homotopic to id.
+
+thm
+[Transversality Homotopy Theorem]
+f : M to N supset L, and C IN M is closed.
+and f|_C transverse L, then there exists
+g : M to N s.t.
+	(i) g transverse L
+	(ii) g homotopic f with a homotopy that is constant on C
+so g|_C = f|_C
+(The POINT is that we choose g to be the SAME as f on C, but probably DIFFERENT than f somewhere else.)
+
+lemma
+(dH denotes bdry of H)
+If H superset H ----f-----> V subset H is a diffeo between open sets, then f( U cap dH ) = V cap dH
+the boundary maps to the boundary!
+
+lemma
+If M has no boundary and N does, then d(M x N) = M x dN.
+ex
+	Let M be a circle.  Let N be an interval (the endpoints are the bdy).  Then d(cylindar) = circle x endpoints = one circle at each end.
+
+lemma
+Suppose N is a manifold without bdy and f : N to R is smooth, and c is a regular value.  Then f'((-oo, c]) is a manifold with boundary f'(c).
+ex
+	Draw N.  Let f be the "height" of each point of N.  observe the inverse image has boundary!
+
+lemma
+[Collar lemma]
+Given some M, dM has an open neighborhood diffeomorphic to dM x [0, e) for some e small enough.
+
+
 
 
 
