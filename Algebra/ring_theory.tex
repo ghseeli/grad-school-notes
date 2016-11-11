@@ -519,11 +519,40 @@ other maximal entities.
     \end{enumerate}
   \end{prop}
 
-  \begin{proof}
-    \begin{enumerate}[label=(\alph*)]
-    \item \(J \lhd D^{-1}R \implies I \coloneqq j(J) \lhd R\)
-    \end{enumerate}
-  \end{proof}
+  \begin{defn}
+    \(P \lhd R \implies D = R \setminus P\) is multiplicatively closed. In this case the ring of fractions \(D^{-1}R\)
+    is denoted \(R_P\) and called the localization of \(R\) at \(P\).
+  \end{defn}
+
+  \begin{cor}
+    \begin{align*}
+      The map
+      \{Q \lhd R \mid Q \text{ prime and } Q \subset P\} &\longrightarrow \{\text{prime ideals of } R_P \}\\
+      Q& \longmapsto D^{-1}Q
+    \end{align*}
+    is an inclusion preserving bijection.
+  \end{cor}
+  Consequence \(D^{-1}P=PR_P\)is the unique maximal ideal of \(R_P\).
+
+  \begin{defn*}
+    A commutative ring is called a \emph{local ring} if it has a unique maximal ideal.
+  \end{defn*}
+  \begin{example}
+    \(R=\Z, P=(p)\). Then
+    \[\Z_{(P)}=\left\{\frac{a}{b} \mid a,b \in \Z, p \text{does not divide} b\right\} \subseteq \Q = \Z_{(0)}\]
+    By the previous result \(\Z_{(P)}\) has two ideals \(\{0\}\) and \((p)\Z_{(p)}\). Notice that
+    \[(p)\Z_{(p)}=\left\{\frac{a}{b} \mid p \text{ does not divide } b, p \mid a\right\}\]
+  \end{example}
+  \subsection{Polynomial Rings}
+  How \textbf{not} to define the polynomial ring \(R[x]\).
+  \begin{align*}
+    R[x] = \left\{f \colon R \to R \mid \exists a_{i} \in R : f(x)=\sum_{i=1}^na_ix^i\right\}
+  \end{align*}
+  i.e. as functions that admit a representation as a polynomial.
+  \begin{example}
+   \(R = \Z_p = \F_p\) consider \(x, x^p \in \F_p[x]\). Problem: \(x\) and \(x^p\) define the same function but have
+   different representations. 
+  \end{example}
 \end{document}
 
 %%% Local Variables:
