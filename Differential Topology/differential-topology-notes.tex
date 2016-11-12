@@ -3,12 +3,29 @@
 \usepackage{../notes}
 %%% matt experiments with theorem style:
 \usepackage{amsthm}% http://ctan.org/pkg/ams\begin{thrm}
-	\usetikzlibrary{cd}
+\usepackage{datetime}
+\usetikzlibrary{cd}
+\newenvironment{dateenv}{
+	\vspace{1em}
+}{
+	\vspace{1em}
+}
+
+\newcommand{\oo}{\infty}
+\newcommand{\transverse}{\pitchfork}
+\newcommand{\into}{\hookrightarrow}
+\newcommand{\onto}{\twoheadrightarrow}
 \newcommand{\x}{\times}
 \renewcommand{\bar}{\widebar}
 \newcommand{\grad}{\nabla}
 \newcommand{\Der}{\text{Der}}
 \newcommand{\supp}{\text{supp}}
+\newcommand{\mydate}[4]{
+	\newdate{#1}{#2}{#3}{#4}
+	\begin{dateenv}
+		\hfill\displaydate{#1}
+	\end{dateenv}
+}
 
 \newtheoremstyle{mystyle}
   {20pt plus 4pt minus 4pt} % Space above
@@ -22,8 +39,8 @@
 
 \theoremstyle{mystyle} \newtheorem{thrm}[thm]{Theorem}
 \theoremstyle{mystyle} \newtheorem{defi}[thm]{Definition}
-%%% end experimentation
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TITLE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \title[Differential Topology]{Differential Topology}
 \author{George Seelinger, Matthew Lancellotti\\ (class notes for Nick Kuhn's MATH 7820)}
 \date{Fall 2016}
@@ -545,7 +562,7 @@ An immersion is locally injective.  An embedding is globally injective.
 \end{thrm}
 
 
-Wed, Sept 21, 2016
+\mydate{d1}{21}{9}{2016}
 
 Given $f:M \to N$ smooth, then there exists a $df$ (but we could call it anything) s.t. $df : TM \to TN$ and $df.P_N = P_M.f$.  (Where $P_M$ is the projection from $TM$ to $M$)  (But is this magic df the same thing as our $df$ that we already know well?)
 
@@ -589,7 +606,7 @@ $Tf((i, x, v)) = (j, f(x), v.d_x(\phi_i^{-1}.f.\psi_j))$.
 And $T(M \times N)$ ``canonically'' identifies with $TM \times TN$.
 
 
-Monday, Sept 26, 2016
+\mydate{d2}{26}{9}{2016}
 
 
 
@@ -603,8 +620,7 @@ $T_xL = \ker df_x$
 
 $x \in L \subset M$
 
-
-Wednesday, Sept 28, 2016
+\mydate{d3}{28}{9}{2016}
 
 More elegant definition of regular:
 \begin{defi}
@@ -631,7 +647,7 @@ More elegant definition of regular:
 \end{thrm}
 
 \begin{defi}
-	$f$ is \emph{transverse} to $L \subset N$, denoted $f \pitchfork L$, if $f$ is a smooth map of manifolds and whenever $f(x) = y \in L$, then $df_x(T_xM) + T_yL = T_yN$.  (yes, we are adding vector spaces).
+	$f$ is \emph{transverse} to $L \subset N$, denoted $f \transverse L$, if $f$ is a smooth map of manifolds and whenever $f(x) = y \in L$, then $df_x(T_xM) + T_yL = T_yN$.  (yes, we are adding vector spaces).
 \end{defi}
 
 \begin{thrm}
@@ -664,7 +680,7 @@ More elegant definition of regular:
 	By prior thm, we conclude $\ker df_y = T_yL$.
 \end{thrm}
 
-Wednesday, Oct 5, 2016
+\mydate{d4}{5}{10}{2016}
 
 \begin{defi}
 	$C^\infty(M) := \{ f:M \to \R | f is smooth \}$
@@ -766,7 +782,7 @@ proof not shown.
 	is an isomorphism of vector spaces.
 \end{thrm}
 
-Monday, October 10, 2016
+\mydate{d5}{10}{10}{2016}
 
 \begin{defi}
 	Given a differentiable manifold $M$ and the canonical $p: TM \to M$, a \emph{vector field} is a section of $p$.
@@ -889,7 +905,7 @@ Then use the above theorem, or repeat the work of the above theorem as follows:
 	\end{enumerate}
 \end{proof}
 
-Wednesday, October 12, 2016
+\mydate{d6}{12}{10}{2016}
 
 Given $M$, does there exists a smooth vector field $X$ on $M$ s.t. $\forall x \in M$, $X(x) \neq 0$?
 
@@ -1034,7 +1050,8 @@ set of above over all smooth functions
 	$f1 dx1 +++ fn dxn$
 	(observe that $dx1$ is dual to $\frac{d}{dx}1$, etc)
 \end{example}
-Monday, Oct 17, 2016
+
+\mydate{d7}{17}{10}{2016}
 
 \begin{thrm}
 	$V$, $W$, $U$ are V.S. over $F$.  Every bilinear $b:V \x W \to U$ corresponds to a linear map $b` : V \to Lin(W,U)$
@@ -1168,7 +1185,7 @@ Monday, Oct 17, 2016
 	(we will not prove this)
 \end{thrm}
 
-Wednesday, Oct 19, 2016
+\mydate{d8}{19}{10}{2016}
 
 \section{Normal and Paracompact spaces, and partitions of unity}
 
@@ -1390,8 +1407,7 @@ Wednesday, Oct 19, 2016
 	There exists continuous $f : \R \to \R \x \R$ which are onto (space filling curves).
 \end{example}
 
-
-Wednesday, Oct 26, 2016
+\mydate{d9}{26}{10}{2016}
 
 \begin{thm}[Whitney Embedding thm]
 	Every $n$-dim smooth manifold embeds in $\R^{2n}$ and immerses in $\R{2n-1}$.
@@ -1484,7 +1500,7 @@ Wednesday, Oct 26, 2016
 	If $M$ and $L$ are not transverse, then you can wiggle $M$ a little in the right direction, and then $M+c$ and $L$ WILL be transverse.
 \end{thrm}
 \begin{lem}
-	Given $M \x S$ instead of $M$ and $F$ instead of $F$.  Suppose $F \pitchfork L$.  Then for almost all $s \in S$ (except for on a set of measure 0), the sunction $F_s: M \to N$ by $F_s(x) = F(x,s)$ is transverse to $L$.
+	Given $M \x S$ instead of $M$, and $F$ instead of $f$ in above thm.  Suppose $F \transverse L$.  Then for almost all $s \in S$ (except for on a set of measure 0), the function $F_s: M \to N$ by $F_s(x) = F(x,s)$ is transverse to $L$.
 \end{lem}
 \begin{lem}
 	% Given \R^n instead of N in setup.
@@ -1502,17 +1518,17 @@ Wednesday, Oct 26, 2016
 	A property of a function $f : X \to Y$ is \emph{stable} if for every homotopy $H : X \x [0,1] \to Y$, there exists an $\epsilon > 0$ such that for all $t < \epsilon$, $H_t : X \to Y$ has the property.
 \end{defi}
 
-Monday October 31, 2016 (Happy Halloween!)
+\mydate{d0}{31}{10}{2016}
+Happy Halloween!
 
-Guilleman & Pollock Trans thm:
-thm
-[Transversality Lemma]
-F: M x S to N supset L
-Given s in S, let Fs : M to N.
-If F \pitchfork L, then Fs \pitchfork L for all s, except for s in a set of measure 0.
 
-pf
-	Since F \pitchfork L, K = F'inverse(L) is a submanifold of M x delta
+\begin{thrm}[Transversality Lemma, or Guilleman and Pollock Trans Thm]
+	$F: M \x S \to N \supseteq L$
+	Given $s \in S$, let $F_s: M \to N$.
+	If $F \transverse L$, then $F_s \transverse L$ for almost all $s$  (except for $s$ in a set of measure 0).
+\end{thrm}
+\begin{proof}
+	Since $F \transverse L$, then $K = F^{-1}(L)$ is a submanifold of $M \x \delta$.
 
 	$$\begin{tikzcd}
 		K \arrow[r, "F"] \arrow[rd] \arrow[rdd, "p", bend left] & L \arrow[rd, "L"] \\
@@ -1520,162 +1536,252 @@ pf
 		 & S
 	\end{tikzcd}$$
 
-	claim: s in S is regular for p iff Fs transverse L.
+	Claim: $s \in S$ is regular for $p$ iff $F_s \transverse L$.
 
-	claim follows from 2 steps:
-	1. s is regular for p iff i_s : M to M x S is i_s(x) = (x,s)
+	The claim follows from 2 steps:
+	\begin{enumerate}
+		\item $s$ is regular for $p$ iff $i_s: M \to M \x S$ is $i_s(x) = (x,s)$.
+		\item $i_S \transverse K$ implies $F_s \transverse L$.
+	\end{enumerate}
 
-	2. i_S transverse K implies Fs transverse L
+	Let's prove each step:
+	\begin{enumerate}
+		\item
+			$s$ is regular for $K \into M \x S \overset{p_s}{\to} S$
 
-	check 1:
+			$\iff$
 
-	s is regular for K into M x S to(p_s) S
-	iff
-	given (x,s) in K, the composite T_{(x,s)}K subset TxM x TsS ---proj----> TsS is onto
-	iff
-	T_{(x,s)}K + TxM = TxM x TsS
-	iff
-	T_{(x,s)}K + T_{(x,s)}(M x {s}) = T_{(x,s)}(M x S)
-	iff
-	i_S transverse K and? d(i_s)_x(TxM)
+			Given $(x,s) \in K$, the composite $T_{(x,s)}K \subseteq T_xM \x T_sS \overset{project}{\to} T_sS$ is onto.
 
+			$\iff$
 
-	check 2:
+			$T_{(x,s)}K + T_xM = T_xM \x T_sS$
 
-	i_s transverse K
-	iff
-	forall (x,s) in K,
-	T_{(x,s)}K + TxM = T_{(x,s)}(M x S)
-	apply dF_{(x,s)} to both sides
-	implies
-	dF_{(x,s)}(T_{(x,s)}K) + dF_{(x,s)}(TxM) = TyN
-	implies
-	TyL + dF_{(x,s)}(TxM) = TyN
-	iff
-	Fs transverse L.
+			$\iff$
 
-example
-M, L IN Rn
+			$T_{(x,s)}K + T_{(x,s)}(M \x \{s\}) = T_{(x,s)}(M \x S)$
 
-F: M x Rn to Rn
+			$\iff$
 
-F(x+v) = x+v.  F is "clearly" a submersion, so F transverse L for all L in Rn.  So for "almost" all v, M+v is transverse to L.
+			$i_s \transverse K$ and $d(i_s)_x(T_xM)$
+		\item
+			$i_s \transverse K$
 
-example
-Suppose given
-delta : M to S^{n-1} IN Rn
-Define F~: M x Rn to Rn
-by F~(x,s) = f(x) + s
-F~|_{M x \{0\}} = f
+			$\iff$
 
-Let B_{1/2} be an open ball of radius 1/2.
-consider
-F~|_{M x B_{1/2}} = f
+			For all $(x,s) \in K$, we have
 
-f(x) in Sn-1
-s in B1/2 !=0
+			$T_{(x,s)}K + T_xM = T_{(x,s)}(M \x S)$
 
-so F~ restricts
+			(apply $dF_{(x,s)}$ to both sides)
 
-...
+			$\implies$
 
-other things to notice
+			$dF_{(x,s)}(T_{(x,s)}K) + dF_{(x,s)}(T_xM) = T_yN$
 
-  * Since B1/2 is path connected, each Fs is homotopic to f = F0.
-  * non transverse maps are homotopic to transverse maps
+			$\implies$
 
-thm/corr?
-M compact.
-If original f is an embedding, so is Fs for all s small enough.
+			$T_yL + dF_{(x,s)}(T_xM) = T_yN$
 
-def
-Two embeddings $f,g : M \to N$ are \emph{isotopic} if they are homotopic via some $H$, and for all $t \in [0,1]$, $H_t$ is an embedding.
+			$\iff$
 
-thm
-Homotopy Transversality Theorem
-Given smooth f : M to N supseteq L, there exists smooth g : M to N such that:
-\begin{enumerate}
-	\item g is smoothly homotopic to f
-	\item g transverse L
-\end{enumerate}
-Furthermore, if f is an embedding, then g is isotopic to f.
+			$F_s \transverse L$
+	\end{enumerate}
+\end{proof}
 
-pf
-	Provee assuming N ompcat and N into Rd.
+\begin{example}
+	$M, L \subseteq \R^n$
 
-	Let F~: M x Rd to Rd
+	$$F: M \x \R^n \to \R^n$$
+	$$F(x,v) = x+v$$
 
-	be F~(x,s) = f(x) + s
+	$F$ is ``clearly'' a submersion, so $F \transverse L$ for all $L \in \R^n$.  So for almost all $v$, $M+v$ is transverse to $L$.
+\end{example}
 
-	M x {0} ---f----> N
-	into             subseteq
-	M x Rd ----F~----> Rd
+\begin{example}
+	Suppose given $\delta: M \to S^{n-1} \subseteq \R^n$, define
 
-	Let N(epsilon) = { y+s | y in N, |s| < epsilon } \subseteq Rd
-	B_{epsilon} = { s in Rd \mid |s| < epsilon }
+	$$\overset{~}{F}: M \x \R^n \to \R^n$$
+	$$\overset{~}{F}(x,s) = f(x) + s$$
 
-	If epsilon is small, enough, does there exist a smooth r from N(epsilon) to N s.t. r(y) = y for all y in N?
+	so that
 
-	M x {0} ---f----> N
-	into             subseteq
-	M x Rd ----F~----> Rd ----r----> N
+	$$\overset{~}{F}|_{M \x \{0\}} = f$$
+
+	Let $B_{1/2}$ be an open ball of radius $1/2$.
+	Consider $\overset{~}{F}|_{M \x B_{1/2}} = f$.
+
+	$f(x) \in S^{n-1}$
+
+	$s \in B_{1/2}$
+
+	so $\overset{~}{F}$ restricts
+
+	...
+
+	other things to notice
+	\begin{itemize}
+		\item Since $B_{1/2}$ is path connected, each $F_s$ is homotopic to $f = F_0$.
+		\item Non transverse maps are homotopic to transverse maps.
+	\end{itemize}
+\end{example}
+\begin{thm}
+	$M$ compact.
+	If original $f$ is an embedding, so is $F_s$ for all $s$ small enough.
+\end{thm}
+\begin{defi}
+	Two embeddings $f,g : M \to N$ are \emph{isotopic} if they are homotopic via some $H$, and for all $t \in [0,1]$, $H_t$ is an embedding.
+\end{defi}
+\begin{thrm}[Homotopy Transversality Theorem]
+	Given smooth $f: M \to N \supseteq L$, there exists smooth $g: M \to N$ such that:
+	\begin{enumerate}
+		\item $g$ is smoothly homotopic to $f$
+		\item $g \transverse L$
+	\end{enumerate}
+	Furthermore, if $f$ is an embedding, then $g$ is isotopic to $f$.
+\end{thrm}
+\begin{proof}
+	Prove assuming $N$ compact and $N \into \R^d$:
+
+	Let $\overset{~}{F}: M \x \R^d \to \R^d$.
+
+	be $\overset{~}{F}(x,s) = f(x) + s$
+
+	$$\begin{tikzcd}
+		M \x \{0\} \arrow[r, "f"], \arrow[d, hook] & N \arrow[d, hook] \\
+		M \x \R^d \arrow[r, "\overset{~}{F}"] & \R^d
+	\end{tikzcd}$$
+
+	Let $N(\epsilon) = \{ y+s \mid y \in N, |s| < \epsilon \} \subseteq \R^d$
+
+	$B_{\epsilon} = \{ s \in \R^d \mid |s| < \epsilon \}$
+
+	If $\epsilon$ is small enough, does there exist a smooth $r : N(\epsilon) \to N$ s.t. $r(y) = y$ for all $y \in N$ ?
 
 	answer: Yes (for now just assume yes)
 
 	then
-	F~ is a submersion, r is a submersion
 
-	then F = r of F~ : M x Bepsilon ----> N is a submersion
-	implies
-	F transverse L for all L subset N
-	implies
-	Fs transverse L for almost s in Bepsilon
-	Fs homotopic F0 = f
+	$\overset{~}{F}$ is a submersion, $r$ is a submersion.
 
-Mon Nov 7
+	then $F = \overset{~}{F}.r : M \x B_\epsilon \to N$ is a submersion
 
-prop
-(use "smooth" everywhere, if you wish)
-N compact. V vector field on N.
-Then there exists f : N to N s.t.
-	i) f homotopic to id
-	ii) { fixed pts of f } = { V(x) = 0 }
-pf
-	Normalize V with v(x) = V(x)/mag(V(x))*e are vectors of mag epsilon.
-	r is the retraction back onto N.
-	Let H(x,t) = r(x + t*v(x)) for t goes from 0 to e.
+	$\implies$
+
+	$F \transverse L$ for all $L \subseteq N$
+
+	$\implies$
+
+	$F_s \transverse L$ for almost $s \in B_\epsilon$
+
+	$F_s$ homotopic $F0 = f$
+
+\end{proof}
+\mydate{d10}{7}{11}{2016}
+\begin{prop}
+	(use ``smooth'' everywhere, if you wish)
+	If $N$ is compact and $V$ is a vector field on $N$, then there exists $f: N \to N$ s.t.
+	\begin{itemize}
+		\item $f$ homotopic to $\text{id}$
+		\item $\{ \text{fixed pts of } f \} = \{ x \mid V(x) = 0 \}$
+	\end{itemize}
+\end{prop}
+\begin{proof}
+	Normalize $V$ with $v(x) = \frac{V(x)}{mag(V(x))*e}$ are vectors of magnitude $\epsilon$.
+	$r$ is the retraction back onto $N$.
+	Let $H(x,t) = r(x + t*v(x))$ for $t$ goes from $0$ to $e$.
 	tadaa!
-corr [Bredon, 9]
-If N has a noewhere vanishing vector field, then there exists f : N to N with *no* fixed points, and f homotopic to id.
+\end{proof}
+\begin{cor}[Bredon, 9]
+	If $N$ has a nowhere vanishing vector field, then there exists $f: N \to N$ with *no* fixed points, and $f$ homotopic to id.
+\end{cor}
+\begin{thrm}[Transversality Homotopy Theorem]
+	$f: M \to N \supseteq L$, and $C \subseteq M$ is closed.
+	and $f|_C \transverse L$, then there exists
+	$g: M \to N$ s.t.
+	\begin{itemize}
+		\item $g \transverse L$
+		\item $g$ homotopic to $f$ with a homotopy that is constant on $C$
+	\end{itemize}
+	so $g|_C = f|_C$
+	(The POINT is that we choose $g$ to be the SAME as $f$ on $C$, but probably DIFFERENT than $f$ somewhere else.)
+\end{thrm}
+\begin{lem}
+	($dH$ denotes boundary of $H$)
+	If $H \supset H \overset{f}{\to} V \subseteq H$ is a diffeomorphism between open sets, then $f( U \cap dH ) = V \cap dH$
+	(The boundary maps to the boundary!)
+\end{lem}
+\begin{lem}
+	If $M$ has no boundary and $N$ does, then $d(M \x N) = M \x dN$.
+\end{lem}
+\begin{example}
+	Let $M$ be a circle.  Let $N$ be an interval (the endpoints are the boundary).  Then d(cylindar) = circle x endpoints = one circle at each end.
+\end{example}
+\begin{lem}
+	Suppose $N$ is a manifold without boundary and $f : N \to \R$ is smooth, and $c$ is a regular value.  Then $f^{-1}((-\oo, c])$ is a manifold with boundary $f^{-1}(c)$.
+\end{lem}
+\begin{example}
+	Draw $N$.  Let $f$ be the ``height'' of each point of $N$.  Observe that the inverse image has boundary!
+\end{example}
+\begin{lem}[Collar lemma]
+	Given some $M$, $dM$ has an open neighborhood diffeomorphic to $dM \x [0, e)$ for some $e$ small enough.
+\end{lem}
 
-thm
-[Transversality Homotopy Theorem]
-f : M to N supset L, and C IN M is closed.
-and f|_C transverse L, then there exists
-g : M to N s.t.
-	(i) g transverse L
-	(ii) g homotopic f with a homotopy that is constant on C
-so g|_C = f|_C
-(The POINT is that we choose g to be the SAME as f on C, but probably DIFFERENT than f somewhere else.)
+% manifolds with boundary
+% ----------------------------
+% Some points diffeo morphic to H^n
 
-lemma
-(dH denotes bdry of H)
-If H superset H ----f-----> V subset H is a diffeo between open sets, then f( U cap dH ) = V cap dH
-the boundary maps to the boundary!
+% homotopy transversality \end{example}
+% \end{lem}
+% \begin{thrm}
+% 	is the same, but now we get that dg transverse L too!
+% \end{thrm}
+% \begin{thrm}
+% 	A connected 1-dim manifold with boudary is diffeomorphic to \R, [0,oo), [0,1], and S^1
+% \end{thrm}
+% \begin{cor}
+% 	A compact 1-dim manifold has an even # of bdy points
+% \end{cor}
+% \begin{thrm}
+% 	Retraction \end{thrm}
+% \begin{thrm}
+% 	If M is a compact manifold with bdy dM, then there is NO smooth retraction r : M to dM
+% \end{thrm}
+% \begin{proof}
+% 		Suppose there was.  Then let y be a reg. val for r.  regular for dr = identity
+% 	then r'(y) is a compact 1-dim manifold w/ boundary.  so it's a single point.
+% \end{proof}
+% \begin{thrm}
+% 	``Smooth'' Brower Fixed Point \end{thrm}
+% \begin{thrm}
+% 	Any ``smooth'' f : Bn to Bn has a fixed point.  (This is in fact true for ``continuous'', but we won't prove that today)
+% \end{thrm}
+% \begin{proof}
+% 		Suppose not.  Then for all x in Bn, f(x) != x.
+% 	Define r : Bn to S{n-1} by sending f(x) back to x
+% 	r would be a retraction
+% 	if f(x)=x, i wouldn't know in which direction to head
+% 	this is a contradiction
 
-lemma
-If M has no boundary and N does, then d(M x N) = M x dN.
-ex
-	Let M be a circle.  Let N be an interval (the endpoints are the bdy).  Then d(cylindar) = circle x endpoints = one circle at each end.
 
-lemma
-Suppose N is a manifold without bdy and f : N to R is smooth, and c is a regular value.  Then f'((-oo, c]) is a manifold with boundary f'(c).
-ex
-	Draw N.  Let f be the "height" of each point of N.  observe the inverse image has boundary!
 
-lemma
-[Collar lemma]
-Given some M, dM has an open neighborhood diffeomorphic to dM x [0, e) for some e small enough.
+% mod 2 intersection numbers
+% ----------------------------------
+% \begin{defi}
+% 	Given
+% M ---f\to N \supseteq L
+% M,N,L all with empty boundary.  M compact.
+% given dim M + dim L = dim N.
+
+% Then the \emph{mod 2 intersection number}, denoted I2(f, L) in Z_2, is the cardinality of g'(L) mod 2 where g is homotopic to f and g transverse L.
+% \end{proof}
+% \begin{prop}
+% 	this is well-defined!  (you get the same cardinality for all such g!)
+% \end{proof}
+% \end{prop}
+% \begin{proof}
+% 		Let g, h each homotopic
+
 
 
 
