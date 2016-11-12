@@ -416,18 +416,17 @@ other maximal entities.
   the construction of \(\Q\) from \(\Z\) one would think that equivalence relation \((r,d)\sim (r',d')\) would do the
   trick, however this relation fails to be transitive for \(R\) that are not integral domains (one would be required to
   cancel at a certain step). The correct equivalence relation is given by
-  \[(r,d) \sim (r',d') \iff \exists e \in D \text{ s.t. } e(rd'-r'd)=0. \]
-  It is tedious to check that this is transitive, however it is. Notice that in the case that \(R\) is an integral
-  domain and \(0 \neq \in D\) this reduces to the naive relation as \(e(rd'-r'd)=0\) implies \(rd'-r'd=0\) since there
-  are no zero divisors and \(e\) by assumption is nonzero. 
+  \[(r,d) \sim (r',d') \iff \exists e \in D \text{ s.t. } e(rd'-r'd)=0. \] It is tedious to check that this is
+  transitive, however it is. Notice that in the case that \(R\) is an integral domain and \(0 \neq \in D\) this reduces
+  to the naive relation as \(e(rd'-r'd)=0\) implies \(rd'-r'd=0\) since there are no zero divisors and \(e\) by
+  assumption is nonzero.
 
   \begin{notation}
     In this context \(\frac{r}{d}\) denotes the equivalence class with representative \((r,d)\).
   \end{notation}
 
   Now we define
-  \[D^{-1}R= \left\{\frac{r}{d} \mid r \in R, d \in D\right\}.\] 
-  We endow it with the operations 
+  \[D^{-1}R= \left\{\frac{r}{d} \mid r \in R, d \in D\right\}.\] We endow it with the operations
   \begin{align*}
     \frac{r}{d}+\frac{s}{e} &\coloneqq \frac{re+sd}{de}\\
     \frac{r}{d}\cdot\frac{s}{e} &\coloneqq \frac{rs}{de}.
@@ -438,45 +437,44 @@ other maximal entities.
   in \(D^{-1}R\) with inverse \(\frac{1}{d}\).
 
   \begin{rmk*}
-      \[D^{-1}R = \{0\} \iff 0 \in D\\\]
-      \[D^{-1}R = \{0\} \iff \frac{1}{1}=\frac{0}{1} \iff \exists d \in D \text{ s.t. } d(1-0)=0 \iff d=0\]
+    \[D^{-1}R = \{0\} \iff 0 \in D\\\]
+    \[D^{-1}R = \{0\} \iff \frac{1}{1}=\frac{0}{1} \iff \exists d \in D \text{ s.t. } d(1-0)=0 \iff d=0\]
   \end{rmk*}
   Dummit and Foote over restrictive by excluding all zero divisors from being included in \(D\). Rather one must exclude
   both a zero divisor and its partner from being in \(D\) as then \(D\) would contain zero, however there is nothing
-  wrong with having one of the pair. However one must exclude nilpotent elements as we saw that \(\{x^n \mid n \in
-  \N_0\}\) is multiplicatively closed meaning \(D\) would also contain zero. 
+  wrong with having one of the pair. However one must exclude nilpotent elements as we saw that
+  \(\{x^n \mid n \in \N_0\}\) is multiplicatively closed meaning \(D\) would also contain zero.
   \begin{example*}
-    An important example of \(D\) containing zero divisors, but still being non-trivial is 
-    \[D=R \setminus P\]
-    where \(P\) is a prime ideal of \(R\). The ideal ideal \(P\) must contain one of each pair of the zero divisors of
-    \(R\) otherwise \(R/P\) would not be an integral domain, but \(R/P\) is an integral domain since \(P\) is a prime ideal.
+    An important example of \(D\) containing zero divisors, but still being non-trivial is
+    \[D=R \setminus P\] where \(P\) is a prime ideal of \(R\). The ideal ideal \(P\) must contain one of each pair of
+    the zero divisors of \(R\) otherwise \(R/P\) would not be an integral domain, but \(R/P\) is an integral domain
+    since \(P\) is a prime ideal.
   \end{example*}
-  We have a canonical map: \funcdeclaration{j}{R}{D^{-1}R}{r}{\frac{r}{1}}
-  If \(R\) is not an integral domain then \(j\) is not injective (even if \(0 \not \in D\)). One may see this by
-  realizing 
+  We have a canonical map: \funcdeclaration{j}{R}{D^{-1}R}{r}{\frac{r}{1}} If \(R\) is not an integral domain then \(j\)
+  is not injective (even if \(0 \not \in D\)). One may see this by realizing
   \[\ker j = \{r \in R \mid dr = 0\}.\]
   We summarize our construction and its properties in the following proposition:
   \begin{prop}Given a commutative ring \(R\) with unity.
     \begin{enumerate}[label=(\alph*)]
-    \item For any multiplicatively closed subset \(D \subseteq R\), \(D^{-1}R,+,\cdot\) is a commutative ring with
-      unity called the ring of fractions with respect to \(D\).
+    \item For any multiplicatively closed subset \(D \subseteq R\), \(D^{-1}R,+,\cdot\) is a commutative ring with unity
+      called the ring of fractions with respect to \(D\).
     \item \(D^{-}R=\{0\}\iff 0 \in D\)
-    \item There is a canonical map:  \funcdeclaration{j}{R}{D^{-1}R}{r}{\frac{r}{1}} under which \(j(D) \subseteq
-      D^{-1}R^\times\).
+    \item There is a canonical map: \funcdeclaration{j}{R}{D^{-1}R}{r}{\frac{r}{1}} under which
+      \(j(D) \subseteq D^{-1}R^\times\).
     \item If \(R\)is an integral domain and \(0 \not \in D\) then \(j\) is injective.
-    \item If \(R\) is an integral domain and \(D=R \setminus \{-\}\) then \(D^{-1}R\)is a field containing a copy of \(R
-     \) namely \(j(R)\). In this case \(D^{-1}R\) is called the field of fractions of \(R\).
+    \item If \(R\) is an integral domain and \(D=R \setminus \{-\}\) then \(D^{-1}R\)is a field containing a copy of
+      \(R \) namely \(j(R)\). In this case \(D^{-1}R\) is called the field of fractions of \(R\).
     \end{enumerate}
     \begin{notation}
-    \[\FieldFrac{R}=(R\setminus\{0\})^{-1}R.\]
-  \end{notation}
+      \[\FieldFrac{R}=(R\setminus\{0\})^{-1}R.\]
+    \end{notation}
   \end{prop}
   Notice that in the above definition we referred to the resultant construction with the article ``the''. This hints at
   some uniqueness floating around. We make this rigorous by characterizing the universal property of our construction.
   \begin{prop}
-    For any ring \(S\) and any ring homomorphism \(\varphi \colon R \to S\) which satisfies \(\varphi(D) \subset
-    S^\times\), then there exists a unique ring homomorphism \(\tilde{\varphi} \colon D^{-1}R \to S\) making the
-    following diagram commute
+    For any ring \(S\) and any ring homomorphism \(\varphi \colon R \to S\) which satisfies
+    \(\varphi(D) \subset S^\times\), then there exists a unique ring homomorphism
+    \(\tilde{\varphi} \colon D^{-1}R \to S\) making the following diagram commute
     \begin{figure}[h]
       \centering
       \begin{tikzcd}
@@ -488,6 +486,73 @@ other maximal entities.
   \begin{proof}
     
   \end{proof}
+  \begin{prop}
+    Let \(R\) be an integral domain with field of fractions \(F=D^{-1}R\). If \(\varphi \colon R \to K\) is an injective
+    ring homomorphism, where \(K\) is a field, then \(K\) contains an isomorphic copy of \(F\).
+  \end{prop}
+  In this sense \(F\) is the ``smallest'' field that contains \(R\).
+  \begin{proof}
+    The injectivity of \(\varphi\) implies that \(\varphi(D) \subset K \setminus \{0\} = K^\times\). Thus we may invoke
+    the universal property of the ring of fractions, hence there exists \(\tilde{\varphi} \colon F \to K\) with
+    \(\tilde{\varphi} \circ j = \varphi\). This map is not the trivial map. Now \(\ker \tilde{\varphi} = \P0\) since
+    \(\{0\}\) is the only proper ideal of the field \(F\). Thus \(\tilde{\varphi}\) is injective and we have our
+    embedding.
+  \end{proof}
+  Now we examine the ideal structure of \(D^{-1}R\) where \(R \neq 0\) and \(0 \not \in D\).
+  \begin{rmk} \mbox{}
+    \begin{enumerate}[label=(\alph*)]
+    \item \[I \unlhd R \leadsto D^{-1}I = \left\{\frac{a}{d} \mid a \in I, d \in D\right\}\]
+    \item \[D^{-1}I = D^{-1}R \iff D \cap I \neq \emptyset\]
+    \end{enumerate}
+  \end{rmk}
+
+  \begin{prop}
+    Define the map
+    \begin{align*}
+      \{I \lhd \mid D \cap I = \emptyset\} &\longrightarrow \{\text{proper ideals of } D^{-1}R\}\\
+      I &\longmapsto D^{-1} I.
+    \end{align*}
+    \begin{enumerate}[label=(\alph*)]
+    \item The map is surjective. In general it is not injective.
+    \item If \(P \lhd R\) is a prime ideal of \(R\) and \(P \cap D = \emptyset\), then \(j(D^{-1}P)=P\).
+    \item The map restricted to the prime ideals of \(R\) is a bijection.
+    \end{enumerate}
+  \end{prop}
+
+  \begin{defn}
+    \(P \lhd R \implies D = R \setminus P\) is multiplicatively closed. In this case the ring of fractions \(D^{-1}R\)
+    is denoted \(R_P\) and called the localization of \(R\) at \(P\).
+  \end{defn}
+
+  \begin{cor}
+    \begin{align*}
+      The map
+      \{Q \lhd R \mid Q \text{ prime and } Q \subset P\} &\longrightarrow \{\text{prime ideals of } R_P \}\\
+      Q& \longmapsto D^{-1}Q
+    \end{align*}
+    is an inclusion preserving bijection.
+  \end{cor}
+  Consequence \(D^{-1}P=PR_P\)is the unique maximal ideal of \(R_P\).
+
+  \begin{defn*}
+    A commutative ring is called a \emph{local ring} if it has a unique maximal ideal.
+  \end{defn*}
+  \begin{example}
+    \(R=\Z, P=(p)\). Then
+    \[\Z_{(P)}=\left\{\frac{a}{b} \mid a,b \in \Z, p \text{does not divide} b\right\} \subseteq \Q = \Z_{(0)}\]
+    By the previous result \(\Z_{(P)}\) has two ideals \(\{0\}\) and \((p)\Z_{(p)}\). Notice that
+    \[(p)\Z_{(p)}=\left\{\frac{a}{b} \mid p \text{ does not divide } b, p \mid a\right\}\]
+  \end{example}
+  \subsection{Polynomial Rings}
+  How \textbf{not} to define the polynomial ring \(R[x]\).
+  \begin{align*}
+    R[x] = \left\{f \colon R \to R \mid \exists a_{i} \in R : f(x)=\sum_{i=1}^na_ix^i\right\}
+  \end{align*}
+  i.e. as functions that admit a representation as a polynomial.
+  \begin{example}
+   \(R = \Z_p = \F_p\) consider \(x, x^p \in \F_p[x]\). Problem: \(x\) and \(x^p\) define the same function but have
+   different representations. 
+  \end{example}
 \end{document}
 
 %%% Local Variables:
