@@ -4,6 +4,7 @@
 %%% matt experiments with theorem style:
 \usepackage{amsthm}% http://ctan.org/pkg/ams\begin{thrm}
 \usepackage{datetime}
+\usepackage{hyperref}
 \usetikzlibrary{cd}
 \newenvironment{dateenv}{
 	\vspace{1em}
@@ -11,6 +12,9 @@
 	\vspace{1em}
 }
 
+\newcommand{\homotopic}{\simeq}
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\d}{\partial}
 \newcommand{\oo}{\infty}
 \newcommand{\transverse}{\pitchfork}
 \newcommand{\into}{\hookrightarrow}
@@ -20,6 +24,7 @@
 \newcommand{\grad}{\nabla}
 \newcommand{\Der}{\text{Der}}
 \newcommand{\supp}{\text{supp}}
+\newcommand{\de}{\emph}
 \newcommand{\mydate}[4]{
 	\newdate{#1}{#2}{#3}{#4}
 	\begin{dateenv}
@@ -65,7 +70,7 @@ that ``locally'' look like $\R^n$.
 	other parts of the sphere.
 \end{example}
 \begin{defi}
-	The \emph{$n$-sphere}, denoted $S^n$, is $\{x \in \R^{n+1} |\; ||x||=1 \}$. Note: The *surface* of the $n$-sphere has dimension $n$.,
+	The \de{$n$-sphere}, denoted $S^n$, is $\{x \in \R^{n+1} |\; ||x||=1 \}$. Note: The *surface* of the $n$-sphere has dimension $n$.,
 \end{defi}
 \begin{example}
 	Continuing with the sphere, consider the plane through the origin that is parallel to the tangent plane of $S^2$ at some
@@ -73,11 +78,11 @@ that ``locally'' look like $\R^n$.
 	real vector space. Using symmetry arguments, we can see that, if $\vec{v}
 	\in T_{\vec{x}}S^2$, then $\vec{v}$ is perpendicular to $\vec{x}$ and thus
 	$\vec{v} \cdot \vec{x} = 0$. So, to use a concrete point,
-	$T_{(1/3,2/3,2/3)} S^2 = \{(x,y,z) : x+2y+2z=0\}$.  Note also that we will abusively call this plane the \emph{tangent plane}, even though we are actually referring to the plane through $0$ instead of the plane through $\vec{x}$.
+	$T_{(1/3,2/3,2/3)} S^2 = \{(x,y,z) : x+2y+2z=0\}$.  Note also that we will abusively call this plane the \de{tangent plane}, even though we are actually referring to the plane through $0$ instead of the plane through $\vec{x}$.
 \end{example}
 \begin{example}
 	Now, to think globally, consider the collection of all tangent planes of
-	$S^2$. We call this the \emph{tangent bundle} of $S^2$ and denote it
+	$S^2$. We call this the \de{tangent bundle} of $S^2$ and denote it
 	$TS^2$. We can see $TS^2 = \{(\vec{x}, \vec{v}): \vec{x} \in S^2, \vec{v}
 	\in T_{\vec{x}} S^2\} = \{(\vec{x},\vec{v}) : ||\vec{x}|| = 1, \vec{x}
 	\cdot \vec{v} = 0\} \subset S^2 \times \R^3 \subset \R^3 \times \R^3$.
@@ -85,14 +90,14 @@ that ``locally'' look like $\R^n$.
 	S^2$ by $(x,v) \to x$. Then, we have that $p^{-1}(x) = T_{\vec{x}}S^2$.
 \end{example}
 \begin{defi}
-	The \emph{tangent bundle} of a manifold $M$, denoted $TM$, is $\{ (x,v) |\; x \in M \;\text{and}\; v \in T_xM \}$.
+	The \de{tangent bundle} of a manifold $M$, denoted $TM$, is $\{ (x,v) |\; x \in M \;\text{and}\; v \in T_xM \}$.
 \end{defi}
 
 Now, let $M$ be any differential manifold. Studying the function $p: TM \to M$
 can tell us a lot about $M$.
 
 \begin{example}
-	A \emph{section} of $p: TS^2 \to S^2$ is a function $s: S^2 \to TS^2$ such
+	A \de{section} of $p: TS^2 \to S^2$ is a function $s: S^2 \to TS^2$ such
 	that $p \circ s =$ identity. In other words, $\forall x \in S^2, s(x) \in
 	T_{\vec{x}}S^2$. Note that this is a vector field. Furthermore, to be
 	interesting in differential topology, $s$ should be continuous or
@@ -122,10 +127,10 @@ Now, recall \begin{enumerate}
 
 Now, let us define what it means for a function to be differentiable.
 \begin{defi}
-	$f :\R^n \to \R^m$ is \emph{differentiable} at $x \in \R^n$ if there exists a linear function $df_x : \R^n \to \R^m$  such that $\lim_{h \to 0} \frac{|| (f(x)-f(x+h)) - (df_x(h)) ||}{||h||} = 0$.  Note that $h$ is a vector, as well as $x$.
+	$f :\R^n \to \R^m$ is \de{differentiable} at $x \in \R^n$ if there exists a linear function $df_x : \R^n \to \R^m$  such that $\lim_{h \to 0} \frac{|| (f(x)-f(x+h)) - (df_x(h)) ||}{||h||} = 0$.  Note that $h$ is a vector, as well as $x$.
 \end{defi}
 \begin{defi}
-	If $f$ is differentiable at $x$ by a linear function $L$, then $L$ is the \emph{differential} of $f$ at $x$.  This is denoted $df_x$.  Using the standard basis, the differential can be expressed as a slope matrix, which is denoted $f'(x)$.
+	If $f$ is differentiable at $x$ by a linear function $L$, then $L$ is the \de{differential} of $f$ at $x$.  This is denoted $df_x$.  Using the standard basis, the differential can be expressed as a slope matrix, which is denoted $f'(x)$.
 \end{defi}
 \begin{cor}
 	If $f$ is linear, then $df = f$.  (This comes straight out of the definition of $df$!)
@@ -164,11 +169,11 @@ In differential topology, one can also do ``fiberwise'' linear algebra. Let
 $T^*M$ be a collection of the dual vector spaces $(T_{\vec{x}}M)^*$ where $V^* =
 \{L: V \to \R\}$ with $L$ linear. A section of $T^*M \to M$ is given by $(x,L)
 \to x$ where $L: T_{\vec{x}}M \to \R$ in this case. Now, we call $w: M \to
-T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \emph{1-forms}.
+T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \de{1-forms}.
 
 
 \begin{defi}
-	A \emph{topological space} (a.k.a \emph{space}) is a set $X$ and a set $O$ of subsets of $X$ that satisfy the following conditions.  Every element of $O$ is ``open'' by definition.  Further:
+	A \de{topological space} (a.k.a \de{space}) is a set $X$ and a set $O$ of subsets of $X$ that satisfy the following conditions.  Every element of $O$ is ``open'' by definition.  Further:
 	\begin{itemize}
 		\item Arbitrary unions of open sets are open.
 		\item Finite intersections of open sets are open.
@@ -180,7 +185,7 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \emph{1-forms}.
 	The set $U$ is open iff for all points in $U$, there exists an open neighborhood of the point that's entirely contained in $U$.
 \end{thrm}
 \begin{defi}
-	$f$ is an \emph{open} map if the image of every open (closed) (compact) set under $f$ is open (closed) (compact).
+	$f$ is an \de{open} map if the image of every open (closed) (compact) set under $f$ is open (closed) (compact).
 	For any topological space property, substitute ``open'' above with the name of that property, to get another definition.  Such properties include:
 	\begin{itemize}
 		\item open
@@ -195,13 +200,13 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \emph{1-forms}.
 	$f$ is continuous iff the inverse map $f^{-1}$ is open.
 \end{thrm}
 \begin{defi}
-	For any $k \in \N$, a function $f:\R^n \to \R^m$ is \emph{$k$-continuously-differentiable}, denoted $f \in C^k$, if all iterated partial derivatives of $f$ of order $k$ exist and are continuous.
+	For any $k \in \N$, a function $f:\R^n \to \R^m$ is \de{$k$-continuously-differentiable}, denoted $f \in C^k$, if all iterated partial derivatives of $f$ of order $k$ exist and are continuous.
 \end{defi}
 \begin{thrm}
 	For any $k \in \N$, the function $f$ has class $C^k$ iff all of its coordinate functions $f_i$ have class $C^k$.
 \end{thrm}
 \begin{defi}
-	Given a set $V$, a \emph{distance} is a function $D : V \times V \to \R$ that satisfies, for all $x, y, z \in V$:
+	Given a set $V$, a \de{distance} is a function $D : V \times V \to \R$ that satisfies, for all $x, y, z \in V$:
 	\begin{enumerate}
 		\item $D(x,x) = 0$
 		\item If $x \neq y$, then $D(x,y) > 0$
@@ -210,14 +215,14 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \emph{1-forms}.
 	\end{enumerate}
 \end{defi}
 \begin{defi}
-	A \emph{metric space} is $(X, D)$ where $X$ is a set and $D$ is a distance function on $X$.
+	A \de{metric space} is $(X, D)$ where $X$ is a set and $D$ is a distance function on $X$.
 \end{defi}
 \begin{defi}
-	A function $f:\R^n \to \R^m$ is \emph{smooth}, denoted $C^\infty$, if $f$ is $C^k$ for all $k \in \N$.
+	A function $f:\R^n \to \R^m$ is \de{smooth}, denoted $C^\infty$, if $f$ is $C^k$ for all $k \in \N$.
 	Synonym: $\infty$-continuously-differentiable.
 \end{defi}
 \begin{defi}[analytic functions]
-	A function $f$ is \emph{analytic} if for every point $x$ in the domain, there exists a taylor series centered at $x$ which converges to $f$ in a neighborhood of $x$.  Note: The class of analytic functions is denoted $C^\omega$.
+	A function $f$ is \de{analytic} if for every point $x$ in the domain, there exists a taylor series centered at $x$ which converges to $f$ in a neighborhood of $x$.  Note: The class of analytic functions is denoted $C^\omega$.
 \end{defi}
 \begin{thrm}
 	$C^\omega \subsetneq C^\infty \subsetneq \subsetneq \subsetneq C^n \subsetneq C^{n-1} \subsetneq \subsetneq \subsetneq C^0$
@@ -232,7 +237,7 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \emph{1-forms}.
 	is smooth, but it is NOT analytic.
 \end{example}
 \begin{defi}
-	$K \subseteq X$ is \emph{compact} in $X$ if whenever $${K \subseteq \bigcup_{i \in I} O_i}$$ of open sets, then there exists a finite $J \subseteq I$ such that $$K \subseteq \bigcup_{j \in J} O_j$$.
+	$K \subseteq X$ is \de{compact} in $X$ if whenever $${K \subseteq \bigcup_{i \in I} O_i}$$ of open sets, then there exists a finite $J \subseteq I$ such that $$K \subseteq \bigcup_{j \in J} O_j$$.
 \end{defi}
 \begin{thrm}
 	If $K$ is compact in $X$ and $C$ is closed in $X$, then $K \cap C$ is compact in $X$.
@@ -244,7 +249,7 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \emph{1-forms}.
 	I conjecture that the theorem above is also true for ``open'' instead of ``compact''.  Also for ``closed'' and ANY other topological property.  I will give 10 dollars to whoever proves or disproves this theorem.
 \end{conj}
 \begin{defi}
-	The space $X$ has the \emph{discrete topology} if every singleton contained in $X$ is open.
+	The space $X$ has the \de{discrete topology} if every singleton contained in $X$ is open.
 \end{defi}
 \begin{thrm}
 	If $K$ is compact and has the discrete topology, then $K$ is finite.
@@ -261,7 +266,7 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \emph{1-forms}.
 	\end{itemize}
 \end{defi}
 \begin{defi}
-	A topological space $X$ is \emph{Hausdorff} if for every $a \neq b$ in $X$, there exists an open neighborhood $A$ of $a$ and an open neighborhood $B$ of $b$ such that $A \cap B = \{\}$.  Synonyms: seperated.  $T_2$.
+	A topological space $X$ is \de{Hausdorff} if for every $a \neq b$ in $X$, there exists an open neighborhood $A$ of $a$ and an open neighborhood $B$ of $b$ such that $A \cap B = \{\}$.  Synonyms: seperated.  $T_2$.
 
 	Properties of Hausdorff spaces $H$:
 	\begin{itemize}
@@ -294,7 +299,7 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \emph{1-forms}.
 	$X$ is a top space and $~$ is an equivalence relation on $X$.  Then there is a topology on $X/~$ (the set of equivalence classes) as follows.  $S \subseteq X/~$ is open iff (let backwards(S) : X/~ to X) backwards(S) is $open \in X$.  [[ f: X/~ to Y is continuous iff f of $g: X \to Y$ is contniuous.
 \end{thrm}
 \begin{defi}
-	A \emph{topological group} is a Hausdorff space $G$ that is also a group, which satisfies:
+	A \de{topological group} is a Hausdorff space $G$ that is also a group, which satisfies:
 	\begin{enumerate}
 		\item The function $m : G \times G \to G$ defined by $m((g,h)) = gh$ is continuous.
 		\item The function $i : G \to G$ defined by $i(g) = g^{-1}$ is continuous.
@@ -314,20 +319,20 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \emph{1-forms}.
 
 
 \begin{defi}[derivative of multivariable function]
-	The \emph{tangent plane} to function $f : \R^n \to \R^m$ at point $a$, denoted $df_a$ or $f^{\prime}(a)$, is the unique function that satisfies $\lim_{h\to 0} \frac{||f(a+h) - f(a) - df_a(h)||}{||h||} = 0$.
+	The \de{tangent plane} to function $f : \R^n \to \R^m$ at point $a$, denoted $df_a$ or $f^{\prime}(a)$, is the unique function that satisfies $\lim_{h\to 0} \frac{||f(a+h) - f(a) - df_a(h)||}{||h||} = 0$.
 \end{defi}
 \begin{defi}
-	The \emph{directional derivative} of $f$ at $x$ in the $v$ direction is $df_x(v)$ which is $\lim_{h\to 0} \frac{f(x+hv) - f(x)}{h}$.
+	The \de{directional derivative} of $f$ at $x$ in the $v$ direction is $df_x(v)$ which is $\lim_{h\to 0} \frac{f(x+hv) - f(x)}{h}$.
 \end{defi}
 \begin{defi}
-	Let $U$ and $V$ be open sets in $\R^n$ (topological spaces, soon).  A function $f:U\to V$ is a \emph{homeomorphism} iff it is a bijection and both $f$ and $f^{-1}$ are continuous.
+	Let $U$ and $V$ be open sets in $\R^n$ (topological spaces, soon).  A function $f:U\to V$ is a \de{homeomorphism} iff it is a bijection and both $f$ and $f^{-1}$ are continuous.
 	Synonym: bi-continuous function.
 \end{defi}
 \begin{defi}
-	Let $U$ and $V$ be open sets in $\R^n$.  A function $f:U\to V$ is a \emph{$C^r$-diffeomorphism} iff it is a bijection and both $f$ and $f^{-1}$ are $r$-continuously-differentiable.
+	Let $U$ and $V$ be open sets in $\R^n$.  A function $f:U\to V$ is a \de{$C^r$-diffeomorphism} iff it is a bijection and both $f$ and $f^{-1}$ are $r$-continuously-differentiable.
 \end{defi}
 \begin{defi}
-	Let $U$ and $V$ be open sets in $\R^n$.  A function $f:U\to V$ is a \emph{diffeomorphism} iff it is a bijection and both $f$ and $f^{-1}$ are differentiable.
+	Let $U$ and $V$ be open sets in $\R^n$.  A function $f:U\to V$ is a \de{diffeomorphism} iff it is a bijection and both $f$ and $f^{-1}$ are differentiable.
 	Synonym: bi-differentiable function.
 \end{defi}
 \begin{thrm}
@@ -388,38 +393,38 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \emph{1-forms}.
 \end{thrm}
 
 \begin{defi}
-	$X$ is \emph{connected} if whenever $X = A \cup B$ ($A$ and $B$ are both open and nonempty), then $A \cap B$ is nonempty.
+	$X$ is \de{connected} if whenever $X = A \cup B$ ($A$ and $B$ are both open and nonempty), then $A \cap B$ is nonempty.
 \end{defi}
 
 \begin{defi}
-	A space is \emph{second-countable} if it has a countable basis.  Synonym: \emph{2nd-countable}.
+	A space is \de{second-countable} if it has a countable basis.  Synonym: \de{2nd-countable}.
 \end{defi}
 \begin{defi}
-	A space is \emph{seperable} is it has a countable dense subset.
+	A space is \de{seperable} is it has a countable dense subset.
 \end{defi}
 \begin{thrm}
 	Every 2nd-countable space is seperable.
 \end{thrm}
 \begin{defi}
-	A space $M$ is an $n$-dim top \emph{manifold} if $M$ is Hausdorff and 2nd-countable, and $M$ has an open cover $\{U_i\}_{i \in I}$ such that each $U_i$ is homeomorphic (via $\phi_i$, which is itself called a \emph{chart}) to an open set in $\R^n$.  Then $\{ U_i, \phi_i \}$ is called an \emph{atlas} for $M$.
+	A space $M$ is an $n$-dim top \de{manifold} if $M$ is Hausdorff and 2nd-countable, and $M$ has an open cover $\{U_i\}_{i \in I}$ such that each $U_i$ is homeomorphic (via $\phi_i$, which is itself called a \de{chart}) to an open set in $\R^n$.  Then $\{ U_i, \phi_i \}$ is called an \de{atlas} for $M$.
 \end{defi}
 \begin{thrm}
 	The union of any amount of atlases is itself an atlas.
 \end{thrm}
 
 \begin{defi}
-	An atlas for $M$ is \emph{smooth} if every $\phi_\alpha^{-1}.\phi_\beta$ is $C^\infty$ both ways.
+	An atlas for $M$ is \de{smooth} if every $\phi_\alpha^{-1}.\phi_\beta$ is $C^\infty$ both ways.
 \end{defi}
 
 \begin{defi}
-	Two smooth atlases $A$ and $A'$ are \emph{equivalent} if for each $\alpha$, $\beta$, $\phi_\alpha^{-1}.\phi_\beta'$ is $C^\infty$ both ways.
+	Two smooth atlases $A$ and $A'$ are \de{equivalent} if for each $\alpha$, $\beta$, $\phi_\alpha^{-1}.\phi_\beta'$ is $C^\infty$ both ways.
 \end{defi}
 \begin{rmk}
 	It can be verified that the above definition really is an equivalence relation.
 \end{rmk}
 
 \begin{defi}
-	A \emph{smooth} manifold (``smooth structure'') is just a manifold coupled with an equivalence class of smooth atlases.
+	A \de{smooth} manifold (``smooth structure'') is just a manifold coupled with an equivalence class of smooth atlases.
 \end{defi}
 
 \begin{thrm}
@@ -437,21 +442,21 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \emph{1-forms}.
 \end{example}
 
 \begin{defi}
-	An \emph{n-}manifold or \emph{n-dimensional} manifold is a manifold that is locally homeomorphic to $\R^n$.  (``n-'' is the adjective to ``manifold''.)
+	An \de{n-}manifold or \de{n-dimensional} manifold is a manifold that is locally homeomorphic to $\R^n$.  (``n-'' is the adjective to ``manifold''.)
 \end{defi}
 
 
 \begin{defi}
 	Given $M$ smooth manifold w/ atlas $A = \{ U_a, \,  \phi_a : U_a \to \R^m \}$.
 	Given $N$ smooth manifold w/ atlas $B = \{ O_b, \,  \phi_b : U_b \to \R^n \}$.
-	A cont function $f : M \to N$ is \emph{smooth} if for all $a$, for all $b$, $\phi_a^{-1}.f.\psi_b$ is smooth.  You might call $f$ a \emph{mersion}.
+	A cont function $f : M \to N$ is \de{smooth} if for all $a$, for all $b$, $\phi_a^{-1}.f.\psi_b$ is smooth.  You might call $f$ a \de{mersion}.
 \end{defi}
 \begin{defi}
 	Given the same givens as above.
-	$N$ and $M$ are \emph{diffeomorphic} if there exists $f : M \to N$ and $g : N \to M$ both smooth such that $f.g = id_M$ and $g.f = id_N$.
+	$N$ and $M$ are \de{diffeomorphic} if there exists $f : M \to N$ and $g : N \to M$ both smooth such that $f.g = id_M$ and $g.f = id_N$.
 \end{defi}
 \begin{defi}[Matt's version]
-	$N$ and $M$ are \emph{diffeomorphic} if they are bimersive.  (That is, there exists a bimersion between them.)
+	$N$ and $M$ are \de{diffeomorphic} if they are bimersive.  (That is, there exists a bimersion between them.)
 \end{defi}
 
 \begin{rmk}
@@ -473,11 +478,11 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \emph{1-forms}.
 	Given $M$ smooth $m$-manifold with atlas $A = \{ U_a, \,\phi_a : U_a \to \R^m \}$.
 	Given $N$ smooth $n$-manifold with atlas $B = \{ V_b, \,\psi_b : V_b \to \R^n \}$.
 	$m \leq n$.
-	A smooth function $f : M \to N$  is an \emph{immersion} if given any $a, b$ such that $\phi_a: U_a \to \R^m$, $\psi_b: V_b \to \R^n$, and any $x \in \phi_a(U_a \cap V_b.f^{-1})$, then $x.(\phi_a^{-1}.f.\psi_b)'$ has rank $m$.
+	A smooth function $f : M \to N$  is an \de{immersion} if given any $a, b$ such that $\phi_a: U_a \to \R^m$, $\psi_b: V_b \to \R^n$, and any $x \in \phi_a(U_a \cap V_b.f^{-1})$, then $x.(\phi_a^{-1}.f.\psi_b)'$ has rank $m$.
 \end{defi}
 
 \begin{defi}
-	$M$ is a \emph{submanifold} of $N$ if there exists an immersion from $M$ to $N$.
+	$M$ is a \de{submanifold} of $N$ if there exists an immersion from $M$ to $N$.
 \end{defi}
 
 \begin{thrm}
@@ -491,22 +496,22 @@ If $f$ is a smooth map of manifolds, then we can differentiate, getting the line
 
 \begin{thrm}
 	$f$ is a smooth map of manifolds.
-	$f$ is an \emph{immersion} if forall $x$, $d_x$ above is injective.  (Note: this is *local* injectivity of f) ($m \leq n$)
+	$f$ is an \de{immersion} if forall $x$, $d_x$ above is injective.  (Note: this is *local* injectivity of f) ($m \leq n$)
 \end{thrm}
 
 \begin{defi}
 	$f$ is a smooth map of manifolds.
-	$f$ is a \emph{submersion} if forall $x$, $d_x$ above is surjective.  (Note: this is *local* surjectivity of f) ($m \geq n$)
+	$f$ is a \de{submersion} if forall $x$, $d_x$ above is surjective.  (Note: this is *local* surjectivity of f) ($m \geq n$)
 \end{defi}
 \begin{prop}
 	Every submersion is open.
 \end{prop}
 
 \begin{defi}
-	An \emph{embedding} $f$ is an immersion s.t. $f : M \to f(M)$ is a homeomorphism.
+	An \de{embedding} $f$ is an immersion s.t. $f : M \to f(M)$ is a homeomorphism.
 \end{defi}
 \begin{thrm}[minimal criteria for an embedding]
-	$f$ is an \emph{embedding} iff $f$ is an immersion that is injective and proper.
+	$f$ is an \de{embedding} iff $f$ is an immersion that is injective and proper.
 \end{thrm}
 
 An immersion is locally injective.  An embedding is globally injective.
@@ -517,12 +522,12 @@ An immersion is locally injective.  An embedding is globally injective.
 
 \begin{defi}
 	$f$ is a smooth map of manifolds.
-	$\phi_a(x) \in M$ is a \emph{regular} point if $d_x(\phi^{-1}.f.\psi)$ is onto.  Otherwise, $\phi_a(x)$ is a \emph{critical} point.
+	$\phi_a(x) \in M$ is a \de{regular} point if $d_x(\phi^{-1}.f.\psi)$ is onto.  Otherwise, $\phi_a(x)$ is a \de{critical} point.
 \end{defi}
 
 \begin{defi}
 	$f$ is a smooth map of manifolds.
-	$y \in N$ is a \emph{regular} value if every point in $f^{-1}(y)$ is regular.  Otherwise, $y$ is a \emph{critical} value.  Note: values $y$ *not* in the image of $f$ are vacuously regular.
+	$y \in N$ is a \de{regular} value if every point in $f^{-1}(y)$ is regular.  Otherwise, $y$ is a \de{critical} value.  Note: values $y$ *not* in the image of $f$ are vacuously regular.
 \end{defi}
 
 \begin{thrm}
@@ -625,12 +630,12 @@ $x \in L \subset M$
 More elegant definition of regular:
 \begin{defi}
 	$f$ is a smooth map of manifolds.
-	$x \in M$ is a \emph{regular} point if $d_x : T_xM \to T_yN$ is onto.  Otherwise, $x$ is a \emph{critical} point.
+	$x \in M$ is a \de{regular} point if $d_x : T_xM \to T_yN$ is onto.  Otherwise, $x$ is a \de{critical} point.
 \end{defi}
 
 \begin{defi}
 	$f$ is a smooth map of manifolds.
-	$y \in N$ is a \emph{regular} value if every point in $f^{-1}(y)$ is regular.  Otherwise, $y$ is a \emph{critical} value.  Note: values $y$ *not* in the image of $f$ are vacuously regular.
+	$y \in N$ is a \de{regular} value if every point in $f^{-1}(y)$ is regular.  Otherwise, $y$ is a \de{critical} value.  Note: values $y$ *not* in the image of $f$ are vacuously regular.
 \end{defi}
 
 \begin{thrm}
@@ -647,7 +652,7 @@ More elegant definition of regular:
 \end{thrm}
 
 \begin{defi}
-	$f$ is \emph{transverse} to $L \subset N$, denoted $f \transverse L$, if $f$ is a smooth map of manifolds and whenever $f(x) = y \in L$, then $df_x(T_xM) + T_yL = T_yN$.  (yes, we are adding vector spaces).
+	$f$ is \de{transverse} to $L \subset N$, denoted $f \transverse L$, if $f$ is a smooth map of manifolds and whenever $f(x) = y \in L$, then $df_x(T_xM) + T_yL = T_yN$.  (yes, we are adding vector spaces).
 \end{defi}
 
 \begin{thrm}
@@ -712,7 +717,7 @@ $f:U \to \R \sim g:V \to \R$
 iff
 there exists $W$ s.t. $p \in W \subset U \cap V$ where $f|_W = g|_W$.
 
-Let $C^\infty(M,p)$ = the set of equiv classes.  This is called the \emph{stalk} of the sheaf at point $p$.  Or the \emph{germ} of a function about $p$.
+Let $C^\infty(M,p)$ = the set of equiv classes.  This is called the \de{stalk} of the sheaf at point $p$.  Or the \de{germ} of a function about $p$.
 
 direct limit
 $= c\lim C^\infty(U)$.
@@ -771,7 +776,7 @@ proof not shown.
 \begin{lem}
 	\end{lem}
 \begin{defi}
-	A \emph{derivation} is a function that is linear and satisfies the product rule.
+	A \de{derivation} is a function that is linear and satisfies the product rule.
 \end{defi}
 \begin{defi}
 	$\Der(M,p)$ is the set of all such derivations $D$ of the form $D: C^\infty(M,p) \to \R$.
@@ -785,7 +790,7 @@ proof not shown.
 \mydate{d5}{10}{10}{2016}
 
 \begin{defi}
-	Given a differentiable manifold $M$ and the canonical $p: TM \to M$, a \emph{vector field} is a section of $p$.
+	Given a differentiable manifold $M$ and the canonical $p: TM \to M$, a \de{vector field} is a section of $p$.
 \end{defi}
 
 
@@ -822,7 +827,7 @@ $D_v$ directional derivative in $v$-direction
 	then cool things happen that i missed :(
 \end{example}
 \begin{defi}
-	A \emph{derivation} of a commutative algebra $A$ is derivation of the form $D: A \to A$.
+	A \de{derivation} of a commutative algebra $A$ is derivation of the form $D: A \to A$.
 
 	$\Der(A)$ is the set of all such derivations.
 \end{defi}
@@ -844,7 +849,7 @@ $D_v$ directional derivative in $v$-direction
 
 
 \begin{defi}
-	The \emph{Lie bracket} of $A$ and $B$, denoted $[A,B]$, is $AB - BA$.
+	The \de{Lie bracket} of $A$ and $B$, denoted $[A,B]$, is $AB - BA$.
 \end{defi}
 \begin{thrm}
 	Derivations are closed under the Lie bracket.
@@ -956,7 +961,7 @@ consider we have $k = n$, best possible
 
 
 \begin{defi}
-	$M$ is \emph{parallelizable} if there exists a diffeomorphism
+	$M$ is \de{parallelizable} if there exists a diffeomorphism
 
 	$$\phi : M \x \R^n \to TM$$
 	$$(x, t_1,,,t_n) \mapsto (x, t_1X_1(x),,,t_nX_n(x))$$
@@ -970,10 +975,10 @@ consider we have $k = n$, best possible
 
 \end{defi}
 \begin{thrm}
-	$M$ is \emph{parallelizable} iff the maximum number of linearly independent vector fields is $\dim M$.
+	$M$ is \de{parallelizable} iff the maximum number of linearly independent vector fields is $\dim M$.
 \end{thrm}
 \begin{defi}
-	An $n$-dimensional manifold $M$ is \emph{framed} if there exists $k$ and a vector bundle isomorphism $f$ s.t.
+	An $n$-dimensional manifold $M$ is \de{framed} if there exists $k$ and a vector bundle isomorphism $f$ s.t.
 
 	$$\begin{tikzcd}
 		TM \x \R^k \arrow[r, "f"] \arrow[rd, "p"'] & M \x \R^{n+k} \arrow[d, "q"] \\
@@ -1015,7 +1020,7 @@ consider we have $k = n$, best possible
 	$\C P^2$ not framed.
 \end{example}
 
-$df_x \in (T_xM)^*$, called the \emph{dual vector space} of $T_xM$
+$df_x \in (T_xM)^*$, called the \de{dual vector space} of $T_xM$
 $dg_x \in (T_xM)^*$ too
 set of above over all smooth functions
 
@@ -1033,7 +1038,7 @@ set of above over all smooth functions
 	where $(j, x, w) ~ (i, x, d(\phi_j of \phi_j inverse)_x(w))$
 \end{defi}
 \begin{defi}
-	A \emph{1-form} on $M$ is a section of $T*M \to M$.
+	A \de{1-form} on $M$ is a section of $T*M \to M$.
 
 	in other words, for all $x \in M$, $w(x): T_xM \to \R$ and this varies ``smoothly'' in $x$
 \end{defi}
@@ -1067,7 +1072,7 @@ set of above over all smooth functions
 
 
 \begin{defi}
-	$V$ is a finite dim real vector space.  Then an \emph{inner product} is a function $<,> : V \x V \to \R$ that is:
+	$V$ is a finite dim real vector space.  Then an \de{inner product} is a function $<,> : V \x V \to \R$ that is:
 	\begin{enumerate}
 		\item bilinear (note this implies $<0,0> = 0$)
 		\item symmetric
@@ -1081,7 +1086,7 @@ set of above over all smooth functions
 	Any linear product on $\R^n$ has the form $<v,w> = v^T A w$, where $A$ is a symmetric matrix with positive eigenvalues.
 \end{thrm}
 \begin{defi}
-	A \emph{Riemannian structure} in $M$ is an inner product $<,>_x \in T_xM$ for each $x \in M$ that is ``smooth'' in the following (equivalent) ways:
+	A \de{Riemannian structure} in $M$ is an inner product $<,>_x \in T_xM$ for each $x \in M$ that is ``smooth'' in the following (equivalent) ways:
 	\begin{itemize}
 		\item
 		Given any two smooth Vector Fields $X$, $Y$ on $M$, then
@@ -1101,7 +1106,7 @@ set of above over all smooth functions
 	Restriction of the ``standard'' inner prod (dot prod) on $\R^N \to T_xM$ gives a Riemannian structure on $M$.
 \end{example}
 \begin{defi}
-	A \emph{Riemannian Manifold} is a smooth manifold paired with a Riemannian structure.
+	A \de{Riemannian Manifold} is a smooth manifold paired with a Riemannian structure.
 \end{defi}
 \begin{example}
 	Given $\alpha : [0,1] \to M$ a smooth path
@@ -1190,7 +1195,7 @@ set of above over all smooth functions
 \section{Normal and Paracompact spaces, and partitions of unity}
 
 \begin{defi}
-	$X$ is \emph{normal} if for all $A$,$B$ closed and disjoint, there exists $U$,$V$ open, disjoint with $A \subseteq U$ and $B \subseteq V$.  (The "normal" condition is also called "Axiom $T_4$".  But this is *not* the same as being a $T_4$ space.  A $T_4$ space is, by definition, $T_2$ $+$ Axiom $T_4$.)
+	$X$ is \de{normal} if for all $A$,$B$ closed and disjoint, there exists $U$,$V$ open, disjoint with $A \subseteq U$ and $B \subseteq V$.  (The "normal" condition is also called "Axiom $T_4$".  But this is *not* the same as being a $T_4$ space.  A $T_4$ space is, by definition, $T_2$ $+$ Axiom $T_4$.)
 \end{defi}
 \begin{rmk}
 	($T_2$ + compact) implies $T_4$
@@ -1225,13 +1230,13 @@ set of above over all smooth functions
 \section{Paracompactness}[(Bredon, section I.12)]
 
 \begin{defi}
-	An open cover $O = \{U_a\}$ (this is a family of $U$'s) of $X$ is \emph{locally finite} if given any $x$, the set $\{U_a | x \in U_a\}$ is finite.  Or equivalently, any infinite intersection of $U_a$'s is empty.
+	An open cover $O = \{U_a\}$ (this is a family of $U$'s) of $X$ is \de{locally finite} if given any $x$, the set $\{U_a | x \in U_a\}$ is finite.  Or equivalently, any infinite intersection of $U_a$'s is empty.
 \end{defi}
 \begin{defi}
 	Given $X$, an open cover $\{V_b\}$ refines an open cover $\{U_a\}$ if every $V_b$ is contained in some $U_a$.
 \end{defi}
 \begin{defi}
-	A $T_2$ space $X$ is \emph{paracompact} if every open cover has a locally finite refinement.
+	A $T_2$ space $X$ is \de{paracompact} if every open cover has a locally finite refinement.
 \end{defi}
 \begin{thrm}
 	$X$ is $T_2$ and compact implies $X$ is paracompact.
@@ -1252,7 +1257,7 @@ set of above over all smooth functions
 	If $X$ is paracompact, and $\{U\}$ is a locally finite open cover, then there exists open sets $V_a$ with $V_a \subseteq \bar{V_a} \subseteq U_a$ with $\{V_a\}$ is an open cover.
 \end{prop}
 \begin{defi}
-	Given $\{U_a\}$ a locally finite open cover of $X$, then a \emph{partition of unity} subordinate to $\{U_a\}$ is a collection of continuous functions $\phi_a : X to [0,1]$ where for each $a$, the support of $\phi_a$ is contained in $U_a$.
+	Given $\{U_a\}$ a locally finite open cover of $X$, then a \de{partition of unity} subordinate to $\{U_a\}$ is a collection of continuous functions $\phi_a : X to [0,1]$ where for each $a$, the support of $\phi_a$ is contained in $U_a$.
 \end{defi}
 
 \begin{thrm}[Bredon, thm II.10.1]
@@ -1279,7 +1284,7 @@ set of above over all smooth functions
 
 
 \begin{defi}
-	A set $S \subseteq \R^n$ has \emph{measure 0} if given any $\epsilon > 0$, there exist rectangular $n$-dimensional boxes $\{S_j\}_{j\in J}$, where $J$ is countable, s.t. $S \subseteq \bigcup_{j \in J} S_j$ and $\sum_{j \in J} \vol(S_j) < \epsilon$.
+	A set $S \subseteq \R^n$ has \de{measure 0} if given any $\epsilon > 0$, there exist rectangular $n$-dimensional boxes $\{S_j\}_{j\in J}$, where $J$ is countable, s.t. $S \subseteq \bigcup_{j \in J} S_j$ and $\sum_{j \in J} \vol(S_j) < \epsilon$.
 \end{defi}
 \begin{lem}
 	If $f$ is a smooth function from an open subset of $\R^n$ to $\R^n$, then $f$ is measure 0.
@@ -1322,7 +1327,7 @@ set of above over all smooth functions
 		\item There exists an atlas $\{U\}$ for $M$ s.t. $\forall i$, $\mu(\phi_i(S \cap U_i)) = 0$.
 		\item For any (smooth) chart $\phi:U \to \R^n$, $\mu(\phi(S \cap U)) = 0$.
 	\end{itemize}
-	In this case, we say $S$ has \emph{measure 0} in $M$, and write $\mu(S) = 0$.
+	In this case, we say $S$ has \de{measure 0} in $M$, and write $\mu(S) = 0$.
 \end{cor}
 \begin{thrm}["Mini Sards Theorem"]
 	If $f : M^m \to N^n$ is a smooth map of manifolds and $m < n$, then $f(M)$ has measure $0$.
@@ -1515,7 +1520,7 @@ set of above over all smooth functions
 	% ``````````````````````````
 \end{proof}
 \begin{defi}
-	A property of a function $f : X \to Y$ is \emph{stable} if for every homotopy $H : X \x [0,1] \to Y$, there exists an $\epsilon > 0$ such that for all $t < \epsilon$, $H_t : X \to Y$ has the property.
+	A property of a function $f : X \to Y$ is \de{stable} if for every homotopy $H : X \x [0,1] \to Y$, there exists an $\epsilon > 0$ such that for all $t < \epsilon$, $H_t : X \to Y$ has the property.
 \end{defi}
 
 \mydate{d0}{31}{10}{2016}
@@ -1619,24 +1624,30 @@ Happy Halloween!
 
 	...
 
-	other things to notice
-	\begin{itemize}
-		\item Since $B_{1/2}$ is path connected, each $F_s$ is homotopic to $f = F_0$.
-		\item Non transverse maps are homotopic to transverse maps.
-	\end{itemize}
+
+
+
+\begin{defi}
+	$f$ and $g$ are \de{homotopic}, denoted $f \homotopic g$, if there exists a homotopy $H$ with $H_0 = f$ and $H_1 = g$.
+\end{defi}
+other things to notice
+\begin{itemize}
+	\item Since $B_{1/2}$ is path connected, each $F_s$ is homotopic to $f = F_0$.
+\end{itemize}
 \end{example}
 \begin{thm}
 	$M$ compact.
 	If original $f$ is an embedding, so is $F_s$ for all $s$ small enough.
 \end{thm}
 \begin{defi}
-	Two embeddings $f,g : M \to N$ are \emph{isotopic} if they are homotopic via some $H$, and for all $t \in [0,1]$, $H_t$ is an embedding.
+	Two embeddings $f,g : M \to N$ are \de{isotopic} if they are homotopic via some $H$, and for all $t \in [0,1]$, $H_t$ is an embedding.
 \end{defi}
 \begin{thrm}[Homotopy Transversality Theorem]
 	Given smooth $f: M \to N \supseteq L$, there exists smooth $g: M \to N$ such that:
 	\begin{enumerate}
 		\item $g$ is smoothly homotopic to $f$
 		\item $g \transverse L$
+		\item If $M$ has boundary, then $dg \transverse L$
 	\end{enumerate}
 	Furthermore, if $f$ is an embedding, then $g$ is isotopic to $f$.
 \end{thrm}
@@ -1695,27 +1706,32 @@ Happy Halloween!
 \begin{cor}[Bredon, 9]
 	If $N$ has a nowhere vanishing vector field, then there exists $f: N \to N$ with *no* fixed points, and $f$ homotopic to id.
 \end{cor}
-\begin{thrm}[Transversality Homotopy Theorem]
+
+\section{manifolds with boundary}
+\begin{defi}
+	The definition of a \de{manifold with boundary} $M$ is the same as the definition of a manifold, but there is a nonempty set of points in the manifold that have a neighborhood diffeomorphic to $H^n$ instead of $\R^n$.  The boundary of $M$ is denoted $\d M$
+\end{defi}
+
+\begin{thrm}[Homotopy Transversality Theorem 2]
 	$f: M \to N \supseteq L$, and $C \subseteq M$ is closed.
 	and $f|_C \transverse L$, then there exists
 	$g: M \to N$ s.t.
 	\begin{itemize}
 		\item $g \transverse L$
 		\item $g$ homotopic to $f$ with a homotopy that is constant on $C$
+		\item If $M$ has boundary, then $dg \transverse L$
 	\end{itemize}
-	so $g|_C = f|_C$
-	(The POINT is that we choose $g$ to be the SAME as $f$ on $C$, but probably DIFFERENT than $f$ somewhere else.)
+	So $g|_C = f|_C$!
 \end{thrm}
 \begin{lem}
-	($dH$ denotes boundary of $H$)
-	If $H \supset H \overset{f}{\to} V \subseteq H$ is a diffeomorphism between open sets, then $f( U \cap dH ) = V \cap dH$
+	If $H^n \supset U \overset{f}{\to} V \subseteq H^n$ is a diffeomorphism between open sets, then $f( U \cap \d H^n ) = V \cap \d H^n$
 	(The boundary maps to the boundary!)
 \end{lem}
 \begin{lem}
-	If $M$ has no boundary and $N$ does, then $d(M \x N) = M \x dN$.
+	If $M$ has no boundary and $N$ does, then $\d(M \x N) = M \x \d N$.
 \end{lem}
 \begin{example}
-	Let $M$ be a circle.  Let $N$ be an interval (the endpoints are the boundary).  Then d(cylindar) = circle x endpoints = one circle at each end.
+	Let $M$ be a circle.  Let $N$ be an interval (the endpoints are the boundary).  Then $\d(\text{cylindar}) = \text{circle} \x \text{endpoints} = \text{one circle at each end}$.
 \end{example}
 \begin{lem}
 	Suppose $N$ is a manifold without boundary and $f : N \to \R$ is smooth, and $c$ is a regular value.  Then $f^{-1}((-\oo, c])$ is a manifold with boundary $f^{-1}(c)$.
@@ -1724,61 +1740,49 @@ Happy Halloween!
 	Draw $N$.  Let $f$ be the ``height'' of each point of $N$.  Observe that the inverse image has boundary!
 \end{example}
 \begin{lem}[Collar lemma]
-	Given some $M$, $dM$ has an open neighborhood diffeomorphic to $dM \x [0, e)$ for some $e$ small enough.
+	Given some $M$, then $\d M$ has an open neighborhood diffeomorphic to $\d M \x [0, \epsilon)$ for $\epsilon$ small enough.
 \end{lem}
 
-% manifolds with boundary
-% ----------------------------
-% Some points diffeo morphic to H^n
 
-% homotopy transversality \end{example}
-% \end{lem}
-% \begin{thrm}
-% 	is the same, but now we get that dg transverse L too!
-% \end{thrm}
-% \begin{thrm}
-% 	A connected 1-dim manifold with boudary is diffeomorphic to \R, [0,oo), [0,1], and S^1
-% \end{thrm}
-% \begin{cor}
-% 	A compact 1-dim manifold has an even # of bdy points
-% \end{cor}
-% \begin{thrm}
-% 	Retraction \end{thrm}
-% \begin{thrm}
-% 	If M is a compact manifold with bdy dM, then there is NO smooth retraction r : M to dM
-% \end{thrm}
-% \begin{proof}
-% 		Suppose there was.  Then let y be a reg. val for r.  regular for dr = identity
-% 	then r'(y) is a compact 1-dim manifold w/ boundary.  so it's a single point.
-% \end{proof}
-% \begin{thrm}
-% 	``Smooth'' Brower Fixed Point \end{thrm}
-% \begin{thrm}
-% 	Any ``smooth'' f : Bn to Bn has a fixed point.  (This is in fact true for ``continuous'', but we won't prove that today)
-% \end{thrm}
-% \begin{proof}
-% 		Suppose not.  Then for all x in Bn, f(x) != x.
-% 	Define r : Bn to S{n-1} by sending f(x) back to x
-% 	r would be a retraction
-% 	if f(x)=x, i wouldn't know in which direction to head
-% 	this is a contradiction
+\begin{thrm}
+	A connected 1-dim manifold with boundary is diffeomorphic to $\R$, $[0,\oo)$, $[0,1]$, and $S^1$.  (We will *not* prove this)
+\end{thrm}
+\begin{cor}
+	A compact 1-dim manifold has an even number of boundary points.
+\end{cor}
+\begin{thrm}[Retraction theorem]
+	If $M$ is a compact manifold with boundary $\d M$, then there is NO smooth retraction $r : M \to \d M$.
+\end{thrm}
+\begin{proof}
+	(see \url{https://proofwiki.org/wiki/Retraction_Theorem} for a complete proof)
+	Suppose there was.  Then let $y$ be a regular value for $r$.  Regular for $\d r = \text{id}$.
+	So $r^{-1}(y)$ is a compact 1-dim manifold with boundary.  So $r^{-1}(y)$ is a single point.
+\end{proof}
+\begin{thrm}[``Smooth'' Brower Fixed Point theorem]
+	Any ``smooth'' $f : B^n \to B^n$ has a fixed point.  (This is in fact true for ``continuous'', but we won't prove that today)
+\end{thrm}
+\begin{proof}
+	Suppose not.  Then for all $x \in B^n$, $f(x) \not= x$.
+
+	Define $r : B^n \to S^{n-1}$ by sending $f(x)$ back to $x$.  Then $r$ is a smooth retraction.
+
+	$B^n$ is compact, so this contradicts the Retraction theorem.
+\end{proof}
 
 
 
-% mod 2 intersection numbers
-% ----------------------------------
-% \begin{defi}
-% 	Given
-% M ---f\to N \supseteq L
-% M,N,L all with empty boundary.  M compact.
-% given dim M + dim L = dim N.
 
-% Then the \emph{mod 2 intersection number}, denoted I2(f, L) in Z_2, is the cardinality of g'(L) mod 2 where g is homotopic to f and g transverse L.
-% \end{proof}
-% \begin{prop}
-% 	this is well-defined!  (you get the same cardinality for all such g!)
-% \end{proof}
-% \end{prop}
+\section{mod 2 intersection numbers (not sure if this is really meant to be a new section or not)}
+\begin{defi}
+	Given compact manifold $M^m$, and manifolds $M^m, N^n, L^l$ all with empty boundary,
+
+	$$M^m \overset{f}{\to} N^n \supseteq L^l$$
+
+	and $m + l = n$, then the \de{mod 2 intersection number}, denoted $I_2(f, L) \in \Z_2$, is the cardinality of $g^{-1}(L)$ mod 2 where $g \homotopic f$ and $g \transverse L$.
+\end{defi}
+\begin{prop}
+	The above is well-defined!  (you get the same cardinality for all such $g$!)
+\end{prop}
 % \begin{proof}
 % 		Let g, h each homotopic
 
