@@ -1590,4 +1590,68 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
   needed $\operatorname{deg} Q \geq 2 + \operatorname{deg} P$ and
   $Q(x) \neq 0$ for $x \in \R$. The first condition was necessary so that our
   ML-estimate would tend to 0.
+  \section{(11/1/2016) Lecture 20}
+  Using residues, we can compute trig integrals. The idea is, for an
+  integral of the form $\int_0^{2\pi} f(\theta) d\theta$ where $f$
+  consists of trig functions, we can convert the integral to a complex
+  integral using $z = e^{i \theta} \iff dz = ie^{i \theta}d\theta
+  \implies d\theta = \frac{dz}{iz}$. Then, we rewrite the integral in
+  terms of $z$ and integrate over $|z|=1$ and compute using residues.
+  \begin{example}
+    Consider $\int_0^{2\pi} \frac{\cos \theta}{2+\cos \theta}
+    d\theta$. We note that $\cos \theta = \frac{e^{i \theta} + e^{-i
+        \theta}}{2} = \frac{1}{2}(z+\frac{1}{z})$. Thus, our integral
+    becomes \[\oint_{|z|=1}
+    \frac{\frac{1}{2}(z+\frac{1}{z})}{z+\frac{1}{2}(z+\frac{1}{z})}
+    \frac{dz}{iz}.\]
+    We then compute the residues inside $|z|=1$ to get our final
+    answer. Note that we would expect our answer to be between 0 and
+    $2\pi$. A variation on this example would be an integral like
+    $\int_{-\infty}^\infty \frac{\cos 2x}{(1+x^2)^2} dx$ which is
+    solved by computing $\Re \int \frac{e^{iaz}}{(1+z^2)^2}dz$. 
+  \end{example}
+
+  \section{(11/3/2016) Lecture 21}
+  We started this lecture discussing $d(\arg z)$ and how the value is
+  dependent only on a path $\gamma$ and its winding number. We then
+  asked what if $\gamma = f(\gamma')$ for some different path
+  $\gamma' $. We then get $\int_{\gamma'} d(\log f(z)) =
+  \int_{\gamma'} \frac{f'(z)}{f(z)}dz$ (we take $0 \not\in f(\gamma')
+  = \gamma$). This is called the ``Logarithmic integral of $f$ on
+  $\gamma'$.'' The takeaway is that \[
+    \int_{\gamma'} \frac{f'(z)}{f(z)} dz = 2 \pi i (\text{winding
+      number of }\gamma'\text{ around }0) = i(\text{change in argument
+    on }\gamma').
+  \]
+  This leads us to a useful theorem.
+  \begin{thm}
+    Let $D$ be a domain with piecewise smooth boundary. Let $f$ be
+    meromorphic on $D$ and extend continuoussly to the boundary
+    $\partial D$. Then \[
+      \oint_{\partial D} \frac{f'(z)}{f(z)} dz = 2\pi i (Z - P)
+  \]
+  Where $Z$ is the number of zeros in the domain and $P$ is the number
+  of poles (counted with multiplicity). 
+  \end{thm}
+  \begin{proof}
+    Let $z_1, \ldots, z_n$ be the zeros and poles of $f$ in $D$. Then,
+    $f(z) = (z-z_0)^{N_k}g_k(z)$ where $g_k$ is analytic at $z_k$ and
+    $g_k(z_k) \neq 0$ and $N_k$ is the order of the zero or minus the
+    order of the pole. $\frac{f'(z)}{f(z)}$ is analytic off
+    $\{z_k\}$. \[
+      \frac{f'(z)}{f(z)} = \frac{N_k(z-z_k)^{N_k-1}g_k(z) +
+        (z-z_k)^{N_k}g_k(z)}{(z-z_k)^{N_k}g_k(z)} = \frac{N_k}{z-z_k}
+      + \frac{g_k'(z)}{g_k(z)}
+    \]
+    where we note that $\frac{g_k'(z)}{g_k(z)}$ is analytic at
+    $z_k$. So, we get that $\Res(\frac{f'}{f},z_k) = N_k$ and
+    $\frac{f'}{f}$ has simple pole at $z_k$. Thus, $\oint_{\partial D}
+    \frac{f'(z)}{f(z)}dz = 2 \pi i \sum N_k$ by the Residue theorem,
+    which is exactly $2 \pi i (Z-P)$. 
+  \end{proof}
+  \begin{example}
+    What is the change in argument of $z^k$ on $|z|=1$
+    counterclockwise? There are actually three different methods to
+    compute this...
+  \end{example}
 \end{document}
