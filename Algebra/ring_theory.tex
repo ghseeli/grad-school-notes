@@ -553,46 +553,45 @@ other maximal entities.
   \end{align*}
   i.e. as functions that admit a representation as a polynomial.
   \begin{example}
-   \(R = \Z_p = \F_p\) consider \(x, x^p \in \F_p[x]\). Problem: \(x\) and \(x^p\) define the same function but have
-   different representations. 
+    \(R = \Z_p = \F_p\) consider \(x, x^p \in \F_p[x]\). Problem: \(x\) and \(x^p\) define the same function but have
+    different representations.
   \end{example}
 
   \begin{defn}
-  The \emph{polynomial ring} (in one variable over \(R\)) \((R[X],+,\cdot)\) is the set
-  \begin{align*}
-    R[X] \coloneqq \left\{(a_i)_{i \in \N_0} \mid a_i \in R, \text{ with all but finitely many entries zero}\right\}
-  \end{align*}
-  with operations 
-  \begin{align*}
-    (a_i) + (b_i) &\coloneqq (a_i + b_i)\\
-    (a_i)(b_i) &\coloneqq \left(\sum_{i=0}^k a_ib_{k-i}\right)_{k \in \N_0}.
-  \end{align*}
-\end{defn}
-One may form this checks a commutative ring with identity \(1=(1,0,0,\ldots)\). What requires the most work is checking
-that the multiplication is associative. 
-\begin{rmk*}
-  Elements of \(R[x]\) are called polynomials. There is a natural embedding 
-  \begin{align*}
-    R &\hookrightarrow R[X]\\
-    a &\mapsto (a,0,0,\ldots)
-  \end{align*}.
-  There is a distinguished element called \(x\) in \(R[X]\), namely we let
-  \[x = (0,1,0,\ldots).\]
-  For \(a=(a_i)_{i \in \N_0}\) one checks
-  \begin{align*}
-    (xa)_0 &= 0\\
-    (xa)_i &= (a_{i-1})
-  \end{align*}.
-  In other words this element \(x\) has the property that it shifts the coefficients.
-\end{rmk*}
+    The \emph{polynomial ring} (in one variable over \(R\)) \((R[X],+,\cdot)\) is the set
+    \begin{align*}
+      R[X] \coloneqq \left\{(a_i)_{i \in \N_0} \mid a_i \in R, \text{ with all but finitely many entries zero}\right\}
+    \end{align*}
+    with operations
+    \begin{align*}
+      (a_i) + (b_i) &\coloneqq (a_i + b_i)\\
+      (a_i)(b_i) &\coloneqq \left(\sum_{i=0}^k a_ib_{k-i}\right)_{k \in \N_0}.
+    \end{align*}
+  \end{defn}
+  One may form this checks a commutative ring with identity \(1=(1,0,0,\ldots)\). What requires the most work is
+  checking that the multiplication is associative.
+  \begin{rmk*}
+    Elements of \(R[x]\) are called polynomials. There is a natural embedding
+    \begin{align*}
+      R &\hookrightarrow R[X]\\
+      a &\mapsto (a,0,0,\ldots)
+    \end{align*}.
+    There is a distinguished element called \(x\) in \(R[X]\), namely we let
+    \[x = (0,1,0,\ldots).\] For \(a=(a_i)_{i \in \N_0}\) one checks
+    \begin{align*}
+      (xa)_0 &= 0\\
+      (xa)_i &= (a_{i-1})
+    \end{align*}.
+    In other words this element \(x\) has the property that it shifts the coefficients.
+  \end{rmk*}
 
 \begin{defn}
   Any element \(0 \neq a \in R[x]\) can be uniquely written in the form \(\poly{i}{a}{d}\) with all \(a_i \in R\) and
   \(a_d \neq 0\). The integer \(d\) is called the \emph{degree} and is denoted \(\deg(a)\). Note that
-  \[deg(a) = 0 \iff a \in R \setminus \{0\}\]
-  The element \(a_d\) is called \emph{the leading coefficient} of \(a\) and is denoted by \(\ell(a)\). The polynomial
-  \(a\) is \emph{monic} if \(\ell(a)=1\). We also define \(\ell(0) \coloneqq 0\) and \(\deg(0) \coloneqq -
-  \infty\). This representation admits the operations in the follow form:
+  \[deg(a) = 0 \iff a \in R \setminus \{0\}\] The element \(a_d\) is called \emph{the leading coefficient} of \(a\) and
+  is denoted by \(\ell(a)\). The polynomial \(a\) is \emph{monic} if \(\ell(a)=1\). We also define
+  \(\ell(0) \coloneqq 0\) and \(\deg(0) \coloneqq - \infty\). This representation admits the operations in the follow
+  form:
   \begin{align*}
     \poly{i}{a}{d}+\poly{i}{b}{e} &= \sum_{i=0}^{\max\{d,e\}}(a_i+b_i)x^i\\
     \poly{i}{a}{d}\poly{j}{b}{e}  &= \sum_{k=0}^{d+e}\left(\sum_{i=0}^k a_i b_{k-i}\right)x^k                              
@@ -605,15 +604,14 @@ that the multiplication is associative.
 I have omitted a very tedious verification of the uniqueness of the representation.
 \begin{rmk}
   In a similar way we define the \emph{power series ring} denoted \(R[[x]]\) as follow
-  \[R[[x]] \coloneqq \left\{(a_i)_{i \in \N_0}\} \mid a_i \in R\right\}.\]
-  Here we have simply dropped the requirement that all but a finite amount of terms must be zero. We define the
-  operations in the same manner. Further notice that there are no infinite sums being carried out. Also there is a
-  natural inclusion
+  \[R[[x]] \coloneqq \left\{(a_i)_{i \in \N_0}\} \mid a_i \in R\right\}.\] Here we have simply dropped the requirement
+  that all but a finite amount of terms must be zero. We define the operations in the same manner. Further notice that
+  there are no infinite sums being carried out. Also there is a natural inclusion
   \[R[x] \hookrightarrow R[[x]]\]
 \end{rmk}
 
 \begin{lem}
-  Let \(f,g \in R[x]\). 
+  Let \(f,g \in R[x]\).
   \begin{enumerate}[label=(\alph*)]
   \item \(\deg(f+g) \le \max \{\deg f, \deg g\}\)
   \item If \(\ell(f)\) is not a zero divisor of \(R\) we have
@@ -644,18 +642,27 @@ I have omitted a very tedious verification of the uniqueness of the representati
     zero divisors. Then by lemma 2.3.4b we have that \(\deg(fg)=\deg(f)+\deg(g)\).
   \item \(f \neq 0 \neq g \implies \deg(fg)=\deg(f)+\deg(g)\) thus \(\deg(fg) \ge 0\), hence \(fg \neq 0\)
   \item \(R \hookrightarrow R[x] \implies R^\times \subseteq R[x]^\times\). Suppose \(f,g\) are units in \(R[x]\), and
-    then use the previous part to show
-    \(\deg(f)+\deg(g)=0\), and hence \(f,g \in R\). 
+    then use the previous part to show \(\deg(f)+\deg(g)=0\), and hence \(f,g \in R\).
   \end{enumerate}
 \end{proof}
 
 \begin{rmk}
-\begin{enumerate}
-\item \(\polyex{a}{d}{i} \in R[x]^\times \iff a_1, \ldots, a_d\) are nilpotent.
-\item Power Series Ring \(R[[x]]\) is defined the same was a polynomial ring, but we remove the requirement that all but
-  a finite amount of terms are zero.
-\end{enumerate}
+  \begin{enumerate}
+  \item \(\polyex{a}{d}{i} \in R[x]^\times \iff a_1, \ldots, a_d\) are nilpotent.
+  \item Power Series Ring \(R[[x]]\) is defined the same was a polynomial ring, but we remove the requirement that all
+    but a finite amount of terms are zero.
+  \end{enumerate}
 \end{rmk}
+
+\begin{prop}
+  Let \(\varphi \colon R \to S\) be a ring homomorphism, and a choice for where \(x \mapsto a\) there exists a unique
+  \begin{figure}[h] \centering
+    \begin{tikzcd}
+      R \arrow[r,"\varphi"] \arrow[rd,hook]& S \\
+      & R[x] \arrow[u,dashed,"\exists! \tilde{\varphi}_a"]
+    \end{tikzcd}
+  \end{figure}
+\end{prop}
 
 \end{document}
 %%% Local Variables:
