@@ -2,6 +2,7 @@
 \setcounter{section}{1}
 
 \newcommand{\poly}[3]{\sum_{#1=0}^#3 {#2}_{#1}x^{#1}}
+\newcommand{\polyex}[2]{{#1}_#2 x^{#2} + {#1}_{#2-1}x^{#2-1} + \ldots + {#1}_1 x + {#1}_0}
 
 \begin{document}
 \section{Ring Theory}
@@ -27,7 +28,7 @@
   A \emph{commutative ring} is a ring with the additional property that \(xy=yx\) for all \(x,y \in R\).
 \end{defn*}
 Notice that if multiplication is commutative either distribution law implies the other. One of the most basic
-observations one can make is that \(R\) is the trivial ring \(\iff 1=0\).
+observations one can make is that \(R\) is the trivial ring \(\iff 1=0\). 
 
 \begin{example*}
   A few familiar rings: \[\Z,\Z_n,\Q,\R,\C\] A non-commutative ring:
@@ -619,6 +620,43 @@ I have omitted a very tedious verification of the uniqueness of the representati
     \[\deg(fg) = \deg(f)+\deg(g)\]
   \end{enumerate}
 \end{lem}
+
+
+\begin{example*}
+  If \(l(f)\) is a zero divisor we might have \(\deg f \ deg g < \deg f + \deg g\). Consider \(R = \Z_6\) then
+  \begin{align*}
+    (1+2x)(1+3x) = (1+5x)
+  \end{align*}
+\end{example*}
+
+\begin{prop}
+  Let \(R\) be an integral domain. Then
+  \begin{enumerate}[label=(\alph*)]
+  \item \(f,g \in R[x]\), \[\deg(fg)=\deg(f)+deg(g)\]
+  \item \(R[x]\) is an integral domain
+  \item \(R[x]^\times = R^\times\)
+  \end{enumerate}
+\end{prop}
+
+\begin{proof}
+  \begin{enumerate}[label=(\alph*)]
+  \item Assume \(f \neq 0\) and \(g \neq 0\). Then since \(R\) is an integral domain \(\ell(f)\) and \(\ell(g)\) are not
+    zero divisors. Then by lemma 2.3.4b we have that \(\deg(fg)=\deg(f)+\deg(g)\).
+  \item \(f \neq 0 \neq g \implies \deg(fg)=\deg(f)+\deg(g)\) thus \(\deg(fg) \ge 0\), hence \(fg \neq 0\)
+  \item \(R \hookrightarrow R[x] \implies R^\times \subseteq R[x]^\times\). Suppose \(f,g\) are units in \(R[x]\), and
+    then use the previous part to show
+    \(\deg(f)+\deg(g)=0\), and hence \(f,g \in R\). 
+  \end{enumerate}
+\end{proof}
+
+\begin{rmk}
+\begin{enumerate}
+\item \(\polyex{a}{d}{i} \in R[x]^\times \iff a_1, \ldots, a_d\) are nilpotent.
+\item Power Series Ring \(R[[x]]\) is defined the same was a polynomial ring, but we remove the requirement that all but
+  a finite amount of terms are zero.
+\end{enumerate}
+\end{rmk}
+
 \end{document}
 %%% Local Variables:
 %%% mode: latex
