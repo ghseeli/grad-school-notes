@@ -47,7 +47,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TITLE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \title[Differential Topology]{Differential Topology}
-\author{George Seelinger, Matthew Lancellotti\\ (class notes for Nick Kuhn's MATH 7820)}
+\author{Matthew Lancellotti, George Seelinger\\ (class notes for Nick Kuhn's MATH 7820)}
 \date{Fall 2016}
 \begin{document}
 \maketitle
@@ -230,8 +230,8 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \de{1-forms}.
 \begin{example}
 	The function $$f(x) =
 	\begin{cases}
-		e^{-1/x^2} &\text{if $x \neq 0$} \\
-		0 &\text{if $x=0$} \\
+		e^{-1/x^2}	&\text{if $x \neq 0$} \\
+		0			&\text{if $x=0$} \\
 	\end{cases}
 	$$
 	is smooth, but it is NOT analytic.
@@ -358,8 +358,8 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \de{1-forms}.
 \begin{example}
 	Let $$f(x) =
 	\begin{cases}
-		\frac{x}{2} + x^2\sin\left(\frac 1x\right) \text{ if $x \neq 0$} \\
-		0 \text{ if $x=0$} \\
+		\frac{x}{2} + x^2\sin\left(\frac 1x\right)	&\text{if $x \neq 0$} \\
+		0											&\text{if $x=0$} \\
 	\end{cases}
 	$$  We see that $f$ is differentiable, but the derivative is not continuous (i haven't verified this).  It turns out that $f$ is not one-to-one (and therefore not a bijection).
 \end{example}
@@ -530,8 +530,8 @@ An immersion is locally injective.  An embedding is globally injective.
 	$y \in N$ is a \de{regular} value if every point in $f^{-1}(y)$ is regular.  Otherwise, $y$ is a \de{critical} value.  Note: values $y$ *not* in the image of $f$ are vacuously regular.
 \end{defi}
 
-\begin{thrm}
-	This comes from the Local Submersion Theorem.  If $y \in N$ is a regular value, then $f^{-1}(y)$ is a smooth submanifold of $M$ of dimension $m-n$.
+\begin{thrm}[Preimage theorem]
+	If $y \in N$ is a regular value of a smooth submersion $f$, then $f^{-1}(y)$ is a smooth submanifold of $M$ of dimension $m-n$.
 \end{thrm}
 
 \begin{example}
@@ -1139,10 +1139,10 @@ set of above over all smooth functions
 	which is 1 on $V_i$, and has support $\subseteq U$ (this is possible since $V \in U$.  So 1 on $V$ and then dips down to 0 on or before bdry of $U$)
 	$\supp (\lambda)$ is the points in the domain that don't map to 0.
 
-	Let $\psi : M \to \R^n$ be $$
+	Let $\psi : M \to \R^n$ be $$ \psi(x) =
 	\begin{cases}
-		\lambda(x)\phi(x) \text{if $x \in U$} \\
-		0 \text{if $x \not\in U$}
+		\lambda(x)\phi(x)	&\text{if $x \in U$} \\
+		0					&\text{if $x \not\in U$} \\
 	\end{cases}
 	$$
 	(or just $\lambda(x)\overset{~}{\phi}(x)$ everywhere, but $\overset{~}{\phi}$ was only in our minds)
@@ -1285,6 +1285,9 @@ set of above over all smooth functions
 
 \begin{defi}
 	A set $S \subseteq \R^n$ has \de{measure 0} if given any $\epsilon > 0$, there exist rectangular $n$-dimensional boxes $\{S_j\}_{j\in J}$, where $J$ is countable, s.t. $S \subseteq \bigcup_{j \in J} S_j$ and $\sum_{j \in J} \vol(S_j) < \epsilon$.
+\end{defi}
+\begin{defi}
+	Given a set $S \subseteq \R^n$, we say that a property is true for \de{almost all} $s \in S$ if the subset $\{t \in S \mid \text{property is false for }t\}$ has measure 0.
 \end{defi}
 \begin{lem}
 	If $f$ is a smooth function from an open subset of $\R^n$ to $\R^n$, then $f$ is measure 0.
@@ -1505,7 +1508,7 @@ set of above over all smooth functions
 	If $M$ and $L$ are not transverse, then you can wiggle $M$ a little in the right direction, and then $M+c$ and $L$ WILL be transverse.
 \end{thrm}
 \begin{lem}
-	Given $M \x S$ instead of $M$, and $F$ instead of $f$ in above thm.  Suppose $F \transverse L$.  Then for almost all $s \in S$ (except for on a set of measure 0), the function $F_s: M \to N$ by $F_s(x) = F(x,s)$ is transverse to $L$.
+	Given $M \x S$ instead of $M$, and $F$ instead of $f$ in above thm.  Suppose $F \transverse L$.  Then for almost all $s \in S$, the function $F_s: M \to N$ by $F_s(x) = F(x,s)$ is transverse to $L$.
 \end{lem}
 \begin{lem}
 	% Given \R^n instead of N in setup.
@@ -1530,14 +1533,14 @@ Happy Halloween!
 \begin{thrm}[Transversality Lemma, or Guilleman and Pollock Trans Thm]
 	$F: M \x S \to N \supseteq L$
 	Given $s \in S$, let $F_s: M \to N$.
-	If $F \transverse L$, then $F_s \transverse L$ for almost all $s$  (except for $s$ in a set of measure 0).
+	If $F \transverse L$, then $F_s \transverse L$ for almost all $s$.
 \end{thrm}
 \begin{proof}
-	Since $F \transverse L$, then $K = F^{-1}(L)$ is a submanifold of $M \x \delta$.
+	Since $F \transverse L$, then $K = F^{-1}(L)$ is a submanifold of $M \x S$.
 
 	$$\begin{tikzcd}
-		K \arrow[r, "F"] \arrow[rd] \arrow[rdd, "p", bend left] & L \arrow[rd, "L"] \\
-		 & M x S \arrow[r, "F"] \arrow[d, "ps", "projection"] & N \\
+		K \arrow[r, "F"] \arrow[rd, "\iota"] \arrow[rdd, "p", bend right] & L \arrow[rd, "\iota"] \\
+		 & M \x S \arrow[r, "F"] \arrow[d, "\text{projection}"] & N \\
 		 & S
 	\end{tikzcd}$$
 
@@ -1725,19 +1728,22 @@ other things to notice
 \end{thrm}
 \begin{lem}
 	If $H^n \supset U \overset{f}{\to} V \subseteq H^n$ is a diffeomorphism between open sets, then $f( U \cap \d H^n ) = V \cap \d H^n$
-	(The boundary maps to the boundary!)
+	(The boundary of $U$ maps to the boundary of $V$!)
 \end{lem}
-\begin{lem}
+\begin{prop}[Matt]
+	The boundary operator $\d$ is a derivation.  That is, if $M$ and $N$ are manifolds, then $\d(M \x N) = (\d M \x N) \cup (M \x \d N)$.
+\end{prop}
+\begin{cor}
 	If $M$ has no boundary and $N$ does, then $\d(M \x N) = M \x \d N$.
-\end{lem}
+\end{cor}
 \begin{example}
 	Let $M$ be a circle.  Let $N$ be an interval (the endpoints are the boundary).  Then $\d(\text{cylindar}) = \text{circle} \x \text{endpoints} = \text{one circle at each end}$.
 \end{example}
 \begin{lem}
-	Suppose $N$ is a manifold without boundary and $f : N \to \R$ is smooth, and $c$ is a regular value.  Then $f^{-1}((-\oo, c])$ is a manifold with boundary $f^{-1}(c)$.
+	Suppose $N$ is a manifold without boundary and $f : N \to \R$ is smooth, and $c$ is a regular value.  Then $f^{-1}([c,\oo))$ is a manifold with boundary $f^{-1}(c)$.
 \end{lem}
 \begin{example}
-	Draw $N$.  Let $f$ be the ``height'' of each point of $N$.  Observe that the inverse image has boundary!
+	Draw $N$.  Let $f$ be the ``height'' of each point of $N$.  Observe that the inverse image of $[c, \oo)$ has boundary!
 \end{example}
 \begin{lem}[Collar lemma]
 	Given some $M$, then $\d M$ has an open neighborhood diffeomorphic to $\d M \x [0, \epsilon)$ for $\epsilon$ small enough.
@@ -1754,9 +1760,11 @@ other things to notice
 	If $M$ is a compact manifold with boundary $\d M$, then there is NO smooth retraction $r : M \to \d M$.
 \end{thrm}
 \begin{proof}
-	(see \url{https://proofwiki.org/wiki/Retraction_Theorem} for a complete proof)
-	Suppose there was.  Then let $y$ be a regular value for $r$.  Regular for $\d r = \text{id}$.
-	So $r^{-1}(y)$ is a compact 1-dim manifold with boundary.  So $r^{-1}(y)$ is a single point.
+	Suppose there was.  By Sard's Theorem, almost all values are regular.  Since $\d M$ has positive measure, and the critical values have measure 0, there must be at least one regular value.  Let $y$ be a regular value.
+
+	By the Preimage theorem, $r^{-1}(y)$ is a smooth manifold of dimension $\dim(M) - \dim(\d M) = 1$.  Since $\{y\}$ is closed, and $r$ is continuous, $r^{-1}(\{y\})$ is also closed.  Since $r^{-1}(\{y\})$ is closed in a compact manifold, $r^{-1}(\{y\})$ is compact.  We conclude that we have a compact one-dimensional submanifold $r^{-1}(\{y\})$.
+
+	The boundary of our compact one-dimensional submanifold is $\d (r ^{-1}(\{y\})) = r^{-1}(\{y\}) \cap \d M = \{x\}$.  (Note that we concluded $x$ was the only point on the boundary by exploiting that $r$ is the identity on the boundary).   So our submanifold has exactly \textbf{1} boundary point.  But a theorem states that every compact one-dimensional manifold is diffeomorphic to a circle or a closed interval, meaning that it has an \textbf{even} number of boundary points.  This is a contradiction.
 \end{proof}
 \begin{thrm}[``Smooth'' Brower Fixed Point theorem]
 	Any ``smooth'' $f : B^n \to B^n$ has a fixed point.  (This is in fact true for ``continuous'', but we won't prove that today)
@@ -1781,10 +1789,126 @@ other things to notice
 	and $m + l = n$, then the \de{mod 2 intersection number}, denoted $I_2(f, L) \in \Z_2$, is the cardinality of $g^{-1}(L)$ mod 2 where $g \homotopic f$ and $g \transverse L$.
 \end{defi}
 \begin{prop}
-	The above is well-defined!  (you get the same cardinality for all such $g$!)
+	The above is well-defined!  (you get the same cardinality for all such $g$!)  Also note that at least one such $g$ always exists thanks to the Homotopy Transversality Theorem.
 \end{prop}
-% \begin{proof}
-% 		Let g, h each homotopic
+\begin{proof}
+		Let g, h each homotopic
+\end{proof}
+
+\begin{defi}
+	$M_0^n$ and $M_1^n$ are \de{cobordant} if they are closed (compact and something) and there exists $W^{n+1}$ s.t. $\d W = M_0 \amalg M_1$.
+\end{defi}
+\begin{defi}
+	$f_0$ and $f_1$ are \de{cobordant} maps if there exists $W$ as before
+	$F: W \to N$
+	and
+	$F|_{M_0} = f_0$.
+	Same for $f_1$.
+\end{defi}
+\begin{prop}(Cobordism)
+	Given a cobordism above and any $L$ s.t. $L \subseteq N$ and $l + m = n$, then $I_2(f_0, L) = I_2(f_1, L)$.
+\end{prop}
+\begin{cor}
+	If $M$ is compact without boundary, $M = \d W$, $f : M \to N$ extends to $F: W \to N$, then for all $L \subseteq N$, $I_2(f, L) = 0$.
+\end{cor}
+\begin{cor}
+	If $f,g: M \to N \supseteq L$ and $f \homotopic g$, then their mod 2 intersection numbers are equal.
+\end{cor}
+\begin{defi}
+	If $f : M^m \to N^n$ and $N$ is connected and $M$, $N$ are compact without boundary and $m=n$, then the \de{mod 2 degree} of $f$, denoted $\deg_2(f)$, is $I_2(f, \{y\})$ for any $y \in N$.
+\end{defi}
+
+\begin{prop}
+	This is well defined.  (Independent of choice of $y$).
+\end{prop}
+\begin{proof}
+	Choose a $g \homotopic f$ s.t. $y$ is a regular value for $g$.  Look at $I_2(g, \{y\}) = |g^{-1}(y)|$.  Since $y$ is regular, we have that $|g^{-1}(y)|$ is locally constant.  Since $N$ is connected (and $M,N$ compact, see hw and midterm), then $|g^{-1}(y)|$ is globally constant.
+\end{proof}
+\begin{prop}
+	$dwW = M0 \amalg M1$, $F: W \to N$, $m_0 + m_1 = n$, $f_0 = F|_{M_0}$ same for 1.  Then $\deg_2(f_0) = \deg_2(f_1)$.
+\end{prop}
+\begin{proof}
+	Choose a regular value for $F$, $dF$.
+	$F^{-1}(y)$ is a 1-manifold with boundary $f_0^{-1}(y) \amalg f_1^{-1}(y)$.
+\end{proof}
+\begin{cor}
+	$M = dW$
+	$f: M \to N$
+	extends to $F: W \to N$.
+	Then $\deg_2(f) = 0$.
+\end{cor}
+\begin{cor}
+	If $f_0 \homotopic f_1: M \to N$, then $\deg_2(f_0) = \deg_2(f_1)$.
+
+	fix $z$ in $\R^n \smallsetminus M_n$.
+
+	Define $u_z : M_{n-1} to S_{n-1}$.
+	$u_z(x) = \frac{x-z}{|x-z|}$.
+
+	Picture of closed curve and a point and a ray from that point.
+
+	$\deg_2(u_z) = case 0$ if $z$ is outside $M$.
+	Case 1 if $z$ is inside $M$.
+\end{cor}
+\begin{thrm}
+	There are exactly 2 path components at $\R^n \smallsetminus M$.
+\end{thrm}
+
+\section{Orientation}
+
+\begin{defi}
+	Given $V$ a V.S. over $\R$ of dimension $n$.
+	Let $\mathcal{B}(V) = \{ (v_1,,,vn) \mid \{v_1,,,vn\} \text{ is a basis of } V \}$ is the set of all ordered bases for $V$
+	Introduce an equivalence relation.  Two bases are equivalent if there exists an invertible matrix with positive determinant that maps one basis to the other.   (this separates bases into "positive" and "negative")
+	An \de{orientation} on $V$ is a choice of one of the two equivalence classes.  This is written $(V, [b])$ for some ordered basis $b$.
+\end{defi}
+\begin{example}
+	The standard orientation of $\R^n$ is the equivalence class of the standard ordered basis $(e1,,,en)$.  This is written $(\R^n, [(e1,,,en)])$.
+\end{example}
+\begin{defi}
+	If $M$ is a smooth $n$-dimensional manifold, then an orientation of $M$ will be a choice of orientation for each $T_xM$ compatible as follows.  $M$ has an atlas of coordinate charts $\{ \phi : U \to \R^n \mid d(\phi)_x : T_xM \to \R^n \text{ is orientation preserving} \}$.
+\end{defi}
+\begin{prop}
+	A manifold admits an orientation if and only if there exists an atlas $\{ \phi : U \to \R^n \mid d(\phi)_x : T_xM \}$ s.t. for all $i,j$ we have $\phi_i^{-1}.\phi_j : \phi_i(U_i \cap U_j) \to \phi_j(U_i \cap U_j)$
+	, for all $x$ in $U_i \cap U_j$, we have $d(\phi_i^{-1}.\phi_j)$ is orientation preserving.
+\end{prop}
+\begin{defi}
+	$-M$ denotes the alternative orientation of $M$.
+\end{defi}
+\begin{example}
+	The mobius strip is not orientable.
+\end{example}
+
+\mydate{d14}{16}{11}{2016}
+
+Some stuff i missed.
+
+\begin{defi}
+	The \emph{intersection number} of $f$ and $L$, denoted $I(f, L)$, is the integer $\sum_{x \in g^{-1}(L)} o(x)$ where
+	\begin{itemize}
+		\item $g \homotopic f$
+		\item $g \transverse L$
+		\item $o(x) = \pm 1$ is the orientation of $x$
+	\end{itemize}.
+\end{defi}
+\begin{lem}
+	If $M$ is a 1-dimensional compact oriented manifold with boundary $\d M$, then $\sum_{x \in \d M} o(x) = 0$.
+\end{lem}
+\begin{proof}
+	$g \homotopic f \homotopic h$.
+
+	$g \transverse L$, $h \transverse L$.
+
+	$g \transverse h : I \x M \overset{H}{\to} N$.
+
+	There exists $K$ s.t. $J \x M \overset{\overset{~}{H}}{\to} N$.
+
+	punch line / example.  draw the cyclindar with the level curve things on it.  Compare the level curves intersection the top and bottom boundaries.  these are $h^{-1}(L)$ and $g^{-1}(L)$:
+
+	$\overset{~}{H}(L)^{-1} = h^{-1}(L) - g^{-1}(L) = 0$.
+\end{proof}
+
+
 
 
 
