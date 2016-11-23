@@ -12,6 +12,7 @@
 	\vspace{1em}
 }
 
+\renewcommand{\amalg}{\sqcup}
 \newcommand{\homotopic}{\simeq}
 \renewcommand{\epsilon}{\varepsilon}
 \renewcommand{\d}{\partial}
@@ -200,7 +201,7 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \de{1-forms}.
 	$f$ is continuous iff the inverse map $f^{-1}$ is open.
 \end{thrm}
 \begin{defi}
-	For any $k \in \N$, a function $f:\R^n \to \R^m$ is \de{$k$-continuously-differentiable}, denoted $f \in C^k$, if all iterated partial derivatives of $f$ of order $k$ exist and are continuous.
+	For any $k \in \N$, a function $f:\R^n \to \R^m$ is \\\de{$k$-continuously-differentiable}, denoted $f \in C^k$, if all iterated partial derivatives of $f$ of order $k$ exist and are continuous.
 \end{defi}
 \begin{thrm}
 	For any $k \in \N$, the function $f$ has class $C^k$ iff all of its coordinate functions $f_i$ have class $C^k$.
@@ -1025,17 +1026,16 @@ $dg_x \in (T_xM)^*$ too
 set of above over all smooth functions
 
 \begin{defi}
-	cotangent bundle
-	----------------------
-	$T*M = \bigcup_{x \in M} (T_xM)*$
+	The \de{cotangent bundle}, denoted $T*M$, is
+	$\bigcup_{x \in M} (T_xM)*$.
 
 
 	observe
 	$TM = \sqcup (U_i x \R^n)/~$
-	where $(i, x, v) ~ (j, x, d(\phi_i of \phi_i inverse)_x(v))$
+	where $$(i, x, v) ~ (j, x, d(\phi_i of \phi_i inverse)_x(v))$$
 	analagously,
 	$T*M = \sqcup (U_i x (\R^n)*)/~$
-	where $(j, x, w) ~ (i, x, d(\phi_j of \phi_j inverse)_x(w))$
+	where $$(j, x, w) ~ (i, x, d(\phi_j of \phi_j inverse)_x(w))$$
 \end{defi}
 \begin{defi}
 	A \de{1-form} on $M$ is a section of $T*M \to M$.
@@ -1737,7 +1737,7 @@ other things to notice
 	If $M$ has no boundary and $N$ does, then $\d(M \x N) = M \x \d N$.
 \end{cor}
 \begin{example}
-	Let $M$ be a circle.  Let $N$ be an interval (the endpoints are the boundary).  Then $\d(\text{cylindar}) = \text{circle} \x \text{endpoints} = \text{one circle at each end}$.
+	Let $M$ be a circle.  Let $N$ be an interval (the endpoints are the boundary).  Then $$\d(\text{cylindar}) = \text{circle} \x \text{endpoints} = \text{one circle at each end}$$.
 \end{example}
 \begin{lem}
 	Suppose $N$ is a manifold without boundary and $f : N \to \R$ is smooth, and $c$ is a regular value.  Then $f^{-1}([c,\oo))$ is a manifold with boundary $f^{-1}(c)$.
@@ -1764,7 +1764,7 @@ other things to notice
 
 	By the Preimage theorem, $r^{-1}(y)$ is a smooth manifold of dimension $\dim(M) - \dim(\d M) = 1$.  Since $\{y\}$ is closed, and $r$ is continuous, $r^{-1}(\{y\})$ is also closed.  Since $r^{-1}(\{y\})$ is closed in a compact manifold, $r^{-1}(\{y\})$ is compact.  We conclude that we have a compact one-dimensional submanifold $r^{-1}(\{y\})$.
 
-	The boundary of our compact one-dimensional submanifold is $\d (r ^{-1}(\{y\})) = r^{-1}(\{y\}) \cap \d M = \{x\}$.  (Note that we concluded $x$ was the only point on the boundary by exploiting that $r$ is the identity on the boundary).   So our submanifold has exactly \textbf{1} boundary point.  But a theorem states that every compact one-dimensional manifold is diffeomorphic to a circle or a closed interval, meaning that it has an \textbf{even} number of boundary points.  This is a contradiction.
+	The boundary of our compact one-dimensional submanifold is $$\d (r ^{-1}(\{y\})) = r^{-1}(\{y\}) \cap \d M = \{x\}$$.  (Note that we concluded $x$ was the only point on the boundary by exploiting that $r$ is the identity on the boundary).   So our submanifold has exactly \textbf{1} boundary point.  But a theorem states that every compact one-dimensional manifold is diffeomorphic to a circle or a closed interval, meaning that it has an \textbf{even} number of boundary points.  This is a contradiction.
 \end{proof}
 \begin{thrm}[``Smooth'' Brower Fixed Point theorem]
 	Any ``smooth'' $f : B^n \to B^n$ has a fixed point.  (This is in fact true for ``continuous'', but we won't prove that today)
@@ -1777,45 +1777,55 @@ other things to notice
 	$B^n$ is compact, so this contradicts the Retraction theorem.
 \end{proof}
 
+\section{intersection numbers and degree}
 
-
-
-\section{mod 2 intersection numbers (not sure if this is really meant to be a new section or not)}
 \begin{defi}
-	Given compact manifold $M^m$, and manifolds $M^m, N^n, L^l$ all with empty boundary,
+	Given a compact manifold $M^m$ and manifolds \\$M^m, N^n, L^l$ all with empty boundary,
 
 	$$M^m \overset{f}{\to} N^n \supseteq L^l$$
 
-	and $m + l = n$, then the \de{mod 2 intersection number}, denoted $I_2(f, L) \in \Z_2$, is the cardinality of $g^{-1}(L)$ mod 2 where $g \homotopic f$ and $g \transverse L$.
+	and $m + l = n$, then the \de{mod 2 intersection number}, denoted $I_2(f, L) \in \Z_2$, is $|g^{-1}(L)|$ mod 2 where $g \homotopic f$ and $g \transverse L$.
 \end{defi}
 \begin{prop}
-	The above is well-defined!  (you get the same cardinality for all such $g$!)  Also note that at least one such $g$ always exists thanks to the Homotopy Transversality Theorem.
+	At least one such $g$ exists and the above is well-defined!  (you get the same cardinality for all such $g$!)
 \end{prop}
+\begin{cor}
+	If $f,g: M \to N \supseteq L$ and $f \homotopic g$, then $I_2(f, L) = I_2(g, L)$.
+\end{cor}
 \begin{proof}
+	\begin{itemize}
+		\item Existence: Given any smooth $f$ and any $L$, the Homotopy Transversality Theorem guarantees a $g$ s.t. $g \homotopic f$ and $g \transverse L$.
+		\item Well-defined: Consider both $g$ and $h$ satisfy the criterion.  Then $h \homotopic g$.  Then maybe we construct a transverse homotopy, or something.  Look up proof.
+	\end{itemize}
 		Let g, h each homotopic
 \end{proof}
-
 \begin{defi}
-	$M_0^n$ and $M_1^n$ are \de{cobordant} if they are closed (compact and something) and there exists $W^{n+1}$ s.t. $\d W = M_0 \amalg M_1$.
+	A manifold is \de{closed} if it is compact without boundary.  (Visually, this looks like a closed container!)
 \end{defi}
 \begin{defi}
-	$f_0$ and $f_1$ are \de{cobordant} maps if there exists $W$ as before
-	$F: W \to N$
-	and
-	$F|_{M_0} = f_0$.
-	Same for $f_1$.
+	$A$ and $B$ are \de{cobordant} if they are compact and there exists a manifold $W$ s.t. $\d W = A \sqcup B$.
 \end{defi}
-\begin{prop}(Cobordism)
-	Given a cobordism above and any $L$ s.t. $L \subseteq N$ and $l + m = n$, then $I_2(f_0, L) = I_2(f_1, L)$.
+\begin{prop}
+	If $A$ and $B$ are cobordant, then $A$ and $B$ are closed and $\dim(W)-1 = \dim(A) = \dim(B)$.
+\end{prop}
+\begin{prop}
+	If $f \homotopic g$, then $f$ is cobordant to $g$.
+\end{prop}
+\begin{defi}
+	$f$ and $g$ are \de{cobordant} maps if there exists $A$ and $B$ cobordant under $W$ and $F: W \to N$ such that
+	$$F|_A = f \;\text{and}\; F|_B = g$$.
+\end{defi}
+\begin{prop}
+	Given cobordant maps $f$ and $g$, and $L$ s.t. the mod 2 intersection numbers of $f$ and $g$ are defined, then $I_2(f, L) = I_2(g, L)$.
 \end{prop}
 \begin{cor}
-	If $M$ is compact without boundary, $M = \d W$, $f : M \to N$ extends to $F: W \to N$, then for all $L \subseteq N$, $I_2(f, L) = 0$.
+	If $M$ is closed, $M = \d W$, $f: M \to N$ extends to $F: W \to N$, then for all $L \subseteq N$, $I_2(f, L) = 0$.  Note that this statement is actually \textbf{equivalent} to the above proposition. (i think)
 \end{cor}
-\begin{cor}
-	If $f,g: M \to N \supseteq L$ and $f \homotopic g$, then their mod 2 intersection numbers are equal.
-\end{cor}
+\begin{proof}
+	$M = M \sqcup 0$, where 0 denotes the empty manifold.  Note that 0 is closed.  Then $I_2(f, L) = I_2(F|_0, L) = I_2(\{\}, L) = 0$, where $\{\}$ denotes the empty function.
+\end{proof}
 \begin{defi}
-	If $f : M^m \to N^n$ and $N$ is connected and $M$, $N$ are compact without boundary and $m=n$, then the \de{mod 2 degree} of $f$, denoted $\deg_2(f)$, is $I_2(f, \{y\})$ for any $y \in N$.
+	If $f : M^m \to N^n$ and $N$ is connected and $M$, $N$ are closed and $m=n$, then the \de{mod 2 degree} of $f$, denoted $\deg_2(f)$, is $I_2(f, \{y\})$ for any $y \in N$.
 \end{defi}
 
 \begin{prop}
@@ -1825,31 +1835,37 @@ other things to notice
 	Choose a $g \homotopic f$ s.t. $y$ is a regular value for $g$.  Look at $I_2(g, \{y\}) = |g^{-1}(y)|$.  Since $y$ is regular, we have that $|g^{-1}(y)|$ is locally constant.  Since $N$ is connected (and $M,N$ compact, see hw and midterm), then $|g^{-1}(y)|$ is globally constant.
 \end{proof}
 \begin{prop}
-	$dwW = M0 \amalg M1$, $F: W \to N$, $m_0 + m_1 = n$, $f_0 = F|_{M_0}$ same for 1.  Then $\deg_2(f_0) = \deg_2(f_1)$.
+	If $f$ and $g$ are cobordant and $a=b=n$, then \\$\deg_2(f) = \deg_2(g)$.
 \end{prop}
 \begin{proof}
-	Choose a regular value for $F$, $dF$.
-	$F^{-1}(y)$ is a 1-manifold with boundary $f_0^{-1}(y) \amalg f_1^{-1}(y)$.
+	Choose a value $y$ that is regular for both $f$ and $g$ (wiggling to $f'$ and $g'$ if necessary?).  Then $deg_2(f) = I_2(f, \{y\}) = I_2(f', \{y\}) = I_2(g', \{y\}) = I_2(g, \{y\}) = deg_2(g)$.
 \end{proof}
-\begin{cor}
-	$M = dW$
+\begin{cor}[actually equivalent to above]
+	If $W$ is a manifold, $M = \d W$, and
 	$f: M \to N$
-	extends to $F: W \to N$.
-	Then $\deg_2(f) = 0$.
+	extends to $F: W \to N$,
+	then $$\deg_2(f) = 0$$.
 \end{cor}
 \begin{cor}
-	If $f_0 \homotopic f_1: M \to N$, then $\deg_2(f_0) = \deg_2(f_1)$.
-
-	fix $z$ in $\R^n \smallsetminus M_n$.
-
-	Define $u_z : M_{n-1} to S_{n-1}$.
-	$u_z(x) = \frac{x-z}{|x-z|}$.
-
-	Picture of closed curve and a point and a ray from that point.
-
-	$\deg_2(u_z) = case 0$ if $z$ is outside $M$.
-	Case 1 if $z$ is inside $M$.
+	If $f_0 \homotopic f_1: M \to N$, then $\deg_2(f_0) = \deg_2(f_1)$.  (Because homotopic is more specific than cobordant)
 \end{cor}
+
+\section{Winding Numbers}
+
+fix $z$ in $\R^n \smallsetminus M_n$.
+
+Define $u_z : M_{n-1} to S_{n-1}$.
+$u_z(x) = \frac{x-z}{|x-z|}$.
+
+Picture of closed curve and a point and a ray from that point.
+
+$$\deg_2(u_z) =
+\begin{cases}
+	0 	&\text{if $z$ is outside $M$} \\
+	1 	&\text{if $z$ is inside $M$} \\
+\end{cases}$$
+
+
 \begin{thrm}
 	There are exactly 2 path components at $\R^n \smallsetminus M$.
 \end{thrm}
@@ -1884,6 +1900,7 @@ other things to notice
 Some stuff i missed.
 
 \begin{defi}
+	(still with m + l = n and M compact, L closed, all have no boundaries conditions)
 	The \emph{intersection number} of $f$ and $L$, denoted $I(f, L)$, is the integer $\sum_{x \in g^{-1}(L)} o(x)$ where
 	\begin{itemize}
 		\item $g \homotopic f$
@@ -1908,6 +1925,147 @@ Some stuff i missed.
 	$\overset{~}{H}(L)^{-1} = h^{-1}(L) - g^{-1}(L) = 0$.
 \end{proof}
 
+\mydate{d17}{21}{11}{2016}
+
+\begin{prop}
+	This is well-defined (independent of choice of g)
+\end{prop}
+\begin{prop}
+	If $M = \d W$, and $f: M \to N$ extends to $F: W \to N$ (i think, where $F$ is a cobordism), then  for all $L$, $I(f,L) = 0$.
+\end{prop}
+\begin{cor}
+	If $f_0 \homotopic f_1$, then $I(f_0, L) = I(f_1, L)$.
+
+	Hypothesis for the following definition and some following things:
+	$f: M \to N$. $M, N$ compact with empty boundary, oriented, $N$ connected. $\dim(M) = \dim(N)$.
+\end{cor}
+\begin{defi}
+	$\deg(f)$ is defined to be $I(f, {y})$ for any $y \in N$.
+\end{defi}
+\begin{prop}
+	This is well defined (independent of choice of $y$)
+
+	(Then to calculate, choose $y$ regular)
+
+	$\deg(f) = \sum_{over intersecting pts} o(x)$ where $o(x) = +1$ if $df_x$ orientation preserving.
+\end{prop}
+\begin{prop}
+	If $M = \d W$ and $f$ extends to $F: W \to N$, then $\deg(f) = 0$.
+\end{prop}
+
+\begin{cor}
+	$f_0 \homotopic f_1$ implies $\deg(f_1) = \deg(f_0)$.
+\end{cor}
+\begin{prop}
+	$L \overset{f}{\to} M \overset{g}{\to} N$ and $l = m = n$.
+	then
+	$\deg(f.g) = \deg(f)\deg(g)$
+\end{prop}
+\begin{example}
+	Given $d \in Z$, let $f_d : S^1 \to S^1$ (in complex plane) by $f_d(z) = z^d$.
+	Then $\deg(f) = d$, as we will show!
+	All pts in $S^1$ are regular
+	$o(x) = +1$ for all pts if $d > 0$
+	$o(x) = -1$ for all pts if $d < 0$
+	whoah, so degree as we know if is related to $d$-to-$1$ functions which is related to intersection numbers!
+\end{example}
+\begin{example}
+	$p: C \to C$ is a nonconstant polynomial
+	$p$ extends to $\bar{p} : \C P^1 \to \C P^1$, where $\C P^1$ isom $\C*$ isom $S^2$.
+
+	$\deg(\bar{p}) = \text{degree}(p)$.  Pick a regular value $c \in C$.  Regular (in the complex plane) means that $p'$ is nonzero, so we get that $\bar{p}^{-1}(c) = \{ z \mid p(z) = c \}$, which has $d$ distinct solutions.
+\end{example}
+
+
+% \begin{thrm}
+% 	If $M^n$ is compact manifold without boundary, then there exists $f_d : M \to S^n$ of degree $d$.
+% \end{thrm}
+
+% \section{Lefschetz numbers at self maps}
+
+% If $M$ compact, $n$-dimensional, $\d M = 0$,
+% $f : M \to M$,
+% $\delta M \subseteq M \x M \supseteq Gr(f)$ we know.
+% $\delta M$ and $Gr(f)$ are both diffeomorphic to $M$.
+% $\dim(\delta M) + \dim(Gr(f)) = \dim(M \x M)$.
+
+% \begin{defi}
+% 	The \de{Lefschetz number of the map $f$}, denoted $L(f)$, is $I(\delta M, Gr(f)) = (-1)^n I(Gr(f), \delta M)$.
+
+% 	(recall from midterm that $f$ is Lefschetz by def if $Gr(f) \transverse \delta M$)
+% 	(recall $\Fix(f) := \text{the fixed pts of f}$)
+% 	recall
+% \end{defi}
+% \begin{thrm}
+% 	$f$ lefschetz iff (put midterm thrms here for that problem)
+% 	iff
+% 	..is an eigenvalue for dfx - 1 : T_xM to T_xM
+
+
+% 	f Lefschetz L(f) = sum_{x in Fix(f)} o(x,x) (maybe that's o((x,f(x))), a point in Gr(f) !!!)
+% \end{thrm}
+
+
+% \begin{lem}
+% 	o(x,x) = orientation # = +1 if (dfx - 1) preserves orientation, -1 otherwise.
+% \end{lem}
+% \begin{thrm}
+% 	If f is Lefschetz, then L(f) = sum_{x in Fix(x)} sign(dfx - 1)
+
+% 	dfx - 1 : T_xM \overset{~}{\to} T_xM
+% \end{thrm}
+% \begin{example}
+% 	f : S^2 to S^2 is the rotation by \pi/g radians about the z-axis.
+
+% 	Fixed pts are e3 and -e3
+
+% 	The tangent space at each fixed pt is \R^2
+
+% 	positive basis for Te3(S^2) = (e1, e2)
+% 	positive basiss for T{-e3}S^2 is (-e1, e2)
+
+% 	dfe3 : \R^2 to \R^2 by
+% 	dfe3(e1) = e2 and
+% 	e2 \mapsto -e1
+
+% 	interpret over + basis
+% 	0 -1
+% 	1  0
+
+% 	so dfx - I
+
+% 	-1 -1
+% 	 1 -1
+
+% 	 det(above) = 2 > 0
+
+% 	 dfe3 : \R^2 tp \R^2
+% 	 by
+% 	 -1 mapto e2
+% 	 e2 mapto -e1
+
+% 	  0 1
+% 	 -1 0
+
+% 	 dfx - 1
+% 	 =
+% 	 another matrix, again 2 > 0.
+
+% 	 We conclude L(f) = +2.
+% \end{example}
+% \begin{cor}
+% 	If $f: M \to M$ has no fixed points, then L(f) = 0.  Think about the contrapositive too!
+
+% 	contrapositive
+% 	If L(f) != 0, then any g \homotopic f must have at least one fixed point.
+% \end{cor}
+
+
+% note
+% For any (smooth) vector field, if we let if flow just a little bit, we get a function homotopic to id.  Since id has fixed points, then the vector field function also has fixed points.  This proves the smooth hairy ball thm!
+
+
+% if f and g are homotopic, if f has 2 fixed pts.  Then g will have 2 more positive fixed points then negative fixed points.
 
 
 
