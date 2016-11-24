@@ -497,28 +497,28 @@ If $f$ is a smooth map of manifolds, then we can differentiate, getting the line
 
 \begin{thrm}
 	$f$ is a smooth map of manifolds.
-	$f$ is an \de{immersion} if forall $x$, $d_x$ above is injective.  (Note: this is *local* injectivity of f) ($m \leq n$)
+	$f$ is an \de{immersion} if for all $x$, $d_x$ above is injective.  (Note: this is *local* injectivity of $f$) ($m \leq n$)
 \end{thrm}
 
 \begin{defi}
 	$f$ is a smooth map of manifolds.
-	$f$ is a \de{submersion} if forall $x$, $d_x$ above is surjective.  (Note: this is *local* surjectivity of f) ($m \geq n$)
+	$f$ is a \de{submersion} if for all $x$, $d_x$ above is surjective.  (Note: this is *local* surjectivity of $f$) ($m \geq n$)
 \end{defi}
-\begin{prop}
-	Every submersion is open.
-\end{prop}
 
 \begin{defi}
-	An \de{embedding} $f$ is an immersion s.t. $f : M \to f(M)$ is a homeomorphism.
+	An \de{embedding} is a smooth map of manifolds $f: M \to N$ s.t. $f : M \to f(M)$ is a homeomorphism.
+
+	Note: $f$ need not be onto $N$.
 \end{defi}
 \begin{thrm}[minimal criteria for an embedding]
-	$f$ is an \de{embedding} iff $f$ is an immersion that is injective and proper.
+	$f$ is an \de{embedding} iff $f$ is a smooth map of manifolds that is injective and proper.
 \end{thrm}
-
-An immersion is locally injective.  An embedding is globally injective.
+\begin{prop}
+	Every embedding is an immersion.
+\end{prop}
 
 \begin{thrm}
-	$f$ from $M^m$ to $N^n$ is a submersion, and $f(x) = y$.  Then $f^{-1}(y)$ is a smooth $(m-n)$ dimensional manifold.
+	If $f$ from $M^m$ to $N^n$ is a submersion, and $f(x) = y$, then $f^{-1}(y)$ is an $(m-n)$ dimensional manifold.
 \end{thrm}
 
 \begin{defi}
@@ -532,7 +532,7 @@ An immersion is locally injective.  An embedding is globally injective.
 \end{defi}
 
 \begin{thrm}[Preimage theorem]
-	If $y \in N$ is a regular value of a smooth submersion $f$, then $f^{-1}(y)$ is a smooth submanifold of $M$ of dimension $m-n$.
+	If $y \in N$ is a regular value of a smooth map of manifolds $f$, then $f^{-1}(y)$ is a submanifold of $M$.  If $y \in f(M)$, then $f^{-1}(y)$ has dimension $m-n$.
 \end{thrm}
 
 \begin{example}
@@ -1776,6 +1776,12 @@ other things to notice
 
 	$B^n$ is compact, so this contradicts the Retraction theorem.
 \end{proof}
+\begin{prop}[Peter]
+	If $M$ is a compact manifold, then $\d M$ is compact.
+\end{prop}
+\begin{proof}
+	Let $M$ be a compact manifold.  Let $\d M$ be its boundary (which could even be empty).  For any open cover $\cup \theta$ of $\d M$, add a little thickness to each $\theta$, so that it becomes an open set $\theta_T$ of $M$.  (Remember that each point on the boundary has a neighborhood diffeomorphic to $H^n$, so we cover $\theta$ with these little neighborhoods and then use the properties of $H^n$ to thicken it to an open subset of $M$).  Now we have $\cup \theta_T$ is an open cover of the boundary, and together with $M \smallsetminus \d M$, we have an open cover of $M$.  Since $M$ is compact, there exists a finite subcover.  Take the finite subcover, and discard $M \smallsetminus \d M$.  The result is a finite open cover of the boundary.  Remove the thickenings, and we still have a finite open cover of the boundary.
+\end{proof}
 
 \section{intersection numbers and degree}
 
@@ -1949,6 +1955,8 @@ Some stuff i missed.
 
 	$\deg(f) = \sum_{over intersecting pts} o(x)$ where $o(x) = +1$ if $df_x$ orientation preserving.
 \end{prop}
+
+
 \begin{prop}
 	If $M = \d W$ and $f$ extends to $F: W \to N$, then $\deg(f) = 0$.
 \end{prop}
@@ -1975,99 +1983,109 @@ Some stuff i missed.
 
 	$\deg(\bar{p}) = \text{degree}(p)$.  Pick a regular value $c \in C$.  Regular (in the complex plane) means that $p'$ is nonzero, so we get that $\bar{p}^{-1}(c) = \{ z \mid p(z) = c \}$, which has $d$ distinct solutions.
 \end{example}
+\begin{thrm}
+	If $M^n$ is compact manifold without boundary, then there exists $f_d : M \to S^n$ of degree $d$.
+\end{thrm}
+
+% "new" stuff starts here.  go over :)
+
+\section{Lefschetz numbers at self maps}
+
+If $M$ compact, $n$-dimensional, $\d M = 0$,
+$f : M \to M$,
+$\delta M \subseteq M \x M \supseteq Gr(f)$ we know.
+$\delta M$ and $Gr(f)$ are both diffeomorphic to $M$.
+$\dim(\delta M) + \dim(Gr(f)) = \dim(M \x M)$.
+
+\begin{defi}
+	The \de{Lefschetz number of the map $f$}, denoted $L(f)$, is $I(\delta M, Gr(f)) = (-1)^n I(Gr(f), \delta M)$.
+
+	(recall from midterm that $f$ is Lefschetz by def if $Gr(f) \transverse \delta M$)
+	(recall $\text{Fix}(f) := \text{the fixed pts of f}$)
+	recall
+\end{defi}
+\begin{thrm}
+	$f$ is Lefschetz iff (put midterm thrms here for that problem)
+	iff
+	..is an eigenvalue for $df_x - I : T_xM \to T_xM$
 
 
-% \begin{thrm}
-% 	If $M^n$ is compact manifold without boundary, then there exists $f_d : M \to S^n$ of degree $d$.
-% \end{thrm}
-
-% \section{Lefschetz numbers at self maps}
-
-% If $M$ compact, $n$-dimensional, $\d M = 0$,
-% $f : M \to M$,
-% $\delta M \subseteq M \x M \supseteq Gr(f)$ we know.
-% $\delta M$ and $Gr(f)$ are both diffeomorphic to $M$.
-% $\dim(\delta M) + \dim(Gr(f)) = \dim(M \x M)$.
-
-% \begin{defi}
-% 	The \de{Lefschetz number of the map $f$}, denoted $L(f)$, is $I(\delta M, Gr(f)) = (-1)^n I(Gr(f), \delta M)$.
-
-% 	(recall from midterm that $f$ is Lefschetz by def if $Gr(f) \transverse \delta M$)
-% 	(recall $\Fix(f) := \text{the fixed pts of f}$)
-% 	recall
-% \end{defi}
-% \begin{thrm}
-% 	$f$ lefschetz iff (put midterm thrms here for that problem)
-% 	iff
-% 	..is an eigenvalue for dfx - 1 : T_xM to T_xM
+	$f$ is Lefschetz $L(f) = \sum_{x \in \text{Fix}(f)} o(x,x)$ (maybe that's o((x,f(x))), a point in Gr(f) !!!)
+\end{thrm}
 
 
-% 	f Lefschetz L(f) = sum_{x in Fix(f)} o(x,x) (maybe that's o((x,f(x))), a point in Gr(f) !!!)
-% \end{thrm}
+\begin{lem}
+	$o(x,x) =$ orientation number = +1 if $df_x - I$ preserves orientation, -1 otherwise.
+\end{lem}
+\begin{thrm}
+	If $f$ is Lefschetz, then $L(f) = \sum_{x \in \text{Fix}(x)} \text{sign}(df_x - I)$.
+
+	$$dfx - I : T_xM \overset{~}{\to} T_xM$$
+\end{thrm}
+\begin{example}
+	$f : S^2 \to S^2$ is the rotation by $\pi/g$ radians about the $z$-axis.
+
+	The fixed points are $e_3$ and $-e_3$.
+
+	The tangent space at each fixed point is $\R^2$.
+
+	A positive basis for $T_{e_3}S^2$ is $(e_1, e_2)$.
+
+	A positive basis for $T_{-e_3}S^2$ is $(-e_1, e_2)$.
+
+	Define $df_{e_3} : \R^2 \to \R^2$ by
+
+	$df_{e_3}(e_1) = e_2$ and $df_{e_3}(e_2) = -e_1$
+	% $e2 \mapsto -e1$
+
+	Interpret this over the positive basis:
+
+	$$\begin{pmatrix}
+	0 & -1 \\
+	1 & 0
+	\end{pmatrix}$$
+
+	So $df_{e_3} - I$ has this matrix w.r.t. the positive basis:
+
+	$$\begin{pmatrix}
+	-1 & -1 \\
+	1 & -1
+	\end{pmatrix}$$
+
+	We get $\det(\text{above}) = 2 > 0$.
+
+	Now define $df_{-e_3} : \R^2 \to \R^2$ by
+	$-e_1 \mapsto e_2$ and
+	$e_2 \mapsto -e_1$.
+
+	Interpret this over the positive basis:
+
+	$$\begin{pmatrix}
+	0 & 1 \\
+	-1 & 0
+	\end{pmatrix}$$
+
+	So $df_{-e_3} - I$ has this matrix w.r.t. the positive basis:
+
+	$$\begin{pmatrix}
+	-1 & 1 \\
+	-1 & -1
+	\end{pmatrix}$$
+
+	As before, $\det(\text{above}) = 2 > 0$. We conclude that $L(f) = +2$.
+\end{example}
+\begin{cor}
+	If $f: M \to M$ has no fixed points, then L(f) = 0. Think about the contrapositive too!
+
+	The contrapositive is as follows:
+	If $L(f) \neq 0$, then any $g \homotopic f$ must have at least one fixed point.
+\end{cor}
 
 
-% \begin{lem}
-% 	o(x,x) = orientation # = +1 if (dfx - 1) preserves orientation, -1 otherwise.
-% \end{lem}
-% \begin{thrm}
-% 	If f is Lefschetz, then L(f) = sum_{x in Fix(x)} sign(dfx - 1)
+\textbf{Note.}
+For any (smooth) vector field, if we let it flow just a little bit, we get a function homotopic to $id$. Since $id$ has fixed points, then the vector field function also has fixed points. This proves the smooth hairy ball theorem!
 
-% 	dfx - 1 : T_xM \overset{~}{\to} T_xM
-% \end{thrm}
-% \begin{example}
-% 	f : S^2 to S^2 is the rotation by \pi/g radians about the z-axis.
-
-% 	Fixed pts are e3 and -e3
-
-% 	The tangent space at each fixed pt is \R^2
-
-% 	positive basis for Te3(S^2) = (e1, e2)
-% 	positive basiss for T{-e3}S^2 is (-e1, e2)
-
-% 	dfe3 : \R^2 to \R^2 by
-% 	dfe3(e1) = e2 and
-% 	e2 \mapsto -e1
-
-% 	interpret over + basis
-% 	0 -1
-% 	1  0
-
-% 	so dfx - I
-
-% 	-1 -1
-% 	 1 -1
-
-% 	 det(above) = 2 > 0
-
-% 	 dfe3 : \R^2 tp \R^2
-% 	 by
-% 	 -1 mapto e2
-% 	 e2 mapto -e1
-
-% 	  0 1
-% 	 -1 0
-
-% 	 dfx - 1
-% 	 =
-% 	 another matrix, again 2 > 0.
-
-% 	 We conclude L(f) = +2.
-% \end{example}
-% \begin{cor}
-% 	If $f: M \to M$ has no fixed points, then L(f) = 0.  Think about the contrapositive too!
-
-% 	contrapositive
-% 	If L(f) != 0, then any g \homotopic f must have at least one fixed point.
-% \end{cor}
-
-
-% note
-% For any (smooth) vector field, if we let if flow just a little bit, we get a function homotopic to id.  Since id has fixed points, then the vector field function also has fixed points.  This proves the smooth hairy ball thm!
-
-
-% if f and g are homotopic, if f has 2 fixed pts.  Then g will have 2 more positive fixed points then negative fixed points.
-
-
+If $f$ and $g$ are homotopic, and if $f$ has 2 fixed points, then $g$ will have 2 more positive fixed points than negative fixed points.
 
 
 
