@@ -1652,6 +1652,65 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
   \begin{example}
     What is the change in argument of $z^k$ on $|z|=1$
     counterclockwise? There are actually three different methods to
-    compute this...
+    compute this.
+    \begin{enumerate}
+    \item We note that $e^{i\theta}$ gets mapped to $e^{ik\theta}$ and
+      so the change in argument is $2\pi k$.
+    \item We could compute $\frac{1}{i} \oint_{|z|=1}
+      \frac{kz^{k-1}}{z^k}dz = \frac{1}{i} \int \frac{k}{z}dz = 2\pi
+      k$.
+    \item $z^k$ has a zero of order $k$ at 0, so $2\pi i(Z-P) = 2\pi i
+      k$ (where $Z$ is the number of zeros and $P$ is the number of
+      poles). 
+    \end{enumerate}
+  \end{example}
+  We are particularly interested in using this to count zeros of an
+  analytic function in a region.
+  \begin{example}
+    Show $z^4+2z^3+3z^2+z+2$ has two zeros in the right hand
+    plane. Our method is to compute $2\pi$ (number of zeros) $=
+    \frac{1}{i} \int \frac{p'(z)}{p(z)}dz$, which is the change in
+    argument on the boundary. \\
+
+    So, let us consider a large semidisk in the right half plane with
+    radius $R$. For large $R$, we need to count zeros inside the
+    semidisk. This is exactly $\frac{1}{2\pi}$ change in argument of
+    $p(\text{boundary})$ We need to check that this avoids 0. So, we
+    note that \[
+      p(iy) = (y^4-3y^2+2) + i(-2y^3+y) = (y^2-2)(y^2-1) -
+      2y(y^2-\frac{1}{2})i.
+    \]
+    Now, we create a chart to look at the change across the zeros 
+    \[    
+    \begin{array}{ccccccccccccccc}
+      &\sqrt{2}&&-1&&-\frac{1}{\sqrt{2}}&&0&&\frac{1}{\sqrt{2}}&&1&&\sqrt{2}&
+      \\
+      \Re p(iy) + &|& - &|& + &|& + &|& + &|& + &|& - &|& + \\
+      \Im p(iy) + &|& + &|& + &|& - &|& + &|& - &|& - &|& -
+    \end{array}
+    \]
+    Note, $p(iy)$ is not 0 for $y \in \R$, that is, real and imaginary
+    parts have no common zeros on the imaginary axis. If we draw out
+    these movements, we will get a path that does not wind around the
+    origin. Then, we connect it by noting that the image of the
+    half-circle is an arc with angle $4\pi$ since $p(z) \sim z^4$. Our
+    final result is that the image is wrapped around twice. \\
+
+    Next, we ask how many zeros are in the first quadrant? Since the
+    polynomial has real coefficients, $z_0$ a root implies that
+    $\overline{z_0}$ is also a root. Since $p(z)$ is positive for $z >
+    0$ (by inspection), roots must be a conjugate pair, so one root in
+    first quadrant and one in fourth quadrant. 
+  \end{example}
+
+  \subsection*{Integrands with branch points.}
+  Integrands involving $\log x$ or $x^a$ have branch points and one
+  way to deal with these is to integrate around a ``keyhole contour.'' \\
+  \includegraphics[scale=0.5]{images/keyhole_contour.png} \\
+  \begin{example}
+    Consider $\int_0^\infty \frac{x^{-a}}{1+x}dx, 0 < a < 1$. We will
+    compute $\oint \frac{z^{-a}}{1+z}dz$ where the branch
+    of $z^{-a}$ is $(re^{i\theta})^{-a} = r^{-a}e^{-ia\theta}$ for
+    $\theta \in [0,2\pi)$. The final result was a homework question.
   \end{example}
 \end{document}
