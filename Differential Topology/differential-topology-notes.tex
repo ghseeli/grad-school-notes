@@ -12,6 +12,9 @@
 	\vspace{1em}
 }
 
+\newcommand{\minus}{\smallsetminus}
+\newcommand{\Fix}{\text{Fix}}
+\newcommand{\Gr}{\text{Gr}}
 \renewcommand{\amalg}{\sqcup}
 \newcommand{\homotopic}{\simeq}
 \renewcommand{\epsilon}{\varepsilon}
@@ -46,6 +49,8 @@
 \theoremstyle{mystyle} \newtheorem{thrm}[thm]{Theorem}
 \theoremstyle{mystyle} \newtheorem{defi}[thm]{Definition}
 
+\everymath{\displaystyle}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TITLE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \title[Differential Topology]{Differential Topology}
 \author{Matthew Lancellotti, George Seelinger\\ (class notes for Nick Kuhn's MATH 7820)}
@@ -65,7 +70,7 @@ that ``locally'' look like $\R^n$.
 	fact that a small space of $S^2$ looks like $\R^2$.
 
 	To make this explicit, consider two maps. The first is a map from $\R^2$ to
-	a disk by $f(\vec{x}) = \frac{||x||^2}{1+||x||^2} \vec{x}$. Then consider a
+	a disk by $$f(\vec{x}) = \frac{||x||^2}{1+||x||^2} \vec{x}$$. Then consider a
 	map $g(x,y) = (x,y,\sqrt{1-x^2-y^2})$. Composing these two maps will map
 	$\R^2$ onto part of $S^2$. Variations on the same theme can be used to get
 	other parts of the sphere.
@@ -128,7 +133,7 @@ Now, recall \begin{enumerate}
 
 Now, let us define what it means for a function to be differentiable.
 \begin{defi}
-	$f :\R^n \to \R^m$ is \de{differentiable} at $x \in \R^n$ if there exists a linear function $df_x : \R^n \to \R^m$  such that $\lim_{h \to 0} \frac{|| (f(x)-f(x+h)) - (df_x(h)) ||}{||h||} = 0$.  Note that $h$ is a vector, as well as $x$.
+	$f :\R^n \to \R^m$ is \de{differentiable} at $x \in \R^n$ if there exists a linear function $df_x : \R^n \to \R^m$  such that $$\lim_{h \to 0} \frac{|| (f(x)-f(x+h)) - (df_x(h)) ||}{||h||} = 0$$.  Note that $h$ is a vector, as well as $x$.
 \end{defi}
 \begin{defi}
 	If $f$ is differentiable at $x$ by a linear function $L$, then $L$ is the \de{differential} of $f$ at $x$.  This is denoted $df_x$.  Using the standard basis, the differential can be expressed as a slope matrix, which is denoted $f'(x)$.
@@ -263,7 +268,7 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \de{1-forms}.
 		\item Every singleton subset of $X$ is closed.
 		\item Every finite subset of $X$ is closed.
 		\item For every subset $S$ of $X$, $S$ equals the intersection of all open sets containing it.
-		\item For every subset $S$ of $X$, $x \in \widebar{S} \smallsetminus S$ iff every open neighborhood of $x$ contains infinitely many points in $S$.
+		\item For every subset $S$ of $X$, $x \in \widebar{S} \minus S$ iff every open neighborhood of $x$ contains infinitely many points in $S$.
 	\end{itemize}
 \end{defi}
 \begin{defi}
@@ -1272,7 +1277,7 @@ set of above over all smooth functions
 \begin{proof}
 	For each $U$, there exists open $W$, $V$ s.t. $W \subseteq \bar{W} \subseteq V \subseteq \bar{V} \subseteq U$, and $\{W_1,,,W_r\}$ still covers $X$.
 
-	For each $U$, There exists continuous $\lambda : X \to [0,1]$ with $\lambda|_W = 1$ and $\lambda|_{X\smallsetminus V} = 0$.
+	For each $U$, There exists continuous $\lambda : X \to [0,1]$ with $\lambda|_W = 1$ and $\lambda|_{X\minus V} = 0$.
 
 	then support $\supp(\lambda) \subseteq \bar{V} \subseteq U$.
 
@@ -1780,7 +1785,7 @@ other things to notice
 	If $M$ is a compact manifold, then $\d M$ is compact.
 \end{prop}
 \begin{proof}
-	Let $M$ be a compact manifold.  Let $\d M$ be its boundary (which could even be empty).  For any open cover $\cup \theta$ of $\d M$, add a little thickness to each $\theta$, so that it becomes an open set $\theta_T$ of $M$.  (Remember that each point on the boundary has a neighborhood diffeomorphic to $H^n$, so we cover $\theta$ with these little neighborhoods and then use the properties of $H^n$ to thicken it to an open subset of $M$).  Now we have $\cup \theta_T$ is an open cover of the boundary, and together with $M \smallsetminus \d M$, we have an open cover of $M$.  Since $M$ is compact, there exists a finite subcover.  Take the finite subcover, and discard $M \smallsetminus \d M$.  The result is a finite open cover of the boundary.  Remove the thickenings, and we still have a finite open cover of the boundary.
+	Let $M$ be a compact manifold.  Let $\d M$ be its boundary (which could even be empty).  For any open cover $\cup \theta$ of $\d M$, add a little thickness to each $\theta$, so that it becomes an open set $\theta_T$ of $M$.  (Remember that each point on the boundary has a neighborhood diffeomorphic to $H^n$, so we cover $\theta$ with these little neighborhoods and then use the properties of $H^n$ to thicken it to an open subset of $M$).  Now we have $\cup \theta_T$ is an open cover of the boundary, and together with $M \minus \d M$, we have an open cover of $M$.  Since $M$ is compact, there exists a finite subcover.  Take the finite subcover, and discard $M \minus \d M$.  The result is a finite open cover of the boundary.  Remove the thickenings, and we still have a finite open cover of the boundary.
 \end{proof}
 
 \section{intersection numbers and degree}
@@ -1858,12 +1863,12 @@ other things to notice
 
 \section{Winding Numbers}
 
-fix $z$ in $\R^n \smallsetminus M_n$.
+fix $z$ in $\R^n \minus M^n$.
 
-Define $u_z : M_{n-1} to S_{n-1}$.
+Define $u_z : M^{n-1} \to S^{n-1}$ by
 $u_z(x) = \frac{x-z}{|x-z|}$.
 
-Picture of closed curve and a point and a ray from that point.
+Picture of closed curve $M$ and a point $z$ and a ray (in the $x-z$ direction) from that point.
 
 $$\deg_2(u_z) =
 \begin{cases}
@@ -1872,9 +1877,19 @@ $$\deg_2(u_z) =
 \end{cases}$$
 
 
-\begin{thrm}
-	There are exactly 2 path components at $\R^n \smallsetminus M$.
+\begin{thrm}[Jordan-Brouwer Separation Theorem]
+	If $M$ is a compact connected hypersurface in $\R^n$, then
+	\begin{itemize}
+		\item $\R^n \minus M$ has exactly two connected sets $A$ and $B$.
+		\item $A$ and $B$ are open.
+		\item One of the sets, $A$, is bounded.
+		\item $\bar{A}$ is compact.
+		\item $\d\bar{A} = \d\bar{B} = M$.
+	\end{itemize}
 \end{thrm}
+\begin{cor}
+	There are exactly 2 path components at $\R^n \minus M$.
+\end{cor}
 
 \section{Orientation}
 
@@ -1934,10 +1949,10 @@ Some stuff i missed.
 \mydate{d17}{21}{11}{2016}
 
 \begin{prop}
-	This is well-defined (independent of choice of g)
+	This is well-defined (independent of choice of $g$).
 \end{prop}
 \begin{prop}
-	If $M = \d W$, and $f: M \to N$ extends to $F: W \to N$ (i think, where $F$ is a cobordism), then  for all $L$, $I(f,L) = 0$.
+	If $M = \d W$, and $f: M \to N$ extends to $F: W \to N$ (i think, where $F$ is a cobordism), then for all $L$, $I(f,L) = 0$.
 \end{prop}
 \begin{cor}
 	If $f_0 \homotopic f_1$, then $I(f_0, L) = I(f_1, L)$.
@@ -1953,7 +1968,7 @@ Some stuff i missed.
 
 	(Then to calculate, choose $y$ regular)
 
-	$\deg(f) = \sum_{over intersecting pts} o(x)$ where $o(x) = +1$ if $df_x$ orientation preserving.
+	$\deg(f) = \sum_{\text{intersecting pts}} o(x)$ where $o(x) = +1$ if $df_x$ is orientation preserving.
 \end{prop}
 
 
@@ -1989,36 +2004,58 @@ Some stuff i missed.
 
 % "new" stuff starts here.  go over :)
 
-\section{Lefschetz numbers at self maps}
-
-If $M$ compact, $n$-dimensional, $\d M = 0$,
-$f : M \to M$,
-$\delta M \subseteq M \x M \supseteq Gr(f)$ we know.
-$\delta M$ and $Gr(f)$ are both diffeomorphic to $M$.
-$\dim(\delta M) + \dim(Gr(f)) = \dim(M \x M)$.
+\section{Lefschetz numbers of self maps}
 
 \begin{defi}
-	The \de{Lefschetz number of the map $f$}, denoted $L(f)$, is $I(\delta M, Gr(f)) = (-1)^n I(Gr(f), \delta M)$.
-
-	(recall from midterm that $f$ is Lefschetz by def if $Gr(f) \transverse \delta M$)
-	(recall $\text{Fix}(f) := \text{the fixed pts of f}$)
-	recall
+	Given the set $M$, the \de{diagonal} of $M$ is $$\Delta M := \{ (x,x) \mid x \in M \}$$
 \end{defi}
+\begin{defi}
+	Given the function $f: A \to B$, the \de{graph} of $f$ is $$\Gr(f) := \{ (x, f(x)) \mid x \in A \}$$
+\end{defi}
+\begin{rmk}
+	If $f: M \to M$, then
+	\begin{itemize}
+		\item $\Delta M \subseteq M \x M$
+		\item $\Gr(f) \subseteq M \x M$
+		\item $\dim(\Delta M) = \dim(M)$
+		\item $\dim(\Gr(f)) = \dim(M)$
+		\item $\dim(M \x M) = 2\dim(M)$
+	\end{itemize}
+\end{rmk}
+\begin{defi}
+	$f$ is \de{Lefschetz} if it is a smooth map of manifolds $f: M \to M$ and (TFAE)
+	\begin{itemize}
+		\item $Gr(f) \transverse \Delta M$ in $M \x M$
+		\item for every fixed point $x$ of $f$, $1$ is not an eigenvalue of $df_x$
+		\item $L(f) = |\Fix(f)|$ (defined below, but not sure if this is technically true, since $L(f)$'s existence requires $M$ compact and without boundary.)
+	\end{itemize}
+\end{defi}
+
 \begin{thrm}
-	$f$ is Lefschetz iff (put midterm thrms here for that problem)
-	iff
-	..is an eigenvalue for $df_x - I : T_xM \to T_xM$
+	If $f: M \to M$ is Lefschetz and $M$ is compact, then $f$ has a finite number of fixed points.
+\end{thrm}
+\begin{defi}
+	If $f : M \to M$ is a smooth map of manifolds, $M$ is compact, and $\d M = 0$, then the \de{Lefschetz number} of the map $f$ is $$L(f) := I(\Delta M, \Gr(f))$$
+\end{defi}
+\begin{prop}
+	If the Lefshetz number of $f$ is defined, then $$L(f) = (-1)^n I(Gr(f), \Delta M)$$ where $n = \dim(M)$.
+\end{prop}
+\begin{thrm}
+	If $f$ is Lefschetz, then $L(f) = \sum_{x \in \Fix(f)} o(x,x)$.
 
-
-	$f$ is Lefschetz $L(f) = \sum_{x \in \text{Fix}(f)} o(x,x)$ (maybe that's o((x,f(x))), a point in Gr(f) !!!)
+	Note that $o(x,x) = o((x,x)) = o((x,f(x)))$ is an element of $\Delta M \cap \Gr(f)$.
 \end{thrm}
 
-
 \begin{lem}
-	$o(x,x) =$ orientation number = +1 if $df_x - I$ preserves orientation, -1 otherwise.
+	The orientation number
+	$$o(x,x) =
+	\begin{cases}
+		+1 &\text{if $df_x - I$ preserves orientation} \\
+		-1 &\text{otherwise} \\
+	\end{cases}$$
 \end{lem}
 \begin{thrm}
-	If $f$ is Lefschetz, then $L(f) = \sum_{x \in \text{Fix}(x)} \text{sign}(df_x - I)$.
+	If $f$ is Lefschetz, then $L(f) = \sum_{x \in \Fix(x)} \text{sign}(df_x - I)$.
 
 	$$dfx - I : T_xM \overset{~}{\to} T_xM$$
 \end{thrm}
