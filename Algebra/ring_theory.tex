@@ -28,7 +28,7 @@
   A \emph{commutative ring} is a ring with the additional property that \(xy=yx\) for all \(x,y \in R\).
 \end{defn*}
 Notice that if multiplication is commutative either distribution law implies the other. One of the most basic
-observations one can make is that \(R\) is the trivial ring \(\iff 1=0\). 
+observations one can make is that \(R\) is the trivial ring \(\iff 1=0\).
 
 \begin{example*}
   A few familiar rings: \[\Z,\Z_n,\Q,\R,\C\] A non-commutative ring:
@@ -329,7 +329,7 @@ other maximal entities.
   Now we consider the case when \(n \ge 3\). If \(I_j,I_n\) are comaximal for \(1 \le j \le n-1\) then there must exist
   \(a_j \in I_j\) and \(b_j \in I_n\) with \(a_j+b_j = 1\). Now
   \[1=1 \cdots 1 = \prod_{j=1}^{n=1}{a_j + b_j}\]
-  Expanding and we see 
+  Expanding and we see
   \[\prod_{j=1}^{n-1}(a_j+b_j) \in a_1 \cdots a_{N=1}+I_n\]
   Then \((I_1 \ldots I_{n-1}I_n)=I_1 \ldots I_{n-1} \cap I_n\)
   which by the inductive hypothesis is exactly \(\bigcap_{j=1}^n I_J\).
@@ -341,21 +341,21 @@ other maximal entities.
   \begin{enumerate}[label=(\alph*)]
   \item \(\varphi\) is a ring homomorphism with \(\ker \varphi = \bigcap I_j\)
   \item If \(I_1, \ldots I_n\) are pairwise comaximal then \(\ker \varphi = \prod_{j=1}^n I_n\) and if \(\varphi\) is
-    surjective then 
+    surjective then
     \[\sfrac{\varphi}{ \prod_{j=1}^n I_j} \cong \bigtimes_{j=1}^n R/I_j\]
   \end{enumerate}
 \end{prop}
 
 \begin{proof}
   \begin{enumerate}[label=(\alph*)]
-  \item trivial 
+  \item trivial
   \item \(\ker \varphi = \prod_{j=1}^n I_j\) follows (a) and 2.1.12.
     By 2.1.12 we get \(\forall 1 \le l \le n\) that the ideals \(\hat{I_l}=\prod_{j\neq l, j=1} I_j\) and \(I_l\) are
     comaximal. Then there exists \(x_l \in \hat{I_l}\)and \(y_l \in I_l\) such that \(x_l + y_l = 1\). Then \(x_l \equiv
-    0 \pmod{I_j \forall j \neq l}\) (this means that \(\bar{x_l} \equiv 1 \pmod{I_l}\) (or \(x_l + I_l = 1 I_l\))). 
+    0 \pmod{I_j \forall j \neq l}\) (this means that \(\bar{x_l} \equiv 1 \pmod{I_l}\) (or \(x_l + I_l = 1 I_l\))).
 
     Given \((a_j + I_j)_{1 \le j \le n} \in \bigtimes_{j=1}^n{R/I_j}, (a_j \in R)\). We set \(x=sum_{l=1}^n{a_l x_l} \in
-    R\). Now let \(\bar{\phantom{}}\) denote mod \(I_j\) for some fixed \(j\). 
+    R\). Now let \(\bar{\phantom{}}\) denote mod \(I_j\) for some fixed \(j\).
 
     \begin{align*}
       \bar{x} &= \sum_{l=1}^n \bar{a_l}\bar{x_l}\\ \tag{\(\bar{x_l}=\bar{0}\) if \(\l \neq j\)}
@@ -376,7 +376,7 @@ other maximal entities.
         \le j \le n} \implies\) \[\sfrac{\Z}{\primedecomposition{p}{e}{n}} \cong \bigtimes_{j=1}^n
         \sfrac{\Z}{p_j^{e_j}}.\]
       This means there is always a solution to the system of congruences \(x \equiv a_j \pmod{p_j^{ej}}\). The injection
-      is uniquely determined modulo the product. 
+      is uniquely determined modulo the product.
     \end{enumerate}
   \end{example*}
   Notice that the above follows from the fact \(a,b \in R \implies (a)(b)=(ab)\).
@@ -414,7 +414,7 @@ other maximal entities.
     \item \(x \in R \leadsto D= \{x^n \mid n \in \N_0\}\)
     \end{enumerate}
   \end{example*}
-  
+
   The goal is to invert the elements of \(D\) inside some larger ring. We will denote the ring \(D^{-1}R\). Following
   the construction of \(\Q\) from \(\Z\) one would think that equivalence relation \((r,d)\sim (r',d')\) would do the
   trick, however this relation fails to be transitive for \(R\) that are not integral domains (one would be required to
@@ -459,14 +459,14 @@ other maximal entities.
   We summarize our construction and its properties in the following proposition:
   \begin{prop}Given a commutative ring \(R\) with unity.
     \begin{enumerate}[label=(\alph*)]
-    \item For any multiplicatively closed subset \(D \subseteq R\), \(D^{-1}R,+,\cdot\) is a commutative ring with unity
+    \item For any multiplicatively closed subset \(D \subseteq R\), \(\left(D^{-1}R,+,\cdot\right)\) is a commutative ring with unity
       called the ring of fractions with respect to \(D\).
-    \item \(D^{-}R=\{0\}\iff 0 \in D\)
+    \item \(D^{-1}R=\{0\}\iff 0 \in D\)
     \item There is a canonical map: \funcdeclaration{j}{R}{D^{-1}R}{r}{\frac{r}{1}} under which
       \(j(D) \subseteq D^{-1}R^\times\).
-    \item If \(R\)is an integral domain and \(0 \not \in D\) then \(j\) is injective.
-    \item If \(R\) is an integral domain and \(D=R \setminus \{-\}\) then \(D^{-1}R\)is a field containing a copy of
-      \(R \) namely \(j(R)\). In this case \(D^{-1}R\) is called the field of fractions of \(R\).
+    \item If \(R\) is an integral domain and \(0 \not \in D\) then \(j\) is injective.
+    \item If \(R\) is an integral domain and \(D=R \setminus \{0\}\) then \(D^{-1}R\) is a field containing a copy of
+      \(R\), namely \(j(R)\). In this case \(D^{-1}R\) is called the field of fractions of \(R\).
     \end{enumerate}
     \begin{notation}
       \[\FieldFrac{R}=(R\setminus\{0\})^{-1}R.\]
@@ -474,7 +474,7 @@ other maximal entities.
   \end{prop}
   Notice that in the above definition we referred to the resultant construction with the article ``the''. This hints at
   some uniqueness floating around. We make this rigorous by characterizing the universal property of our construction.
-  \begin{prop}
+  \begin{prop}[Universal Property of \(D^{-1}R\)]
     For any ring \(S\) and any ring homomorphism \(\varphi \colon R \to S\) which satisfies
     \(\varphi(D) \subset S^\times\), then there exists a unique ring homomorphism
     \(\tilde{\varphi} \colon D^{-1}R \to S\) making the following diagram commute
@@ -485,10 +485,9 @@ other maximal entities.
         D^{-1}R \arrow[ru,dashed,"\tilde{\varphi}"]
       \end{tikzcd}
     \end{figure}
+
+    Note that we required $\phi(D) \subset S^\times$ because each $d \in D$ is invertible in $D^{-1}R$, and we need it to remain invertible in $S$.
   \end{prop}
-  \begin{proof}
-    
-  \end{proof}
   \begin{prop}
     Let \(R\) be an integral domain with field of fractions \(F=D^{-1}R\). If \(\varphi \colon R \to K\) is an injective
     ring homomorphism, where \(K\) is a field, then \(K\) contains an isomorphic copy of \(F\).
@@ -497,9 +496,7 @@ other maximal entities.
   \begin{proof}
     The injectivity of \(\varphi\) implies that \(\varphi(D) \subset K \setminus \{0\} = K^\times\). Thus we may invoke
     the universal property of the ring of fractions, hence there exists \(\tilde{\varphi} \colon F \to K\) with
-    \(\tilde{\varphi} \circ j = \varphi\). This map is not the trivial map. Now \(\ker \tilde{\varphi} = \P0\) since
-    \(\{0\}\) is the only proper ideal of the field \(F\). Thus \(\tilde{\varphi}\) is injective and we have our
-    embedding.
+    \(\tilde{\varphi} \circ j = \varphi\). This map is not the trivial map.  \(\tilde{\varphi}\) is injective because $\varphi$ is injective and \(\tilde{\varphi} \circ j = \varphi\).  So we have our embedding.
   \end{proof}
   Now we examine the ideal structure of \(D^{-1}R\) where \(R \neq 0\) and \(0 \not \in D\).
   \begin{rmk} \mbox{}
@@ -512,7 +509,7 @@ other maximal entities.
   \begin{prop}
     Define the map
     \begin{align*}
-      \{I \lhd \mid D \cap I = \emptyset\} &\longrightarrow \{\text{proper ideals of } D^{-1}R\}\\
+      \{I \lhd R \mid D \cap I = \emptyset\} &\longrightarrow \{\text{proper ideals of } D^{-1}R\}\\
       I &\longmapsto D^{-1} I.
     \end{align*}
     \begin{enumerate}[label=(\alph*)]
@@ -523,27 +520,27 @@ other maximal entities.
   \end{prop}
 
   \begin{defn}
-    \(P \lhd R \implies D = R \setminus P\) is multiplicatively closed. In this case the ring of fractions \(D^{-1}R\)
-    is denoted \(R_P\) and called the localization of \(R\) at \(P\).
+    Observe that if \(P \lhd R\) is a prime ideal, then \(D = R \setminus P\) is multiplicatively closed (To prove this, use the fact that a prime ideal is generated by a prime element).  In this case, the ring of fractions \(D^{-1}R\)
+    is denoted \(R_P\) and called the \emph{localization} of \(R\) at \(P\).
   \end{defn}
 
   \begin{cor}
+    The map
     \begin{align*}
-      The map
       \{Q \lhd R \mid Q \text{ prime and } Q \subset P\} &\longrightarrow \{\text{prime ideals of } R_P \}\\
       Q& \longmapsto D^{-1}Q
     \end{align*}
     is an inclusion preserving bijection.
   \end{cor}
-  Consequence \(D^{-1}P=PR_P\)is the unique maximal ideal of \(R_P\).
+  Consequence \(D^{-1}P=PR_P\) is the unique maximal ideal of \(R_P\).
 
   \begin{defn*}
     A commutative ring is called a \emph{local ring} if it has a unique maximal ideal.
   \end{defn*}
   \begin{example}
     \(R=\Z, P=(p)\). Then
-    \[\Z_{(P)}=\left\{\frac{a}{b} \mid a,b \in \Z, p \text{does not divide} b\right\} \subseteq \Q = \Z_{(0)}\]
-    By the previous result \(\Z_{(P)}\) has two ideals \(\{0\}\) and \((p)\Z_{(p)}\). Notice that
+    \[\Z_{(P)}=\left\{\frac{a}{b} \mid a,b \in \Z, p \;\text{does not divide}\; b\right\} \subseteq \Q = \Z_{(0)}\]
+    By the previous result, \(\Z_{(P)}\) has two ideals: \(\{0\}\) and \((p)\Z_{(p)}\). Notice that
     \[(p)\Z_{(p)}=\left\{\frac{a}{b} \mid p \text{ does not divide } b, p \mid a\right\}\]
   \end{example}
   \subsection{Polynomial Rings}
@@ -594,7 +591,7 @@ other maximal entities.
   form:
   \begin{align*}
     \poly{i}{a}{d}+\poly{i}{b}{e} &= \sum_{i=0}^{\max\{d,e\}}(a_i+b_i)x^i\\
-    \poly{i}{a}{d}\poly{j}{b}{e}  &= \sum_{k=0}^{d+e}\left(\sum_{i=0}^k a_i b_{k-i}\right)x^k                              
+    \poly{i}{a}{d}\poly{j}{b}{e}  &= \sum_{k=0}^{d+e}\left(\sum_{i=0}^k a_i b_{k-i}\right)x^k
   \end{align*}
   where \(a_i \coloneqq 0\) for \(i > d\) and \(b_j \coloneqq 0\) for \(j > e\). In expanded form:
   \begin{align*}
