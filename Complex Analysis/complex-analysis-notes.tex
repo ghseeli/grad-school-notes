@@ -1713,4 +1713,82 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
     of $z^{-a}$ is $(re^{i\theta})^{-a} = r^{-a}e^{-ia\theta}$ for
     $\theta \in [0,2\pi)$. The final result was a homework question.
   \end{example}
+  \section{(11/8/2016) Lecture 22}
+  \begin{thm}[Rouch\'{e}'s Theorem]
+    Let $D$ be a bounded domain with piecewise smooth boundary; let
+    $f$ and $h$ be analytic on $D \cup \partial D$ with $|f(z)| >
+    |h(z)|$ on $\partial D$. Then, $f$ and $f+h$ have the same number
+    of zeros in $D$. 
+  \end{thm}
+  Note that $|f| > |h|$ only on $\partial D$ and not on the whole
+  domain. This does not happen for real analytic functions. The idea
+  of the proof is that the number of zeros of $f$ is the winding
+  number and the number of zeros of $f+h$ is also the winding number,
+  so if $f$ dominates $h$, then $f+h$ cannot have a different winding
+  number. This gets the theorem the nickname ``man with the dog on
+  leash theorem.''
+  \begin{proof}
+    Consider \[
+      \frac{1}{2\pi i} \int_{\partial D} \frac{f+\lambda h}{f +
+        \lambda h} dz, 0 \leq \lambda \leq 1.
+    \]
+    Note, on $\partial D$, $|(f+\lambda h)(z)| = |f(z) + \lambda h(z)|
+    \geq |f(z)| - \lambda |h(z)| > 0$. So, this is the number of zeros
+    of $f+\lambda h$ in $D$ by the argument principle. This function
+    is integer values and continuous in $\lambda$, so it is
+    constant. At $\lambda = 0$, the function is the number of zeros of
+    $f$ and, at $\lambda = 1$, the function is the number of zeros of
+    $f+h$. 
+  \end{proof}
+  \begin{example}
+    Show all zeros of $z^5+3z+1$ lie in $|z| < 2$. We take $f=z^5$ and
+    $h=3z+1$ and apply Rouch\'{e} on $|z| = 2$. On this circle, we
+    get that $|z^5| = 32$ and $|3z+1| \leq 3\cdot 2 + 1 = 7$. By
+    Rouch\'{e}, $z^5+3z+1$ has the same number of zeros as $z^5$,
+    namely 5. \\
+
+    What about $|z|<1$? Here we take $f = 3z+1$, $h = z^5$ on $|z|=1$
+    and get that \[
+      |3z+1| \geq 3|z|-1 = 2 > 1 = |z^5|.
+    \]
+    So, by Rouch\'{e}, there is 1 zero inside the circle.
+  \end{example}
+  \begin{thm}[Hurwitz's Theorem]
+    If $f_k$ are analytic functions on $D$, converging normally to
+    $f$ (necessarily analytic), and $z_0$ is a zero of $f$ of order $N
+    < \infty$, then for small $\rho > 0$, $f_k$ has exactly $N$ zeros
+    inside $|z-z_0| < \rho$ for large $k$. 
+  \end{thm}
+  This theorem is roughly stated as ``zeros of $f_k$ converge to zeros
+  of $f$.''
+  \begin{proof}
+    Let $\rho$ be small enough so that $f(z) \neq 0$ on $0 < |z-z_0| <
+    \rho$. In particular, $\min_{|z-z_0|=\rho} f(z) = \delta > 0$. Let $k$ be large
+    enough so that $|f(z) - f_k(z)| < \frac{\delta}{2}$ on $|z-z_0| =
+    \rho$. We then apply Rouch\'{e}'s theorem on $|z-z_0| = \rho$ to
+    get \[
+      |f(z)| > \delta \frac{\delta}{2} \geq |(f-f_k)(z)|
+   \]
+   So, in $|z-z_0| < \rho$, $f$ has the same number of zeros at
+   $f+(f_k-f) = f_k$. 
+  \end{proof}
+
+  \subsection*{Fractional Residue}
+  Sometimes, we need to do contours that do not make complete circles
+  around poles. If a pole is simple, then we can use the theory of
+  \emph{fractional residues}. More precisely, if $z_0$ is a
+  \textbf{simple pole} and $C_\epsilon$ is an arc of angle length
+  $\alpha$ on $|z-z_0| = \epsilon$, then $\lim_{\epsilon \to 0}
+  \int_{C_\epsilon} f(z)dz = \alpha i \Res[f,z_0]$. \\
+
+  Why does this work? When $f$ nearby is $\frac{A}{z-z_0} + $
+  analytic, we get that \[
+    \int_{C_\epsilon} \frac{A}{z-z_0}dz + \int_{C_\epsilon}
+    (\text{analytic})dz \to \alpha i A + 0
+  \]
+  by an ML-estimate because $\epsilon \to 0$ and the first integrala
+  is $\alpha i A$ by parametrization. We use this technique when a
+  simple pole is in our path of integration, such as integrating a
+  half disk in the upper half plane when there is a simple pole on the
+  real axis. 
 \end{document}
