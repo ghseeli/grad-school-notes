@@ -995,7 +995,7 @@ consider we have $k = n$, best possible
 
 	$$\begin{tikzcd}
 		TM \x \R^k \arrow[r, "f"] \arrow[rd, "p"'] & M \x \R^{n+k} \arrow[d, "q"] \\
-		           & M
+				   & M
 	\end{tikzcd}$$
 
 	s.t. $f$ is smooth and each map $T_xM \x \R^k \to \R^{n+k}$ is a linear isomorphism. (that is, $f$ is a diffeomorphism)
@@ -2033,8 +2033,8 @@ Some stuff i missed.
 	$f$ is \de{Lefschetz} if it is a smooth map of manifolds $f: M \to M$ and (TFAE)
 	\begin{itemize}
 		\item $Gr(f) \transverse \Delta M$ in $M \x M$
+		\item for every fixed point $x$ of $f$, the intersection is transverse.
 		\item for every fixed point $x$ of $f$, $1$ is not an eigenvalue of $df_x$
-		\item $L(f) = |\Fix(f)|$ (defined below, but not sure if this is technically true, since $L(f)$'s existence requires $M$ compact and without boundary.)
 	\end{itemize}
 \end{defi}
 
@@ -2048,9 +2048,9 @@ Some stuff i missed.
 	If the Lefshetz number of $f$ is defined, then $$L(f) = (-1)^n I(Gr(f), \Delta M)$$ where $n = \dim(M)$.
 \end{prop}
 \begin{thrm}
-	If $f$ is Lefschetz, then $L(f) = \sum_{x \in \Fix(f)} o(x,x)$.
+	If $f$ is Lefschetz, then $$L(f) = \sum_{x \in \Fix(f)} o(x,x)$$
 
-	Note that $o(x,x) = o((x,x)) = o((x,f(x)))$ is an element of $\Delta M \cap \Gr(f)$.
+	Note that $o(x,x) = o((x,x)) = o((x,f(x)))$, where $(x, f(x))$ is an element of $\Delta M \cap \Gr(f)$.
 \end{thrm}
 
 \begin{lem}
@@ -2062,9 +2062,7 @@ Some stuff i missed.
 	\end{cases}$$
 \end{lem}
 \begin{thrm}
-	If $f$ is Lefschetz, then $L(f) = \sum_{x \in \Fix(f)} \text{sign}(df_x - I)$.
-
-	$$dfx - I : T_xM \overset{~}{\to} T_xM$$
+	If $f$ is Lefschetz, then $$L(f) = \sum_{x \in \Fix(f)} \text{sign}(df_x - I)$$ where $df_x - I : T_xM \overset{~}{\to} T_xM$.
 \end{thrm}
 \begin{example}
 	$f : S^2 \to S^2$ is the rotation by $\pi/g$ radians about the $z$-axis.
@@ -2123,11 +2121,11 @@ Some stuff i missed.
 
 \begin{prop}
 	\begin{enumerate}
-        \item If $f \homotopic g$, then $L(f) = L(g)$.
+		\item If $f \homotopic g$, then $L(f) = L(g)$.
 
-        \item If $f: M \to M$ has no fixed points, then L(f) = 0.
+		\item If $f: M \to M$ has no fixed points, then L(f) = 0.
 
-        \item If $L(f) \neq 0$, then every $g \homotopic f$ must have at least one fixed point.
+		\item If $L(f) \neq 0$, then every $g \homotopic f$ must have at least one fixed point.
 	\end{enumerate}
 \end{prop}
 
@@ -2157,7 +2155,7 @@ Since $L(\id) \neq 0$, then the vector field function also has fixed points. Thi
 	The \de{Euler characteristic} $\chi(M)$ of a compact manifold $M$ is (TFAE):
 	\begin{itemize}
 		\item $L(\id_M)$
-		\item $I(\delta M, \delta M)$
+		\item $I(\Delta M, \Delta M)$
 		\item $\sum_{x \in \Fix(f)} \sign(\det(df_x - I))$
 		\item $I(v_0(M), v_0(M))$
 		\item $I(v_0(M), v(M))$ for any generate vector field $v$
@@ -2188,8 +2186,12 @@ Since $L(\id) \neq 0$, then the vector field function also has fixed points. Thi
 
 \begin{lem}
 	If $U$ in $\R^n$ is open, $v$ is a smooth vector field on $U$, and $\bar{v}(x) = 0$, then $v$
-    is generate in a neighborhood of $x$ iff $d\bar{v}_x : \R^n \to \R^n$ is invertible.
+	is generate in a neighborhood of $x$ iff $d\bar{v}_x : \R^n \to \R^n$ is invertible.
 \end{lem}
+
+\begin{defi}
+	If $v$ is a vector field, then $x$ is a \de{nondegenerate} 0 for $v$ if $d\bar{v}_x$ is invertible.
+\end{defi}
 
 \begin{lem}
 	If $v$ is a generate vector field and (given, or always?) there exists $H_v : M \x [0, \epsilon) \to M$, then $f_t: M \to M$ defined by $f_t(x) = H(x,t)$ is Lefschetz for small nonzero $t$.
@@ -2205,12 +2207,12 @@ Since $L(\id) \neq 0$, then the vector field function also has fixed points. Thi
 	Look at some smooth surface in $\R^3$.
 	Note that we can figure out local max, local mins with certainty by taking the gradient / Jacobian, then taking the determinant of that, which is the curvature.  Positive curvature is local max/min.  Negative curvature is saddle.  Zero is flat in any direction (not just tangent).
 
-        case 1:
+		case 1:
 			$U$ open in $\R^n$
 			$f: U \to \R$
 
 			$x \in U$ is a critical point iff ($\del(f)(x) = 0$)
-			% x is a generate critical point of \del^2(x) = H_p(x) is nonsingular (Hessian).
+			% x is a generate critical point of \del^2(x) = H_p(x) is invertible (Hessian).
 
 		case 2:
 			general $M$
@@ -2220,73 +2222,87 @@ Since $L(\id) \neq 0$, then the vector field function also has fixed points. Thi
 
 			% M superset U --\phi\to \phi(?) \subseteq \R^n
 
-        checking this is independent of choice of coc chart ancink (amounts?) to proving
+		checking this is independent of choice of coc chart ancink (amounts?) to proving
 \end{example}
 
-%%%%%%%%%% for Fred for Wed Nov 30:
+\mydate{d19}{30}{11}{2016}
 
-% \mydate{d19}{30}{11}{2016}
+\begin{defi}
+	Let $f : \R^n \to \R$ be smooth.  The point $p$ is \emph{critical} if for all $i$ from 1 to $n$, $$\frac{df}{dx_i}(p) = 0$$
+\end{defi}
 
-% \begin{example}
-% 	(ex for nondegen vec fields)
-% x is a nondegenerate 0 for v iff d\bar{v}_x is invertible.
-% \end{example}
-% \begin{defi}
-% 	f : \R^n to \R
-% 	x is \emph{critical} if \frac{df}{dx}i = 0 for all i from 1 to n
-% \end{defi}
-% \begin{defi}
-% 	A critical point x is \emph{nondegenerate} if H_p(x) = ( d2f/dxidxj )i,j is invertible.
-% \end{defi}
-% \begin{thrm}
-% 	All Hessians are \emph{symmetric}.
-% \end{thrm}
-% \begin{defi}
-% 	A smooth map of manifolds $f: M \to \R$ is \de{Morse} if all critical points are nondegenerate.
-% \end{defi}
-% \begin{example}
-% 	of generate critical point
-% 	* a "sink".  all vectors pointing to the critical point
-% 	* a "half-sink" "half-source" given by the V.F. < x, -y >
-% \end{example}
+\begin{defi}
+	The \de{Hessian} of $f: \R^n \to \R$ is $$\left( \frac{d^2f}{dx_i dx_j} \right)_{i,j}$$
 
-% \begin{example}
-% 	of degenerate point of a V.F...
-% 	f: \R to \R
-% 	f(x) = x^2
-% 	\dell(f)(x) = 3x^2
-% 	critical point for f at x = 0
-% 	All the vectors are going in the same direction, and they shrink to 0 at 0, then grow again
-% \end{example}
-% \begin{lem}[Morse]
-% 	Roughly speaking, it states that a smooth enough function near a critical point can be expressed as a quadratic form after a suitable change of coordinates.
+	Note that the Hessian is related to the Jacobian, and the term Hessian can abusively refer to the determinant of the Hessian, just like the Jacobian.
+\end{defi}
+\begin{thrm}
+	All Hessians are symmetric.
+\end{thrm}
 
-% 	If f: M to \R is a smooth map of manifolds and p is a generate critical point, then near p, f(x_1,,,xn) = x_1^2 +++ xn^2 (maybe minus?) with some change of basis.
-% \end{lem}
+\begin{defi}
+	A critical point $p$ is \emph{nondegenerate} if the Hessian $H(p)$ is invertible.
+\end{defi}
 
-% \begin{defi}
-% 	Let g be the genus of the manifold M = # of holes  (We will *not* define genus rigorously in this course)
-% 	chi(M) = 2 - 2g
-% \end{defi}
-% \begin{cor}
-% 	If g neq 1, then every vector field on $M_g$ has a zero.
-% \end{cor}
-% \begin{thrm}
-% 	If M has odd dimension, then chi(M) = 0.
-% \end{thrm}
-% \begin{proof}
-% 		chi(M) = I(\delta M, \delta M) = (-1)^{\dim(M)^2} * I(\delta M, \delta M).
-% 	If the dimension of M is odd, then chi(M) = -chi(M).
-% 	So chi(M) = 0.
-% \end{proof}
-% \begin{defi}
-% 	index
-% The index of a point is (TFAE):
-% 	* When you visualize the surface, the number of axis directions in which the surface goes downwards.
-% 	* When you look at the (dell f, or the laplacian, or maybe the hessian?)
-% 	* the number of negative eigenvalues (of the hessian?)
-% 	* When you zoom in and approx f as x_1^2 + x_2^2 - x_3^2 + x_4^2, etc, the number of negative summands
-% \end{defi}
+
+\begin{defi}
+	A smooth map of manifolds $f: M \to \R$ is \de{Morse} if all critical points are generate.
+\end{defi}
+
+\begin{example}
+	The following are generate critical points.
+	\begin{itemize}
+		\item a "sink" has all vectors pointing to the critical point
+		\item a "half-sink" "half-source" e.g., the vector field $< x, -y >$
+	\end{itemize}
+\end{example}
+
+\begin{example}[degenerate point of a vector field]
+	Define $f: \R \to \R$ by
+	$$f(x) = x^2.$$ Then
+	$$\del(f)(x) = 3x^2.$$
+	There is a critical point for $f$ at $x = 0$.
+	All the vectors are going in the same direction, and they shrink to 0 at 0, then grow again.
+\end{example}
+
+% Matt, I moved this before the formal statement of the lemma.
+Roughly speaking, the Morse Lemma states that a smooth enough function near a critical point can be expressed as a quadratic form after a suitable change of coordinates.
+
+\begin{lem}[Morse]
+	If $f: M \to \R$ is a smooth map of manifolds and $p$ is a generate critical point, then near $p$, $$f(x_1,,,x_n) = x_1^2 +++ x_n^2$$ (maybe minus?) with some change of basis.
+\end{lem}
+
+We will \emph{not} define genus rigorously in this course.
+
+\begin{defi}
+	The \de{genus} $g$ of a closed manifold $M$ is the number of holes.
+\end{defi}
+\begin{thrm}
+	If $M$ is a closed manifold with genus $g$, then $$\chi(M) = 2 - 2g$$
+\end{thrm}
+\begin{cor}
+	If $g \neq 1$, then every vector field on $M_g$ has a zero.
+\end{cor}
+
+\begin{thrm}
+	If $M$ has odd dimension, then $\chi(M) = 0$.
+\end{thrm}
+\begin{proof}
+	$$\chi(M) = I(\Delta M, \Delta M) = (-1)^{\dim(M)^2} \cdot I(\Delta M, \Delta M)$$
+	If the dimension of $M$ is odd, then $\chi(M) = -\chi(M)$.
+	So $\chi(M) = 0$.
+\end{proof}
+
+\begin{defi}
+	The \de{index} of a point is defined in several ways (TFAE):
+	\begin{itemize}
+		\item When you visualize the surface, the index is the number of axis directions in which the surface goes downwards.
+		\item When you look at the (del f, or the laplacian, or maybe the hessian?), the index is the number of negative eigenvalues (of the hessian?).
+		\item When you zoom in and approximate $f(x)$ as $x_1^2 + x_2^2 - x_3^2 + x_4^2$ (up to a change in basis), the index is the number of negative signs.
+	\end{itemize}
+\end{defi}
+
+
 
 
 
