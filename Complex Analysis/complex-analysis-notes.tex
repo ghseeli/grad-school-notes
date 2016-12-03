@@ -4,6 +4,7 @@
 \newcommand{\Arg}{\operatorname{Arg}}
 \newcommand{\Log}{\operatorname{Log}}
 \newcommand{\Res}{\operatorname{Res}}
+\newcommand{\PV}{\operatorname{PV}}
 \renewcommand{\Re}{\operatorname{Re}}
 \renewcommand{\Im}{\operatorname{Im}}
 %%%%%%%%%%%%%% BEGIN CONTENT: %%%%%%%%%%%%%%
@@ -1791,4 +1792,92 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
   simple pole is in our path of integration, such as integrating a
   half disk in the upper half plane when there is a simple pole on the
   real axis. 
+\section{(11/10/2016)}
+  First, let us analyze 3 real integrals and discuss methods to solve
+  them.
+  \begin{example}
+    Consider $\int_0^\infty \frac{1}{1+x^3}dx$. The best way to
+    integrate this is on an angular section of a circle with angle
+    $\frac{2\pi}{3}$. This region will contain one pole inside of it.
+  \end{example}
+  \begin{example}
+    Consider $\int_0^\infty \frac{\log x}{x^a(x+1)}dx, 0 < a < 1$. This should be
+    integrated along a keyhole contour using the branch with a branch
+    cut along $[0,\infty)]$.  There will be one singularity inside
+    this contour at $z=-1$
+  \end{example}
+  \begin{example}
+    Consider $\int_0^\infty \frac{\log x}{x^a(x-1)}dx, 0 < a <
+    1$. This hsould be integrated along a similar keyhole as above but
+    with a bump on the bottom part of $z=1$ for a fractional
+    residue. This was an assigned homework problem.
+  \end{example}
+  Now, in real analysis, if $\int |f| < \infty$, we say the integral
+  is abolutely convergent and the integrand is absolutely
+  integrable. If we have a function that is not absolutely integrable,
+  we have to make a choice to give $\int f$ meaning. This leads us to
+  the idea of \emph{principal value}. $\PV \int f$ means excise
+  symmetric intervals around a discontinuity and maybe $\infty$ and
+  take the limit as the intervals shrink.
+  \begin{example}
+    Consider $\PV \int_{-1}^1 \frac{1}{x}dx = \lim_{\epsilon \to 0}
+    \left( \int_{-1}^{-\epsilon} + \int_{\epsilon}^1 \right)(f dx) =
+    0$. Also, $\PV \int_{-\infty}^\infty xdx = 0$. Note, not all
+    principal values are symmetric and so non-symmetric intervals give
+    other limits. 
+  \end{example}
+
+  Now, for some amazing real analysis.
+  \begin{defn}
+    Given a nice real function $f$ on $\R$, define \[
+      H f(x) = \PV \frac{1}{\pi} \int_{-\infty}^\infty
+      \frac{f(y)}{y-x}dy = f * \frac{1}{\pi x}
+    \]
+    If $f$ is the limit of a harmonic function on the upper half
+    plane, $Hf$ is the limit value of the harmonic conjugate. We call
+    $f \mapsto Hf$ the \emph{Hilbert transform} and it is a singular
+    integral operator.
+  \end{defn}
+  \begin{example}
+    Consider $\int_{-\infty}^\infty \frac{1}{x^3-1}dx$. This has a
+    problem at 1. Since $(x^3-1) = (x-1)(x^2+x+1)$, then near 1, we
+    have that $\frac{1}{x^3-1} \sim \frac{1}{3(x-1)}$. So, $\PV
+    \int_{-\infty}^\infty \frac{1}{x^3-1}dx$ can be evaluated by
+    taking a contour integral in the upper half plane of
+    $\frac{1}{z^3-1}$. 
+  \end{example}
+  \begin{defn}
+    A one to one analytic function on a domain $D$ is called
+    \emph{univalent}. (This is the same as a conformal equivalence
+    from $D$ to another domain.)
+  \end{defn}
+  \begin{defn}
+    A univalent function $f$ on the unit disk with $f(0) = 0$ and
+    $f'(0) = 1$ is called \emph{schlict}.
+  \end{defn}
+  \begin{prop}
+    If $f_k \to f$ normally on the unit disk, and all $f_k$ are
+    univalent, then $f$ is univalent or constant. Furthermore, if $f_k
+    \to f$ normally on the unit disk and all $f_k$ are schlicht, then
+    $f$ is schlict. 
+  \end{prop}
+  \begin{proof}
+    We will prove the first statement. Suppose $f_k \to f$ normally on
+    the unit disk, denoted $D$, and that $f$ is nonconstant. If $f$ is
+    not univalent, find $\xi, \zeta \in D$ with $f(\xi) = f(\zeta) =
+    w$. Then, $f(\cdot)-w$ has a finite order 0 at $\xi$ and
+    $\zeta$. Consider small nonoverlapping disks around $\xi$ and
+    $\zeta$; by Hurwitz, since $f_k(\cdot)-w$ converges normall to
+    $f(\cdot)-w$ for large $K$, each disk contains a zero of
+    $f(\cdot)-w$, violating univalency of $f_k$. 
+  \end{proof}
+  \begin{example}
+    $f_k = \frac{z}{k} \to 0$ normally on $\C$
+  \end{example}
+  \begin{prop}
+    If $f$ is schlicht, then, for $D$ the unit circle, $\{|z| <
+    \frac{1}{4}\} \subset f(D)$. This is Kobe's 1/4 theorem proved by
+    Bieberbach in 1916. 
+  \end{prop}
+
 \end{document}
