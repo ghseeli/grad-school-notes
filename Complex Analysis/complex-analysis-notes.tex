@@ -1879,5 +1879,155 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
     \frac{1}{4}\} \subset f(D)$. This is Kobe's 1/4 theorem proved by
     Bieberbach in 1916. 
   \end{prop}
+  \section{(11/15/2016)}
+  As noted earlier, a basic question one can ask is, given $D_1$ and
+  $D_2$, is there a conformal mapping between them? We also consider,
+  how can an analytic function fail to be one to one? Locally, the map
+  could be something like $z \mapsto z^2$ on $D$ with $0 \in D$ or
+  globally in the form of $e^z$ on $\C$. Both of these situations are 
+  characterized by $f' = 0$. 
 
+  At this point, there was some lecturing about infinite charged
+  rods. This is being ommitted. 
+
+  \begin{thm}[Open Mapping Theorem for analytic functions]
+    The image of an open set under an analytic function is open. (Did
+    this in homework.)
+  \end{thm}
+  \begin{proof}
+    Let $f$ be analytic near $z_0$ and not constant. Let $w_0 =
+    f(z_0)$, then there is a $\rho$ positive such that $|f(z)-w_0| >
+    0$ on punctured disk $0 < |z-z_0| < \rho$. In other words, $z_0$
+    is an isolated zero of $f(z)-w_0$, so on this punctured disk, 
+    $f(z)-w_0$ is not 0. Now, let $\min_{|z-z_0|=\rho} |f(z)-w_0| =
+    \delta > 0$. Let $|w-w_0| < \delta$. On $|z-z_0| = \rho$, $f(z)-w
+    = (f(z)-w_0) + (w_0-w)$. The first summand has modulus at least
+    $\delta > |w_0-w|$. By Rouch\'{e}, the number of zeros of $f(z)-w$
+    equals the number of zeros of $f(z)-w_0$ in $|z-z_0| < \rho$ which
+    is greater than 0. So, for every $w$ with $|w-w_0| < \delta$,
+    there is a $z$ in $|z-z_0| < \rho$ with $f(z) = w$. This means
+    that $\{|w-w_0| < \delta\} \subset f(\{|z-z_0| < \rho\})$. Thus,
+    we have shown that if $w \in f(D)$, then a disk around $w$ is in
+    $f(D)$, so $f(D)$ is open.
+  \end{proof}
+  If $w_0$ is a simple zero of $f(z)-w_0$, then the preimage is
+  unique. So, $f$ has a local inverse function.
+  \begin{defn}
+    $z_0$ is a \emph{critical point} of $f$ if $f'(z_0) = 0$. Its
+    \emph{order} as a critical point is the order of the
+    zero. $f(z_0)$ is then a critical value.
+  \end{defn}
+  \begin{example}
+    $(n \geq 2)$ $z^n$ has a critical point of order $n-1$.
+  \end{example}
+  We then redid part of the homework problem involving the open
+  mapping theorem.
+  \section{(11/17/2016)}
+  \begin{prop}
+    Let $f(z_0) = w_0$. Then, $z_0$ is a critical point of order $m-1$
+    if and only if $z_0$ is a zero of $f(z) - w_0$ of order $m$.
+  \end{prop}
+  This proposition follows from the fact htat $f(z)-w_0 =
+  (z-z_0)^mg(z)$ where $g(z) \neq 0$ or from the power series $f(z) =
+  w_0 + a_m(z-z_0)^m + \ldots$. When $m=1$, $f$ is locally invertible
+  for any $0 < |w-w_0| < \delta$ and there is a unique $0 < |z-z_0| <
+  \rho$ with $f(z) = w$ where $w \mapsto z$ known as a ``local
+  inverse.'' This is given by \[
+    w \mapsto \frac{1}{2\pi i} \int_{|\zeta-z_0| = \rho} \frac{\zeta
+      f'(\zeta)}{f(\zeta)-w}d\zeta
+  \]
+  To see this, just note that the integral is equal to the residue at
+  $z$ and since $z$ is a simple pole, we just get that the residue is
+  $\frac{\zeta f'(\zeta)}{f'(\zeta)}$ evaluated at $\zeta = z$.
+  \begin{example}
+    Consider $f(z) = z + \frac{1}{z}$. We have $0 = f'(z) = 1 -
+    \frac{1}{z} - z$ when $z = \pm 1$. These are the critical
+    points. They evaluate to the critical values $\pm 2$. Furthermore,
+    since $\pm 1$ are critical points of order 1, $f$ is 2 to 1 near
+    $\pm 1$.
+  \end{example}
+  \begin{example}
+    Consider $0 = \Im f(z) = y - \frac{y}{x^2+y^2} =
+    y(1-\frac{1}{x^2+y^2})$. This vanishes when $y = 0$ or $x^2+y^2 =
+    1$. So, near 1 or -1, one needs to choose a branch to form a local
+    inverse.
+  \end{example}
+  \subsection*{Winding numbers}
+  Let $\gamma = \gamma(t), a < t < b$ be a parametrized closed curve
+  in $\C \setminus \{0\}$. We will give some equivalent definitions of
+  winding number.
+  \begin{defn}
+    The winding number $W(\gamma,0)$ is 
+    \begin{enumerate}
+    \item $\frac{1}{2\pi i} \int_\gamma \frac{1}{z}dz$
+    \item The homotopy equivalence class of $\gamma$. $\gamma$ is
+      homotopic to $e^{2\pi i wt}$ for $t \in [0,1]$ for unique
+      $w$. This $w$ is the winding number.
+    \item $\frac{1}{2 \pi} \int_\gamma d(\arg z)$ where we pick the
+      branch of arg that is continuous in $t$.
+    \item $\frac{1}{2\pi} \int_\gamma \frac{-ydx + xdy}{x^2+y^2}$. 
+    \end{enumerate}
+    Note that $W(\gamma, z_0)$ is defined analogously for $z_0 \not
+    \in \gamma$. 
+  \end{defn}
+  We see that $\frac{1}{2\pi i} \int_\gamma \frac{1}{z-z_0}dz$ is an
+  integer valued analytic function of $z_0$ on $\C \setminus \gamma$. So, $W(\gamma,
+  \cdot)$ is constant on components of $\C \setminus \gamma$ and thus
+  must be 0 on the unbounded component. 
+  \begin{thm}[Cauchy Integral Theorem +]
+    Let $\gamma$ be a loop in domain $D$, $f$ analytic on $D$, and
+    $W(\gamma,z_0) = 0$ for all $z_0 \not \in D$. Then, \[
+      \int_\gamma f(z)dz = 0
+    \]
+  \end{thm}
+  \begin{proof}
+    Assume $D$ is bounded. Then,
+    \begin{align*}
+      \int_\gamma f(z)dz & = \int_\gamma \left( \frac{1}{2\pi i}
+                           \oint_{\partial D} \frac{f(\zeta)}{\zeta -
+                           z} d\zeta \right) dz \\
+      & = \int_{\partial D} f(\zeta) \left( \frac{1}{2\pi i}
+        \int_\gamma \frac{1}{\zeta - z} dz \right) d\zeta \\
+                         & = \int_{\partial D} f(\zeta) (- W(\gamma, \zeta)) d\zeta \\
+      & = 0 (\text{since } \zeta \not \in D)
+    \end{align*}
+  \end{proof}
+  If $D$ is undbounded, one can shrink to a bounded domain containing
+  $\gamma$ (the argument is in the textbook.)
+  \begin{cor}[Cauchy Integral Formula +]
+    Given the same hypotheses as above with $z_0 \in D$, we get \[
+      \frac{1}{2\pi i}\int_\gamma \frac{f(z)}{z-z_0}dz = f(z_0)W(\gamma,z_0)
+    \]
+  \end{cor}
+  \begin{proof}
+    We have that $0 = \frac{1}{2\pi i} \int_\gamma
+    \frac{f(z)-f(z_0)}{z-z_0}dz$ by the theorem since the integrand is
+    analytic on $D$. So, we get $\frac{1}{2\pi i} \int_\gamma
+    \frac{f(z)}{z-z_0}dz = \frac{1}{2\pi i} \int_\gamma
+    \frac{f(z_0)}{z-z_0} dz = \frac{f(z_0)}{W(\gamma,z_0)}$.  
+  \end{proof}
+  Similarly, there exist a ``Residue Theorem +'' which is proved in
+  the homework.
+  \begin{defn}
+    Loops are \emph{contractible} if they can be homotoped to a single
+    point. A domain is \emph{simply connected} if every closed path in
+    the domain can be deformed to a point.
+  \end{defn}
+  \begin{thm}
+    The following are equivalent for a domain $D \subset \C$.
+    \begin{enumerate}
+    \item $D$ is simply connected.
+    \item Closed forms are exact.
+    \item $\arg(z-z_0)$ has continuous branch on $D$ for $z_0 \not \in
+      D$.
+    \item Winding number of curve in $D$ is zero for a point in the
+      complement.
+    \item The complement is connected.
+    \end{enumerate}
+  \end{thm}
+  Finally, this leads us to an important theorem, namely
+  \begin{thm}[Riemann Mapping Theorem]
+    Let $\varnothing \neq D \propsubset \C$ be simply connected. Then,
+    $D$ is conformally equivalent to $\{|z| < 1\}.$
+  \end{thm}
 \end{document}
