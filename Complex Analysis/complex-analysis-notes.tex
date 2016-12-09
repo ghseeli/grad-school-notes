@@ -5,6 +5,7 @@
 \newcommand{\Log}{\operatorname{Log}}
 \newcommand{\Res}{\operatorname{Res}}
 \newcommand{\PV}{\operatorname{PV}}
+\newcommand{\D}{\mathbb{D}}
 \renewcommand{\Re}{\operatorname{Re}}
 \renewcommand{\Im}{\operatorname{Im}}
 %%%%%%%%%%%%%% BEGIN CONTENT: %%%%%%%%%%%%%%
@@ -1879,5 +1880,311 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
     \frac{1}{4}\} \subset f(D)$. This is Kobe's 1/4 theorem proved by
     Bieberbach in 1916. 
   \end{prop}
+  \section{(11/15/2016)}
+  As noted earlier, a basic question one can ask is, given $D_1$ and
+  $D_2$, is there a conformal mapping between them? We also consider,
+  how can an analytic function fail to be one to one? Locally, the map
+  could be something like $z \mapsto z^2$ on $D$ with $0 \in D$ or
+  globally in the form of $e^z$ on $\C$. Both of these situations are 
+  characterized by $f' = 0$. 
 
+  At this point, there was some lecturing about infinite charged
+  rods. This is being ommitted. 
+
+  \begin{thm}[Open Mapping Theorem for analytic functions]
+    The image of an open set under an analytic function is open. (Did
+    this in homework.)
+  \end{thm}
+  \begin{proof}
+    Let $f$ be analytic near $z_0$ and not constant. Let $w_0 =
+    f(z_0)$, then there is a $\rho$ positive such that $|f(z)-w_0| >
+    0$ on punctured disk $0 < |z-z_0| < \rho$. In other words, $z_0$
+    is an isolated zero of $f(z)-w_0$, so on this punctured disk, 
+    $f(z)-w_0$ is not 0. Now, let $\min_{|z-z_0|=\rho} |f(z)-w_0| =
+    \delta > 0$. Let $|w-w_0| < \delta$. On $|z-z_0| = \rho$, $f(z)-w
+    = (f(z)-w_0) + (w_0-w)$. The first summand has modulus at least
+    $\delta > |w_0-w|$. By Rouch\'{e}, the number of zeros of $f(z)-w$
+    equals the number of zeros of $f(z)-w_0$ in $|z-z_0| < \rho$ which
+    is greater than 0. So, for every $w$ with $|w-w_0| < \delta$,
+    there is a $z$ in $|z-z_0| < \rho$ with $f(z) = w$. This means
+    that $\{|w-w_0| < \delta\} \subset f(\{|z-z_0| < \rho\})$. Thus,
+    we have shown that if $w \in f(D)$, then a disk around $w$ is in
+    $f(D)$, so $f(D)$ is open.
+  \end{proof}
+  If $w_0$ is a simple zero of $f(z)-w_0$, then the preimage is
+  unique. So, $f$ has a local inverse function.
+  \begin{defn}
+    $z_0$ is a \emph{critical point} of $f$ if $f'(z_0) = 0$. Its
+    \emph{order} as a critical point is the order of the
+    zero. $f(z_0)$ is then a critical value.
+  \end{defn}
+  \begin{example}
+    $(n \geq 2)$ $z^n$ has a critical point of order $n-1$.
+  \end{example}
+  We then redid part of the homework problem involving the open
+  mapping theorem.
+  \section{(11/17/2016)}
+  \begin{prop}
+    Let $f(z_0) = w_0$. Then, $z_0$ is a critical point of order $m-1$
+    if and only if $z_0$ is a zero of $f(z) - w_0$ of order $m$.
+  \end{prop}
+  This proposition follows from the fact htat $f(z)-w_0 =
+  (z-z_0)^mg(z)$ where $g(z) \neq 0$ or from the power series $f(z) =
+  w_0 + a_m(z-z_0)^m + \ldots$. When $m=1$, $f$ is locally invertible
+  for any $0 < |w-w_0| < \delta$ and there is a unique $0 < |z-z_0| <
+  \rho$ with $f(z) = w$ where $w \mapsto z$ known as a ``local
+  inverse.'' This is given by \[
+    w \mapsto \frac{1}{2\pi i} \int_{|\zeta-z_0| = \rho} \frac{\zeta
+      f'(\zeta)}{f(\zeta)-w}d\zeta
+  \]
+  To see this, just note that the integral is equal to the residue at
+  $z$ and since $z$ is a simple pole, we just get that the residue is
+  $\frac{\zeta f'(\zeta)}{f'(\zeta)}$ evaluated at $\zeta = z$.
+  \begin{example}
+    Consider $f(z) = z + \frac{1}{z}$. We have $0 = f'(z) = 1 -
+    \frac{1}{z} - z$ when $z = \pm 1$. These are the critical
+    points. They evaluate to the critical values $\pm 2$. Furthermore,
+    since $\pm 1$ are critical points of order 1, $f$ is 2 to 1 near
+    $\pm 1$.
+  \end{example}
+  \begin{example}
+    Consider $0 = \Im f(z) = y - \frac{y}{x^2+y^2} =
+    y(1-\frac{1}{x^2+y^2})$. This vanishes when $y = 0$ or $x^2+y^2 =
+    1$. So, near 1 or -1, one needs to choose a branch to form a local
+    inverse.
+  \end{example}
+  \subsection*{Winding numbers}
+  Let $\gamma = \gamma(t), a < t < b$ be a parametrized closed curve
+  in $\C \setminus \{0\}$. We will give some equivalent definitions of
+  winding number.
+  \begin{defn}
+    The winding number $W(\gamma,0)$ is 
+    \begin{enumerate}
+    \item $\frac{1}{2\pi i} \int_\gamma \frac{1}{z}dz$
+    \item The homotopy equivalence class of $\gamma$. $\gamma$ is
+      homotopic to $e^{2\pi i wt}$ for $t \in [0,1]$ for unique
+      $w$. This $w$ is the winding number.
+    \item $\frac{1}{2 \pi} \int_\gamma d(\arg z)$ where we pick the
+      branch of arg that is continuous in $t$.
+    \item $\frac{1}{2\pi} \int_\gamma \frac{-ydx + xdy}{x^2+y^2}$. 
+    \end{enumerate}
+    Note that $W(\gamma, z_0)$ is defined analogously for $z_0 \not
+    \in \gamma$. 
+  \end{defn}
+  We see that $\frac{1}{2\pi i} \int_\gamma \frac{1}{z-z_0}dz$ is an
+  integer valued analytic function of $z_0$ on $\C \setminus \gamma$. So, $W(\gamma,
+  \cdot)$ is constant on components of $\C \setminus \gamma$ and thus
+  must be 0 on the unbounded component. 
+  \begin{thm}[Cauchy Integral Theorem +]
+    Let $\gamma$ be a loop in domain $D$, $f$ analytic on $D$, and
+    $W(\gamma,z_0) = 0$ for all $z_0 \not \in D$. Then, \[
+      \int_\gamma f(z)dz = 0
+    \]
+  \end{thm}
+  \begin{proof}
+    Assume $D$ is bounded. Then,
+    \begin{align*}
+      \int_\gamma f(z)dz & = \int_\gamma \left( \frac{1}{2\pi i}
+                           \oint_{\partial D} \frac{f(\zeta)}{\zeta -
+                           z} d\zeta \right) dz \\
+      & = \int_{\partial D} f(\zeta) \left( \frac{1}{2\pi i}
+        \int_\gamma \frac{1}{\zeta - z} dz \right) d\zeta \\
+                         & = \int_{\partial D} f(\zeta) (- W(\gamma, \zeta)) d\zeta \\
+      & = 0 (\text{since } \zeta \not \in D)
+    \end{align*}
+  \end{proof}
+  If $D$ is undbounded, one can shrink to a bounded domain containing
+  $\gamma$ (the argument is in the textbook.)
+  \begin{cor}[Cauchy Integral Formula +]
+    Given the same hypotheses as above with $z_0 \in D$, we get \[
+      \frac{1}{2\pi i}\int_\gamma \frac{f(z)}{z-z_0}dz = f(z_0)W(\gamma,z_0)
+    \]
+  \end{cor}
+  \begin{proof}
+    We have that $0 = \frac{1}{2\pi i} \int_\gamma
+    \frac{f(z)-f(z_0)}{z-z_0}dz$ by the theorem since the integrand is
+    analytic on $D$. So, we get $\frac{1}{2\pi i} \int_\gamma
+    \frac{f(z)}{z-z_0}dz = \frac{1}{2\pi i} \int_\gamma
+    \frac{f(z_0)}{z-z_0} dz = \frac{f(z_0)}{W(\gamma,z_0)}$.  
+  \end{proof}
+  Similarly, there exist a ``Residue Theorem +'' which is proved in
+  the homework.
+  \begin{defn}
+    Loops are \emph{contractible} if they can be homotoped to a single
+    point. A domain is \emph{simply connected} if every closed path in
+    the domain can be deformed to a point.
+  \end{defn}
+  \begin{thm}
+    The following are equivalent for a domain $D \subset \C$.
+    \begin{enumerate}
+    \item $D$ is simply connected.
+    \item Closed forms are exact.
+    \item $\arg(z-z_0)$ has continuous branch on $D$ for $z_0 \not \in
+      D$.
+    \item Winding number of curve in $D$ is zero for a point in the
+      complement.
+    \item The complement is connected.
+    \end{enumerate}
+  \end{thm}
+  Finally, this leads us to an important theorem, namely
+  \begin{thm}[Riemann Mapping Theorem]
+    Let $\varnothing \neq D \propsubset \C$ be simply connected. Then,
+    $D$ is conformally equivalent to $\{|z| < 1\}.$
+  \end{thm}
+  \section{(11/22/2016)}
+  \section{(11/29/2016)}
+  \subsection*{Spherical and Hyperbolic Geometry using complex
+    analysis}
+  
+  Recall that $\C^* \isom S^2 \subset \R^3$ via stereographic
+  projection. This embedding allows us to endow $C^*$ with the
+  \emph{chordal metric} from $\R^3$ by just measuring distance from
+  the points in $\R^3$. The formula for this metric is given by \[
+    \rho_S(z,w) = \frac{2|z-w|}{\sqrt{1+|z|^2} \sqrt{1+|w|^2}}
+  \]
+  This gives us an infinitesmal version, as well, which is much easier
+  to remember, namely \[
+    d\rho_S(z) = \frac{2|dz|}{1+|z|^2}.
+  \]
+  Then, given a path $\gamma$ in $C^*$, the spherical length is
+  $\int_\gamma \frac{2|dz|}{1+|z|^2} = \int_a^b
+  \frac{2|\gamma'(t)|}{1+|\gamma(t)|^2}dt$. The spherical metric
+  of $w,z$ gives the length of the shortest path between them. In
+  class, we drew some geodesics on $\C^*$ with the spherical
+  metric. The takeaways were
+  \begin{itemize}
+  \item The geodesics are circles (or lines through infinity) that
+    intersect the unit circle at antipodal points,
+  \item The geodesics have parts that lie inside and outside the unit
+    circle, except for the unit circle itself,
+  \item The two intersections of the geodesics with the real axis are
+    negative inverses of each other.
+  \end{itemize}
+  In this exercise, we also introduced the hyperbolic metric on the
+  unit disk, which is given by arcs that intersect the edge of the
+  circle at 90 degree angles. This leads us to the following
+  \begin{defn}
+    The \emph{pseudohyperbolic metric on $\D$} is given by \[
+      \rho_H(z,w) = \frac{2|z-w|}{|1-\overline{w}z|}
+    \]
+    and thus the infinitesmal version is given by
+    $\frac{2|dz|}{1-|z|^2}$.
+  \end{defn}
+  Thus, from this definition, we can infer that the hyperbolic length
+  of a path $\gamma$ is \[
+    2\int_\gamma \frac{|dz|}{1-|z|^2} = 2 \int
+    \frac{|\gamma'(t)|}{1-|\gamma(t)|^2}dt = \log \left(
+      \frac{1+\rho_H(z,w)}{w-\rho_H(z,w)} \right) = 2 \tanh^{-1}(\rho_H(z,w))
+  \]
+  Once again, the hyperbolic metric on 2 points is the shortest length
+  of path between them. Also note that the unit disk with the
+  hyperbolic metric is also called the Poincar\'{e} disk. Returning to
+  Pick's lemma, we note that it says \[
+    \frac{|f(z_1)-f(z_2)|}{|1-\overline{f(z_2)}f(z_1)|} \leq \frac{|z_1-z_2|}{|1-\overline{z_2}z_1|}.
+  \]
+  These are both pseudo-hyperbolic distances! The implication is that
+  $f$ is nonexpansive in the pseudohyperbolic metric (it also is
+  nonexpansive in the hyperbolic metric). In fact, $f$ is actually
+  contractive unless $f$ is conformal, which is isometric. Thus, the
+  confromal self-maps of $\D$ are in bijection with the isometries of
+  the hyperbolic plane and are isomorphic as groups. \\
+
+  Finally, as an aside, it is worth noting that if one has a circle of
+  radius $r$ in each of these metrics, the diameters are the
+  following: \\
+  \begin{tabular}{|c|c|}
+    \hline &\\
+    Metric & Diameter \\
+    \hline &\\
+    Euclidean & $2 \pi r$ \\
+    Sphere & $2 \pi \sin r$ \\
+    Hyperbolic & $2 \pi \sinh r$ \\
+    \hline
+  \end{tabular}
+  Thus, one can get an idea of the geometric intuition between
+  hyperbolic trig functions.
+  \section{(12/1/2016)}
+  \begin{defn}
+    A (finite) \emph{Blaschke product} is the product (not
+    compiosition) of finitely many conformal automorphisms $\D \to
+    \D$, ie \[
+      f(z) = e^{i\phi} \prod_{i=1}^n \frac{z-a_i}{1-\overline{a_i}z}
+    \]
+  \end{defn}
+  We work with Blaschke products more in the homework. \\
+
+  Now, the final goal of this course will be to build our way to
+  proving the Riemann Mapping Theorem. The theorem is stated as
+  follows
+  \begin{thm}[Riemann Mapping Theorem]
+    Any simply connected proper subdomain of $\C$ is conformally
+    equivalent to the disk.
+  \end{thm}
+  We note that $\C$ is not conformally equivalent to $\D$ because of
+  Liouville's theorem. An important stepping stone to Liouville's
+  theorem is the following
+  \begin{thm}[Manetel's Theorem]
+    Let $\mathcal{F}$ be a family of analytic functions on a domain
+    $D$ that are uniformly bounded on any compact subset. Then, any
+    sequence in $\mathcal{F}$ has a subsequence converging normally
+    (uniformly on compact subsets).
+  \end{thm}
+  \begin{rmk}
+    This is saying $\mathcal{F}$ is precompact (the closure is
+    compact) in the topology of normal convergence. This fact relies
+    of the Arzel\`{a}-Ascoli theorem from real analysis. For
+    continuous functions on a compact set, we have precompactness if
+    and only if we have uniform boundedness and equicontinuity.
+  \end{rmk}
+  Also note, for analytic function, we get equicontinuity because
+  uniform boundedness gives a bound on the derivative by the Cauchy
+  estimates. Why is this useful? Because it can show that extremal
+  functions exist.
+  \section{12/6/2016}
+  I will not transcribe the entire proof of the Riemann Mapping Theorem here,
+  but it can be found in any complex analysis textbook. However, the
+  proof does depend on the following two lemmas.
+  \begin{lem}
+    Let $D$ be a simply connected proper subdomain of $\C$, $z_0 \in
+    D$. Then, there is a univalent $f: D \to D$ with $f(z_0) = 0$ (and
+    $|f'(z_0)| > 0$).
+  \end{lem}
+  The point of this lemma is to transform really ugly domains into
+  somewhat nicer ones. The proof involves transforming the domain $D$
+  such that there is an open set in the complement, then applying
+  $\frac{1}{z}$ to get a bounded function, and finally sending a
+  particular point to 0.
+  \begin{lem}
+    Let $D$ be a simply connected proper subdomain of $\D$. Then, 
+    there is $\psi: \D \to \D$ with $\psi(0) = 0$ and $|\psi'(0)| > 1$.
+  \end{lem}
+  Note that this provides a ``sharpness'' to the Schwarz lemma and is
+  impossible when $D = \D$. The key idea of this proof is that any
+  analytic map $\D \to \D$ is nonexpansive in the pseudohyperbolic and
+  hyperbolic metrics. Now, armed with these (unproved) lemma's, we can
+  provide a proof.
+  \begin{proof}
+    Let $D$ be a simply connected domain not equal to $\C$ and let
+    $z_0 \in D$. Consider $\mathcal{F} = \{f: D \to \D, \text{
+      univalent}, f(z_0) = 0\}$. We want to maximize the derivative
+    $|f'(z_0)|$ which we know to be finite by the Cauchy estimate and
+    not zero from the first lemma. \\
+
+    Consider $\{f_n\} \subset \mathcal{F}$ with $|f_n'(z_0)|$
+    increasing to the supremum. Mantel's theorem tells us that there
+    is a normally convergent subsequence of this sequence and the
+    limite of this sequence, $f$, satisfies the following
+    \begin{itemize}
+    \item $f(z_0) = 0$
+    \item $|f'(z_0)| = \sup > 0$
+    \item Hurwitz's theorem tells us that as a normal limit of
+      univalent functions, $f$ is univalent or constant, but it cannot
+      be constant because $f'(z_0) \neq 0$
+    \item The image is open inside $\overline{\D}$, so it is in $\D$.
+    \item Finally, we claim that $f$ is onto $\D$. If it were not,
+      then take $\psi$ as in the second lemma and then $\psi \circ f
+      \in \mathcal{F}$ and $|(\psi \circ f)'(z_0)| =
+      |\psi'(0)||f'(z_0)| > |f'(z_0)|$, thereby violating maximality. 
+    \end{itemize}
+  \end{proof}
 \end{document}
