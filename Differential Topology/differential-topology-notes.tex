@@ -634,6 +634,10 @@ $T_xL = \ker df_x$
 
 $x \in L \subset M$
 
+\begin{thrm}[Stack of Records Theorem]
+	If $y$ is a regular value of a submersion $f: M^n \to N^n$ and $M$ is compact, then there exists a neighborhood $B(y)$ such that $f^{-1}(B(y))$ is a finite disjoint union of neighborhoods, each diffeomorphic to $B(y)$, one for each $x \in f^{-1}(y)$.
+\end{thrm}
+
 \mydate{d3}{28}{9}{2016}
 
 More elegant definition of regular:
@@ -647,6 +651,10 @@ More elegant definition of regular:
 	$y \in N$ is a \de{regular} value if every point in $f^{-1}(y)$ is regular.  Otherwise, $y$ is a \de{critical} value.  Note: values $y$ *not* in the image of $f$ are vacuously regular.
 \end{defi}
 
+\begin{thrm}[Matt]
+	If $r$ is a regular value of $f$, then for any $L$, $r$ is a transverse intersection with $L$.  (This is vacuously true when $r \not\in L$.)
+\end{thrm}
+
 \begin{thrm}
 	$f$ is a smooth map of manifolds.
 	If $y$ is a regular value, then $f^{-1}(y)$ is a smooth submanifold of $M$.
@@ -655,9 +663,7 @@ More elegant definition of regular:
 \end{thrm}
 
 \begin{thrm}
-	$f$ is a smooth map of manifolds.
-	Let $L$ be a subset of $N$.
-	If $M$ is a submanifold of $N$, then $f^{-1}(y) = M \cap L$.
+	If $f: M \to N$ is the inclusion map, $L \subseteq N$, then $f^{-1}(L) = M \cap L$.
 \end{thrm}
 
 \begin{defi}
@@ -697,7 +703,7 @@ More elegant definition of regular:
 \mydate{d4}{5}{10}{2016}
 
 \begin{defi}
-	$C^\infty(M) := \{ f:M \to \R | f is smooth \}$
+	$C^\infty(M) := \{ f:M \to \R \mid \text{f is smooth} \}$
 \end{defi}
 \begin{thrm}
 	$C^\infty(M)$ is a commutative $\R$-algebra. (It's a ring, a V.S., has a bilinear prod)
@@ -1842,6 +1848,9 @@ other things to notice
 \begin{proof}
 	$M = M \sqcup 0$, where 0 denotes the empty manifold.  Note that 0 is closed.  Then $I_2(f, L) = I_2(F|_0, L) = I_2(\{\}, L) = 0$, where $\{\}$ denotes the empty function.
 \end{proof}
+\begin{thrm}[Boundary Theorem]
+	If $W$ is a compact manifold, $M = \d W$, $f: M \to N$ is smooth, and $f$ may be extended to some $F: W \to N$, then for any closed submanifold $L \subseteq N$, $$I_2(f, L) = 0$$.
+\end{thrm}
 \begin{defi}
 	If $f : M^m \to N^n$ and $N$ is connected and $M$, $N$ are closed and $m=n$, then the \de{mod 2 degree} of $f$, denoted $\deg_2(f)$, is $I_2(f, \{y\})$ for any $y \in N$.
 \end{defi}
@@ -1910,11 +1919,16 @@ $$\deg_2(u_z) =
 	The standard orientation of $\R^n$ is the equivalence class of the standard ordered basis $(e1,,,en)$.  This is written $(\R^n, [(e1,,,en)])$.
 \end{example}
 \begin{defi}
-	If $M$ is a smooth $n$-dimensional manifold, then an orientation of $M$ will be a choice of orientation for each $T_xM$ compatible as follows.  $M$ has an atlas of coordinate charts $\{ \phi : U \to \R^n \mid d(\phi)_x : T_xM \to \R^n \text{ is orientation preserving} \}$.
+	If $M$ is a smooth $n$-dimensional manifold, then an \de{orientation} of $M$ is a choice of orientation for each $T_xM$ compatible as follows.  $M$ has an atlas of coordinate charts $\{ \phi : U \to \R^n \mid d\phi_x : T_xM \to T\R^n = \R^n \text{ is orientation preserving} \}$.
+
+	Note that an orientation is not guaranteed...
 \end{defi}
-\begin{prop}
-	A manifold admits an orientation if and only if there exists an atlas $\{ \phi : U \to \R^n \mid d(\phi)_x : T_xM \}$ s.t. for all $i,j$ we have $\phi_i^{-1}.\phi_j : \phi_i(U_i \cap U_j) \to \phi_j(U_i \cap U_j)$
-	, for all $x$ in $U_i \cap U_j$, we have $d(\phi_i^{-1}.\phi_j)$ is orientation preserving.
+\begin{defi}
+	A smooth manifold $M$ is \de{orientable} if it has an orientation.
+\end{defi}
+\begin{prop}[Equivalent definition]
+	A manifold is orientable if and only if there exists an atlas $\{ \phi : U \to \R^n \mid d\phi_x : T_xM \}$ s.t. for all $i,j$ we have $$\phi_i^{-1}.\phi_j : \phi_i(U_i \cap U_j) \to \phi_j(U_i \cap U_j)$$
+	, for all $x$ in $U_i \cap U_j$, we have $$d(\phi_i^{-1}.\phi_j)$$ is orientation preserving.
 \end{prop}
 \begin{defi}
 	$-M$ denotes the alternative orientation of $M$.
@@ -1963,19 +1977,21 @@ Some stuff i missed.
 \end{prop}
 \begin{cor}
 	If $f_0 \homotopic f_1$, then $I(f_0, L) = I(f_1, L)$.
-
-	Hypothesis for the following definition and some following things:
-	$f: M \to N$. $M, N$ compact with empty boundary, oriented, $N$ connected. $\dim(M) = \dim(N)$.
 \end{cor}
+
+$\mathcal{H} = $ Hypothesis for some things:
+
+$f: M \to N$ is a smooth map of manifolds.  $M$ and $N$ are closed, oriented, and $N$  is connected.  $\dim(M) = \dim(N)$.
+
 \begin{defi}
-	$\deg(f)$ is defined to be $I(f, {y})$ for any $y \in N$.
+	If $\mathcal{H}$, then the \de{degree} of $f$ is $$\deg(f) := I(f, \{y\})$$ for any $y \in N$.
 \end{defi}
 \begin{prop}
-	This is well defined (independent of choice of $y$)
+	$\deg(f)$ is well defined (independent of choice of $y$)
 
 	(Then to calculate, choose $y$ regular)
 
-	$\deg(f) = \sum_{\text{intersecting pts}} o(x)$ where $o(x) = +1$ if $df_x$ is orientation preserving.
+	$\deg(f) = \sum_{\text{intersection pts}} o(x)$ where $o(x) = +1$ if $df_x$ is orientation preserving.
 \end{prop}
 
 
@@ -1992,12 +2008,19 @@ Some stuff i missed.
 	$\deg(f.g) = \deg(f)\deg(g)$
 \end{prop}
 \begin{example}
-	Given $d \in Z$, let $f_d : S^1 \to S^1$ (in complex plane) by $f_d(z) = z^d$.
+	Let $d \in \Z$, and $f_d : S^1 \to S^1$ (in complex plane) is defined by $f_d(z) = z^d$.
+
 	Then $\deg(f) = d$, as we will show!
-	All pts in $S^1$ are regular
-	$o(x) = +1$ for all pts if $d > 0$
-	$o(x) = -1$ for all pts if $d < 0$
-	whoah, so degree as we know if is related to $d$-to-$1$ functions which is related to intersection numbers!
+
+	All pts in $S^1$ are regular.  For all $x \in S^1$,
+
+	$$o(x) =
+	\begin{cases}
+		+1 	&\text{if $d > 0$} \\
+		-1 	&\text{if $d < 0$} \\
+	\end{cases}$$
+
+	Whoah, so degree as we know it is related to $d$-to-$1$ functions, which is related to intersection numbers!
 \end{example}
 \begin{example}
 	$p: C \to C$ is a nonconstant polynomial
@@ -2194,8 +2217,25 @@ Since $L(\id) \neq 0$, then the vector field function also has fixed points. Thi
 \end{defi}
 
 \begin{lem}
-	If $v$ is a generate vector field and (given, or always?) there exists $H_v : M \x [0, \epsilon) \to M$, then $f_t: M \to M$ defined by $f_t(x) = H(x,t)$ is Lefschetz for small nonzero $t$.
+	If $v$ is a generate vector field, then for any homotopy $H$ of $v$, $H(x,t)$ is a generate vector field for any fixed $t$ small enough.
 \end{lem}
+
+\begin{thrm}[George n Matt]
+	A generate vector field $v$ is Lefschetz (when viewed from a slightly different perspective).
+
+	Rigorous theorem: If we define $V$ as follows $$V : M \x \{0\} \to M \x TM$$ $$V(x,0) = v(x) = (x, \bar{v}(x))$$, then $V$ is Lefschetz.
+\end{thrm}
+\begin{proof}  The following are two-way implications.
+	\begin{align}
+		&\text{$V$ is Lefschetz} \\
+		\Delta(M \x \{0\}) &\transverse \Gr(V) \\
+		\{\left( (x,0), (x,0) \right)\} &\transverse \{\left( (x,0), (x,\bar{v}(x)) \right)\} \\
+		\{(x,0)\} &\transverse \{(x,\bar{v}(x))\} \\
+		\{(x,\bar{v_0}(x))\} &\transverse \{(x,\bar{v}(x))\} \\
+		v_0 &\transverse v \\
+		&\text{$v$ is generate} \\
+	\end{align}
+\end{proof}
 
 \section{Morse functions}
 
@@ -2301,6 +2341,139 @@ We will \emph{not} define genus rigorously in this course.
 		\item When you zoom in and approximate $f(x)$ as $x_1^2 + x_2^2 - x_3^2 + x_4^2$ (up to a change in basis), the index is the number of negative signs.
 	\end{itemize}
 \end{defi}
+
+%%%% Fred
+
+% \mydate{d19}{5}{12}{2016}
+
+% \begin{defi}
+% 	This is not a rigorous definition
+% 	r-forms
+% 	Let W denote capital omega!
+% 	\Omega^r(M) denotes the set of r-$forms \in M$
+
+% 	general r-forms
+% 	$w \in \Omega^r(M)
+% 	Then w(x) : (T_xM)^r to \R s.t. w satisfies
+% 	  * w(x) is linear in each variable (an r-linear function)
+% 	  * w(x) is "alternating"...
+
+% 	For any permuatation sigma,
+% 	  w(x)(vsigma(1),,,vsigma(r)) = sign(sigma)w(x)(v_1,,,vr)
+
+% \end{defi}
+
+% \begin{example}
+% 	0-form
+% 	f: M to \R <-- one such 0-form
+% 	\Omega^0(M) = C^\infty(M) <-- the set of 0-forms
+% \end{example}
+% \begin{example}
+% 	1-form
+% 	a smooth section of (TM)* = cotangent bundle of M
+% 	$w \in \Omega^1(M), $x \in M$, w(x): T_xM to \R
+% \end{example}
+% \begin{example}
+% 	1-form
+% 	w(x) = f1(x)dx1 +++ fn(x)dxn
+% \end{example}
+
+% \begin{example}
+% 	If U is an open set in \R^n, then \Omega^1(U) is the free C^\infty(M) module on generators with basis {dx1,,,dxn}
+% \end{example}
+
+% \begin{example}
+% 	d is the differentiation map.  then
+% 	$$\begin{tikzcd}
+% 	 	& \Omega^0(M) \arrow[r, "d (grad)"] & \Omega^1(M) \arrow[r, "d (curl)"] & \Omega^2(M) \arrow[r, "d (div)"] & \Omega^3(M) \arrow[r, "d"]
+% 	\end{tikzcd}$$
+
+% 	and the elements mapped are
+
+
+% 	$$\begin{tikzcd}
+% 	 	& f \arrow[r, "d"] & sum_{i=1}^{n} \frac{df}{dx}i dxi \arrow[r, "d"] & sum_{i=1}^{n} sum_{j=1}^{n} d2f/(dxi dxj) dxi^dxj = 0
+% 	\end{tikzcd}$$
+
+% 	but since dxi^dxj = -dxj^dxi, the last one is 0.
+
+% 	lookup div, grad, curl, and understand that d is the generalization of them.
+% \end{example}
+% \begin{prop}
+% 	for any r,
+% 	d.d = 0
+
+% 	note that
+% 	curl(grad(f)) = 0
+% 	div(curl(F)) = 0
+% \end{prop}
+
+
+
+% \begin{example}
+% 	i THINK that an r-form is like a function f:M to \R with the total derivative d applied to it r times.
+% http://mathworld.wolfram.com/WedgeProduct.html
+% \end{example}
+% \begin{example}
+% 	The "volume form"
+% 	Let w(x) : (\R^n)^n to \R
+
+% 	v_1,,,vn are each n-dimensional vectors
+% 	w(x)[v_1,,,vn] = det(v_1...vn)
+
+% \begin{example}
+% 	2-forms
+% 	w(x) = f1(x,y,z)dx^dy + f2(x,y,z)dx^dz + f3(x,y,z)dy^dz
+% 	in fact, i think f1(x,y,z)dx^dy by itself is a 2-form
+% \end{example}
+% \begin{prop}
+% 	(Matt)
+% 	diff r-forms are additively closed
+% \end{prop}
+% \begin{example}
+% 	integration
+% 	(this works for any r, not just 3)
+% 	w = g dy1 ^ dy2 ^ dy3
+% 	INT w = INT INT INT g(y1,y2,y3) dy1 dy2 dy3 (no longer wedge on this side)
+
+% 	define
+% 	f*(w)(x) := g(f(x)) det(dfi/dxj(x)) dx1 ^^^ dxn
+
+% 	where the det thing is the Jacobian!
+% \end{example}
+
+% \begin{thrm}
+% 	f is an orientation preserving diffeomorphism V to U.  where both are open in \R^n
+% 	and $w \in \Omega^n(U)
+% 	f*(w) in \Omega^n(V)
+% 	then
+
+% 	INT_V f*(w) = INT_U w
+
+% 	unravel this
+
+% 	INT INT INT_U g(y) dy1...dyn = INT INT INT_V f(g(x)) det(dfi/dxj(x)) dx1... dxn
+% 	change of variable formula
+% 	.
+% \end{thrm}
+% \begin{defi}
+% 	The \de{closed r-forms} on M is $$ ker(d: \Omega^r(M) to \Omega^{r+1}(M) ) = { w | dw = 0 }  $$
+% \end{defi}
+% \begin{defi}
+% 	The \de{exact r-forms} on M is $$ Im(d: \Omega^{r-1}(M) to \Omega^{r}(M) ) = { w | there exists n s.t. dn = w }  $$
+% \end{defi}
+% \begin{prop}
+% 	Every exact form is closed
+% \end{prop}
+% \begin{defi}
+% 	H^r_{Derham}(M) = (closed r-forms)/(exact r-forms)
+% 	This is a real vector space modded out by a subspace
+% \end{defi}
+% \begin{thrm}
+% 	stokes thm
+% 	INT_M dw = INT_{dM} w
+% \end{thrm}
+
 
 
 
