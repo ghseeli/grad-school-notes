@@ -2032,6 +2032,80 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
     $D$ is conformally equivalent to $\{|z| < 1\}.$
   \end{thm}
   \section{(11/22/2016)}
+  \begin{lem}[Schwarz Lemma]
+    Let $f: \D \to \overline{\D}$ be analytic and $f(0) = 0$. Then,
+    $|f(z)| \leq |z|$ for all $z \in \D \setminus \{0\}$ and $|f'(0)|
+    \leq 1$. Furthermore, one of these inequalities is an equality
+    for a single $z \neq 0$ if and only if the inequalities are equality for
+    all $z \in \D$ if and only if $f(z) = \lambda z$ for some
+    $|\lambda| = 1$. 
+  \end{lem}
+  \begin{proof}
+    First, let $g(z) = f(z)/z$. This is analytic on $\D$ with $g(0) =
+    f'(0)$. Then, for $|z| = r < 1$, we have $|g(z)| =
+    \frac{|f(z)|}{|z|} \leq \frac{1}{r}$. By the Mean Value Property,
+    $|g(z)| \leq \frac{1}{r}$ on $|z| \leq r$. Take $r \to 1$. Then,
+    $|g(z)| \leq 1$ so $1 \geq |g(0)| = |f'(0)|$ and for $z \neq 0$,
+    $|f(z)| = |g(z)||z| \leq |z|$. \\
+
+    If any of these are equalities ($|f(z)| = |z|$ for $z \neq 0$ or
+    $|f'(0)| = 1$), then $g$ attains maximum modulus 1 at an interior
+    point of $\D$ and so $g \equiv \lambda$ for some $|\lambda| =
+    1$. Then, $f(z) = \lambda z$. 
+  \end{proof}
+  Note, the Cauchy estimate also give $|f'(0)| \leq \frac{M}{R} = 1$
+  and that if $f: \D \to \D$ is schlicht, then $f(z) = z$. \\
+
+  Now, a natural question to ask is, what are the conformal
+  equivalences from $\D \to \D$? We observe that $f(z) =
+  \lambda\frac{z-a}{1-\overline{a}z}$ for $a \in \D$ and $|\lambda| =
+  1$ is a conformal. This is because it is an LFT. On the unit
+  circle \[
+    |e^{i \theta} - a| = |e^{-i\theta} - \overline{a}| = |1 -
+    \overline{a}e^{i\theta}| \implies |f(e^{i\theta})| = 1
+  \]
+  Also, obviously, rotations after this process pose no problems.
+  \begin{thm}
+    All conformal equivalences from the unit circle ot the unit circle
+    have the form \[
+      \lambda \frac{z-a}{1-\overline{a}z}, a \in \D, |\lambda| = 1.
+    \]
+    Thus, the parameter space is $\D \times S^1$ which is a solid real torus.
+  \end{thm}
+  \begin{proof}
+    Let $f$ be a conformal equivalence and $a =
+    f^{-1}(0)$. Furthermore, let $h(z) = \frac{z-a}{1-\overline{a}z}$
+    be confromal sending $a \mapsto 0$. Consider $f \circ h^{-1}$ a
+    confromal equivalence sending $0 \mapsto 0$. The Schwarz
+    inequality applies to it and its inverse, so it is a
+    rotation. Thus $f(h^{-1}(z)) = \lambda z$ for some unimodular
+    $\lambda$. So, $f(z) = \lambda h(z)$.
+  \end{proof}
+  \begin{lem}[Pick's Lemma]
+    If $f: \D \to \D$ and $z_1 \neq z_2 \in \D$, then \[
+      \frac{|f(z_1)-f(z_2)|}{|1-\overline{f(z_2)}f(z_1)|} \leq \frac{|z_1-z_2|}{|1-\overline{z_2}z_1|}
+    \]
+    and $|f'(z) \leq \frac{1-|f(z)|^2}{1-|z|^2}$ for $z \in
+    \D$. Furthermore, one of these inequalities is an equality for
+    a single point if and only if they are equalities for all points
+    if and only if $f$ is a conformal equivalence.
+  \end{lem}
+  \begin{proof}
+    Let $f$ be a conformal equivalence of the unit disk, $h(z) =
+    \frac{z-z_1}{1-\overline{z_1}z}$, $g(z) =
+    \frac{1-f(z_1)}{1-\overline{f(z_1)}z}$. Then, we apply the Schwarz
+    lemma for $g\circ f \circ h^{-1}: \D \to \D$ that maps $0 \mapsto
+    0$. This gives us that $|g(f(z_2))| \leq |h(z_2)|$ and thus that \[
+      \frac{|f(z_2)-f(z_1)|}{|1-\overline{f(z_1)}f(z_2)} \leq \frac{|z_2-z_1|}{|1-\overline{z_1}z_2|}
+   \]
+   If this is an equality, then $|g(f(z_2))| = |h(z_2)|$ which means
+   that $gfh^{-1} = k$ is a rotation. This gives us that $g^{-1}kh =
+   f$ and thus $f$ is a composition of 3 conformal equivlances and
+   thus $f$ is a conformal equivlance. 
+ \end{proof}
+ Note, it seems that it is not a problem to permute the indices of
+ $z_1$ and $z_2$ because we are simply interested in the moduli of
+ these values. 
   \section{(11/29/2016)}
   \subsection*{Spherical and Hyperbolic Geometry using complex
     analysis}
@@ -2101,7 +2175,7 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
     Sphere & $2 \pi \sin r$ \\
     Hyperbolic & $2 \pi \sinh r$ \\
     \hline
-  \end{tabular}
+  \end{tabular} \\
   Thus, one can get an idea of the geometric intuition between
   hyperbolic trig functions.
   \section{(12/1/2016)}
