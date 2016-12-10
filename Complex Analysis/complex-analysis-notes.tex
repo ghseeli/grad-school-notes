@@ -908,7 +908,7 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
   drop from the definition of analytic the requirement that the
   derivatives be continuous.
   \begin{thm}[Goursat's Theorem]
-    If $f$ is complex differentiable at all point in the domain, then
+    If $f$ is complex differentiable at all points in the domain, then
     it is analytic. In other words, derivatives are continuous.
   \end{thm}
   \begin{proof}
@@ -1065,9 +1065,9 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
   \begin{thm}
     If $f$ is analytic on $|z-z_0|<\rho$, then $f(z) = \sum_{n \geq 0}
     a_n(z-z_0)^n$ where \[a_n = \frac{f^{(n)}(z_0)}{n!} =
-      \frac{1}{2\pi i}\int_{|\rho - z_0| < r}
-      \frac{f(\rho)}{(\rho-z_0)^{n+1}}d\rho \]
-    for $r < \rho$.
+      \frac{1}{2\pi i}\int_{|w - z_0| = r}
+      \frac{f(w)}{(w-z_0)^{n+1}}dw \]
+    for $0 < r < \rho$.
   \end{thm}
   The upshot of this theorem is that analytic functions on a disk can
   be written as a power series.
