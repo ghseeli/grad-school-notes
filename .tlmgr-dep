@@ -8,6 +8,7 @@ float
 geometry
 graphics
 hyperref
+jknapltx
 latex-bin
 latexmk
 mathtools
