@@ -19,7 +19,7 @@ before_install:
 script:
 - mkdir _build
 - cd Algebra
-- pdflatex -output-directory _build Algebra/master.tex
+- pdflatex -output-directory ../_build master.tex
 - cd ..
 - pdflatex -output-directory _build Complex\ Analysis/complex-analysis-notes.tex
 - pdflatex -output-directory _build Differential\ Topology/differential-topology-notes.tex
