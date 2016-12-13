@@ -1,5 +1,9 @@
 before_install:
 - "sudo apt-get update && sudo apt-get install --no-install-recommends texlive-latex-base texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra texlive-latex-recommended dvipng texlive-pictures pgf texlive-bibtex-extra"
+- sudo apt-get install unzip
+- wget http://mirrors.ctan.org/macros/latex/contrib/subfiles.zip
+- unzip subfiles.zip
+- latex subfiles/subfiles.ins
 script:
 - mkdir _build
 - pdflatex -output-directory _build Algebra/master.tex
