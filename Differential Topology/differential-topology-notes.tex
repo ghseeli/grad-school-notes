@@ -2305,7 +2305,6 @@ Since $L(\id) \neq 0$, then the vector field function also has fixed points. Thi
 	All the vectors are going in the same direction, and they shrink to 0 at 0, then grow again.
 \end{example}
 
-% Matt, I moved this before the formal statement of the lemma.
 Roughly speaking, the Morse Lemma states that a smooth enough function near a critical point can be expressed as a quadratic form after a suitable change of coordinates.
 
 \begin{lem}[Morse]
@@ -2342,63 +2341,63 @@ We will \emph{not} define genus rigorously in this course.
 	\end{itemize}
 \end{defi}
 
-%%%% Fred
+\mydate{d20}{5}{12}{2016}
 
-% \mydate{d19}{5}{12}{2016}
+This is not a rigorous definition.
 
-% \begin{defi}
-% 	This is not a rigorous definition
-% 	r-forms
-% 	Let W denote capital omega!
-% 	\Omega^r(M) denotes the set of r-$forms \in M$
+\begin{defi}[r-forms]
+	$\Omega^r(M)$ denotes the set of $r$-forms with respect to $M$.
 
-% 	general r-forms
-% 	$w \in \Omega^r(M)
-% 	Then w(x) : (T_xM)^r to \R s.t. w satisfies
-% 	  * w(x) is linear in each variable (an r-linear function)
-% 	  * w(x) is "alternating"...
+	General $r$-forms are defined as follows.
+	If $w \in \Omega^r(M)$,
+	then $$w(x) : (T_xM)^r \to \R$$ is defined such that $w$ satisfies the following:
+	\begin{itemize}
+	  \item $w(x)$ is linear in each variable (an $r$-linear function).
+	  \item $w(x)$ is "alternating," which means that for any permuatation $\sigma$,
+		  $$w(x)(v_{\sigma(1)},,,v_{\sigma(r)}) = \sign(\sigma)w(x)(v_1,,,v_r).$$
+	\end{itemize}
 
-% 	For any permuatation sigma,
-% 	  w(x)(vsigma(1),,,vsigma(r)) = sign(sigma)w(x)(v_1,,,vr)
+	Note that if $r$ is $0$, we define $w$ to be smooth s.t. $$w: M \to \R$$ instead.
+\end{defi}
 
-% \end{defi}
+\begin{example}[0-form]
+	$f: M \to \R$ is one such 0-form.
+	$\Omega^0(M) = C^\infty(M)$ is the set of all 0-forms.
+\end{example}
 
-% \begin{example}
-% 	0-form
-% 	f: M to \R <-- one such 0-form
-% 	\Omega^0(M) = C^\infty(M) <-- the set of 0-forms
-% \end{example}
-% \begin{example}
-% 	1-form
-% 	a smooth section of (TM)* = cotangent bundle of M
-% 	$w \in \Omega^1(M), $x \in M$, w(x): T_xM to \R
-% \end{example}
-% \begin{example}
-% 	1-form
-% 	w(x) = f1(x)dx1 +++ fn(x)dxn
-% \end{example}
+\begin{example}[1-form]
+	A smooth section of $(TM)^*$, the cotangent bundle of $M$, yields the 1-form
+	$w \in \Omega^1(M)$, for $x \in M$, with $w(x): T_xM \to \R$.
+\end{example}
 
-% \begin{example}
-% 	If U is an open set in \R^n, then \Omega^1(U) is the free C^\infty(M) module on generators with basis {dx1,,,dxn}
-% \end{example}
+\begin{example}[1-form]
+	$$w(x) = f_1(x)dx_1 +++ f_n(x)dx_n$$
+\end{example}
 
-% \begin{example}
-% 	d is the differentiation map.  then
-% 	$$\begin{tikzcd}
-% 	 	& \Omega^0(M) \arrow[r, "d (grad)"] & \Omega^1(M) \arrow[r, "d (curl)"] & \Omega^2(M) \arrow[r, "d (div)"] & \Omega^3(M) \arrow[r, "d"]
-% 	\end{tikzcd}$$
+\begin{example}
+%	Should M actually be U here?
+	If $U$ is an open set in $\R^n$, then $\Omega^1(U)$ is the free $C^\infty(M)$-module on generators with basis ${dx_1,,,dx_n}$.
+\end{example}
 
-% 	and the elements mapped are
+\begin{example}
+	$d$ is the differentiation map. Then
+	$$\begin{tikzcd}
+	 	& \Omega^0(M) \arrow[r, "d \;\text{(grad)}"] & \Omega^1(M) \arrow[r, "d \;\text{(curl)}"] & \Omega^2(M) \arrow[r, "d \;\text{(div)}"] & \Omega^3(M) \arrow[r, "d"] &\hphantom{}
+	\end{tikzcd}$$
 
+	and the elements mapped are
 
-% 	$$\begin{tikzcd}
-% 	 	& f \arrow[r, "d"] & sum_{i=1}^{n} \frac{df}{dx}i dxi \arrow[r, "d"] & sum_{i=1}^{n} sum_{j=1}^{n} d2f/(dxi dxj) dxi^dxj = 0
-% 	\end{tikzcd}$$
+	$$\begin{tikzcd}
+	 	& f \arrow[r, "d"] & \sum_{i=1}^{n} \frac{df}{dx_i} dx_i \arrow[r, "d"] & \sum_{i=1}^{n} \sum_{j=1}^{n} \frac{d^2f}{dx_i dx_j} dx_i \wedge dx_j = 0
+	\end{tikzcd}$$
 
-% 	but since dxi^dxj = -dxj^dxi, the last one is 0.
+	but since $dx_i \wedge dx_j = -dx_j \wedge dx_i$, the last one is 0.
 
-% 	lookup div, grad, curl, and understand that d is the generalization of them.
-% \end{example}
+	note to self: Lookup grad, curl, div and understand how $d$ is the generalization of them.
+\end{example}
+
+%%% Fred
+
 % \begin{prop}
 % 	for any r,
 % 	d.d = 0
@@ -2415,12 +2414,12 @@ We will \emph{not} define genus rigorously in this course.
 % http://mathworld.wolfram.com/WedgeProduct.html
 % \end{example}
 % \begin{example}
-% 	The "volume form"
+% 	The ``volume form''
 % 	Let w(x) : (\R^n)^n to \R
 
 % 	v_1,,,vn are each n-dimensional vectors
 % 	w(x)[v_1,,,vn] = det(v_1...vn)
-
+% \end{example}
 % \begin{example}
 % 	2-forms
 % 	w(x) = f1(x,y,z)dx^dy + f2(x,y,z)dx^dz + f3(x,y,z)dy^dz
