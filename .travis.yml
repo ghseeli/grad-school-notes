@@ -8,7 +8,7 @@ before_install:
 - cd ..
 - wget http://mirrors.ctan.org/graphics/pgf/base.zip
 - unzip base.zip
-- mv base/* -d .
+- mv base/* .
 script:
 - mkdir _build
 - pdflatex -output-directory _build Algebra/master.tex
