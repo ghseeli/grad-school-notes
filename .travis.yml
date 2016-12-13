@@ -1,16 +1,34 @@
+sudo: required
+cache:
+  directories:
+  - texlive
 before_install:
-- "sudo apt-get update && sudo apt-get install --no-install-recommends texlive-latex-base texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra texlive-latex-recommended dvipng texlive-pictures pgf texlive-bibtex-extra"
+- |
+  if [[ ! -e ./texlive/bin/x86_64-linux/tlmgr ]]; then
+    wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz -O - | tar -x --gzip
+    mv $(ls | grep install) install-tl
+    ./install-tl/install-tl -profile texlive.profile
+  fi
+- export PATH=$(pwd)/texlive/bin/x86_64-linux:$PATH
+- tlmgr install $(cat .tlmgr-dep)
+- tlmgr update --self
+- tlmgr update --all
 script:
 - mkdir _build
-- pdflatex -output-directory _build Algebra/master.tex
-- pdflatex -output-directory _build Complex\ Analysis/complex-analysis-notes.tex
-- pdflatex -output-directory _build Differential\ Topology/differential-topology-notes.tex
+- cd Algebra
+- pdflatex -output-directory ../_build master.tex
+- cd ../Complex\ Analysis
+- pdflatex -output-directory ../_build complex-analysis-notes.tex
+- cd ../Differential\ Topology
+- pdflatex -output-directory ../_build differential-topology-notes.tex
 deploy:
   provider: releases
+  api_key:
+    secure: GEZri02xptnKjM/kN8dw9XC+GyECSQEQQ1PwK+LPBqGh8MlCIHIu1mp8DvPW5sh9My0nUON6R/a6NLQOPcOr6DkBnb/hc0MWHEWd9awIUos1hlZLi/sNDv2WLVkREsAImmHQ3waojrhYQVDaT2PmcwZ1UYm3I847i5inVfQ1exLmh7r4mcWonpBuJvQi9oSvQheTFj+r8wPFyb6GjFgXjoS7HYOFnV8pTj8va1zZIOTlidqzBjiSo69UX4Oa4ihveNwFIsUZNfQvbvHAjFjDvtdP/UQ79rJx4jYO4Eb2hoBuIk6GAzou4KVc39tBlCD+bCo8jishbpc0QWS5ukZ4CeFjqd/oFrlwv9xfPzmnMRaP+gbQVJ+Xyx8i0wswAb7zWNRbR5XwxD6QImcOdOacWxLYOAgxjd/Lv96n3bCD20JHC9tm+zwsDjv2KxynSN/+tcXF4VdNQmbxIJuD5LUglu8YAtfKurXMoBY/QBFmvVvwX2/I/oQJQzgzHAleteZRFbQTz84IugcJdPXnXu+zYzbq+9c99Fpm3M1gtJeXfkVfEplROB0cHhpSqn+FhSyro+aKrOsSWxO85B+0n+HuMnI4Ua/tT2q521VFIKNalubYcsCY5WeVSBOyjTONO2DT7jOxMKId0HMsVCGP5+hiVZNnhlfxZN9G11VJvA9sym8=
   file:
   - _build/master.pdf
   - _build/complex-analysis-notes.pdf
   - _build/differential-topology-notes.pdf
-  skip_cleanup: true
   on:
+    repo: ghseeli/grad-school-notes
     tags: true
