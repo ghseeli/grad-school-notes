@@ -8,6 +8,7 @@ ec
 enumitem
 etoolbox
 float
+fmtcount
 geometry
 graphics
 hyperref
