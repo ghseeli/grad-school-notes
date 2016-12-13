@@ -1,13 +1,13 @@
 amscls
 amsmath
 amsrefs
+collection-fontsrecommended
 datetime
 enumitem
 float
 geometry
 graphics
 hyperref
-jknappen
 latex-bin
 latexmk
 mathtools
