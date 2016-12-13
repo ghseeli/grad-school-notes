@@ -1,4 +1,9 @@
 sudo: required
+
+cache:
+  directories:
+    - texlive
+
 before_install:
   # LaTeX package
   - |

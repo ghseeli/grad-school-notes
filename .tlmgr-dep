@@ -7,6 +7,7 @@ float
 geometry
 graphics
 hyperref
+jknappen
 latex-bin
 latexmk
 mathtools
