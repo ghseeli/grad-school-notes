@@ -2,7 +2,9 @@ amscls
 amsmath
 amsrefs
 collection-fontsrecommended
+csquotes
 datetime
+ec
 enumitem
 float
 geometry
