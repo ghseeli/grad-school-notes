@@ -7,9 +7,6 @@ before_install:
 - cd subfiles
 - latex subfiles.ins
 - cd ..
-- wget http://mirrors.ctan.org/graphics/pgf/contrib/tikz-cd.zip
-- unzip tikz-cd.zip
-- mv tikz-cd/* .
 script:
 - mkdir _build
 - pdflatex -output-directory _build Algebra/master.tex
