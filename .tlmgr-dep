@@ -19,6 +19,7 @@ oberdiek
 pgf
 pgfopts
 subfiles
+tikz-cd
 times
 txfonts
 ucs
