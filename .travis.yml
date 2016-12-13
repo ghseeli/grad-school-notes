@@ -20,8 +20,9 @@ script:
 - mkdir _build
 - cd Algebra
 - pdflatex -output-directory ../_build master.tex
-- cd ..
-- pdflatex -output-directory _build Complex\ Analysis/complex-analysis-notes.tex
+- cd ../Complex\ Analysis
+- pdflatex -output-directory ../_build complex-analysis-notes.tex
+- cd ../Differential\ Topology
 - pdflatex -output-directory _build Differential\ Topology/differential-topology-notes.tex
 deploy:
   provider: releases
