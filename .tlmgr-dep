@@ -15,5 +15,6 @@ pgfopts
 subfiles
 times
 txfonts
+ucs
 url
 xcolor
