@@ -23,7 +23,7 @@ script:
 - cd ../Complex\ Analysis
 - pdflatex -output-directory ../_build complex-analysis-notes.tex
 - cd ../Differential\ Topology
-- pdflatex -output-directory _build Differential\ Topology/differential-topology-notes.tex
+- pdflatex -output-directory ../_build differential-topology-notes.tex
 deploy:
   provider: releases
   file:
