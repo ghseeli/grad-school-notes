@@ -12,6 +12,7 @@ jknapltx
 latex-bin
 latexmk
 mathtools
+ms
 pgf
 pgfopts
 subfiles
