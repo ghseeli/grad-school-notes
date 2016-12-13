@@ -9,6 +9,7 @@ geometry
 graphics
 hyperref
 jknapltx
+l3packages
 latex-bin
 latexmk
 mathtools
