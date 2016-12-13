@@ -1,14 +1,15 @@
 before_install:
-- "sudo apt-get update && sudo apt-get install --no-install-recommends texlive-latex-base texlive-latex3 texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra texlive-latex-recommended dvipng texlive-pictures pgf texlive-bibtex-extra"
-- sudo apt-get install unzip
-- wget http://mirrors.ctan.org/macros/latex/contrib/subfiles.zip
-- unzip subfiles.zip
-- cd subfiles
-- latex subfiles.ins
-- cd ..
-- wget http://mirrors.ctan.org/graphics/pgf/base.zip
-- unzip base.zip
-- mv base/* .
+  # LaTeX package
+  - |
+    if [[ ! -e ./texlive/bin/x86_64-linux/tlmgr ]]; then
+      wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz -O - | tar -x --gzip
+      mv $(ls | grep install) install-t1
+      ./install-tl/install-tl -profile texlive.profile
+    fi
+  - export PATH=$(pwd)/texlive/bin/x86_64-linux:$PATH
+  - tlmgr install $(cat .tlmgr-dep)
+  - tlmgr update --self
+  - tlmgr update --all
 script:
 - mkdir _build
 - pdflatex -output-directory _build Algebra/master.tex
