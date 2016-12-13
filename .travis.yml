@@ -3,7 +3,9 @@ before_install:
 - sudo apt-get install unzip
 - wget http://mirrors.ctan.org/macros/latex/contrib/subfiles.zip
 - unzip subfiles.zip
-- latex subfiles/subfiles.ins
+- cd subfiles
+- latex subfiles.ins
+- cd ..
 script:
 - mkdir _build
 - pdflatex -output-directory _build Algebra/master.tex
