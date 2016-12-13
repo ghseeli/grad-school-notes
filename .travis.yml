@@ -32,4 +32,4 @@ deploy:
   - _build/differential-topology-notes.pdf
   skip_cleanup: true
   on:
-    tags: true
+    branch: master
