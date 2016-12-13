@@ -31,3 +31,4 @@ deploy:
   - _build/differential-topology-notes.pdf
   on:
     repo: ghseeli/grad-school-notes
+    tags: true
