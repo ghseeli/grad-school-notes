@@ -1,7 +1,6 @@
 amscls
 amsmath
 amsrefs
-calc
 collection-fontsrecommended
 datetime
 enumitem
@@ -13,6 +12,7 @@ jknapltx
 l3kernel
 l3packages
 latex-bin
+latex-tools
 latexmk
 mathtools
 ms
