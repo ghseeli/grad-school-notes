@@ -12,7 +12,6 @@ jknapltx
 l3kernel
 l3packages
 latex-bin
-latex-tools
 latexmk
 mathtools
 ms
@@ -22,6 +21,7 @@ pgfopts
 subfiles
 tikz-cd
 times
+tools
 txfonts
 ucs
 url
