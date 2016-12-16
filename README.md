@@ -1,5 +1,7 @@
 # Grad School Notes [![Build Status](https://travis-ci.org/ghseeli/grad-school-notes.svg?branch=master)](https://travis-ci.org/ghseeli/grad-school-notes)
 
+Link to [PDFs](https://github.com/ghseeli/grad-school-notes/releases/).
+
 This repository is intended to contain working LaTeX drafts of notes from our 
 classes in graduate school for mathematics. The motivation for this undertaking
 is the following.
