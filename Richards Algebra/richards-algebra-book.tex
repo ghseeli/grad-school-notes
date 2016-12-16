@@ -2650,7 +2650,7 @@ Let $I_1, \dots, I_n \nsg R$ (commutative with 1) and $\phi R \ra \times_{j=1}^n
 \begin{enumerate}
 \item[(a)] $\phi$ is a ring homomorphism with $\ker \phi = \bigcap_{j=1}^n I_j$.
 \item[(b)] If $I_1,\dots,I_n$ are pairwise comaximal, then of course $\ker \phi = \prod_{J=1}^n I_j$, $\phi$ is surjective, and thus
-	\[R / \prod_{j=1}^n \cong \bigtimes_{j=1}^n R/I_j \]
+	\[R / \prod_{j=1}^n I_j \cong \bigtimes_{j=1}^n R/I_j \]
 \end{enumerate}
 \end{proposition}
 
@@ -2666,7 +2666,7 @@ so $\phi$ is surjective.
 \vs
 
 \begin{remark*}
-A special case of the CRT os when $R = \z$.
+A special case of the CRT is when $R = \z$.
 \begin{enumerate}
 \item[(a)] $n = 2$. Let $I_1 = (m), I_2 = (n)$ with $\gcd(m,n) = 1$. Then $\z_{mn} = \z/(m)(n) \cong \z_m \times \z_n$, which is 1.2.3.
 \item[(b)] Let $n \in \N$ be arbitrary, $p_1, \dots, p_n$ distinct primes, and $e_1,\dots,e_n \in \N$. Put $I_j = (p_j^{e_j})$ for $1 \leq j \leq n$. Then
@@ -2702,6 +2702,8 @@ A subset $D$ of $R$ is called \tb{multiplicatively closed} if
 \item[(b)*] $1 \in D$
 \end{enumerate}
 \end{defn}
+
+Note that one might call this a multiplicative monoid, or a multiplicative submonoid of $R$.
 
 \vs
 
@@ -3067,7 +3069,7 @@ Moreover, noting that $R^R = \{h : R \ra R\}$ is a commutative ring with 1 under
 \vs
 
 \begin{proposition}[Division Algorithm for Polynomial Rings]
-Assume $0 \ne f \in R[x]$, with $\ell(f) \in R\x$. Then for any $g \in R[x]$, there exist uniquely determined $q,r \in R[x]$ such that $g = fq +r$, where $\deg r < \deg f$ (possibly $r=0$).
+Assume $0 \ne f \in R[x]$, with $\ell(f) \in R\x$. Then for any $g \in R[x]$, there exist uniquely determined $q,r \in R[x]$ such that $g = fq +r$, where $\deg r < \deg f$ or $r=0$.
 \end{proposition}
 
 \begin{proof}
@@ -3085,7 +3087,9 @@ so taking $h = h'+\ell(g)u\inv x^{e-d}$ and $r=r'$ yields the result.
 \vs
 
 \begin{corollary}
-If $F$ is a field and $0 \ne f \in F[x]$, then for all $g \in F[x]$, there exist uniquely determined $h,r \in F[x]$ such that $g = fh + r$ with $\deg r < \deg f$.
+If $F$ is a field and $0 \ne f \in F[x]$, then for all $g \in F[x]$, there exist uniquely determined $h,r \in F[x]$ such that $g = fh + r$ with $\deg r < \deg f$ or $r=0$.
+
+Note that $F[x]$ is therefore a Euclidean Domain.
 \end{corollary}
 
 \vs
@@ -3140,7 +3144,7 @@ Let $R$ be an integral domain. Then any finite subgroup of $R\x$ is cyclic.
 \end{theorem}
 
 \begin{proof}
-We combine 2.1.13 with 1.2.9 (b). Let $A \leq F\x$ be a subgroup of $F\x$ with order $n \in \N$. Note, of course, that $A$ is abelian. Fix $m \in \N$. Then for all $a \in R$, $a^m1 \iff a^m-1=0 \iff a$ is a root of $f := x^m-1\in R[x]$. By 2.1.13,
+We combine 2.3.13 with 1.2.9 (b). Let $A \leq R\x$ be a subgroup of $R\x$ with order $n \in \N$. Note, of course, that $A$ is abelian. Fix $m \in \N$. Then for all $a \in R$, $a^m = 1 \iff a^m-1=0 \iff a$ is a root of $f := x^m-1\in R[x]$. By 2.1.13,
 	\[|\{a \in A \mid a^m=1\}| = |\{a \in R \mid f(a)=0\}| \leq m, \]
 so $A$ is cyclic by 1.2.9 (b).
 \end{proof}
@@ -3150,7 +3154,7 @@ so $A$ is cyclic by 1.2.9 (b).
 \begin{remark*}
 2.3.14 is not true for arbitrary rings $R$. For example, consider:
 \begin{enumerate}
-\item[(a)] $R = \z_9 \implies R\x = \{1,3,5,7\} \cong \z_2 \times \z_2$.
+\item[(a)] $R = \z_8 \implies R\x = \{1,3,5,7\} \cong \z_2 \times \z_2$.
 \item[(b)] $R = \H$, $Q \leq \H\x$ is not cyclic.
 \end{enumerate}
 \end{remark*}
@@ -3202,9 +3206,11 @@ where $\vec{i}_j = \vec{i}(j) \in \N_0$. It is not difficult to see that every $
 
 
 \begin{defn}
-A \tb{Euclidean domain} is an integral domain $R$ which admits a (degree, norm) function $d : R\bs\{0\} \ra \N_0$ such that for all $a,b \in R$, $a \ne 0$, there exist $q,r \in R$ such that $b = qa + r$ with $r = 0$ or $d(r) < d(a)$. \\
+A \tb{Euclidean ring} is a ring $R$ which admits a (degree, norm) function $d : R\bs\{0\} \ra \N_0$ such that for all $a,b \in R$, $a \ne 0$, there exist $q,r \in R$ such that $b = qa + r$ with $r = 0$ or $d(r) < d(a)$. \\
 
 Note that we do not require uniqueness of $q$ and $r$, $d(0)$ is not defined, and it does not have to be the case that $d(a) \leq d(ab)$ for all $a,b \in R \bs \{0\}$.
+
+Note that if $R$ is an integral domain, then it is a Euclidean domain.
 \end{defn}
 
 \vs
@@ -3222,7 +3228,7 @@ Note that we do not require uniqueness of $q$ and $r$, $d(0)$ is not defined, an
 \vs
 
 \begin{theorem}
-Any Euclidean domain is a principal ideal domain.
+Any Euclidean ring is a principal ideal ring.
 \end{theorem}
 
 \begin{proof}
@@ -3241,7 +3247,7 @@ Let $R$ be a commutative ring (with 1), $a,b \in R$. An element $c \in R$ is cal
 \
 \begin{enumerate}
 \item[(a)] $0 = \gcd(0,0)$.
-\item[(c)] If $c = \gcd(a,b)$, then $uc = \gcd(a,b)$ for any $u \in R\x$.
+\item[(b)] If $c = \gcd(a,b)$, then $uc = \gcd(a,b)$ for any $u \in R\x$.
 \item[(c)] If $R$ is an integral domain, $a,b \in R$, and $c,c' = \gcd(a,b)$, then there exists $u \in R\x$ such that $c' = uc$. Indeed, we have $c = c'd$ and $c' = ce$ for some $d,e \in R$, so that $c = c'd = cde \implies 0 = c-cde = c(1-de)$. If $c = 0$, then it must be the case that $a=b=0 \implies c'=0 \implies c'=1 \cdot c$,  and we are done. Otherwise $c\ne 0$, and $R$ is a domain, so $c(1-de) = 0 \implies 1-de = 0 \implies d,e \in R\x$.
 \item[(d)] In general, $\gcd(a,b)$ need not exist. For example, take $R = \z[\sqrt{-5}] = \{a+b\sqrt{-5} \mid a,b \in \z\}$, so $R\x = \{\pm 1\}$. Let
 	\[a = 2(1+\sqrt{-5}), \qquad b = 6 = 2\cdot 3 = (1+\sqrt{-5})(1-\sqrt{-5}) \]
@@ -3258,10 +3264,6 @@ Let $R$ be a commutative ring with 1, and let $a,b,c \in R$.
 \item[(b)] $(a,b) = (c) \implies c = \gcd(a,b)$.
 \end{enumerate}
 \end{lemma}
-
-\begin{proof}
-Ja.
-\end{proof}
 
 \vs
 
@@ -3281,7 +3283,7 @@ Let $R$ be a Euclidean domain with $a,b \in R, a \ne 0$. Then there exists a fin
 b &= q_0a + r_1, \qquad \qquad && d(r_1) < d(a), \\
 a &= q_1 r_1 + r_2,     && d(r_2) < d(r_1), \\
 \vdots & &&\vdots \\
-r_{i-1}q_{i-1} &= q_i r_i + r_{i+1},   && d(r_{i+1})<d(r_i), \\
+r_{i-1} &= q_i r_i + r_{i+1},   && d(r_{i+1})<d(r_i), \\
 \vdots & && \vdots \\
 r_{n-1} &= q_n r_n + r_{n+1}, && r_{n+1} = 0
 \end{alignat*}
@@ -3312,6 +3314,11 @@ r_{i-2} &= q_{i-1}r_{i-1} + r_i \\
 
 \vs
 
+\begin{def}
+	$m \in \Z$ is \tb{square-free} if $m \not= 0$, $m \not= 1$, and the square of any prime number does not divide $m$.
+\end{def}
+
+
 \begin{remark}[Quadratic Number Fields]
 Fix $m \in \z\bs\{0,1\}$ \tb{square-free}, so that either $m = -1$ or $m = p_1 \cdots p_r$ with each $p_i$ a distinct prime. Then $\sqrt{m} \notin \Q$. Indeed, if $m < 0$, then $\sqrt{m} \in \C \bs \R$. If $m > 0$, then $mb^2 \notin \z^2 \forall b \in \z\bs\{0\}$ (because of the unique prime factorization of $m$). Thus if $\sqrt{m} = \frac{a}{b}, a,b \in \N$, then $mb^2 = a^2 \in \z^2$. Contradiction.
 
@@ -3334,12 +3341,30 @@ It is now easy to see that
 
 \vs
 
+\begin{thm}
+	N(ab) = N(a)N(b).
+\end{thm}
+
+\begin{pf}
+	We know that $\phi$ is a ring homomorphism.  It follows that
+
+	N(ab) = ab \phi(ab) = ab \phi(a) \phi(b) = (a\phi(a))(b\phi(b)) = N(a)N(b)
+\end{pf}
+
+\vs
+
+\begin{thm}
+	If $a|b$, then $N(a) | N(b)$ in $\Q$.
+\end{thm}
+
+\vs
+
 \begin{lemma}
 Let $R$ be a subring of $K = K_m$ satisfying $N(R) \sub \z$. Then
 \begin{enumerate}
 \item[(a)] If $a \mid b$ in $R$, then $N(a) \mid N(b)$ in $\z$.
 \item[(b)] If $\phi(R) \sub R$, then $R\x = \{a \in R \mid N(a) = \pm1\}$.
-\item[(c)] Assume that for all $z \in K$ there exists $q \in R$ such that $N(z-q) < 1$, then $R$ is Euclidean with $d(a) := |N(a)|$ for $a \in R$.
+\item[(c)] If for all $z \in K$ there exists $q \in R$ such that $|N(z-q)| < 1$, then $R$ is Euclidean with $d(a) := |N(a)|$ for $a \in R$.
 \end{enumerate}
 \end{lemma}
 \begin{proof}
@@ -3680,7 +3705,7 @@ If $R$ is a UFD and $q \in R'$ is irreducible, then $q$ is prime. Since $R$ is a
 \begin{remark}
 Let $(C_i)_{i \in I}$ be the family of classes of associate elements which are primes in the UFD $R$. For each $i \in I$, fix $p_i \in C_i$. Hence $p \in C_i \iff p \sim p_i$. We can reformulate the uniqueness of 2.5.12 as follows: for each $a \in R'$, there exists a unique factorization of the form $a = u \prod_{i \in I} p_i^{e_i}$ (really a finite product) with $u \in R\x$, $e_i \in \N_0$, and almost $e_i = 0$.
 
-Then it is easy to show (exercise) that if for $a,b \in R\bs\{0\}$ with $a = u \prod_{i \in I} p_i^{e_i}, b = \prod_{i \in I} p_i^{f_i}$, then
+Then it is easy to show (exercise) that if for $a,b \in R\bs\{0\}$ with $a = u \prod_{i \in I} p_i^{e_i}, b = u_2\prod_{i \in I} p_i^{f_i}$, then
 \begin{enumerate}
 \item[(a)] $a \mid b \iff e_i \leq f_i \ \forall \ i \in I$
 \item[(b)] $\gcd(a,b) = \prod_{i \in I} p_i^{\min(e_i,f_i)} $
@@ -3704,7 +3729,7 @@ $F[x]$ is Euclidean by 2.3.10 which implies that $F[x]$ is a PID. Therefore, $(f
 \vs
 
 \begin{remark}
-Le $F$ be a field and $F \in F[x]$. $f$ is irreducible if and only if $\deg f \geq 1$ and for all $g \in F[x]$, $g \mid f$ implies that $\deg g = 0$ or $\deg g = \deg f$. In particular, if $\deg f = 1$, then $f$ is irreducible, and if $\deg f = 2,3$, then $f$ is irreducible if and only if $f$ has no roots in $F$.
+Let $F$ be a field and $f \in F[x]$. $f$ is irreducible if and only if for all $g \in F[x]$, $g \mid f$ implies that $\deg g = 0$ or $\deg g = \deg f$. In particular, if $\deg f = 1$, then $f$ is irreducible, and if $\deg f = 2,3$, then $f$ is irreducible if and only if $f$ has no roots in $F$.
 \end{remark}
 
 \vs
