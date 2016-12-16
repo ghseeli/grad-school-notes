@@ -1,6 +1,10 @@
-\documentclass[11pt,leqno,oneside]{amsart}
+% \documentclass[11pt,leqno,oneside]{amsart}
+\documentclass[11pt]{amsbook}
+\usepackage[margin=1.0in]{geometry}
+
 
 \usepackage{../notes}
+
 %%% matt experiments with theorem style:
 \usepackage{amsthm}% http://ctan.org/pkg/ams\begin{thrm}
 \usepackage{datetime}
@@ -51,6 +55,8 @@
 
 \theoremstyle{mystyle} \newtheorem{thrm}[thm]{Theorem}
 \theoremstyle{mystyle} \newtheorem{defi}[thm]{Definition}
+
+\numberwithin{thm}{section}
 
 \everymath{\displaystyle}
 
@@ -1435,9 +1441,9 @@ set of above over all smooth functions
 
 \mydate{d9}{26}{10}{2016}
 
-\begin{thm}[Whitney Embedding thm]
+\begin{thrm}[Whitney Embedding thm]
 	Every $n$-dim smooth manifold embeds in $\R^{2n}$ and immerses in $\R{2n-1}$.
-\end{thm}
+\end{thrm}
 \begin{proof}
 % 	We will only prove ``Every $n$-dim smooth manifold embeds in $\R^{2n+1}$ and immerses in $\R{2n}$
 % 	instead''...
@@ -1656,10 +1662,10 @@ other things to notice
 	\item Since $B_{1/2}$ is path connected, each $F_s$ is homotopic to $f = F_0$.
 \end{itemize}
 \end{example}
-\begin{thm}
+\begin{thrm}
 	$M$ compact.
 	If original $f$ is an embedding, so is $F_s$ for all $s$ small enough.
-\end{thm}
+\end{thrm}
 \begin{defi}
 	Two embeddings $f,g : M \to N$ are \de{isotopic} if they are homotopic via some $H$, and for all $t \in [0,1]$, $H_t$ is an embedding.
 \end{defi}
@@ -2152,13 +2158,13 @@ $f: M \to N$ is a smooth map of manifolds.  $M$ and $N$ are closed, oriented, an
 	\end{enumerate}
 \end{prop}
 
-\begin{thm}
+\begin{thrm}
 	Let $M$ be a manifold.
 	\begin{itemize}
 		\item Every vector field is homotopic to $\id_M$.
 		\item Any two vector fields on $M$ are homotopic.
 	\end{itemize}
-\end{thm}
+\end{thrm}
 \begin{proof}
 	For any (smooth) vector field, if we let it flow just a little bit, we get a function homotopic to $\id$. The continuous transition from $\id$ to the vector field is a homotopy!
 \end{proof}

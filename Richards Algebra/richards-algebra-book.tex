@@ -35,7 +35,7 @@
 \newtheorem{theorem}[counter]{Theorem}   \newtheorem*{theorem*}{Theorem}   \newtheorem{lemma}[counter]{Lemma}   \newtheorem{corollary}[counter]{Corollary}
 \newtheorem{proposition}[counter]{Proposition}   \newtheorem{problem}[counter]{Problem}   \newtheorem*{proposition*}{Proposition}   \newtheorem*{lemma*}{Lemma}
 
-\theoremstyle{definition}   \newtheorem{defn}[counter]{Definition} %These theorem environments are not numbered separately 
+\theoremstyle{definition}   \newtheorem{defn}[counter]{Definition} %These theorem environments are not numbered separately
 \newtheorem*{defn*}{Definition}
 \newtheorem{blank}[counter]{}   \newtheorem{remark}[counter]{Remark(s)}   \newtheorem*{remark*}{Remark(s)}   \newtheorem{generalization}[counter]{Generalization}
 \newtheorem{consequence}[counter]{Consequence(s)}   \newtheorem*{consequence*}{Consequence(s)}   \newtheorem*{problem*}{Problem}   \newtheorem{notation}[counter]{Notation}
@@ -104,29 +104,29 @@
 \section*{Normalizers and Centralizers} \vs
 
 \begin{defn}
-For $A$ a subset of $G$ and $x \in G$, we set 
-	\begin{align*} 
+For $A$ a subset of $G$ and $x \in G$, we set
+	\begin{align*}
 	N_G(A) &= \{g \in G \mid gAg\inv = A\}, \\
 	C_G(A) &= \{g \in G \mid gag\inv = a \ \forall \ a \in A\}, \\
 	C_G(x) &= C_G(\{x\}), \\
 	Z(G) &= \{g \in G \mid gag\inv = x \ \forall \ a \in G\}
 	\end{align*}
-\end{defn} 
+\end{defn}
 
 \vs
 
 \begin{remark}[about normalizers] \ \\
 \begin{enumerate}
 \item[(a)] If $A \leq G$, then $A \nsg N_G(A)$. In fact, $N_G(A)$ is the biggest subgroup of $G$ in which $A$ is normal.
-\item[(b)] If $A \leq G$, then $A \nsg G$ iff $N_G(A) = G$. 
+\item[(b)] If $A \leq G$, then $A \nsg G$ iff $N_G(A) = G$.
 \end{enumerate}
 \end{remark}
 
 \vs
 
 \begin{remark}[about centralizers]
-\item[(a)] If $A \leq G$, then $A$ is abelian if and only if $A \leq C_G(A)$. 
-\item[(b)] If $A \leq Z(G)$, then $A \nsg G$. 
+\item[(a)] If $A \leq G$, then $A$ is abelian if and only if $A \leq C_G(A)$.
+\item[(b)] If $A \leq Z(G)$, then $A \nsg G$.
 \end{remark}
 
 \vs
@@ -134,7 +134,7 @@ For $A$ a subset of $G$ and $x \in G$, we set
 \begin{example}
 Consider the group $S_n$. $Z(S_n) = \{id\}$ for $n \geq 3$. To show this, let $\sigma \in S_n$, $\sigma \ne e$. We show that $\sigma \notin Z(S_n)$. Then there exists $i,j \in \{a,2,\dots,n\}$, $i \ne j$, such that $\sigma(i) = j$. Choose $k \in \{1,2,\dots,n\} \bs  \{i,j\}$. Then
 	\[\sigma \circ (ik) \circ \sigma\inv (j) = (\sigma(i)\, \sigma(k))(j) = (j\, \sigma(k))(j) = \sigma(k) \ne j = (ik)(j), \]
-since $k \ne i$. 
+since $k \ne i$.
 \end{example}
 
 \vs
@@ -153,7 +153,7 @@ Since $G/H$ is cyclic, $G/H = \langle xH \rangle$ for some $x \in G$. Let $a,b \
 \vs
 
 \begin{remark*}
-If $H \leq Z(G)$ and $G/H$ is \textit{abelian}, it does not necessarily follow that $G$ is abelian. As an example, consider $Q = \{\pm 1, \pm i, \pm j, \pm k\}$. Note that $Z(Q) = \{\pm 1\}$ and $Q / Z(Q) \cong \z_2 \times \z_2$, which is abelian, but $Q$ is not abelian. 
+If $H \leq Z(G)$ and $G/H$ is \textit{abelian}, it does not necessarily follow that $G$ is abelian. As an example, consider $Q = \{\pm 1, \pm i, \pm j, \pm k\}$. Note that $Z(Q) = \{\pm 1\}$ and $Q / Z(Q) \cong \z_2 \times \z_2$, which is abelian, but $Q$ is not abelian.
 \end{remark*}
 
 \vs
@@ -162,16 +162,16 @@ If $H \leq Z(G)$ and $G/H$ is \textit{abelian}, it does not necessarily follow t
 Let $G$ be a group and $A,B \leq G$.
 	\begin{enumerate}
 	\item[(a)] $AB \leq G$ if and only if $AB = BA$.
-	\item[(b)] If $A \leq N_G(B)$ or $B \leq N_G(A)$, then $AB \leq G$. 
+	\item[(b)] If $A \leq N_G(B)$ or $B \leq N_G(A)$, then $AB \leq G$.
 	\end{enumerate}
 \end{lemma}
 
 \begin{prf}
 \begin{enumerate}
 \item[(a)] $(\implies)$ If $AB \leq G$, then $AB = (AB)\inv = B\inv A\inv = BA$. \\
-$(\impliedby)$ Suppose $AB = BA$. Certainly $e \in AB$, since $e \in A\cap B$ and $e = ee \in AB$. $AB$ is closed under inversion, since $(AB)\inv = B\inv A\inv = BA = AB$. Finally, $(AB)(AB) = A(BA)B = A(AB)B = A^2B^2 = AB$, so $AB \leq G$. 
+$(\impliedby)$ Suppose $AB = BA$. Certainly $e \in AB$, since $e \in A\cap B$ and $e = ee \in AB$. $AB$ is closed under inversion, since $(AB)\inv = B\inv A\inv = BA = AB$. Finally, $(AB)(AB) = A(BA)B = A(AB)B = A^2B^2 = AB$, so $AB \leq G$.
 
-\item[(b)] WLOG, assume $A \leq N_G(B)$. We claim that $AB = BA$. Let $a \in A, b \in B$. Since $a \in A \leq N_G(B)$, $aba\inv = b'$ for some $b' \in B$, hence $ab = b'a \in BA$, so $AB \sub BA$. Similarly, $a\inv ba = b''$ for some $b'' \in B$, so $ba = ab'' \in AB$, so $BA \sub AB$, hence $AB = BA$. It follows from part (a) that $AB \leq G$. 
+\item[(b)] WLOG, assume $A \leq N_G(B)$. We claim that $AB = BA$. Let $a \in A, b \in B$. Since $a \in A \leq N_G(B)$, $aba\inv = b'$ for some $b' \in B$, hence $ab = b'a \in BA$, so $AB \sub BA$. Similarly, $a\inv ba = b''$ for some $b'' \in B$, so $ba = ab'' \in AB$, so $BA \sub AB$, hence $AB = BA$. It follows from part (a) that $AB \leq G$.
 \end{enumerate}
 \end{prf}
 
@@ -196,10 +196,10 @@ Finally, \[|AB| = |A' \times B| = \left( \frac{|A|}{|A\cap B|} \right) |B| = \fr
 
 \vs
 \begin{example}\ \\
-\item[(a)] $G = S_3$, $A = \langle (12) \rangle$, $B = \langle (13) \rangle$, $A \cap B = \{id\}$. Then $|AB| = 4 \not|\ 6 = |G| \implies AB \not\leq G$. 
-\item[(b)] $G = S_4$, $A = S_3$, $B = \langle \cyc{1 \ 2 \ 3 \ 4} \rangle \leq G$, $A \cap B = \{id\}$. Then 
+\item[(a)] $G = S_3$, $A = \langle (12) \rangle$, $B = \langle (13) \rangle$, $A \cap B = \{id\}$. Then $|AB| = 4 \not|\ 6 = |G| \implies AB \not\leq G$.
+\item[(b)] $G = S_4$, $A = S_3$, $B = \langle \cyc{1 \ 2 \ 3 \ 4} \rangle \leq G$, $A \cap B = \{id\}$. Then
 	\[|AB| = |A||B| = 6 \cdot 4 = 24 = |G| \implies AB = G \]
-Notice, however, that $A \not\leq N_G(B)$ and $B \not\leq N_G(A)$. 
+Notice, however, that $A \not\leq N_G(B)$ and $B \not\leq N_G(A)$.
 \end{example}
 
 \vs
@@ -220,7 +220,7 @@ $f$ is well-defined. Suppose $a(A\cap B) = a'(A \cap B)$. Then $a' = ab$ for som
 
 $f$ is injective. Let $a,a' \in A$, and suppose $aB = a'B$. Then $a' = ab$ for some $b \in B$, so $b = a\inv a' \in A\cap B$, thus $a(A\cap B) = a'(A \cap B)$. \\
 
-It follows that 
+It follows that
 	\[\left| \frac{A}{A\cap B} \right| \leq |G/B| \iff [A : A \cap B] \leq [G : B] \]
 \end{prf}
 
@@ -238,12 +238,12 @@ Let $\phi : G \ra H$ be a group homomorphism. Then
 \begin{prf}
 Put $N = \ker \phi$. Since $N \nsg G$, define $\overset{\sim}{\phi} : G/ N$ by $\overset{\sim}{\phi} (gN) = \phi(g)$. \\
 
-$\overset{\sim}{\phi}$ is well-defined. Suppose $gN = g'N$. Then $g' = gn$ for some $n \in N = \ker \phi$, so 
+$\overset{\sim}{\phi}$ is well-defined. Suppose $gN = g'N$. Then $g' = gn$ for some $n \in N = \ker \phi$, so
 	\[\overset{\sim}{\phi}(g'N) = \phi(gn) = \phi(g)\phi(n) = \phi(g) = \overset{\sim}{\phi}(gN) \]
-	
+
 $\overset{\sim}{\phi}$ is a group homomorphism. If $g,g' \in G$, then
 	\[\overset{\sim}{\phi}((gN)(g'N)) = \overset{\sim}{\phi}((gg')N) = \phi(gg') = \phi(g)\phi(g') = \overset{\sim}{\phi}(gN) \overset{\sim}{\phi}(g'N) \]
-	
+
 That $\overset{\sim}{\phi}$ is surjective is clear by its definition. \\
 
 $\overset{\sim}{\phi}$ is injective. Suppose $\overset{\sim}{\phi}(gN) = e_h$ for some $g \in G$. Then $\phi(g) = e_H$, so $g \in \ker \phi = N$. That is, the kernel of $\overset{\sim}{\phi}$ is trivial.
@@ -316,7 +316,7 @@ $[\impliedby]$ Suppose $\ov{A} \nsg \ov{G}$. For all $g \in G, a \in A$, we have
 Therefore, $\ov{(A \cap B)} = \ov{A} \cap \ov{B}$. \\
 
 \item[(e)] Consider $\psi : \ov{\mc{S}} \ra \mc{S}_N, H \mapsto \pi\inv(H) \leq G$. We claim that $\phi \circ \psi = Id_{\ov{\mc{S}}}$ and $\psi \circ \phi = Id_{\mc{S}_N}$. \\
-Let $H \in \ov{\mc{S}}$, so that $H \leq \ov{G}$. Then $\psi(H) = \pi\inv (H) \leq G$, and 
+Let $H \in \ov{\mc{S}}$, so that $H \leq \ov{G}$. Then $\psi(H) = \pi\inv (H) \leq G$, and
 	\[ (\phi\circ \psi)(H) = \phi(\pi \inv(H)) = \pi(\pi\inv(H)) = H, \]
 since $\pi$ is surjective. It remains to be shown that $\psi \circ \phi = Id_{\mc{S}_N}$. Let $A \in \mc{S}_N$, so that $N \leq A \leq G$. We claim that $\pi\inv(\pi(A)) = A$. Clearly, $A \sub \pi\inv(\pi(A))$. Suppose that $x \in \pi\inv(\pi(A))$, so that $xN \in \ov{A} = A/N$. Then $xN = aN$ for some $a \in A$, hence there exists $n \in N$ such that $x = an \in A$, since $N \leq A$. Therefore, $\pi\inv(\pi(A)) \sub A$, from which it follows that $\pi\inv(\pi(A) = A$. So we have
 	\[(\psi\circ \phi)(A) = \pi\inv(\pi(A)) = A, \]
@@ -332,13 +332,13 @@ which shows that $\psi \circ \phi = Id_{\mc{S}_N}$. This proves (e). \\
 \vs
 
 \begin{defn}
-The \textbf{commutator} of two elements $x,y \in G$ is defined as $[x,y] = xyx\inv y\inv$. 
+The \textbf{commutator} of two elements $x,y \in G$ is defined as $[x,y] = xyx\inv y\inv$.
 \end{defn}
 
 \vs
 
 \begin{warning}
-The commutator of $x$ and $y$ is sometimes defined to be $[x,y] = x\inv y\inv xy$. 
+The commutator of $x$ and $y$ is sometimes defined to be $[x,y] = x\inv y\inv xy$.
 \end{warning}
 
 \vs
@@ -404,10 +404,10 @@ Let $A,B \leq G$.
 	\begin{enumerate}
 	\item[(a)] $[\implies]$ Suppose $A \leq N_G(B)$. Let $a\in A$, $b \in B$. Then $[a,b] = (aba\inv)b\inv \in B$, so $[A,B] \leq B$. \\
 	$[\impliedby]$ Suppose $[A,B] \leq B$. Let $a\in A, b \in B$. Then $[a,b] = (aba\inv)b\inv \in B \implies aba\inv \in B$, from which it follows that $A \leq N_G(B)$. \\
-	
+
 	\item[(b)] Similar to the above. \\
-	
-	\item[(c)] Suppose $A,B \nsg G$. Let $g \in G, a\in A, b\in B$. Then $g[a,b]g\inv = [gag\inv,gbg\inv] \in [A,B] \implies g[A,B]g\inv \sub [A,B]$, hence $[A,B] \nsg G$. $[A,B] \leq A\cap B$ follows from (a) and (b), hence $[A,B] \nsg A\cap B$. 
+
+	\item[(c)] Suppose $A,B \nsg G$. Let $g \in G, a\in A, b\in B$. Then $g[a,b]g\inv = [gag\inv,gbg\inv] \in [A,B] \implies g[A,B]g\inv \sub [A,B]$, hence $[A,B] \nsg G$. $[A,B] \leq A\cap B$ follows from (a) and (b), hence $[A,B] \nsg A\cap B$.
 	\end{enumerate}
 \end{prf}
 
@@ -420,7 +420,7 @@ If $H \leq G$, then $[G,G] \leq H$ if and only if $H \nsg G$ and $G/H$ is abelia
 \begin{prf}
 $[\implies]$ Suppose $H \leq G$ and $[G,G] \leq H$. Then for any $g \in G$, $h \in H$, we have $[g,h] = (ghg\inv)h\inv \in H \iff ghg\inv \in H$, so $H \nsg G$. Let $x,y \in G$. Then $[xH,yH] = (xH)(yH)(xH)\inv(yH)\inv = [x,y]H = H$, hence $G/H$ is abelian. \\
 
-$[\impliedby]$ Suppose $H \nsg G$ and $G/H$ is abelian. Let $x,y \in G$. Then $[xH,yH] = [x,y]H = H \iff [x,y] \in H$. Thus $[G,G] \leq H$. 
+$[\impliedby]$ Suppose $H \nsg G$ and $G/H$ is abelian. Let $x,y \in G$. Then $[xH,yH] = [x,y]H = H \iff [x,y] \in H$. Thus $[G,G] \leq H$.
 \end{prf}
 
 \ \\
@@ -438,7 +438,7 @@ With this multiplication, it is routine to check that $A \times B$ is a group.
 \vs
 
 \begin{notation*}
-If $A$ and $B$ are abelian groups, we write $A \oplus B$ instead of $A \times B$. 
+If $A$ and $B$ are abelian groups, we write $A \oplus B$ instead of $A \times B$.
 \end{notation*}
 
 \vs
@@ -459,7 +459,7 @@ The equivalence statement follows from $(g_1,g_2)(h_1,h_2)(g_1,g_2)\inv = (g_1h_
 \vs
 
 \begin{warning}
-Not every subgroup of $G_1\times G_2$ is of the form $H_1 \times H_2$ for $H_1 \leq G_1, H_2 \leq G_2$. For example, consider $\z_2 \times \z_2$ and $\gen{(1,1)} \leq \z_2 \times \z_2$. 
+Not every subgroup of $G_1\times G_2$ is of the form $H_1 \times H_2$ for $H_1 \leq G_1, H_2 \leq G_2$. For example, consider $\z_2 \times \z_2$ and $\gen{(1,1)} \leq \z_2 \times \z_2$.
 \end{warning}
 
 \vs
@@ -477,11 +477,11 @@ Let $A,B$ be groups. Define the projections $\pi_A : A \times B \ra A$, $(a,b) \
 %	\draw[->>] (AB)--(B) node[anchor=north,midway]{$\quad \pi_B$};
 %	\draw[->,dotted] (G)--(AB) node[anchor=south,midway]{$\exists !\ \phi : G \ra A\times B$};
 %	\end{tikzpicture}
-	
+
 	\begin{center}
 	\begin{tikzcd}
 	&A \\
-	G \arrow{ur}{\phi_A} 
+	G \arrow{ur}{\phi_A}
 	\arrow[dotted]{rr}{\exists ! \phi : G \ra A \times B}
 	\arrow{dr}[swap]{\phi_B}
 	&&A\times B \arrow[two heads]{ul}{\pi_A}
@@ -490,7 +490,7 @@ Let $A,B$ be groups. Define the projections $\pi_A : A \times B \ra A$, $(a,b) \
 	\end{tikzcd}
 	\end{center}
 More generally, if $\{A_i\}_{i\in I}$ is a family of groups, then $\prod_{i\in I} A_i$ satisfies a universal property (Exercise).
-\newpage 
+\newpage
 \end{remark}
 
 Note also that if $A$ and $B$ are groups, then
@@ -526,7 +526,7 @@ If $A\times B$ is an external direct product, then $A \times B$ is an internal d
 \begin{example}\
 \begin{enumerate}
 \item[(a)] $\z_6 = A \times B$, where $A = \{\ov{0},\ov{3}\}, B = \{\ov{0},\ov{2},\ov{4}\}$. A good exercise is to show that $\z_{mn} \cong \z_m\times \z_n$ iff $(m,n) = 1$.
-\item[(b)] Let $V = \{e,\cyc{1\ 2}\cyc{3\ 4},\cyc{1\ 3}\cyc{2\ 4},\cyc{1\ 4}\cyc{2\ 3}\} \nsg S_4$, $A = \{e,\cyc{1\ 2}\cyc{3\ 4}\}$, $B = \{e, \cyc{1\ 3}\cyc{2\ 4}\} \leq S_4$. Then $V = A \times B$. 
+\item[(b)] Let $V = \{e,\cyc{1\ 2}\cyc{3\ 4},\cyc{1\ 3}\cyc{2\ 4},\cyc{1\ 4}\cyc{2\ 3}\} \nsg S_4$, $A = \{e,\cyc{1\ 2}\cyc{3\ 4}\}$, $B = \{e, \cyc{1\ 3}\cyc{2\ 4}\} \leq S_4$. Then $V = A \times B$.
 \item[(c)] $S_4 = VS_3$, where $S_3 = \{\sigma \in S_4 \mid \sigma(4)=4\}$. Here, $VS_3$ is a group, but it is not a direct product.
 \end{enumerate}
 \end{example}
@@ -543,7 +543,7 @@ Define $\mu : A \times B \ra G$ by $\mu((a,b)) = ab$. Recall from Lemma 1.1.19 t
 
 $\mu$ is a group \hm. Let $(a,b),(a',b') \in A \times B$. Then
 	\[\mu((a,b),(a',b')) = \mu((aa',bb')) = a(a'b)b' = (ab)(a'b') = \mu((a,b))\mu((a',b')) \]
-	
+
 $\mu$ is surjective. This is clear from our assumption that $G = AB$.
 
 $\mu$ is injective. Let $(a,b) \in \ker \mu$. Then $ab = e \implies a = b\inv \in A\cap B = \{e\}$, hence $(a,b) = (e,e) = e_{A\times B}$. Thus $\ker \mu$ is trivial and $\mu$ is injective.
@@ -555,7 +555,7 @@ $\mu$ is injective. Let $(a,b) \in \ker \mu$. Then $ab = e \implies a = b\inv \i
 If $G$ is the internal direct product $G = A \times B$, then
 	\begin{enumerate}
 	\item[(a)] $A$ and $B$ commute.
-	\item[(b)] Any $g \in G$ can be uniquely written in the form $g = ab$, $a \in A$, $b \in B$. 
+	\item[(b)] Any $g \in G$ can be uniquely written in the form $g = ab$, $a \in A$, $b \in B$.
 	\end{enumerate}
 \end{corollary}
 
@@ -576,7 +576,7 @@ is a group under composition.
 \begin{enumerate}\
 \item[(a)] $\aut(\z) \cong \{\pm 1\}$
 \item[(b)] $\aut(\z_n) \cong (\z_n)\x$
-\item[(c)] If $A,B$ are groups, then $\aut(A) \times \aut(B) \hookrightarrow \aut(A \times B)$ via $(\alpha, \beta) \mapsto ((a,b) \mapsto (\alpha(a),\beta(b))$. 
+\item[(c)] If $A,B$ are groups, then $\aut(A) \times \aut(B) \hookrightarrow \aut(A \times B)$ via $(\alpha, \beta) \mapsto ((a,b) \mapsto (\alpha(a),\beta(b))$.
 \item[(d)] $\aut(\z_2\times \z_2) \cong S_3$
 \item[(e)] For any group $G$ and any $g \in G$, conjugation with $g$ defines an automorphism $\kappa_g : G \ra G$, $x \mapsto gxg\inv$ with $(\kappa_g)\inv = \kappa_{g\inv}$.
 \end{enumerate}
@@ -617,13 +617,13 @@ $\out(G) \myeq \aut(G) / \inn(G)$ is called the group of \textbf{outer automorph
 	\[|\aut(S_3)| \leq 6 = |\inn(S_3)| \leq |\aut(S_3)| \implies \inn(S_3) = \aut(S_3) \]
 \item[(d)] With some more work, one can show that
 	\[\inn(S_3) = \aut(S_3) \]
-for $n \ne 6$, and $|\out(S_6)| = [\aut(S_6) : \inn(S_6)] = 2$. 
+for $n \ne 6$, and $|\out(S_6)| = [\aut(S_6) : \inn(S_6)] = 2$.
 \end{example}
 
 \vs
 
 \begin{remark}\
-\item[(a)] If $\alpha \in \aut(G)$ and $g \in G$, then $|\alpha(g)| = |g|$, since $g^m = e$ iff $(\alpha(g))^m = e$. 
+\item[(a)] If $\alpha \in \aut(G)$ and $g \in G$, then $|\alpha(g)| = |g|$, since $g^m = e$ iff $(\alpha(g))^m = e$.
 \item[(b)] If $\alpha \in \aut(G)$, then $\alpha(Z(G)) = Z(G)$. Let $g \in Z(G)$. Then
 	\begin{align*}
 	& gx = xg \quad \forall\ x \in G \\
@@ -640,7 +640,7 @@ Apply the same argument to $\alpha\inv \in \aut(G)$ to obtain $\alpha\inv(Z(G)) 
 \vs
 
 \begin{defn}
-A subgroup $H \leq G$ is called \textbf{characteristic}, denoted $H \car G$, if $\alpha(H) = H$ for all $\alpha \in \aut(G)$. 
+A subgroup $H \leq G$ is called \textbf{characteristic}, denoted $H \car G$, if $\alpha(H) = H$ for all $\alpha \in \aut(G)$.
 \end{defn}
 
 \vs
@@ -665,7 +665,7 @@ Let $G$ be a group, $A,B,H \leq G$.
 
 \begin{example}\
 \item[(a)] If $G = \z_2 \times \z_2$, then any order 2 subgroup of $G$ is normal but not characteristic.
-\item[(b)] Let $G = S_4$, $H = \{\id,(1\ 2)(3\ 4),(1\ 3)(2\ 4),(1\ 4)(2\ 3)\} \nsg S_4$. Verify that 
+\item[(b)] Let $G = S_4$, $H = \{\id,(1\ 2)(3\ 4),(1\ 3)(2\ 4),(1\ 4)(2\ 3)\} \nsg S_4$. Verify that
 	\[H = [A_4,A_4] \car A_4 = [S_4,S_4] \car S_4\]
 We have $A \myeq \{\id,(1\ 2)(3\ 4)\} \nsg H \car S_4$, but $A \not\nsg S_4$. In particular, $A \nsg H \nsg S_4$, but $A \not\nsg S_4$, so the relation $\nsg$ is not transitive.
 \end{example}
@@ -674,14 +674,14 @@ We have $A \myeq \{\id,(1\ 2)(3\ 4)\} \nsg H \car S_4$, but $A \not\nsg S_4$. In
 
 \vs
 
-Recall Euler's $\phi$ function $\phi : \z \ra \N$ defined by $\phi(n) \myeq |\{1 \leq m \leq n \mid (n,m) = 1\}| = |\z_n\x|$. 
+Recall Euler's $\phi$ function $\phi : \z \ra \N$ defined by $\phi(n) \myeq |\{1 \leq m \leq n \mid (n,m) = 1\}| = |\z_n\x|$.
 
 \vs
 
 \begin{lemma}
 Let $R$ be a ring with $1$.
 	\begin{enumerate}
-	\item[(a)] For all $f \in R$, the map $\lambda_r : R \ra R$ given by $\lambda_r(x) = rx$ defines a group \hm\ from $(R,+)$ into $(R,+)$. 
+	\item[(a)] For all $f \in R$, the map $\lambda_r : R \ra R$ given by $\lambda_r(x) = rx$ defines a group \hm\ from $(R,+)$ into $(R,+)$.
 	\item[(b)] If $r \in R\x$, then $\lambda_r \in \aut((R,+))$ and the map $\lambda : R\x \ra \aut(R,+)$ given by $\lambda(r) = \lambda_r$ is an injective group \hm.
 	\end{enumerate}
 \end{lemma}
@@ -700,13 +700,13 @@ $\aut(\z_n) = \z_n\x$.
 \end{proposition}
 
 \begin{proof}
-By 1.2.1, $\z_n\x$ injects into $\aut(\z_n)$ via $\ov{a} \mapsto \lambda_{\ov{a}}$. We need to show that $\lambda$ is surjective. Let $\alpha \in \aut(\z_n)$. $|\ov{1}| = n$, so $|\alpha(\ov{1})| = n$, hence $\alpha(\ov{1}) = \ov{a}$, where $(a,n) = 1$. From here, you should verify that $\alpha = \lambda_{\ov{a}}$. 
+By 1.2.1, $\z_n\x$ injects into $\aut(\z_n)$ via $\ov{a} \mapsto \lambda_{\ov{a}}$. We need to show that $\lambda$ is surjective. Let $\alpha \in \aut(\z_n)$. $|\ov{1}| = n$, so $|\alpha(\ov{1})| = n$, hence $\alpha(\ov{1}) = \ov{a}$, where $(a,n) = 1$. From here, you should verify that $\alpha = \lambda_{\ov{a}}$.
 \end{proof}
 
 \vs
 
 \begin{proposition}[Chinese Remainder Theorem]
-Let $m,n \in \N$. 
+Let $m,n \in \N$.
 	\begin{enumerate}
 	\item[(a)] The map $f : \z_{mn} \ra \z_m \times \z_n$ given by $f([a]_{mn}) = ([a]_m,[a]_n)$ is a ring \hm.
 	\item[(b)] If $(m,n) = 1$, then $f$ is an \iso.
@@ -717,7 +717,7 @@ Let $m,n \in \N$.
 \begin{enumerate}
 \item[(a)] $f$ is well-defined. If $[a]_{mn} = [b]_{mn}$, then $mn \mid (a-b)$, so in particular $m \mid (a-b)$ and $n \mid (a-b)$, hence $[a]_m = [b]_m$ and $[a]_n = [b]_n$. $f$ immediately inherits additivity and multiplicity from the existing ring structures.
 
-\item[(b)] Since $|\z_{mn}| = mn = |\z_m \times \z_n|$, $f$ is bijective if and only if $f$ is injective. Let $[a]_{mn} \in \ker f$. Then $n \mid a$ and $m \mid a$, so $nm \mid a$, since $(n,m) = 1$, so $[a]_{mn} = [0]_{mn}$. 
+\item[(b)] Since $|\z_{mn}| = mn = |\z_m \times \z_n|$, $f$ is bijective if and only if $f$ is injective. Let $[a]_{mn} \in \ker f$. Then $n \mid a$ and $m \mid a$, so $nm \mid a$, since $(n,m) = 1$, so $[a]_{mn} = [0]_{mn}$.
 \end{enumerate}
 \end{proof}
 
@@ -733,7 +733,7 @@ If $n = p_1^{e_1} p_2^{e_2} \cdots p_r^{e_r}$, where $p_1,p_2,\dots,p_r$ are dis
 Let $m,n \in \N$ with $(m,n) = 1$. Then
 	\begin{enumerate}
 	\item[(a)] $\z_{mn}\x \cong \z_m\x \times \z_n\x$.
-	\item[(b)] $\phi(mn) = |\z_{mn}\x| = |\z_m\x \times \z_n\x| = \phi(m) \phi(n)$. 
+	\item[(b)] $\phi(mn) = |\z_{mn}\x| = |\z_m\x \times \z_n\x| = \phi(m) \phi(n)$.
 	\end{enumerate}
 \end{corollary}
 
@@ -744,7 +744,7 @@ Let $e \in \N$ and $p$ a prime.
 	\begin{enumerate}
 	\item[(a)] $\z_{1^e}\x \cong \z_2 \times \z_{2^{e-2}}$, if $e \geq 2$.
 	\item[(b)] $\z_p\x \cong \z_{p-1}$.
-	\item[(c)] If $p$ if odd, then $\z_{p^e}\x \cong \z_{p^{e-1}(p-1)}$. 
+	\item[(c)] If $p$ if odd, then $\z_{p^e}\x \cong \z_{p^{e-1}(p-1)}$.
 	\end{enumerate}
 \end{proposition}
 
@@ -777,7 +777,7 @@ By induction on $|A|$. The case $|A| = 1$ is trivial. We may now assume $|A| < m
 \vs
 
 \begin{corollary}
-Let $A$ be a finite abelian group with \pf{|A|}. Then there exist subgroups $B_i \leq A$, $1 \leq i \leq r$, with $|B_i| = p_i^{e_i}$ and $A = B_1 \times B_2 \times \dots \times B_r$. Moreover, $B_i = \{a \in A \mid |A| \tn{ is a power of } p_i\}$ for each $1 \leq i \leq r$. 
+Let $A$ be a finite abelian group with \pf{|A|}. Then there exist subgroups $B_i \leq A$, $1 \leq i \leq r$, with $|B_i| = p_i^{e_i}$ and $A = B_1 \times B_2 \times \dots \times B_r$. Moreover, $B_i = \{a \in A \mid |A| \tn{ is a power of } p_i\}$ for each $1 \leq i \leq r$.
 \end{corollary}
 
 \begin{proof}
@@ -787,7 +787,7 @@ The existence of $B_i \leq A$ with $|B_i| = p_i^{e_i}$ follows from 1.2.7. Since
 	\implies & |B_1 B_2 \dots B_r| = |B_1| |B_2| \dots |B_r| = |A| \\
 	\implies &A = B_1 \times B_2 \times \dots \times B_r
 	\end{align*}
-Finally, let $a \in A$. Then $a = b_1 b_2 \dots b_r$ for some unique $b_i \in B_i$, $1 \leq i \leq r$, so $|a|$ is a power of $p_i$ if and only if $b_1 = b_2 = \dots = b_{i-1} = b_{i+1} = \dots = b_r = e \iff a \in B_i$. 
+Finally, let $a \in A$. Then $a = b_1 b_2 \dots b_r$ for some unique $b_i \in B_i$, $1 \leq i \leq r$, so $|a|$ is a power of $p_i$ if and only if $b_1 = b_2 = \dots = b_{i-1} = b_{i+1} = \dots = b_r = e \iff a \in B_i$.
 \end{proof}
 
 \vs
@@ -799,16 +799,16 @@ The $B_i$ above are the Sylow $p_i$-subgroups of $A$.
 \vs
 
 	\begin{lemma*}
-	Let $A$ be a finite abelian group of order $n$. Suppose that for every divisor $d$ of $n$, $A$ has a unique subgroup of order $d$. Then $A$ is cyclic. 
+	Let $A$ be a finite abelian group of order $n$. Suppose that for every divisor $d$ of $n$, $A$ has a unique subgroup of order $d$. Then $A$ is cyclic.
 	\end{lemma*}
-	
+
 	\begin{proof}
 	By induction on $n = |A|$. If $n=1$, then $A$ is trivially cyclic. Suppose $|A| = n > 1$, and the result is true for all abelian groups of order at most $n-1$. In particular, all proper subgroups of $A$ must be cyclic. Fix a prime divisor $p$ of $n$, and define $\phi_p : A \ra A$ by $\phi_p(a) = p a$. Since $A$ is abelian, $\phi_p$ is a group homomorphism. Since every nonidentity element of $\ker \phi_p$ has order $p$, and by assumption $A$ has at exactly one subgroup of order $p$, we must have that $|\ker \phi_p| = p$. By the first isomorphism theorem for groups,
 		\[ G/ \ker \phi_p \cong \im \phi_p \leq G, \]
 	so $G$ contains a subgroup $H \myeq \im \phi_p$ of order $n/p$. Since $H$ is a proper subgroup of $G$, $H$ is cyclic, so $H = \gen{x}$ for some $x \in G$. Moreover, $x \in \im \phi_p$, so $x = y^p$ for some $y \in G$. There are now two cases.
 		\begin{enumerate}
 		\item[(i)] $p \mid \frac{n}{p}$. We claim that $|y| = n$. Put $|y| = l$. Clearly, $p \mid l$. If $l < n$, then $\frac{l}{p} < \frac{n}{p}$, so $e = y^l = (y^p)^{l/p} = x^{l/p}$, contradicting the fact that $|x|=n/p$. Since $y^n = (y^p)^{n/p} = x^{n/p} = e$, we have $|y| = n$, hence $A = \gen{y}$ is cyclic.
-		
+
 		\item[(ii)] $p \nmid \frac{n}{p}$. Then $(p,\frac{n}{p}) = 1$. By Cauchy's theorem, there exists $a \in A$ with $|a| = p$. Therefore, $|ay| = |a| |y| = p \left( \frac{n}{p} \right) = n$, so $A = \gen{ay}$ is cyclic.
 		\end{enumerate}
 	\end{proof}
@@ -825,7 +825,7 @@ The $B_i$ above are the Sylow $p_i$-subgroups of $A$.
 	\end{proposition}
 
 \begin{prf}
-For $m \in \N$, set $A_m \myeq \{a \in A \mid a^m = e\}$. 
+For $m \in \N$, set $A_m \myeq \{a \in A \mid a^m = e\}$.
 	\begin{enumerate}
 	\item[(a)] Suppose $A = \gen{a}$ is cyclic. We claim that $|A_m| = (n,m)$. Put $d \myeq (n,m)$. For $1 \leq k \leq n$, we have
 		\begin{align*}
@@ -833,9 +833,9 @@ For $m \in \N$, set $A_m \myeq \{a \in A \mid a^m = e\}$.
 		&\iff \frac{n}{d} \mid k \frac{m}{d} \\
 		&\iff \frac{n}{d} \mid k \\
 		&\iff k = \frac{n}{d}, \frac{2n}{d}, \dots, \frac{dn}{d} = n
-		\end{align*} 
-	From this, we see that $|A_m| = d$. If $m \mid n$, then $|A_m| = d = m$. If $m \nmid n$, then $d$ is a proper divisor of $m$, so $d < m$, and therefore $|A_m| = d < m$. 
-	
+		\end{align*}
+	From this, we see that $|A_m| = d$. If $m \mid n$, then $|A_m| = d = m$. If $m \nmid n$, then $d$ is a proper divisor of $m$, so $d < m$, and therefore $|A_m| = d < m$.
+
 	\item[(b)] By $1.2.7$, $A$ has a subgroup of order $m$ for each divisor $m$ of $n$. Since any such subgroup is clearly contained in $A_m$, we have that $|A_m| = m$ for each divisor $m$ of $n$. That is, $A$ has a unique subgroup of order $m$ for each divisor $m$ of $n$. By the lemma, $A$ is cyclic.
 	\end{enumerate}
 \end{prf}
@@ -843,7 +843,7 @@ For $m \in \N$, set $A_m \myeq \{a \in A \mid a^m = e\}$.
 \vs
 
 \begin{theorem}[Fundamental Theorem of Finite Abelian Groups]
-Let $A$ be a finite abelian group with \pf{|A|}. Then, for each $1 \leq i \leq r$, there exist uniquely determined $l_i \in \N$ and $m_{i_1} \leq m_{i_2} \leq \dots \leq m_{i_{l_i}} \in \N$ such that $e_i = \sum_{j=1}^{l_i} m_{i_j}$ and $A \cong B_1 \times B_2 \times \dots \times B_r$, where each $B_i$ is of the form $B_i \cong \z_{p_i}^{m_{i_1}} \times \z_{p_i}^{m_{i_2}} \times \dots \times \z_{p_i}^{m_{i_{l_i}}}$. 
+Let $A$ be a finite abelian group with \pf{|A|}. Then, for each $1 \leq i \leq r$, there exist uniquely determined $l_i \in \N$ and $m_{i_1} \leq m_{i_2} \leq \dots \leq m_{i_{l_i}} \in \N$ such that $e_i = \sum_{j=1}^{l_i} m_{i_j}$ and $A \cong B_1 \times B_2 \times \dots \times B_r$, where each $B_i$ is of the form $B_i \cong \z_{p_i}^{m_{i_1}} \times \z_{p_i}^{m_{i_2}} \times \dots \times \z_{p_i}^{m_{i_{l_i}}}$.
 \end{theorem}
 
 \vs
@@ -886,14 +886,14 @@ If $A$ is an elementary abelian $p$-group, then $A$ is a vector space over $\mat
 Let $A$ be an elementary abelian $p$-group.
 	\begin{enumerate}
 	\item[(a)] $A$ is a direct sum of copies of $(\z_p,+)$.
-	\item[(b)] $\aut(A) = GL(A) = \{f : A \ra A \mid f \tn{ is bijective and $\mathbb{F}_p$-linear}\}$. 
+	\item[(b)] $\aut(A) = GL(A) = \{f : A \ra A \mid f \tn{ is bijective and $\mathbb{F}_p$-linear}\}$.
 	\end{enumerate}
-In particular, if $|A| = p^n$, then $\aut(A) \cong GL_n(\mathbb{F}_p)$. 
+In particular, if $|A| = p^n$, then $\aut(A) \cong GL_n(\mathbb{F}_p)$.
 \end{corollary}
 
-\begin{proof}\ 
+\begin{proof}\
 \begin{enumerate}
-\item[(a)] $A$ has a basis $(e_i)_{i \in I}$, so $A = \bigoplus_{i\in I} \mathbb{F} e_i \cong \bigoplus_{i \in I} \z_p$. 
+\item[(a)] $A$ has a basis $(e_i)_{i \in I}$, so $A = \bigoplus_{i\in I} \mathbb{F} e_i \cong \bigoplus_{i \in I} \z_p$.
 \item[(b)] Clearly, $GL_A \sub \aut(A)$, and $\aut(A) \sub GL(A)$ by 1.2.13.
 \end{enumerate}
 \end{proof}
@@ -901,7 +901,7 @@ In particular, if $|A| = p^n$, then $\aut(A) \cong GL_n(\mathbb{F}_p)$.
 \vs
 
 \begin{lemma}
-If $F$ is a finite field of order $q$, then $|GL_n(F)| = \prod_{j=0}^{n-1} (q^n - q^j) = |GL_n(F)|$. 
+If $F$ is a finite field of order $q$, then $|GL_n(F)| = \prod_{j=0}^{n-1} (q^n - q^j) = |GL_n(F)|$.
 \end{lemma}
 
 \begin{proof}[Proof sketch]
@@ -937,12 +937,12 @@ $G$ is called \textbf{solvable} if there exists $n \in \N_0$ such that $G^{(n)} 
 
 \vs
 
-\begin{remark}\ 
+\begin{remark}\
 \begin{enumerate}
 \item[(a)] Obviously, $\ds{G}{i} \sub \lcs{G}{i}$ for all $i \in \N_0$, so if $G$ is nilpotent, then $G$ is solvable.
-\item[(b)] If $G$ is abelian, then $[G,G] = \{e\}$, so $G$ is nilpotent of class $0$ if $G=\{e\}$, and $G$ is nilpotent of class $1$ if $G \ne \{e\}$. 
+\item[(b)] If $G$ is abelian, then $[G,G] = \{e\}$, so $G$ is nilpotent of class $0$ if $G=\{e\}$, and $G$ is nilpotent of class $1$ if $G \ne \{e\}$.
 \item[(c)] $G$ is nilpotent of class 2 if and only if $\lcs{G}{i} = [G,G] \ne \{e\}$ and $[G, \lcs{G}{1}] = \{e\}$, which is true if and only if $\lcs{G}{i} \leq Z(G)$.
-\item[(d)] Recalling 1.1.35, $A,B \car G \implies [A,B] \car G$, so $\lcs{G}{i}, \ds{G}{i} \car G$ for all $i \in \N_0$. 
+\item[(d)] Recalling 1.1.35, $A,B \car G \implies [A,B] \car G$, so $\lcs{G}{i}, \ds{G}{i} \car G$ for all $i \in \N_0$.
 \end{enumerate}
 \end{remark}
 
@@ -951,29 +951,29 @@ $G$ is called \textbf{solvable} if there exists $n \in \N_0$ such that $G^{(n)} 
 \begin{lemma}
 Suppose $G \ne \{e\}$.
 \begin{enumerate}
-\item[(a)] If $G$ is nilpotent, then $Z(G) \ne \triv$. 
+\item[(a)] If $G$ is nilpotent, then $Z(G) \ne \triv$.
 \item[(b)] If $G$ is solvable, then there exists an abelian subgroup $A \ne \triv$ such that $A \car G$.
 \end{enumerate}
 \end{lemma}
 
 \begin{prf}\
 \begin{enumerate}
-\item[(a)] There exists $n \in \N$ such that $\lcs{G}{n-1} \ne \triv$ and $\lcs{G}{n} = \triv$. That is, $\triv = \lcs{G}{n} = [G,\lcs{G}{n-1}] \implies \triv \subsetneq \lcs{G}{n-1} \leq Z(G)$. 
-\item[(b)] There exists $n \in \N$ such that $\ds{G}{n-1} \ne \triv$ but $\ds{G}{n} = \triv \implies \ds{G}{n-1} \ne \{e\}$ is abelian. As observed, $A \myeq \ds{G}{n-1} \car G$. 
+\item[(a)] There exists $n \in \N$ such that $\lcs{G}{n-1} \ne \triv$ and $\lcs{G}{n} = \triv$. That is, $\triv = \lcs{G}{n} = [G,\lcs{G}{n-1}] \implies \triv \subsetneq \lcs{G}{n-1} \leq Z(G)$.
+\item[(b)] There exists $n \in \N$ such that $\ds{G}{n-1} \ne \triv$ but $\ds{G}{n} = \triv \implies \ds{G}{n-1} \ne \{e\}$ is abelian. As observed, $A \myeq \ds{G}{n-1} \car G$.
 \end{enumerate}
 \end{prf}
 
 \vs
 
 \begin{example}
-\ 
+\
 \begin{enumerate}
 \item[(a)] The quaternion group $Q$ is such that $Z(Q) = \{1,-1\} = [Q,Q]$, so $Q$ is nilpotent of class 2.
-\item[(b)] $S_n$ is not nilpotent for $n \geq 3$ because $Z(S_n) = \triv$ for $n \geq 3$. However, $S_3$ and $S_4$ are solvable: $\ds{S_3}{1} = A_3$, $\ds{S_3}{2} = \triv$, $\ds{S_4}{1} = A_4$, $\ds{S_4}{2} = [A_4,A_4] = V$, $\ds{S_4}{3} = \triv$. 
+\item[(b)] $S_n$ is not nilpotent for $n \geq 3$ because $Z(S_n) = \triv$ for $n \geq 3$. However, $S_3$ and $S_4$ are solvable: $\ds{S_3}{1} = A_3$, $\ds{S_3}{2} = \triv$, $\ds{S_4}{1} = A_4$, $\ds{S_4}{2} = [A_4,A_4] = V$, $\ds{S_4}{3} = \triv$.
 \item[(c)] $A_4$ is solvable but not nilpotent (Exercise).
 \item[(d)] $S_n, A_n$ are not solvable for $n \geq 5$, since $[S_n,S_n] = A_n, [A_n,A_n] = A_n$ (simple).
-\item[(e)] By application of the Sylow Theorem, if $|G| < 60$, then $G$ is solvable. If $|G| = 60$ and $G$ is not solvable, then $G \cong A_5$. 
-\item[(f)] Let $F$ be a field. We define 
+\item[(e)] By application of the Sylow Theorem, if $|G| < 60$, then $G$ is solvable. If $|G| = 60$ and $G$ is not solvable, then $G \cong A_5$.
+\item[(f)] Let $F$ be a field. We define
 	\begin{align*}
 	U_n(F) &\myeq \left\{ \mymatrix{ccccc}{1 & * & * & \cdots & * \\
 										 0 & 1 & * & \cdots & * \\
@@ -1023,7 +1023,7 @@ If $G$ is nilpotent and $H < G$ is a proper subgroup of $G$, then $N_G(H) \ne H$
 \end{proposition}
 
 \begin{proof}
-We have $G = \lcs{G}{0} \ne H$, but $\lcs{G}{n} = \{e\} \leq H$ for some $n \in N$, so there exists $m \in \N$ such that $\lcs{G}{m-1} \not\leq H$ but $\lcs{G}{m} \leq H$. Thus $[H,\lcs{G}{m-1}] \leq [G,\lcs{G}{m-1}] = \lcs{G}{m} \leq H$, which implies that $\lcs{G}{m-1} \leq N_G(H)$ by 1.1.19 (b), but $\lcs{G}{m-1} \not\leq H$, so $H < N_G(H)$. 
+We have $G = \lcs{G}{0} \ne H$, but $\lcs{G}{n} = \{e\} \leq H$ for some $n \in N$, so there exists $m \in \N$ such that $\lcs{G}{m-1} \not\leq H$ but $\lcs{G}{m} \leq H$. Thus $[H,\lcs{G}{m-1}] \leq [G,\lcs{G}{m-1}] = \lcs{G}{m} \leq H$, which implies that $\lcs{G}{m-1} \leq N_G(H)$ by 1.1.19 (b), but $\lcs{G}{m-1} \not\leq H$, so $H < N_G(H)$.
 \end{proof}
 
 \vs
@@ -1042,7 +1042,7 @@ A (finite or infinite) sequence of \hms\ $\dots G_{k-1} \overset{f_{i-1}}{\longr
 
 \vs
 
-\begin{remark*}\ 
+\begin{remark*}\
 \begin{enumerate}
 \item[(a)] If $\phi : G \ra H$ is a group \hm, then $\ses{\ker \phi}{}{G}{}{\phi(G)}$ is a SES.
 \item[(b)] If $N \nsg G$, then $\ses{N}{}{G}{}{G/N}$ is a SES.
@@ -1061,10 +1061,10 @@ Let $G$ be a group, $H \leq G$, and $\ses{N}{f_1}{G}{f_2}{Q}$ a SES. Then
 	\end{enumerate}
 \end{proposition}
 
-\begin{proof}\ 
+\begin{proof}\
 \begin{enumerate}
 \item[(a)] Verify inductively: $\ds{H}{i} \leq \ds{G}{i}$, $\lcs{H}{i} \leq \lcs{G}{i}$ for all $i \in \N_0$.
-\item[(b)] Verify inductively: Because $f_2$ is surjective, $f_2(\ds{G}{i}) = \ds{Q}{i}$ for all $i \in \N_0$. 
+\item[(b)] Verify inductively: Because $f_2$ is surjective, $f_2(\ds{G}{i}) = \ds{Q}{i}$ for all $i \in \N_0$.
 \item[(c)] Because $Q$ is solvable, there exists $n \in \N_0$ such that $\ds{Q}{n} = \{e\}$. Recall that $f_2(\ds{G}{i}) = \ds{Q}{i}$ for all $i \in \N_0$, so
 	\begin{align*}
 	&\ds{G}{n} \leq \ker f_2 = \im f_2 \cong N \ \tn{(solvable)} \\
@@ -1075,7 +1075,7 @@ Let $G$ be a group, $H \leq G$, and $\ses{N}{f_1}{G}{f_2}{Q}$ a SES. Then
 	\begin{align*}
 	f_2(\lcs{G}{n}) &= \lcs{Q}{n} = \triv \\
 	\implies \lcs{G}{n} &\leq \ker f_2 = \im f_1 \leq Z(G) \\
-	\implies \lcs{G}{n+1} &= [G, \lcs{G}{n}] \leq [G,Z(G)] = \triv 
+	\implies \lcs{G}{n+1} &= [G, \lcs{G}{n}] \leq [G,Z(G)] = \triv
 	\end{align*}
 \end{enumerate}
 \end{proof}
@@ -1139,7 +1139,7 @@ Now consider the homomorphisms $G/Z(A)\cap Z(B) \hookrightarrow G/Z(A) \times G/
 \vs
 
 \begin{remark*}
-This proof shows that $AB$ is nilpotent of class at most $c+d$. 
+This proof shows that $AB$ is nilpotent of class at most $c+d$.
 \end{remark*}
 
 \vs
@@ -1153,12 +1153,12 @@ If $N \nsg G$, what is the smallest normal subgroup $N'$ of $G$ which is contain
 \end{question}
 
 \begin{answer}
-$N' = [G,N] \nsg G$, and also $[G,N] \nsg N$ by 1.1.19. 
+$N' = [G,N] \nsg G$, and also $[G,N] \nsg N$ by 1.1.19.
 \end{answer}
 
 \vs
 
-Now, if we start with $N=G$, $N' = [G,G]$, $N'' = \lcs{G}{2}, \dots$, then the result is what we call the \textit{lower central series.} 
+Now, if we start with $N=G$, $N' = [G,G]$, $N'' = \lcs{G}{2}, \dots$, then the result is what we call the \textit{lower central series.}
 
 \vs
 
@@ -1173,17 +1173,17 @@ The subgroup of $G$ containing $N$ which corresponds to $Z(G/N)$ (think correspo
 \vs
 
 \begin{defn}
-For a group $G$, the \tb{upper central series} is defined inductively as follows: $Z_0(G) \myeq \triv, Z_1(G) \myeq Z(G)$, and $Z_{i+1}(G)$ is the unique subgroup of $G$ such that  $Z_{i+1}(G)/Z_i(G) = Z(G/Z_i(G))$ for $i \in \N$. 
+For a group $G$, the \tb{upper central series} is defined inductively as follows: $Z_0(G) \myeq \triv, Z_1(G) \myeq Z(G)$, and $Z_{i+1}(G)$ is the unique subgroup of $G$ such that  $Z_{i+1}(G)/Z_i(G) = Z(G/Z_i(G))$ for $i \in \N$.
 \end{defn}
 
 \vs
 
 \begin{remark}
-\begin{enumerate}\ 
+\begin{enumerate}\
 \item[(a)] One can show that $Z_i(G) \car G$ for all $i \in \N_0$.
-\item[(b)] $G$ is nilpotent if and only if there exists $n \in \N_0$ such that $Z_n(G) = G$. 
+\item[(b)] $G$ is nilpotent if and only if there exists $n \in \N_0$ such that $Z_n(G) = G$.
 \item[(c)] Define for any group $G$ $c(G) \myeq \min \{n \in \N_0 \mid \lcs{G}{n} = \triv \}$, where $c(G) \myeq \infty$ if no such $n$ exists, and $c'(G) \
-myeq \min\{n \in \N_0 \mid Z_n(G) = G\}$ ($\myeq \infty$ if no such $n$ exists). Then $c(G) = c'(G)$. 
+myeq \min\{n \in \N_0 \mid Z_n(G) = G\}$ ($\myeq \infty$ if no such $n$ exists). Then $c(G) = c'(G)$.
 \end{enumerate}
 \end{remark}
 
@@ -1192,18 +1192,18 @@ myeq \min\{n \in \N_0 \mid Z_n(G) = G\}$ ($\myeq \infty$ if no such $n$ exists).
 \chapter{Simple Groups and Composition Series}
 
 \begin{defn}
-A group $G \ne \triv$ is called \tb{simple} if $G$ and $\triv$ are the only normal subgroups of $G$. 
+A group $G \ne \triv$ is called \tb{simple} if $G$ and $\triv$ are the only normal subgroups of $G$.
 \end{defn}
 
 \vs
 
 \begin{example}
-For any prime $p$, $\z_p$ is simple (proof: Lagrange). 
+For any prime $p$, $\z_p$ is simple (proof: Lagrange).
 \end{example}
 
 \vs
 
-\begin{remark}\ 
+\begin{remark}\
 \begin{enumerate}
 \item[(a)] A group $G$ is both solvable and simple if and only if $G$ is cyclic of prime order (proof: exercise).
 \item[(b)] If $G$ is simple and not cyclic of prime order, then
@@ -1211,16 +1211,16 @@ For any prime $p$, $\z_p$ is simple (proof: Lagrange).
 	\item[(i)] $G$ is not solvable (by (a)).
 	\item[(ii)] $G$ is not abelian.
 	\item[(iii)] $Z(G), [G,G] \ne \triv$.
-	\item[(iv)] $[G,G] = G, Z(G) = \triv$ (because $G$ is simple). 
+	\item[(iv)] $[G,G] = G, Z(G) = \triv$ (because $G$ is simple).
 	\end{enumerate}
-\item[(c)] If $G$ is simple and $\phi : G \ra H$ is a group \hm, then either $\ker \phi = \triv$ or $\ker \phi = G$. 
+\item[(c)] If $G$ is simple and $\phi : G \ra H$ is a group \hm, then either $\ker \phi = \triv$ or $\ker \phi = G$.
 
 The first "interesting" examples of simple groups are
 	\begin{enumerate}
 	\item[(i)] $A_n$ for $n \geq 5$
-	\item[(ii)] $PSL_n(F) \myeq SL_n(F)/Z(SL_n(F))$ is simple for $n \geq 2$ provided $(n,|F|) \ne (2,2),(2,3)$. 
+	\item[(ii)] $PSL_n(F) \myeq SL_n(F)/Z(SL_n(F))$ is simple for $n \geq 2$ provided $(n,|F|) \ne (2,2),(2,3)$.
 	\end{enumerate}
-\item[(d)] For $1 \leq i \ne j \leq n$ and $\lambda \in F$, define $E_{ij}(\lambda)$ to be the matrix such with $ij$-th entry $\lambda$, diagonal entries $1$, and $0$ elsewhere. Let $E_{ij}(F) = \{E_{ij}(\lambda) \mid \lambda \in F\}$. 
+\item[(d)] For $1 \leq i \ne j \leq n$ and $\lambda \in F$, define $E_{ij}(\lambda)$ to be the matrix such with $ij$-th entry $\lambda$, diagonal entries $1$, and $0$ elsewhere. Let $E_{ij}(F) = \{E_{ij}(\lambda) \mid \lambda \in F\}$.
 \end{enumerate}
 \end{remark}
 
@@ -1231,22 +1231,22 @@ $A_n$ is simple for $n \geq 5$.
 \end{theorem}
 
 \begin{proof}
-Assume $\{id\} \ne N \nsg A_n$. We want to show that $N = A_n$. First, note that it suffices to show that $N$ contains a 3-cycle. The argument goes as follows. Assume $(i \ j \ k) \in N$, and let $(i'\ j'\ k') \in A_n$ be any 3-cycle. There exists $\pi \in S_n$ such that $\pi(i\ j\ k) \pi\inv = (i'\ j'\ k')$. If $\pi \in A_n$, then $(i'\ j'\ k') \in N$. Assume $\pi \notin A_n$. Then $\pi (i\ j) \in A_n$, and $(j\ i\ k) = (i\ j\ k)\inv \in N$, so 
+Assume $\{id\} \ne N \nsg A_n$. We want to show that $N = A_n$. First, note that it suffices to show that $N$ contains a 3-cycle. The argument goes as follows. Assume $(i \ j \ k) \in N$, and let $(i'\ j'\ k') \in A_n$ be any 3-cycle. There exists $\pi \in S_n$ such that $\pi(i\ j\ k) \pi\inv = (i'\ j'\ k')$. If $\pi \in A_n$, then $(i'\ j'\ k') \in N$. Assume $\pi \notin A_n$. Then $\pi (i\ j) \in A_n$, and $(j\ i\ k) = (i\ j\ k)\inv \in N$, so
 	\[\pi(i\ j) (j\ i\ k) (i\ j) \pi\inv = \pi (i\ j\ k) \pi\inv = (i'\ j'\ k') \in N \]
 
-We now distinguish cases depending on $id \ne \sigma \in N$. Note that for any $\alpha \in A_n$, $[\sigma,\alpha] = \sigma (\alpha \sigma\inv \alpha\inv) \in N$. 
+We now distinguish cases depending on $id \ne \sigma \in N$. Note that for any $\alpha \in A_n$, $[\sigma,\alpha] = \sigma (\alpha \sigma\inv \alpha\inv) \in N$.
 
 \begin{enumerate}
 \item[\tb{Case 1.}] The factorization of $\sigma$ into disjoint cycles contains a cycle of length at least 4. Then there exist distinct $i,j,k,l \in I_n \myeq \{1,2,\dots,n\}$ with $\sigma(i)=j$, $\sigma(j)=k$, $\sigma(k)=l$, and $\sigma(l)=i$. Set $\alpha \myeq (i\ j\ k) \in A_n$. Then
 	\[ [\sigma,\alpha] = \sigma (i\ j\ k) \sigma\inv (j\ i\ k) = (j\ k\ l)(j\ i\ k) = (i\ l\ j) \]
-	
-\item[\tb{Case 2.}] $\sigma$ contains a 3-cycle $i\ j\ k)$ for some distinct $i,j,k \in I_n$, so $\sigma(i) = j, \sigma(j)=k, \sigma(k)=i$. If $\sigma$ fixes all elements of $I_n\bs \{i,j,k\}$, then $\sigma = (i\ j\ k) \in N$. Otherwise, there exists $l \in I_n\bs \{i,j,k\}$ such that $m \myeq \sigma(l) \ne l$. Set $\alpha \myeq (i\ j\ l)$. Then 
-	\[ [\sigma,\alpha] = \sigma (i\ j\ l) \sigma\inv (j\ i\ l) = (j\ k\ m)(j\ i\ l) = (i\ l\ k\ m\ j) \in N \] 
-We now apply case 1 to $[\sigma,\alpha]$ to show that $N$ contains a 3-cycle. 
 
-\item[\tb{Case 3.}] $\sigma$ is a product of disjoint transpositions and fixes at least one element of $I_n$. Then there exist distinct $i,j,k \in I_n$ such that $\sigma(i) = j, \sigma(j=i)$, $\sigma(k)=k$. Set $\alpha \myeq (i\ j\ k)$ so that 
+\item[\tb{Case 2.}] $\sigma$ contains a 3-cycle $i\ j\ k)$ for some distinct $i,j,k \in I_n$, so $\sigma(i) = j, \sigma(j)=k, \sigma(k)=i$. If $\sigma$ fixes all elements of $I_n\bs \{i,j,k\}$, then $\sigma = (i\ j\ k) \in N$. Otherwise, there exists $l \in I_n\bs \{i,j,k\}$ such that $m \myeq \sigma(l) \ne l$. Set $\alpha \myeq (i\ j\ l)$. Then
+	\[ [\sigma,\alpha] = \sigma (i\ j\ l) \sigma\inv (j\ i\ l) = (j\ k\ m)(j\ i\ l) = (i\ l\ k\ m\ j) \in N \]
+We now apply case 1 to $[\sigma,\alpha]$ to show that $N$ contains a 3-cycle.
+
+\item[\tb{Case 3.}] $\sigma$ is a product of disjoint transpositions and fixes at least one element of $I_n$. Then there exist distinct $i,j,k \in I_n$ such that $\sigma(i) = j, \sigma(j=i)$, $\sigma(k)=k$. Set $\alpha \myeq (i\ j\ k)$ so that
 	\[[\sigma,\alpha] = \sigma(i\ j\ k)\sigma\inv (j\ i\ k) = (j\ i\ k)(j\ i\ k) = (i\ j\ k) \in N \]
-	
+
 \item[\tb{Case 4.}] $\sigma$ is a product of disjoint transpositions and does not fix any element of $I_n$. Then there exist $i,j,k,l \in I_n$ with $\sigma(i)=j$, $\sigma(j) = i$, $\sigma(k)=l$, and $\sigma(l)=k$. Set $\alpha \myeq (i\ j\ k)$. Then
 	\[[\sigma,\alpha] = \sigma(i\ j\ k)\sigma\inv(j\ i\ k) = (j\ i\ l)(j\ i\ k) = (i\ k)(j\ l) \in N \]
 Since $n \geq 5$, we apply case 3 to $[\sigma,\alpha]$ to show that $N$ contains a 3-cycle.
@@ -1260,23 +1260,23 @@ $S_n, A_n$ are not solvable for $n \geq 5$.
 \end{corollary}
 
 \begin{proof}
-Consider the derived series for $S_n$: $\ds{S_n}{1} = [S_n,S_n] = A_n$, and $A_n$ is both simple and non-abelian, therefore $\ds{S_n}{i} = A_n$ for all $i \in \N$. 
+Consider the derived series for $S_n$: $\ds{S_n}{1} = [S_n,S_n] = A_n$, and $A_n$ is both simple and non-abelian, therefore $\ds{S_n}{i} = A_n$ for all $i \in \N$.
 \end{proof}
 
 \vs
 
-\begin{example}[Some Simple Linear Groups] 
-Let $F$ be a field. Can $GL_n(F)$ be simple? If $|F| > 2$, the answer is no, because $SL_n(F) \tl GL_n(F)$. If $|F|= 2$, then $SL_n(F) = GL_n(F)$. From now on, assum $n,|F|) \ne (2,2), (2,3)$. Next question: Can $SL_n(F)$ be simple? Only when $Z(SL_n(F)) = \{ \lambda I \mid \lambda^n=1\}$. 
+\begin{example}[Some Simple Linear Groups]
+Let $F$ be a field. Can $GL_n(F)$ be simple? If $|F| > 2$, the answer is no, because $SL_n(F) \tl GL_n(F)$. If $|F|= 2$, then $SL_n(F) = GL_n(F)$. From now on, assum $n,|F|) \ne (2,2), (2,3)$. Next question: Can $SL_n(F)$ be simple? Only when $Z(SL_n(F)) = \{ \lambda I \mid \lambda^n=1\}$.
 
 \begin{theorem*}
-$PSL_n(F) \myeq SL_n(F)/Z(SL_n(F))$ is simple if $n,|F|) \ne (2,2), (2,3)$. 
+$PSL_n(F) \myeq SL_n(F)/Z(SL_n(F))$ is simple if $n,|F|) \ne (2,2), (2,3)$.
 \end{theorem*}
 
 \vs
 
 We know that $|GL_n(F_q)| = \prod_{i=0}^{n-1} (q^n-q^i)$, and $\ses{SL_n(F_q)}{}{GL_n(F_q)}{\det}{F_q\x}$ is a SES, which implies that $|SL_n(F_q)| = \frac{1}{q-1} |GL_n(F_q)|$. Let $r_n(F_q) \myeq |\{\lambda \in F\x \mid \lambda^n=1\}|$. Then $|PSL_n(F_q)| = \frac{1}{(q-1)r_n(F_q)} |GL_n(F_q)|$. A few more facts include:
 	\begin{list}{$\bullet$}{}
-	\item $GL_3(F_2) = SL_3(F_2) = PSL_3(F_2)$ 
+	\item $GL_3(F_2) = SL_3(F_2) = PSL_3(F_2)$
 	\item $GL_2(F_2) \cong S_2$ (solvable)
 	\item $GL_2(F_3)$ and $PSL_2(F_3) \cong A_4$ are both solvable.
 	\item $PSL_2(F_4) \cong A_5 \cong PSL_2(F_5)$
@@ -1307,7 +1307,7 @@ Let $G$ be a group. A finite sequence $\{e\} = G_0 \leq G_1 \leq \dots \leq G_n 
 
 \vs
 
-\begin{remark}\ 
+\begin{remark}\
 \begin{enumerate}
 \item[(a)] Every finite group $G$ has a composition series (seen by induction on $|G|$).
 \item[(b)] If $G$ is infinite, it needn't have a composition series. For example, $\z$ has no composition series.
@@ -1320,7 +1320,7 @@ Let $G$ be a group. A finite sequence $\{e\} = G_0 \leq G_1 \leq \dots \leq G_n 
 \vs
 
 \begin{theorem}[Jordan-H\"older]
-Assume that $\{e\} = G_0 \tl G_1 \tl \dots \tl G_n = G$ and $\{e\} = G_0' \tl G_1' \tl \dots \tl G_m' = G$ are both composition series for the group $G$. Then $n=m$, and there exists a permutation $\pi \in S_n$ such that $G_i/G_{i-1} \cong G_{\pi(i)}/G_{\pi(i)-1}$ for all $1 \leq i \leq n$. 
+Assume that $\{e\} = G_0 \tl G_1 \tl \dots \tl G_n = G$ and $\{e\} = G_0' \tl G_1' \tl \dots \tl G_m' = G$ are both composition series for the group $G$. Then $n=m$, and there exists a permutation $\pi \in S_n$ such that $G_i/G_{i-1} \cong G_{\pi(i)}/G_{\pi(i)-1}$ for all $1 \leq i \leq n$.
 \end{theorem}
 
 \begin{proof}
@@ -1345,11 +1345,11 @@ We say that $G$ \tb{acts on} $X$ (on the left) if there is a map $G \times X \ra
 \vs
 
 \begin{consequence}
-For each $g\in G$, we have a map $\pi_g : X \ra X$, $x \mapsto g\cdot x$. $(i)$ above gives $\pi_g \circ \pi_h (x) = \pi_{gh}(x) \implies \pi_g \circ \pi_h = \pi_{gh}$, and $(ii)$ gives $\pi_e = \id_X \implies \pi_g \circ \pi_{g\inv} = \id_x = \pi_{g\inv} \circ \pi_{g} \implies \pi_g \in S(X)$. Hence $\phi : G \ra S(X)$, $g \mapsto \pi_g$ is a group homomorphism. 
+For each $g\in G$, we have a map $\pi_g : X \ra X$, $x \mapsto g\cdot x$. $(i)$ above gives $\pi_g \circ \pi_h (x) = \pi_{gh}(x) \implies \pi_g \circ \pi_h = \pi_{gh}$, and $(ii)$ gives $\pi_e = \id_X \implies \pi_g \circ \pi_{g\inv} = \id_x = \pi_{g\inv} \circ \pi_{g} \implies \pi_g \in S(X)$. Hence $\phi : G \ra S(X)$, $g \mapsto \pi_g$ is a group homomorphism.
 
-Conversely, if $\phi : G \ra S(X)$ is a group \hm, then $G\times X \ra X, (g,x) \mapsto \phi(g)(x)$ defines a $G$-action on $X$. The concepts of $G$ acting on $X$ and \hms $G\ra S(X)$ are equivalent. 
+Conversely, if $\phi : G \ra S(X)$ is a group \hm, then $G\times X \ra X, (g,x) \mapsto \phi(g)(x)$ defines a $G$-action on $X$. The concepts of $G$ acting on $X$ and \hms $G\ra S(X)$ are equivalent.
 
-We call the $G$-action \tb{faithful} if $\ker \phi = \{e\}$. 
+We call the $G$-action \tb{faithful} if $\ker \phi = \{e\}$.
 \end{consequence}
 
 \vs
@@ -1380,21 +1380,21 @@ If $G$ acts on $X$, the \tb{stabilizer} of $x \in X$ is defined as
 	\[G_x \myeq \{g \in G \mid g\cdot x = x\} \leq G \]
 So $G_x = G$ if and only if $x$ is a fixed point of $G$. If $Y \sub X$, the \tb{stabilizer} of $Y$ is
 	\[\stab{G}{Y} \myeq \{g \in G \mid g\cdot Y = Y\} \]
-The \tb{fixer} of $Y \sub X$ is the set 
+The \tb{fixer} of $Y \sub X$ is the set
 	\[\fix{G}{Y} \myeq \{g \in G \mid g\cdot y = y \ \forall \ y \in Y\} = \cap_{y\in Y} G_y \]
 \end{defn}
 
 \vs
 
 \begin{example}
-\ 
+\
 \begin{enumerate}
 \item[(a)] Let $G = S_n$. $G_n = \{\sigma \in S_n \mid \sigma(n) = n\} \cong S_{n-1}$ for $n \in I_n$.
 \item[(b)] $GL_n(F)_0 = GL_n(F)$, so $0$ is a fixed point of this action.
-\item[(c)] Let $H \leq G$, where $G$ acts on $X$ and $x\in X$. Then $H_x = H\cap G_x \sub H$. 
+\item[(c)] Let $H \leq G$, where $G$ acts on $X$ and $x\in X$. Then $H_x = H\cap G_x \sub H$.
 \item[(d)] Let $G$ act on $G$ my left multiplication. Then $G_x = \{e\}$ for all $x \in X$. This is an example of a \tn{free} action.
-\item[(e)] For $H \leq G$, let $G$ act on $G/H$ by left multiplication. Then for $x = gH \in G/H$, $G_x = gHg\inv$. 
-\item[(f)] Let $G$ act on $G$ by conjugation, $x \in G$. Then $G_x = \{g \in G \mid gxg\inv = x\} C_G(x)$. If $H sub G$, then $\stab{G}{H} = \{g \in G \mid gHg\inv = H\} = N_G(H)$, and $\fix{G}{H} = \{g\in G\mid ghg\inv = h \ \forall \ h \in H\} = C_G(H)$. 
+\item[(e)] For $H \leq G$, let $G$ act on $G/H$ by left multiplication. Then for $x = gH \in G/H$, $G_x = gHg\inv$.
+\item[(f)] Let $G$ act on $G$ by conjugation, $x \in G$. Then $G_x = \{g \in G \mid gxg\inv = x\} C_G(x)$. If $H sub G$, then $\stab{G}{H} = \{g \in G \mid gHg\inv = H\} = N_G(H)$, and $\fix{G}{H} = \{g\in G\mid ghg\inv = h \ \forall \ h \in H\} = C_G(H)$.
 \end{enumerate}
 \end{example}
 
@@ -1403,11 +1403,11 @@ The \tb{fixer} of $Y \sub X$ is the set
 \begin{remark}
 Let $G$ act on the set $X$.
 \begin{enumerate}
-\item[(a)] If $x \in X$, then $G_{g\cdot x} = g G_x g\inv$. 
+\item[(a)] If $x \in X$, then $G_{g\cdot x} = g G_x g\inv$.
 
-$[\supseteq]$ Let $h \in G_x$. Then $h \cdot x = x$, so $ghg\inv \cdot (g\cdot x) = (ghg\inv g) \cdot x = (gh) \cdot x = g\cdot (h\cdot x) = g\cdot x$, hence $ghg\inv \in G_{g\cdot x}$. 
+$[\supseteq]$ Let $h \in G_x$. Then $h \cdot x = x$, so $ghg\inv \cdot (g\cdot x) = (ghg\inv g) \cdot x = (gh) \cdot x = g\cdot (h\cdot x) = g\cdot x$, hence $ghg\inv \in G_{g\cdot x}$.
 
-$[\sub]$ Applying the above argument to $g\inv$ and $g \cdot x$ gives us $g\inv \cdot G_{g\cdot x} g \sub G_{g\inv \cdot (g\cdot x)} \implies G_{g\cdot x} \sub g G_x g\inv$. 
+$[\sub]$ Applying the above argument to $g\inv$ and $g \cdot x$ gives us $g\inv \cdot G_{g\cdot x} g \sub G_{g\inv \cdot (g\cdot x)} \implies G_{g\cdot x} \sub g G_x g\inv$.
 
 \item[(b)] Let $\phi : G \ra S(X)$ be the associated group \hm. Since $\ker \phi = \bigcap_{x\in X} G_x$, $G$ acts faithfully on $X$ if and only if $\bigcap_{x\in X} G_x = \{e\}$.
 \end{enumerate}
@@ -1426,33 +1426,33 @@ The action of $G$ on itself by left multiplication is faithful since $G_x = \{e\
 \vs
 
 \begin{proposition}
-If $H \leq G$ with $[G : H] = n$, then there exists a group \hm\ $\phi : G \ra S_n$ with $G_1 = H$ and $\ker \phi = \bigcap_{g\in G} gHg\inv$. 
+If $H \leq G$ with $[G : H] = n$, then there exists a group \hm\ $\phi : G \ra S_n$ with $G_1 = H$ and $\ker \phi = \bigcap_{g\in G} gHg\inv$.
 \end{proposition}
 
 \begin{proof}
-$G$ acts by left multiplication on $X = G/H$. Let $\phi' : G \ra S(X)$ be the associated group \hm. Choose any bijective map $f : X \ra I_n$ satisfying $f(H) = 1$. Define $\psi : S(X) \ra S_n$ by $\pi \mapsto f \circ \pi \circ f\inv$ (injective). Define $\phi = \psi \circ \phi' : G \ra S(X) \ra S_n$, a group homomorphism with $\ker \phi = \ker \phi'$. Since $F(H) = 1$, we get $G_1 = G_H = H$. 
+$G$ acts by left multiplication on $X = G/H$. Let $\phi' : G \ra S(X)$ be the associated group \hm. Choose any bijective map $f : X \ra I_n$ satisfying $f(H) = 1$. Define $\psi : S(X) \ra S_n$ by $\pi \mapsto f \circ \pi \circ f\inv$ (injective). Define $\phi = \psi \circ \phi' : G \ra S(X) \ra S_n$, a group homomorphism with $\ker \phi = \ker \phi'$. Since $F(H) = 1$, we get $G_1 = G_H = H$.
 \end{proof}
 
 \vs
 
 \begin{proposition}
-Let $G$ be a finite group with $|G| = p_1 p_2 \cdots p_n$, all $p_i$ primes, and $p_1 \leq p_2 \leq \dots \leq p_n$. If $H \leq G$ is such that $[G : H] = p_1$, then $H$ is a normal subgroup of $G$. 
+Let $G$ be a finite group with $|G| = p_1 p_2 \cdots p_n$, all $p_i$ primes, and $p_1 \leq p_2 \leq \dots \leq p_n$. If $H \leq G$ is such that $[G : H] = p_1$, then $H$ is a normal subgroup of $G$.
 \end{proposition}
 
 \begin{proof}
-Consider the group homomorphism $\phi : G \ra S(G/H) \cong S_{p_1}$. By 1.5.9, $\ker \phi \leq H$. We want to show that $\ker \phi = H$. Assume $K \myeq \ker \phi \ne H$. Then $[G : K] = [G : H][H : K] = p_1 [H : K]$ and $1 \ne [H : K] \mid |H| \mid |G|$. There exists $1 \leq i \leq n$ such that $p_i \mid [H : K] \implies p_1p_i \mid [G : K] = |G/K|$, but $G/K \hookrightarrow S_{p_1}$ by the first isomorphism theorem, so $|G/K| \mid |S_{p_1}| = p_1!$, hence $p_1p_i \mid p_1! \implies p_i \mid (p_1-1)!$, which is a contradiction because $p_i \geq p$ is a prime. Hence $K = H \implies H \nsg G$. 
+Consider the group homomorphism $\phi : G \ra S(G/H) \cong S_{p_1}$. By 1.5.9, $\ker \phi \leq H$. We want to show that $\ker \phi = H$. Assume $K \myeq \ker \phi \ne H$. Then $[G : K] = [G : H][H : K] = p_1 [H : K]$ and $1 \ne [H : K] \mid |H| \mid |G|$. There exists $1 \leq i \leq n$ such that $p_i \mid [H : K] \implies p_1p_i \mid [G : K] = |G/K|$, but $G/K \hookrightarrow S_{p_1}$ by the first isomorphism theorem, so $|G/K| \mid |S_{p_1}| = p_1!$, hence $p_1p_i \mid p_1! \implies p_i \mid (p_1-1)!$, which is a contradiction because $p_i \geq p$ is a prime. Hence $K = H \implies H \nsg G$.
 \end{proof}
 
 \vs
 
 \begin{defn}
-The \tb{$\mb{G}$-orbit} of $x \in X$ is $G\cdot x \myeq \{g\cdot x \in X \mid g \in G\}$. The action of $G$ on $X$ is called \tb{transitive} if $G\cdot x = X$ for all $x \in X$. 
+The \tb{$\mb{G}$-orbit} of $x \in X$ is $G\cdot x \myeq \{g\cdot x \in X \mid g \in G\}$. The action of $G$ on $X$ is called \tb{transitive} if $G\cdot x = X$ for all $x \in X$.
 \end{defn}
 
 \vs
 
 \begin{example*}[of transitive actions]
-\ 
+\
 \begin{list}{$\bullet$}{}
 \item $G$ acting on itself by multiplication
 \item $G$ acting on $G/H$ by left multiplication
@@ -1467,15 +1467,15 @@ For any $x \in X$, $|G\cdot x| = [G : G_x]$.
 \end{lemma}
 
 \begin{proof}
-Consider the map $f : G/G_x \ra G\cdot x, gG_x \mapsto g\cdot x$. 
+Consider the map $f : G/G_x \ra G\cdot x, gG_x \mapsto g\cdot x$.
 
 $f$ is well-defined. Suppose $h=gs$ for some $S \in G_x$. Then $f(hG_x) = h \cdot x = (gs) \cdot x = g\cdot(s\cdot x) = g\cdot x = f(g G_x)$.
 
-$f$ is injective. Suppose $f(gG_x) = f(hG_x)$. Then $g\cdot x = h\cdot x \implies h\inv g \in G_x \implies g G_x = h G_x$. 
+$f$ is injective. Suppose $f(gG_x) = f(hG_x)$. Then $g\cdot x = h\cdot x \implies h\inv g \in G_x \implies g G_x = h G_x$.
 
-$f$ is surjective. Given $g\cdot x \in G\cdot x$, $g G_x \overset{f}{\longmapsto} g\cdot x$. 
+$f$ is surjective. Given $g\cdot x \in G\cdot x$, $g G_x \overset{f}{\longmapsto} g\cdot x$.
 
-Since $f$ is bijective, $[G : G_x] = |G/G_x| = |G \cdot x|$. 
+Since $f$ is bijective, $[G : G_x] = |G/G_x| = |G \cdot x|$.
 \end{proof}
 
 \vs
@@ -1484,13 +1484,13 @@ Since $f$ is bijective, $[G : G_x] = |G/G_x| = |G \cdot x|$.
 Let $G$ act on the set $X$.
 	\begin{enumerate}
 	\item[(a)] $X$ is the disjoint union of $G$-orbits.
-	\item[(b)] If $X$ is finite and $G_{x_1},G_{x_2},\dots,G_{x_r}$ are the distinct $G$-orbits in $X$, then 
+	\item[(b)] If $X$ is finite and $G_{x_1},G_{x_2},\dots,G_{x_r}$ are the distinct $G$-orbits in $X$, then
 		\[|X| = \sum_{i=1}^r |G\cdot x_i| = \sum_{i=1}^r [G : G_{x_i}] \]
 	\end{enumerate}
 \end{proposition}
 
 \begin{proof}
-\ 
+\
 \begin{enumerate}
 \item[(a)] Define the relation $\sim$ on $X$ by $x \sim y$ if $x \in G \cdot y$. It is easily verified that $\sim$ is an equivalence relation on $X$ with $[x]_{\sim} = G\cdot x$ for all $x \in X$.
 \item[(b)] This follows easily from (a) and the Orbit-Stabilizer Lemma.
@@ -1499,7 +1499,7 @@ Let $G$ act on the set $X$.
 
 \vs
 
-Let us now specialize to the situation in which $G$ acts on itself by conjugation. Stabilizers have the form $G_x = \{g \in G \mid gxg\inv = x\} = C_G(x)$, and an orbit $G\cdot x = \{gxg\inv \mid g\in G\}$ is the conjugacy class of $x\in G$. By 1.5.12, $|G\cdot x| = [G : C_G(x)]$ and $G\cdot x = \{x\} \iff C_G(x) = G \iff X \in Z(G)$. 
+Let us now specialize to the situation in which $G$ acts on itself by conjugation. Stabilizers have the form $G_x = \{g \in G \mid gxg\inv = x\} = C_G(x)$, and an orbit $G\cdot x = \{gxg\inv \mid g\in G\}$ is the conjugacy class of $x\in G$. By 1.5.12, $|G\cdot x| = [G : C_G(x)]$ and $G\cdot x = \{x\} \iff C_G(x) = G \iff X \in Z(G)$.
 
 \vs
 
@@ -1520,7 +1520,7 @@ If $1 \leq i \leq r$, then $x_i \notin Z(G) \implies [G : G_{x_i}] > 1$.
 \begin{modification}
 Let $G$ be a finite group, $N\nsg G$, and $x \in G$. Then either $G\cdot x \cap N = \vn$ or $G\cdot x \sub N$. By letting $G$ act on $N$ by conjugation, we get
 	\[|N| = |N \cap Z(G)| + \sum_{i=1}^t [G : C_G(y_i)], \]
-where the $y_i$ are distinct representatives of the $G$-conjugacy classes contained in $N\bs Z(G)$. 
+where the $y_i$ are distinct representatives of the $G$-conjugacy classes contained in $N\bs Z(G)$.
 \end{modification}
 
 \vs
@@ -1532,7 +1532,7 @@ Let $x_1 = \gen{(1\ 2)}$, $x_2 = \gen{(1\ 2)(3\ 4)}$, $x_3 = \gen{(1\ 2\ 3)}$, $
 	\[|C_G(x_i)| = \frac{|G|}{[G : C_G(x_i)]} = \frac{|G|}{|G \cdot x_i|} \]
 	\begin{enumerate}
 	\item[$\mb{i=1.}$ ] $|C_G(x_1)| = 24/6 = 4 \implies C_G(x_i) = C_G(x_1) = \gen{(1\ 2)(3\ 4)} \cong \z_2 \times \z_2$.
-	\item[$\mb{i=2.}$ ] $|C_G(x_2)| = 24/3 = 8$. Noting that $(1\ 2)(3\ 4), (1\ 2\ 3\ 4) \in C_G(x_2)$, it is not very difficult to see that $C_G(x_2) = \gen{(1\ 2)}\gen{(1\ 2\ 3\ 4)} \cong D_8$. 
+	\item[$\mb{i=2.}$ ] $|C_G(x_2)| = 24/3 = 8$. Noting that $(1\ 2)(3\ 4), (1\ 2\ 3\ 4) \in C_G(x_2)$, it is not very difficult to see that $C_G(x_2) = \gen{(1\ 2)}\gen{(1\ 2\ 3\ 4)} \cong D_8$.
 	\item[$\mb{i=3.}$ ] $|C_G(x_3)| = 24/3 = 8 \implies C_G(x_3) = \gen{(1\ 2\ 3)}$.
 	\item[$\mb{i=4.}$ ] $|C_G(x_4)| = 24/6 = 4 \implies C_G(x_4) = \gen{(1\ 2\ 3\ 4)}$.
 	\end{enumerate}
@@ -1588,7 +1588,7 @@ In this case, $H\nsg G$.
 \end{theorem}
 
 \begin{proof}
-\ 
+\
 \begin{enumerate}
 \item[(a)] Lagrange.
 \item[(b)] Just look at the class equation.
@@ -1602,8 +1602,8 @@ In this case, $H\nsg G$.
 \begin{remark}
 The same argument as in $(ii) \implies (i)$ above shows that for any group $G$ and any $H \leq G$, if $[G : H] = p$, then $H$ is maximal in $G$. On the other hand, neither of the following statements are true in general:
 	\begin{enumerate}
-	\item[(i)] If $H$ is a maximal subgroup of $G$, then $[G : H] = p$. As a counterexample, $S_3 \leq S_4$ is maximal with $[S_4 : S_3] = 4$. 
-	\item[(ii)] If $[G : H] = p$, then $H\nsg G$. As a counterexample, consider 1.5.16, where $[S_4 : C_{S_4}(x_2)] = 3$, but $C_{S_4}(x_2) \not\nsg S_4$. 
+	\item[(i)] If $H$ is a maximal subgroup of $G$, then $[G : H] = p$. As a counterexample, $S_3 \leq S_4$ is maximal with $[S_4 : S_3] = 4$.
+	\item[(ii)] If $[G : H] = p$, then $H\nsg G$. As a counterexample, consider 1.5.16, where $[S_4 : C_{S_4}(x_2)] = 3$, but $C_{S_4}(x_2) \not\nsg S_4$.
 	\end{enumerate}
 \end{remark}
 
@@ -1612,9 +1612,9 @@ The same argument as in $(ii) \implies (i)$ above shows that for any group $G$ a
 \begin{proposition}
 Let $G$ be a $p$-group.
 	\begin{enumerate}
-	\item[(a)] If $\triv \ne N \nsg G$, then $N \cap Z(G) \ne \{e\}$. 
-	\item[(b)] If $N \nsg G$ with $|N| = p^m$ for some $m \in \N$, then for all $1 \leq l \leq m$, there exists a subgroup $H \leq n$ with $|H| = p^l$ and $H \nsg G$. 
-	\item[(c)] If $H < G$, then there exists $H < U \leq G$ with $[U : H] = p$. 
+	\item[(a)] If $\triv \ne N \nsg G$, then $N \cap Z(G) \ne \{e\}$.
+	\item[(b)] If $N \nsg G$ with $|N| = p^m$ for some $m \in \N$, then for all $1 \leq l \leq m$, there exists a subgroup $H \leq n$ with $|H| = p^l$ and $H \nsg G$.
+	\item[(c)] If $H < G$, then there exists $H < U \leq G$ with $[U : H] = p$.
 	\end{enumerate}
 \end{proposition}
 
@@ -1625,7 +1625,7 @@ Exercise.
 \vs
 
 \begin{proposition}
-If $|G| = p^2$, then $G$ is abelian and either $G \cong \z_{p^2}$ or $G \cong \z_p \times \z_p$. 
+If $|G| = p^2$, then $G$ is abelian and either $G \cong \z_{p^2}$ or $G \cong \z_p \times \z_p$.
 \end{proposition}
 
 \begin{proof}
@@ -1643,7 +1643,7 @@ Consider $p$-groups $G$ where $|G| = p^n, n=1,2,3$. Which $G$ are abelian?
 \begin{enumerate}
 \item[$\mb{n=1.}$ ] Then $G \cong \z_p$.
 \item[$\mb{n=2.}$ ] All such $G$ are abelian by 1.5.23.
-\item[$\mb{n=3.}$ ] We invoke the not-yet-proven Fundamental Theorem of Finite Abelian groups to say that the abelian groups of order $p^3$ are, up to isomorphism: $\z_{p^3}, \z_{p^2} \times \z_p, \z_p\times \z_p \times \z_p$. 
+\item[$\mb{n=3.}$ ] We invoke the not-yet-proven Fundamental Theorem of Finite Abelian groups to say that the abelian groups of order $p^3$ are, up to isomorphism: $\z_{p^3}, \z_{p^2} \times \z_p, \z_p\times \z_p \times \z_p$.
 \end{enumerate}
 \end{remark*}
 
@@ -1654,7 +1654,7 @@ Are there non-abelian groups of order $p^3$?
 \end{question}
 
 \begin{answer}
-Yes, there are precisely 2 (up to isomorphism) for each prime $p$. When $p=2$, these are $Q, D_8$. When $p\geq 3$, it turns out that these are $\z_{p^2} \rtimes \z_p$ and $(\z_p \times \z_p) \rtimes \z_p$.  
+Yes, there are precisely 2 (up to isomorphism) for each prime $p$. When $p=2$, these are $Q, D_8$. When $p\geq 3$, it turns out that these are $\z_{p^2} \rtimes \z_p$ and $(\z_p \times \z_p) \rtimes \z_p$.
 \end{answer}
 
 
@@ -1662,21 +1662,21 @@ Yes, there are precisely 2 (up to isomorphism) for each prime $p$. When $p=2$, t
 \chapter{Semi-Direct Products}
 
 \begin{defn}
-Let $B$ be a group which acts on another group $A$, and let $\phi : B \ra \aut(A)$ be the corresponding \hm, so that $b \cdot a = \phi(b)(a)$ and $b\cdot(aa') = (b\cdot a)(b\cdot a')$ for all $b\in B$ and $a,a' \in A$. In particular, $b\cdot e_A = e_A$ for all $b \in B$. 
+Let $B$ be a group which acts on another group $A$, and let $\phi : B \ra \aut(A)$ be the corresponding \hm, so that $b \cdot a = \phi(b)(a)$ and $b\cdot(aa') = (b\cdot a)(b\cdot a')$ for all $b\in B$ and $a,a' \in A$. In particular, $b\cdot e_A = e_A$ for all $b \in B$.
 
-The \tb{(external) semi-direct product} $A \sd{\phi} B$ of $A$ and $B$ with respect to $\phi$ is defined as the set $A \times B$ (Certesian product) with the following multiplication: $(a_1,b_1)(a_2,b_2) \myeq (a_1 (b_1\cdot a_2), b_1 b_2)$. 
+The \tb{(external) semi-direct product} $A \sd{\phi} B$ of $A$ and $B$ with respect to $\phi$ is defined as the set $A \times B$ (Certesian product) with the following multiplication: $(a_1,b_1)(a_2,b_2) \myeq (a_1 (b_1\cdot a_2), b_1 b_2)$.
 
-With this multiplication, it is easily verified that $A \sd{\phi} B$ is a group with identity element $(e_A,e_B)$ and $(a,b)\inv = (b\inv \cdot a\inv,b\inv)$ for all $a\in A, b \in B$. 
+With this multiplication, it is easily verified that $A \sd{\phi} B$ is a group with identity element $(e_A,e_B)$ and $(a,b)\inv = (b\inv \cdot a\inv,b\inv)$ for all $a\in A, b \in B$.
 \end{defn}
 
 \vs
 
 \begin{remark}
-Let $A,B,\phi$ be given as above. 
+Let $A,B,\phi$ be given as above.
 \begin{enumerate}
 \item[(a)] The subscript $\phi$ in $A\sd{\phi} B$ is often omitted if $\phi$ is understood. However, $A\sd{\phi} B \cong A\sd{\psi}B$ is NOT true in general.
 \item[(b)] Sometimes the semi-direct product is written $B \overset{{\huge \ltimes}}{\null_{\tiny (\phi)}} A$. In either case, the "triangle" always points to the normal subgroup.
-\item[(c)] $A \sd{\phi}B$ is NEVER abelian if $\phi \ne \id_A$. If $\phi \ne \id_A$, choose $b \in B$ and $a \in A$ such that $b\cdot a \ne a$. Then $(e_A,b)(a,e_B) = (b\cdot a,b) \ne (a,b) = (a,e_B)(e_A,b)$. 
+\item[(c)] $A \sd{\phi}B$ is NEVER abelian if $\phi \ne \id_A$. If $\phi \ne \id_A$, choose $b \in B$ and $a \in A$ such that $b\cdot a \ne a$. Then $(e_A,b)(a,e_B) = (b\cdot a,b) \ne (a,b) = (a,e_B)(e_A,b)$.
 \item[(d)] $|A\sd{\phi}B| = |A\times B| = |A| |B|$.
 \item[(e)] $A \lra A\sd{\phi}B$, $a \mapsto (a,e_B)$ and $B \lra A\sd{\phi}B$, $b \mapsto (e_A,b)$ are both injective group \hms. We often identify $A$ and $B$ with their images in $G \myeq A\sd{\phi}B$. These subgroups have the following properties:
 	\begin{enumerate}
@@ -1707,11 +1707,11 @@ Let $G$ be a group and $A,B \leq G$ satisfying
 	\item[(ii)] $A\cap B = \triv$
 	\item[(ii)] $A \nsg G$
 	\end{enumerate}
-Then $G$ is called the \tb{(internal) semi-direct product} of $A$ and $B$, written $G = A \rtimes B$ (or $B \ltimes A$). Here, $B$ acts on $A$ by conjugation: $b\cdot a = bab\inv$, so the corresponding homomorphism is $\phi : B \ra \aut(A), b \mapsto \kappa_b|_A$. With this action of $B$ on $A$, we consider the external semidirect product $A\sd{\phi}B$, and we get a group isomorphism $\mu : A \sd{\phi}B \ra G, (a,b) \mapsto ab$. 
+Then $G$ is called the \tb{(internal) semi-direct product} of $A$ and $B$, written $G = A \rtimes B$ (or $B \ltimes A$). Here, $B$ acts on $A$ by conjugation: $b\cdot a = bab\inv$, so the corresponding homomorphism is $\phi : B \ra \aut(A), b \mapsto \kappa_b|_A$. With this action of $B$ on $A$, we consider the external semidirect product $A\sd{\phi}B$, and we get a group isomorphism $\mu : A \sd{\phi}B \ra G, (a,b) \mapsto ab$.
 \end{defn}
 
 \begin{proof}
-$\mu$ is a \hm. 
+$\mu$ is a \hm.
 	\begin{align*}
 	\mu((a_1,b_1)(a_1,b_2)) &= \mu(a_1(b_1\cdot a_2), b_1 b_2) \\
 	&= \mu((a_1(b_1a_2b_1\inv),b_1,b_2)) \\
@@ -1720,9 +1720,9 @@ $\mu$ is a \hm.
 	&= \mu((a_1,b_1)) \mu((a_2,b_2))
 	\end{align*}
 
-$\mu$ is surjective by (i). 
+$\mu$ is surjective by (i).
 
-$\mu$ is injective. Let $(a,b) \in \ker \mu$. Then $e = \mu(a,b) = ab \implies a = b\inv \in A \cap B = \{e\} \implies a = b = e \implies (a,b) = (e,e)$. 
+$\mu$ is injective. Let $(a,b) \in \ker \mu$. Then $e = \mu(a,b) = ab \implies a = b\inv \in A \cap B = \{e\} \implies a = b = e \implies (a,b) = (e,e)$.
 \end{proof}
 
 \vs
@@ -1748,8 +1748,8 @@ Assume $G = A \sd{} B$ (internal semi-direct product).
 \
 \begin{enumerate}
 \item[(a)] $S_3 = \gen{(1\ 2\ 3)} \sd{} \gen{(1\ 2)} \cong \z_3 \sd{} \z_2$ (not nilpotent)
-\item[(b)] $S_4 = V \sd{} S_3 \cong (\z_2 \times \z_2) \sd{} (\z_3 \sd{} \z_2)$, where $V = \{\id,(1\ 2)(3\ 4),(1\ 3)(2\ 4),(1\ 4)(2\ 3)\}$ is the unique normal subgroup of $S_4$ other than $A_4$. 
-\item[(c)] $A_4 = V \sd{} \gen{(1\ 2\ 3)} \cong (\z_2 \times \z_2) \sd{} \z_3$ 
+\item[(b)] $S_4 = V \sd{} S_3 \cong (\z_2 \times \z_2) \sd{} (\z_3 \sd{} \z_2)$, where $V = \{\id,(1\ 2)(3\ 4),(1\ 3)(2\ 4),(1\ 4)(2\ 3)\}$ is the unique normal subgroup of $S_4$ other than $A_4$.
+\item[(c)] $A_4 = V \sd{} \gen{(1\ 2\ 3)} \cong (\z_2 \times \z_2) \sd{} \z_3$
 \item[(d)] Recall ???: $C_{S_4}(x_2) = \gen{(1\ 2\ 3\ 4)} \sd{} \gen{(1\ 2)} \cong \z_4 \sd{} \z_2 \cong D_8$
 \item[(e)] $S_n = A_n \sd{} \gen{(1\ 2)} \cong A_n \sd{} \z_2$
 \item[(f)] $A_n$ does not admit a proper semi-direct product decomposition for $n \geq 5$.
@@ -1776,14 +1776,14 @@ This also demonstrates that $N_G(H) \ne \{g \in G \mid gAg\inv \sub H\}$ is not 
 	p(p-1), \quad & A = \z_{p^2} \\
 	(p^2-1)(p^2-p), \quad & A = \z_p \times \z_p
 	\end{cases} \]
-In both cases, $p \mid |\aut(A)|$, so by Cauchy's theorem there exists $\beta \in \aut(A)$ with $|\beta| = p$. Define $\phi : B \ra \aut(A)$ by $b^m \mapsto \beta^m$. In both cases (for $A$), we get a group $A \sd{\phi} B$ of order $|A| |B| = p^3$, non-abelian since $\beta \ne \id_A$. 
+In both cases, $p \mid |\aut(A)|$, so by Cauchy's theorem there exists $\beta \in \aut(A)$ with $|\beta| = p$. Define $\phi : B \ra \aut(A)$ by $b^m \mapsto \beta^m$. In both cases (for $A$), we get a group $A \sd{\phi} B$ of order $|A| |B| = p^3$, non-abelian since $\beta \ne \id_A$.
 \end{enumerate}
 \end{example}
 
 \vs
 
 \begin{remark*}
-The previous example covers all possible non-abelian groups of order $p^3$ with the exception of $Q$ ($p=2$). 
+The previous example covers all possible non-abelian groups of order $p^3$ with the exception of $Q$ ($p=2$).
 \end{remark*}
 
 \vs
@@ -1793,16 +1793,16 @@ The previous example covers all possible non-abelian groups of order $p^3$ with 
 \vs
 
 \begin{defn}
-A short exact sequence $\ses{N}{f}{G}{p}{Q}$ is called \tb{split} if there exists a homomorphism ("section") $s : Q \ra G$ such that $p \circ s = \id_Q$, so that $s$ is injective and $Q \cong S(Q) \leq G$. 
+A short exact sequence $\ses{N}{f}{G}{p}{Q}$ is called \tb{split} if there exists a homomorphism ("section") $s : Q \ra G$ such that $p \circ s = \id_Q$, so that $s$ is injective and $Q \cong S(Q) \leq G$.
 \end{defn}
 
 \vs
 
 \begin{example*}
-\ 
+\
 \begin{enumerate}
 \item[(a)] The SES $\ses{\gen{i}}{}{Q_8}{}{\z_2}$ is not split.
-\item[(b)] The SES $\ses{SL_n(F)}{}{GL_n(F)}{}{F\x}$ is split. 
+\item[(b)] The SES $\ses{SL_n(F)}{}{GL_n(F)}{}{F\x}$ is split.
 \item[(c)] If $G = A \sd{\phi} B$, then $\ses{A}{}{G}{}{B}$ is a split SES. Conversely, if $\ses{N}{f}{G}{p}{Q}$ is a split SES with section $s$, then $G = f(N) \sd{} s(Q)$ (Exercise).
 \end{enumerate}
 \end{example*}
@@ -1812,36 +1812,36 @@ A short exact sequence $\ses{N}{f}{G}{p}{Q}$ is called \tb{split} if there exist
 \begin{defn}[Dihedral Groups]
 For any abelian group $A$, the inversion map $i : A \ra A, a \mapsto a\inv$ is an automorphism of $A$ with $i^2 = \id_A$. Let $B = \gen{b}, |b|=2$, and consider the homomorphism $\phi : B \ra \aut(A), b \mapsto i, e_B \mapsto \id_A$, so that we get the group $A \sd{\phi} B$. If $A = \gen{a}$ is cyclic, we call $D = A \sd{\phi}B$ a \tb{dihedral group.}
 \begin{enumerate}
-\item[\tb{Notation.}] If $A \cong \z$, then we write $A \sd{\phi}B = D_\infty$. If $A \cong \z_n$, then we write $A \sd{\phi}B = D_{2n}$. 
-\item[\tb{Elements.}] If $|A| = n$, then $|D_{2n}| = 2n$. 
-\item[\tb{Multiplication.}] We now write elements of $D$ as $a^ib^j$ instead of $(a^i,b^j)$. We have for all $i,j \in \z$, 
+\item[\tb{Notation.}] If $A \cong \z$, then we write $A \sd{\phi}B = D_\infty$. If $A \cong \z_n$, then we write $A \sd{\phi}B = D_{2n}$.
+\item[\tb{Elements.}] If $|A| = n$, then $|D_{2n}| = 2n$.
+\item[\tb{Multiplication.}] We now write elements of $D$ as $a^ib^j$ instead of $(a^i,b^j)$. We have for all $i,j \in \z$,
 	\begin{align*}
 	a^ia^j &= a{i+j}, \\
 	a^i(a^jb) &= a^{i+j} b, \\
 	(a^jb)a^i &= a^j(ba^ib\inv)b = a^j(a^{-i})b = a^{j-i}b, \\
 	(a^ib)(a^jb) &= a^{i-j}b
 	\end{align*}
-Note that $(a^ib)^2 = e$ for all $i \in \z$, so $|a^ib| = 2$ for all $i \in \z$. 
-\end{enumerate} 
+Note that $(a^ib)^2 = e$ for all $i \in \z$, so $|a^ib| = 2$ for all $i \in \z$.
+\end{enumerate}
 \end{defn}
 
 \vs
 
 \begin{remark}[On Dihedral Groups]
-\ 
+\
 \begin{enumerate}
-\item[(a)] $\aut(\z) = \{\id,i\}$, so $\id \ne \phi : B \ra \aut(\z)$ is uniquely determined. However, if $8 \leq n < \infty$, there are in general different possibilities for a nontrivial homomorphism $\psi : B \ra \aut(\z_n)$ such that $\z_n \sd{\psi} B \ncong D_{2n}$. 
+\item[(a)] $\aut(\z) = \{\id,i\}$, so $\id \ne \phi : B \ra \aut(\z)$ is uniquely determined. However, if $8 \leq n < \infty$, there are in general different possibilities for a nontrivial homomorphism $\psi : B \ra \aut(\z_n)$ such that $\z_n \sd{\psi} B \ncong D_{2n}$.
 \item[(b)] $D_2 \cong \z_2$, $D_4 \cong \z_2 \times \z_2$, $D_6 \cong \z_3 \sd{}\z_2$, $D_8 \cong \z_4 \sd{} \z_2$. In the cases of $D_6$ and $D_8$, the nontrivial homomorphism $\phi : B \ra \aut(\z_{3,4})$ is unique.
 \item[(c)] Any dihedral group is solvable by 1.6.4 (b), since $\z,\z_n,\z_2$ are solvable.
 \item[(d)] $D_\infty$ is not nilpotent, and $D_{2n}$ is nilpotent if and only if $n$ is a power of 2 (Exercise).
 \item[(e)] Geometric interpretation: If $n \geq 3$ is finite, then $D_{2n}$ can be considered as the group of symmetries of a regular n-gon $P$ by associating $a$ with a counterclockwise rotation by $\frac{2\pi}{n}$ and associating $a^jb$, $0 \leq j \leq n-1$, with the reflections.
-\item[\tb{Consequence}] $\{\tn{Symmetries of }P\} \ra S_n$, where $S_n$ is thought of as the set of permutations of the $n$ vertices of $P$. Thus, $S_n$ contains a subgroup isomorphic to $D_{2n}$ for $n \geq 3$, e.g., $D_8 \hra S_4$. 
-\item[\tb{Algebraically:}] Put $a = (1\ 2\dots n) \in S_n$, and 
+\item[\tb{Consequence}] $\{\tn{Symmetries of }P\} \ra S_n$, where $S_n$ is thought of as the set of permutations of the $n$ vertices of $P$. Thus, $S_n$ contains a subgroup isomorphic to $D_{2n}$ for $n \geq 3$, e.g., $D_8 \hra S_4$.
+\item[\tb{Algebraically:}] Put $a = (1\ 2\dots n) \in S_n$, and
 	\[b = \begin{cases}
 	\left(\frac{n}{2},\frac{n}{2}+1\right), \qquad & n \tn{ even} \\
 	\left( \frac{n-1}{2},\frac{n+3}{2}\right), & n \tn{ odd}
 	\end{cases}\]
-If $n = \infty$, then $D_{\infty}$ can be interpreted as the group of symmetries of the real line which stabilize $\z$ by associating $a^j$ with the translation $x \mapsto x+j$ and $a^jb$ with the point reflection about $\frac{j}{2}$ for each $j \in \z$. 
+If $n = \infty$, then $D_{\infty}$ can be interpreted as the group of symmetries of the real line which stabilize $\z$ by associating $a^j$ with the translation $x \mapsto x+j$ and $a^jb$ with the point reflection about $\frac{j}{2}$ for each $j \in \z$.
 \end{enumerate}
 \end{remark}
 
@@ -1856,9 +1856,9 @@ Let $G$ be a group such that $|G| = pq$, where $p>q$ are primes. Then
 \end{proposition}
 
 \begin{proof}
-\ 
+\
 \begin{enumerate}
-\item[(a)] Cauchy's theorem, there exist $A,B \leq G$ with $|A| = p$, $|B| = q$. Since $[G : A = q]$, $A \nsg G$ by 1.5.10. 
+\item[(a)] Cauchy's theorem, there exist $A,B \leq G$ with $|A| = p$, $|B| = q$. Since $[G : A = q]$, $A \nsg G$ by 1.5.10.
 	\begin{enumerate}
 	\item[(i)] \[\size{AB} = \frac{|A||B|}{|A\cap B|} = pq = |G| \implies G = AB\]
 	\item[(ii)] $A \cap B = \{e\}$ since $(p,q) = 1$.
@@ -1883,7 +1883,7 @@ The idea of this chapter is to analyze the structure of a finite group $G$ by in
 A \tb{Sylow $\mb{p}$-subgroup} of $G$ is a maximal $p$-subgroup of $G$. Denote by $\sy_p(G)$ the set of Sylow $p$-subgroups of $G$. It is clear that:
 	\begin{enumerate}
 	\item[(i)] If $p \nmid |G|$, then $\{e\}$ is the only Sylow $p$-subgroup of $G$.
-	\item[(ii)] If $U \leq G$ is any $p$-subgroup of $G$, then there exists $H \in \sy_p(G)$ with $U \leq H$. 
+	\item[(ii)] If $U \leq G$ is any $p$-subgroup of $G$, then there exists $H \in \sy_p(G)$ with $U \leq H$.
 	\item[(iii)] If $|G| = p^em$, $p \nmid m$, $i \in \N_0$, $m \in \N$, and $H$ is a subgroup of $G$ with $|H| = p^e$, then $H \in \sy_p(G)$.
 	\end{enumerate}
 \end{defn}
@@ -1891,7 +1891,7 @@ A \tb{Sylow $\mb{p}$-subgroup} of $G$ is a maximal $p$-subgroup of $G$. Denote b
 \vs
 
 \begin{question}
-\ 
+\
 \begin{enumerate}
 \item[(a)] If $H \in \sy_p(G)$, is in necessarily true that $|H| = p^em$ as in $(iii)$ above?
 \item[(b)] If $H_1,H_2 \in \sy_p(G)$, are $H_1$ and $H_2$ necessarily isomorphic?
@@ -1907,7 +1907,7 @@ If $P \in \sy_p(G)$ and $H \leq G$ is a $p$-subgroup with $H \leq N_G(P)$, then 
 \end{lemma}
 
 \begin{proof}
-Because $H \leq N_G(P)$, $HP \leq G$. Now $HP$ is certainly a $p$-subgroup of $G$, $P \leq HP$, and $P$ is a maximal $p$-subgroup of $G$, so we necessarily have $HP = P \implies H \leq P$. 
+Because $H \leq N_G(P)$, $HP \leq G$. Now $HP$ is certainly a $p$-subgroup of $G$, $P \leq HP$, and $P$ is a maximal $p$-subgroup of $G$, so we necessarily have $HP = P \implies H \leq P$.
 \end{proof}
 
 \vs
@@ -1917,7 +1917,7 @@ Let $G$ be a finite group with $|G| = p^em$, $e \in \N_0$, $m\in \N$, and $p \nm
 \begin{enumerate}
 \item[(a)] If $P,P' \in \sy_p(G)$, then there exists $g \in G$ such that $P' = gPg\inv$.
 \item[(b)] $|\sy_p(G)| = [G : N_G(P)] \mid m$ for any $P \in \sy_p(G)$.
-\item[(c)] $|\sy_p(G)| \equiv 1 \pmod{p}$. 
+\item[(c)] $|\sy_p(G)| \equiv 1 \pmod{p}$.
 \end{enumerate}
 \end{theorem}
 
@@ -1926,7 +1926,7 @@ Fix $P \in \sy_p(G)$ with $|P| = p^e$. Such $P$ exists by 1.5.17. Set $X = \{gPg
 \begin{enumerate}
 \item[(1)] $G$ acts transitively on $X$ (by definition), and $G_P = \{g \in G \mid gPg\inv = P\} = N_G(P)$.
 
-\item[(2)] $|X| = |G \cdot P| = [G : G_p] = [G : N_G(P)]$ by 1.5.12 (Orbit-Stabilizer). 
+\item[(2)] $|X| = |G \cdot P| = [G : G_p] = [G : N_G(P)]$ by 1.5.12 (Orbit-Stabilizer).
 
 \item[(3)] $[G : N_G(P)][N_G(p) : P] = [G : P] = m$, so $|X| = [G : N_G(P)] \mid m$.
 
@@ -1942,16 +1942,16 @@ Now take any $H \in \sy_p(G)$, and let $H$ also act on $X$ by conjugation. The a
 
 \item[(7)] If $|H \cdot P_i| \ne 1$, then $p \mid |H \cdot P_i|$, because $1 \ne |H \cdot P_i| = [H : H \cap N_G(P_i)] \mid |H|$, and $H$ has $p$-power order, so $p \mid |H \cdot P_i|$.
 
-\item[(8)] $H = P_i$ for precisely one $i \in \{1,2,\dots,r\}$, and $|X| \cong 1 \pmod{p}$. If $H \ne P_i$ for all $1 \leq i \leq r$, then it would follow that $|X| \equiv 0 \pmod{p}$, contradiction (4). 
+\item[(8)] $H = P_i$ for precisely one $i \in \{1,2,\dots,r\}$, and $|X| \cong 1 \pmod{p}$. If $H \ne P_i$ for all $1 \leq i \leq r$, then it would follow that $|X| \equiv 0 \pmod{p}$, contradiction (4).
 \end{enumerate}
 
-In particular, we have proved that $H \in \sy_p(G) \implies H \in X$. Hence $\sy_p(G) = X$, which proves (a), and (c) follows from (8) and (b) follows from (8) and (3). 
+In particular, we have proved that $H \in \sy_p(G) \implies H \in X$. Hence $\sy_p(G) = X$, which proves (a), and (c) follows from (8) and (b) follows from (8) and (3).
 \end{proof}
 
 \vs
 
 \begin{remark*}
-If $P' \in \sy_p(G)$, then $P' = gPg\inv$ for some $g \in G$ by (a), so $n_G(P'_ = gN_G(P')g\inv \implies |N_G(P')| = |N_G(P)| \implies [G : N_G(P')] = [G : N_G(P)]$. 
+If $P' \in \sy_p(G)$, then $P' = gPg\inv$ for some $g \in G$ by (a), so $n_G(P'_ = gN_G(P')g\inv \implies |N_G(P')| = |N_G(P)| \implies [G : N_G(P')] = [G : N_G(P)]$.
 \end{remark*}
 
 \vs
@@ -1987,18 +1987,18 @@ $P \nsg N_G(P)$ by definition, so by 1.7.5 $P \car N_G(P) \nsg N_G(N_G(P))$, thu
 Let $G \ne \{e\}$ be a finite group with $|G| = p_1^{e_1}\cdots p_r^{e_r}$, $p_1,\dots,p_r$ distinct prime divisors of $|G|$, $P_i \in \sy_{p_i}(G)$ for $1 \leq i \leq r$. The following are equivalent:
 \begin{enumerate}
 \item[(i)] $G$ is nilpotent.
-\item[(ii)] $N_G(H) \ne H$ for all $H < G$. 
+\item[(ii)] $N_G(H) \ne H$ for all $H < G$.
 \item[(iii)] $P_i \nsg G$ for all $1 \leq i \leq r$.
 \item[(iv)] $G = P_1 \times \dots \times P_r$ (internal semi-direct product).
 \end{enumerate}
 \end{theorem}
 
 \begin{proof}\
-$(i) \implies (ii)$ follows from 1.3.5. 
+$(i) \implies (ii)$ follows from 1.3.5.
 
-$(ii) \implies (iii)$ follows from 1.7.6. 
+$(ii) \implies (iii)$ follows from 1.7.6.
 
-$(iii) \implies (v)$. $P_i \nsg G$ for all $i$ implies that every product of the $P_i's$ is a normal subgroup of $G$. By induction on $r$ it is easy to show that $|P_1 \cdots P_r| = |P_1| \cdots |P_r|$ and $P_1 \cap \dots \cap P_r = \{e\} \implies P_r \cdots P_r \cong P_1 \times \dots P_r$. In particular, $|P_1 \cdots P_r| = p_1^{e_1} \cdots p_r^{e_r}$, so $G = P_1 \times \dots P_r$. 
+$(iii) \implies (v)$. $P_i \nsg G$ for all $i$ implies that every product of the $P_i's$ is a normal subgroup of $G$. By induction on $r$ it is easy to show that $|P_1 \cdots P_r| = |P_1| \cdots |P_r|$ and $P_1 \cap \dots \cap P_r = \{e\} \implies P_r \cdots P_r \cong P_1 \times \dots P_r$. In particular, $|P_1 \cdots P_r| = p_1^{e_1} \cdots p_r^{e_r}$, so $G = P_1 \times \dots P_r$.
 
 $(iv) \implies (i)$. Each $P_i$ is a $p_i$-subgroup of $G$, so each $P_i$ is nilpotent by 1.5.20 (c), and direct products of nilpotent groups are nilpotent by 1.3.10 (together with easy induction), so $G$ is nilpotent.
 \end{proof}
@@ -2006,13 +2006,13 @@ $(iv) \implies (i)$. Each $P_i$ is a $p_i$-subgroup of $G$, so each $P_i$ is nil
 \vs
 
 \begin{notation*}
-Let $G$ be a finite group and $p$ a prime divisor of $|G|$. Let $n_p(G) = n_p = |\sy_p(G)| = [G : N_G(P)] \mid m$, where $|G| = p^em$, $p\nmid m$, and $P \in \sy_p(G)$. If we write $P_p$, we mean that $P_p \in \sy_p(G)$. 
+Let $G$ be a finite group and $p$ a prime divisor of $|G|$. Let $n_p(G) = n_p = |\sy_p(G)| = [G : N_G(P)] \mid m$, where $|G| = p^em$, $p\nmid m$, and $P \in \sy_p(G)$. If we write $P_p$, we mean that $P_p \in \sy_p(G)$.
 \end{notation*}
 
 \vs
 
 \begin{lemma}[Generalization of 1.6.10]
-If $|G| = p^em$, where $p > m$, then $P_p \nsg G$ (hence $n_p = 1$). If, additionally, there exists $H \leq G$ with $|H| = m$, then $G = P_p \sd{} H$. 
+If $|G| = p^em$, where $p > m$, then $P_p \nsg G$ (hence $n_p = 1$). If, additionally, there exists $H \leq G$ with $|H| = m$, then $G = P_p \sd{} H$.
 \end{lemma}
 
 \begin{proof}
@@ -2040,7 +2040,7 @@ Claim 1: $P \nsg G$ or $Q \nsg G$. We have $n_p \mid qr$ and $n_p \equiv 1 \pmod
 	\end{align*}
 elements, which is a contradiction. This proves the first claim. \\
 
-Claim 2: $P \nsg G$. Since $P \nsg G$ or $Q \nsg G$, we have $PQ \leq G$. Now Now $[G : PQ] = r$, the smallest prime divisor of $|G|$, so $PQ \nsg G$. By the same argument, $P \nsg PQ \iff P \car PQ \nsg G \implies P \nsg G$. It follows that $PQ = P \sd{} Q$ and $G = PQ \sd{}R = (P \sd{} Q) \sd{}R \cong (\z_p \sd{} \z_q) \sd{} \z_r$. 
+Claim 2: $P \nsg G$. Since $P \nsg G$ or $Q \nsg G$, we have $PQ \leq G$. Now Now $[G : PQ] = r$, the smallest prime divisor of $|G|$, so $PQ \nsg G$. By the same argument, $P \nsg PQ \iff P \car PQ \nsg G \implies P \nsg G$. It follows that $PQ = P \sd{} Q$ and $G = PQ \sd{}R = (P \sd{} Q) \sd{}R \cong (\z_p \sd{} \z_q) \sd{} \z_r$.
 \end{proof}
 
 \vs
@@ -2048,11 +2048,11 @@ Claim 2: $P \nsg G$. Since $P \nsg G$ or $Q \nsg G$, we have $PQ \leq G$. Now No
 \begin{example}
 \
 \begin{enumerate}
-\item[(a)] Suppose $|G| = 30 = 2 \cdot 3 \cdot 5$. Then $G \cong (\z_5 \sd{} \z_3) \sd{} \z_2$. Moreover, $3 \nmid |\aut(\z_5)| = 4 \implies G \cong \z_{15} \sd{} \z_2$, and $\z_3,\z_5 \nsg \z_15 \implies \z_3,\z_5 \car \z_{15} \nsg G \implies \z_3,\z_5 \nsg G \implies n_3=n_5=1$. 
-\item[(b)] Suppose $|G| = 12 = 2^2 \cdot 3$. If $n_3 \ne 1$, then $n_3 = 4 \implies $ there are $8$ elements of order 3 in $G$, so the 4 remaining elements must comprise some $P_2$. That is, $n_2 = 1$. 
+\item[(a)] Suppose $|G| = 30 = 2 \cdot 3 \cdot 5$. Then $G \cong (\z_5 \sd{} \z_3) \sd{} \z_2$. Moreover, $3 \nmid |\aut(\z_5)| = 4 \implies G \cong \z_{15} \sd{} \z_2$, and $\z_3,\z_5 \nsg \z_15 \implies \z_3,\z_5 \car \z_{15} \nsg G \implies \z_3,\z_5 \nsg G \implies n_3=n_5=1$.
+\item[(b)] Suppose $|G| = 12 = 2^2 \cdot 3$. If $n_3 \ne 1$, then $n_3 = 4 \implies $ there are $8$ elements of order 3 in $G$, so the 4 remaining elements must comprise some $P_2$. That is, $n_2 = 1$.
 \item[(c)] Suppose $|G| = 56 = 2^3 \cdot 7$. Similarly, if $n_7 \ne 1$, then $n_7 = 8 \implies n_2 = 1$.
-\item[(d)] Exercise: If $|G| = p^2 q$, where $p \ne q$ are primes, then $n_p = 1$ or $n_q = 1$. 
-\item[(e)] If $|G| = p^3 q$, it does not necessarily follow that $n_p = 1$ or $n_q = 1$. For example, if $G = S_4$, then $|G| = 2^3 \cdot 3$, but $n_2 = 3$ (3 copies of $D_8$) and $n_3 = 4$ (8 elements of order 3). 
+\item[(d)] Exercise: If $|G| = p^2 q$, where $p \ne q$ are primes, then $n_p = 1$ or $n_q = 1$.
+\item[(e)] If $|G| = p^3 q$, it does not necessarily follow that $n_p = 1$ or $n_q = 1$. For example, if $G = S_4$, then $|G| = 2^3 \cdot 3$, but $n_2 = 3$ (3 copies of $D_8$) and $n_3 = 4$ (8 elements of order 3).
 \end{enumerate}
 \end{example}
 
@@ -2060,8 +2060,8 @@ Claim 2: $P \nsg G$. Since $P \nsg G$ or $Q \nsg G$, we have $PQ \leq G$. Now No
 
 \begin{lemma}\
 \begin{enumerate}
-\item[(a)] If $|G| = p^e m > p$, with $e,m \in \N$ and $p \nmid m$, and if $p^e \nmid (m-1)!$, then $G$ is not simple. 
-\item[(a)] If, additionally, any group $H$ with $|H| \mid |G|$ and $|H| < |G|$ is solvable, then $G$ is solvable. 
+\item[(a)] If $|G| = p^e m > p$, with $e,m \in \N$ and $p \nmid m$, and if $p^e \nmid (m-1)!$, then $G$ is not simple.
+\item[(a)] If, additionally, any group $H$ with $|H| \mid |G|$ and $|H| < |G|$ is solvable, then $G$ is solvable.
 \end{enumerate}
 \end{lemma}
 
@@ -2070,9 +2070,9 @@ Claim 2: $P \nsg G$. Since $P \nsg G$ or $Q \nsg G$, we have $PQ \leq G$. Now No
 \begin{proof}
 \
 \begin{enumerate}
-\item[(a)] Let $P \in \sy_p(G)$, so that $[G : P] = m$. By 1.5.9, there exists a group homomorphism $\phi : G \ra S_n$ with $K \myeq \ker \phi \leq P$. If $K = G$, then $G = P$ is a $p$-group with $|G| = p^e > p$, so $G$ is nilpotent and not simple. 
+\item[(a)] Let $P \in \sy_p(G)$, so that $[G : P] = m$. By 1.5.9, there exists a group homomorphism $\phi : G \ra S_n$ with $K \myeq \ker \phi \leq P$. If $K = G$, then $G = P$ is a $p$-group with $|G| = p^e > p$, so $G$ is nilpotent and not simple.
 
-Assume $K \ne \triv$. Then $G$ injects into $S_m$ so that $|G| \mid |S_m| - m! \implies p^e \mid m! \implies p^e \mid (m-1)!$, since $p \nmid m$. This is a contradiction. 
+Assume $K \ne \triv$. Then $G$ injects into $S_m$ so that $|G| \mid |S_m| - m! \implies p^e \mid m! \implies p^e \mid (m-1)!$, since $p \nmid m$. This is a contradiction.
 
 Thus, if $K \ne G$, then $\triv \leq K \tl G$, so $G$ is not simple
 
@@ -2088,7 +2088,7 @@ Thus, if $K \ne G$, then $\triv \leq K \tl G$, so $G$ is not simple
 
 \item[(b)] Let $|G| = 72 = 2^3 \cdot 3^2$, so that $n_3 = 1, 4$. If $n_3 = 1$, then $P_3 \nsg G$. $n_3 = 4 \iff [G : N_G(P_3)] = 4 \implies$ there exists a group homomorphism $\phi : G \ra S_4$ with $\ker \phi \leq N_G(P_3) \ne G$. Now $\ker \phi \ne \triv$, other $G$ would inject into $S_4$, which is impossible by an order argument. Therefore, $G$ is not simple. It is also true that $G$ is solvable (Exercise).
 
-\item[(c)] $|G| = 112 = 2^4 \cdot 7$. Then $[G : P_2] = 7$, so there exists a group homomorphism $\phi : G \ra S_7$ with $\ker \phi \leq P_2 \ne G$. If $K \myeq \ker \phi \ne \triv$, then $G$ is not simple. 
+\item[(c)] $|G| = 112 = 2^4 \cdot 7$. Then $[G : P_2] = 7$, so there exists a group homomorphism $\phi : G \ra S_7$ with $\ker \phi \leq P_2 \ne G$. If $K \myeq \ker \phi \ne \triv$, then $G$ is not simple.
 
 Suppose $K = \triv$. Then we have an embedding of $G$ into $S_7$. Regarding $G$ as a subgroup of $S_7$, we observe that $G \nleq A_7$ because $112 \nmid |A_7|$, so $\triv \neq G \cap A_7 \tl G$, hence $G$ is not simple.
 \end{enumerate}
@@ -2131,17 +2131,17 @@ Let $X \ne \vn$ by any set. We introduce the set $X \inv = \{x\inv \mid x \in X\
 
 Think of $Y$ as an "alphabet". Put $W(X) \myeq \{\tn{\tb{words} in } Y\} = \{(y_1,y_2,\dots,y_n) \mid n \in \N_0, y_i \in Y\}$. For $n=0$ we have the empty word, which we will denote by $1 = (\ )$. We will also often denote $(y_1,\dots,y_n)$ by $y_1 \cdots y_n$.
 
-Define \tb{multiplication} on $W(X)$ by concatenation. That is, 
+Define \tb{multiplication} on $W(X)$ by concatenation. That is,
 	\[(y_1,\dots,y_n)(y_{n+1},\dots,n_m) = (y_1,\dots,y_m) \]
 It is immediately clear that this multiplication is associative and 1 is a two-sided identity element (At this point, $W(X)$ is a "monoid").
 
 Call $w,v \in W(X)$ \tb{elementary equivalent}, denoted $w \lra v$, if $w =w_1 w_2$ and $v = w_1 y y\inv w_2$, or $v = w_1 w_2$ and $w = w_1 y y\inv w_2$ for some $w_1,w_2 \in W(X)$, $y \in Y$. This relation is by definition symmetric.
 
-Now, we say that $w,v \in W(X)$ are \tb{equivalent}, denoted $w \sim v$, if there exists a finite chain of elementary equivalences $w = w_0 \lra w_1 \lra \dots \lra w_n = v$. It is straightforward to check that $\sim$ is an equivalence relation on $W(X)$. For $w \in W(X)$, denote the $\sim$-equivalence class of $w$ by $[w]$. 
+Now, we say that $w,v \in W(X)$ are \tb{equivalent}, denoted $w \sim v$, if there exists a finite chain of elementary equivalences $w = w_0 \lra w_1 \lra \dots \lra w_n = v$. It is straightforward to check that $\sim$ is an equivalence relation on $W(X)$. For $w \in W(X)$, denote the $\sim$-equivalence class of $w$ by $[w]$.
 
 Put $F(X) \myeq W(X)/\sim = \{[w] \mid w \in W(X)\}$. Observe that if $w \sim w'$ and $v \sim v'$, then $wv \sim w'v \sim w'v'$. Thus, we have a well-defined multiplication on $F(X)$ given by $[w][v] = [wv]$.
 
-We now check that $F(X)$ is a group under this multiplication, called the \tb{free group on $\mb{X}$}. If $|X| = n$, we write $F(X) = F_n$, the \tb{free group of rank $\mb{n}$.} 
+We now check that $F(X)$ is a group under this multiplication, called the \tb{free group on $\mb{X}$}. If $|X| = n$, we write $F(X) = F_n$, the \tb{free group of rank $\mb{n}$.}
 \begin{enumerate}
 \item[$\bullet$] Multiplication on $F(X)$ is associative. For all $w,v,u \in W(X)$, we have
 	\[([w][v])[u] = [wv][u] = [(wv)u] = [w(vu)] = [w][vu] = [w]([v][u]) \]
@@ -2154,7 +2154,7 @@ We now check that $F(X)$ is a group under this multiplication, called the \tb{fr
 	&\vdots \\
 	&= [1]
 	\end{align*}
-Similarly, $[w\inv][w] = [1]$. 
+Similarly, $[w\inv][w] = [1]$.
 \end{enumerate}
 \end{defn}
 
@@ -2165,7 +2165,7 @@ For any group $G$ and any map $f : X \ra G$, there exists a unique group homomor
 
 \begin{center}
 \begin{tikzcd}
-X \arrow[hookrightarrow]{r}{\iota} 
+X \arrow[hookrightarrow]{r}{\iota}
 \arrow{d}{f}
 & F(X) \arrow[dotted]{dl}{\phi} \\
 G
@@ -2181,9 +2181,9 @@ If such $\phi$ exists, then for any $[w] \in F(X)$, with $w = x_1^{\ve_1} \dots 
 	&= \phi([x_1])^{\ve_1} \cdots \phi([x_1])^{\ve_n} \\
 	&= f(x_1)^{\ve_1} \cdots f(x_n)^{\ve_n}
 	\end{align*}
-Since $\phi$ is completely determined by $f$, $\phi$ is uniquely determined. 
+Since $\phi$ is completely determined by $f$, $\phi$ is uniquely determined.
 
-We now treat existence. Define $\wt{\phi} : W(X) \ra G$ by $\wt{\phi}(x_1^{\ve_1}) \dots x_n^{\ve_n}) = f(x_1)^{\ve_1} \cdots f(x_n)^{\ve_n}$. At this point, there are no issues with $\wt{\phi}$ being well-defined. 
+We now treat existence. Define $\wt{\phi} : W(X) \ra G$ by $\wt{\phi}(x_1^{\ve_1}) \dots x_n^{\ve_n}) = f(x_1)^{\ve_1} \cdots f(x_n)^{\ve_n}$. At this point, there are no issues with $\wt{\phi}$ being well-defined.
 
 Suppose $w, v \in W(X)$ are elementary equivalent ($w \lra v$). Without loss of generality, say $w = w_1 w_2$ and $v = w_1 y y\inv w_2$ for some $w_1,w_1 \in W(x)$, $y \in Y$. Then
 	\begin{align*}
@@ -2192,9 +2192,9 @@ Suppose $w, v \in W(X)$ are elementary equivalent ($w \lra v$). Without loss of 
 	&= f(w_1) f(w_2) \\
 	&= \wt{\phi}(w)
 	\end{align*}
-By induction on the length of elementary equivalences, it is easily shown that $w \sim v \implies \wt{\phi}(w) = \wt{\phi}(v)$. Thus, $\wt{\phi}$ induces a well-defined map $\phi : F(X) \ra G$, $\phi([w]) = \wt{\phi}(w)$. 
+By induction on the length of elementary equivalences, it is easily shown that $w \sim v \implies \wt{\phi}(w) = \wt{\phi}(v)$. Thus, $\wt{\phi}$ induces a well-defined map $\phi : F(X) \ra G$, $\phi([w]) = \wt{\phi}(w)$.
 
-$\phi$ is a homomorphism. 
+$\phi$ is a homomorphism.
 	\begin{align*}
 	\phi([w][v]) &= \phi([wv]) \\
 	&= \wt{\phi}(wv) \\
@@ -2202,7 +2202,7 @@ $\phi$ is a homomorphism.
 	&= \phi([w]) \phi([v])
 	\end{align*}
 
-Finally $(\phi \circ \iota)(x) = \phi([x]) = \wt{\phi}(x) = f(x)$ for all $x \in X$. 
+Finally $(\phi \circ \iota)(x) = \phi([x]) = \wt{\phi}(x) = f(x)$ for all $x \in X$.
 \end{proof}
 
 \vs
@@ -2221,13 +2221,13 @@ In the following, we identify $X$ with $\iota(X) \sub F(X)$.
 \[
 \begin{array}{cc}
 \begin{tikzcd}
-X \arrow[hookrightarrow]{r}{\iota} 
+X \arrow[hookrightarrow]{r}{\iota}
 \arrow[swap]{d}{\iota'}
 & F(X) \arrow[dotted]{dl}{\exists ! \ \phi} \\
 F'
 \end{tikzcd} &
 \begin{tikzcd}
-X \arrow[hookrightarrow]{r}{\iota'} 
+X \arrow[hookrightarrow]{r}{\iota'}
 \arrow[swap]{d}{\iota}
 & F' \arrow[dotted]{dl}{\exists ! \ \phi'} \\
 F(X)
@@ -2240,13 +2240,13 @@ That is, there exist group homomorphisms $\phi : F(X) \ra F'$ and $\phi' : F' \r
 \[
 \begin{array}{cc}
 \begin{tikzcd}
-X \arrow[hookrightarrow]{r}{\iota} 
+X \arrow[hookrightarrow]{r}{\iota}
 \arrow[swap]{d}{\iota'}
 & F(X) \arrow[dotted]{dl}{\phi' \circ \phi} \\
 F(X)
 \end{tikzcd} &
 \begin{tikzcd}
-X \arrow[hookrightarrow]{r}{\iota'} 
+X \arrow[hookrightarrow]{r}{\iota'}
 \arrow[swap]{d}{\iota}
 & F(X) \arrow[dotted]{dl}{\id_{F(X)}} \\
 F(X)
@@ -2254,9 +2254,9 @@ F(X)
 \end{array}\]
 \end{center}
 
-By the uniqueness part of the universal property of $F(X)$, $\phi' \circ \phi = \id_{F(X)}$. Similarly, we have that $\phi \circ \phi' = \id_{F'}$, hence $\phi' = \phi\inv$, so $\phi, \phi'$ are isomorphisms. 
+By the uniqueness part of the universal property of $F(X)$, $\phi' \circ \phi = \id_{F(X)}$. Similarly, we have that $\phi \circ \phi' = \id_{F'}$, hence $\phi' = \phi\inv$, so $\phi, \phi'$ are isomorphisms.
 
-\item[(d)] If $X,X'$ are sets with $|X| = |X'|$, then $F(X) \cong F(X')$ (Exercise). 
+\item[(d)] If $X,X'$ are sets with $|X| = |X'|$, then $F(X) \cong F(X')$ (Exercise).
 \end{enumerate}
 \end{remark}
 
@@ -2270,7 +2270,7 @@ Every group is (up to isomorphism) a quotient of a free group.
 Let $G$ be a group, and let $X \sub G$ be such that $\gen{X} = G$ (e.g. $X = G$). Let $\iota : X \hra F(X)$ and $i : X \hra G$ be inclusions. By the universal property, there exists a homomorphism $\phi : F(X) \ra G$ such that $\phi(x) = x$ for all $x \in X$. Clearly $\phi$ is surjective, since $\phi(F(X)) \supseteq \phi(\gen{X}) = \gen{X} = G$. By the first isomorphism theorem, $G \cong F(X) / \ker \phi$.
 \begin{tikzcd}
 X \arrow[hookrightarrow]{r}{\iota}
-\arrow[hookrightarrow,swap]{d}{i} 
+\arrow[hookrightarrow,swap]{d}{i}
 & F(X) \arrow[dotted]{dl}{\exists ! \ \phi} \\
 G
 \end{tikzcd}
@@ -2297,11 +2297,11 @@ A \tb{presentation} $\gen{X \mid R}$ of a group $G$ consists of a map $f : X \ra
 	\item[(a)] $\gen{f(X)} = G$
 	\item[(b)] $\gen{R}_{F(X)} = \ker \phi$, where $\phi : F(X) \ra G$ is the homomorphism induced by the universal property of free groups:
 	\begin{tikzcd}
-	X \arrow[hookrightarrow]{r}{\iota} 
-	\arrow[swap]{d}{f} 
+	X \arrow[hookrightarrow]{r}{\iota}
+	\arrow[swap]{d}{f}
 	& F(X) \arrow[dotted]{dl}{\phi} \\
 	G
-	\end{tikzcd} $R$ is often called a set of "defining" relations. 
+	\end{tikzcd} $R$ is often called a set of "defining" relations.
 	\end{enumerate}
 \end{defn}
 
@@ -2324,13 +2324,13 @@ $S_3 = \gen{(1\ 2), (2\ 3)}$ has the presentation(s)
 	&= \gen{a,b \mid a^2, b^2, ababab} \\
 	&= \gen{a,b \mid [a^2], [b^2], [ababab]}
 	\end{align*}
-The homomorphism $\phi : \{a,b\} \ra S_3$ of this presentation is given by $\phi(a) = (1\ 2), \phi(b) = (2\ 3)$. $\ker \phi = \gen{R}_{F(X)}$. 
+The homomorphism $\phi : \{a,b\} \ra S_3$ of this presentation is given by $\phi(a) = (1\ 2), \phi(b) = (2\ 3)$. $\ker \phi = \gen{R}_{F(X)}$.
 \end{example*}
 
-\item[(c)] Given $X$ and $R \sub F(X)$, there is always a group having the presentation $\gen{X \mid R}$, namely $\wt{G} \myeq F(X) / \gen{R}_G$. It immediately clear that $\wt{G}$ has the presentation $\gen{X \mid R}$: 
+\item[(c)] Given $X$ and $R \sub F(X)$, there is always a group having the presentation $\gen{X \mid R}$, namely $\wt{G} \myeq F(X) / \gen{R}_G$. It immediately clear that $\wt{G}$ has the presentation $\gen{X \mid R}$:
 \begin{tikzcd}
-X \arrow{r}{f} 
-\arrow[hookrightarrow,swap]{d}{\iota} 
+X \arrow{r}{f}
+\arrow[hookrightarrow,swap]{d}{\iota}
 & F(X)/\gen{R}_{F(X)} \\
 F(X) \arrow[dotted,swap]{ur}{\tn{projection}}
 \end{tikzcd}
@@ -2340,18 +2340,18 @@ If $G$ is given with a generating set $X$, in order to decide whether $G$ has th
 \item[(i)] Check whether for any reduced word $w$ with $[w] \in R$, the equation $w = e$ holds in $G$.
 \item[(ii)] If (i) is true, there exists a surjective homomorphism $\wt{\phi} : \wt{G} \ra G$, where $\wt{G} = F(X)/\gen{R}_{F(X)}$. Define $\wt{\phi} : \wt{G} \ra G$ by $\wt{\phi}(\wt{g}) = \phi(g)$ for all $g \in F(X)$ with $p(g) = \wt{g}$ (well-defined, check). Clearly, $\ker p = \gen{R}_{F(X)} \leq \ker \phi \nsg F(X)$.
 \begin{tikzcd}
-F(X) \arrowvert[two heads]{r}{\phi} 
+F(X) \arrowvert[two heads]{r}{\phi}
 \arrowvert[two heads,swap]{d}{p}
 & G \\
-\wt{G} \arrowvert[dotted,swap]{ur}{\wt{\phi}} 
+\wt{G} \arrowvert[dotted,swap]{ur}{\wt{\phi}}
 \end{tikzcd}
 
-\item[(iii)] Verify (often difficult) that $\wt{\phi}$ is injective. 
+\item[(iii)] Verify (often difficult) that $\wt{\phi}$ is injective.
 \end{enumerate}
 
-For finite groups $G$, the injectivity of $\wt{\phi}$ can sometimes by established by verifying $|\wt{G}| \leq |G|$. 
+For finite groups $G$, the injectivity of $\wt{\phi}$ can sometimes by established by verifying $|\wt{G}| \leq |G|$.
 
-For infinite groups, one can sometimes use "normal forms" for the elements in $G$ to verify that $\wt{\phi}$ is injective. 
+For infinite groups, one can sometimes use "normal forms" for the elements in $G$ to verify that $\wt{\phi}$ is injective.
 \end{enumerate}
 \end{remark}
 
@@ -2360,19 +2360,19 @@ For infinite groups, one can sometimes use "normal forms" for the elements in $G
 \begin{example}
 \
 \begin{enumerate}
-\item[(a)] Consider $\gen{a,b \mid a^2 = b^2, a^3 = b^3}$. Note that $b^3 = a^3 = b^2 = a \implies b = a$, so $\gen{a,b} = \gen{a \mid \ } \cong \z$. 
+\item[(a)] Consider $\gen{a,b \mid a^2 = b^2, a^3 = b^3}$. Note that $b^3 = a^3 = b^2 = a \implies b = a$, so $\gen{a,b} = \gen{a \mid \ } \cong \z$.
 
 \item[(b)] Let us establish a presentation for $S_3 = \gen{(1\ 2), (2\ 3)}$. Put
 	\[\wt{G} = \gen{a,b \mid a^2 = b^2 = 1, (ab)^3 = 1 \iff aba = bab} \]
-Claim: $G' \myeq \{e,a,b,ab,ba,aba=bab\} = \wt{G}$. Observe that $aG' \sub G'$ and $b G' \sub G' \implies \wt{G} = \gen{a,b} \sub G' \implies \wt{G} = G'$. The consequence is that $|\wt{G}| \leq 6$. 
+Claim: $G' \myeq \{e,a,b,ab,ba,aba=bab\} = \wt{G}$. Observe that $aG' \sub G'$ and $b G' \sub G' \implies \wt{G} = \gen{a,b} \sub G' \implies \wt{G} = G'$. The consequence is that $|\wt{G}| \leq 6$.
 
-We have a surjective homomorphism $\wt{\phi} : \wt{G} \ra S_3$, $a \mapsto (1\ 2), b \mapsto (2\ 3)$  (by verifying the relations hold in $S_3$). Since $|\wt{G}| \leq 6 = |S_3|$, $\wt{\phi}$ is injective $\implies \wt{\phi}$ is bijective $\implies \wt{G} \cong S_3$, hence $S_3$ has the presentation $\gen{a,b \mid a^2 = b^2 = 1, aba = bab}$. 
+We have a surjective homomorphism $\wt{\phi} : \wt{G} \ra S_3$, $a \mapsto (1\ 2), b \mapsto (2\ 3)$  (by verifying the relations hold in $S_3$). Since $|\wt{G}| \leq 6 = |S_3|$, $\wt{\phi}$ is injective $\implies \wt{\phi}$ is bijective $\implies \wt{G} \cong S_3$, hence $S_3$ has the presentation $\gen{a,b \mid a^2 = b^2 = 1, aba = bab}$.
 
 \item[(c)] The quaternion group $Q$ has the presentation $\gen{a,b \mid a^4 = b^4 = 1,a^2 = b^2, aba\inv = b\inv (\implies b^4 = 1)}$ (Exercise). The strategy: show that $|\wt{G}| \leq 8$.
 
 \item[(d)] $\z_m \times \z_n \cong \gen{a,b \mid a^m = b^n = 1, ab = ba}$.
 
-\item[(e)] $D_{2n} \cong \gen{a,b \mid a^n = b^2 = 1, bab = a\inv}$. 
+\item[(e)] $D_{2n} \cong \gen{a,b \mid a^n = b^2 = 1, bab = a\inv}$.
 
 \item[(f)] $D_\infty \cong \gen{a,b \mid b^2 = 1, bab = a\inv} \cong \gen{b,c \mid b^2 = c^2 = 1} \cong \z_2 * \z_2$ ("free product"). The $c$ in the second presentation corresponds to $ba$ in the first presentation.
 
@@ -2383,13 +2383,13 @@ We have a surjective homomorphism $\wt{\phi} : \wt{G} \ra S_3$, $a \mapsto (1\ 2
 \vs
 
 \begin{proposition}
-Let $G$ be a group with presentation $\gen{X \mid R}$ such that $X$ embeds into $G$ (usually $X \sub G$) and the image of $X$ generates $G$. If $H$ is another group, then a map $f : X \ra H$ extends uniquely to a homomorphism $\wt{\psi} : G \ra H$ if and only if 
+Let $G$ be a group with presentation $\gen{X \mid R}$ such that $X$ embeds into $G$ (usually $X \sub G$) and the image of $X$ generates $G$. If $H$ is another group, then a map $f : X \ra H$ extends uniquely to a homomorphism $\wt{\psi} : G \ra H$ if and only if
 	\[f(x_1)^{\ve_1} \cdots f(x_n)^{\ve_n} = e_H \tag{$\ast$}\]
-in $H$ for all $[x_1^{\ve_1} \cdots x_n^{\ve_n}] \in R$. 
+in $H$ for all $[x_1^{\ve_1} \cdots x_n^{\ve_n}] \in R$.
 \end{proposition}
 
 \begin{proof}
-First, observe the following diagram: 
+First, observe the following diagram:
 \begin{tikzcd}
 X \arrowvert{dr}{f}
 \arrowvert[hookrightarrow,swap]{d}{\iota} \\
@@ -2408,14 +2408,14 @@ There exists a (unique) homomorphism $\psi : F(X) \ra H$ satisfying $\psi \circ 
 	&= \psi(x_1)^{\ve_1} \cdots \psi (x_n)^{\ve_n} \\
 	&= f(x_1)^{\ve_1} \cdots f(x_n)^{\ve_n}
 	\end{align*}
-We have shown that $(\ast)$ is necessary for the existence of $\wt{\psi}$. $\wt{\psi}$ is clearly unique, since $\psi|_X = f$, and $X$ generates $G$. 
+We have shown that $(\ast)$ is necessary for the existence of $\wt{\psi}$. $\wt{\psi}$ is clearly unique, since $\psi|_X = f$, and $X$ generates $G$.
 
 Conversely, assume that $(\ast)$ is satisfied by $f : X \ra H$. Then $R \sub \ker \psi \implies \gen{R}_{F(X)} \sub \ker \psi$, thus
 	\begin{align*}
 	f(x_1)^{\ve_1} \cdots f(x_n)^{\ve_n} &= e_H \\
 	\iff \psi([x_1^{\ve_1} \cdots x_n^{\ve_n}]) &= e_H \quad \forall \ [x_1^{\ve_1} \cdots x_n^{\ve_n}] \in R
 	\end{align*}
-For $g \in G$, there exists $z \in F(X)$ with $p(z) = g$, so we define $\wt{\psi}(g) = \psi(z)$. Then $\wt{\psi} : G \ra H$ is a well-defined (check) group homomorphism satisfying $\wt{\psi}|_X = f$. 
+For $g \in G$, there exists $z \in F(X)$ with $p(z) = g$, so we define $\wt{\psi}(g) = \psi(z)$. Then $\wt{\psi} : G \ra H$ is a well-defined (check) group homomorphism satisfying $\wt{\psi}|_X = f$.
 \end{proof}
 
 \vs
@@ -2423,13 +2423,13 @@ For $g \in G$, there exists $z \in F(X)$ with $p(z) = g$, so we define $\wt{\psi
 \begin{example}
 \
 \begin{enumerate}
-\item[(a)] $G = \z_m \times \z_n \cong \gen{a,b \mid a^m = b^n = aba\inv b\inv = 1}$. We want to define a homomorphism $\phi : G \ra G$ by setting $\phi(a) = a^i b^j$, $\phi(b) = a^k b^l$. 
+\item[(a)] $G = \z_m \times \z_n \cong \gen{a,b \mid a^m = b^n = aba\inv b\inv = 1}$. We want to define a homomorphism $\phi : G \ra G$ by setting $\phi(a) = a^i b^j$, $\phi(b) = a^k b^l$.
 
-Question: When can $f : X \ra G$, $a \mapsto a^i b^j, b \mapsto a^k b^l$, be extended to a homomorphism $\phi : G \ra G$? If $G$ is abelian, then $f(a) f(b) = f(b) f(a)$ is automatically satisfied. We need $f(a)^m = 1 \iff a^{mi} b^{mj} = 1 \iff b^{mj} = 1 \iff n \mid mj \iff \frac{n}{(n,m)} \mid j$. Similarly, $f(b)^n = 1 \iff \frac{m}{(n,m)} \mid k$. 
+Question: When can $f : X \ra G$, $a \mapsto a^i b^j, b \mapsto a^k b^l$, be extended to a homomorphism $\phi : G \ra G$? If $G$ is abelian, then $f(a) f(b) = f(b) f(a)$ is automatically satisfied. We need $f(a)^m = 1 \iff a^{mi} b^{mj} = 1 \iff b^{mj} = 1 \iff n \mid mj \iff \frac{n}{(n,m)} \mid j$. Similarly, $f(b)^n = 1 \iff \frac{m}{(n,m)} \mid k$.
 
-Special case: $m \mid n$, say $n = md$. Then the only condition needed is $d \mid j$. Additionally, $\phi \in \aut(G) \iff \gen{a^ib^j, a^kb^l} = G$. 
+Special case: $m \mid n$, say $n = md$. Then the only condition needed is $d \mid j$. Additionally, $\phi \in \aut(G) \iff \gen{a^ib^j, a^kb^l} = G$.
 
-\item[(b)] $G = \gen{a,b \mid a^k = 1, a^2 = b^2, aba\inv = b\inv}$. Then the previous proposition yields a group homomorphism $\phi : Q \ra G$, $i \mapsto a, j \mapsto b$, because $Q$ has a presentation $\gen{i,j \mid i^2 = j^2, iji\inv = j\inv}$. Since $|Q| = |G| = 8$, $\phi$ is bijective. One can show that $|\aut(Q)| = 24$. In fact, $\aut(Q) \cong S_4$. 
+\item[(b)] $G = \gen{a,b \mid a^k = 1, a^2 = b^2, aba\inv = b\inv}$. Then the previous proposition yields a group homomorphism $\phi : Q \ra G$, $i \mapsto a, j \mapsto b$, because $Q$ has a presentation $\gen{i,j \mid i^2 = j^2, iji\inv = j\inv}$. Since $|Q| = |G| = 8$, $\phi$ is bijective. One can show that $|\aut(Q)| = 24$. In fact, $\aut(Q) \cong S_4$.
 \end{enumerate}
 \end{example}
 
@@ -2448,7 +2448,7 @@ A \tb{ring} is an ordered triple $R,+,\cdot)$, where $R$ is a set and $+,\cdot :
 \item[(3)] (For us) There exists a multiplicative identity $1 \in R$ such that $1 \cdot x = x \cdot 1 = x$ for all $x \in R$.
 \end{enumerate}
 
-$R$ is called \tb{commutative} if multiplication is commutative. Note that $R = \{0\} \iff 1 = 0$. 
+$R$ is called \tb{commutative} if multiplication is commutative. Note that $R = \{0\} \iff 1 = 0$.
 
 \begin{example*}
 $\z, \z_n, \Q, \R, \C, \z[i] = \{a+bi \mid a,b \in \z\}$ are all commutative rings. Examples of non-commutative rings include $M_n(F), n \geq 2$ for any field $F$, or more generally $M_n(R)$ for $R$ a ring. Another example is $\h = \R + i \R + j \R + k \R$, the quaternions, which is also an example of a \emph{skew field}. Formally a ring $R$ is a \tb{skew field} (i.e., \tb{division ring}) if $R \ne \{0\}$ and $R\x = R \bs \{0\}$, i.e., $(R\bs\{0\},\cdot)$ is a group. $R$ is a \tb{field} iff $R$ is a commutative skew field.
@@ -2532,7 +2532,7 @@ A nonempty subset $I \sub R$ is called an \tb{ideal} of $R$, written $I \nsg R$,
 \item[(i)] $x,y \in I \implies x+y \in I$
 \item[(ii)] $x \in I$ and $r \in R \implies rx \in I$
 \end{enumerate}
-Note that $I = R \iff 1 \in I \iff I \cap R\x \ne \vn$. Note also that $x \in I \implies -x = (-1)x \in I$. Using $(i)$, $0 = x-x \in I$, so $I$ always contains $0$. Hence, $(I,+)$ is a subgroup of $(R,+)$. 
+Note that $I = R \iff 1 \in I \iff I \cap R\x \ne \vn$. Note also that $x \in I \implies -x = (-1)x \in I$. Using $(i)$, $0 = x-x \in I$, so $I$ always contains $0$. Hence, $(I,+)$ is a subgroup of $(R,+)$.
 \end{defn*}
 
 \vs
@@ -2626,7 +2626,7 @@ Two ideals $I,J \nsg R$ are called \tb{comaximal} if $I+J = R$. Equivalently, $I
 \vs
 
 \begin{example*}
-$(m), (n) \nsg \z$ are comaximal if and only if $\gcd(m,n) = 1$. 
+$(m), (n) \nsg \z$ are comaximal if and only if $\gcd(m,n) = 1$.
 \end{example*}
 
 \vs
@@ -2639,17 +2639,17 @@ If $I_1, \dots, I_n \nsg R$ are pairwise comaximal, then also $I_1 \cdots I_{n-1
 \begin{proof}
 By induction on $n \geq 2$. For $n = 2$, we need only to show that $I_1 \cap I_2 \sub I_2 I_2$. By assumption, there exist $a \in I_1$ and $b \in I_2$ such that $a+b = 1$. Take $x \in I_1 \cap I_2$. Then $x = x(a+b) = xa + xb \in I_1 I_2$. \\
 
-For the inductive step, let $n \geq 3$. We have that $I_j$ and $I_n$ are comaximal for all $1 \leq j \leq n-1$. Thus, for each $1 \leq j \leq n-1$, there exist $a_j \in I_j, b_j \in I_n$ such that $a_j + b_j = 1 \implies 1 = 1 \cdot 1 \cdots 1 = \prod_{j=1}^{n-1} (a_j + b_j) \in a_1 \cdots a_{n-1} + I_n \sub I_1 \cdots I_{n-1} + I_n$, so $I_1 \cdots I_{n-1}$ and $I_n$ are comaximal. Putting $I = I_1 \cdots I_{n-1}$, it follows from the case $n=2$ that 
+For the inductive step, let $n \geq 3$. We have that $I_j$ and $I_n$ are comaximal for all $1 \leq j \leq n-1$. Thus, for each $1 \leq j \leq n-1$, there exist $a_j \in I_j, b_j \in I_n$ such that $a_j + b_j = 1 \implies 1 = 1 \cdot 1 \cdots 1 = \prod_{j=1}^{n-1} (a_j + b_j) \in a_1 \cdots a_{n-1} + I_n \sub I_1 \cdots I_{n-1} + I_n$, so $I_1 \cdots I_{n-1}$ and $I_n$ are comaximal. Putting $I = I_1 \cdots I_{n-1}$, it follows from the case $n=2$ that
 	\[\bigcap_{j=1}^n I_j = I \cap I_n = I I_n = I_1 \cdots I_n \]
 \end{proof}
 
 \vs
 
 \begin{proposition}[Chinese Remainder Theorem]
-Let $I_1, \dots, I_n \nsg R$ (commutative with 1) and $\phi R \ra \times_{j=1}^n R/I_j$ be $r \mapsto (r/I_1, \dots, r/I_n)$. 
+Let $I_1, \dots, I_n \nsg R$ (commutative with 1) and $\phi R \ra \times_{j=1}^n R/I_j$ be $r \mapsto (r/I_1, \dots, r/I_n)$.
 \begin{enumerate}
 \item[(a)] $\phi$ is a ring homomorphism with $\ker \phi = \bigcap_{j=1}^n I_j$.
-\item[(b)] If $I_1,\dots,I_n$ are pairwise comaximal, then of course $\ker \phi = \prod_{J=1}^n I_j$, $\phi$ is surjective, and thus 
+\item[(b)] If $I_1,\dots,I_n$ are pairwise comaximal, then of course $\ker \phi = \prod_{J=1}^n I_j$, $\phi$ is surjective, and thus
 	\[R / \prod_{j=1}^n \cong \bigtimes_{j=1}^n R/I_j \]
 \end{enumerate}
 \end{proposition}
@@ -2709,7 +2709,7 @@ A subset $D$ of $R$ is called \tb{multiplicatively closed} if
 \
 \begin{enumerate}
 \item[(a)] If $R$ is an integral domain, $D = R \bs \{0\}$ is multiplicatively closed.
-\item[(b)] If $R$ is any ring and $P \nsg R$ is a prime ideal, then $D = R \bs P$ is multiplicatively closed. 
+\item[(b)] If $R$ is any ring and $P \nsg R$ is a prime ideal, then $D = R \bs P$ is multiplicatively closed.
 \item[(c)] For $x \in R$, $D = \{x^n \mid n \in \N_0\}$ is multiplicatively closed.
 \end{enumerate}
 \end{example*}
@@ -2722,7 +2722,7 @@ Note that (a) is just a special case of $(b)$, as $\{0\}$ is a prime ideal of $R
 
 \vs
 
-Our motivation for constructing the ring of fractions $D\inv R$ is to \emph{invert} the elements of $D$. We construct $D\inv R$ as follows. Start with the cartesian product $R \times D$. Define an equivalence relation $\sim$ on $R \times D$ by $(r,d) \sim (r',d') \iff $ there exists $e \in D$ such that $e(rd' - r'd) = 0$. The only thing to check is that $\sim$ is transitive. Suppose $(r,d) \sim (r',d') \sim (r'',d'')$, so that there exist $d,f \in D$ such that 
+Our motivation for constructing the ring of fractions $D\inv R$ is to \emph{invert} the elements of $D$. We construct $D\inv R$ as follows. Start with the cartesian product $R \times D$. Define an equivalence relation $\sim$ on $R \times D$ by $(r,d) \sim (r',d') \iff $ there exists $e \in D$ such that $e(rd' - r'd) = 0$. The only thing to check is that $\sim$ is transitive. Suppose $(r,d) \sim (r',d') \sim (r'',d'')$, so that there exist $d,f \in D$ such that
 \begin{alignat*}{3}
 e(rd'-r'd) &= 0 = f(r'd''-r''d) && && \\
 \implies erd' &= er'd, \qquad && fr'd'' &&= fr''d'' \\
@@ -2742,7 +2742,7 @@ For $r \in R$, $d \in D$, $\frac{r}{d}$ denotes the equivalence class of $(r,d)$
 
 We now introduce the binary operations $+$ and $\cdot$ on $D\inv R$ as follows:
 	\[\frac{r}{d} + \frac{s}{e} \myeq \frac{re+sd}{de}, \quad \frac{r}{d}\frac{s}{e} \myeq \frac{rs}{de} \]
-We must check that $+$ and $\cdot$ are well-defined. To show that $+$ is well-defined, suppose $\frac{r}{d} = \frac{r'}{d'}, \frac{s}{e} = \frac{s'}{e'}$ in $D\inv R$. Then there exist $x,y \in D$ such that $x(rd'-r'd) = 0 = y(se'-s'e)$. We need to show that 
+We must check that $+$ and $\cdot$ are well-defined. To show that $+$ is well-defined, suppose $\frac{r}{d} = \frac{r'}{d'}, \frac{s}{e} = \frac{s'}{e'}$ in $D\inv R$. Then there exist $x,y \in D$ such that $x(rd'-r'd) = 0 = y(se'-s'e)$. We need to show that
 	\[\frac{r'e'+s'd'}{d'e'} = \frac{re+sd}{de} \]
 Indeed, we have
 \begin{align*}
@@ -2753,12 +2753,12 @@ xy[(re+sd)d'e' - (r'e'+s'd')de] &= xyred'e' + xysdd'e' - xyr'e'de - xys'd'de \\
 \end{align*}
 where the second equality used our assumption that $xrd' = xr'd$ and $yse' = ys'e$. It is more easily shown that multiplication is well-defined, and we omit those arguments. \\
 
-By using representatives for addition and multiplication and the fact that $R$ is already a commutative ring with 1, it follows easily now that $D\inv R$ is a commutative ring with unity $\frac{1}{1}$. We also get that $\left( \frac{d}{1} \right)\inv = \frac{1}{d} \implies \frac{1}{d} \in (D\inv R)\x$ for all $d \in D$. 
+By using representatives for addition and multiplication and the fact that $R$ is already a commutative ring with 1, it follows easily now that $D\inv R$ is a commutative ring with unity $\frac{1}{1}$. We also get that $\left( \frac{d}{1} \right)\inv = \frac{1}{d} \implies \frac{1}{d} \in (D\inv R)\x$ for all $d \in D$.
 
 \vs
 
 \begin{remark*}
-$D\inv R = \{0\} \iff 0 \in D$. Indeed, $D\inv R = \{0\} \iff \frac{0}{1} = \frac{1}{1} \iff \exists \ d \in D$ such that $0 = d(1-0) = d$. One usually requires that $0$ is excluded from $D$, but this is not necessary for $D\inv R$ to be a ring-you just end up with the (boring) zero ring. 
+$D\inv R = \{0\} \iff 0 \in D$. Indeed, $D\inv R = \{0\} \iff \frac{0}{1} = \frac{1}{1} \iff \exists \ d \in D$ such that $0 = d(1-0) = d$. One usually requires that $0$ is excluded from $D$, but this is not necessary for $D\inv R$ to be a ring-you just end up with the (boring) zero ring.
 
 If $D$ contains any nilpotent elements $x$, say $x^n = 0$, then $D\inv R = \{0\}$. However, $D$ may contain zero divisors and still $D\inv R \ne \{0\}$ (e.g., $D = R \bs P$ for $P \nsg R$ prime).
 \end{remark*}
@@ -2785,7 +2785,7 @@ There is a canonical ring homomorphism $j : R \ra D\inv R$, $r \mapsto \frac{r}{
 \begin{proposition}[Universal Property of Rings of Fractions]
 For any commutative ring $S$ with unity and any ring homomorphism $\phi : R \ra S$ with $\phi(D) \sub S\x$, there exists a unique ring homomorphism $\wt{\phi} : D\inv R \ra S$ such that $\wt{\phi} \circ j = \phi$. That is, the following diagram commutes:
 \begin{tikzcd}
-R \arrow{r}{\phi} 
+R \arrow{r}{\phi}
 \arrow[swap]{d}{j} & S \\
 D\inv R \arrow[dotted,swap]{ur}{\exists ! \ \wt{\phi}}
 \end{tikzcd}
@@ -2799,7 +2799,7 @@ Note that if $\wt{\phi}$ exists, then $\phi(d) = \wt{\phi}(\frac{d}{1}) \in S\x$
 \end{align*}
 Thus, for all $r \in R$, $d \in D$, $\wt{\phi}(\frac{r}{d}) = \wt{\phi}(\frac{r}{1}) \wt{\phi}(\frac{1}{d}) = \phi(r) \phi(d)\inv$, so $\wt{\phi}$ is uniquely determined by $\phi$. \\
 
-We now show that $\wt{\phi}$ exists. Define $\wt{\phi} : D\inv R \ra S$ by $\wt{\phi}(\frac{r}{d}) = \phi(r) \phi(d)\inv$. 
+We now show that $\wt{\phi}$ exists. Define $\wt{\phi} : D\inv R \ra S$ by $\wt{\phi}(\frac{r}{d}) = \phi(r) \phi(d)\inv$.
 
 $\wt{\phi}$ is \underline{well-defined}. Suppose $\frac{r}{d} = \frac{r'}{d'}$ in $D\inv R$, so that there exists $e \in D$ with $e(rd'-r'd) = 0_R$. Then
 \begin{align*}
@@ -2814,18 +2814,18 @@ It immediately follows that $\wt{\phi}$ satisfies the remaining properties of a 
 \vs
 
 \begin{corollary}
-Let $R$ be an integral domain with $F \myeq \tn{Frac}(R)$. If $\phi : R \ra K$ is an injective ring homomorphism for some field $K$, then $K$ contains an isomorphic copy of $F$. Thus, $F = \tn{Frac}(R)$ is the smallest field containing $R$. 
+Let $R$ be an integral domain with $F \myeq \tn{Frac}(R)$. If $\phi : R \ra K$ is an injective ring homomorphism for some field $K$, then $K$ contains an isomorphic copy of $F$. Thus, $F = \tn{Frac}(R)$ is the smallest field containing $R$.
 \end{corollary}
 
 \begin{proof}
-Because $\phi$ is injective, $\phi(R \bs \{0\}) \sub K \bs\{0\} = K\x$. We apply 2.2.3 to get that there exists a unique ring homomorphism $\wt{\phi} : F \ra K$ with $\wt{\phi} \circ j = \phi$. In particular, $\wt{\phi} \not\equiv 0$, so $\ker \wt{\phi} = \{0\}$, since $\{0\}$ and $F$ are the only ideals of the field $F$. Thus, $\wt{\phi}$ is injective $\implies F \cong \wt{\phi}(F) \sub K$. 
+Because $\phi$ is injective, $\phi(R \bs \{0\}) \sub K \bs\{0\} = K\x$. We apply 2.2.3 to get that there exists a unique ring homomorphism $\wt{\phi} : F \ra K$ with $\wt{\phi} \circ j = \phi$. In particular, $\wt{\phi} \not\equiv 0$, so $\ker \wt{\phi} = \{0\}$, since $\{0\}$ and $F$ are the only ideals of the field $F$. Thus, $\wt{\phi}$ is injective $\implies F \cong \wt{\phi}(F) \sub K$.
 \end{proof}
 
 \vs
 
 \section*{Ideals in $\mb{D\inv R}$}
 
-In this section, $R$ is always a nonzero commutative ring with 1 and $D$ is a multiplicatively closed subset of $R$ which does not contain 0. 
+In this section, $R$ is always a nonzero commutative ring with 1 and $D$ is a multiplicatively closed subset of $R$ which does not contain 0.
 
 \vs
 
@@ -2833,7 +2833,7 @@ In this section, $R$ is always a nonzero commutative ring with 1 and $D$ is a mu
 \
 \begin{enumerate}
 \item[(a)] If $I \nsg R$, then $D\inv I \myeq \{\frac{a}{d} \mid a \in I, d \in D\} \nsg D\inv R$.
-\item[(b)] $D\inv I = D\inv R \iff \frac{1}{1} \in D\inv I \iff D \cap I \ne \vn$. 
+\item[(b)] $D\inv I = D\inv R \iff \frac{1}{1} \in D\inv I \iff D \cap I \ne \vn$.
 \end{enumerate}
 \end{remark}
 
@@ -2844,13 +2844,13 @@ In this section, $R$ is always a nonzero commutative ring with 1 and $D$ is a mu
 \begin{enumerate}
 \item[(a)] The map $\{I \tl R \mid I \cap D = \vn \} \ra \{\tn{proper ideals of } D\inv R\}$, $I \mapsto D\inv I$, is surjective.
 \item[(b)] If $P \tl R$ is a prime ideal with $P \cap D = \vn$, then $j\inv(D\inv P) = P$.
-\item[(c)] The map $\phi : \{P \tl R \mid P \tn{ prime}\} \ra \{\tn{prime ideals of } D\inv R\}, P \mapsto D\inv P$, is bijective. 
+\item[(c)] The map $\phi : \{P \tl R \mid P \tn{ prime}\} \ra \{\tn{prime ideals of } D\inv R\}, P \mapsto D\inv P$, is bijective.
 \end{enumerate}
 \end{proposition}
 
-\begin{proof}\ 
+\begin{proof}\
 \begin{enumerate}
-\item[(a)]Let $J \tl D\inv R$. Put $I = j\inv(J) \nsg R$. We claim that $D\inv I = J$. Clearly, $D\inv I \sub J$. To show $J \sub D\inv I$, let $\frac{a}{d} \in J$. Then 
+\item[(a)]Let $J \tl D\inv R$. Put $I = j\inv(J) \nsg R$. We claim that $D\inv I = J$. Clearly, $D\inv I \sub J$. To show $J \sub D\inv I$, let $\frac{a}{d} \in J$. Then
 	\[j(a) = \frac{a}{1} = \left( \frac{a}{d} \right) \left( \frac{d}{1} \right) \in J \iff a \in j\inv \left(\frac{a}{1} \right) \implies \frac{a}{d} \in D\inv J = I \]
 We have also shown that $I \ne R$ and $I \cap D = \vn$, since $D\inv I = J \ne D\inv R$.
 
@@ -2858,8 +2858,8 @@ We have also shown that $I \ne R$ and $I \cap D = \vn$, since $D\inv I = J \ne D
 
 \item[(c)] We first show that $\im \phi \sub \mc{P} \myeq \{\tn{prime ideals of } D\inv R \}$. If $P \tl R$ is a prime ideal with $P \cap D = \vn$, then we claim that $\phi(P) = D\inv P \nsg D\inv R$ is prime. Indeed, $D\inv P \ne D\inv R$ by $A$. Suppose that $\frac{r}{d} \cdot \frac{s}{e} \in D\inv P$ for some $\frac{r}{d}, \frac{s}{e} \in D\inv R$. Then there exists $a \in P$ and $f \in D$ such that $\frac{rs}{de} = \frac{a}{f}$, hence there exists $g \in D$ with $g(rsf-ade) = 0 \iff (rs)(fg) = adeg \in P$. Now, $f,g \in D \implies f,g \notin P \implies fg \notin P$ as $P$ is prime, so it follows that $fs \in P \implies$ $r \in P$ or $s \in P \implies$ $\frac{r}{d} \in D\inv P$ or $\frac{s}{e} \in D\inv P$. So $D\inv P$ is prime. \\
 
-$\phi$ is injective by (b). To show surjectivity, let $P' \tl D\inv R$ be a prime ideal, and consider $P \myeq j\inv(P') \nsg R$. $P$ is prime in $R$ as a consequence of Exercise 4 on Homework 9, and in the proof of part (a) we verified that $j(P) = P'$. 
-\end{enumerate} 
+$\phi$ is injective by (b). To show surjectivity, let $P' \tl D\inv R$ be a prime ideal, and consider $P \myeq j\inv(P') \nsg R$. $P$ is prime in $R$ as a consequence of Exercise 4 on Homework 9, and in the proof of part (a) we verified that $j(P) = P'$.
+\end{enumerate}
 \end{proof}
 
 \vs
@@ -2882,9 +2882,9 @@ As a consequence, $PR_P \myeq D\inv P$ is the \emph{unique} maximal ideal of $R_
 \vs
 
 \begin{example}
-Let $R = \z$, $P = (p)$ for $p \in \z$ a prime. Then 
+Let $R = \z$, $P = (p)$ for $p \in \z$ a prime. Then
 \[\z_{(p)} = \{ \frac{a}{b} \mid a,b \in \z, p \nmid b\} \sub \Q = \tn{Frac}(\z) = \z_{(0)} \]
-The prime ideals of $\z_{(p)}$ are $\{0\}$ and $p\z_{(p)} = \{\frac{a}{b} \mid a,b \in \z, p\nmid b, p \mid a\}$. 
+The prime ideals of $\z_{(p)}$ are $\{0\}$ and $p\z_{(p)} = \{\frac{a}{b} \mid a,b \in \z, p\nmid b, p \mid a\}$.
 \end{example}
 
 \vs
@@ -2893,28 +2893,28 @@ The prime ideals of $\z_{(p)}$ are $\{0\}$ and $p\z_{(p)} = \{\frac{a}{b} \mid a
 
 As usual, $R$ always denotes a commutative ring with $1 \ne 0$. \\
 
-Let us first consider a bad way to formally construct the polynomial ring $R[x]$. We could set 
+Let us first consider a bad way to formally construct the polynomial ring $R[x]$. We could set
 	\[R[x] \myeq \{f : R \ra R \mid \exists \ a_i \in R \tn{ such that } f(x) = \sum_{i=0}^n a_i x^i \ \ \forall \ x \in R\} \]
-If $R = \mbb{F}_p$ for $p \in \z$ a prime, then $x,x^p \in \mbb{F}_p[x]$ define the same function from $\mbb{F}_p \ra \mbb{F}_p$. But if $x$ is to truly be an \emph{indeterminant} variable, then we want $x \ne x^p$. 
+If $R = \mbb{F}_p$ for $p \in \z$ a prime, then $x,x^p \in \mbb{F}_p[x]$ define the same function from $\mbb{F}_p \ra \mbb{F}_p$. But if $x$ is to truly be an \emph{indeterminant} variable, then we want $x \ne x^p$.
 
 \vs
 
 \begin{defn}
-The \tb{polynomial ring} (in one variable over $R$) is the set 
-	\[R[x] \myeq \{(a_i)_{i \in \N_0} \mid a_i \in R, a_i=0 \tn{ for all but finitely many }i \} \] 
+The \tb{polynomial ring} (in one variable over $R$) is the set
+	\[R[x] \myeq \{(a_i)_{i \in \N_0} \mid a_i \in R, a_i=0 \tn{ for all but finitely many }i \} \]
 together with two binary operations $+, \cdot : R[x] \times R[x] \ra R[x]$ defined as
 \begin{align*}
 (a_i)_{i \in \N_0} + (b_i)_{i \in \N_0} &\myeq (a_i + b_i)_{i \in \N_0} \\
 (a_i)_{i \in \N_0} \cdot (b_i)_{i \in \N_0} &\myeq \left(\sum_{i=0}^k a_i b_{k-i}\right)_{k \in \N_0}
 \end{align*}
-One should verify that $(R[x],+,\cdot)$ is a commutative ring with unity element $(1,0,0,\dots)$. The only part of this verification that takes some work is the associativity of multiplication. If $a = (a_i),b=(b_i),c=(c_i) \in R[x]$, then 
+One should verify that $(R[x],+,\cdot)$ is a commutative ring with unity element $(1,0,0,\dots)$. The only part of this verification that takes some work is the associativity of multiplication. If $a = (a_i),b=(b_i),c=(c_i) \in R[x]$, then
 	\[((ab)c)_m = \sum_{i+j+k=0}^m a_i b_j c_k \]
 The elements of $R[x]$ are called \tb{polynomials}. There is a natural embedding $R \hra R[x], r \mapsto (r,0,0\dots)$. There is also a distinguished element $x \myeq (0,1,0,0,\dots) \in R[x]$. For $a = (a_i) \in R[x]$, one checks that
 \begin{enumerate}
 \item[(i)] $(xa)_0 = 0$, and
 \item[(ii)] $(xa)_{i+1} = a_i$ for all $i \in \N_0$.
 \end{enumerate}
-It should also be verified (inductively) that $x^n = (\delta_{in})_{i \in \N_0}$ for all $n \in \N_0$, where 
+It should also be verified (inductively) that $x^n = (\delta_{in})_{i \in \N_0}$ for all $n \in \N_0$, where
 	\[\delta_{ij} = \begin{cases}
 	1, \qquad & i = j \\
 	0, & i \ne j
@@ -2941,7 +2941,7 @@ Let $ 0 \ne a = (a_0,a_1,\dots,a_d,0,0,\dots) \in R[x]$, with $d \in \N_0$ such 
 &= (a_0,a_1,\dots,a_d,0,0,\dots) \\
 &= a
 \end{align*}
-The elements $a_i$ of the sequence $(a_i)_{i \in \N_0}$ uniquely determine the coefficients in $\sum_{i=0}^d a_i x^i$, so the representation ($\ast$) is unique. The expressions for addition and multiplication are obvious. 
+The elements $a_i$ of the sequence $(a_i)_{i \in \N_0}$ uniquely determine the coefficients in $\sum_{i=0}^d a_i x^i$, so the representation ($\ast$) is unique. The expressions for addition and multiplication are obvious.
 \end{proof}
 
 \vs
@@ -2953,7 +2953,7 @@ with the same addition and multiplication as for polynomials:
 \begin{align*}
 (a_i) + (b_i) = (a_i + b_i) (a_i)(b_i) &= \left(\sum_{i=0}^k a_i b_{k-i} \right)_{k \in \N_0}
 \end{align*}
-Again, we define $x \myeq (0,1,0,0,\dots)$. 
+Again, we define $x \myeq (0,1,0,0,\dots)$.
 \end{remark}
 
 \vs
@@ -2962,19 +2962,19 @@ Again, we define $x \myeq (0,1,0,0,\dots)$.
 Let $f,g \in R[x]$.
 \begin{enumerate}
 \item[(a)] $\deg (f+g) \leq \max(\deg f, \deg g)$.
-\item[(b)] $\deg(fg) \leq \deg f + \deg g$, with equality holding if $\ell(f)$ is not a zero divisor. 
+\item[(b)] $\deg(fg) \leq \deg f + \deg g$, with equality holding if $\ell(f)$ is not a zero divisor.
 \end{enumerate}
 
 \begin{proof}
-Suppose $f = \sum_{i=0}^d a_i x^i, g = \sum_{j=0}^e b_j x^j$, where, without loss of generality, we assume $f \ne 0$ and $g \ne 0$. 
+Suppose $f = \sum_{i=0}^d a_i x^i, g = \sum_{j=0}^e b_j x^j$, where, without loss of generality, we assume $f \ne 0$ and $g \ne 0$.
 \begin{enumerate}
 \item[(a)] We get
 	\[f + g = \sum_{i=0}^d a_i x^i + \sum_{j=0}^e b_j x^j = \sum_{i=0}^{\max(d,e)} (a_i + b_i)x^i, \]
-so that $\deg(f+g) \leq d+e = \deg f + \deg g$, because $a_i = b_i = 0$ for all $i > \max(d,e)$. 
+so that $\deg(f+g) \leq d+e = \deg f + \deg g$, because $a_i = b_i = 0$ for all $i > \max(d,e)$.
 
 \item[(b)] We have
 \[fg = a_0 b_0 + \sum_{k=1}^{d+e-1} \left(\sum_{i=0}^k a_i b_{k-i}\right)x^k + a_d b_ex^{d+e} \]
-Clearly, we have $\deg (fg) \leq d+e = \deg f + \deg g$. If $a_d = \ell(f)$ is not a zero divisor, then, because $b_e = \ell(g) \ne 0$, we have $a_db_e \ne 0$, so that $\ell(fg) = a_d b_e$ and $\deg(fg) = d+e = \deg f + \deg g$. 
+Clearly, we have $\deg (fg) \leq d+e = \deg f + \deg g$. If $a_d = \ell(f)$ is not a zero divisor, then, because $b_e = \ell(g) \ne 0$, we have $a_db_e \ne 0$, so that $\ell(fg) = a_d b_e$ and $\deg(fg) = d+e = \deg f + \deg g$.
 \end{enumerate}
 \end{proof}
 \end{lemma}
@@ -2982,7 +2982,7 @@ Clearly, we have $\deg (fg) \leq d+e = \deg f + \deg g$. If $a_d = \ell(f)$ is n
 \vs
 
 \begin{proposition}
-Let $R$ be an integral domain. 
+Let $R$ be an integral domain.
 \begin{enumerate}
 \item[(a)] If $f,g \in R[x]$, then $\deg(fg) = \deg(f) + \deg(g)$.
 \item[(b)] $R[x]$ is an integral domain.
@@ -2995,7 +2995,7 @@ Let $R$ be an integral domain.
 \begin{enumerate}
 \item[(a)] We may assume, without loss of generality, that $f,g \ne 0$, so that $\ell(f)$ and $\ell(g)$ are not zero divisors. Then the statement follows from 2.3.4 (b).
 \item[(b)] If $f,g \ne 0$, then it follows from part (a) that $ \deg(Fg) = \deg f + \deg g \geq 0 \ne -\infty = \deg 0$, so $fg \ne 0$.
-\item[(c)] As $R$ injects into $R[x]$, $R\x \sub (R[x])\x$. Let $f \in R[x]\bs R$, so that $\deg f \geq 1$. For all $g \in R[x] \bs \{0\}$, $\deg(fg) = \deg f + \deg g \geq 1 \implies fg \ne 1$, hence $f \notin (R[x])\x$. 
+\item[(c)] As $R$ injects into $R[x]$, $R\x \sub (R[x])\x$. Let $f \in R[x]\bs R$, so that $\deg f \geq 1$. For all $g \in R[x] \bs \{0\}$, $\deg(fg) = \deg f + \deg g \geq 1 \implies fg \ne 1$, hence $f \notin (R[x])\x$.
 \end{enumerate}
 \end{proof}
 
@@ -3012,9 +3012,9 @@ Let $R$ be a commutative ring with 1.
 \vs
 
 \begin{proposition}[Universal Property of \tn{$R[x]$}]
-For any commutative ring $S$ (with 1), any ring homomorphism $\phi : R \ra S$, and any $a \in S$, there exists a unique ring homomorphism $\wt{\phi}_a : R[x] \ra S$ such that $\wt{\phi}_a(x) = a$ and $\wt{\phi}_a|_R = \phi$. 
+For any commutative ring $S$ (with 1), any ring homomorphism $\phi : R \ra S$, and any $a \in S$, there exists a unique ring homomorphism $\wt{\phi}_a : R[x] \ra S$ such that $\wt{\phi}_a(x) = a$ and $\wt{\phi}_a|_R = \phi$.
 \begin{tikzcd}
-R \arrow{r}{\phi} 
+R \arrow{r}{\phi}
 \arrow[hookrightarrow]{d} & S \ni a \\
 R[x] \arrow[swap]{ur}{\wt{\phi}_a}
 \end{tikzcd}
@@ -3045,13 +3045,13 @@ Similarly,
 \begin{remark*}[\& Definition]
 Because $\wt{\phi}_a$ is a ring homomorphism, $\wt{\phi}_a(R[x])$ is a subring of $S$. A special case of the situation above is when $R$ is a subring of $S$. Then we define
 	\[R[a] \myeq \wt{\phi}_a(R[x]) = \left\{\sum_{i=0}^d r_i a^i \mid n \in \N_0, r_i \in R\right\}, \]
-which is called the ring obtained from $R$ by \tb{adjoining} $a$, and it is thought of as the smallest subring of $S$ containing $R$ and $a$. 
+which is called the ring obtained from $R$ by \tb{adjoining} $a$, and it is thought of as the smallest subring of $S$ containing $R$ and $a$.
 \begin{example*}
 \
 \begin{enumerate}
 \item[(a)] Consider $\z \sub \C$; $\z[i] = \{a+bi \mid a,b \in \z\}$ is called the ring of \tb{Gaussian integers.}
-\item[(b)] Consider $\z \sub \Q$; $\z\left[\frac{1}{2}\right] = \{\frac{m}{2^n} \mid m \in \z, n \in \N_0\}$. 
-\item[(c)] If we think of $\z$ as a subring of $\R$, then $\z[\sqrt[3]{2}] = \{a + b \sqrt[3]{2} + c \sqrt[3]{4} \mid a,b,c \in \z\}$. 
+\item[(b)] Consider $\z \sub \Q$; $\z\left[\frac{1}{2}\right] = \{\frac{m}{2^n} \mid m \in \z, n \in \N_0\}$.
+\item[(c)] If we think of $\z$ as a subring of $\R$, then $\z[\sqrt[3]{2}] = \{a + b \sqrt[3]{2} + c \sqrt[3]{4} \mid a,b,c \in \z\}$.
 \end{enumerate}
 \end{example*}
 \end{remark*}
@@ -3061,7 +3061,7 @@ which is called the ring obtained from $R$ by \tb{adjoining} $a$, and it is thou
 \begin{remark}[\& Definition]
 Another special case of 2.3.7 is when $S=R$, $\phi = \id_R$. Then $a \in R$, so we define $\tn{ev}_a = \wt{\phi}_a : R[x] \ra \R$, $\sum_{i=0}^d r_i x^i \mapsto \sum_{i=0}^d r_i a^i$, called the \tb{evaluation homomorphism at a.} For $f \in R[x]$, we define $f(a) \myeq \tn{ev}_a(f) \in R$. It is now easy to see that $(f+g)(a) = f(a)+g(a)$ and $(fg)(a) = f(a)g(a)$ for all $f,g \in R[x]$. \\
 
-Moreover, noting that $R^R = \{h : R \ra R\}$ is a commutative ring with 1 under componentwise addition and multiplication, we have a ring homomorphism $\psi : R[x] \ra R^R$, $f \mapsto \psi(f) : R \ra R$, $\psi(f)(a) = f(a)$. If this map $\psi$ is injective, then we may consider $R[x]$ as a ring of functions $R \ra R$, i.e., a subring of $R^R$. 
+Moreover, noting that $R^R = \{h : R \ra R\}$ is a commutative ring with 1 under componentwise addition and multiplication, we have a ring homomorphism $\psi : R[x] \ra R^R$, $f \mapsto \psi(f) : R \ra R$, $\psi(f)(a) = f(a)$. If this map $\psi$ is injective, then we may consider $R[x]$ as a ring of functions $R \ra R$, i.e., a subring of $R^R$.
 \end{remark}
 
 \vs
@@ -3093,9 +3093,9 @@ If $F$ is a field and $0 \ne f \in F[x]$, then for all $g \in F[x]$, there exist
 \begin{example}
 \
 \begin{enumerate}
-\item[(a)] Let $R = \z_6$, $f = -x +2$, $g = 2x^3+3$. Using polynomial long division, we see that $2x^3 = (-x+2)(-2x-4)-1$. 
-\item[(b)] Let $R = \z, f = 2x+1, g=x^2-1$. Note that $\ell(f) = 2 \notin \z\x$. We will see from (c) below that there do not exist $h,r \in \z[x]$ with $g=fh+r$ and $\deg r < 1$, as such $h$ and $r$ must be unique. 
-\item[(c)] Let $R=\Q, f=2x+1,g=x^2-1$. Polynomial long division yields $x^2-1 = (2x+1)(\frac{1}{2}x-\frac{1}{4})-\frac{3}{4}$. 
+\item[(a)] Let $R = \z_6$, $f = -x +2$, $g = 2x^3+3$. Using polynomial long division, we see that $2x^3 = (-x+2)(-2x-4)-1$.
+\item[(b)] Let $R = \z, f = 2x+1, g=x^2-1$. Note that $\ell(f) = 2 \notin \z\x$. We will see from (c) below that there do not exist $h,r \in \z[x]$ with $g=fh+r$ and $\deg r < 1$, as such $h$ and $r$ must be unique.
+\item[(c)] Let $R=\Q, f=2x+1,g=x^2-1$. Polynomial long division yields $x^2-1 = (2x+1)(\frac{1}{2}x-\frac{1}{4})-\frac{3}{4}$.
 \end{enumerate}
 \end{example}
 
@@ -3140,7 +3140,7 @@ Let $R$ be an integral domain. Then any finite subgroup of $R\x$ is cyclic.
 \end{theorem}
 
 \begin{proof}
-We combine 2.1.13 with 1.2.9 (b). Let $A \leq F\x$ be a subgroup of $F\x$ with order $n \in \N$. Note, of course, that $A$ is abelian. Fix $m \in \N$. Then for all $a \in R$, $a^m1 \iff a^m-1=0 \iff a$ is a root of $f := x^m-1\in R[x]$. By 2.1.13, 
+We combine 2.1.13 with 1.2.9 (b). Let $A \leq F\x$ be a subgroup of $F\x$ with order $n \in \N$. Note, of course, that $A$ is abelian. Fix $m \in \N$. Then for all $a \in R$, $a^m1 \iff a^m-1=0 \iff a$ is a root of $f := x^m-1\in R[x]$. By 2.1.13,
 	\[|\{a \in A \mid a^m=1\}| = |\{a \in R \mid f(a)=0\}| \leq m, \]
 so $A$ is cyclic by 1.2.9 (b).
 \end{proof}
@@ -3188,11 +3188,11 @@ With this definition, it is not hard to show that $R[x_1,\dots,x_n]$ is a commut
 						1, \qquad & \tn{if } \vec{i} = (0,0,\dots,1,0,\dots,0)\ (j\tn{th position}) \in \N_0^n  \\
 						0, & \tn{otherwise}
 	\end{cases} \]
-Further generalization to arbitrarily many variables can also be made. If $\mc{J}$ is any index set, then we can define 
+Further generalization to arbitrarily many variables can also be made. If $\mc{J}$ is any index set, then we can define
 \[R[x_j \mid j \in \mc{J}] := \left\{f : \bigoplus_{\mc{J}}\N_0 \ra R \mid f(\vec{i})=0 \tn{ for all but finitely many } \vec{i} \in \bigoplus_{\mc{J}}\N_0 \right\}, \]
 with the same addition and multiplication as in ($\ast$). We again distinguish, for each $j \in \mc{J}$, the element $x_j \in R[x_j \mid j \in \mc{J}]$ defined by
 	\[x_j (\vec{i}) = \vec{i}_j, \]
-where $\vec{i}_j = \vec{i}(j) \in \N_0$. It is not difficult to see that every $f \in R[x_j \mid j \in \mc{J}]$ can be written as a finite linear combination of the $x_j$'s. 
+where $\vec{i}_j = \vec{i}(j) \in \N_0$. It is not difficult to see that every $f \in R[x_j \mid j \in \mc{J}]$ can be written as a finite linear combination of the $x_j$'s.
 \end{remark}
 
 
@@ -3232,7 +3232,7 @@ Let $R$ be Euclidean. Let $I \nsg R$. Without loss of generality, take $I \ne \{
 \vs
 
 \begin{defn}
-Let $R$ be a commutative ring (with 1), $a,b \in R$. An element $c \in R$ is called a \tb{common divisor} of $a$ and $b$ if $c | a$ and $c | b$. A common divisor $d$ of $a$ and $b$ is called a \tb{greatest common divisor}, denoted $d = \gcd(a,b)$, if $c \mid d$ for all common divisors $c$ of $a$ and $b$. 
+Let $R$ be a commutative ring (with 1), $a,b \in R$. An element $c \in R$ is called a \tb{common divisor} of $a$ and $b$ if $c | a$ and $c | b$. A common divisor $d$ of $a$ and $b$ is called a \tb{greatest common divisor}, denoted $d = \gcd(a,b)$, if $c \mid d$ for all common divisors $c$ of $a$ and $b$.
 \end{defn}
 
 \vs
@@ -3291,7 +3291,7 @@ Then
 \item[(b)] $(a,b) = (r_{i-1},r_1) = (r_n) \implies \gcd(a,b) = r_n$.
 \item[(c)] If we define inductively $\alpha_{-1} = 0 = \beta_0, \beta_{-1} = 1 = \alpha_0$,
 	\[\alpha_i = \alpha_{i-2} - q_{i-1}\alpha_{i-1}, \quad \beta_i = \beta_{i-2} - q_{i-1}\beta_{i-1}, \]
-for $1 \leq i \leq n$, then $r_i = \alpha_ia + \beta_i b$ for all $-1 \leq i \leq n$, and hence $\gcd(a,b) = r_n = \alpha_n a + \beta_n b$. 
+for $1 \leq i \leq n$, then $r_i = \alpha_ia + \beta_i b$ for all $-1 \leq i \leq n$, and hence $\gcd(a,b) = r_n = \alpha_n a + \beta_n b$.
 \end{enumerate}
 \end{proposition}
 
@@ -3315,20 +3315,20 @@ r_{i-2} &= q_{i-1}r_{i-1} + r_i \\
 \begin{remark}[Quadratic Number Fields]
 Fix $m \in \z\bs\{0,1\}$ \tb{square-free}, so that either $m = -1$ or $m = p_1 \cdots p_r$ with each $p_i$ a distinct prime. Then $\sqrt{m} \notin \Q$. Indeed, if $m < 0$, then $\sqrt{m} \in \C \bs \R$. If $m > 0$, then $mb^2 \notin \z^2 \forall b \in \z\bs\{0\}$ (because of the unique prime factorization of $m$). Thus if $\sqrt{m} = \frac{a}{b}, a,b \in \N$, then $mb^2 = a^2 \in \z^2$. Contradiction.
 
-Therefore, we have that $s + t\sqrt{m} = 0 \iff s=t=0$ for all $s,t \in \Q$, i.e., $\{1,\sqrt{m}\}$ is a basis for $K_m := \Q[\sqrt{m}] = \{s + t\sqrt{m} \mid s,t \in \Q\}$ as a vector space over $\Q$. $K_m$ is also closed under addition and multiplication, so $K_m$ is a subring of $\C$. 
+Therefore, we have that $s + t\sqrt{m} = 0 \iff s=t=0$ for all $s,t \in \Q$, i.e., $\{1,\sqrt{m}\}$ is a basis for $K_m := \Q[\sqrt{m}] = \{s + t\sqrt{m} \mid s,t \in \Q\}$ as a vector space over $\Q$. $K_m$ is also closed under addition and multiplication, so $K_m$ is a subring of $\C$.
 
-Define $\phi : K_m \ra K_m$ by $s+t\sqrt{m} \mapsto s-t\sqrt{m}$. $\phi$ is a ring homomorphism (check) with $\phi|_{\Q} = \id_{\Q}$ and $\phi^2 = \id_{K_m}$. Define the \tb{norm} $N : K_m \ra \Q$ by $N(z) = z \phi(z)$ for $z \in K_m$. 
+Define $\phi : K_m \ra K_m$ by $s+t\sqrt{m} \mapsto s-t\sqrt{m}$. $\phi$ is a ring homomorphism (check) with $\phi|_{\Q} = \id_{\Q}$ and $\phi^2 = \id_{K_m}$. Define the \tb{norm} $N : K_m \ra \Q$ by $N(z) = z \phi(z)$ for $z \in K_m$.
 \begin{enumerate}
 \item[(i)] $N(z) \in \Q$. Indeed, if $z = s+t\sqrt{m}$ for $s,t \in \Q$, then $N(z) = (s+t\sqrt{m})(s-t\sqrt{m}) = s^2-mt^2 \in \Q$.
 \item[(ii)] $N(z) =0 \iff z=0$, since $s^2-t^2m = 0 \implies s=t=0$.
-\item[(iii)] If $z,w \in K_m$, then 
+\item[(iii)] If $z,w \in K_m$, then
 	\[N(zw) = (zw)(\phi(z)\phi(w)) = (z\phi(z))(w\phi(w)) = N(z)N(w) \]
 \end{enumerate}
 It is now easy to see that
 \begin{enumerate}
 \item[(1)] $K_m$ is a field. If $0 \ne z \in K_m$, then $N(z) \ne 0$, so $\frac{\phi(z)}{N(z)} \in K_m$, and hence
 	\[z \left(\frac{\phi(z)}{N(z)}\right) = \frac{z \phi(z)}{N(z)} = 1 \]
-\item[(2)] $N|_{K_m\x} : K_m\x \ra \Q\x$ is a group homomorphism. 
+\item[(2)] $N|_{K_m\x} : K_m\x \ra \Q\x$ is a group homomorphism.
 \end{enumerate}
 \end{remark}
 
@@ -3345,7 +3345,7 @@ Let $R$ be a subring of $K = K_m$ satisfying $N(R) \sub \z$. Then
 \begin{proof}
 \
 \begin{enumerate}
-\item[(c)] Given $a,b \in R$, $a \ne 0$, set $z = \frac{b}{a} \in K$. By assumption, there exists $q \in R$ with $|N(z-q)| < 1 \implies |N(z)| > |N(a)||N(z-q)| = |N(b-qa)| \iff d(b-qa) < d(a)$. Putting $r = b-qa$, we have $b = qa + r$ where $d(r) < d(a)$. 
+\item[(c)] Given $a,b \in R$, $a \ne 0$, set $z = \frac{b}{a} \in K$. By assumption, there exists $q \in R$ with $|N(z-q)| < 1 \implies |N(z)| > |N(a)||N(z-q)| = |N(b-qa)| \iff d(b-qa) < d(a)$. Putting $r = b-qa$, we have $b = qa + r$ where $d(r) < d(a)$.
 \end{enumerate}
 \end{proof}
 
@@ -3355,7 +3355,7 @@ Let $R$ be a subring of $K = K_m$ satisfying $N(R) \sub \z$. Then
 \
 \begin{enumerate}
 \item[(a)] Let $m=-1$, so that $\sqrt{m} = i$ (principal branch) and $K = K_{-1} = \Q[i]$. Put $R = \z[i] = \{k+\ell i \mid k,\ell \in \z\}$. Note that the norm on $K$ is always nonnegative, so we don't need absolute value bars. We have
-	\[R\x = \{k + \ell i \in R \mid k^2+\ell^2 = 1\} = \{\pm 1,\pm i\} =\gen{i}\] 
+	\[R\x = \{k + \ell i \in R \mid k^2+\ell^2 = 1\} = \{\pm 1,\pm i\} =\gen{i}\]
 To see that $R$ has the Euclidean property, let $z = s + ti \in K$. We can always find integers $k,\ell$ such that $|s-k|,|t-\ell| \leq \frac{1}{2}$. Thus
 	\[N(z-(k+\ell i)) = (s-k)^2+(t-\ell)^2 \leq \frac{1}{2} < 1 \]
 Since $N(w) \in \z$ for all $w \in R$, we have by 2.4.10 that $\z[i]$ is Euclidean. We can even carry out the Euclidean algorithm on $R$.
@@ -3368,7 +3368,7 @@ so we take $q = 2i \implies r = -1-i$, so that
 
 \item[(b)]Let $R = \z[\sqrt{2}] \sub K_2 \implies R\x = \{\pm(1+\sqrt{2})^n \mid n \in \z\}$ (not easy to show). Let $z = s + t\sqrt{2} \in K_2$. Choose $k,\ell \in \z$ such that $|s-k|,|t-\ell|\leq \frac{1}{2}$, so that
 \[|N(z-(k+\ell i)) = |(s-k)^2-2(t-\ell)^2| \leq \frac{1}{4} + \frac{1}{2} < 1, \]
-and thus $\z[\sqrt{2}]$ is Euclidean. 
+and thus $\z[\sqrt{2}]$ is Euclidean.
 \end{enumerate}
 \end{example*}
 
@@ -3380,7 +3380,7 @@ Let $m \in \z\bs\{0\}$ be square-free, $K_m = \Q[\sqrt{m}] = \Q(\sqrt{m})$. Defi
 					\sqrt{m}, \qquad & m \notequiv 1 \pmod{4} \\
 					\frac{1+\sqrt{m}}{2},   & m \equiv 1 \pmod{4}
 	\end{cases},\]
-and consider $\mc{O} = \mc{O}(m) := \z[\omega_m]$. If $m \equiv 1 \pmod{4}$, then $2\omega_m-1 = \sqrt{m} \implies \z[\sqrt{m}] \sub \mc{O}$, but it is easy to see that equality does not hold by the definition of $\omega_m$. If $m \equiv 1 \pmod{4}$, then $\omega_m$ is a root of the \emph{monic} quadratic polynomial with integer coefficients 
+and consider $\mc{O} = \mc{O}(m) := \z[\omega_m]$. If $m \equiv 1 \pmod{4}$, then $2\omega_m-1 = \sqrt{m} \implies \z[\sqrt{m}] \sub \mc{O}$, but it is easy to see that equality does not hold by the definition of $\omega_m$. If $m \equiv 1 \pmod{4}$, then $\omega_m$ is a root of the \emph{monic} quadratic polynomial with integer coefficients
 \[\left(x-\omega_m\right)(x-\phi(\omega_m)) = x^2 - (\omega_m + \phi(\omega_m))x + \omega_m\phi(\omega_m) \in \z[x], \]
 since $\omega_m + \phi(\omega_m) = \frac{1}{2} [(1+\sqrt{m})+(1-\sqrt{m})] = 1 \in \z$ and $\omega_m \phi(\omega_m) = \frac{1}{4}(1-m) \in \z$ as $m \equiv 1 \pmod{4}$.  Relating this to the above lemma, we get that $\phi(\mc{O}(m)) \sub \mc{O}(m)$ since $\phi(\omega_m) \in \mc{O}(m)$. Also, $N(\mc{O}(m)) \sub \z$. If $m \not\equiv 1 \mod 4$, this is clear. Suppose $m \equiv 1 \mod{4}$, so that $\omega_m = \frac{1}{2}(1+\sqrt{m})$. Then for $a,b \in \z$, we have
 \begin{align*}
@@ -3401,7 +3401,7 @@ If $m \equiv 1 \mod{4}$, then $R := \z[\sqrt{m}]$ is a proper subring of $\mc{O}
 \
 \begin{enumerate}
 \item[(a)] $R = \mc{O}(-1) = \z[i]$ satisfies 2.4.10 (a)-(c) and is Euclidean.
-\item[(b)] $R = \mc{O}(2)$ is also Euclidean by 2.4.10. In fact, $R\x = \{\pm (1+\sqrt{2})^n \mid n \in \z\}$. 
+\item[(b)] $R = \mc{O}(2)$ is also Euclidean by 2.4.10. In fact, $R\x = \{\pm (1+\sqrt{2})^n \mid n \in \z\}$.
 \item[(c)] $R = \z[\sqrt{-3}]$. Let $z = s + t \sqrt{-3} \in K_{-3}$, $s,t \in \Q$. Choose $a,b \in \z$ such that $|s-a|,|t-b| \leq 1/2$, and put $q = a + b \sqrt{-3} \in R$. Then
 	\[N(z-q) \leq \frac{1}{4} + \frac{3}{4} = 1, \]
 so 2.4.10 (c) is not applicable. In fact, $R$ is not a PID by 2.4.12.
@@ -3414,7 +3414,7 @@ By 2.4.10 (c), $R$ is Euclidean.
 
 \item[(e)] $\mc{O}(-19) = \z \left[\frac{1+\sqrt{-19}}{2}\right]$ is a PID but not Euclidean (see [DF], last examples in 8.1 and 8.2).
 
-\item[(f)] $\mc{O}(-5) = \z[\sqrt{-5}]$ is not a PID, nor is $\mc{O}(-15)$. There are only 9 PID's among the rings $\mc{O}(m)$ with $m < 0$. 
+\item[(f)] $\mc{O}(-5) = \z[\sqrt{-5}]$ is not a PID, nor is $\mc{O}(-15)$. There are only 9 PID's among the rings $\mc{O}(m)$ with $m < 0$.
 \end{enumerate}
 \end{example}
 
@@ -3444,46 +3444,46 @@ $[(i) \implies (ii)]$. Let $I_1 \sub I_2 \sub \dots$ be an ascending chain of id
 
 $[(ii) \implies (iii)]$ Put $\mc{S}$ be a nonempty set of ideals of $R$. $\mc{S}$ is partially ordered by inclusion, and by our assumption of $(ii)$, every chain in $\mc{S}$ has an upper bound, so by Zorn's Lemma $\mc{S}$ contains a maximal element. \\
 
-$[(iii) \implies (i)]$ Let $I \nsg R$. Define the set $\mc{A} = \{J \nsg R \mid J \sub I \tn{ and $J$ is finitely generated}\}$. Certainly $\mc{A}$ is nonempty and partially ordered by inclusion. By our assumption of $(iii)$, every chain in $\mc{A}$ has an upper bound, so by Zorn's Lemma, $\mc{A}$ contains a maximal element $J = (a_1,a_2,\dots,a_n) \nsg R$ for some $a_1,\dots,a_n \in R$. We claim that $I = J$. If not, then $J \subsetneq I$, and so there exists $a \in I \bs J$. Put $J' = (a_1,a_2,\dots,a_n,a) \in \mc{A}$. Then $J \subsetneq J'$, contradicting the maximality of $J$. Therefore, $I$ is finitely generated, and so $R$ is Noetherian. 
+$[(iii) \implies (i)]$ Let $I \nsg R$. Define the set $\mc{A} = \{J \nsg R \mid J \sub I \tn{ and $J$ is finitely generated}\}$. Certainly $\mc{A}$ is nonempty and partially ordered by inclusion. By our assumption of $(iii)$, every chain in $\mc{A}$ has an upper bound, so by Zorn's Lemma, $\mc{A}$ contains a maximal element $J = (a_1,a_2,\dots,a_n) \nsg R$ for some $a_1,\dots,a_n \in R$. We claim that $I = J$. If not, then $J \subsetneq I$, and so there exists $a \in I \bs J$. Put $J' = (a_1,a_2,\dots,a_n,a) \in \mc{A}$. Then $J \subsetneq J'$, contradicting the maximality of $J$. Therefore, $I$ is finitely generated, and so $R$ is Noetherian.
 \end{proof}
 
-\item[(c)] The homomorphic image of a Noetherian ring is Noetherian. Indeed, let $R$ be Noetherian and $\phi : R \ra S$ a (WLOG surjective) ring homomorphism. Given any $I \nsg S$, $\phi\inv(I) \nsg R$. Now $R$ is Noetherian, so $I = (a_1,\dots,a_n)$ for some $a_1,\dots,a_n \in R$, and thus, because $\phi$ is surjective, $I = \phi(\phi\inv(I)) = \phi(a_1,\dots,a_n) = (\phi(a_1),\dots,\phi(a_n))$ to show that $I$ is finitely generated. In particular, we have shown that $S$ is a PID if $R$ is a PID. 
+\item[(c)] The homomorphic image of a Noetherian ring is Noetherian. Indeed, let $R$ be Noetherian and $\phi : R \ra S$ a (WLOG surjective) ring homomorphism. Given any $I \nsg S$, $\phi\inv(I) \nsg R$. Now $R$ is Noetherian, so $I = (a_1,\dots,a_n)$ for some $a_1,\dots,a_n \in R$, and thus, because $\phi$ is surjective, $I = \phi(\phi\inv(I)) = \phi(a_1,\dots,a_n) = (\phi(a_1),\dots,\phi(a_n))$ to show that $I$ is finitely generated. In particular, we have shown that $S$ is a PID if $R$ is a PID.
 \end{enumerate}
 \end{remark}
 
 \vs
 
 \begin{theorem}[Hilbert's Basis Theorem, 1888]
-If $R$ is a Noetherian ring, then so is $R[x]$. 
+If $R$ is a Noetherian ring, then so is $R[x]$.
 \end{theorem}
 
 \begin{proof}
 Let $I \ne (0)$ be an ideal in $R[x]$. We want to show that $I$ is finitely generated.
 \begin{enumerate}
-\item[\tb{Step 1.}] Define $L := \{a \in R \mid a = \ell(f) \tn{ for some } f \in I\}$. Note that $0 \in L$ as $\ell(0) = 0$. It is straightforward to check that if $a,b \in L$ and $r \in R$, then $a+br \in L$. Hence $L \nsg R$, and $R$ is Noetherian, so there exist $a_1,\dots,a_n \in R$ with $L = (a_1,\dots,a_n)$. For each $1 \leq i \leq n$, choose $f_i \in I$ with $\ell(f_i) = a_i$, $\deg (f_i) = e_i \in \N_0$, and set $N = \max(e_1,\dots,e_n)$. 
+\item[\tb{Step 1.}] Define $L := \{a \in R \mid a = \ell(f) \tn{ for some } f \in I\}$. Note that $0 \in L$ as $\ell(0) = 0$. It is straightforward to check that if $a,b \in L$ and $r \in R$, then $a+br \in L$. Hence $L \nsg R$, and $R$ is Noetherian, so there exist $a_1,\dots,a_n \in R$ with $L = (a_1,\dots,a_n)$. For each $1 \leq i \leq n$, choose $f_i \in I$ with $\ell(f_i) = a_i$, $\deg (f_i) = e_i \in \N_0$, and set $N = \max(e_1,\dots,e_n)$.
 
 \item[\tb{Setp 2.}] For $0 \leq d \leq N-1$, consider the set
 	\[L_d := \{a \in R \mid \exists \ f \in I \tn{ such that } \deg f = d, \ell(f) = a \} \cup \{0\} \]
-$L_d \nsg R$ (check). We therefore have $b_{d,1},\dots,b_{d,n_d} \in R$ such that $L_d = (b_{d,1},\dots,b_{d,n_d})$. For $0 \leq d \leq N-1$, choose $f_{d,j} \in I$ with $\deg(f_{d,j}) = d$ and $\ell(f_{d,j}) = b_{d,j}$ for $1 \leq j \leq n_d$. We claim that 
+$L_d \nsg R$ (check). We therefore have $b_{d,1},\dots,b_{d,n_d} \in R$ such that $L_d = (b_{d,1},\dots,b_{d,n_d})$. For $0 \leq d \leq N-1$, choose $f_{d,j} \in I$ with $\deg(f_{d,j}) = d$ and $\ell(f_{d,j}) = b_{d,j}$ for $1 \leq j \leq n_d$. We claim that
 	\[I = I' := (\{f_j \mid 1 \leq j \leq n\} \cup \{f_{d,j} \mid 0 \leq d \leq N-1, 1 \leq j \leq n_d\})\]
 $I' \sub I$ by our choice of $f_j, f_{d,j}$. We need to show that if $0 \ne f \in I$, then $f \in I'$. We show this by induction on $d = \deg f \geq 0$. \\
 
 If $d = 0$, then $f \in L_0 = (f_{0,1},\dots,f_{0,d_0}) \sub I'$. \\
 
-For the first case of the inductive step, we take $1 \leq d \leq N-1$. Let $a = \ell(f) \in L_d = (b_{d,1},\dots,v_{d,n_d})$, so that there exist $r_j \in R$, $1 \leq j \leq n_d$, such that 
+For the first case of the inductive step, we take $1 \leq d \leq N-1$. Let $a = \ell(f) \in L_d = (b_{d,1},\dots,v_{d,n_d})$, so that there exist $r_j \in R$, $1 \leq j \leq n_d$, such that
 	\[a = \sum_{j=1}^{n_d} r_j b_{d,j} = \ell\left(\sum_{j=1}^{n_d} r_j f_{d,j} \right) \in I' \]
 Now $f - \sum_{j=1}^{n_d} r_j f_{d,j} \in I$, and $\deg \left( f - \sum_{j=1}^{n_d} r_j f_{d,j}\right) < d$, so by the inductive hypothesis $f - \sum_{j=1}^{n_d} r_j f_{d,j} \in I'$. Therefore $f \in I'$, since $\sum_{j=1}^{n_d} r_j f_{d,j} \in I'$. \\
 
-For the other case of the inductive step, we take $d \geq N$, and let $a = \ell(f) \in L = (a_1,\dots,a_n)$ so that there exist $r_ \in R$ such that $a = \sum_{j=1}^n r_j a_j$. Now $a_j = \ell(f_j)$ where $\deg f_j = e_j \leq N$, thus 
+For the other case of the inductive step, we take $d \geq N$, and let $a = \ell(f) \in L = (a_1,\dots,a_n)$ so that there exist $r_ \in R$ such that $a = \sum_{j=1}^n r_j a_j$. Now $a_j = \ell(f_j)$ where $\deg f_j = e_j \leq N$, thus
 	\[\ell \left(\sum_{j=1}^n r_j x^{d-e_j} f_j\right) = \sum_{j=1}^n r_j a_j = a\]
-But $\deg \left(f-\sum_{j=1}^n r_j x^{d-e_j} f_j\right) < d$, and $\sum_{j=1}^n r_j x^{d-e_j} f_j \in I'$, so by the inductive hypothesis $f - \sum_{j=1}^n r_j x^{d-e_j} f_j \in I' \implies f \in I'$. 
+But $\deg \left(f-\sum_{j=1}^n r_j x^{d-e_j} f_j\right) < d$, and $\sum_{j=1}^n r_j x^{d-e_j} f_j \in I'$, so by the inductive hypothesis $f - \sum_{j=1}^n r_j x^{d-e_j} f_j \in I' \implies f \in I'$.
 \end{enumerate}
 \end{proof}
 
 \vs
 
 \begin{remark*}
-What Hilbert actually proved in 1888 was that if $f_1,f_2,\dots,$ is a sequence of polynomials in $F[x_1,\dots,x_n]$ for $F$ a field, then there exists $m \in \N$ such that for all $j \in \N$, there are $g_{i_j} \in F[x_1,\dots,x_n]$ with $f_j = g_{1_j} f_1 + \dots + g_{m_j} f_m$. 
+What Hilbert actually proved in 1888 was that if $f_1,f_2,\dots,$ is a sequence of polynomials in $F[x_1,\dots,x_n]$ for $F$ a field, then there exists $m \in \N$ such that for all $j \in \N$, there are $g_{i_j} \in F[x_1,\dots,x_n]$ with $f_j = g_{1_j} f_1 + \dots + g_{m_j} f_m$.
 
 From a modern point of view, one would consider a finite set $f_1,\dots,f_m$ of generators a "basis" of the ideal $(f_j \mid j \in \N) \nsg F[x_1,\dots,x_n]$. There is a narrative which says that the famous invariant theorist Paul Gordan, who gave explicit basis constructions for the case $n = 2$, remarked on Hilbert's proof of the basis theorem by saying, "This is not mathematics; this is theology."
 \end{remark*}
@@ -3491,7 +3491,7 @@ From a modern point of view, one would consider a finite set $f_1,\dots,f_m$ of 
 \vs
 
 \begin{corollary*}
-If $R$ is Noetherian, then so is $R[x_1,\dots,x_n]$. 
+If $R$ is Noetherian, then so is $R[x_1,\dots,x_n]$.
 \end{corollary*}
 
 \vs
@@ -3501,7 +3501,7 @@ If $R$ is a Noetherian ring and $S$ is a finitely generated ring extension of $R
 \end{corollary}
 
 \begin{proof}
-Put $S = R[a_1,\dots,a_n]$ for some $a_1,\dots,a_n \in S$. Since $R$ is Noetherian, $R[x_1,\dots,x_n]$ is Noetherian. By application of the universal property (2.3.7) of $R[x]$ $n$ times, we get that there exists a ring homomorphism $\phi : R[x_1,\dots,x_n] \ra S$ such that $\phi|_R = \id_R$ and $\phi(x_i) = a_i$ for $1 \leq i \leq n$. 
+Put $S = R[a_1,\dots,a_n]$ for some $a_1,\dots,a_n \in S$. Since $R$ is Noetherian, $R[x_1,\dots,x_n]$ is Noetherian. By application of the universal property (2.3.7) of $R[x]$ $n$ times, we get that there exists a ring homomorphism $\phi : R[x_1,\dots,x_n] \ra S$ such that $\phi|_R = \id_R$ and $\phi(x_i) = a_i$ for $1 \leq i \leq n$.
 
 $\phi$ is surjective, since by assumption $S = R[a_1,\dots,a_n] = \phi(R[x_1,\dots,x_n])$. Hence $S$ is Noetherian by 2.5.2 (b).
 \end{proof}
@@ -3514,7 +3514,7 @@ For all $m \in \z\bs\{0,1\}$ square-free, $\mc{O}(m)$ is Noetherian.
 
 \vs
 
-From now on, we take $R$ to be a domain. 
+From now on, we take $R$ to be a domain.
 
 \vs
 
@@ -3525,7 +3525,7 @@ Elements $a,b \in R$ are called \tb{associates} if $a = bu$ for some $ \in R\x \
 \vs
 
 \begin{defn}
-Set $R' = R \bs(R\x \cup \{0\})$. An element $b \in R'$ is called \tb{irreducible} if for all divisors $a$ of $b$ in $R$, either $a \in R\x$ or $a \sim b$. It is straightforward to check that for all $a,a' \in R$, if $a \sim a'$, then $a$ is irreducible if and only if $a'$ is irreducible. 
+Set $R' = R \bs(R\x \cup \{0\})$. An element $b \in R'$ is called \tb{irreducible} if for all divisors $a$ of $b$ in $R$, either $a \in R\x$ or $a \sim b$. It is straightforward to check that for all $a,a' \in R$, if $a \sim a'$, then $a$ is irreducible if and only if $a'$ is irreducible.
 \end{defn}
 
 \vs
@@ -3541,7 +3541,7 @@ Let $\mc{S} \sub R'$ be the set of all $a \in R'$ which are not finite products 
 \vs
 
 \begin{defn}
-An element $p \in R'$ is called \tb{prime} if it satisfies for all $a,b \in R$, if $p \mid ab$, then $p \mid a$ or $p \mid b$. 
+An element $p \in R'$ is called \tb{prime} if it satisfies for all $a,b \in R$, if $p \mid ab$, then $p \mid a$ or $p \mid b$.
 \end{defn}
 
 \vs
@@ -3557,13 +3557,13 @@ Let $p \in R'$. Then
 \begin{enumerate}
 \item[(a)] $p$ is irreducible if and only if $(p)$ is a maximal ideal among the (proper) principal ideals of $R$.
 \item[(b)] $p$ is prime if and only if $(p)$ is a prime ideal.
-\item[(c)] If $p$ is prime, then $p$ is irreducible. 
+\item[(c)] If $p$ is prime, then $p$ is irreducible.
 \end{enumerate}
 \end{lemma}
 
 \begin{proof}
 \begin{enumerate}
-\item[(a)] Assume that $p$ is irreducible and $(p) \sub (a) \ne R$ for some $a \in R$. Then $p \in (a)$, so $p = ab$ for some $b \in R$. Because $p$ is irreducible, either $a \in R\x$ or $b \in R\x$. But $a$ is not a unit since $(a) \ne R$, so $b \in R\x \implies (p) = (a)$. 
+\item[(a)] Assume that $p$ is irreducible and $(p) \sub (a) \ne R$ for some $a \in R$. Then $p \in (a)$, so $p = ab$ for some $b \in R$. Because $p$ is irreducible, either $a \in R\x$ or $b \in R\x$. But $a$ is not a unit since $(a) \ne R$, so $b \in R\x \implies (p) = (a)$.
 
 Now assume that $(p)$ is maximal among the principal ideals of $R$. Suppose that $p = ab$ for some $a,b \in R$. If neither $a$ nor $b$ is a unit, then $(p) \subsetneq (a) \ne R$, a contradiction.
 
@@ -3576,9 +3576,9 @@ Now assume that $(p)$ is maximal among the principal ideals of $R$. Suppose that
 \vs
 
 \begin{example}[Irreducibles Needn't Be Prime]
-Consider $\mc{O}(-5) = \z[\sqrt{-5}]$. $N(a+b\sqrt{-5}) = a^2 + 5b^2$ for all $a,b \in \z$. There are no elements of $R$ of norm $2$ or $3$. Also, $R\x = \{1,-1\}$. Now consider the element $6 = 2 \cdot 3 = (1+\sqrt{-5})(1-\sqrt{-5})$ in $R$. If $p \in \{2,3,1\pm \sqrt{-5}\}$, then $p$ is irreducible but not prime. Indeed, if $a \mid p$, then $N(a) \mid N(p) \in \{4,6,9\}$, in which case $N(a) = 1$ and $a$ is a unit or $N(a) = N(p)$ and $a \sim p$, since $a \mid p$. 
+Consider $\mc{O}(-5) = \z[\sqrt{-5}]$. $N(a+b\sqrt{-5}) = a^2 + 5b^2$ for all $a,b \in \z$. There are no elements of $R$ of norm $2$ or $3$. Also, $R\x = \{1,-1\}$. Now consider the element $6 = 2 \cdot 3 = (1+\sqrt{-5})(1-\sqrt{-5})$ in $R$. If $p \in \{2,3,1\pm \sqrt{-5}\}$, then $p$ is irreducible but not prime. Indeed, if $a \mid p$, then $N(a) \mid N(p) \in \{4,6,9\}$, in which case $N(a) = 1$ and $a$ is a unit or $N(a) = N(p)$ and $a \sim p$, since $a \mid p$.
 
-However, for example, $2$ is not prime as $2 \mid 6 = (1+\sqrt{-5})(1-\sqrt{-5})$, but $2 \nmid 1\pm \sqrt{-5}$. 
+However, for example, $2$ is not prime as $2 \mid 6 = (1+\sqrt{-5})(1-\sqrt{-5})$, but $2 \nmid 1\pm \sqrt{-5}$.
 \end{example}
 
 \vs
@@ -3589,7 +3589,7 @@ For a PID $R$ and an element $a \in R'$, the following are equivalent:
 \item[(i)] $p$ is prime.
 \item[(ii)] $p$ is irreducible.
 \item[(iii)] $(p)$ is maximal ideal of $R$.
-\item[(iv)] $(p)$ is a prime ideal of $R$. 
+\item[(iv)] $(p)$ is a prime ideal of $R$.
 \end{enumerate}
 \end{proposition}
 
@@ -3606,13 +3606,13 @@ An explicit argument for $(ii) \implies (i)$ above goes as follows. Assume $p \m
 \vs
 
 \begin{lemma}
-Let $a \in R'$ and $a = p_1 \cdots p_m = q_1 \cdots q_n$ with $primes p_i$ and $q_j$. Then $m = n$ and, after renumbering, $p_i \sim q_i$ for all $1 \leq i \leq m = n$. 
+Let $a \in R'$ and $a = p_1 \cdots p_m = q_1 \cdots q_n$ with $primes p_i$ and $q_j$. Then $m = n$ and, after renumbering, $p_i \sim q_i$ for all $1 \leq i \leq m = n$.
 \end{lemma}
 
 \begin{proof}
 By induction on $m$. If $m = 1$, then $a = p_1$ is prime and hence irreducible, and this implies that $n = 1$ as each $q_i$ is irreducible. Thus, $p_1 = a = q_1$. \\
 
-For the inductive step, $m \geq 2$. We have $p_m \mid a = q_1 \cdots q_n$, so there exists $1 \leq j \leq n$ such that $p_m \mid q_j$. After renumbering, we may take $j = n$. Now $p_m \mid q_n$, and both $p_m$ and $q_n$ are irreducible, so $p_m \sim q_n$, i.e., there exists $u \in R\x$ such that $p_m = u q_n \implies u p_1 \cdots p_{m-1} q_n = q_1 \cdots q_{n-1} q_n$, hence $(up_1) p_2 \cdots p_{m-1} = q_1 \cdots q_{n-1}$. We apply the inductive hypothesis to get that $m-1 = n-1 \iff m = n$ and, after renumbering, $p_i \sim q_i$ for each $1 \leq i \leq n-1$. 
+For the inductive step, $m \geq 2$. We have $p_m \mid a = q_1 \cdots q_n$, so there exists $1 \leq j \leq n$ such that $p_m \mid q_j$. After renumbering, we may take $j = n$. Now $p_m \mid q_n$, and both $p_m$ and $q_n$ are irreducible, so $p_m \sim q_n$, i.e., there exists $u \in R\x$ such that $p_m = u q_n \implies u p_1 \cdots p_{m-1} q_n = q_1 \cdots q_{n-1} q_n$, hence $(up_1) p_2 \cdots p_{m-1} = q_1 \cdots q_{n-1}$. We apply the inductive hypothesis to get that $m-1 = n-1 \iff m = n$ and, after renumbering, $p_i \sim q_i$ for each $1 \leq i \leq n-1$.
 \end{proof}
 
 \vs
@@ -3628,7 +3628,7 @@ If $R$ is a Noetherian domain in which each irreducible element is prime, then $
 \end{theorem}
 
 \begin{proof}
-Let $a \in R'$. Because $R$ is a Noetherian domain, we have by 2.5.7 that $a$ is a product of irreducibles, which by assumption are prime. If $R$ is a PID, then $R$ is Noetherian and every irreducible is prime by 2.5.11. 
+Let $a \in R'$. Because $R$ is a Noetherian domain, we have by 2.5.7 that $a$ is a product of irreducibles, which by assumption are prime. If $R$ is a PID, then $R$ is Noetherian and every irreducible is prime by 2.5.11.
 \end{proof}
 
 \vs
@@ -3641,12 +3641,12 @@ Let $a \in R'$. Because $R$ is a Noetherian domain, we have by 2.5.7 that $a$ is
 \begin{tikzcd}
 & & & \tn{Noetherian domain} \\
 \tn{Field} \arrow[r,Rightarrow] & \tn{Euclidean domain}
-\arrow[Rightarrow]{r}{} & \tn{PID} \arrow[Rightarrow]{ur}{} 
+\arrow[Rightarrow]{r}{} & \tn{PID} \arrow[Rightarrow]{ur}{}
 \arrow[Rightarrow]{dr}{} \\
 & & & \tn{irreducibles are prime}
 \end{tikzcd}
 \end{array} \right\} \Longrightarrow \tn{UFD}
-%\Bigg\} \longrightarrow UFD 
+%\Bigg\} \longrightarrow UFD
 \]
 %\end{align*}
 \end{center}
@@ -3678,9 +3678,9 @@ If $R$ is a UFD and $q \in R'$ is irreducible, then $q$ is prime. Since $R$ is a
 \vs
 
 \begin{remark}
-Let $(C_i)_{i \in I}$ be the family of classes of associate elements which are primes in the UFD $R$. For each $i \in I$, fix $p_i \in C_i$. Hence $p \in C_i \iff p \sim p_i$. We can reformulate the uniqueness of 2.5.12 as follows: for each $a \in R'$, there exists a unique factorization of the form $a = u \prod_{i \in I} p_i^{e_i}$ (really a finite product) with $u \in R\x$, $e_i \in \N_0$, and almost $e_i = 0$. 
+Let $(C_i)_{i \in I}$ be the family of classes of associate elements which are primes in the UFD $R$. For each $i \in I$, fix $p_i \in C_i$. Hence $p \in C_i \iff p \sim p_i$. We can reformulate the uniqueness of 2.5.12 as follows: for each $a \in R'$, there exists a unique factorization of the form $a = u \prod_{i \in I} p_i^{e_i}$ (really a finite product) with $u \in R\x$, $e_i \in \N_0$, and almost $e_i = 0$.
 
-Then it is easy to show (exercise) that if for $a,b \in R\bs\{0\}$ with $a = u \prod_{i \in I} p_i^{e_i}, b = \prod_{i \in I} p_i^{f_i}$, then 
+Then it is easy to show (exercise) that if for $a,b \in R\bs\{0\}$ with $a = u \prod_{i \in I} p_i^{e_i}, b = \prod_{i \in I} p_i^{f_i}$, then
 \begin{enumerate}
 \item[(a)] $a \mid b \iff e_i \leq f_i \ \forall \ i \in I$
 \item[(b)] $\gcd(a,b) = \prod_{i \in I} p_i^{\min(e_i,f_i)} $
@@ -3688,7 +3688,7 @@ Then it is easy to show (exercise) that if for $a,b \in R\bs\{0\}$ with $a = u \
 \item[(d)] If $R$ is a PID, then $(a,b) = (1) = R \iff \min(e_i,f_i) = 0$ for all $i \in I$. This provides us with a reformulation of the Chinese Remainder Theorem (2.1.13) for a PID $R$: If $p_1,\dots,p_n$ are pairwise non-associate primes in $R$ and $e_i \in \N$ for $1 \leq i \leq n$, then
 	\[\frac{R}{(p_1^{e_1}\cdots p_n^{e_n})} \cong  \bigtimes_{i=1}^n \frac{R}{(p_i^{e_i})}, \]
 since $(p_i^{e_i},p_j^{e_j}) = (p_i^{e_i}) + (p_j^{e_j}) = (1)$ for all $1 \leq i \ne j \leq n$.
-\end{enumerate} 
+\end{enumerate}
 \end{remark}
 
 \vs
@@ -3717,7 +3717,7 @@ is not a field.
 \item[(b)] Let $m \in \z\bs\{0,1\}$ be square-free. Then $\sqrt{m} \notin \z \implies x^2-m \in \Q[x]$ is irreducible $\implies \Q[x]/(x^2-m) \cong K_m$ is a field.
 \item[(c)] $p_1 = x^2 + x + 1, p_2 = x^3 + x + 1, p_3 = x^3 + x^2 + 1 \in \F_2[x]$ are each irreducible, so
 	\[\frac{\F_2[x]}{(p_1)} \ (\cong \F_4), \quad \frac{\F_2[x]}{(p_2)} \cong \frac{\F_2[x]}{(p_3)} \ (\cong \F_8) \]
-are all fields. Also, $x^2 + 1 \in \F_3[x]$ is irreducible, so $\F_3[x]/(x^2+1) \ (\cong \F_9)$ is a field. 
+are all fields. Also, $x^2 + 1 \in \F_3[x]$ is irreducible, so $\F_3[x]/(x^2+1) \ (\cong \F_9)$ is a field.
 \end{enumerate}
 \end{example}
 
