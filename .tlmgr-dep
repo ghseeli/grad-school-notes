@@ -25,6 +25,7 @@ oberdiek
 pgf
 pgfopts
 psnfss
+setspace
 subfiles
 tikz-cd
 times
