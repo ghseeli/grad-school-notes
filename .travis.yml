@@ -21,6 +21,9 @@ script:
 - pdflatex -output-directory ../_build complex-analysis-notes.tex
 - cd ../Differential\ Topology
 - pdflatex -output-directory ../_build differential-topology-notes.tex
+- cd ..
+before_deploy:
+- perl .rm-pdf-from-gitignore.pl
 deploy:
   provider: releases
   api_key:
