@@ -3,6 +3,7 @@ amsmath
 amsrefs
 caption
 collection-fontsrecommended
+chngcntr
 csquotes
 datetime
 ec
@@ -24,6 +25,7 @@ ms
 oberdiek
 pgf
 pgfopts
+pgfplots
 psnfss
 setspace
 subfiles
