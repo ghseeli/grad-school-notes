@@ -22,6 +22,7 @@ ms
 oberdiek
 pgf
 pgfopts
+psnfss
 subfiles
 tikz-cd
 times
