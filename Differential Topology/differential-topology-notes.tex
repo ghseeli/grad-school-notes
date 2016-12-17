@@ -1,20 +1,50 @@
 % \documentclass[11pt,leqno,oneside]{amsart}
 \documentclass[11pt]{amsbook}
-\usepackage[margin=1.0in]{geometry}
-
 
 \usepackage{../notes}
 
-%%% matt experiments with theorem style:
+\usepackage[margin=1.0in]{geometry}
+
+\usepackage{mathtools}
+\mathtoolsset{showonlyrefs}
+
 \usepackage{amsthm}% http://ctan.org/pkg/ams\begin{thrm}
+
 \usepackage{datetime}
-\usepackage{hyperref}
-\usetikzlibrary{cd}
+% an environment specifically for my dates, although it doesn't actually depend on datetime:
 \newenvironment{dateenv}{
 	\vspace{1em}
 }{
 	\vspace{1em}
 }
+% my date command, for convenient date adding
+\newcommand{\mydate}[4]{
+	\newdate{#1}{#2}{#3}{#4}
+	\begin{dateenv}
+		\hfill\displaydate{#1}
+	\end{dateenv}
+}
+
+\usepackage{hyperref}
+
+\usetikzlibrary{cd}
+
+\newtheoremstyle{mystyle}
+  {20pt plus 4pt minus 4pt} % Space above
+  {\topsep} % Space below
+  {} % Body font
+  {} % Indent amount
+  {\bfseries} % Theorem head font
+  {.} % Punctuation after theorem head
+  {.5em} % Space after theorem head
+  {} % Theorem head spec (can be left empty, meaning `normal')
+
+\theoremstyle{mystyle} \newtheorem{thrm}[thm]{Theorem}
+\theoremstyle{mystyle} \newtheorem{defi}[thm]{Definition}
+
+\numberwithin{thm}{section}
+
+\everymath{\displaystyle}
 
 \newcommand{\id}{\text{id}}
 \newcommand{\minus}{\smallsetminus}
@@ -36,29 +66,6 @@
 \newcommand{\Der}{\text{Der}}
 \newcommand{\supp}{\text{supp}}
 \newcommand{\de}{\emph}
-\newcommand{\mydate}[4]{
-	\newdate{#1}{#2}{#3}{#4}
-	\begin{dateenv}
-		\hfill\displaydate{#1}
-	\end{dateenv}
-}
-
-\newtheoremstyle{mystyle}
-  {20pt plus 4pt minus 4pt} % Space above
-  {\topsep} % Space below
-  {} % Body font
-  {} % Indent amount
-  {\bfseries} % Theorem head font
-  {.} % Punctuation after theorem head
-  {.5em} % Space after theorem head
-  {} % Theorem head spec (can be left empty, meaning `normal')
-
-\theoremstyle{mystyle} \newtheorem{thrm}[thm]{Theorem}
-\theoremstyle{mystyle} \newtheorem{defi}[thm]{Definition}
-
-\numberwithin{thm}{section}
-
-\everymath{\displaystyle}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TITLE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \title[Differential Topology]{Differential Topology}
@@ -66,6 +73,8 @@
 \date{Fall 2016}
 \begin{document}
 \maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% CONTENT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Lecture 1}
 
 What is differential topology? Topology is concerned with objects called
@@ -74,7 +83,7 @@ differential topology suggests that calculus is somehow involved. The objects of
 study in differential topology are manifolds. Manifolds are topological spaces
 that ``locally'' look like $\R^n$.
 \begin{example}
-	Consider the set $S^2 = \{ \vec{x} \in \R^3: ||x||=1\}$. This is a $sphere \in 3$ dimensions and thus can also be written as $S^2 = \{(x,y,z) :
+	Consider the set $S^2 = \{ \vec{x} \in \R^3: ||x||=1\}$. This is a sphere in 3 dimensions and thus can also be written as $S^2 = \{(x,y,z) :
 	x^2+y^2+z^2=1\}$. The convention for $S^2$ or ``two-sphere'' comes from the
 	fact that a small space of $S^2$ looks like $\R^2$.
 
@@ -334,7 +343,7 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \de{1-forms}.
 
 
 \begin{defi}[derivative of multivariable function]
-	The \de{tangent plane} to function $f : \R^n \to \R^m$ at point $a$, denoted $df_a$ or $f^{\prime}(a)$, is the unique function that satisfies $\lim_{h\to 0} \frac{||f(a+h) - f(a) - df_a(h)||}{||h||} = 0$.
+	The \de{tangent plane} to function $f : \R^n \to \R^m$ at point $a$, denoted $df_a$ or $f^{\prime}(a)$, is the unique function that satisfies $$\lim_{h\to 0} \frac{||\left(f(a+h) - f(a)\right) - df_a(h)||}{||h||} = 0$$.
 \end{defi}
 \begin{defi}
 	The \de{directional derivative} of $f$ at $x$ in the $v$ direction is $df_x(v)$ which is $\lim_{h\to 0} \frac{f(x+hv) - f(x)}{h}$.
@@ -507,7 +516,7 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \de{1-forms}.
 
 
 
-If $f$ is a smooth map of manifolds, then we can differentiate, getting the linear map $d_x(\phi_a^{-1}.f.\psi_b): \R^m \to \R^n$.
+If $f$ is a smooth map of manifolds, then we can differentiate, getting the linear map $$d_x(\phi_a^{-1}.f.\psi_b): \R^m \to \R^n$$.
 
 \begin{thrm}
 	$f$ is a smooth map of manifolds.
@@ -556,7 +565,7 @@ If $f$ is a smooth map of manifolds, then we can differentiate, getting the line
 
 	THEN $I_n$ in $S_n(\R)$ is a regular value.  Here's why...
 
-	Corr. $O(n) = f^{-1}(I_n)$ is a smooth manifold of dimension $n^2 - \frac{n(n+1)}{2}$ = $\binom n2$.
+	Cor. $O(n) = f^{-1}(I_n)$ is a smooth manifold of dimension $n^2 - \frac{n(n+1)}{2}$ = $\binom n2$.
 
 	and
 
@@ -584,7 +593,7 @@ If $f$ is a smooth map of manifolds, then we can differentiate, getting the line
 
 \mydate{d1}{21}{9}{2016}
 
-Given $f:M \to N$ smooth, then there exists a $df$ (but we could call it anything) s.t. $df : TM \to TN$ and $df.P_N = P_M.f$.  (Where $P_M$ is the projection from $TM$ to $M$)  (But is this magic df the same thing as our $df$ that we already know well?)
+Given $f:M \to N$ smooth, then there exists a $df$ (but we could call it anything) s.t. $df : TM \to TN$ and $df.P_N = P_M.f$.  (Where $P_M$ is the projection from $TM$ to $M$)  (But is this magic $df$ the same thing as our $df$ that we already know well?)
 
 \begin{example}
 	If $M = \R^2$, then for any $x$, the tangent vector space is $\R^2$ again.  (The flat plane in $\R^2$ at the point $x$ is $\R^2$).  Therefore, $T\R^2 = \R^2 \times \R^2 = \R^2$.  The same goes for $M = \R^m$, replacing all $2$'s with $m$'s.
@@ -606,7 +615,7 @@ yay!
 
 \begin{lem}
 	$T_A M$ has an atlas showing its a $2m$-dimensional manifold given
-	$T_A M \supset U_i x \R^n \to \R^n x \R^n$ (where the $\to$ function is ($\phi_i \times identity$))
+	$$T_A M \supset U_i \x \R^n \to \R^n \x \R^n$$ (where the $\to$ function is ($\phi_i \times identity$))
 \end{lem}
 \begin{cor}
 	Suppose $A \subset B$ are atlases for $M$.  The ``canonical'' map
@@ -793,9 +802,8 @@ proof not shown.
 	given $\phi: M \supseteq U \to \R_n$ let $D_v$ be the composit
 	$C^\infty(M, p)$ to by ${\phi^{-1}}^*$ to $C^\infty(\R^n,q)$ to $D_w$ to $\R$.
 
-	independent of coordinate chart, by \end{lem}
-\begin{lem}
-	\end{lem}
+	independent of coordinate chart, by
+\end{lem}
 \begin{defi}
 	A \de{derivation} is a function that is linear and satisfies the product rule.
 \end{defi}
@@ -846,8 +854,8 @@ $D_v$ directional derivative in $v$-direction
 	Let $(gF)(x) = g(x)F(x)$.
 	So $C^\infty(M)$ is a ring and $C^\infty(M, TM)$ is module over $C^\infty(M)$.  Or, more succinctly, ``$C^\infty(M, TM)$ is a $C^\infty(M)$-module''.
 
-	Let $F_i : V to ((TV = Vx\R^n))$
-	Let $Fi : V to \R^n$ be the constant vector field $Fi(x) = (((x,ei) or just ei))$ = the ith basis vector.
+	Let $F_i : V to ((TV = V \x \R^n))$
+	Let $F_i : V \to \R^n$ be the constant vector field $F_i(x) = (x,e_i)$, the $i^\text{th}$ basis vector.
 
 	then cool things happen that i missed :(
 \end{example}
@@ -883,7 +891,7 @@ $D_v$ directional derivative in $v$-direction
 	Let $D$ and $C$ be any two derivations of $A$.
 	\begin{itemize}
 		\item linear:
-		\begin{align}
+		\begin{align*}
 			& (DC - CD)(cx + y) \\
 			=& (DC)(cx + y) - (CD)(cx + y) \\
 			=& D(C(cx + y)) - C(D(cx + y)) \\
@@ -892,7 +900,7 @@ $D_v$ directional derivative in $v$-direction
 			=& cD(C(x)) + D(C(y)) - cC(D(x)) - C(D(y))) \\
 			=& cD(C(x)) - cC(D(x))+  D(C(y)) - C(D(y))) \\
 			=& c(DC-CD)(x)      +    (DC-CD)(y)
-		\end{align}
+		\end{align*}
 		\item product rule:
 		\begin{align}
 			(DC)(ab) &= D(C(a))b + C(a)D(b) + D(a)D(b) + aD(C(b)) \\
@@ -1917,7 +1925,7 @@ $$\deg_2(u_z) =
 
 \begin{defi}
 	Given $V$ a V.S. over $\R$ of dimension $n$.
-	Let $\mathcal{B}(V) = \{ (v_1,,,vn) \mid \{v_1,,,vn\} \text{ is a basis of } V \}$ is the set of all ordered bases for $V$
+	Let $$\mathcal{B}(V) = \{ (v_1,,,v_n) \mid \{v_1,,,v_n\} \text{ is a basis of } V \}$$ is the set of all ordered bases for $V$
 	Introduce an equivalence relation.  Two bases are equivalent if there exists an invertible matrix with positive determinant that maps one basis to the other.   (this separates bases into "positive" and "negative")
 	An \de{orientation} on $V$ is a choice of one of the two equivalence classes.  This is written $(V, [b])$ for some ordered basis $b$.
 \end{defi}
@@ -2067,7 +2075,7 @@ $f: M \to N$ is a smooth map of manifolds.  $M$ and $N$ are closed, oriented, an
 	\end{itemize}
 \end{defi}
 
-\begin{thrm}
+x\begin{thrm}
 	If $f: M \to M$ is Lefschetz and $M$ is compact, then $f$ has a finite number of fixed points.
 \end{thrm}
 \begin{defi}
