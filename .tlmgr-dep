@@ -1,7 +1,9 @@
 amscls
 amsmath
 amsrefs
+caption
 collection-fontsrecommended
+chngcntr
 csquotes
 datetime
 ec
@@ -17,11 +19,15 @@ l3kernel
 l3packages
 latex-bin
 latexmk
+mathabx
 mathtools
 ms
 oberdiek
 pgf
 pgfopts
+pgfplots
+psnfss
+setspace
 subfiles
 tikz-cd
 times
