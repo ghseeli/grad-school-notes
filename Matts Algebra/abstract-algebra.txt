@@ -1,7 +1,7 @@
 The material below is notes for Abramenko's MATH 7751 Abstract Algebra I course.  These notes were taken by Matthew Lancellotti.
 
 Algebra I
-===============
+==============
 
 1.1
 Groups
