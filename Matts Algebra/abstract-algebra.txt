@@ -120,7 +120,7 @@ normal (subgroup)
 synonym
 A semi-commutes in G
 def
-Given a group G, a subgroup N of G is __normal__ if for all g \in G, gN = Ng.
+Given a group G, a subgroup N of G is __normal__ if for all g in G, gN = Ng.
 intuition
 Being a normal subgroup of G is like being semi-commutative in G.  You have that gN = Ng, but this does not mean that gn = ng for every n \in N.  The elements of N may get reordered when going from gN to Ng.
 
@@ -182,51 +182,42 @@ proof
 
 # stopped here sunday - DF 1.2
 
-name
-third isomorphism theorem
-thm
+thm [third isomorphism theorem]
 Given A, B \normalin G and A <= B.  Then G/B iso to (G/A) / (B/A)
 proof
 	let phi : G/A to G/B defined by gA maps to gB.
 	Show phi is well-defined, surjective, morphism.
 
-
-name
-centralizer
 def
-Given a semigroup $G$ and a subset $S$, the __centralizer__ of $S$ in $G$, denoted $C_G(S)$, is the set of elements in $G$ that commute with every element of $S$.
-
+Given a semigroup G and a subset S, the __centralizer__ of S in G, denoted C_G(S), is the set of elements in G that commute with every element of S.
 
 def
-The __center__ of a group $G$, denoted $Z(G)$, is the centralizer of $G$ in $G$.
-
+The __center__ of a group G, denoted Z(G), is the centralizer of G in G.
 
 def
-Given a semigroup $G$ and a subset $S$, the __normalizer__ of $S$ in $G$ is the set of elements $t \in G$ such that $tS = St$.
+Given a semigroup G and a subset S, the __normalizer__ of S in G is the set of elements t in G such that tS = St.
+notation
+N_G(S), or N(S)
+
+thm
+Given a group (G, *) and a set A \subset G, then the centralizer of A is a subset of the normalizer of A.
+
+thm
+If B is a subgroup of G, then B normal subgrp of G iff N(B) = G.
+
+thm
+B is always a normal subgroup of the normalizer of B.
+
+def
+Let A be a subgroup of G.  A __completely-commutes__ in G, or A is __central__ in G if A is in the center of G.
 
 
 thm
-Given a group $(G, \cdot)$ and a set $A \subseteq G$, then the centralizer of $A$ is a subset of the normalizer of $A$.
-
-
-thm
-If $A$ subgroup of $G$, then $A$ normal subgrp of $G$ iff $N_G(A) = G$.
-
-
-thm
-$A$ is always a normal subgroup of the normalizer of $A$.
-
-
-def
-Let $A$ be a subgroup of $G$.  $A$ __completely-commutes__ in $G$, or $A$ is __central__ in $G$ if $A$ is in the center of $G$.
-
-
-thm
-$H$ is a subgroup of $G$, $H$ completely commutes in $G$, and $G/H$ is cyclic.  Then $G$ is abelian.
+H is a subgroup of G, H completely commutes in G, and G/H is cyclic.  Then G is abelian.
 proof
-$G/H$ is cyclic, so there exists $g \in G$ such that $G/H = <gH>$.  and more...  G is cyclic and elements of G look like gH so there exists some g in G/H with order n so e = (gH)^n = gHgH...gH = g^nH^n = g^nH so everything in G\H is some power of g.  you basically show that every element in G\H can be written in the form g^t*h for some t power and some h in H.  Then we have commuting g^t*h_2 * g^s*h_1 = g^s*h_1 * g^t*h_2.
+G/H is cyclic, so there exists g \in G such that G/H = <gH>.  and more...  G is cyclic and elements of G look like gH so there exists some g in G/H with order n so e = (gH)^n = gHgH...gH = g^nH^n = g^nH so everything in G\H is some power of g.  you basically show that every element in G\H can be written in the form g^t*h for some t power and some h in H.  Then we have commuting g^t*h_2 * g^s*h_1 = g^s*h_1 * g^t*h_2.
 counterexample
-We will show that this is not necessarily true when $G/H$ is abelian but not cyclic.  Let $Q$ be the quaternion group.  Then $Z(Q) = \{\pm 1\}$ completely commutes in $Q$, and $Q/Z(Q) \cong \Z_2 \x \Z_2.  But $Q$ is not abelian.
+We will show that this is not necessarily true when G/H is abelian but not cyclic.  Let Q be the quaternion group.  Then Z(Q) = \{\pm 1\} completely commutes in Q, and Q/Z(Q) \cong \Z_2 \x \Z_2.  But Q is not abelian.
 
 thm
 Group G.  A,B <= G.
