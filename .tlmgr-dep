@@ -1,8 +1,11 @@
+csplain
+cslatex
 amscls
 amsmath
 amsrefs
 caption
 chngcntr
+collection-fontsrecommended
 csquotes
 datetime
 ec
