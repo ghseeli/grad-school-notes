@@ -2401,84 +2401,86 @@ This is not a rigorous definition.
 	note to self: Lookup grad, curl, div and understand how $d$ is the generalization of them.
 \end{example}
 
-%%% Fred
+%%% Fred newest
 
-% \begin{propo}
-% 	for any r,
-% 	d.d = 0
+\begin{propo}
+	% Matt, I expanded on this part
+    For any $r$-form $w$,
+	$$d(dw) = 0.$$
+\end{propo}
+\begin{example}
+	$$\text{curl}(\grad(f)) = 0$$
+\end{example}
+\begin{example}
+	$$\text{div}(\text{curl}(F)) = 0$$
+\end{example}
 
-% 	note that
-% 	curl(grad(f)) = 0
-% 	div(curl(F)) = 0
-% \end{propo}
+\begin{example}
+	I \emph{think} that an $r$-form is like a function $f:M \to \R$ with the total derivative $d$ applied to it $r$ times.
+	http://mathworld.wolfram.com/WedgeProduct.html
+\end{example}
 
+\begin{example}[volume form]
+%	The ``volume form''
+	Let $w(x) : (\R^n)^n \to \R$.
 
+	If $v_1,,,v_n$ are each $n$-dimensional vectors, then
+	$$w(x)[v_1,,,v_n] = \det(v_1,,,v_n).$$	% Matt, I changed det(...) to det(,,,)
+\end{example}
 
-% \begin{example}
-% 	i THINK that an r-form is like a function f:M to \R with the total derivative d applied to it r times.
-% http://mathworld.wolfram.com/WedgeProduct.html
-% \end{example}
-% \begin{example}
-% 	The ``volume form''
-% 	Let w(x) : (\R^n)^n to \R
+\begin{example}[2-forms]
+	$$w(x) = f_1(x,y,z)\,dx \wedge dy + f_2(x,y,z)\,dx \wedge dz + f_3(x,y,z)\,dy \wedge dz$$
+	In fact, I think $f_1(x,y,z)\,dx \wedge dy$ by itself is a $2$-form.	% Me too. :)
+\end{example}
 
-% 	v_1,,,vn are each n-dimensional vectors
-% 	w(x)[v_1,,,vn] = det(v_1...vn)
-% \end{example}
-% \begin{example}
-% 	2-forms
-% 	w(x) = f1(x,y,z)dx^dy + f2(x,y,z)dx^dz + f3(x,y,z)dy^dz
-% 	in fact, i think f1(x,y,z)dx^dy by itself is a 2-form
-% \end{example}
-% \begin{propo}
-% 	(Matt)
-% 	diff r-forms are additively closed
-% \end{propo}
-% \begin{example}
-% 	integration
-% 	(this works for any r, not just 3)
-% 	w = g dy1 ^ dy2 ^ dy3
-% 	INT w = INT INT INT g(y1,y2,y3) dy1 dy2 dy3 (no longer wedge on this side)
+\begin{propo}[Matt]
+	Differential $r$-forms are additively closed.
+\end{propo}
 
-% 	define
-% 	f*(w)(x) := g(f(x)) det(dfi/dxj(x)) dx1 ^^^ dxn
+\begin{example}[integration]	% Matt, I added \, for readability
+	(This works for any $r$, not just 3.)
+	$$w = g(y) \,dy_1  \wedge  dy_2  \wedge  dy_3$$	% Matt, I added $(y)$
+	$$\int w = \iiint g(y) \,dy_1 \,dy_2 \,dy_3 \text{ (no longer wedge on this side)}$$	% Matt, I shortened it to $(y)$
 
-% 	where the det thing is the Jacobian!
-% \end{example}
+	Define
+	$$f^*(w)(x) := g(f(x)) \det\left(\left[\frac{df_i}{dx_j}(x)\right]_{i,j}\right) \,dx_1  \wedge  \wedge  \wedge  dx_n$$
 
-% \begin{thrm}
-% 	f is an orientation preserving diffeomorphism V to U.  where both are open in \R^n
-% 	and $w \in \Omega^n(U)
-% 	f*(w) in \Omega^n(V)
-% 	then
+	where the $\det$ thing is the Jacobian!
+\end{example}
 
-% 	INT_V f*(w) = INT_U w
+\begin{thrm}
+	If $f$ is an orientation-preserving diffeomorphism from $U$ to $V$, where both are open in $\R^n$,
+	and $w \in \Omega^n(V)$ and
+	$f^*(w) \in \Omega^n(U)$,
+	then
 
-% 	unravel this
+	$$\int_U f^*(w) = \int_V w.$$
 
-% 	INT INT INT_U g(y) dy1...dyn = INT INT INT_V f(g(x)) det(dfi/dxj(x)) dx1... dxn
-% 	change of variable formula
-% 	.
-% \end{thrm}
-% \begin{defi}
-% 	The \de{closed r-forms} on M is $$ ker(d: \Omega^r(M) to \Omega^{r+1}(M) ) = { w | dw = 0 }  $$
-% \end{defi}
-% \begin{defi}
-% 	The \de{exact r-forms} on M is $$ Im(d: \Omega^{r-1}(M) to \Omega^{r}(M) ) = { w | there exists n s.t. dn = w }  $$
-% \end{defi}
-% \begin{propo}
-% 	Every exact form is closed
-% \end{propo}
-% \begin{defi}
-% 	H^r_{Derham}(M) = (closed r-forms)/(exact r-forms)
-% 	This is a real vector space modded out by a subspace
-% \end{defi}
-% \begin{thrm}
-% 	stokes thm
-% 	INT_M dw = INT_{dM} w
-% \end{thrm}
+	Unravel this to get the change-of-variable formula:
 
+	$$\iiint_U g(f(x)) \,\det\left(\left[\frac{df_i}{dx_j}(x)\right]_{i,j}\right) \,dx_1 \cdots dx_n = \iiint_V g(y) \,dy_1 \cdots dy_n$$
+\end{thrm}
 
+\begin{defi}
+	The set of \de{closed $r$-forms} on $M$ is $$ \ker(d: \Omega^r(M) \to \Omega^{r+1}(M) ) = \{ w \in \Omega^r(M) \mid dw = 0 \}.  $$
+\end{defi}
+
+\begin{defi}
+	The set of \de{exact $r$-forms} on $M$ is $$ \text{Im}(d: \Omega^{r-1}(M) \to \Omega^r(M) ) = \{ w \in \Omega^r(M) \mid \exists n \in \Omega^{r-1}(M) \text{ s.t. } dn = w \}  $$
+\end{defi}
+
+\begin{propo}
+	Every exact form is closed.
+\end{propo}
+
+\begin{defi}[de Rham cohomology group]
+	$$H^r_\text{dR}(M) = \text{\{closed $r$-forms\}/\{exact $r$-forms\}}$$ %\{\text{closed }r\text{-forms}\}/\{\text{exact $r$-forms}\}$$
+	This quotient group is a real vector space modded out by a subspace.
+\end{defi}
+
+\begin{thrm}[Stokes]
+	$$\int_M dw = \int_{\partial M} w$$
+\end{thrm}
 
 
 
