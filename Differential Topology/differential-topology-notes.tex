@@ -2348,21 +2348,30 @@ We will \emph{not} define genus rigorously in this course.
 
 \mydate{d20}{5}{12}{2016}
 
-This is not a rigorous definition.
+\begin{defi}
+	A function $f$ is \de{alternating} if for any permuatation $\sigma$,
 
-\begin{defi}[r-forms]
-	$\Omega^r(M)$ denotes the set of $r$-forms with respect to $M$.
+	$$f(v_{\sigma(1)},,,v_{\sigma(r)}) = \sign(\sigma)f(v_1,,,v_r).$$
 
-	General $r$-forms are defined as follows.
-	If $w \in \Omega^r(M)$,
-	then $$w(x) : (T_xM)^r \to \R$$ is defined such that $w$ satisfies the following:
+	Note.  This is like saying that for any transposition, the sign flips.
+\end{defi}
+
+\begin{defi}
+	An \de{$r$-form} is a smooth function $w$ s.t.
+
+	$$\begin{cases}
+		w: M \to \R 	&\text{if $r = 0$} \\
+		w(x): (T_xM)^r \to \R 	&\text{otherwise} \\
+	\end{cases}$$
+
+	and
+
 	\begin{itemize}
-	  \item $w(x)$ is linear in each variable (an $r$-linear function).
-	  \item $w(x)$ is "alternating," which means that for any permuatation $\sigma$,
-		  $$w(x)(v_{\sigma(1)},,,v_{\sigma(r)}) = \sign(\sigma)w(x)(v_1,,,v_r).$$
+	  \item $w(x)$ is linear in each variable (an $r$-linear function)
+	  \item $w(x)$ is alternating
 	\end{itemize}
 
-	Note that if $r$ is $0$, we define $w$ to be smooth s.t. $$w: M \to \R$$ instead.
+	Also, $\Omega^r(M)$ denotes the set of $r$-forms with respect to $M$.
 \end{defi}
 
 \begin{example}[0-form]
