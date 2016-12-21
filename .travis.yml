@@ -10,7 +10,6 @@ before_install:
     ./install-tl/install-tl -profile texlive.profile
   fi
 - export PATH=$(pwd)/texlive/bin/x86_64-linux:$PATH
-# show us what hyphen.cfg looks like
 - cat /home/travis/build/ghseeli/grad-school-notes/texlive/texmf-dist/tex/cslatex/ba
 se/hyphen.cfg
 - tlmgr install $(cat .tlmgr-dep)
