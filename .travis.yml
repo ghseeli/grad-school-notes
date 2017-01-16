@@ -5,7 +5,7 @@ cache:
 before_install:
 - |
   if [[ ! -e ./texlive/bin/x86_64-linux/tlmgr ]]; then
-    wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz -O - | tar -x --gzip
+    wget http://mirrors.ctan.org/systems/texlive/Source/install-tl-unx.tar.gz -O - | tar -x --gzip
     mv $(ls | grep install) install-tl
     ./install-tl/install-tl -profile texlive.profile
   fi
