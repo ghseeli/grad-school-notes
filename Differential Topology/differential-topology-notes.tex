@@ -2357,6 +2357,35 @@ We will \emph{not} define genus rigorously in this course.
 \end{defi}
 
 \begin{defi}
+	The \de{wedge product} of vectors is the cross product generalized to $n$ dimensions.  The wedge product gives a direction and a magnitude (possibly negative).
+\end{defi}
+\begin{example}
+	If $c_1,,,c_n$ are vectors that define an $n$-dimensional parallelepiped, then a vector whose magnitude is the signed volume of the parallelepiped is $$c_1 \wedge\wedge\wedge c_n$$
+\end{example}
+\begin{example}
+	To get the signed volume vector of an object, integrate the expression below.
+
+	$$ dV = dx_1 \wedge\wedge\wedge dx_n$$
+\end{example}
+\begin{example}
+	To get the signed volume of the parallelepiped (without a direction), use the determinant.
+
+	$$\det(c_1,,,c_n)$$
+
+	Note also that
+
+	$$c_1 \wedge\wedge\wedge c_n = \det(c_1,,,c_n) e_1 \wedge\wedge\wedge e_n$$
+\end{example}
+
+\begin{propo}
+	The wedge product is alternating.
+
+	That is, if $a_1,,,a_j$ are vectors and $\alpha = a_1 \wedge\wedge\wedge a_j$ and $\beta = b_1 \wedge\wedge\wedge b_k$ likewise, then
+
+	$$\alpha \wedge \beta = (-1)^{j+k} \beta \wedge \alpha$$
+\end{propo}
+
+\begin{defi}
 	An \de{$r$-form} is a smooth function $w$ s.t.
 
 	$$\begin{cases}
