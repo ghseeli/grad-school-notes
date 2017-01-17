@@ -913,7 +913,7 @@ The internal semidirect product is isomorphic to the external semidirect product
 
 1.6.7
 def
-A SES with the functions f and p, 1 to N to G to Q to 1 is called __split__ if there exists a morphism ("section") s : Q to G such that ps = id_Q  (therefore, s is injective, and Q \isom s(Q)).
+A SES with the functions f and p, 1 to N to G to Q to 1 is called __split__ if there exists a morphism ("section") s : Q to G such that s.p = id_Q  (therefore, s is injective, and Q \isom s(Q)).
 
 ex
 1 to <i> to Q8 to Z2 to 1 is *not* split.
