@@ -16,6 +16,7 @@ before_install:
 - cat /home/travis/build/ghseeli/grad-school-notes/texlive/texmf-dist/tex/cslatex/base/hyphen.cfg
 - tlmgr update --self
 - tlmgr update --all
+- apt-get install texlive-xetex
 script:
 - mkdir _build
 - cd Algebra
