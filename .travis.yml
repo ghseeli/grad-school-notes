@@ -10,6 +10,7 @@ before_install:
     ./install-tl/install-tl -profile texlive.profile
   fi
 - export PATH=$(pwd)/texlive/bin/x86_64-linux:$PATH
+- sudo apt-get install texlive-full
 - tlmgr install $(cat .tlmgr-dep)
 # see http://tex.stackexchange.com/questions/344821/cslatex-and-texlive
 # show us what hyphen.cfg looks like
