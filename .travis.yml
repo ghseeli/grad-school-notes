@@ -1,7 +1,7 @@
 sudo: required
 cache:
   directories:
-  - texlive
+  # - texlive
 before_install:
 - |
   if [[ ! -e ./texlive/bin/x86_64-linux/tlmgr ]]; then
@@ -11,6 +11,9 @@ before_install:
   fi
 - export PATH=$(pwd)/texlive/bin/x86_64-linux:$PATH
 - tlmgr install $(cat .tlmgr-dep)
+# see http://tex.stackexchange.com/questions/344821/cslatex-and-texlive
+# show us what hyphen.cfg looks like
+- cat /home/travis/build/ghseeli/grad-school-notes/texlive/texmf-dist/tex/cslatex/base/hyphen.cfg
 - tlmgr update --self
 - tlmgr update --all
 script:
