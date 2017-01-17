@@ -1,7 +1,7 @@
 sudo: required
 cache:
   directories:
-  # - texlive
+  - texlive
 before_install:
 - |
   if [[ ! -e ./texlive/bin/x86_64-linux/tlmgr ]]; then
