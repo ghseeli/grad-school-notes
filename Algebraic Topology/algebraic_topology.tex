@@ -1,21 +1,45 @@
 \documentclass[11pt,leqno,oneside]{amsart}
+\usepackage[margin=1in]{geometry}
 
 \usepackage{../notes}
 \usepackage{xfrac}
 \usepackage{enumitem}
 \usepackage{tikz-cd}
 \usepackage{mathtools}
-\usepackage{subfiles}
 
 \numberwithin{thm}{subsection}
 
 %%%%%%%%%%%%%% BEGIN CONTENT: %%%%%%%%%%%%%%
 
 \title[Algebraic Topology]{Algebraic Topology - MATH 7800}
-\author{}
+\author{Chris Lloyd, Matthew Lancellotti}
 \date{}
 \begin{document}
-\maketitle
+\maketitle \newpage
+
+\section{Introduction}
+
+Topology is floppy. Given just a topological space one has an infinite
+degree of freedom. This makes even simple questions hard to answer, in
+particular given manifolds \(M\) and \(N\) with different dimensions
+\(m\) and \(n\) respectively, one may ask if they are
+homeomorphic. Intuitively one would think that should not be
+possible. However there do exist space filling curves, i.e,
+\[I \twoheadrightarrow I \times I\]
+where as always \(I=[0,1]\). 
+
+We will develop the tools to prove manifolds of different dimensions can
+certainly never be homeomorphic. Another surface result assures there exists no continuous
+retraction \(D^2 \to \partial D\), which then immediately yields the
+Brouwer Fixed Pointed Theorem (every map \(D^2 \to D^2\) admits a
+fixed point).
+
+In this course there will be two basic branches under consideration,
+homotopy theory, and homology. Basically homotopy concerns itself with
+continuous deformations between maps. While homology studies subspaces
+(known as ``cycles'') and gap filling.
+
+
 \end{document}
 
 %%% Local Variables:
