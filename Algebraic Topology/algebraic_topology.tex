@@ -7,7 +7,8 @@
 \usepackage{tikz-cd}
 \usepackage{mathtools}
 
-\numberwithin{thm}{subsection}
+\numberwithin{thm}{section}
+\setlength\parindent{0pt}
 
 %%%%%%%%%%%%%% BEGIN CONTENT: %%%%%%%%%%%%%%
 
@@ -39,6 +40,67 @@ homotopy theory, and homology. Basically homotopy concerns itself with
 continuous deformations between maps. While homology studies subspaces
 (known as ``cycles'') and gap filling.
 
+\section{Homotopy}
+
+We now define paths in the space of maps between manifolds \(M\) and
+\(N\) denoted
+\[\text{Maps}(M,N)=\{f \colon M \to N \mid \text{f is continuous}\}.\]
+
+\begin{defn}
+  A \emph{path} in \(\text{Maps}(M,N)\) is a continuous map
+  \[f \colon M \times I \to N.\] Often we write \(f_t(m)\) for
+  \(f(m,t)\).
+\end{defn}
+
+\begin{defn}
+  A \emph{homotopy} from \(f \colon M \to N\) to \(g \colon M \to N\)
+  is a path \(h\) such that \(h_0=f\) and \(h_1=g\). We say \(f\) and
+  \(g\) are \emph{homotopic} if a homotopy between them exists.
+\end{defn}
+
+When working with homotopies one often thinks of having the start and
+end map already fixed. For maps to be homotopic they must be in the
+same path component.
+
+\begin{prop}
+  Homotopy is an equivalence relation.
+\end{prop}
+
+We denote the homotopy equivalence class of \(f\) by \([f]\).
+
+\begin{defn}
+  A path in a topological space \(X\) is a map from \(I \to X\).
+\end{defn}
+
+We will always consider paths up to homotopy, however we will make a
+restriction and only consider homotopies that fix end
+points \((I,\{0,1\})\). Otherwise every path would collapse to a point up to
+homotopy. This is called \emph{relative homotopy}. When there are no
+restrictions placed one is working with \emph{free homotopy}.
+
+Imagine two paths in \(\R \setminus (0,0)\) which agree on end points,
+however each path is on opposite sides of the origin. It is clear that
+there exists no end point fixing homotopy between the two paths.
+
+If one has two paths \(f,g\) with \(f(1)=g(0)\) we may define a new
+path
+\[f * g =
+  \begin{cases}
+    f(2t), & t \in [0,\frac{1}{2})\\
+    g(2t - 1), & t \in [\frac{1}{2},1].
+  \end{cases}
+\]
+
+This operation is well defined on homotopy classes, that is if
+\([f]=[f']\) and \([g]=[g']\) then \([f * g] = [f' * g']\). This
+operation may be generalized to \(*_{k}\) where \(k \in (0,1)\),
+simply replace \(\frac{1}{2}\) with \(k\). In this notation \(f * g =
+f *_{\frac{1}{2}} g\). This operation is associative.
+
+Given a topological space \(X\) with points \(P\), for any two points
+\(x,y \in P\) we have a set of homotopy classes with end points \(x\)
+and \(y\). These may be thought of as morphisms and the points as
+objects in a category. We call this category the Fundamental Groupoid.
 
 \end{document}
 
