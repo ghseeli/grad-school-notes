@@ -29,6 +29,8 @@ script:
 - pdflatex -output-directory ../_build richards-algebra-book.tex
 - cd ../Algebraic\ Topology
 - pdflatex -output-directory ../_build algebraic_topology.tex
+- cd ../Real\ Analysis
+- pdflatex -output-directory ../_build real-analysis.tex
 - cd ..
 
 before_deploy:
@@ -45,6 +47,7 @@ deploy:
   - _build/differential-topology-notes.pdf
   - _build/richards-algebra-book.pdf
   - _build/algebraic_topology.pdf
+  - _build/real-analysis.pdf
   on:
     repo: ghseeli/grad-school-notes
     tags: true
