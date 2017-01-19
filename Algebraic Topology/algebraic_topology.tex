@@ -5,10 +5,45 @@
 \usepackage{xfrac}
 \usepackage{enumitem}
 \usepackage{tikz-cd}
+\usetikzlibrary{cd}
+\usepackage{hyperref}
 \usepackage{mathtools}
+\mathtoolsset{showonlyrefs}
+
+\usepackage{datetime}
+% an environment specifically for my dates, although it doesn't actually depend on datetime:
+\newenvironment{dateenv}{
+  \vspace{1em}
+}{
+  \vspace{1em}
+}
+% my date command, for convenient date adding
+\newcommand{\mydate}[4]{
+  \newdate{#1}{#2}{#3}{#4}
+  % #1 is a unique string, #2 is day, #3 month, #4 year
+  \begin{dateenv}
+    \hfill\displaydate{#1}
+  \end{dateenv}
+}
 
 \numberwithin{thm}{section}
 \setlength\parindent{0pt}
+
+\everymath{\displaystyle}
+
+\newcommand{\minus}{\smallsetminus}
+\renewcommand{\setminus}{\smallsetminus}
+\renewcommand{\amalg}{\sqcup}
+\newcommand{\homotopic}{\simeq}
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\d}{\partial}
+\newcommand{\oo}{\infty}
+\newcommand{\transverse}{\pitchfork}
+\newcommand{\into}{\hookrightarrow}
+\newcommand{\onto}{\twoheadrightarrow}
+\newcommand{\x}{\times}
+\newcommand{\Map}{\text{Map}}
+\renewcommand{\bar}{\widebar}
 
 %%%%%%%%%%%%%% BEGIN CONTENT: %%%%%%%%%%%%%%
 
@@ -17,6 +52,8 @@
 \date{}
 \begin{document}
 \maketitle \newpage
+
+\mydate{d1}{18}{1}{2017}
 
 \section{Introduction}
 
@@ -27,35 +64,39 @@ particular given manifolds \(M\) and \(N\) with different dimensions
 homeomorphic. Intuitively one would think that should not be
 possible. However there do exist space filling curves, i.e,
 \[I \twoheadrightarrow I \times I\]
-where as always \(I=[0,1]\). 
+where as always \(I=[0,1]\).
 
 We will develop the tools to prove manifolds of different dimensions can
 certainly never be homeomorphic. Another surface result assures there exists no continuous
-retraction \(D^2 \to \partial D\), which then immediately yields the
+retraction \(D^2 \to \d D\), which then immediately yields the
 Brouwer Fixed Pointed Theorem (every map \(D^2 \to D^2\) admits a
 fixed point).
 
-In this course there will be two basic branches under consideration,
-homotopy theory, and homology. Basically homotopy concerns itself with
+In this course there will be two basic branches under consideration:
+homotopy theory and homology. Basically, homotopy concerns itself with
 continuous deformations between maps. While homology studies subspaces
 (known as ``cycles'') and gap filling.
 
-\section{Homotopy}
-
-We now define paths in the space of maps between manifolds \(M\) and
-\(N\) denoted
-\[\text{Maps}(M,N)=\{f \colon M \to N \mid \text{f is continuous}\}.\]
+\section{Reference}
 
 \begin{defn}
-  A \emph{path} in \(\text{Maps}(M,N)\) is a continuous map
-  \[f \colon M \times I \to N.\] Often we write \(f_t(m)\) for
-  \(f(m,t)\).
+  $D^n$ denotes the $n$-dimensional closed unit disk.
 \end{defn}
 
+\section{Homotopy}
+
+We now define homotopies in the space of maps between manifolds \(M\) and
+\(N\) denoted
+\[\Map(M,N)=\{f: M \to N \mid \text{$f$ is continuous}\}.\]
+
+In this course, we follow the convention that maps are continuous functions unless otherwise stated!
+
 \begin{defn}
-  A \emph{homotopy} from \(f \colon M \to N\) to \(g \colon M \to N\)
-  is a path \(h\) such that \(h_0=f\) and \(h_1=g\). We say \(f\) and
+  A \emph{homotopy} from \(f: M \to N\) to \(g: M \to N\)
+  is a map \(h\) such that \(h_0=f\) and \(h_1=g\). We say \(f\) and
   \(g\) are \emph{homotopic} if a homotopy between them exists.
+
+  Often we write \(h_t(m)\) for \(h(m,t)\).
 \end{defn}
 
 When working with homotopies one often thinks of having the start and
@@ -69,10 +110,11 @@ same path component.
 We denote the homotopy equivalence class of \(f\) by \([f]\).
 
 \begin{defn}
-  A path in a topological space \(X\) is a map from \(I \to X\).
+  A \emph{path} in a topological space $X$ is a map
+  \[f: I \to X.\]
 \end{defn}
 
-We will always consider paths up to homotopy, however we will make a
+By convention in this course, we always consider paths up to homotopy, however we will make a
 restriction and only consider homotopies that fix end
 points \((I,\{0,1\})\). Otherwise every path would collapse to a point up to
 homotopy. This is called \emph{relative homotopy}. When there are no
@@ -82,20 +124,24 @@ Imagine two paths in \(\R \setminus (0,0)\) which agree on end points,
 however each path is on opposite sides of the origin. It is clear that
 there exists no end point fixing homotopy between the two paths.
 
-If one has two paths \(f,g\) with \(f(1)=g(0)\) we may define a new
-path
-\[f * g =
-  \begin{cases}
-    f(2t), & t \in [0,\frac{1}{2})\\
-    g(2t - 1), & t \in [\frac{1}{2},1].
-  \end{cases}
-\]
+\begin{defn}
+  If one has two paths \(f,g\) with \(f(1)=g(0)\) we may define a new
+  path
+  \[f * g =
+    \begin{cases}
+      f(2t), & t \in [0,\frac{1}{2})\\
+      g(2t - 1), & t \in [\frac{1}{2},1].
+    \end{cases}
+  \]
 
-This operation is well defined on homotopy classes, that is if
-\([f]=[f']\) and \([g]=[g']\) then \([f * g] = [f' * g']\). This
-operation may be generalized to \(*_{k}\) where \(k \in (0,1)\),
-simply replace \(\frac{1}{2}\) with \(k\). In this notation \(f * g =
-f *_{\frac{1}{2}} g\). This operation is associative.
+  This is called the \emph{concatenation} or \emph{path composition} of $f$ and $g$.
+
+  This operation is well defined on homotopy classes, that is if
+  \([f]=[f']\) and \([g]=[g']\) then \([f * g] = [f' * g']\). This
+  operation may be generalized to \(*_{k}\) where \(k \in (0,1)\),
+  simply replace \(\frac{1}{2}\) with \(k\). In this notation \(f * g =
+  f *_{\frac{1}{2}} g\). This operation is associative.
+\end{defn}
 
 Given a topological space \(X\) with points \(P\), for any two points
 \(x,y \in P\) we have a set of homotopy classes with end points \(x\)
