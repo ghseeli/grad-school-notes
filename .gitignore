@@ -40,6 +40,8 @@
 Backup[ ]of[ ]*.pages/
 Backup[ ]of[ ]*.key/
 Backup[ ]of[ ]*.numbers/
+*.sublime-project
+*.sublime-workspace
  
 # Mac finder files and hidden folders
 .DS_Store 
