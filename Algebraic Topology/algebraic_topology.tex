@@ -43,7 +43,9 @@
 \newcommand{\onto}{\twoheadrightarrow}
 \newcommand{\x}{\times}
 \newcommand{\Map}{\text{Map}}
+\newcommand{\id}{\text{id}}
 \renewcommand{\bar}{\widebar}
+\newcommand{\de}{\emph}
 
 %%%%%%%%%%%%%% BEGIN CONTENT: %%%%%%%%%%%%%%
 
@@ -147,6 +149,132 @@ Given a topological space \(X\) with points \(P\), for any two points
 \(x,y \in P\) we have a set of homotopy classes with end points \(x\)
 and \(y\). These may be thought of as morphisms and the points as
 objects in a category. We call this category the Fundamental Groupoid.
+
+\mydate{d2}{20}{1}{2017}
+
+\begin{defn}
+  A \de{category} is a directed graph.  Each vertex is called an \de{object} and each directed edge is called a \de{morphism}.
+\end{defn}
+\begin{defn}
+  In the category of \de{finite sets}, denoted $\text{FSet}$, the objects are the finite sets, each morphism from $A$ to $B$ is a function from $A$ to $B$.
+\end{defn}
+\begin{defn}
+  In the category of \de{vectorsss}, denoted $\text{Vect}_k$, the objects are BLANK and the morphisms are BLANK.
+\end{defn}
+\begin{defn}
+  A \de{groupoid} is a category where every morphism has an inverse.
+
+  That is, if $a: x \to x'$, then there exists $a^{-1}:x' to x$ s.t. $aa^{-1} = \id_{x'}$ and $a^{-1}a = \id_{x}$.
+
+  The elements of the groupoid are the morphisms.  The operation is composition.
+\end{defn}
+\begin{prop}
+  Every morphism in a groupoid is an isomorphism (by definition).
+\end{prop}
+\begin{defn}
+  A \de{group} is a groupoid with one object.
+\end{defn}
+\begin{prop}
+  If $A$ is an object in a groupoid, then $\Hom(A, A)$ is a group.
+\end{prop}
+
+note
+We see that a groupoid is the same definition of a group, but we use a *partial* binary operation instead of a binary operation.
+
+\begin{defn}
+  The \de{fundamental groupoid} of $X$, denoted $\Pi_1 X$, is the category where the objects are the points in $X$ and the morphisms are the paths (up to endpoint fixing homotopy) between those points.
+\end{defn}
+\begin{defn}
+  The \de{fundamental group of $X$ at the basepoint $x_0$}, denoted $\pi_1(X, x_0)$, is the subgroupoid of the fundamental groupoid where there is exactly one object, $x_0$, and the morphisms are the morphisms of the fundamental groupoid that have source and target $x_0$.  A more intuitive wording is to say that $\pi_1(X, x_0)$ is $\Pi_1 X$ restricted to $x_0$.
+
+  The elements of the group are the morphisms.  The operation is composition.
+\end{defn}
+\begin{defn}
+  the \de{inverse path} of a path $p$ is $p^{-1}(s) := p(1-s)$.  (note: This is *not* the same as the function inverse of $p$)
+\end{defn}
+\begin{prop}
+  If $p$ is a path, then $[p^{-1}*p] = [id_{x}] = \text{the function where $s \mapsto x$ for all $s \in [0,1]$}$.
+\end{prop}
+
+\begin{thm}[Hatcher 1.5]
+Let $X$ be a metric space and $x,x' \in X$.  If there exists $p: x \to x'$ and $[q] \in \pi_1(X,x')$, then $p^{-1}qp \in \Pi_1(X,x)$ is an isomorphism of fundamental groups.
+\end{thm}
+\begin{thm}
+  If $X$ is path connected, then for any $x_a, x_b \in X$, $$\Pi_1(X, x_a) \isom \Pi_1(X, x_b)$$.
+
+  notation
+  If $X$ is path connected, we can denote the fundamental group with $\pi_1(X)$ or $\pi_1 X$.
+\end{thm}
+\begin{example}
+  pretty picture
+
+  This isomorphism is not canonical
+
+  t?h?i?n?g?s? ?w?i?t?h? ?q?u?e?s?t?i?o?n? ?m?a?r?k?s
+
+  Note that $\pi_1 X$ is only well defined up to inner automorphism.  ((Chris, what does this mean?))
+\end{example}
+\begin{defn}
+  Given metric spaces $X, Y$ and a map $f: X \to Y$, then the \de{fundamental functor} induced by $f$, $$f_* = \Pi_1 f : \Pi_1 X \to \Pi_1 Y$$ maps each object $x \in X$ to $f(x) \in Y$ and each path $[p] \in \Pi_1 X$ to $f([p]) = [f(p)] \in \Pi_1 Y$.
+\end{defn}
+\begin{prop}
+  The above is well defined because
+  \begin{itemize}
+    \item If $[p]=[q]$, then $[f(p)] = [f(q)]$ because $h.f$ gives a homotopy.  ((What the heck is h?))
+    \item $(f_*p)*(f_*q) = f_*(p*q)$
+  \end{itemize}
+\end{prop}
+
+\begin{prop}
+  Given a fundamental group $\Pi_1(X, x)$, then we can restrict $f_*$ to the functor $$f_* : \Pi_1(X, x) to \Pi_1(Y, f(x))$$.
+
+  picture
+  $x$ (loop) to $f(x)$ (loop)
+
+  is a group homomorphism
+\end{prop}
+\begin{prop}
+  If $X,Y,Z$ are metric spaces and $f: X \to Y$, $g: Y \to Z$ are maps, then $(f.g)_* = f_*.g_*$.
+\end{prop}
+
+\begin{example}
+  $\Pi_1(\R^n, x) = [*]$
+
+  in $\Pi_1 \R^n$, there exists a unique path between any two points, up to homotopy.
+
+  pf
+  $p,q: I \to \R^n$
+
+  $p(0) = q(0)$
+  $p(1) = q(1)$
+
+  $h_t = tp + (1-t)q$
+
+  $h_0 = q$
+  $h_1 = p$
+
+  $B_n, I_n$ all have $\Pi_1 = [*]$
+\end{example}
+
+\begin{thm}[Hatcher 1.6]
+  A space $X$ is \de{simply connected} or \de{1-connected} iff its fundamental group is trivial.
+\end{thm}
+\begin{example}
+  $\R^2 \minus (0,0) \isom \C \minus \{0\}$ is NOT simply connected.
+  $\Pi_1(\C \minus \{0\}) = \Z$
+\end{example}
+\begin{example}
+  pretty picture with yellow and blue dots
+
+  $A$ and $B$ can't be homotopic because $\log(A)$ and $\log(B)$ have different end points.
+\end{example}
+
+
+
+
+
+
+
 
 \end{document}
 
