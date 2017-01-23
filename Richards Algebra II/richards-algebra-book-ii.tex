@@ -35,7 +35,7 @@
 \newtheorem{theorem}[counter]{Theorem}   \newtheorem*{theorem*}{Theorem}   \newtheorem{lemma}[counter]{Lemma}   \newtheorem{corollary}[counter]{Corollary}
 \newtheorem{proposition}[counter]{Proposition}   \newtheorem{problem}[counter]{Problem}   \newtheorem*{proposition*}{Proposition}   \newtheorem*{lemma*}{Lemma}
 
-\theoremstyle{definition}   \newtheorem{defn}[counter]{Definition} %These theorem environments are not numbered separately 
+\theoremstyle{definition}   \newtheorem{defn}[counter]{Definition} %These theorem environments are not numbered separately
 \newtheorem*{defn*}{Definition}
 \newtheorem{blank}[counter]{}   \newtheorem{remark}[counter]{Remark(s)}   \newtheorem*{remark*}{Remark(s)}   \newtheorem{generalization}[counter]{Generalization}
 \newtheorem{consequence}[counter]{Consequence(s)}   \newtheorem*{consequence*}{Consequence(s)}   \newtheorem*{problem*}{Problem}   \newtheorem{notation}[counter]{Notation}
@@ -61,7 +61,7 @@
 \newcommand{\gen}[1]{\langle #1 \rangle}   \newcommand{\stab}[2]{\tn{Stab}_{#1}(#2)}   \newcommand{\fix}[2]{\tn{Fix}_{#1}(#2)}
 \newcommand{\hooklongrightarrow}{\lhook\joinrel\longrightarrow}   \newcommand{\twoheadlongrightarrow}{\relbar\joinrel\twoheadrightarrow}
 \newcommand{\ses}[5]{1 \longrightarrow #1 \overset{#2}{\hooklongrightarrow} #3 \overset{#4}{\twoheadlongrightarrow} #5 \longrightarrow 1}
-\renewcommand{\arrowvert}{\arrow}   \renewcommand{\i}{\mathbf{i}}   \renewcommand{\j}{\mathbf{j}}   \renewcommand{\k}{\mathbf{k}}    \renewcommand{\H}{\mathbb{H}}  \renewcommand{\hom}{\tn{Hom}}   
+\renewcommand{\arrowvert}{\arrow}   \renewcommand{\i}{\mathbf{i}}   \renewcommand{\j}{\mathbf{j}}   \renewcommand{\k}{\mathbf{k}}    \renewcommand{\H}{\mathbb{H}}  \renewcommand{\hom}{\tn{Hom}}
 \newcommand{\ann}[2]{\textnormal{Ann}_{#1}(#2)}
 
 
@@ -106,7 +106,7 @@
 
 \chapter{Basic Concepts}
 
-In the following, $R$ always denotes a (not necessarily commutative) ring with 1. 
+In the following, $R$ always denotes a (not necessarily commutative) ring with 1.
 
 \vs
 
@@ -129,13 +129,13 @@ for all $m \in M$, $r \in R$.
 
 \vs
 
-\begin{example}\ 
+\begin{example}\
 \begin{enumerate}
 \item[(a)] If $R$ is a field, then the $R$-modules are precisely the $R$-vector spaces.
-\item[(b)] Any abelian group $(M,+)$ is a (left) $\z$-module with the scalar multiplication defined by $k m = m + m + \dots + m $ ($k$ times) and $-k m = -m -m - \dots - m $ ($k times$). 
+\item[(b)] Any abelian group $(M,+)$ is a (left) $\z$-module with the scalar multiplication defined by $k m = m + m + \dots + m $ ($k$ times) and $-k m = -m -m - \dots - m $ ($k times$).
 \item[(c)] $\{0\}$ is an $R$-module for any ring $R$.
-\item[(d)] $R$ is (left) $R$-module. 
-\item[(e)] For $n \in \N$, and $R^n := \left\{ \myvec{r_1 \\ \vdots \\ r_n} \bigg| r_i \in R \right\}$ with componentwise addition and scalar multiplication is a left $R$-module. 
+\item[(d)] $R$ is (left) $R$-module.
+\item[(e)] For $n \in \N$, and $R^n := \left\{ \myvec{r_1 \\ \vdots \\ r_n} \bigg| r_i \in R \right\}$ with componentwise addition and scalar multiplication is a left $R$-module.
 
 For (f) and (g) below, $F$ denotes a field and $V = F^n$.
 
@@ -157,7 +157,7 @@ A subgroup $N$ of $M$ is called an ($R$-)submodule of $M$, denoted $N \leq M$, i
 \item[(2)] $n + n' \in N$ for all $n,n' \in N$
 \item[(3)] $rn \in N$ for all $r \in R$, $n \in N$
 \end{enumerate}
-A submodule of the left $R$-module $R$ is called a \tb{left-ideal} of $R$. If $R$ is commutative, then any left ideal is an ideal. 
+A submodule of the left $R$-module $R$ is called a \tb{left-ideal} of $R$. If $R$ is commutative, then any left ideal is an ideal.
 \end{defn}
 
 \vs
@@ -165,13 +165,18 @@ A submodule of the left $R$-module $R$ is called a \tb{left-ideal} of $R$. If $R
 \begin{defn}
 Let $S \sub M$. Define the \tb{annihilator of $\mb{S}$ in $\mb{R}$} by
 	\[\ann{R}{S} := \{ r \in R \mid r s = 0 \ \forall \ s \in S \} \leq R \]
-If $S \leq M$, then $\ann{R}{S}$ is a two-sided ideal of $R$. Indeed, for $a \in \ann{R}{S}, x \in S, r \in R$, $(ar)x = a(rx) = 0$ and $(ra)x = r(ax) = r0 = 0$, so $ar,ra \in \ann{R}{S}$. 
+If $S \leq M$, then $\ann{R}{S}$ is a two-sided ideal of $R$. Indeed, for $a \in \ann{R}{S}, x \in S, r \in R$, $(ar)x = a(rx) = 0$ and $(ra)x = r(ax) = r0 = 0$, so $ar,ra \in \ann{R}{S}$.
 \end{defn}
 
 \vs
 
 \begin{defn}
-Let $M,N$ be $R$-modules. A map $\phi : M \ra N$ is called an \tb{$\mb{R}$-module homomorphism} or \tb{$\mb{R}$-linear} if $\phi(m+m') = \phi(m) + \phi(m')$ and $\phi(rm) = r\phi(m)$ for all $m,m' \in M$ and $r \in R$. Clearly, $\ker \phi := \phi\inv(0_N) \leq M$, $\im \phi \leq N$, and $\phi$ is injective if and only if $\ker \phi = \{0_M\}$. $\phi$ is called an \tb{$\mb{R}$-module isomorphism} if $\phi$ is bijective, in which case $\phi\inv : N \ra M$ is also an $R$-module isomorphism. 
+Let $M,N$ be $R$-modules. A map $\phi : M \ra N$ is called an \tb{$\mb{R}$-module homomorphism} or \tb{$\mb{R}$-linear} if for all $m,m' \in M$ and $r \in R$,$
+\begin{itemize}
+	\item \phi(m+m') = \phi(m) + \phi(m')$
+	\item $\phi(rm) = r\phi(m)$
+\end{itemize}
+Clearly, $\ker \phi := \phi\inv(0_N) \leq M$, $\im \phi \leq N$, and $\phi$ is injective if and only if $\ker \phi = \{0_M\}$. $\phi$ is called an \tb{$\mb{R}$-module isomorphism} if $\phi$ is bijective, in which case $\phi\inv : N \ra M$ is also an $R$-module isomorphism.
 \end{defn}
 
 \vs
@@ -179,13 +184,13 @@ Let $M,N$ be $R$-modules. A map $\phi : M \ra N$ is called an \tb{$\mb{R}$-modul
 \begin{lemma}
 Let $\phi : M \ra N$ be $R$-linear.
 \begin{enumerate}
-\item[(a)] If $M' \leq M$, then $\phi(M') \leq N$, and if $N' \leq N$, then $\phi\inv(N') \leq M$. 
+\item[(a)] If $M' \leq M$, then $\phi(M') \leq N$, and if $N' \leq N$, then $\phi\inv(N') \leq M$.
 \item[(b)] (Correspondence Theorem) Assume $\phi$ is surjective. Then $\phi$ induces a bijection $\{M' \leq M \mid \ker \phi \leq M\} \ra \{N' \leq N\}, M' \mapsto \phi(M')$ with inverse $N' \mapsto \phi\inv(N')$.
 \end{enumerate}
 \end{lemma}
 
 \begin{proof}
-(a) is straightforward. With (a) established, the induced maps in (b) are well-defined. If $N' \leq N$, then $\phi \phi\inv(N') \sub N'$ (always). To show reverse inclusion, let $x \in N'$. There exists $y \i m$ with $x = \phi(y) \implies y \in \phi\inv(N') \implies x \in \phi \phi\inv(N')$. 
+(a) is straightforward. With (a) established, the induced maps in (b) are well-defined. If $N' \leq N$, then $\phi \phi\inv(N') \sub N'$ (always). To show reverse inclusion, let $x \in N'$. There exists $y \i m$ with $x = \phi(y) \implies y \in \phi\inv(N') \implies x \in \phi \phi\inv(N')$.
 
 Now, let $\ker \phi \leq M' \leq M$. $M' \sub \phi\inv \phi(M')$ always. To show reverse inclusion, let $x \in \phi\inv \phi(M')$. Then $\phi(x) \in \phi(M')$, so there exists $m \in M'$ with $\phi(x) - \phi(m) \implies x-m \in \ker \phi \leq M' \implies x \in M'$.
 \end{proof}
@@ -193,7 +198,7 @@ Now, let $\ker \phi \leq M' \leq M$. $M' \sub \phi\inv \phi(M')$ always. To show
 \vs
 
 \begin{defn}
-If $N \leq M$, the \tb{quotient module} $M/N$ is the abelian quotient group $M/N$ with scalar multiplication defined by $r(m+N) := rm + N$ (well-defined). The map $\pi : M \ra M/N$, $m \mapsto m+N$, is an $R$-linear surjection. 
+If $N \leq M$, the \tb{quotient module} $M/N$ is the abelian quotient group $M/N$ with scalar multiplication defined by $r(m+N) := rm + N$ (well-defined). The map $\pi : M \ra M/N$, $m \mapsto m+N$, is an $R$-linear surjection.
 \end{defn}
 
 \vs
@@ -204,21 +209,21 @@ Each submodule $L$ of $M/N$ can be uniquely written in the form $L = M'/N$ for s
 
 \vs
 
-\begin{proposition}[Isomorphism Theorem for Modules]\ 
+\begin{proposition}[Isomorphism Theorem for Modules]\
 \begin{enumerate}
 \item[(a)] If $\phi : M \ra M'$ is $R$-linear, then $M/\ker \phi \cong \im \phi$ via $m + \ker \phi \mapsto \phi(m)$.
-\item[(b)] If $L,N \leq M$, then $L+N := \{\ell + n \mid \ell \in L, n \in N\} \leq M$, and $(L+N)/N \cong L / L \cap N$ (consider $L \ra (L+N)/N, \ell \mapsto \ell + N$). 
+\item[(b)] If $L,N \leq M$, then $L+N := \{\ell + n \mid \ell \in L, n \in N\} \leq M$, and $(L+N)/N \cong L / L \cap N$ (consider $L \ra (L+N)/N, \ell \mapsto \ell + N$).
 \item[(c)] If $N \leq L \leq M$, then $(M/N)/(L/N) \cong M/L$ ($M/N \ra L/N$, $m+N \mapsto m+L$).
 \end{enumerate}
 \end{proposition}
 
 \vs
 
-\begin{defn}\ 
+\begin{defn}\
 \begin{enumerate}
-\item[(a)] For $R$-modules $M,N$, we set $\hom_R(M,N) := \{f : M \ra N \mid f \tn{ is $R$-linear}\}$. Check: $\hom_R(M,N)$ is an abelian group with $(f+g)(m) := f(m) + g(m)$ for $f,g \in \hom_R(M,N)$. If $R$ is commutative, then $\hom_R(M,N)$ is an $R$-module with $(rf)(m) := r f(m)$. 
+\item[(a)] For $R$-modules $M,N$, we set $\hom_R(M,N) := \{f : M \ra N \mid f \tn{ is $R$-linear}\}$. Check: $\hom_R(M,N)$ is an abelian group with $(f+g)(m) := f(m) + g(m)$ for $f,g \in \hom_R(M,N)$. If $R$ is commutative, then $\hom_R(M,N)$ is an $R$-module with $(rf)(m) := r f(m)$.
 
-\item[(b)] $\tn{End}_R(M) := \hom_R(M,M)$ is a ring with $(f \cdot g)(m) := f(g(m))$ and is called the \tb{endomorphism ring of $\mb{M}$}. 
+\item[(b)] $\tn{End}_R(M) := \hom_R(M,M)$ is a ring with $(f \cdot g)(m) := f(g(m))$ and is called the \tb{endomorphism ring of $\mb{M}$}.
 \end{enumerate}
 \end{defn}
 
