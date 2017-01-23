@@ -21,7 +21,7 @@ script:
 - cd ../Richards\ Algebra
 - pdflatex -output-directory ../_build richards-algebra-book.tex
 - cd ../Richards\ Algebra\ II
-- pdflatex -output-directory ../_build Richards\ Algebra\ II/Algebra\ I-II\ Book.tex
+- pdflatex -output-directory ../_build richards-algebra-book-ii.tex
 - cd ../Complex\ Analysis
 - pdflatex -output-directory ../_build complex-analysis-notes.tex
 - cd ../Real\ Analysis
@@ -45,7 +45,7 @@ deploy:
   - _build/complex-analysis-notes.pdf
   - _build/differential-topology-notes.pdf
   - _build/richards-algebra-book.pdf
-  - _build/Richards\ Algebra\ II/Algebra\ I-II\ Book.pdf
+  - _build/richards-algebra-book-ii.pdf
   - _build/algebraic-topology.pdf
   - _build/real-analysis-notes.pdf
   on:
