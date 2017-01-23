@@ -12,25 +12,24 @@ before_install:
 - export PATH=$(pwd)/texlive/bin/x86_64-linux:$PATH
 - sudo apt-get install texlive-full
 - tlmgr install $(cat .tlmgr-dep)
-# see http://tex.stackexchange.com/questions/344821/cslatex-and-texlive
-# show us what hyphen.cfg looks like
-- cat /home/travis/build/ghseeli/grad-school-notes/texlive/texmf-dist/tex/cslatex/base/hyphen.cfg
 - tlmgr update --self
 - tlmgr update --all
 script:
 - mkdir _build
 - cd Algebra
 - pdflatex -output-directory ../_build master.tex
-- cd ../Complex\ Analysis
-- pdflatex -output-directory ../_build complex-analysis-notes.tex
-- cd ../Differential\ Topology
-- pdflatex -output-directory ../_build differential-topology-notes.tex
 - cd ../Richards\ Algebra
 - pdflatex -output-directory ../_build richards-algebra-book.tex
-- cd ../Algebraic\ Topology
-- pdflatex -output-directory ../_build algebraic_topology.tex
+- cd ../Richards\ Algebra\ II
+- pdflatex -output-directory ../_build Richards\ Algebra\ II/Algebra\ I-II\ Book.tex
+- cd ../Complex\ Analysis
+- pdflatex -output-directory ../_build complex-analysis-notes.tex
 - cd ../Real\ Analysis
 - pdflatex -output-directory ../_build real-analysis-notes.tex
+- cd ../Differential\ Topology
+- pdflatex -output-directory ../_build differential-topology-notes.tex
+- cd ../Algebraic\ Topology
+- pdflatex -output-directory ../_build algebraic-topology.tex
 - cd ..
 
 before_deploy:
@@ -46,7 +45,8 @@ deploy:
   - _build/complex-analysis-notes.pdf
   - _build/differential-topology-notes.pdf
   - _build/richards-algebra-book.pdf
-  - _build/algebraic_topology.pdf
+  - _build/Richards\ Algebra\ II/Algebra\ I-II\ Book.pdf
+  - _build/algebraic-topology.pdf
   - _build/real-analysis-notes.pdf
   on:
     repo: ghseeli/grad-school-notes
