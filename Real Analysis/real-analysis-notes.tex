@@ -404,5 +404,174 @@ $d(x,y)$ will actually converge. Thus, we let \[
   \]
 \end{proof}
 \subsection*{(1/26/2017) Lecture 4}
+\subsection{Measurable spaces}
+\begin{defn}
+  Given a set $X$ and a $\sigma$-algebra $\A$ on $X$, we call the pair
+  $(X,\A)$ a \emph{measurable set}.
+\end{defn}
+In the language of categories, we have objects and the morphisms
+between the objects. To put our discussion in context, here is a table
+of some categories with their objects and morphisms.
+\begin{center}
+  \begin{tabular}{|c|c|c|}
+    \hline && \\
+    Category name& Objects & Morphisms \\
+    \hline &&\\
+    Linear algebra & Vector spaces & Linear maps \\
+    Group theory & Groups & Group homomorphisms \\
+    Topology & Topological spaces $(X,\Top)$ & Continuous maps \\
+    Measurable sets & $(X,\A)$ & Measurable maps (\S 2.1 Folland) \\
+    \hline
+  \end{tabular}
+\end{center}
+This leads us to the question, what is a measurable map?
+\begin{defn}
+  Given $(X,\A)$ and $(Y,\mathcal{B})$ 2 measurable spaces, we say
+  that $f: X \to Y$ is an $(\A,\mathcal{B})$ measurable map if and
+  only if for all $z \in \mathcal{B}$, $f^{-1}(z) \in \A$. 
+\end{defn}
+With this definition, we can now provide another characterization of
+product $\sigma$-algebras like we did for product topologies.
+\begin{prop}
+  Let $X = \prod_{\alpha \in A} X_\alpha$ with $(X_\alpha,\M_\alpha)$
+  a family of measurable spaces. Then $\bigotimes_{\alpha \in A} \M_\alpha$ is the
+  smallest $\sigma$-algebra which makes all the natural maps
+  $\pi_\alpha: X \to X_\alpha$ measurable. 
+\end{prop}
+At this point, we provide note that we are headed in the direction of
+an idea called a measure space $(X,\A,\mu)$ where $(X,\A)$ is a
+measurable space and $\mu$ is a ``measure'' defined on sets in
+$\A$. Given a $f: X \to \R$ that is measurable, we will be able to
+define $\int f \in \R$. The most important examples of this are $X =
+\R, \R_n, \Q_p, \Q_p^n$. However, in probability theory and quantum
+field theory, $X = \R^\R$ (the set of function from $\R$ to $\R$) is
+also incredibly important.
+\begin{example}
+  Let $A = X$ and for all $\alpha \in A$, let $Y_\alpha = Y$. Then
+  $Y^X = \prod_{\alpha \in A} Y_\alpha$. This means that we can think
+  of a $y \in Y^X$ as $y = (y_\alpha)_{\alpha \in A}$ where $y: A \to
+  \bigcup_{\alpha \in A}$ such that for all $\alpha \in A$, $y(\alpha)
+  = y_\alpha \in Y_\alpha$. 
+\end{example}
+We now ask, what $\sigma$-algebra can one put on $X = \R^\R$? One
+example would be \[
+  \bigotimes_{\alpha \in \R} \B_\R
+\]
+which is the product $\sigma$-algebra coming from the Borel
+$\sigma$-algebra on $\R$.
+\begin{thm}
+  Given $(X_n)_{n \geq 1}$ a sequence of seperable metric space, and
+  $X = \prod X_n$ with the product topology, then \[
+    \bigotimes_{n=1}^\infty \B_{X_n} = \B_x
+  \]
+\end{thm}
+\begin{proof}[Sketch of proof]
+  The key thing is to build a countable dense subset of $X$. Our
+  hypothesis is for all $n$, $Z_n$ is a countable dense subset in
+  $X_n$. So, let us assume for all $n$ that $X_n \neq \varnothing$, so
+  there exists $*_n \in X_n$. Then, let \[
+    Z = \bigcup_{N \geq 1} \left( Z_1 \times Z_2 \times \cdots \times
+      Z_N \times \{*_{N+1}\} \times \{*_{N+2}\} \times \cdots \right).
+  \]
+  This is a dense countable subset in $X$.
+\end{proof}
+\begin{thm}
+  Let $(X_\alpha,\M_\alpha)_{\alpha \in A}$ be an indexed family of
+  measurable sets. Then, for all $y \in \bigotimes_{\alpha \in A}
+  \M_\alpha = \M(\Ep)$, there exist at most countable $B \subset A$
+  such that there exist $Y_B \in \bigotimes_{\alpha \in B} \M_\alpha$
+  where $Y = Y_B \times \prod_{\alpha \in A \setminus B}
+  X_\alpha$. \\
 
+  Thus, if $X = \prod_{\alpha \in A} X_\alpha$, we have a measurable
+  map into $\prod_{\alpha \in B} X_\alpha$ given by the restriction of
+  the $x \in X$ of the form $x: A \to \bigcup X_\alpha$ such that
+  $x(\alpha) = x_\alpha \in X_\alpha$ to $x|_B: B \to \bigcup X_\alpha$
+  for $B \subset A$.
+\end{thm}
+\begin{proof}[Sketch of proof]
+  Let \[
+    \bigotimes_{\alpha \in A} Y_\alpha = \M(\Ep) \text{ where } \Ep =
+    \{\pi_\alpha^{-1}(E_\alpha) \mid \alpha \in A, E_\alpha \in M_\alpha\}
+  \] and let \[
+    \mathcal{N} = \left\{ Y \in \P(X) \mid \exists \text{ at most countable
+    } B \subset A, \exists Y_B \in \bigotimes_{\alpha \in B} X_\alpha,
+    Y = Y_B \times \prod_{\alpha \in A \setminus B} X_\alpha \right\}
+  \]
+  \begin{enumerate}
+  \item ($\Ep \subset \mathcal{N}$.) If $y =
+    \prod_\beta^{-1}(E_\beta)$ for some $\beta \in A, E_\beta \in
+    \M_beta$, then $y = E_\beta \times \prod_{\alpha \in A \setminus
+      \{\beta\}} X_\alpha$, where, since $B = \{\beta\}$, $E_\beta =
+    Y_beta$. Thus, $\bigotimes_{\alpha \in \{\beta\}} \M_\alpha =
+    \M_\beta$.
+  \item ($\mathcal{N}$ is a $\sigma$-algebra.)
+    \begin{itemize}
+    \item ($X \in \mathcal{N}$.) Let $Y = X, B = \varnothing$. Then,
+      $\bigotimes_{\alpha \in B} X_\alpha = \{\pmb{\varnothing}\}$
+      where $\pmb{\varnothing}: \varnothing \to \varnothing$ is the
+      empty function. Thus, $Y = X = Y_\varnothing \times
+      \prod_{\alpha \in A} X_\alpha$ and so $X \in \mathcal{N}$.
+    \item (Closed under complement.) We have that \[
+        \left( Y_B \times \prod_{\alpha \in A \setminus B} X_\alpha
+        \right)^c = Y_B^c \times \prod_{\alpha \in A \setminus B} X_\alpha
+      \]
+      and $Y_B^c \in \bigoplus_{\alpha} \M_\alpha$.
+    \item (Closed under countable union.) Let $Y_n \in \mathcal{N}$
+      and $B_n, Y_{B_n}$ such that $Y_n = Y_b \times \prod_{\alpha \in
+      A \setminus B} X_\alpha$. Then, let $Y = \bigcup_{n=1}^\infty
+    Y_n$. Then, we need to find $B$ countable and $Y_B$ of the right
+    form. Let $B = \bigcup_{n=1}^\infty B_n$. So, $B_n \subset B
+    \subset A$. Then, for all $n$, \[
+      Y_n = \left( Y_{B_n} \times \prod_{\alpha \in B \setminus B_n}
+        X_\alpha \right) \times \prod_{\alpha \in A \setminus B} X_\alpha.
+    \]
+    We also note that $x|_A = (x|_B)|_{B_n}$ (What?!) Thus,
+    \[
+      Y = \bigcup_{n \geq 1} Y_n = \bigcup_{n \geq 1} \left[ \left(
+          Y_{B_n} \times \prod_{\alpha \in B \setminus B_n} X_\alpha
+        \right) \times \prod_{\alpha \in A \setminus B} X_\alpha
+      \right] = \left[ \bigcup_{n \geq 1} \left( Y \times
+          \prod_{\alpha \in B \setminus B_n} X_\alpha \right) \right]
+      \times \prod_{\alpha \in A \setminus B} X_\alpha.
+    \]
+    Note that \[
+       Y_{B_n} \times \prod_{\alpha \in B \setminus B_n}
+        X_\alpha  \subset \prod_{\alpha \in B} X_\alpha
+      \]
+      and that \[
+        \bigcup_{n \geq 1} \left( Y \times
+          \prod_{\alpha \in B \setminus B_n} X_\alpha \right) = Y_B
+        \in \bigotimes_{\alpha \in B} \M_\alpha.
+      \]
+    Thus, $B = \bigcup_{n \geq 1} B_n$ is countable.
+    \end{itemize}
+  \end{enumerate}
+\end{proof}
+\begin{example}
+  $\R^\R = \{f: \R \to \R\}$ has \[
+    \bigotimes_{x \in \R} \B_\R \propsubset \B_{\R^\R} \text{ with
+      product topology.}
+  \]
+  The reason is because $\{f(x) = 0\} \in \B_{\R^\R}$ a closed set,
+  but not in $\bigotimes_{x \in \R} \B_\R$ by the theorem above.
+\end{example}
+The moral of the story is that for measurable topological spaces,
+countable products are good but uncountable products are bad. \\
+
+Switching gears, we note that if $X = \R$, $\B_\R = \M(\Ep)$ can have
+many different $\Ep$. For instance $\Ep$ could be all open sets, all
+open intervals, all sets of the form $(a, \infty)$ with $a \in \R$ or
+even $a \in \Q$. So, we have a reduction that $\B_\R = \M(\{(a,b] \mid
+-\infty \leq a \leq b < \infty\})$.
+\begin{defn}
+  Let $X$ be a set and $\Ep \subset \P(X)$. Then $\Ep$ is called an
+  elementary family if
+  \begin{enumerate}
+  \item $\varnothing \in \Ep$,
+  \item $E,F \in \Ep \ \implies \ E \cap F \in \Ep$,
+  \item and $E \in \Ep \ \implies \ E^c$ is a finite disjoint union of
+    elements in $\Ep$. 
+  \end{enumerate}
+\end{defn}
 \end{document}
