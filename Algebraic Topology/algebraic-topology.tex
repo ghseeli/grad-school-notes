@@ -1,5 +1,5 @@
 \documentclass[11pt,leqno,oneside]{amsart}
-\usepackage[margin=1in]{geometry}
+%\usepackage[margin=1in]{geometry}
 
 \usepackage{../notes}
 \usepackage{xfrac}
@@ -172,7 +172,7 @@ objects in a category. We call this category the Fundamental Groupoid.
 \begin{defn}
   A \de{groupoid} is a category where every morphism has an inverse.
 
-  That is, if $a: x \to x'$, then there exists $a^{-1}:x' to x$
+  That is, if $a \colon x \to x'$, then there exists $a^{-1} \colon x' \to x$
   s.t. $aa^{-1} = \id_{x'}$ and $a^{-1}a = \id_{x}$.
 
   The elements of the groupoid are the morphisms.  The operation is
@@ -188,7 +188,7 @@ objects in a category. We call this category the Fundamental Groupoid.
   If $A$ is an object in a groupoid, then $\Hom(A, A)$ is a group.
 \end{prop}
 
-note We see that a groupoid is the same definition of a group, but we
+Note, we see that a groupoid is the same definition of a group, but we
 use a *partial* binary operation instead of a binary operation.
 
 \begin{defn}
@@ -213,8 +213,9 @@ use a *partial* binary operation instead of a binary operation.
 \end{defn}
 \begin{prop}
   If $p$ is a path, then
-  $[p^{-1}*p] = [id_{x}] = \text{the function where $s \mapsto x$ for
-    all $s \in [0,1]$}$.
+  $[p^{-1}*p] = [id_{x}]$, which is the equivalence class of the
+  function where $s \mapsto x$ for
+  all $s \in [0,1]$.
 \end{prop}
 
 \begin{thm}[Hatcher 1.5]
@@ -255,7 +256,7 @@ use a *partial* binary operation instead of a binary operation.
 
 \begin{prop}
   Given a fundamental group $\Pi_1(X, x)$, then we can restrict $f_*$
-  to the functor $$f_* : \Pi_1(X, x) to \Pi_1(Y, f(x)).$$
+  to the functor $$f_* : \Pi_1(X, x) \to \Pi_1(Y, f(x)).$$
 
   picture $x$ (loop) to $f(x)$ (loop)
 
