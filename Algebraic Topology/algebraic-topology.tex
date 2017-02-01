@@ -70,7 +70,7 @@ where as always \(I=[0,1]\).
 
 We will develop the tools to prove manifolds of different dimensions can
 certainly never be homeomorphic. Another surface result assures there exists no continuous
-retraction \(D^2 \to \d D\), which then immediately yields the
+retraction \(D^2 \to \d D^2\), which then immediately yields the
 Brouwer Fixed Pointed Theorem (every map \(D^2 \to D^2\) admits a
 fixed point).
 
@@ -80,7 +80,7 @@ continuous deformations between maps. While homology studies subspaces
 (known as ``cycles'') and gap filling.
 
 \section{Reference}
-
+%
 \begin{defn}
   $D^n$ denotes the $n$-dimensional closed unit disk.
 \end{defn}
@@ -156,7 +156,7 @@ objects in a category. We call this category the Fundamental Groupoid.
 \mydate{d2}{20}{1}{2017}
 
 \begin{defn}
-  A \de{category} is a directed graph.  Each vertex is called an
+  A \de{category} is a directed graph. Each vertex is called an %
   \de{object} and each directed edge is called a \de{morphism}.
 \end{defn}
 \begin{defn}
@@ -208,8 +208,8 @@ use a *partial* binary operation instead of a binary operation.
   composition.
 \end{defn}
 \begin{defn}
-  the \de{inverse path} of a path $p$ is $p^{-1}(s) := p(1-s)$.
-  (note: This is *not* the same as the function inverse of $p$)
+  The \de{inverse path} of a path $p$ is $p^{-1}(s) := p(1-s)$.
+  (Note: This is *not* the same as the function inverse of $p$)
 \end{defn}
 \begin{prop}
   If $p$ is a path, then
@@ -225,18 +225,18 @@ use a *partial* binary operation instead of a binary operation.
 \end{thm}
 \begin{thm}
   If $X$ is path connected, then for any $x_a, x_b \in X$,
-  $$\Pi_1(X, x_a) \isom \Pi_1(X, x_b).$$
-  notation If $X$ is path connected, we can denote the fundamental
+  $$\Pi_1(X, x_a) \isom \Pi_1(X, x_b).$$ %
+  Notation: If $X$ is path connected, we can denote the fundamental
   group with $\pi_1(X)$ or $\pi_1 X$.
 \end{thm}
 \begin{example}
-  pretty picture
+  pretty picture %
 
   This isomorphism is not canonical
   
 
   Note that $\pi_1 X$ is only well defined up to inner automorphism.
-  ((Chris, what does this mean?))
+  ((Chris, what does this mean?)) %
 \end{example}
 \begin{defn}
   Given metric spaces $X, Y$ and a map $f: X \to Y$, then the
@@ -249,7 +249,7 @@ use a *partial* binary operation instead of a binary operation.
   The above is well defined because
   \begin{itemize}
   \item If $[p]=[q]$, then $[f(p)] = [f(q)]$ because $h.f$ gives a
-    homotopy.  ((What the heck is h?))
+    homotopy.  ((What the heck is h?)) %
   \item $(f_*p)*(f_*q) = f_*(p*q)$
   \end{itemize}
 \end{prop}
@@ -258,7 +258,7 @@ use a *partial* binary operation instead of a binary operation.
   Given a fundamental group $\Pi_1(X, x)$, then we can restrict $f_*$
   to the functor $$f_* : \Pi_1(X, x) \to \Pi_1(Y, f(x)).$$
 
-  picture $x$ (loop) to $f(x)$ (loop)
+  picture $x$ (loop) to $f(x)$ (loop) %
 
   is a group homomorphism
 \end{prop}
@@ -270,10 +270,10 @@ use a *partial* binary operation instead of a binary operation.
 \begin{example}
   $\Pi_1(\R^n, x) = [*]$
 
-  in $\Pi_1 \R^n$, there exists a unique path between any two points,
+  In $\Pi_1 \R^n$, there exists a unique path between any two points,
   up to homotopy.
 
-  pf $p,q: I \to \R^n$
+  pf $p,q: I \to \R^n$ %
 
   $p(0) = q(0)$ $p(1) = q(1)$
 
@@ -293,7 +293,7 @@ use a *partial* binary operation instead of a binary operation.
   $\Pi_1(\C \minus \{0\}) = \Z$
 \end{example}
 \begin{example}
-  pretty picture with yellow and blue dots
+  pretty picture with yellow and blue dots %
 
   $A$ and $B$ can't be homotopic because $\log(A)$ and $\log(B)$ have
   different end points.
@@ -301,7 +301,7 @@ use a *partial* binary operation instead of a binary operation.
 
 \begin{defn}
   A \emph{covering space} of a space \(X\) is a space \(\tilde{X}\)
-  and map \(p \colon \tilde{X} \to X\). Where there eixsts a cover
+  and map \(p \colon \tilde{X} \to X\). Where there exists a cover
   \(\{U_\alpha\}\) of \(X\) such that \(p^{-1}(U_\alpha)\) is a
   disjoint union of open sets in \(\tilde{X}\) each of which has image
   under \(p\) homeomorphic to \(U_\alpha\).
