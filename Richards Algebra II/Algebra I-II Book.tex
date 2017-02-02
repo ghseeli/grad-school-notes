@@ -61,6 +61,7 @@
 \newcommand{\gen}[1]{\langle #1 \rangle}   \newcommand{\stab}[2]{\tn{Stab}_{#1}(#2)}   \newcommand{\fix}[2]{\tn{Fix}_{#1}(#2)}   \newcommand{\op}{^{\tn{op}}}
 \newcommand{\hooklongrightarrow}{\lhook\joinrel\longrightarrow}   \newcommand{\twoheadlongrightarrow}{\relbar\joinrel\twoheadrightarrow}
 \newcommand{\ses}[5]{1 \longrightarrow #1 \overset{#2}{\hooklongrightarrow} #3 \overset{#4}{\twoheadlongrightarrow} #5 \longrightarrow 1}
+\newcommand{\mses}[5]{0 \longrightarrow #1 \overset{#2}{\hooklongrightarrow} #3 \overset{#4}{\twoheadlongrightarrow} #5 \longrightarrow 0}
 \renewcommand{\arrowvert}{\arrow}   \renewcommand{\i}{\mathbf{i}}   \renewcommand{\j}{\mathbf{j}}   \renewcommand{\k}{\mathbf{k}}    \renewcommand{\H}{\mathbb{H}}  \renewcommand{\hom}{\tn{Hom}}
 \newcommand{\ann}[2]{\textnormal{Ann}_{#1}(#2)}
 
@@ -104,7 +105,7 @@
 
 \part{Modules}
 
-\chapter{Basic Concepts}
+\chapter{\null \quad \ Basic Concepts}
 
 In the following, $R$ always denotes a (not necessarily commutative) ring with 1.
 
@@ -330,7 +331,7 @@ An $R$-module $M$ is called \tb{indecomposable} if it cannot be written as the d
 
 \vs
 
-We can generalize in a straightforward way the construction of direct sums with finitely many summands: $\bigoplus_{i=1}^n M_i :- \{(m_1,\dots,m_n) \mid m_i \in M_i\}$ (external direct sum). For $M_1,\dots,M_n \leq M$, $M = \bigoplus_{i=1}^n M_i$ (internal direct sum) iff $M = \sum_{i=1}^n M_i$ and $M_i \cap \sum_{1 \leq j \leq n, j \ne i} M_j = \{0\}$.
+We can generalize in a straightforward way the construction of direct sums with finitely many summands: $\bigoplus_{i=1}^n M_i :+ \{(m_1,\dots,m_n) \mid m_i \in M_i\}$ (external direct sum). For $M_1,\dots,M_n \leq M$, $M = \bigoplus_{i=1}^n M_i$ (internal direct sum) iff $M = \sum_{i=1}^n M_i$ and $M_i \cap \sum_{1 \leq j \leq n, j \ne i} M_j = \{0\}$.
 
 \vs
 
@@ -473,7 +474,205 @@ If $M$ is a free $R$-module and $B,B'$ are two bases of $M$, it is not generally
 \item[(iv)] If $B$ or $B'$ is infinite (Exercise: $B$ infinite $\implies$ $M$ is not finitely generated).
 \end{enumerate}
 
-In each of these cases, we can well-define the \tb{rank} of $M$ to be $\tn{rk}_R(M) = |B|$ for any basis $B$ of $M$. E.g., $\tn{rk}_n(R^n) = n$ if $R$ is commutative. If $M$ is not finitely generated, we simply write $\tn{rk}_R(M) = \infty$.
+In each of these cases, we can well-define the \tb{rank} of $M$ to be $\tn{rk}_R(M) = |B|$ for any basis $B$ of $M$. E.g., $\tn{rk}_n(R^n) = n$ if $R$ is commutative. If $M$ is not finitely generated, we simply write $\tn{rk}_R(M) = \infty$. There are several facts from linear algebra which are not generally true for free modules which are worth noting. If $M$ is a free $R$-module, then
+\begin{enumerate}
+\item[$\bullet$] a maximal linearly independent set needn't be a basis;
+\item[$\bullet$] a minimal spanning set needn't be a basis;
+\item[$\bullet$] a submodule $N$ of $M$ needn't have a complement (i.e., $L \leq M$ such that $M = L \oplus N$).
+\end{enumerate}
+
+To see why each of these are true, just consider the $\z$-module $\z$.
 \end{remark}
+
+\vs
+
+\begin{example}
+For any ring $R$ any $n \in \N$, the map $\alpha : \tn{End}_R(R^n) \ra M_N(R\op)$, $\phi \mapsto (\phi(e_1),\dots,\phi(e_n))$, is an isomorphism. In particular, $\alpha$ is bijective by 3.1.26 (iv).
+\end{example}
+
+\vs
+
+\subsection*{Dual Modules}
+
+\vs
+
+\begin{defn}
+The \tb{dual} $M^*$ of the $R$-module $M$ is defined as $M^* :+ \hom_R(M,R)$, where we think of $R$ as a left $R$-module. By 3.1.10, $M^*$ is an abelian group and is an $R$-module if $R$ is commutative.
+\end{defn}
+
+\vs
+
+\begin{defn}[and Lemma]
+Let $R$ be a commutative ring with $1 \ne 0$.
+\begin{enumerate}
+\item[(a)] $(R^n)^* \cong R^n$ as $R$-modules.
+\item[(b)] If $M$ is free with basis $B = \{b_i \mid i \in I\}$, we define $b_i^* \in M^*$ by $b_i^*(b_j) = \delta_{ij}$ (well-defined by 3.1.26 (iv)). Then $B^* := \{b_i^* \mid i \in I\}$ is linearly independent, and $B^*$ is a basis of $M^*$ (called the \tb{dual basis} to $B$) if $I$ is finite.
+\end{enumerate}
+\end{defn}
+
+\begin{proof}
+\begin{enumerate}\
+\item[(a)] $(R^n)^* = \hom_R\left(\bigoplus_{i=1}^n R, R\right) \overset{3.1.22 \ (v)}{\cong} \prod_{i=1}^n \hom_R(R,R) \cong \bigoplus_{i=1}^n R = R^n$.
+
+\item[(b)] Suppose $\sum_{i \in I} r_i e_{i}^* = 0$ in $M^*$ for some $r_i \in R$ with $r_i = 0$ for almost all $i \in I$. Then for all $j \in I$, we have $0 = \sum_{i \in I} r_i e_i^*(e_j) = r_j$, so $B^*$ is linearly independent. Now suppose that $I$ is finite, and let $f \in M^*$. Put $a_i = f(e_i) \in R$ for all $i \in I$, and consider $f':= \sum_{i \in I} a_i e_i^*$. Then $f(e_j) = f'(e_j)$ for all $j \in I \implies f = f'$.
+\end{enumerate}
+\end{proof}
+
+\vs
+
+\begin{remark}
+If $B = \{e_i \mid i \in I \}$ is an infinite basis, we still get, as in 3.1.31 (a), that $M^* \cong \prod_{i \in I} R$. However, this needn't be a free $R$-module any longer (e.g., take $R = \z$, $I = \N$), and even if it is free, it needn't be isomorphic to $M$. For example, take $R = \Q$, $I = \N$, $M$ the countable vector space $\bigoplus_{i \in \N} \Q$). Then $M^* \cong \prod_{i \in \N} \Q$ is uncountable.
+\end{remark}
+
+\vs
+
+
+
+
+
+\chapter{\null \quad Modules of Fractions}
+
+We now take $R$ to be a commutative ring with $1 \ne 0$. In II.2, we looked at a multiplicatively closed subset $D \sub R$ (so $1 \in D$) which allowed us to define the \emph{ring of fractions} $D\inv R = \left\{\frac{r}{d} \mid r \in R, d \in D\right\}$. Recall that we have a canonical ring homomorphism $j : R \ra D\inv R, r \mapsto \frac{r}{1}$ with
+	\[\ker j = \{r \in R \mid \exists \ d \in D \tn{ such that } dr = 0\} \ (= R \iff 0 \in D) \]
+If $R$ is an integral domain and $0 \notin D$, then $j$ is injective, and when we take $D = R \bs \{0\}$, we call $D\inv R$ the \emph{field of fractions} of $R$. \\
+
+Now, given an $R$-module $M$ and $D \sub R$ multiplicatively closed, we want to construct a $D\inv R$-module $D\inv M$, called the \tb{module of fractions.} The first step in this process is to introduce an equivalence relation $\sim$ on $M \times D$ by writing $(m,d) \sim (m',d')$ if there exists $e \in D$ such that $e(d'm - dm') = 0$. The only thing to check is that $\sim$ is transitive. Suppose that $(m,d) \sim (m',d') \sim (m'',d'')$ for some $m,m',m'' \in M$ and $d,d',d'' \in D$. Then there exist elements $e,f \in D$ such that
+\begin{align*}
+0 &= e(d'm - dm') = f(d''m' - d'm'') \\
+\implies ed'm &= edm' \quad \tn{and} \quad fd''m' = fd'm'' \\
+\implies fd''ed'm &= fd''edm' = edfd''m' = edfd'm'' \\
+\implies 0 &= efd'(d''m-dm'') \\
+\implies (md) &\sim (m'',d'')
+\end{align*}
+
+We denote the equivalence class of $(m,d)$ by $\frac{m}{d}$ and set
+	\[ D\inv M := \left\{\frac{m}{d} \mid m \in M, d \in D \right\} \]
+We now define addition and $D\inv R$-scalar multiplication on $D\inv M$ by
+	\[\frac{m}{d} + \frac{n}{e} = \frac{em + dn}{de}, \qquad \frac{r}{d} \cdot \frac{m}{e} = \frac{rm}{de} \]
+
+\vs
+
+\begin{lemma}
+$D\inv M$, with addition and scalar multiplication defined as above, is a $D\inv R$-module. Via the ring homomorphism $j : R \ra D\inv R, r \mapsto \frac{r}{1}$, $D\inv M$ also becomes an $R$-module. Explicitly,
+	\[r \cdot \frac{m}{d} = j(m) \cdot \frac{m}{d} = \frac{r}{1} \frac{m}{d} = \frac{rm}{d} \]
+We also have the $R$-module homomorphism $j_M : M \ra D\inv M$, $m \mapsto \frac{m}{1}$, with
+	\[\ker j_M = \{m \in M \mid \exists \ d \in D \tn{ such that } dm = 0 \} \leq M \]
+\end{lemma}
+
+\begin{proof}
+This is a straightforward computation. To check that scalar multiplication is well-defined, suppose that $\frac{r}{d} = \frac{r'}{d'}$ and $\frac{m}{e} = \frac{m'}{e'}$ for some $r,r' \in R, d,d',e,e' \in D$, and $m,m' \in M$. Then there exist $x,y \in D$ such that
+\begin{align*}
+0_R &= x(d'r-dr') \quad \tn{and} \quad 0_M = y(e'm-em') \\
+\implies xy(d'e'rm - der'm') &= dyde'rm - \underline{x} y \underline{d} e \underline{r'} m' \\
+&= xyd'e'rm - xd'r\underline{y} \underline{e} \underline{m'} \\
+&= xyd'e'rm - xd'rye'm \\
+&= 0 \\
+\implies \frac{rm}{de} &= \frac{r'm'}{d'e'},
+\end{align*}
+and the left is left to the reader.
+\end{proof}
+
+\vs
+
+A special case of this is "localization" at a prime ideal $P \vartriangleleft R$, i.e., $D = R \bs P$. In this case, we write $M_p$ in place of $D\inv M$.
+
+\vs
+
+\begin{lemma}
+$D\inv$ commutes with direct sums. That is, if $(M_i)_{i \in I}$ is a family of $R$-modules, then the $D\inv R$-modules $D\inv \bigoplus_{i \in I} M_i$ and $\bigoplus_{i \in I} D\inv M_i$ are isomorphic.
+\end{lemma}
+
+\begin{prf}
+Consider $\phi : D\inv \bigoplus_{i\in I} M_i \ra \bigoplus_{i \in I} D\inv M_i$, $\frac{(m_i)_{i \in I}}{d} \mapsto \left(\frac{m_i}{d}\right)_{i \in I}$.
+\begin{enumerate}
+\item[$\bullet$] $\phi$ is well-defined. If $\frac{(m_i)_{i \in I}}{d} = \frac{(m_i')_{i \in I}}{d'}$, then there exists $e \in D$ such that
+\begin{align*}
+0 &= e[d'(m_i)_{i \in I} - d(m_i')_{i \in I}] = (e(d'm_i - dm_i'))_{i \in I} \\
+\iff 0 &= ed'm_i - edm_i' \quad \tn{for all } i \in I \\
+\iff \frac{m_i}{d} &= \frac{m_i'}{d'} \quad \tn{for all } i \in I \\
+\iff \left(\frac{m_i}{d}\right)_{i \in I} &= \left(\frac{m_i'}{d'}\right)_{i \in I}
+\end{align*}
+
+\item[$\bullet$] $\phi$ is $D\inv R$-linear. Let $\frac{(m_i)_{i \in I}}{d}, \frac{(m_i')_{i \in I}}{d'} \in D\inv M, \frac{r}{e} \in D\inv R$. Then
+\begin{align*}
+\phi \left(\frac{(m_i)_{i \in I}}{d} + \frac{r}{e} \frac{(m_i')_{i \in I}}{d'}\right) = \phi\left( \frac{(ed'm_i + drm_i')_{i \in I}}{edd'}\right) &= \left(\frac{ed'm_i + drm_i'}{edd'}\right)_{i \in I} \\
+&= \left(\frac{m_i}{d}\right)_{i \in I} + \frac{r}{e} \left(\frac{m_i'}{d'}\right)_{i \in I} \\ &= \phi \left(\frac{(m_i)_{i \in I}}{d}\right) + \frac{r}{e} \phi \left(\frac{(m_i')_{i \in I}}{d'}\right)
+\end{align*}
+
+\item[$\bullet$] $\phi$ is surjective. Let $\frac{m_i}{d_i} \in \bigoplus_{i \in I} D\inv M_i$ be given. Choose a finite subset $I' \sub I$ such that $\frac{m_i}{d_i} = 0$ for all $i \in I \bs I'$. Set $d = \prod_{i \in I'} d_i \in D$, and let $m_i' = (\prod_{j \in I'\bs\{i\}} d_j) m_i$ so that $\frac{m_i'}{d} = \frac{m_i}{d_i}$ for all $i \in I'$. If we set $m_i' = 0$ for all $i \in I \bs I'$, then clearly $\frac{m_i}{d} = \frac{m_i'}{d_i}$ for all $i \in I$.
+
+\item[$\bullet$] $\phi$ is injective. Suppose $\phi \left( \frac{(m_i)_{i \in I}}{d} \right) = \left(\frac{m_i}{d}\right)_{i \in I} = 0$ in $\bigoplus_{i \in I} D\inv M_i$. As above, choose a finite subset $I' \sub I$ such that $m_i = 0$ for all $i \in I \bs I'$. For each $i \in I'$, $\frac{m_i}{d} = 0$ in $D\inv M_i$, so there exists $e_i \in D$ such that $e_i m_i = 0$. Set $e = \prod_{i \in I'} e_i \in D$. Then $em_i = 0$ for all $i \in I$, and hence $\frac{(m_i)_{i \in I}}{d} = 0$ in $D\inv \bigoplus_{i \in I} M_i$.
+\end{enumerate}
+\end{prf}
+
+\vs
+
+\begin{remark}
+$D\inv$ does NOT generally commute with infinite direct products (Exercise).
+\end{remark}
+
+\vs
+
+\begin{defn}
+For $R$-modules $M,N$ and $\phi \in \hom_R(M,N)$, we define $D\inv \phi : D\inv M \ra D\inv N$ by $D\inv\phi \left(\frac{m}{d}\right) = \frac{\phi(m)}{d}$ (well-defined). \\
+
+In the language of categories, $D\inv$ is in fact a \emph{covariant functor} from the category of $R$-modules to the category of $D\inv R$-modules. \\
+
+We call a (finite or infinite) sequence of $R$-module homomorphisms
+	\[...\longrightarrow M_i \overset{\phi_{I-1}}{\longrightarrow} M_i \overset{\phi_i}{\longrightarrow} M_{i+1} \longrightarrow \dots \]
+is called \tb{exact} if $\im \phi_{i-1} = \ker \phi_i$ for all $i$. A \tb{short exact sequence} (SES) is an exact sequence \\ $\mses{L}{\phi}{M}{\psi}{N}$.
+\end{defn}
+
+\vs
+
+\begin{proposition}
+The functor $D\inv$ is exact. If $L \overset{\phi}{\longrightarrow} M \overset{\psi}{\longrightarrow} N$ is an exact sequence of $R$-modules, then $D\inv L \overset{D\inv \phi}{\longrightarrow} D\inv M \overset{D\inv \psi}{\longrightarrow} D\inv N$ is an exact sequence of $D\inv R$-modules.
+\end{proposition}
+
+\begin{proof}
+By assumption, $\im \phi = \ker \psi \implies \psi \circ \phi = 0$, so that
+	\[0 = D\inv(\psi \circ \phi) = D\inv(\psi) \circ D\inv(\phi) \implies \im D\inv \phi \sub \ker D\inv \psi \]
+Now, let $\frac{m}{d} \in \ker D\inv \psi$. Then $\frac{\psi(m)}{d} = 0$ in $D\inv N$, so there exists $d' \in D$ such that $0 = d'\phi(m) = \phi(d'm) \implies d'm \in \ker \psi = \im \phi$, hence there exists $\ell \in L$ with $\phi(\ell) = d'm$. Therefore,
+	\[\frac{m}{d} = \frac{d'm}{dd'} = \frac{\phi(\ell)}{dd'} = D\inv \phi \left(\frac{\ell}{dd'} \right) \in \im D\inv \phi \implies \im D\inv \phi = \ker D\inv \psi \]
+\end{proof}
+
+\vs
+
+\begin{defn}
+If $M$ is an $R$-module, an element $m \in M$ is called a \tb{torsion element} of $M$ if $rm = 0$ for some $r \in R \bs \{0\}$. Note that $0_M$ is always torsion since $1_R \ne 0_R$. We set
+	\[ T(M) := \{m \in M \mid m \tn{ is a torsion element} \} \]
+We say $M$ is \tb{torsion free} if $T(M) = \{0\}$.
+\end{defn}
+
+\vs
+
+\begin{example*}
+If $R = \z/6\z = M$, then $T(M) = \{\ov{0},\ov{2},\ov{3},\ov{4}\}$. This shows that if $M$ is a free module, it does not necessarily follow that $M$ is torsion free. This also shows that $T(M)$ needn't be a submodule of $M$.
+\end{example*}
+
+\vs
+
+\begin{lemma}
+If $R$ is an integral domain and $M$ is an $R$-module, then
+\begin{enumerate}
+\item[(a)] $T(M)$ is a submodule of $M$.
+\item[(b)] $M/T(M)$ is torsion free.
+\item[(b)] If $M$ is free, then $M$ is torsion free.
+\end{enumerate}
+\end{lemma}
+
+\vs
+
+\begin{proof}\
+\begin{enumerate}
+\item[(a)] If $m,m' \in T(M)$, then there exist $r,r' \in R \bs \{0\}$ such that $rm = 0 = r'm'$. Now $rr' \ne 0$ as $R$ is an integral domain, and $rr'(m + m') = r'(rm) + r(r'm') = 0 + 0 = 0$. For all $s \in R$, we have $s(rm) = s 0 = 0$.
+
+\item[(b)] Assume that $m + T(M) \in T(M/T(M))$. Let $r \in R \bs \{0\}$ be such that $r(m + T(M)) = rm + T(M) = 0 + T(M) \iff rm \in T(M)$. Then there exists $r' \in R \bs \{0\}$ with $0 = r'(rm) = (rr')m$, and $rr' \ne 0$, so $m \in T(M) \iff m + T(M) = 0 + T(M)$.
+
+\item[(b)] Let $B = \{m_i \mid i \in I\}$ be a basis of $M$, and let $m \in T(M)$. Write $m = \sum_{i \in I} r_i m_i$, where $r_i \in R$ and $r_i = 0$ for almost all $i \in I$. For some $r \in R \bs \{0\}$, we have
+	\[0 = rm = r \sum_{i \in I} r_i m_i = \sum_{i \in I} (rr_i) m_i \implies rr_i = 0 \tn{ for all } i \in I \]
+But $R$ is an integral domain and $R$ is an integral domain, so we must have that $r_i = 0$ for all $i \in I \iff m = \sum_{i \in I} r_i m_i = 0$. Thus $M$ is torsion free.
+\end{enumerate}
+\end{proof}
 
 \end{document}
