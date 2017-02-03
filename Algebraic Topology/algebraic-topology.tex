@@ -156,10 +156,6 @@ objects in a category. We call this category the Fundamental Groupoid.
 \mydate{d2}{20}{1}{2017}
 
 \begin{defn}
-  A \de{category} is a directed graph. Each vertex is called an %
-  \de{object} and each directed edge is called a \de{morphism}.
-\end{defn}
-\begin{defn}
   In the category of \de{finite sets}, denoted $\text{FSet}$, the
   objects are the finite sets, each morphism from $A$ to $B$ is a
   function from $A$ to $B$.
@@ -221,11 +217,11 @@ use a *partial* binary operation instead of a binary operation.
 \begin{thm}[Hatcher 1.5]
   Let $X$ be a metric space and $x,x' \in X$.  If there exists
   $p: x \to x'$ and $[q] \in \pi_1(X,x')$, then
-  $p^{-1}qp \in \Pi_1(X,x)$ is an isomorphism of fundamental groups.
+  $p^{-1}qp \in \pi_1(X,x)$ is an isomorphism of fundamental groups.
 \end{thm}
 \begin{thm}
   If $X$ is path connected, then for any $x_a, x_b \in X$,
-  $$\Pi_1(X, x_a) \isom \Pi_1(X, x_b).$$ %
+  $$\pi_1(X, x_a) \isom \pi_1(X, x_b).$$ %
   Notation: If $X$ is path connected, we can denote the fundamental
   group with $\pi_1(X)$ or $\pi_1 X$.
 \end{thm}
@@ -236,7 +232,6 @@ use a *partial* binary operation instead of a binary operation.
   
 
   Note that $\pi_1 X$ is only well defined up to inner automorphism.
-  ((Chris, what does this mean?)) %
 \end{example}
 \begin{defn}
   Given metric spaces $X, Y$ and a map $f: X \to Y$, then the
