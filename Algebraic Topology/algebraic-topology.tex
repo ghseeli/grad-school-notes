@@ -31,7 +31,8 @@
 
 \everymath{\displaystyle}
 
-\newcommand{\of}{\circ}
+\newcommand{\from}{\colon} % for use in $f \from X \to Y$
+\newcommand{\of}{\circ} % function composition
 \newcommand{\minus}{\smallsetminus}
 \renewcommand{\setminus}{\smallsetminus}
 \renewcommand{\amalg}{\sqcup}
@@ -40,13 +41,13 @@
 \renewcommand{\d}{\partial}
 \newcommand{\fund}{\pi_1}
 \newcommand{\transverse}{\pitchfork}
-\newcommand{\into}{\hookrightarrow}
-\newcommand{\onto}{\twoheadrightarrow}
+\newcommand{\into}{\hookrightarrow} % for use in $f \from X \into Y$ (injective)
+\newcommand{\onto}{\twoheadrightarrow} % for use in $f \from X \onto Y$ (surjective)
 \newcommand{\x}{\times}
 \newcommand{\Map}{\text{Map}}
 \newcommand{\id}{\text{id}}
 \renewcommand{\bar}{\widebar}
-\newcommand{\de}{\emph}
+\newcommand{\de}{\emph} % for newly defined terms
 
 %%%%%%%%%%%%%% BEGIN CONTENT: %%%%%%%%%%%%%%
 
@@ -239,7 +240,7 @@ use a *partial* binary operation instead of a binary operation.
   ((Chris, what does this mean?))
 \end{example}
 \begin{defn}
-  Given metric spaces $X, Y$ and a map $f: X \to Y$, then the
+  Given spaces $X, Y$ and a map $f: X \to Y$, then the
   \de{fundamental functor} induced by $f$,
   $$f_* = \Pi_1 f : \Pi_1 X \to \Pi_1 Y$$ maps each object $x \in X$
   to $f(x) \in Y$ and each path $[p] \in \Pi_1 X$ to
@@ -329,13 +330,13 @@ class. We now discuss homotopy lifting.
 
 \section{Functoriality of $\fund$}
 
-Let $X$, $Y$ be BLANKs and $f,f': X \to Y$ be BLANKs.
+Let $X$, $Y$ be spaces and $f,f': X \to Y$ be maps.
 
 We wish to prove (i think) that $f_* \of g_* = (f \of g)_*$.
 
-Let $h\colon X \x I \to Y$ be a homotopy from $f$ to $f'$.  In the easy version, we fix a basepoint $x \in X$ and require that $h_t(x)$ is constant. ``based map'' (there exists a category of based spaces, i.e., top w/ fixed point)
+Let $h\from X \x I \to Y$ be a homotopy from $f$ to $f'$.  In the easy version, we fix a basepoint $x \in X$ and require that $h_t(x)$ is constant. ``based map'' (there exists a category of based spaces, i.e., top w/ fixed point)
 
-$f_* = f'_*$ since $(f \of p) \homotopic (f' \of p)$ via $h \of illegible$.
+$f_* = f'_*$ since $(f \of p) \homotopic (f' \of p)$ via $(h \of p)$.
 
 
 \begin{thm}
@@ -346,6 +347,7 @@ $f_* = f'_*$ since $(f \of p) \homotopic (f' \of p)$ via $h \of illegible$.
   commutes.
 \end{thm}
 \begin{proof}
+  ((chris why wont it let me put pairs in this tikzcd diagram below?))
   $$\begin{tikzcd}
     % &I \x I \arrow[r, "(p,\id)"] &X \x I \arrow[r, "h"] &Y
     &I \x I \arrow[r, ""] &X \x I \arrow[r, "h"] &Y
@@ -362,41 +364,44 @@ $f_* = f'_*$ since $(f \of p) \homotopic (f' \of p)$ via $h \of illegible$.
   DOWN
   $h_t(x)$
 
-  If $A,B$ categories and $F,G\colon A \to B$ functors an \underline{isomorphism} of functors.
+  If $A$ and $B$ are categories and $F,G\colon A \to B$ are functors an \underline{isomorphism} of functors.
 
   For all $a \in \Ob(A)$, $Z(a)\colon F(a) \to G(a)$ such that for all $g: a \to a'$,
 
   $$\begin{tikzcd}
     &F(a) \arrow[r, "Z(a)"] \arrow[d, "F(g)"] & G(a) \arrow[d, "G(g)"] \\
-    &F(a') \arrow[r, "Z(a)"]                  & G(a')
+    &F(a') \arrow[r, "Z(a')"]                  & G(a')
   \end{tikzcd}$$
+
+  ((commutes?))
 
   Note: if $B$ is a groupoid, any natural transformation is an isomorphism.
 \end{proof}
 
 \begin{thm}
-  restatement of above thm
+  Restatement of above thm
 
   Given
   $$\begin{tikzcd}
-    &X \arrow[r, "f", "bend left"] &Y % and also f' bent right!
+    &X \arrow[r, bend left, "f"] \arrow[r, bend right, "f'"'] &Y
   \end{tikzcd}$$
 
-  then
+  where $f \homotopic f'$ via $h$, then
 
-  % same diagram as above
-  % \PI(X) -- f_* \to \PI(Y)
+  $$\begin{tikzcd}
+    &\Pi(X) \arrow[r, bend left, "f_*"] \arrow[r, bend right, "f_*'"'] &\Pi(Y)
+  \end{tikzcd}$$
 
-  %     ----f'_* \to
-
-  are isomorphic  via the transformation
-  for all $x \in X$, $h_t(x)\colon f(x) \to f'(x)$
+  and $f_* \isom f_*'$ via the transformation defined by: for all $x \in X$, $h_t(x)\from f(x) \to f'(x)$.
 \end{thm}
 \begin{defn}
-  We call $f:X \to Y$ a \de{homotopy equivalence} if there exists $g\colon Y \to X$ s.t. $[f \of g] = [\id_Y]$ and $[g \of f] = [\id_X]$.
+  Given spaces $X$ and $Y$, we call the map $f\from X \to Y$ a \de{homotopy equivalence} if there exists $g\from Y \to X$ s.t. $[f.g] = [\id_X]$ and $[g.f] = [\id_Y]$.
 \end{defn}
 \begin{rmk}
-  If $A \into X$ and $A \into Y$ with $f,g$ as above is a homotopy equivalence relative to $A$ s.t. maps $f,g$ are homotopies must be identity on $A$, then $A = [*]$.
+  Note that $f$ is not a homotopy.  The point is that $f.g$ is homotopic to $\id_X$, and the other way around too.
+\end{rmk}
+\begin{rmk}
+  If $A \into X$ and $A \into Y$, and $f$ as above is a homotopy equivalence relative to $A$ s.t. maps $f,g$ are homotopies must be identity on $A$, then $A = [*]$.
 
   picture
   sphere torus
@@ -404,25 +409,35 @@ $f_* = f'_*$ since $(f \of p) \homotopic (f' \of p)$ via $h \of illegible$.
 
   If $f,g$ are homotopy inverse
 
-  % \fund(X,x) \isomto \fund(Y, f(x)) \isomto \fund(X, g(f(x))
-  % \fund(X,x)         by g \of f  \isomto    \fund(X, g(f(x))
+  $$\begin{tikzcd}
+    &\fund(X,x) \arrow[r, "f", "\isom"'] \arrow[rr, bend right, "\isom", "f.g"'] &\fund(Y, f(x)) \arrow[r, "g", "\isom"'] &\fund(X, g(f(x))
+  \end{tikzcd}$$
 \end{rmk}
-\begin{defn}
-  A \de{weak deformation retract} is when you have a homotopy $f: A \into X$ and a homotopy inverse $g$ s.t. $[g \of f] = [id_A]$ and $[f \of g] = [id_X]$.
+\begin{defn}[retraction, retract, weak deformation retract, strong deformation retract]
+  ((these definitions from wolfram mathworld, and they make perfect sense to me))
+
+  For any subspace $A$ of $X$, a \de{retraction} is a map $f\from X \to A$ s.t. for all $a \in A$, $f(a) = a$.
+
+  $A$ is a \de{retract} (of $X$).
+
+  If additionally there exists a homotopy $F\from X \x I \to X$ s.t. $F_0 = \id_X$ and $F_1 = f$, then $A$ is a \de{weak deformation retract}.
+
+  If additionally we have that for all $t \in I$ and all $a \in A$, $F_t(a) = a$, then $A$ is a \de{strong deformation retract}.
 \end{defn}
 \begin{defn}
-  A \de{strong deformation retract} is a weak deformation retract where the homotopy inverse is relative to $A$ and $g \of f = \id_A$.
+  A \de{weak deformation retract} is when you have a homotopy $f\from A \into X$ and a homotopy inverse $g$ s.t. $[g \of f] = [id_A]$ and $[f \of g] = [id_X]$. ((Webster's def))
 \end{defn}
+\begin{defn}
+  A \de{strong deformation retract} is a weak deformation retract where the homotopy inverse is relative to $A$ and $g \of f = \id_A$. ((Webster's def)) ((umm, what does he mean by "relative"?))
+\end{defn}
+In this class, we follow the convention that \de{deformation retract} refers to strong deformation retract!
 \begin{rmk}
-  \de{deformation retract} is used to refer to strong deformation retract.
-\end{rmk}
-\begin{rmk}
-  More generally, $g$ is a retraction of $A$ if $g \of f$ = $id_A$.
+  More generally, $g$ is a retraction of $A$ if $g \of f$ = $id_A$. ((Webster's def))
 \end{rmk}
 \begin{example}
-  $S^1 \into \C\minus\{0\}$ is a d.r. where $h(x) = \frac{x}{|x|^w}$ where $w \in [0,1] \isom \Z$  and $g(x) = \frac{x}{|x|}$.
+  $S^1 \into \C\minus\{0\}$ is a d.r. where the homotopy is given by $h_w(x) = \frac{x}{|x|^w}$ where $w \in [0,1]$  and $g(x) = \frac{x}{|x|}$.
 
-  $id_{\C\minus\{0\}} \isom \fund(S^1)$.
+  ((i infer)) This allows us to conclude that $\fund(\C\minus\{0\}) \isom \fund(S^1)$.
 \end{example}
 \begin{thm}
   Every map $f\colon D^2 \to D^2$ has a fixed point.
@@ -431,7 +446,7 @@ $f_* = f'_*$ since $(f \of p) \homotopic (f' \of p)$ via $h \of illegible$.
 
 
 \begin{proof}
-  Draw a circle and the points $x$ and $f(x)$.  Draw a ray from $f(x)$ through $x$ that ends at the boundary.  This is our $g\colon D^2 \to S^1$.  This is a deformation retract, so by our previous theorem, $\fund(D^2) \isom \fund(S^1)$.  A contradiction.
+  Draw a circle and the points $x$ and $f(x)$.  Draw a ray from $f(x)$ through $x$ that ends at the boundary.  Consider a function $r$ that sends each $x$ to the endpoint of the ray.  This $r$ turns out to be a retraction.  This is our $g\colon D^2 \to S^1$.  This is a deformation retract, so by our previous theorem, $\fund(D^2) \isom \fund(S^1)$.  A contradiction.
 \end{proof}
 
 
