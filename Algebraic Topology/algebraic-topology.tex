@@ -31,13 +31,14 @@
 
 \everymath{\displaystyle}
 
+\newcommand{\of}{\circ}
 \newcommand{\minus}{\smallsetminus}
 \renewcommand{\setminus}{\smallsetminus}
 \renewcommand{\amalg}{\sqcup}
 \newcommand{\homotopic}{\simeq}
 \renewcommand{\epsilon}{\varepsilon}
 \renewcommand{\d}{\partial}
-\newcommand{\oo}{\infty}
+\newcommand{\fund}{\pi_1}
 \newcommand{\transverse}{\pitchfork}
 \newcommand{\into}{\hookrightarrow}
 \newcommand{\onto}{\twoheadrightarrow}
@@ -176,7 +177,7 @@ objects in a category. We call this category the Fundamental Groupoid.
   s.t. $aa^{-1} = \id_{x'}$ and $a^{-1}a = \id_{x}$.
 
   The elements of the groupoid are the morphisms.  The operation is
-  composition.
+  composition.  Not every pair of morphisms can necessarily be composed!
 \end{defn}
 \begin{prop}
   Every morphism in a groupoid is an isomorphism (by definition).
@@ -232,7 +233,7 @@ use a *partial* binary operation instead of a binary operation.
   pretty picture
 
   This isomorphism is not canonical
-  
+
 
   Note that $\pi_1 X$ is only well defined up to inner automorphism.
   ((Chris, what does this mean?))
@@ -284,7 +285,7 @@ use a *partial* binary operation instead of a binary operation.
 \end{example}
 
 \begin{thm}[Hatcher 1.6]
-  A space $X$ is \de{simply connected} or \de{1-connected} iff its
+  A space $X$ is \de{simply connected} or \de{1-connected} iff it is path connected and its
   fundamental group is trivial.
 \end{thm}
 \begin{example}
@@ -323,6 +324,124 @@ class. We now discuss homotopy lifting.
     \end{tikzcd}
   \end{center}
 \end{prop}
+
+\mydate{d4}{30}{1}{2017}
+
+\section{Functoriality of $\fund$}
+
+Let $X$, $Y$ be BLANKs and $f,f': X \to Y$ be BLANKs.
+
+We wish to prove (i think) that $f_* \of g_* = (f \of g)_*$.
+
+Let $h\colon X \x I \to Y$ be a homotopy from $f$ to $f'$.  In the easy version, we fix a basepoint $x \in X$ and require that $h_t(x)$ is constant. ``based map'' (there exists a category of based spaces, i.e., top w/ fixed point)
+
+$f_* = f'_*$ since $(f \of p) \homotopic (f' \of p)$ via $h \of illegible$.
+
+
+\begin{thm}
+  $$\begin{tikzcd}
+    &\fund(X,x) \arrow[r, "f_*"] \arrow[rd, "f'_*"] &\fund(Y,f(x)) \arrow[d, "f_*'(p) = h_t(x) * f_*(p) * h_t(x)^{-1}"] \\
+    & &\fund(Y, f'(x))
+  \end{tikzcd}$$
+  commutes.
+\end{thm}
+\begin{proof}
+  $$\begin{tikzcd}
+    % &I \x I \arrow[r, "(p,\id)"] &X \x I \arrow[r, "h"] &Y
+    &I \x I \arrow[r, ""] &X \x I \arrow[r, "h"] &Y
+  \end{tikzcd}$$
+
+  the rectangle is simply connected
+  RECTANGLE:
+  LEFT
+  $f \of p$
+  RIGHT
+  $f' \of p$
+  UP
+  $h_t(x)$
+  DOWN
+  $h_t(x)$
+
+  If $A,B$ categories and $F,G\colon A \to B$ functors an \underline{isomorphism} of functors.
+
+  For all $a \in \Ob(A)$, $Z(a)\colon F(a) \to G(a)$ such that for all $g: a \to a'$,
+
+  $$\begin{tikzcd}
+    &F(a) \arrow[r, "Z(a)"] \arrow[d, "F(g)"] & G(a) \arrow[d, "G(g)"] \\
+    &F(a') \arrow[r, "Z(a)"]                  & G(a')
+  \end{tikzcd}$$
+
+  Note: if $B$ is a groupoid, any natural transformation is an isomorphism.
+\end{proof}
+
+\begin{thm}
+  restatement of above thm
+
+  Given
+  $$\begin{tikzcd}
+    &X \arrow[r, "f", "bend left"] &Y % and also f' bent right!
+  \end{tikzcd}$$
+
+  then
+
+  % same diagram as above
+  % \PI(X) -- f_* \to \PI(Y)
+
+  %     ----f'_* \to
+
+  are isomorphic  via the transformation
+  for all $x \in X$, $h_t(x)\colon f(x) \to f'(x)$
+\end{thm}
+\begin{defn}
+  We call $f:X \to Y$ a \de{homotopy equivalence} if there exists $g\colon Y \to X$ s.t. $[f \of g] = [\id_Y]$ and $[g \of f] = [\id_X]$.
+\end{defn}
+\begin{rmk}
+  If $A \into X$ and $A \into Y$ with $f,g$ as above is a homotopy equivalence relative to $A$ s.t. maps $f,g$ are homotopies must be identity on $A$, then $A = [*]$.
+
+  picture
+  sphere torus
+  sphere torus
+
+  If $f,g$ are homotopy inverse
+
+  % \fund(X,x) \isomto \fund(Y, f(x)) \isomto \fund(X, g(f(x))
+  % \fund(X,x)         by g \of f  \isomto    \fund(X, g(f(x))
+\end{rmk}
+\begin{defn}
+  A \de{weak deformation retract} is when you have a homotopy $f: A \into X$ and a homotopy inverse $g$ s.t. $[g \of f] = [id_A]$ and $[f \of g] = [id_X]$.
+\end{defn}
+\begin{defn}
+  A \de{strong deformation retract} is a weak deformation retract where the homotopy inverse is relative to $A$ and $g \of f = \id_A$.
+\end{defn}
+\begin{rmk}
+  \de{deformation retract} is used to refer to strong deformation retract.
+\end{rmk}
+\begin{rmk}
+  More generally, $g$ is a retraction of $A$ if $g \of f$ = $id_A$.
+\end{rmk}
+\begin{example}
+  $S^1 \into \C\minus\{0\}$ is a d.r. where $h(x) = \frac{x}{|x|^w}$ where $w \in [0,1] \isom \Z$  and $g(x) = \frac{x}{|x|}$.
+
+  $id_{\C\minus\{0\}} \isom \fund(S^1)$.
+\end{example}
+\begin{thm}
+  Every map $f\colon D^2 \to D^2$ has a fixed point.
+\end{thm}
+
+
+
+\begin{proof}
+  Draw a circle and the points $x$ and $f(x)$.  Draw a ray from $f(x)$ through $x$ that ends at the boundary.  This is our $g\colon D^2 \to S^1$.  This is a deformation retract, so by our previous theorem, $\fund(D^2) \isom \fund(S^1)$.  A contradiction.
+\end{proof}
+
+
+
+
+
+
+
+
+
 
 \end{document}
 
