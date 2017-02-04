@@ -333,17 +333,20 @@ Let $X$, $Y$ be BLANKs and $f,f': X \to Y$ be BLANKs.
 
 We wish to prove (i think) that $f_* \of g_* = (f \of g)_*$.
 
-Let $h\colon X \x I \to Y$ be a homotopy from $f$ to $f'$.  In the easy version, we fix a basepoint $x \in X$ and require that $h_t(x)$ is constant. ``based map'' (there exists a category of based spaces, i.e., top w/ fixed point)
+Let $h\colon X \x I \to Y$ be a homotopy from $f$ to $f'$.  In the
+easy version, we fix a basepoint $x \in X$ and require that $h_t(x)$
+is constant. ``based map'' (there exists a category of based spaces,
+i.e., top w/ fixed point)
 
-$f_* = f'_*$ since $(f \of p) \homotopic (f' \of p)$ via $h \of illegible$.
+$f_* = f'_*$ since $(f \of p) \homotopic (f' \of p)$ via
+$h \of illegible$.
 
 
 \begin{thm}
   $$\begin{tikzcd}
     &\fund(X,x) \arrow[r, "f_*"] \arrow[rd, "f'_*"] &\fund(Y,f(x)) \arrow[d, "f_*'(p) = h_t(x) * f_*(p) * h_t(x)^{-1}"] \\
     & &\fund(Y, f'(x))
-  \end{tikzcd}$$
-  commutes.
+  \end{tikzcd}$$ commutes.
 \end{thm}
 \begin{proof}
   $$\begin{tikzcd}
@@ -351,27 +354,22 @@ $f_* = f'_*$ since $(f \of p) \homotopic (f' \of p)$ via $h \of illegible$.
     &I \x I \arrow[r, ""] &X \x I \arrow[r, "h"] &Y
   \end{tikzcd}$$
 
-  the rectangle is simply connected
-  RECTANGLE:
-  LEFT
-  $f \of p$
-  RIGHT
-  $f' \of p$
-  UP
-  $h_t(x)$
-  DOWN
-  $h_t(x)$
+  the rectangle is simply connected RECTANGLE: LEFT $f \of p$ RIGHT
+  $f' \of p$ UP $h_t(x)$ DOWN $h_t(x)$
 
-  If $A,B$ categories and $F,G\colon A \to B$ functors an \underline{isomorphism} of functors.
+  If $A,B$ categories and $F,G\colon A \to B$ functors an
+  \underline{isomorphism} of functors.
 
-  For all $a \in \Ob(A)$, $Z(a)\colon F(a) \to G(a)$ such that for all $g: a \to a'$,
+  For all $a \in \Ob(A)$, $Z(a)\colon F(a) \to G(a)$ such that for all
+  $g: a \to a'$,
 
   $$\begin{tikzcd}
     &F(a) \arrow[r, "Z(a)"] \arrow[d, "F(g)"] & G(a) \arrow[d, "G(g)"] \\
-    &F(a') \arrow[r, "Z(a)"]                  & G(a')
+    &F(a') \arrow[r, "Z(a)"] & G(a')
   \end{tikzcd}$$
 
-  Note: if $B$ is a groupoid, any natural transformation is an isomorphism.
+  Note: if $B$ is a groupoid, any natural transformation is an
+  isomorphism.
 \end{proof}
 
 \begin{thm}
@@ -387,40 +385,47 @@ $f_* = f'_*$ since $(f \of p) \homotopic (f' \of p)$ via $h \of illegible$.
   % same diagram as above
   % \PI(X) -- f_* \to \PI(Y)
 
-  %     ----f'_* \to
+  % ----f'_* \to
 
-  are isomorphic  via the transformation
-  for all $x \in X$, $h_t(x)\colon f(x) \to f'(x)$
+  are isomorphic via the transformation for all $x \in X$,
+  $h_t(x)\colon f(x) \to f'(x)$
 \end{thm}
 \begin{defn}
-  We call $f:X \to Y$ a \de{homotopy equivalence} if there exists $g\colon Y \to X$ s.t. $[f \of g] = [\id_Y]$ and $[g \of f] = [\id_X]$.
+  We call $f:X \to Y$ a \de{homotopy equivalence} if there exists
+  $g\colon Y \to X$ s.t. $[f \of g] = [\id_Y]$ and
+  $[g \of f] = [\id_X]$.
 \end{defn}
 \begin{rmk}
-  If $A \into X$ and $A \into Y$ with $f,g$ as above is a homotopy equivalence relative to $A$ s.t. maps $f,g$ are homotopies must be identity on $A$, then $A = [*]$.
+  If $A \into X$ and $A \into Y$ with $f,g$ as above is a homotopy
+  equivalence relative to $A$ s.t. maps $f,g$ are homotopies must be
+  identity on $A$, then $A = [*]$.
 
-  picture
-  sphere torus
-  sphere torus
+  picture sphere torus sphere torus
 
   If $f,g$ are homotopy inverse
 
   % \fund(X,x) \isomto \fund(Y, f(x)) \isomto \fund(X, g(f(x))
-  % \fund(X,x)         by g \of f  \isomto    \fund(X, g(f(x))
+  % \fund(X,x) by g \of f \isomto \fund(X, g(f(x))
 \end{rmk}
 \begin{defn}
-  A \de{weak deformation retract} is when you have a homotopy $f: A \into X$ and a homotopy inverse $g$ s.t. $[g \of f] = [id_A]$ and $[f \of g] = [id_X]$.
+  A \de{weak deformation retract} is when you have a homotopy
+  $f: A \into X$ and a homotopy inverse $g$ s.t. $[g \of f] = [id_A]$
+  and $[f \of g] = [id_X]$.
 \end{defn}
 \begin{defn}
-  A \de{strong deformation retract} is a weak deformation retract where the homotopy inverse is relative to $A$ and $g \of f = \id_A$.
+  A \de{strong deformation retract} is a weak deformation retract
+  where the homotopy inverse is relative to $A$ and $g \of f = \id_A$.
 \end{defn}
 \begin{rmk}
-  \de{deformation retract} is used to refer to strong deformation retract.
+  \de{deformation retract} is used to refer to strong deformation
+  retract.
 \end{rmk}
 \begin{rmk}
   More generally, $g$ is a retraction of $A$ if $g \of f$ = $id_A$.
 \end{rmk}
 \begin{example}
-  $S^1 \into \C\minus\{0\}$ is a d.r. where $h(x) = \frac{x}{|x|^w}$ where $w \in [0,1] \isom \Z$  and $g(x) = \frac{x}{|x|}$.
+  $S^1 \into \C\minus\{0\}$ is a d.r. where $h(x) = \frac{x}{|x|^w}$
+  where $w \in [0,1] \isom \Z$ and $g(x) = \frac{x}{|x|}$.
 
   $id_{\C\minus\{0\}} \isom \fund(S^1)$.
 \end{example}
@@ -431,58 +436,114 @@ $f_* = f'_*$ since $(f \of p) \homotopic (f' \of p)$ via $h \of illegible$.
 
 
 \begin{proof}
-  Draw a circle and the points $x$ and $f(x)$.  Draw a ray from $f(x)$ through $x$ that ends at the boundary.  This is our $g\colon D^2 \to S^1$.  This is a deformation retract, so by our previous theorem, $\fund(D^2) \isom \fund(S^1)$.  A contradiction.
+  Draw a circle and the points $x$ and $f(x)$.  Draw a ray from $f(x)$
+  through $x$ that ends at the boundary.  This is our
+  $g\colon D^2 \to S^1$.  This is a deformation retract, so by our
+  previous theorem, $\fund(D^2) \isom \fund(S^1)$.  A contradiction.
 \end{proof}
 
 
+\mydate{d5}{3}{1}{2017}
 
+The fundamental group may be used as a topological invariant. Yielding
+an easy proof of the fundamental theorem of algebra.
 
+\begin{thm}
+  Every polynomial \(p\) over \(\C\) of degree \(d\) admits \(d\)
+  zeros (up to multiplicity).
+\end{thm}
+
+\begin{thm}[In words Van Kampen's Theorem ]
+  If \(X= \bigcup{n=1}^n {A_i}\) where each \(A_i \subset X\) is open.
+  \begin{enumerate}[label=(\alph*)]
+  \item Any path in \(X\) may be written as a composition of paths
+    each of which is in \(A_i\).
+  \item Any homotopic paths in \(X\) are homotopic via a composition
+    of homotopies, each of which are constant everywhere but one
+    \(A_i\) (the \(i\) changes for the different homotopies).
+  \end{enumerate}
+\end{thm}
+
+We now investigate the in which \(X=A \cup B\) where \(A,B\) are open sets. In particular Van Kampen's Theorem yields the pushout
+
+\begin{center}
+  \begin{tikzcd}
+    &\Pi_1(A \cap B) \arrow[rd], \arrow[ld]&\\
+    \Pi_1(A) \arrow[rd] \arrow[rdd]&& \arrow[ld] \arrow[ldd]\Pi_1(B)\\
+    &\Pi_1(X)\arrow[d,dashed] &\\
+    &  G
+  \end{tikzcd}
+\end{center}
 
 \mydate{d6}{3}{2}{2017}
 
 \begin{example}[Wirtinger presentation]
-  This is an in-depth example of how a Wirtinger presentation is derived.  This example can be generalized to a proof of the Wirtinger theorem!  The Wirtinger theorem appears below this example.
+  This is an in-depth example of how a Wirtinger presentation is
+  derived.  This example can be generalized to a proof of the
+  Wirtinger theorem!  The Wirtinger theorem appears below this
+  example.
 
-  Let $K \subset \R^3$ be a knot, that is, a smoothly embedded $S^1$.  In this example, we use $K =$ ``trefoil'', below
+  Let $K \subset \R^3$ be a knot, that is, a smoothly embedded $S^1$.
+  In this example, we use $K =$ ``trefoil'', below
 
   \includegraphics[scale=0.15]{images/trefoil.jpg}
 
-  What is $\fund(\R^3\minus K)$?  Draw two sets of open intervals, $A'$ in red and $B'$ in blue, as shown.
+  What is $\fund(\R^3\minus K)$?  Draw two sets of open intervals,
+  $A'$ in red and $B'$ in blue, as shown.
 
   \includegraphics[scale=0.2]{images/trefoil-with-red-and-blue.jpg}
 
-  What looks like the ``ends'' of the ``line segments'' in $A'$, for example, are in fact the height of the lines going down to negative infinity or up to infinity.  Or you can think of them as ``open intervals'', the point being that if there is a little loop (shown in white) around one of these, you cannot pull it off the interval, since the interval goes on ``forever''.
+  What looks like the ``ends'' of the ``line segments'' in $A'$, for
+  example, are in fact the height of the lines going down to negative
+  infinity or up to infinity.  Or you can think of them as ``open
+  intervals'', the point being that if there is a little loop (shown
+  in white) around one of these, you cannot pull it off the interval,
+  since the interval goes on ``forever''.
 
-  $A'$ = $K \cap \{(x,y,z) \in \R^3 \mid z > -\epsilon\}$ ($K$ minus the tunnels).
+  $A'$ = $K \cap \{(x,y,z) \in \R^3 \mid z > -\epsilon\}$ ($K$ minus
+  the tunnels).
 
-  $B'$ = $K \cap \{(x,y,z) \in \R^3 \mid z < \epsilon\}$ ($K$ minus the bridges).
+  $B'$ = $K \cap \{(x,y,z) \in \R^3 \mid z < \epsilon\}$ ($K$ minus
+  the bridges).
 
-  $A'$ is $m$ open line segments.  In our example, using $K =$ trefoil, $m = 3$.
+  $A'$ is $m$ open line segments.  In our example, using $K =$
+  trefoil, $m = 3$.
 
-  Let $A = (A')^C$.  Then $\fund(A) \isom F_m$, the free group on a set of size $m$.
+  Let $A = (A')^C$.  Then $\fund(A) \isom F_m$, the free group on a
+  set of size $m$.
 
   Let $B = (B')^C$.  Then $\fund(B) \isom F_m$.
 
-  So $A \cap B = \R^3 \minus (A' \union B')$.  $\fund(A \cap B) \isom F_{2m}$
+  So $A \cap B = \R^3 \minus (A' \union B')$.
+  $\fund(A \cap B) \isom F_{2m}$
 
   ((do we invoke Van Kampbell's theorem here?))
 
   \includegraphics[scale=0.2]{images/mountains.jpg}
 
-  By sliding $a$ under the bridge, we see that $a$ and $b$ are conjugate via $c$!
+  By sliding $a$ under the bridge, we see that $a$ and $b$ are
+  conjugate via $c$!
 
   \includegraphics[scale=0.2]{images/mountains-with-explanation.jpg}
 
-  Finally, to compute the fundamental group of $K^C$, we pick an arbitrary basepoint $x$ and put loops around the knot as follows.
+  Finally, to compute the fundamental group of $K^C$, we pick an
+  arbitrary basepoint $x$ and put loops around the knot as follows.
 
-  We take exactly one loop per open line interval in $A'$.  For each crossing, we examine the three loops involved (which are called $a$, $b$, and $c$ above) and determine the appropriate conjugate relation.  The fundamental group is the group generated by the loops and modded out by the relations.
+  We take exactly one loop per open line interval in $A'$.  For each
+  crossing, we examine the three loops involved (which are called $a$,
+  $b$, and $c$ above) and determine the appropriate conjugate
+  relation.  The fundamental group is the group generated by the loops
+  and modded out by the relations.
 
-  In the case of the trefoil, the fundamental group is $${F_m}/{(a=c*b*c^{-1}, b=a*c*a^{-1}, c=b*a*b^{-1})}$$, as illustrated below.
+  In the case of the trefoil, the fundamental group
+  is $${F_m}/{(a=c*b*c^{-1}, b=a*c*a^{-1}, c=b*a*b^{-1})}$$, as
+  illustrated below.
 
   \includegraphics[scale=0.2]{images/trefoil-fully-described.jpg}
 \end{example}
 \begin{thm}[Wirtinger]
-  For any knot $K$, $\fund(\R^3\minus K)$ is generated by loops $\gamma_1,,,\gamma_m$ over crossings modulo $a = cbc^{-1}$.
+  For any knot $K$, $\fund(\R^3\minus K)$ is generated by loops
+  $\gamma_1,,,\gamma_m$ over crossings modulo $a = cbc^{-1}$.
 \end{thm}
 
 
