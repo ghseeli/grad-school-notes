@@ -836,5 +836,111 @@ We have proven a decent amount about measures, but we still have not
 developed general purpose tools for creating many measures beyond the
 weighted counting measure. The outer measure is the first building
 block we will introduce that helps us define more measures.
-
+\begin{defn}
+  An \de{outer measure} on a set $X$ is a function $\mu^* \colon \P(X)
+  \to [0,\infty]$ such that
+  \begin{enumerate}
+  \item $\mu^*(\emptyset) = 0$,
+  \item $\mu^*(A) \leq \mu^*(B)$ if $A \subset B$,
+  \item $\mu^*(\bigcup_{j=1}^\infty A_j) \leq \sum_{j=1}^\infty
+    \mu^*(A_j)$ for all $A_j \subset X$. 
+  \end{enumerate}
+\end{defn}
+Notice that this is not quite a measure since it fails
+$\sigma$-additivity.
+\begin{thm}\label{outer-measure-space}
+  Let $\Ep \subset \P(X)$ such that $\emptyset, X \in \Ep$. Let $\rho
+  \colon \Ep \to [0,\infty]$ such that $\rho(\emptyset) = 0$. Now,
+  define for all $A \subset X$ \[
+    \mu^*(A) = \inf \left\{ \sum_{j=1}^\infty \rho(E_j) \mid (\forall
+      j, E_j \in \Ep), A \subset \bigcup_{j=1}^\infty E_j \right\}.
+  \]
+  Then, $\mu^*$ is an outer measure.
+\end{thm}
+\begin{proof}
+  First, we note that $\mu^*$ exists because there exists an $\inf(V)$
+  for all $V \subset [0,\infty]$.
+  \begin{enumerate}
+  \item Take $E_1 = E_2 = \cdots = \emptyset \in \Ep$. Then,
+    $\mu^*(\emptyset) \leq \sum_{j=1}^\infty \rho(E_j) = 0$.
+  \item Let $A \subset B$ and $E_j \in \Ep$ such that $A \subset B
+    \subset \bigcup E_j$. Then, $\mu^*(A) \leq \sum_{j=1}^\infty \rho
+    (E_j)$. So, if we take the inf over $E_j$, we get that $\mu^*(A)
+    \leq \mu^*(B)$.
+  \item Let $(A_n)_{n \in \N}$ with $A_n \subset X$. Let us take the
+    case that the right hand side of the inequality we want to prove
+    is $\infty$. Then, this is true by default. So, let us assume that
+    the right hand side is less than $\infty$ and let $\epsilon > 0$
+    be finite. Then $\epsilon = \sum_{n=1}^\infty 2^{-n} \epsilon$ by
+    the definition of inf. Then, for all $n \geq 1$, there exists a
+    sequence $(E_{n,j})_{j \geq 1}$ of elements in $\Ep$ such that
+    $A_n \subset \bigcup_{j \geq 1} E_{n,j}$. This gives us \[
+      \sum_{j \geq 1} \rho(E_{n,j}) \leq \mu^*(A_n) + 2^{-n} \epsilon.
+    \]
+    Now, collect $(E_{n_j})_{(n,j) \in \N^2}$ and
+    $\bigcup_{n=1}^\infty A_n \subset \bigcup_{(n,j \in
+      \N^2)}E_{n,j}$. Then, by the definition of $\mu^*$, we get that
+    \begin{align*}
+      \mu^*\left( \bigcup_{n=1}^\infty A_n \right) & \leq \sum_{n,j}
+                                                     \rho(E_{n,j}) \\
+      & = \sum_{n = 1}^\infty \left( \sum_{j=1}^\infty \rho(E_{n,j})
+        \right) \\
+      & \leq \sum_{n=1}^\infty \left( \mu^*(A_n) + 2^{-n} \epsilon
+        \right) \\
+      & \leq \left( \sum_{n=1}^\infty \mu^*(A_n) \right) + \left(
+        \sum_{n=1}^\infty 2^{-n} \epsilon \right)
+    \end{align*}
+    Since $\epsilon$ is arbitrary, we get that \[
+      \mu^*\left( \bigcup_{n \geq 1} A_n \right) \leq
+      \sum_{n=1}^\infty \mu^*(A_n)
+    \]
+  \end{enumerate}
+\end{proof}
+We now move on to a key definition.
+\begin{defn}[Caratheodory]
+  Let $\mu^*$ be an outer measure on $X$. A subset $A \subset X$ is
+  called \de{$\mu^*$-measurable} if and only if, for all $E \subset
+  X$, we get \[
+    \mu^*(E) = \mu^*(E \cap A) + \mu^*(E \cap A^c)
+  \]
+\end{defn}
+\begin{thm}[Caratheodory]\label{caratheodory}
+  If $\mu^*$ is an outer measure on $X$ and \[
+    \M := \{\mu^*\text{-measureable subsets of }X\}
+  \]
+  the, $\M$ is a $\sigma$-algebra and $\mu^*|_\M$is a measure, so
+  $(X,\M,\mu^*|_\M)$ is a complete measure space.
+\end{thm}
+\begin{proof}
+  The proof of this theorem is relatively straight-forward. One must
+  show that $\M$ as defined is a $\sigma$-algebra, that $\mu^*|_\M$ is
+  a measure, and that the space is complete. The proof is given on
+  pages 29--30 of Folland.
+\end{proof}
+One of the important things about Caratheodory's theorem is that it
+enables us to extend measures from algebras to $\sigma$-algebras.
+\begin{defn}
+  Let $\A$ be an algebra of sets of $X$. We say that $\mu_0 \colon A \to
+  [0,\infty]$ is a \de{premeasure} if it satisfies
+  \begin{enumerate}
+  \item $\mu_0(\emptyset) = 0$
+  \item $\mu_0(\emptyset)$ is $\sigma$-additive on $\A$, that is, for
+    all sequences $(A_n)_{n \geq 1}$ of disjoint sets in $\A$ such
+    that $\bigcup_{n=1}^\infty A_n \subset \A$, we have $\mu_0\left(
+      \bigcup_{n=0}^\infty A_n \right) = \sum_{n=1}^\infty
+    \mu_0(A_n)$. 
+  \end{enumerate}
+\end{defn}
+Now, to put these various not-quite-measures measures together, we
+note the following
+\begin{rmk}
+  Given such a premeasure $\mu_0$, take $\Ep = \A$ and $\rho =
+  \mu_0$. Then, by~\ref{outer-measure-space}, we get that $\mu^*$ is
+  an outer-measure on $X$. Then, by~\ref{caratheodory} gives us $\M$
+  is a $\sigma$-algebra of $\mu^*$-measurable sets: $\mu^*|_\M$. 
+\end{rmk}
+\begin{thm}
+  With this construction, we have that $\A \subset \M$ and $\mu^*|_\A
+  = \mu_0$.
+\end{thm}
 \end{document}
