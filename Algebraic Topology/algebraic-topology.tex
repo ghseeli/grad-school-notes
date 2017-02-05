@@ -37,7 +37,6 @@
 \newcommand{\homotopic}{\simeq}
 \renewcommand{\epsilon}{\varepsilon}
 \renewcommand{\d}{\partial}
-\newcommand{\oo}{\infty}
 \newcommand{\transverse}{\pitchfork}
 \newcommand{\into}{\hookrightarrow}
 \newcommand{\onto}{\twoheadrightarrow}
@@ -49,7 +48,7 @@
 
 %%%%%%%%%%%%%% BEGIN CONTENT: %%%%%%%%%%%%%%
 
-\title[Algebraic Topology]{Algebraic Topology - MATH 7800}
+\title[Algebraic Topology]{Algebraic Topology MATH 7800}
 \author{Chris Lloyd, Matthew Lancellotti}
 \date{}
 \begin{document}
@@ -87,11 +86,12 @@ continuous deformations between maps. While homology studies subspaces
 
 \section{Homotopy}
 
-We now define homotopies in the space of maps between manifolds \(M\) and
-\(N\) denoted
+We now define homotopies in the space of maps between manifolds \(M\)
+and \(N\) denoted
 \[\Map(M,N)=\{f \colon M \to N \mid \text{$f$ is continuous}\}.\]
 
-In this course, we follow the convention that maps are continuous functions unless otherwise stated!
+In this course, we follow the convention that maps are continuous
+functions unless otherwise stated!
 
 \begin{defn}
   A \emph{homotopy} from \(f \colon M \to N\) to \(g \colon M \to N\)
@@ -116,11 +116,12 @@ We denote the homotopy equivalence class of \(f\) by \([f]\).
   \[f \colon I \to X.\]
 \end{defn}
 
-By convention in this course, we always consider paths up to homotopy, however we will make a
-restriction and only consider homotopies that fix end
-points \((I,\{0,1\})\). Otherwise every path would collapse to a point up to
-homotopy. This is called \emph{relative homotopy}. When there are no
-restrictions placed one is working with \emph{free homotopy}.
+By convention in this course, we always consider paths up to homotopy,
+however we will make a restriction and only consider homotopies that
+fix end points \((I,\{0,1\})\). Otherwise every path would collapse to
+a point up to homotopy. This is called \emph{relative homotopy}. When
+there are no restrictions placed one is working with \emph{free
+  homotopy}.
 
 Imagine two paths in \(\R \setminus (0,0)\) which agree on end points,
 however each path is on opposite sides of the origin. It is clear that
@@ -136,13 +137,14 @@ there exists no end point fixing homotopy between the two paths.
     \end{cases}
   \]
 
-  This is called the \emph{concatenation} or \emph{path composition} of $f$ and $g$.
+  This is called the \emph{concatenation} or \emph{path composition}
+  of $f$ and $g$.
 
   This operation is well defined on homotopy classes, that is if
   \([f]=[f']\) and \([g]=[g']\) then \([f * g] = [f' * g']\). This
   operation may be generalized to \(*_{k}\) where \(k \in (0,1)\),
-  simply replace \(\frac{1}{2}\) with \(k\). In this notation \(f * g =
-  f *_{\frac{1}{2}} g\). This operation is associative.
+  simply replace \(\frac{1}{2}\) with \(k\). In this notation
+  \(f * g = f *_{\frac{1}{2}} g\). This operation is associative.
 \end{defn}
 
 Given a topological space \(X\) with points \(P\), for any two points
@@ -153,20 +155,27 @@ objects in a category. We call this category the Fundamental Groupoid.
 \mydate{d2}{20}{1}{2017}
 
 \begin{defn}
-  A \de{category} is a directed graph.  Each vertex is called an \de{object} and each directed edge is called a \de{morphism}.
+  A \de{category} is a directed graph.  Each vertex is called an
+  \de{object} and each directed edge is called a \de{morphism}.
 \end{defn}
 \begin{defn}
-  In the category of \de{finite sets}, denoted $\text{FSet}$, the objects are the finite sets, each morphism from $A$ to $B$ is a function from $A$ to $B$.
+  In the category of \de{finite sets}, denoted $\text{FSet}$, the
+  objects are the finite sets, each morphism from $A$ to $B$ is a
+  function from $A$ to $B$.
 \end{defn}
 \begin{defn}
-  In the category of \de{vectorsss}, denoted $\text{Vect}_k$, the objects are BLANK and the morphisms are BLANK.
+  For any field $K$, the category of \de{$K$-vector spaces}, denoted
+  $\text{Vect}_K$, has objects that are $K$-vector spaces and
+  morphisms that are $K$-linear maps.
 \end{defn}
 \begin{defn}
   A \de{groupoid} is a category where every morphism has an inverse.
 
-  That is, if $a: x \to x'$, then there exists $a^{-1}:x' to x$ s.t. $aa^{-1} = \id_{x'}$ and $a^{-1}a = \id_{x}$.
+  That is, if $a: x \to x'$, then there exists $a^{-1}:x' to x$
+  s.t. $aa^{-1} = \id_{x'}$ and $a^{-1}a = \id_{x}$.
 
-  The elements of the groupoid are the morphisms.  The operation is composition.
+  The elements of the groupoid are the morphisms.  The operation is
+  composition.
 \end{defn}
 \begin{prop}
   Every morphism in a groupoid is an isomorphism (by definition).
@@ -178,86 +187,104 @@ objects in a category. We call this category the Fundamental Groupoid.
   If $A$ is an object in a groupoid, then $\Hom(A, A)$ is a group.
 \end{prop}
 
-note
-We see that a groupoid is the same definition of a group, but we use a *partial* binary operation instead of a binary operation.
+note We see that a groupoid is the same definition of a group, but we
+use a *partial* binary operation instead of a binary operation.
 
 \begin{defn}
-  The \de{fundamental groupoid} of $X$, denoted $\Pi_1 X$, is the category where the objects are the points in $X$ and the morphisms are the paths (up to endpoint fixing homotopy) between those points.
+  The \de{fundamental groupoid} of $X$, denoted $\Pi_1 X$, is the
+  category where the objects are the points in $X$ and the morphisms
+  are the paths (up to endpoint fixing homotopy) between those points.
 \end{defn}
 \begin{defn}
-  The \de{fundamental group of $X$ at the basepoint $x_0$}, denoted $\pi_1(X, x_0)$, is the subgroupoid of the fundamental groupoid where there is exactly one object, $x_0$, and the morphisms are the morphisms of the fundamental groupoid that have source and target $x_0$.  A more intuitive wording is to say that $\pi_1(X, x_0)$ is $\Pi_1 X$ restricted to $x_0$.
+  The \de{fundamental group of $X$ at the basepoint $x_0$}, denoted
+  $\pi_1(X, x_0)$, is the subgroupoid of the fundamental groupoid
+  where there is exactly one object, $x_0$, and the morphisms are the
+  morphisms of the fundamental groupoid that have source and target
+  $x_0$.  Another wording is to say that $\pi_1(X, x_0)$ is the full
+  subcategory of $\Pi_1 X$ spanned by $x_0$.
 
-  The elements of the group are the morphisms.  The operation is composition.
+  The elements of the group are the morphisms.  The operation is
+  composition.
 \end{defn}
 \begin{defn}
-  the \de{inverse path} of a path $p$ is $p^{-1}(s) := p(1-s)$.  (note: This is *not* the same as the function inverse of $p$)
+  the \de{inverse path} of a path $p$ is $p^{-1}(s) := p(1-s)$.
+  (note: This is *not* the same as the function inverse of $p$)
 \end{defn}
 \begin{prop}
-  If $p$ is a path, then $[p^{-1}*p] = [id_{x}] = \text{the function where $s \mapsto x$ for all $s \in [0,1]$}$.
+  If $p$ is a path, then
+  $[p^{-1}*p] = [id_{x}] = \text{the function where $s \mapsto x$ for
+    all $s \in [0,1]$}$.
 \end{prop}
 
 \begin{thm}[Hatcher 1.5]
-Let $X$ be a metric space and $x,x' \in X$.  If there exists $p: x \to x'$ and $[q] \in \pi_1(X,x')$, then $p^{-1}qp \in \Pi_1(X,x)$ is an isomorphism of fundamental groups.
+  Let $X$ be a metric space and $x,x' \in X$.  If there exists
+  $p: x \to x'$ and $[q] \in \pi_1(X,x')$, then
+  $p^{-1}qp \in \Pi_1(X,x)$ is an isomorphism of fundamental groups.
 \end{thm}
 \begin{thm}
-  If $X$ is path connected, then for any $x_a, x_b \in X$, $$\Pi_1(X, x_a) \isom \Pi_1(X, x_b)$$.
-
-  notation
-  If $X$ is path connected, we can denote the fundamental group with $\pi_1(X)$ or $\pi_1 X$.
+  If $X$ is path connected, then for any $x_a, x_b \in X$,
+  $$\Pi_1(X, x_a) \isom \Pi_1(X, x_b).$$
+  notation If $X$ is path connected, we can denote the fundamental
+  group with $\pi_1(X)$ or $\pi_1 X$.
 \end{thm}
 \begin{example}
   pretty picture
 
   This isomorphism is not canonical
+  
 
-  t?h?i?n?g?s? ?w?i?t?h? ?q?u?e?s?t?i?o?n? ?m?a?r?k?s
-
-  Note that $\pi_1 X$ is only well defined up to inner automorphism.  ((Chris, what does this mean?))
+  Note that $\pi_1 X$ is only well defined up to inner automorphism.
+  ((Chris, what does this mean?))
 \end{example}
 \begin{defn}
-  Given metric spaces $X, Y$ and a map $f: X \to Y$, then the \de{fundamental functor} induced by $f$, $$f_* = \Pi_1 f : \Pi_1 X \to \Pi_1 Y$$ maps each object $x \in X$ to $f(x) \in Y$ and each path $[p] \in \Pi_1 X$ to $f([p]) = [f(p)] \in \Pi_1 Y$.
+  Given metric spaces $X, Y$ and a map $f: X \to Y$, then the
+  \de{fundamental functor} induced by $f$,
+  $$f_* = \Pi_1 f : \Pi_1 X \to \Pi_1 Y$$ maps each object $x \in X$
+  to $f(x) \in Y$ and each path $[p] \in \Pi_1 X$ to
+  $f([p]) = [f(p)] \in \Pi_1 Y$.
 \end{defn}
 \begin{prop}
   The above is well defined because
   \begin{itemize}
-    \item If $[p]=[q]$, then $[f(p)] = [f(q)]$ because $h.f$ gives a homotopy.  ((What the heck is h?))
-    \item $(f_*p)*(f_*q) = f_*(p*q)$
+  \item If $[p]=[q]$, then $[f(p)] = [f(q)]$ because $h.f$ gives a
+    homotopy.  ((What the heck is h?))
+  \item $(f_*p)*(f_*q) = f_*(p*q)$
   \end{itemize}
 \end{prop}
 
 \begin{prop}
-  Given a fundamental group $\Pi_1(X, x)$, then we can restrict $f_*$ to the functor $$f_* : \Pi_1(X, x) to \Pi_1(Y, f(x))$$.
+  Given a fundamental group $\Pi_1(X, x)$, then we can restrict $f_*$
+  to the functor $$f_* : \Pi_1(X, x) to \Pi_1(Y, f(x)).$$
 
-  picture
-  $x$ (loop) to $f(x)$ (loop)
+  picture $x$ (loop) to $f(x)$ (loop)
 
   is a group homomorphism
 \end{prop}
 \begin{prop}
-  If $X,Y,Z$ are metric spaces and $f: X \to Y$, $g: Y \to Z$ are maps, then $(f.g)_* = f_*.g_*$.
+  If $X,Y,Z$ are metric spaces and $f: X \to Y$, $g: Y \to Z$ are
+  maps, then ${(f.g)}_* = f_*.g_*$.
 \end{prop}
 
 \begin{example}
   $\Pi_1(\R^n, x) = [*]$
 
-  in $\Pi_1 \R^n$, there exists a unique path between any two points, up to homotopy.
+  in $\Pi_1 \R^n$, there exists a unique path between any two points,
+  up to homotopy.
 
-  pf
-  $p,q: I \to \R^n$
+  pf $p,q: I \to \R^n$
 
-  $p(0) = q(0)$
-  $p(1) = q(1)$
+  $p(0) = q(0)$ $p(1) = q(1)$
 
   $h_t = tp + (1-t)q$
 
-  $h_0 = q$
-  $h_1 = p$
+  $h_0 = q$ $h_1 = p$
 
   $B_n, I_n$ all have $\Pi_1 = [*]$
 \end{example}
 
 \begin{thm}[Hatcher 1.6]
-  A space $X$ is \de{simply connected} or \de{1-connected} iff its fundamental group is trivial.
+  A space $X$ is \de{simply connected} or \de{1-connected} iff its
+  fundamental group is trivial.
 \end{thm}
 \begin{example}
   $\R^2 \minus (0,0) \isom \C \minus \{0\}$ is NOT simply connected.
@@ -266,19 +293,39 @@ Let $X$ be a metric space and $x,x' \in X$.  If there exists $p: x \to x'$ and $
 \begin{example}
   pretty picture with yellow and blue dots
 
-  $A$ and $B$ can't be homotopic because $\log(A)$ and $\log(B)$ have different end points.
+  $A$ and $B$ can't be homotopic because $\log(A)$ and $\log(B)$ have
+  different end points.
 \end{example}
 
+\begin{defn}
+  A \emph{covering space} of a space \(X\) is a space \(\tilde{X}\)
+  and map \(p \colon \tilde{X} \to X\). Where there eixsts a cover
+  \(\{U_\alpha\}\) of \(X\) such that \(p^{-1}(U_\alpha)\) is a
+  disjoint union of open sets in \(\tilde{X}\) each of which has image
+  under \(p\) homeomorphic to \(U_\alpha\).
+\end{defn}
 
+Think of the stack of records theorem from Guillemin and Pollack. See
+page 59 in Hatcher for the covering space of two loops as discussed in
+class. We now discuss homotopy lifting.
 
-
-
-
-
+\begin{prop}
+  Given a covering space \((\tilde{X},p)\) of \(X\) and a homotopy
+  \(h_t \colon Y \to X\), and some map
+  \(\tilde{f}_0 \colon Y \to \tilde{X}\), then there exists a unique
+  homotopy \(f_t \colon Y \to X\) that lifts \(f_0\), that is
+  \begin{center}
+    \begin{tikzcd}
+      & & \tilde{X}\\
+      Y \times \{0\} \arrow[r,hook] \arrow[rru,"\tilde{f}_0", bend
+      left]& Y \times I \arrow[r,"f_t",swap] \arrow[ru,dashed,"\tilde{f}_t"]& X \arrow[u,"p"]
+    \end{tikzcd}
+  \end{center}
+\end{prop}
 
 \end{document}
 
 %%% Local Variables:
 %%% mode: latex
-%%% TeX-master: "algebraic_topology.tex"
+%%% TeX-master: "algebraic-topology.tex"
 %%% End:

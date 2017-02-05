@@ -172,7 +172,12 @@ If $S \leq M$, then $\ann{R}{S}$ is a two-sided ideal of $R$. Indeed, for $a \in
 \vs
 
 \begin{defn}
-Let $M,N$ be $R$-modules. A map $\phi : M \ra N$ is called an \tb{$\mb{R}$-module homomorphism} or \tb{$\mb{R}$-linear} if $\phi(m+m') = \phi(m) + \phi(m')$ and $\phi(rm) = r\phi(m)$ for all $m,m' \in M$ and $r \in R$. Clearly, $\ker \phi := \phi\inv(0_N) \leq M$, $\im \phi \leq N$, and $\phi$ is injective if and only if $\ker \phi = \{0_M\}$. $\phi$ is called an \tb{$\mb{R}$-module isomorphism} if $\phi$ is bijective, in which case $\phi\inv : N \ra M$ is also an $R$-module isomorphism.
+Let $M,N$ be $R$-modules. A map $\phi : M \ra N$ is called an \tb{$\mb{R}$-module homomorphism} or \tb{$\mb{R}$-linear} if for all $m,m' \in M$ and $r \in R$,
+\begin{itemize}
+	\item $\phi(m+m') = \phi(m) + \phi(m')$
+	\item $\phi(rm) = r\phi(m)$
+\end{itemize}
+Clearly, $\ker \phi := \phi\inv(0_N) \leq M$, $\im \phi \leq N$, and $\phi$ is injective if and only if $\ker \phi = \{0_M\}$. $\phi$ is called an \tb{$\mb{R}$-module isomorphism} if $\phi$ is bijective, in which case $\phi\inv : N \ra M$ is also an $R$-module isomorphism.
 \end{defn}
 
 \vs
