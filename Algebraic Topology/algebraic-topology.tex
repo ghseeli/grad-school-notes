@@ -551,15 +551,22 @@ We now investigate the in which \(X=A \cup B\) where \(A,B\) are open sets. In p
 
 CW complexes are like a space built by gluing together balls.
 \begin{defn}
-  A \de{CW complex} is a space $X$ which is a union of $X_0 \subset X_1 \subset \subset \subset$ such that $X_n$ is constructed from $X_{n-1}$ by taking $X_{n-1} \dunion_{\alpha} D_{\alpha}^n$ modulo identifying (( --> he might have meant $S^n$ here.  i think the point is that he meant $\d D^n$)) $\phi_\alpha \colon S_\alpha^{n-1} \to X_{n-1}$.  $X_n$ is called $n$-Skeleton.  $X ~ \phi_\alpha$.
+  A \de{CW complex} is a space $X$ which is a union of
+  $X_0 \subset X_1 \subset \subset \subset$ such that $X_n$ is
+  constructed from $X_{n-1}$ by taking
+  $X_{n-1} \dunion_{\alpha} D_{\alpha}^n$ modulo identifying (( --> he
+  might have meant $S^n$ here.  i think the point is that he meant
+  $\d D^n$)) $\phi_\alpha \colon S_\alpha^{n-1} \to X_{n-1}$.  $X_n$
+  is called $n$-Skeleton.  $X ~ \phi_\alpha$.
 
   with topology s.t. $A$ is open iff $A \cap X_n$ is open for all $n$.
 \end{defn}
 \begin{example}
-  $S^n = D^{n-1}/\text{boundary}$ all goes to one point.
-  $X_0 =$ discrete set of points.  The $0$-skeleton is a point.
-  $X_1 =$ graph. (by connecting the points in $X_0$.)
-  $X_2 =$ take each cycle (can go around multiple times) in $X_1$ and glue it to the boundary of a disk (can go around multiple times).
+  $S^n = D^{n-1}/\text{boundary}$ all goes to one point.  $X_0 =$
+  discrete set of points.  The $0$-skeleton is a point.  $X_1 =$
+  graph. (by connecting the points in $X_0$.)  $X_2 =$ take each cycle
+  (can go around multiple times) in $X_1$ and glue it to the boundary
+  of a disk (can go around multiple times).
 \end{example}
 \begin{example}
   ((this example is incomplete and will be repeated next lecture))
@@ -569,9 +576,62 @@ CW complexes are like a space built by gluing together balls.
   $\bunion \{ \R \dot (0, a_1,,, a_{n-1})\} \isom \R P^{n-1}$.
 \end{example}
 
+\mydate{d7}{6}{2}{2017}
+
+We wish to show how \(\R P^n\) is a \(CW\)-complex. First let the
+\(n-1\) skeleton be \(\R P^{n-1}\). We add the \(n\) cell \(D^n\) to
+structure under the gluing map \(S^{n} \to \R P^{n-1}\) where
+antipodal points are identified. By induction this gives us a
+\(CW\)-complex structure.
+
+\begin{example}[Something that does not admit a \(CW\) structure]
+  The topological space known as the \emph{Hawaiian earring} is
+  constructed as follows for each \(n \in \Z\) consider the circle of
+  radius \(1/n\) tangent to the \(y\)-axis. All of these circles
+  together with the subspace topology yield a topological space, call
+  it \(X\).
+
+  The only hope for putting a \(CW\) structure on this pace would be
+  to consider one \(0\)-cell along with a countable amount of
+  \(1\)-cells. However recall that the \(CW\)-structure gain their
+  topology through the quotient topology, that is, \(\mathcal{O}\) is
+  open in \(X\) if and only if \(q^{-1}(X)\) is open, where \(q\) is
+  the glueing map. However any open set centered at the origin
+  contains an infinite amount of balls, and thus no such
+  \(CW\)-structure may be imposed.
+\end{example}
+
+Next we show how to compute \(\pi_1\) of a few
+\(CW\)-structures. Using Morse Theory one may show that any compact
+manifold admits a \(CW\)-structure.
+
+To compute \(\pi_1\) of the torus one can first decompose it as a
+\(CW\)-complex as follows
+\begin{align*}
+  X_0 &= *\\
+  X_1 &= S^1 \vee S^1\\
+  X_2 &= D_2
+\end{align*}
+
+Then we have that \(\pi_1(T^2) = \pi_1(X_1)/\pi_1(A \cap B)\) where
+\(A\) is the boundary of the a square and \(B\) is a smaller square
+inside of it. \(A\) is clearly contractible.
+
+When talking about moding out by the fundamental group we are really
+talking about moding out by the normal subgroup it generates. In
+particular this means that conjugation is trivial, and thus we are
+free to pick any basepoint we want. This results in
+\[\pi_1(T^2) = \left\langle x,y \mid y^{-1}x^{-1}y x = 1 \right\rangle = \Z
+    \times \Z\]
+
+\begin{defn}
+  The \emph{connected sum} of two topological spaces \(X\) and \(Y\)
+  denoted \(X \# Y \) is given by cutting out some neighborhood of
+  each \(X\) and \(Y\) and identifying the new boundary.
+\end{defn}
 
 
-
+It is easy to see that \(T^2 \# T^2\) is the two holed torus, and in general \(\#^n T^2\) is the \(n\) holed torus.
 
 \end{document}
 
