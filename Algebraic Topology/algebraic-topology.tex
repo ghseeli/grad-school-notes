@@ -7,6 +7,7 @@
 \usepackage{tikz-cd}
 \usetikzlibrary{cd}
 \usepackage{hyperref}
+\usepackage{amsrefs} % AMS references % must be loaded AFTER hyperref if you use that
 \usepackage{mathtools}
 \mathtoolsset{showonlyrefs}
 
@@ -86,14 +87,16 @@ continuous deformations between maps. While homology studies subspaces
 
 We now define homotopies in the space of maps between manifolds \(M\)
 and \(N\) denoted
-\[\Map(M,N)=\{f \colon M \to N \mid \text{$f$ is continuous}\}.\]
+\[\Map(M,N)=\{f \from M \to N \mid \text{$f$ is continuous}\}.\]
 
 In this course, we follow the convention that maps are continuous
 functions unless otherwise stated!
 
 \begin{defn}
-  A \emph{homotopy} from \(f \colon M \to N\) to \(g \colon M \to N\)
-  is a map \(h\) such that \(h_0=f\) and \(h_1=g\). We say \(f\) and
+  A \emph{homotopy} from \(f \in \Map(M, N)\) to \(g \in \Map(M, N)\) is a path in $\Map(M, N)$ that starts at $f$ and ends at $g$.  Therefore, $h_0 = f$ and $h_1 = g$.
+
+  Equivalently, a \emph{homotopy} from \(f \from M \to N\) to \(g \from M \to N\)
+  is a map \(h\from M \x I \to N\) such that \(h_0=f\) and \(h_1=g\). We say \(f\) and
   \(g\) are \emph{homotopic} if a homotopy between them exists.
 
   Often we write \(h_t(m)\) for \(h(m,t)\).
@@ -110,25 +113,28 @@ same path component.
 We denote the homotopy equivalence class of \(f\) by \([f]\).
 
 \begin{defn}
-  A \emph{path} in a topological space $X$ is a map
-  \[f \colon I \to X.\]
+  A homotopy $h\from I \x X \to Y$ is called \de{relative} to a subset $A$ of $X$ if for all $a \in A$ and all $t \in I$, $h(a, t) = f(a) = g(a)$.
+
+  We also say that ``$f$ and $g$ are homotopic relative to $A$''.
 \end{defn}
 
-By convention in this course, we always consider paths up to homotopy,
-however we will make a restriction and only consider homotopies that
-fix end points \((I,\{0,1\})\). Otherwise every path would collapse to
-a point up to homotopy. This is called \emph{relative homotopy}. When
-there are no restrictions placed one is working with \emph{free
-  homotopy}.
+When there are no restrictions placed on a homotopy, it is sometimes called a \emph{free} homotopy.
 
-Imagine two paths in \(\R \setminus (0,0)\) which agree on end points,
+\begin{defn}
+  A \emph{path} in a topological space $X$ is a map
+  \[f \from I \to X.\]
+\end{defn}
+
+By convention in this course, we always consider paths up to homotopy relative to $\{0, 1\}$.  That means that our homotopies fix the end points.  If they didn't, every path would collapse to a point up to homotopy!
+
+Imagine two paths in \(\R^2 \setminus (0,0)\) which agree on end points,
 however each path is on opposite sides of the origin. It is clear that
 there exists no end point fixing homotopy between the two paths.
 
 \begin{defn}
   If one has two paths \(f,g\) with \(f(1)=g(0)\) we may define a new
   path
-  \[f * g =
+  \[f * g :=
     \begin{cases}
       f(2t), & t \in [0,\frac{1}{2})\\
       g(2t - 1), & t \in [\frac{1}{2},1].
@@ -142,7 +148,7 @@ there exists no end point fixing homotopy between the two paths.
   \([f]=[f']\) and \([g]=[g']\) then \([f * g] = [f' * g']\). This
   operation may be generalized to \(*_{k}\) where \(k \in (0,1)\),
   simply replace \(\frac{1}{2}\) with \(k\). In this notation
-  \(f * g = f *_{\frac{1}{2}} g\). This operation is associative.
+  \(f * g = f *_{\frac{1}{2}} g\). Concatenation is associative.
 \end{defn}
 
 Given a topological space \(X\) with points \(P\), for any two points
@@ -152,25 +158,39 @@ objects in a category. We call this category the Fundamental Groupoid.
 
 \mydate{d2}{20}{1}{2017}
 
+\begin{defn}[\cite{ncatlab}]
+  A \de{category} $\mathcal{C}$ consists of
+  \begin{itemize}
+    \item A class of objects $\Ob(\mathcal{C})$
+    \item For every pair of objects $A, B \in \Ob(\mathcal{C})$, a set $\Hom(A, B)$ of \de{morhpisms}
+    \item A composition operation.  That is, if $f \in \Hom(A,B)$ and $g \in \Hom(B,C)$, then there exists a morphism $h \in \Hom(A,C)$ s.t. $h = f.g$, where ``.'' denotes the composition operation.  The composition operation must be associative.
+    \item For every object $A \in \Ob(\mathcal{C})$, an \de{identity morphism} $\id_A\from A \to A$ s.t. for all $f\from A \to B$ we have $\id_A.f = f$ and for all $g\from B \to A$ we have $g.\id_A = g$, for all $B$.
+  \end{itemize}
+\end{defn}
+
 \begin{defn}
   In the category of \de{finite sets}, denoted $\text{FSet}$, the
   objects are the finite sets, each morphism from $A$ to $B$ is a
   function from $A$ to $B$.
 \end{defn}
 \begin{defn}
-  For any field $K$, the category of \de{$K$-vector spaces}, denoted
+  For any field $K$, the category of \de{$K$-vector spaces} (vector spaces over $K$), denoted
   $\text{Vect}_K$, has objects that are $K$-vector spaces and
   morphisms that are $K$-linear maps.
 \end{defn}
 \begin{defn}
   A \de{groupoid} is a category where every morphism has an inverse.
 
-  That is, if $a \colon x \to x'$, then there exists $a^{-1} \colon x' \to x$
+  That is, for any objects $x$ and $x'$ and any morphism $a \from x \to x'$ between them, there exists $a^{-1} \from x' \to x$
   s.t. $aa^{-1} = \id_{x'}$ and $a^{-1}a = \id_{x}$.
-
-  The elements of the groupoid are the morphisms.  The operation is
-  composition.  Not every pair of morphisms can necessarily be composed!
 \end{defn}
+\begin{rmk}
+  A groupoid can be viewed as a more general notion than a group!
+
+  The elements of the groupoid are the morphisms.  The operation is composition.  Not every pair of morphisms can necessarily be composed!
+
+  So a groupoid is just like a group, but not every pair of elements can be multiplied!  Also, there is not a \textbf{single} identity, but rather, there could be many left and right identities.  That is, each object has a little loop.
+\end{rmk}
 \begin{prop}
   Every morphism in a groupoid is an isomorphism (by definition).
 \end{prop}
@@ -201,7 +221,7 @@ use a *partial* binary operation instead of a binary operation.
   composition.
 \end{defn}
 \begin{defn}
-  The \de{inverse path} of a path $p$ is $p^{-1}(s) := p(1-s)$.
+  The \de{inverse path} of a path $p$ is $p^{-1}(s) := p(1-s)$.  In Hatcher, this is denoted $\bar{p}$.
   (Note: This is *not* the same as the function inverse of $p$)
 \end{defn}
 \begin{prop}
@@ -213,15 +233,15 @@ use a *partial* binary operation instead of a binary operation.
 
 \begin{thm}[Hatcher 1.5]
   Let $X$ be a metric space and $x,x' \in X$.  If there exists
-  $p: x \to x'$ and $[q] \in \pi_1(X,x')$, then
-  $p^{-1}qp \in \pi_1(X,x)$ is an isomorphism of fundamental groups.
+  $p\from x \to x'$ and $[q] \in \pi_1(X,x')$, then
+  $p^{-1}qp \in \pi_1(X,x)$.  The ``conjugacy'' map that sends each $[q]$ to $[p^{-1}qp]$ is an isomorphism of fundamental groups.
 \end{thm}
 \begin{thm}
   If $X$ is path connected, then for any $x_a, x_b \in X$,
-  $$\pi_1(X, x_a) \isom \pi_1(X, x_b).$$ %
-  Notation: If $X$ is path connected, we can denote the fundamental
-  group with $\pi_1(X)$ or $\pi_1 X$.
+  $$\pi_1(X, x_a) \isom \pi_1(X, x_b).$$
 \end{thm}
+In the above situation, we can denote the fundamental
+group with $\pi_1(X)$ or $\pi_1 X$.
 \begin{example}
   pretty picture %
 
@@ -231,58 +251,52 @@ use a *partial* binary operation instead of a binary operation.
   Note that $\pi_1 X$ is only well defined up to inner automorphism.
 \end{example}
 \begin{defn}
-  Given spaces $X, Y$ and a map $f: X \to Y$, then the
+  Given spaces $X, Y$ and a map $f\from X \to Y$, then the
   \de{fundamental functor} induced by $f$,
-  $$f_* = \Pi_1 f : \Pi_1 X \to \Pi_1 Y$$ maps each object $x \in X$
+  $$f_* = \Pi_1 f \from \Pi_1 X \to \Pi_1 Y$$ maps each object $x \in X$
   to $f(x) \in Y$ and each path $[p] \in \Pi_1 X$ to
   $f([p]) = [f(p)] \in \Pi_1 Y$.
 \end{defn}
 \begin{prop}
   The above is well defined because
   \begin{itemize}
-  \item If $[p]=[q]$, then $[f(p)] = [f(q)]$ because $h.f$ gives a
-    homotopy.  ((What the heck is h?)) %
-  \item $(f_*p)*(f_*q) = f_*(p*q)$
+  \item If $[p]=[q]$, then $[f(p)] = [f(q)]$.  Proof:  Consider the homotopy $h$ s.t. $h_0 = p$ and $h_1 = q$.  $f$ is continuous, so $h.f$ is a homotopy, and $(h.f)_0 = f(p)$ and $(h.f)_1 = f(q)$.
+  \item If $p$ and $q$ represent equivalence classes, and if they can be concatenated, then $(f_*p)*(f_*q) = f_*(p*q)$.
   \end{itemize}
 \end{prop}
 
 \begin{prop}
-  Given a fundamental group $\Pi_1(X, x)$, then we can restrict $f_*$
-  to the functor $$f_* : \Pi_1(X, x) \to \Pi_1(Y, f(x)).$$
+  Given a fundamental group $\fund(X, x)$, then we can restrict $f_*$
+  to the functor $$f_* \from \fund(X, x) \to \fund(Y, f(x)).$$ which is a group homomorphism.
 
-  picture $x$ (loop) to $f(x)$ (loop) %
-
-  is a group homomorphism
+  \includegraphics[scale=0.17]{images/fundamental-functor}
 \end{prop}
 \begin{prop}
-  If $X,Y,Z$ are metric spaces and $f: X \to Y$, $g: Y \to Z$ are
+  If $X,Y,Z$ are metric spaces and $f \from X \to Y$, $g \from Y \to Z$ are
   maps, then ${(f.g)}_* = f_*.g_*$.
 \end{prop}
 
 \begin{example}
-  $\Pi_1(\R^n, x) = [*]$
+  $\fund(\R^n, x) = \{[*]\} = \{e\}$
 
   In $\Pi_1 \R^n$, there exists a unique path between any two points,
   up to homotopy.
 
-  pf $p,q: I \to \R^n$ %
-
-  $p(0) = q(0)$ $p(1) = q(1)$
-
-  $h_t = tp + (1-t)q$
-
-  $h_0 = q$ $h_1 = p$
-
-  $B_n, I_n$ all have $\Pi_1 = [*]$
+  Note that $\fund(B_n) = \{e\}$ and $\fund(I_n) = \{e\}$ too!
 \end{example}
+\begin{proof}
+  Let $p,q \from I \to \R^n$ be any two paths that satisfy $p(0) = q(0)$ and $p(1) = q(1)$.
 
-\begin{thm}[Hatcher 1.6]
+  Define $h$ by $h_t = tp + (1-t)q$.  It follows that, $h_0 = q$, $h_1 = p$, and $h$ is a homotopy.
+\end{proof}
+
+\begin{defn} % I'm pretty sure this is the DEFINITION of simply connected.  We're just saying "the fundamental group is trivial" instead of saying "every loop can be shrunk continuously to a point".  I suppose we could create a separate definition if you wish.  Also, Hatcher 1.6 doesn't exist.
   A space $X$ is \de{simply connected} or \de{1-connected} iff it is path connected and its
   fundamental group is trivial.
-\end{thm}
+\end{defn}
 \begin{example}
   $\R^2 \minus (0,0) \isom \C \minus \{0\}$ is NOT simply connected.
-  $\Pi_1(\C \minus \{0\}) = \Z$
+  $\fund(\C \minus \{0\}) = \Z$
 \end{example}
 \begin{example}
   pretty picture with yellow and blue dots %
@@ -292,11 +306,10 @@ use a *partial* binary operation instead of a binary operation.
 \end{example}
 
 \begin{defn}
-  A \emph{covering space} of a space \(X\) is a space \(\tilde{X}\)
-  and map \(p \colon \tilde{X} \to X\). Where there exists a cover
-  \(\{U_\alpha\}\) of \(X\) such that \(p^{-1}(U_\alpha)\) is a
-  disjoint union of open sets in \(\tilde{X}\) each of which has image
-  under \(p\) homeomorphic to \(U_\alpha\).
+  A \emph{covering space} \((\tilde{X},p)\) of a space \(X\) is a space \(\tilde{X}\)
+  and map \(p \from \tilde{X} \to X\) where there exists an open cover
+  \(\{U_\alpha\}\) of \(X\) and for each $\alpha$, \(p^{-1}(U_\alpha)\) is a
+  disjoint union $\dunion V_j$ of open sets in \(\tilde{X}\) such that for all $j$, $p|_{V_j} \from V_j \to U_\alpha$ is a homeomorphism.
 \end{defn}
 
 Think of the stack of records theorem from Guillemin and Pollack. See
@@ -305,9 +318,9 @@ class. We now discuss homotopy lifting.
 
 \begin{prop}
   Given a covering space \((\tilde{X},p)\) of \(X\) and a homotopy
-  \(h_t \colon Y \to X\), and some map
-  \(\tilde{f}_0 \colon Y \to \tilde{X}\), then there exists a unique
-  homotopy \(f_t \colon Y \to X\) that lifts \(f_0\), that is
+  \(h_t \from Y \to X\), and some map
+  \(\tilde{f}_0 \from Y \to \tilde{X}\), then there exists a unique
+  homotopy \(f_t \from Y \to X\) that lifts \(f_0\), that is
   \begin{center}
     \begin{tikzcd}
       & & \tilde{X}\\
@@ -319,9 +332,9 @@ class. We now discuss homotopy lifting.
 
 \mydate{d4}{30}{1}{2017}
 
-\section{Functoriality of $\fund$}
+\section{Functoriality of the fundamental group}
 
-Let $X$, $Y$ be spaces and $f,f': X \to Y$ be maps.
+Let $X$, $Y$ be spaces and $f,f' \from X \to Y$ be maps.
 
 We wish to prove (i think) that $f_* \of g_* = (f \of g)_*$.
 
@@ -355,9 +368,9 @@ $f_* = f'_*$ since $(f \of p) \homotopic (f' \of p)$ via $(h \of p)$.
   DOWN
   $h_t(x)$
 
-  If $A$ and $B$ are categories and $F,G\colon A \to B$ are functors an \underline{isomorphism} of functors.
+  If $A$ and $B$ are categories and $F,G\from A \to B$ are functors an \underline{isomorphism} of functors.
 
-  For all $a \in \Ob(A)$, $Z(a)\colon F(a) \to G(a)$ such that for all $g: a \to a'$,
+  For all $a \in \Ob(A)$, $Z(a)\from F(a) \to G(a)$ such that for all $g \from a \to a'$,
 
   $$\begin{tikzcd}
     &F(a) \arrow[r, "Z(a)"] \arrow[d, "F(g)"] & G(a) \arrow[d, "G(g)"] \\
@@ -431,13 +444,13 @@ In this class, we follow the convention that \de{deformation retract} refers to 
   ((i infer)) This allows us to conclude that $\fund(\C\minus\{0\}) \isom \fund(S^1)$.
 \end{example}
 \begin{thm}
-  Every map $f\colon D^2 \to D^2$ has a fixed point.
+  Every map $f\from D^2 \to D^2$ has a fixed point.
 \end{thm}
 
 
 
 \begin{proof}
-  Draw a circle and the points $x$ and $f(x)$.  Draw a ray from $f(x)$ through $x$ that ends at the boundary.  Consider a function $r$ that sends each $x$ to the endpoint of the ray.  This $r$ turns out to be a retraction.  This is our $g\colon D^2 \to S^1$.  This is a deformation retract, so by our previous theorem, $\fund(D^2) \isom \fund(S^1)$.  A contradiction.
+  Draw a circle and the points $x$ and $f(x)$.  Draw a ray from $f(x)$ through $x$ that ends at the boundary.  Consider a function $r$ that sends each $x$ to the endpoint of the ray.  This $r$ turns out to be a retraction.  This is our $g\from D^2 \to S^1$.  This is a deformation retract, so by our previous theorem, $\fund(D^2) \isom \fund(S^1)$.  A contradiction.
 \end{proof}
 
 
@@ -446,7 +459,18 @@ In this class, we follow the convention that \de{deformation retract} refers to 
 
 
 
-
+\begin{bibdiv}
+\begin{biblist}
+% THIS SHOULD BE MOVED TO A SEPARATE FILE IF IT GETS TOO CUMBERSOME
+% see http://ctan.math.utah.edu/ctan/tex-archive/macros/latex/contrib/amsrefs/amsrdoc.pdf
+  \bib{ncatlab}{webpage}{
+    title={Joyal's CatLab},
+    url={https://ncatlab.org/joyalscatlab/published/Categories},
+    accessdate={2017-02-06},
+    date={2010-05-30},
+  }
+\end{biblist}
+\end{bibdiv}
 
 
 \end{document}
