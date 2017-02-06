@@ -1,5 +1,5 @@
 \documentclass[11pt,leqno,oneside]{amsart}
-\usepackage[margin=1in]{geometry}
+%\usepackage[margin=1in]{geometry}
 
 \usepackage{../notes}
 \usepackage{xfrac}
@@ -67,7 +67,7 @@ where as always \(I=[0,1]\).
 
 We will develop the tools to prove manifolds of different dimensions can
 certainly never be homeomorphic. Another surface result assures there exists no continuous
-retraction \(D^2 \to \d D\), which then immediately yields the
+retraction \(D^2 \to \d D^2\), which then immediately yields the
 Brouwer Fixed Pointed Theorem (every map \(D^2 \to D^2\) admits a
 fixed point).
 
@@ -77,7 +77,7 @@ continuous deformations between maps. While homology studies subspaces
 (known as ``cycles'') and gap filling.
 
 \section{Reference}
-
+%
 \begin{defn}
   $D^n$ denotes the $n$-dimensional closed unit disk.
 \end{defn}
@@ -153,10 +153,6 @@ objects in a category. We call this category the Fundamental Groupoid.
 \mydate{d2}{20}{1}{2017}
 
 \begin{defn}
-  A \de{category} is a directed graph.  Each vertex is called an
-  \de{object} and each directed edge is called a \de{morphism}.
-\end{defn}
-\begin{defn}
   In the category of \de{finite sets}, denoted $\text{FSet}$, the
   objects are the finite sets, each morphism from $A$ to $B$ is a
   function from $A$ to $B$.
@@ -169,7 +165,7 @@ objects in a category. We call this category the Fundamental Groupoid.
 \begin{defn}
   A \de{groupoid} is a category where every morphism has an inverse.
 
-  That is, if $a: x \to x'$, then there exists $a^{-1}:x' to x$
+  That is, if $a \colon x \to x'$, then there exists $a^{-1} \colon x' \to x$
   s.t. $aa^{-1} = \id_{x'}$ and $a^{-1}a = \id_{x}$.
 
   The elements of the groupoid are the morphisms.  The operation is
@@ -185,7 +181,7 @@ objects in a category. We call this category the Fundamental Groupoid.
   If $A$ is an object in a groupoid, then $\Hom(A, A)$ is a group.
 \end{prop}
 
-note We see that a groupoid is the same definition of a group, but we
+Note, we see that a groupoid is the same definition of a group, but we
 use a *partial* binary operation instead of a binary operation.
 
 \begin{defn}
@@ -205,34 +201,34 @@ use a *partial* binary operation instead of a binary operation.
   composition.
 \end{defn}
 \begin{defn}
-  the \de{inverse path} of a path $p$ is $p^{-1}(s) := p(1-s)$.
-  (note: This is *not* the same as the function inverse of $p$)
+  The \de{inverse path} of a path $p$ is $p^{-1}(s) := p(1-s)$.
+  (Note: This is *not* the same as the function inverse of $p$)
 \end{defn}
 \begin{prop}
   If $p$ is a path, then
-  $[p^{-1}*p] = [id_{x}] = \text{the function where $s \mapsto x$ for
-    all $s \in [0,1]$}$.
+  $[p^{-1}*p] = [id_{x}]$, which is the equivalence class of the
+  function where $s \mapsto x$ for
+  all $s \in [0,1]$.
 \end{prop}
 
 \begin{thm}[Hatcher 1.5]
   Let $X$ be a metric space and $x,x' \in X$.  If there exists
   $p: x \to x'$ and $[q] \in \pi_1(X,x')$, then
-  $p^{-1}qp \in \Pi_1(X,x)$ is an isomorphism of fundamental groups.
+  $p^{-1}qp \in \pi_1(X,x)$ is an isomorphism of fundamental groups.
 \end{thm}
 \begin{thm}
   If $X$ is path connected, then for any $x_a, x_b \in X$,
-  $$\Pi_1(X, x_a) \isom \Pi_1(X, x_b).$$
-  notation If $X$ is path connected, we can denote the fundamental
+  $$\pi_1(X, x_a) \isom \pi_1(X, x_b).$$ %
+  Notation: If $X$ is path connected, we can denote the fundamental
   group with $\pi_1(X)$ or $\pi_1 X$.
 \end{thm}
 \begin{example}
-  pretty picture
+  pretty picture %
 
   This isomorphism is not canonical
 
 
   Note that $\pi_1 X$ is only well defined up to inner automorphism.
-  ((Chris, what does this mean?))
 \end{example}
 \begin{defn}
   Given spaces $X, Y$ and a map $f: X \to Y$, then the
@@ -245,16 +241,16 @@ use a *partial* binary operation instead of a binary operation.
   The above is well defined because
   \begin{itemize}
   \item If $[p]=[q]$, then $[f(p)] = [f(q)]$ because $h.f$ gives a
-    homotopy.  ((What the heck is h?))
+    homotopy.  ((What the heck is h?)) %
   \item $(f_*p)*(f_*q) = f_*(p*q)$
   \end{itemize}
 \end{prop}
 
 \begin{prop}
   Given a fundamental group $\Pi_1(X, x)$, then we can restrict $f_*$
-  to the functor $$f_* : \Pi_1(X, x) to \Pi_1(Y, f(x)).$$
+  to the functor $$f_* : \Pi_1(X, x) \to \Pi_1(Y, f(x)).$$
 
-  picture $x$ (loop) to $f(x)$ (loop)
+  picture $x$ (loop) to $f(x)$ (loop) %
 
   is a group homomorphism
 \end{prop}
@@ -266,10 +262,10 @@ use a *partial* binary operation instead of a binary operation.
 \begin{example}
   $\Pi_1(\R^n, x) = [*]$
 
-  in $\Pi_1 \R^n$, there exists a unique path between any two points,
+  In $\Pi_1 \R^n$, there exists a unique path between any two points,
   up to homotopy.
 
-  pf $p,q: I \to \R^n$
+  pf $p,q: I \to \R^n$ %
 
   $p(0) = q(0)$ $p(1) = q(1)$
 
@@ -289,7 +285,7 @@ use a *partial* binary operation instead of a binary operation.
   $\Pi_1(\C \minus \{0\}) = \Z$
 \end{example}
 \begin{example}
-  pretty picture with yellow and blue dots
+  pretty picture with yellow and blue dots %
 
   $A$ and $B$ can't be homotopic because $\log(A)$ and $\log(B)$ have
   different end points.
@@ -297,7 +293,7 @@ use a *partial* binary operation instead of a binary operation.
 
 \begin{defn}
   A \emph{covering space} of a space \(X\) is a space \(\tilde{X}\)
-  and map \(p \colon \tilde{X} \to X\). Where there eixsts a cover
+  and map \(p \colon \tilde{X} \to X\). Where there exists a cover
   \(\{U_\alpha\}\) of \(X\) such that \(p^{-1}(U_\alpha)\) is a
   disjoint union of open sets in \(\tilde{X}\) each of which has image
   under \(p\) homeomorphic to \(U_\alpha\).
