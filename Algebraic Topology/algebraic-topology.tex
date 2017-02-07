@@ -43,6 +43,7 @@
 \newcommand{\x}{\times}
 \newcommand{\Map}{\text{Map}}
 \newcommand{\id}{\text{id}}
+\newcommand{\Arg}{\text{Arg}}
 \renewcommand{\bar}{\widebar}
 
 %%%%%%%%%%%%%% BEGIN CONTENT: %%%%%%%%%%%%%%
@@ -243,12 +244,11 @@ use a *partial* binary operation instead of a binary operation.
 In the above situation, we can denote the fundamental
 group with $\pi_1(X)$ or $\pi_1 X$.
 \begin{example}
-  pretty picture %
+  The isomorphism above is not canonical, because we could use path $p$ or $q$ to create the isomorphism, but $p$ and $q$ are not homotopic, as shown below.
 
-  This isomorphism is not canonical
+  \includegraphics[scale=0.2]{images/isomorphism-not-canonical}
 
-
-  Note that $\pi_1 X$ is only well defined up to inner automorphism.
+  Note that $\pi_1 X$ is only well defined up to inner automorphism.  ((What does this mean?))
 \end{example}
 \begin{defn}
   Given spaces $X, Y$ and a map $f\from X \to Y$, then the
@@ -299,9 +299,9 @@ group with $\pi_1(X)$ or $\pi_1 X$.
   $\fund(\C \minus \{0\}) = \Z$
 \end{example}
 \begin{example}
-  pretty picture with yellow and blue dots %
+  Consider a loop $A$ that goes around a hole in $X$ once, and a loop $B$ that looks exactly the same as $A$, but it goes around the hole in $X$ twice.
 
-  $A$ and $B$ can't be homotopic because $\log(A)$ and $\log(B)$ have
+  $A$ and $B$ can't be homotopic because $\Arg(A)$ and $\Arg(B)$ have
   different end points.
 \end{example}
 
