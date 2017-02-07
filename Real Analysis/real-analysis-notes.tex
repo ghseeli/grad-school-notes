@@ -604,7 +604,7 @@ $\phi: \ov{\R} \to [-1,1]$ as follows \[
     -1 \text{ if } x = -\infty
   \end{cases}
 \]
-We can then put a subset topology on $\R \subset \ov{\R}$, but this is
+We can then put a subspace topology on $\R \subset \ov{\R}$, but this is
 equivalent to the standard topology on $\R$.
 \begin{example}
   Take $(a_n)_{n \geq 1}$ with $a_n \in \ov{R}$. Then, $\lim_{n \to \infty} a_n =
@@ -616,23 +616,26 @@ equivalent to the standard topology on $\R$.
 After that digression, let us return to our discussion of measures.
 \begin{defn}
   Let $X \neq \emptyset$ and $\M = \P(X)$. Given a function $f: X \to
-  [0,\infty]$, the \de{weighted counting measure} is given by \[
-    \mu(E) = \sum_{x \in E} f(x).
+  [0,\infty]$, one would like to define the \de{weighted counting measure} as given by \[
+    \mu(E) = \sum_{x \in E} f(x),
   \]
-  In particular, $\mu(\{x\}) = f(x)$ for $x \in X$.
-\end{defn}
-The astute reader will note a problem with this definition, namely, if
-$E$ is uncountable, this sum is undefined. However, since $[0,\infty]$
-is totally ordered, we can say \[
-  \sum_{x \in E} f(x) = \sup_{\text{finite } F \subset E} \sum_{x \in
+  but this is undefined when $E$ is uncountable. So, we amend our
+  definition by noting that \[
+    \sum_{x \in E} f(x) = \sup_{\text{finite } F \subset E} \sum_{x \in
     F} f(x).
 \]
-Also, we note that for $a \in [0,\infty]$, we have the relations that
+  Here, sup is well-defined since $[0,\infty]$ is totally ordered. We
+  note that,
+  in particular, $\mu(\{x\}) = f(x)$ for $x \in X$.
+\end{defn}
+\begin{rmk}
+We note that for $a \in [0,\infty]$, we have the relations that
 \begin{itemize}
 \item $a + \infty = \infty$,
 \item $a \infty = \infty$ if $a \neq 0$,
 \item and $0 \infty = 0$.
-\end{itemize}
+\end{itemize}  
+\end{rmk}
 It is left as an exercise to the reader to show that $\mu$ is actually
 a measure.
 \begin{defn}
