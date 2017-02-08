@@ -454,9 +454,105 @@ In this class, we follow the convention that \de{deformation retract} refers to 
 \end{proof}
 
 
+\mydate{d7}{8}{2}{2017}
+
+\section{CW complexes and the fundamental group}
+
+Consider the polygon (\designateref{*})
+
+<picture>
+
+$x_0$ = picture
+
+$x_1$ = picture
+
+\begin{thm}
+  If $X$ is a CW complex and $A$ a contractible subcomplex, then $X$ is \textbf{not} equal to $X/A$ (this is the quotient by the equivalence relation $x \sim x'$ iff $x = x'$ or $x, x' \in A$.)
+\end{thm}
+
+Once we hit X_1, the connected components of the complex are determined.
+
+That's because for any dimensional disk, it's boundary is connected, so that boundary must lie entirely in \textbf{one} of the connected components.
+
+(referring to example \ref{*})
+
+set of connected components = $\pi_0(x_0) = \pi_0(x_1)$
+
+If x_0 = \{[*]\},
+
+$\pi_1(x_1) \isom F_{\text{set of 1-cells}}
+
+$\pi\left( \frac{x_1 \union D^2}{\sim} \right) \isom \frac{\fund(B) * \fund(A)}{A \cap B} \isom \frac{\fund(x_1)}{[\phi] = 1}$
+
+In general, I have many gluing maps $\phi_\alpha\from S^1 \to X_1$ and I glue $D^2\alpha$ along this $\fund(x_2) \isom \fund(x_1)/\langle[\phi_\alpha]\rangle$.
+
+\begin{thm}[Not to be proven]
+  Any group is the fundamental group of some CW complex.  Construct as follows:
+
+  x_0 = point
+
+  x_1 = every element in the group gets a loop (the free group)
+
+  x_2 = every entry in the multiplication table gets a disk (a relation)
+
+  So it's just like a group presentation!
+\end{thm}
+\begin{thm}
+  Every finitely presented group is the fundamental group of a finie CW complex.
+\end{thm}
+\begin{thm}
+  If $n > 3$, then for any finitely presented group $G$, there exists a compact manifold $M$ s.t. $G \isom \fund(M)$.
+\end{thm}
+\begin{proof}
+  If $n > 2$ and $M$ and $N$ are $n$-manifolds, then $M # N$
+
+  <picture>
+
+  $F_n \isom \fund(#^n(S^{n-1 \x S^1})) = \fund(M # N) \isom \fund(M) * \fund(N)$ (where \fund(M) * \fund(N) is the free product of groups)
+
+  and $\delta(S^0 \x D^n) = S^0 \x S^{n-1} - \delta(D^1 \x S^{n-1})$
+
+  Let $M$ be an $n$-manifold and $n > 3$.  Consider a non-self-intersecting loop
+
+  $\alpha \subset U \isom S^1 \x D^{n-1}$
+
+  $\d(D^2 \x S^{n-2}) \isom \d U \isom S^1 \x S^{n-2}$
+
+  For $n = 2$
+
+  <picture of cylindar>
+
+  $\overset{~}{M} = M\U \dunion D^2 \x S^{n-2}$
+\end{proof}
+\begin{thm}
+  $\fund(x^2) \isom \fund(x)$
+\end{thm}
+\begin{proof}
+  $\fund(x_{n-1}) \isom \fund(x_n)$.  $n \geq 3$.
+  Why does gluing on a higher level dimension disk not affect $\fund$?  It's because the boundary is simply connected.
+
+  A = small disk in A \homotopic *
+  B = complement of a small disk \homotopic x^{n-1}
+
+  S^{n-1} \to x^{n-1}.
+
+  A \intersect B \homotopic S^{n-1}
+\end{proof}
 
 
 
+\end{proof}
+
+
+\end{proof}
+
+
+
+
+\end{proof}
+\begin{rmk}
+  Once $n$ reaches $4$, all bets are off ;(
+\end{rmk}
 
 
 \begin{bibdiv}
