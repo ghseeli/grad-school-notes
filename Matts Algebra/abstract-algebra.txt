@@ -608,26 +608,26 @@ pf
 	A ≤ N(B)  ==>  B is a normal subgroup of AB.
 	Consider AB as our new group.  If B is solvable and AB/B is solvable, then it will follow that AB is solvable.
 	We know B is solvable!
-	AB/B = A/(A∩ B) by the 2nd isomorphism theorem.
-	A is solvable, so A/(A∩ B) is solvable, so AB/B is solvable!
+	AB/B = A/(A ∩ B) by the 2nd isomorphism theorem.
+	A is solvable, so A/(A ∩ B) is solvable, so AB/B is solvable!
 
 [matt]
 A,B ≤ G, B ≤ Z(G), A nilpotent  ==>  AB nilpotent
 pf
 	Same proof, but use 1.3.7(d) instead of 1.3.7(c)
 	(maybe it is obvious, that something nilpotent times Z(G) things will again be nilpotent!)
+	In fact, one can prove directly that the lower central series of AB will be identical to the lower central series of A, with the exception of the starting term.
+
+1.3.11
+A,B ≤ G, A,B normal and nilpotent ≤ G  ==>  AB normal and nilpotent
+rmk
+In above prop, if A nilp class c and B nilp class d, then AB nilp of class ≤ c+d.
 
 1.3.10
 G1 G2 groups.
 	a. A1, B1 ≤ G1 and A2, B2 ≤ G2 implies [A1 x A2, B1 x B2] = [A1, B1] x [A2, B2]
 	this can also appear like (A x B)[i] = A[i] x B[i] instead.
-	b. G1 x G2 solvable/nilpotent ≤=> G1 and G2 are both solvable/nilpotent
-
-1.3.11
-prop
-A, B nilpotent normal ≤ G.  THEN AB nilpotent normal ≤ G.
-rmk
-In above prop, if A nilp class c and B nilp class d, then AB nilp of class ≤ c+d.
+	b. G1 x G2 solvable/nilpotent <==> G1 and G2 are both solvable/nilpotent
 
 thm
 Z(A) char A normalin G ==> Z(A) normalin G (old thm) remove this
