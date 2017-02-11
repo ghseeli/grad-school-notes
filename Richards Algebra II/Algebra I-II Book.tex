@@ -63,7 +63,7 @@
 \newcommand{\ses}[5]{1 \longrightarrow #1 \overset{#2}{\hooklongrightarrow} #3 \overset{#4}{\twoheadlongrightarrow} #5 \longrightarrow 1}
 \newcommand{\mses}[5]{0 \longrightarrow #1 \overset{#2}{\hooklongrightarrow} #3 \overset{#4}{\twoheadlongrightarrow} #5 \longrightarrow 0}
 \renewcommand{\arrowvert}{\arrow}   \renewcommand{\i}{\mathbf{i}}   \renewcommand{\j}{\mathbf{j}}   \renewcommand{\k}{\mathbf{k}}    \renewcommand{\H}{\mathbb{H}}  \renewcommand{\hom}{\tn{Hom}}
-\newcommand{\ann}[2]{\textnormal{Ann}_{#1}(#2)}
+\newcommand{\ann}[2]{\textnormal{Ann}_{#1}(#2)}   \newcommand{\rk}{\textnormal{rk}}
 
 
 \DeclareMathOperator{\pow}{\mathcal{P}}   \DeclareMathOperator{\C}{\mathbb{C}}
@@ -646,9 +646,9 @@ We say $M$ is \tb{torsion free} if $T(M) = \{0\}$.
 
 \vs
 
-\begin{example*}
+\begin{example}
 If $R = \z/6\z = M$, then $T(M) = \{\ov{0},\ov{2},\ov{3},\ov{4}\}$. This shows that if $M$ is a free module, it does not necessarily follow that $M$ is torsion free. This also shows that $T(M)$ needn't be a submodule of $M$.
-\end{example*}
+\end{example}
 
 \vs
 
@@ -675,4 +675,218 @@ But $R$ is an integral domain and $R$ is an integral domain, so we must have tha
 \end{enumerate}
 \end{proof}
 
+\vs
+
+In the following, $R$ is always an integral domain ($R \ne \{0\}$).
+
+\vs
+
+\begin{remark}\
+\begin{enumerate}
+\item[(a)] If $D \sub R \bs \{0\}$ and $M$ is a torsion free $R$-module, then $j_M : M \ra D\inv M, m \mapsto \frac{m}{1}$, is injective.
+\item[(b)] If $D = R \bs \{0\}$, then $\ker j_M = T(M)$.
+\end{enumerate}
+From now on, $D$ will always be $R \bs \{0\}$. Set $F := D\inv R$, the "field of fractions" of $R$. Note that if $M$ is an $R$-module, then $D\inv M$ is an $F$-vector space.
+\end{remark}
+
+\vs
+
+\begin{defn}
+For $M$ an $R$-module, define its \tb{rank} as $\tn{rk}_R M = \tn{rk} M := \dim_F D\inv R$.
+\begin{example*}
+If $M = T(M)$, then $D\inv M = \{0\} \implies \tn{rk} M = 0$. This can occur when $R = \z$ and $M = \bigoplus_{n \in \N} \z/n\z, M = \prod_{n \in \N} \z/2\z$, or $M = \Q/\z$.
+\end{example*}
+\end{defn}
+
+\vs
+
+\begin{lemma}
+If $\mses{L}{}{M}{}{N}$ is a short exact sequence of $R$-modules, then $\tn{rk}M = \tn{rk} L + \tn{rk} N$
+\end{lemma}
+
+\begin{proof}
+By 3.2.5, $\mses{D\inv L}{}{D\inv M}{}{D\inv N}$ is a short exact sequence of $F$-vector spaces. By the rank-nullity theorem, $\rk M = \rk L + \rk N$.
+\end{proof}
+
+Note that this lemma holds even for modules with infinite bases as the rank-nullity theorem is true for infinite-dimensional vector spaces.
+
+\vs
+
+\begin{corollary}\
+\begin{enumerate}
+\item[(a)] If $L \leq M$, then $\rk L \leq \rk M$ by considering the short exact sequence $\mses{L}{}{M}{}{M/L}$.
+\item[(b)] If $M = L \oplus N$, then $\rk M = \rk L + \rk N$.
+\end{enumerate}
+\end{corollary}
+
+\begin{lemma}\
+\begin{enumerate}
+\item[(a)] If $S$ generates the $R$-module $M$, then $j_M(S)$ generates the $F$-vector space $D\inv M$.
+\item[(b)] If $M$ is torsion free, then $S \sub M$ is $R$-linearly independent if and only if $j_M(S)$ is $F$-linearly independent in $D\inv M$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof} Write $S = \{m_i \in M \mid i \in I\} \implies j_M(S) = \left\{ \frac{m_i}{1} \mid i \in I \right\} \sub D\inv M$.
+\begin{enumerate}
+\item[(a)] Let $\frac{m}{d} \in D\inv M$. Then there exist $r_i \in R$, almost all $r_i = 0$, such that $m = \sum_{i \in I} r_i m_i$. Then
+	\[\frac{m}{d} = \frac{1}{d} \frac{m}{1} = \frac{1}{d} \left[\frac{\sum_{i \in I} r_i m_i}{1}\right] = \sum_{i \in I} \frac{r_i}{d} j_M(m_i) \in \gen{j_M(S)}_F \]
+\item[(b)] $[\impliedby]$ Assume that $j_M(S)$ is linearly independent and that $\sum_{i \in I} r_i m_i = 0$ for some $m_i \in M,$ $r_i \in R$, and $r_i = 0$ for almost all $i \in I$. Then
+	\[0 = j_M \left(\sum_{i \in I} r_i m_i\right) = \sum_{i \in I} \frac{r_i}{1} j_M(m_i) \implies \frac{r_i}{1} = 0 \iff r_i = 0 \ \forall \ i \in I \]
+$[\implies]$ Assume that $M$ is torsion free, $S$ is $R$-linearly independent, and $\sum_{i \in I} \frac{r_i}{d_i} \frac{m_i}{1} = 0$. Choose a finite subset $I' \sub I$ such that $r_i = 0$ for all $i \in I \bs I'$. Set $d = \prod_{i \in I'} d_i$. Then $\frac{r_i m_i}{d_i} = \frac{r_i' m_i}{d}$, where $r_i' = r_i \prod_{j \in I \bs \{i\}} d_i$. Thus
+\begin{align*}
+0 &= \sum_{i \in I} \frac{r_i}{d_i} \frac{m_i}{1} = \sum_{i \in I} \frac{r_i'}{d} \frac{m_i}{1} = \frac{1}{d} \sum_{i \in I} \frac{r_i' m_i}{1} \\
+\implies 0 &= \sum_{i \in I} \frac{r_i' m_i}{1} = \sum_{i \in I} \frac{r_i' m_i}{1} = j_M\left(\sum_{i \in I} r_i' m_i\right)
+\end{align*}
+Now $j_M$ is injective because $M$ is torsion free, so we conclude that $\sum_{i \in I} r_i' m_i = 0 \implies r_i' = 0 \iff r_i = 0$ for all $i \in I$, since $R$ is an integral domain.
+\end{enumerate}
+\end{proof}
+
+\vs
+
+\begin{proposition}
+Let $M$ be a free $R$-module with basis $B$, and let $S \sub M$.
+\begin{enumerate}
+\item[(a)] If $\gen{S}_R = M$, then $|S| \geq |B|$.
+\item[(b)] If $S$ is $R$-linearly independent, then $|S| \leq |B|$.
+\item[(c)] If $S$ is a basis of $M$, then $|S| = |B|$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+Let $V$ be the $F$-vector space $V = D\inv M$. Because $M$ is free, 3.2.8 (c) implies that $M$ is torsion free, and thus $j_M : M \ra V$ is injective (and preserves cardinalities). By 3.2.13, $j_M(B)$ is an $F$-basis of $V$.
+\begin{enumerate}
+\item[(a)] $\gen{S}_R = M \overset{3.2.13 (a)}{\implies} \gen{j_M(S)}_F = D\inv M = V$. Basic linear algebra tells us that
+	\[|S| = |j_M(S)| \geq |j_M(B)| = |B| \]
+\item[(b)] $S$ being $R$-linearly independent $\implies j_M(S)$ is $F$-linearly independent $\overset{\tn{linear algebra}}{\implies} |S| = |j_M(S)| \leq |j_M(B) = |B|$.
+\item[(c)] Follows from $(a)$ and $(b)$.
+\end{enumerate}
+
+A different argument for (c) goes as follows. Index $B$ by some set $I$, i.e., $B = \{b_i \mid i \in I\}$, so that $M \cong \bigoplus_{i \in I} R$. Then
+	\[D\inv M \cong \bigoplus_{i \in I} D\inv R = \bigoplus_{i \in I} F \implies \dim_F D\inv M = \dim_F \bigoplus_{i \in I} F = |I| = |B| \]
+\end{proof}
+
+\vs
+
+\begin{remark*}
+$D\inv M \cong F \otimes_R M$ as $F$-vector spaces.
+\end{remark*}
+
+\vs
+
+Suppose that $M$ is free and $N \leq M$, so that $\rk N \leq \rk M$. Can we conclude that $N$ is free? No. If $R$ is an integral domain that is not a PID, then there exists an ideal $I \leq R$ which is not principal. Now $R$ is a free $R$-module of rank 1. $I$ is a noncyclic submodule, so any set of generators $S$ of $I$ has at least 2 generators. But any $x,y \in I$ satisfy $(-y) x + x y = 0$, so any generating set $S$ must be linearly dependent.
+
+
+
+
+\chapter{Finitely Generated Modules Over PIDs}
+
+
+
+We now specialize to  the $R$ a PID.
+
+\vs
+
+\begin{remark}
+Every nonzero ideal of $R$ is free with rank 1, and every nonzero submodule of a cyclic module is cyclic (hence rank is 1).
+\end{remark}
+
+\vs
+
+\begin{lemma}
+Let $M$ be an $R$-module (not necessarily torsion free). Let $0 \ne f \in M^*$. For all $m \in M$ with $f(M) = (f(m))$, we have $M = \ker f \oplus Rm$.
+\end{lemma}
+
+\begin{proof}
+$f(M)$ is an $R$-submodule (ideal) of $R$. Now $R$ is a PID, so there exists $a \in f(M)$ such that $f(M) = (a)$. There exists $m \in M$ such that $a = f(m) \implies f(M) = (f(m))$.
+\begin{enumerate}
+\item[$\bullet$] $\ker f \cap Rm = \{0\}$. If $rm \in \ker f$, then $0 = f(rm) = r f(m) = ra \implies r = 0$.
+\item[$\bullet$] $\ker f + Rm = M$. If $x \in M$, then $f(x) \in f(M) = (f(m))$, so there exists $r \in R$ such that $f(x) = r f(m) = f(rm)$. Thus $0 = f(x - rm) \implies x \in \ker f + Rm$.
+\end{enumerate}
+\end{proof}
+
+\vs
+
+\begin{proposition}
+If $M$ is a finitely generated free $R$-module and $N$ is a submodule of $M$, then $N$ is free.
+\end{proposition}
+
+\begin{proof}
+We proceed by induction on $n = \rk M$. For $n = 1$, see Remark 3.3.1. Suppose that $B = \{e_1,\dots,e_n\}$ is a basis of $M$. Define the surjective homomorphism $f : M \ra R, \sum_{i=1}^n r_i m_i \mapsto m_1$. By $3.3.2$, $M = \ker f \oplus re_1$, since $f(M) = R = (1) = (f(e_1))$. Note that $\ker f = \{e_2,\dots,e_n\}$ is a free $R$-module of rank $n-1$. \\
+
+If $f|_N = 0$, then $N \sub \ker f \implies N$ is free by the induction hypothesis. If $f|_N \ne 0$, then $f(N) = f(y)$ for some $y \in N$ with $f(y) \ne 0 \implies y \ne 0$. By 3.3.2,
+	\[ N = \ker f|_N \oplus Ry = (\ker f \cap N) \oplus Ry \tag{$\ast$} \]
+By applying the induction hypothesis to $\ker f$, we get that $\ker f \cap N \leq \ker f$ is free, say with basis $\{y_2,\dots,y_m\} \implies \{y,y_2,\dots,y_m\}$ is a basis of $N$ by $(\ast)$.
+\end{proof}
+
+\vs
+
+\begin{remark}
+If $M$ is any free $R$-module, then so is any submodule ($R$ is a PID). For a proof of this fact, see Rotman's \emph{Advanced Modern Algebra} Theorem 9.8 on page 650.
+\end{remark}
+
+\vs
+
+Recall that a commutative ring $R$ is \tb{Noetherian} iff every ideal of $R$ is finitely generated iff $R$ satisfies the ascending chain condition on ideals iff any nonempty set of ideals of $R$ has a maximal element. In particular, any PID is Noetherian.
+
+\vs
+
+\begin{theorem}[Compatible Basis Theorem]
+Let $M$ be a free $R$-module ($R$ a PID) of finite rank $n$ and let $N$ be a submodule of $M$. Then there is a basis $B = \{x_1,x_2,\dots,x_n\}$ of $M$, an integer $0 \leq m \leq n$, and elements $a_1,a_2\dots,a_m \in R \bs \{0\}$ with $a_1 \mid a_2 \mid \dots \mid a_m$ such that $\{a_1x_1,a_2x_2,\dots,a_mx_m\}$ is a basis of $N$.
+\end{theorem}
+
+\begin{proof}
+We prove the claim by induction on $n = \rk M$. We assume without loss of generality that $N \ne \{0\}$. For the base case $n = 1$, see 3.3.1. Consider $\Sigma := \{f(N) \mid f \in M^*\}$, a set of ideals of $R$ containing $(0)$. But $\Sigma \ne \{(0)\}$. Indeed, pick any basis $B_0 = \{e_1,\dots,e_n\}$ of $M$ and define the "projection" $\pi_i \in M^*$ by $\pi_i(\sum_{j=1}^n r_j e_j) = e_i$ for $1 \leq i \leq n$. For at least one $i$, we must have $\pi_i(N) \ne \{0\}$ since $N \ne \{0\}$. Now, because $R$ is a PID and hence Noetherian, $\Sigma$ must have a maximal element $I \ne (0)$. Now $R$ a PID $\implies I = (a_1)$ for some $a_1 \in R \bs \{0\}$. Now $I \in \Sigma$, so there exists $y_1 \in N$ and $f_1 \in M^*$ with $f(y_1) = a_1$. By 3.3.2, $N = \ker f_1 \oplus Ry_1 (\ast)$. \\
+
+We claim that $a_1 \mid f(y_1)$ for all $f \in M^*$. Let $f \in M^*$. Now $(a_1,f(y_1)) = (d)$ for some $d \in R$, hence there exist $r,s \in R$ such that
+	\begin{align*}
+	d &= ra_1 + s f(y_1) = r f_1(y_1) + s f(y_1) = (rf_1 + sf)(y_1) = f'(y_1) \\
+	\implies I &= (a_1) \sub (d) = (f'(y_1)) \sub f'(N) \in \Sigma,
+	\end{align*}
+where $f' = rf_1 + sf \in M^*$. But $I$ is maximal in $\Sigma$, so we must have $I = f'(N)$ $\implies (a_1) = (d) = (a_1,f(y_1)) \implies $ $f(y_1) \in (a_1) \implies a \mid f(y_1)$. \\
+
+The consequence of this fact is that there exists $x_1 \in M$ with $y_1 = a_1 x_1$. Indeed, write $y_1 = \sum_{i=1}^n r_i e_i$, so that $r_i = \pi_i(y_1)$ for each $1 \leq i \leq n$. Then, by the claim, $a_1 \mid r_i \implies$ there exists $b_i \in R$ with $r_i = b_i a_1 $ $\implies y_1 = a_1 \sum_{i=1}^n b_i e_i = a_1 x_1$, where $x_1 = \sum_{i=1}^n b_i e_i$. Then
+	\begin{align*}
+	a_1 &= f_1(y_1) = f_1(a_1x_1) = a_1 f_1(x_1) \\
+	\implies 1 &= f_1(x_1) \\
+	\implies R &= f_1(M) = (f_1(x_1)) \\
+	\overset{3.3.2}{\implies} M &= \ker f_1 \oplus R x_1 \tag{$\ast \ast$}
+	\end{align*}
+Now $\ker f_1 \leq M \implies \ker f_1$ is free by 3.3.3, and $\rk(\ker f_1) = \rk M - 1 = n-1$ by 3.2.12(b). We apply the induction hypothesis to $\ker f_1 \cap N \leq \ker f_1$ to find a basis $\{x_2,x_3,\dots,x_n\}$ of $\ker f_1$, an integer $2 \leq m \leq n$, and elements $a_2,a_3,\dots,a_m \in R \bs \{0\}$ with $a_2 \mid a_3 \mid \dots \mid a_m$ such that $\{a_2x_2,\dots,a_mx_m\}$ is a basis of $\ker f_1 \cap N$. But then $\{a_1,x_1,\dots,a_m,x_m\}$ is a basis of $N$ by observing $(\ast)$ and $\{x_1,x_2,\dots,x_n\}$ is a basis of $M$ by $(\ast \ast)$. \\
+
+It remains to check that $a_1 \mid a_2$. Consider $f \in M^*$ defined by $f(\sum_{i=1}^n r_i x_i) = r_1 + r_2$. Then $f(y_1) = (f(a_1x_1) = a_1$ and $f(a_2 x_2) = a_2$, so $I = (a_1) \sub (a_1,a_2) \sub f(N) \in \Sigma$, and $I$ is maximal in $\Sigma$, hence $(a_1) = (a_1,a_2) \implies a_2 \in (a_1) \implies a_1 \mid a_2$.
+\end{proof}
+
+\newpage
+
+\begin{theorem}[Structure of Finitely Generated Modules Over PIDs]
+For a finitely generated $R$-module $M$ ($R$ a PID), the following hold
+\begin{enumerate}
+\item[(a)] There exists a free submodule $M_0$ of $M$ with $\rk M_0 = \rk M$ such that $M = T(M) \oplus M_0$.
+\item[(b)] If $M$ is torsion free, then $M$ is free.
+\item[(c)] There exist elements $a_1,a_2,\dots,a_m \in R\bs(R\x \cup \{0\})$ with $a_1 \mid a_2 \mid \dots \mid a_m$ such that
+	\[T(M) \cong \bigoplus_{i=1}^m R/(a_i) \]
+\item[(d)] $M$ is a finite direct sum of cyclic modules.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Choose a set $S = \{m_1,\dots,m_n\}$ which generates $M$. There is a unique linear map $\phi : R^n \ra M$ satisfying $\phi(e_i) = m_i$ for all $1 \leq i \leq n$. Hence $M \cong R^n/N$, where $N := \ker \phi$, by 3.1.9. By 3.3.5, there is a basis $B = \{x_1,\dots,x_n\}$ of $R^n$, an integer $0 \leq m \leq n$, and elements $a_1,\dots,a_m \in R \bs \{0\}$ with $a_1 \mid a_2 \mid \dots \mid a_m$ such that $\{a_1x_1,\dots,a_mx_M\}$ is a basis of $N$. Then
+	\[M \cong R^n/N = \bigoplus_{i=1}^n Rx_i/\bigoplus_{i=1}^m Ra_ix_i \cong \bigoplus_{i=1}^m \frac{Rx_i}{Ra_ix_i} \oplus \bigoplus_{i=m+1}^n Rx_i \cong \bigoplus_{i=1}^m R/(a_i) \oplus R^{n-m} \]
+If $a_i \in R\x$, then $R/(a_i) = \{0\}$, so we can omit this summand. We may therefore assume (renumbering, if necessary) that $a_i \in R \bs (R\x \cup \{0\})$. In summary, we have shown that there exists an isomorphism $\psi : M' := \bigoplus_{i=1}^m R/(a_i) \oplus R^{n-m} \ra M$. Note that $\bigoplus_{i=1}^n R/(a_i)$ is the torsion submodule of $M'$ (annihilated by $a_m$). Setting $M_0' = R^{n-m}$, we have that
+	\[M' = T(M') \oplus M_0' \implies M = \psi(T(M') \oplus M_0') = \psi(T(M')) \oplus \psi(M_0') = T(M) + M_0, \]
+where $M_0 := \psi(M_0')$ is free. It follows from 3.2.12 (b) that $\rk M = \rk T(M) + \rk M_0 = 0 + \rk M_0$. This proves (a), (b), (c), and (d).
+\end{proof}
+
+\vs
+
+\begin{remark}\
+\begin{enumerate}
+\item[(a)] $M$ determines $T(M)$ uniquely but not the complement $M_0$ of $T(M)$. For example, consider \[ \z_n \oplus \z \tn{ (external direct sum) } = \z_n \oplus \z(\ov{1},1) \tn{ (internal direct sum)} \]
+\item[(b)] If $M  T(M) \oplus M_0'$, then $M_0' \cong M/T(M) \cong M_0$, so also $M_0'$ is free of rank $\rk M$.
+
+\item[(c)] If $R$ is Noetherian and $M$ is a finitely generated $R$-module, then any submodule of $M$ is again finitely generated, but $N$ might require \emph{more} generators than $M$. This is, however, not the case for $R$ a $PID$ (exercise).
+
+\item[(d)] The implication "torsion free $\implies$ free" is not true for non-finitely generated $R$-modules. For example, take $M = \Q$ or $M = \prod_{n \in \N} \z$ as a $\z$-module.
+\end{enumerate}
+\end{remark}
 \end{document}
