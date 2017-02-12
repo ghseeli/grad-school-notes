@@ -558,12 +558,9 @@ CW complexes are like a space built by gluing together balls.
   A \de{CW complex} is a space $X$ which is a union of
   $X_0 \subset X_1 \subset \subset \subset$ such that $X_n$ is
   constructed from $X_{n-1}$ by taking
-  $X_{n-1} \dunion_{\alpha} D_{\alpha}^n$ modulo identifying (( --> he
-  might have meant $S^n$ here.  i think the point is that he meant
-  $\d D^n$)) $\phi_\alpha \colon S_\alpha^{n-1} \to X_{n-1}$.  $X_n$
-  is called $n$-Skeleton.  $X ~ \phi_\alpha$.
+  $X_{n-1} \dunion_{\alpha} D_{\alpha}^n$ modulo identifying $\phi_\alpha \colon S_\alpha^{n-1} \to X_{n-1}$ with $\d D_\alpha^n$.  Note that we are not attaching a $D^n$ to every possible image of $S^{n-1}$, but rather we get to choose which ones we want.
 
-  with topology s.t. $A$ is open iff $A \cap X_n$ is open for all $n$.
+  $X_n$ is called the \de{$n$-skeleton}.  $X$ has topology s.t. $A$ is open iff $A \cap X_n$ is open for all $n$.
 \end{defn}
 \begin{example}
   $S^n = D^{n-1}/\text{boundary}$ all goes to one point.  $X_0 =$
