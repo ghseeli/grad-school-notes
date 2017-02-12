@@ -443,28 +443,32 @@ $h \of illegible$.
 \end{proof}
 
 
-\mydate{d5}{3}{1}{2017}
+\mydate{d5}{1}{2}{2017}
 
 The fundamental group may be used as a topological invariant. Yielding
 an easy proof of the fundamental theorem of algebra.
 
 \begin{thm}
   Every polynomial \(p\) over \(\C\) of degree \(d\) admits \(d\)
-  zeros (up to multiplicity).
+  zeros (including multiplicity).
 \end{thm}
 
-\begin{thm}[In words Van Kampen's Theorem ]
-  If \(X= \bigcup{n=1}^n {A_i}\) where each \(A_i \subset X\) is open.
+\begin{thm}[Inwards Van Kampen's Theorem]
+  If \(X= \bigcup_{i=1}^n {A_i}\) where each \(A_i \subset X\) is open, then
   \begin{enumerate}[label=(\alph*)]
-  \item Any path in \(X\) may be written as a composition of paths
-    each of which is in \(A_i\).
-  \item Any homotopic paths in \(X\) are homotopic via a composition
-    of homotopies, each of which are constant everywhere but one
-    \(A_i\) (the \(i\) changes for the different homotopies).
+    \item Any path in \(X\) may be written as a composition of paths
+      each of which is in \(A_i\) for some \(i\).
+    \item Any homotopic paths in \(X\) are homotopic via a composition
+      of homotopies, each of which are constant everywhere but one
+      \(A_i\) (the \(i\) changes for the different homotopies).
   \end{enumerate}
 \end{thm}
 
-We now investigate the in which \(X=A \cup B\) where \(A,B\) are open sets. In particular Van Kampen's Theorem yields the pushout
+Consider the $n=2$ case, where \(X=A \cup B\) and \(A,B\) are open sets. In particular Van Kampen's Theorem yields the pushout
+
+\begin{rmk}
+  There is a ``full'' version of Van Kempen's Theorem in Hatcher, which talks about describing the fundamental group of $X$ as the free product of the fundamental groups of the $A$'s modded out by something normal.
+\end{rmk}
 
 \begin{center}
   \begin{tikzcd}
@@ -517,7 +521,7 @@ We now investigate the in which \(X=A \cup B\) where \(A,B\) are open sets. In p
   So $A \cap B = \R^3 \minus (A' \union B')$.
   $\fund(A \cap B) \isom F_{2m}$
 
-  ((do we invoke Van Kampbell's theorem here?))
+  ((do we invoke Van Kampen's theorem here?))
 
   \includegraphics[scale=0.2]{images/mountains.jpg}
 
@@ -579,23 +583,22 @@ CW complexes are like a space built by gluing together balls.
 \mydate{d7}{6}{2}{2017}
 
 We wish to show how \(\R P^n\) is a \(CW\)-complex. First let the
-\(n-1\) skeleton be \(\R P^{n-1}\). We add the \(n\) cell \(D^n\) to
+\(n-1\)-skeleton be \(\R P^{n-1}\). We add the \(n\)-cell \(D^n\) to the
 structure under the gluing map \(S^{n} \to \R P^{n-1}\) where
 antipodal points are identified. By induction this gives us a
 \(CW\)-complex structure.
 
 \begin{example}[Something that does not admit a \(CW\) structure]
   The topological space known as the \emph{Hawaiian earring} is
-  constructed as follows for each \(n \in \Z\) consider the circle of
-  radius \(1/n\) tangent to the \(y\)-axis. All of these circles
-  together with the subspace topology yield a topological space, call
-  it \(X\).
+  constructed as follows.  For each \(n \in \N^{> 0}\) consider the circle of
+  radius \(1/n\) tangent to the \(y\)-axis inside the space \(R^2\). All of these circles
+  together with the subspace topology yield a topological space \(X\).
 
-  The only hope for putting a \(CW\) structure on this pace would be
+  The only hope for putting a \(CW\)-structure on this space would be
   to consider one \(0\)-cell along with a countable amount of
-  \(1\)-cells. However recall that the \(CW\)-structure gain their
+  \(1\)-cells. However, recall that \(CW\)-structures gain their
   topology through the quotient topology, that is, \(\mathcal{O}\) is
-  open in \(X\) if and only if \(q^{-1}(X)\) is open, where \(q\) is
+  open in \(X\) if and only if \(q^{-1}(\mathcal{O})\) is open, where \(q\) is
   the glueing map. However any open set centered at the origin
   contains an infinite amount of balls, and thus no such
   \(CW\)-structure may be imposed.
@@ -614,7 +617,7 @@ To compute \(\pi_1\) of the torus one can first decompose it as a
 \end{align*}
 
 Then we have that \(\pi_1(T^2) = \pi_1(X_1)/\pi_1(A \cap B)\) where
-\(A\) is the boundary of the a square and \(B\) is a smaller square
+\(B\) is the thickening of the boundary of the square (the square with edges identified to represent the torus) and \(A\) is the thickening of a smaller square
 inside of it. \(A\) is clearly contractible.
 
 When talking about moding out by the fundamental group we are really
