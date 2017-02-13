@@ -8,7 +8,10 @@
 \newcommand{\F}{\mathcal{F}}
 \newcommand{\Ep}{\mathcal{E}}
 \newcommand{\Top}{\mathcal{T}}
-%%%%%%%%%%%%%% BEGIN CONTENT: %%%%%%%%%%%%%%
+
+\renewcommand{\emptyset}{\varnothing}
+
+%%%%%%%%%%%%%%BEGIN CONTENT: %%%%%%%%%%%%%%
 
 \title[Real Analysis]{Real Analysis}
 \author{George H. Seelinger (inspired from class by Abdelmalek Abdesselam)}
@@ -573,4 +576,374 @@ even $a \in \Q$. So, we have a reduction that $\B_\R = \M(\{(a,b] \mid
     elements in $\Ep$.
   \end{enumerate}
 \end{defn}
+\subsection*{(1/30/2017) Lecture 4}
+\subsection{Measures}
+Now that we have delved into a measurable space, we want to define a
+``measure'' on this space. In general, we want measures to behave
+similar to our intuition for how $n$-dimensional volume would
+behave. The definition of measure takes into account a few of these intuitions.
+\begin{defn}
+  Given a measurable space $(X,\M)$, a \de{measure} $\mu$ on this
+  measurable space is a function $\mu: \M \to [0,\infty]$ such that
+  \begin{enumerate}
+  \item $\mu(\emptyset) = 0$
+  \item ($\sigma$-additivity.) For all sequences $(E_n)_{n \geq 1}$ of
+    disjoint sets in $\M$, we get that \[
+      \mu(\bigcup_{n \geq 1} E_n) = \sum_{n=1}^\infty \mu(E_n)
+    \]
+  \end{enumerate}
+\end{defn}
+We note that the notation $[0,\infty]$ here is intentional. We can
+think of $\R = (-\infty,\infty)$ and $\ov{\R} = [-\infty,\infty]$
+where $\ov{R}$ is a metric space. In fact, we can define the metric
+$\phi: \ov{\R} \to [-1,1]$ as follows \[
+  x \mapsto
+  \begin{cases}
+    \frac{2}{\pi} \arctan x \text{ if } x \in \R \\
+    1 \text{ if } x = \infty \\
+    -1 \text{ if } x = -\infty
+  \end{cases}
+\]
+We can then put a subspace topology on $\R \subset \ov{\R}$, but this is
+equivalent to the standard topology on $\R$.
+\begin{example}
+  Take $(a_n)_{n \geq 1}$ with $a_n \in \ov{R}$. Then, $\lim_{n \to \infty} a_n =
+  \infty$ means that, for all $A > 0$, there exists an $N > 0$ such
+  that, for all $n \geq N$, $a_n \geq A$ traditionally, but this same
+  definition would let the limit go to $\infty \in \ov{\R}$ with the
+  new structure.
+\end{example}
+After that digression, let us return to our discussion of measures.
+\begin{defn}
+  Let $X \neq \emptyset$ and $\M = \P(X)$. Given a function $f: X \to
+  [0,\infty]$, one would like to define the \de{weighted counting measure} as given by \[
+    \mu(E) = \sum_{x \in E} f(x),
+  \]
+  but this is undefined when $E$ is uncountable. So, we amend our
+  definition by noting that \[
+    \sum_{x \in E} f(x) = \sup_{\text{finite } F \subset E} \sum_{x \in
+    F} f(x).
+\]
+  Here, sup is well-defined since $[0,\infty]$ is totally ordered. We
+  note that,
+  in particular, $\mu(\{x\}) = f(x)$ for $x \in X$.
+\end{defn}
+\begin{rmk}
+We note that for $a \in [0,\infty]$, we have the relations that
+\begin{itemize}
+\item $a + \infty = \infty$,
+\item $a \infty = \infty$ if $a \neq 0$,
+\item and $0 \infty = 0$.
+\end{itemize}  
+\end{rmk}
+It is left as an exercise to the reader to show that $\mu$ is actually
+a measure.
+\begin{defn}
+  Given the weighted counting measure with $f(x) = 1$, we say $\mu$ is
+  the \de{counting measure}. In particular
+\[  
+    \mu(E) =
+    \begin{cases}
+      \text{\# of elements in }E&\text{if }E\text{ is finite} \\
+      \infty&\text{if }E\text{ is infinite.}
+    \end{cases}
+  \]
+\end{defn}
+\begin{defn}
+  The \de{Dirac measure} at $x_0 \in X$ is given by taking the
+  weighted counting measure with \[
+    f(x) =
+    \begin{cases}
+      1 & \text{if } x = x_0 \\
+      0 & \text{if } x \neq x_0
+    \end{cases}
+  \]
+  This has the natural consequence that $\mu(E) = 1$ if $x_0 \in E$,
+  otherwise it is 0.
+\end{defn}
+\begin{defn}
+  Given a measure $\mu$, we say $\mu$ is a
+  \begin{itemize}
+  \item \de{finite measure} if and only if $\mu(X) < \infty$
+  \item \de{$\sigma$-finite measure} if there exists a sequences of
+    subsets $(X_n)_{n \geq 1}$ such that $X = \bigcup_{n \geq 1} X_n$
+    and for all $n$, $\mu(X_n) < \infty$.
+  \item \de{probability measure} if and only if $\mu(X) = 1$.
+  \end{itemize}
+\end{defn}
+\begin{example}
+  Let $X = \{0,1\}^n$. If we take the weighted counting measure with
+  $f(x) = \frac{1}{2^n}$, we get a probability measure.
+\end{example}
+\begin{thm}
+  Given a measure space $(X,\M,\mu)$, we get that
+  \begin{enumerate}
+  \item (Finite additivity.) If $E_1, \ldots, E_n \in \M$ all disjoint,
+    then $\mu(\bigcup_{i=1}^n E_i) = \sum_{i = 1}^n \mu(E_i)$.
+  \item (Monotonicity.) If $E,F \in \M$, then $E \subset F \ \implies
+    \ \mu(E) \leq \mu(F)$.
+  \item (Subadditivity.) For all sequences $(E_n)_{n \geq 1}$ in
+    $\M$ \[
+      \mu\left( \bigcup_{n \geq 1} E_n \right) \geq \sum_{n \geq 1} \mu(E_n)
+    \]
+  \item (Continuity from below.) Given $E_i \in \M$, if $E_1 \subset
+    E_2 \subset \cdots$, 
+    then \[
+      \mu(\bigcup_{n \geq 1} E_n) = \lim_{n \to \infty} \mu(E_n).
+    \]
+  \item (Continuity from above.) Given $E_i \in \M$, if  $E_1 \supset
+    E_2 \supset \cdots$ and there exists an $n$ such that $\mu(E_n) <
+    \infty$, 
+    then \[
+      \mu(\bigcap_{n \geq 1} E_n) = \lim_{n \to \infty} \mu(E_n).
+    \]
+  \end{enumerate}
+\end{thm}
+\begin{example}[Counter-example]
+  To see why the condition $\mu(E_n) < \infty$ is necessary for
+  continuity from above, consider $X = \N$ with the counting measure
+  and $E_n = \{n,n+1,\ldots\}$. Then, the left hand side is
+  $\mu(\bigcup E_n) = \mu(\emptyset) = 0$, but the right hand side is
+  $\lim_{n \to \infty} \mu(E_n) = \lim_{n \to \infty} \infty =
+  \infty$. 
+\end{example}
+\begin{proof}
+  \begin{enumerate}
+  \item Given $E_1, \ldots, E_n$ disjoint, we introduce $\emptyset =
+    E_{n+1} = E_{n+2} = \cdots$. Now, we have an infinite sequence of
+    disjoint sets such that \[
+      \mu(E_1 \cup \cdots \cup E_n) = \mu(\bigcup_{j \geq 1} E_j) =
+      \sum_{j = 1}^\infty \mu(E_j) = \mu(E_1) + \cdots + \mu(E_n)
+    \]
+  \item Follows immediately from above. If $E \subset F$, then $F$ is
+    a disjoint union of $E$ and $F \setminus E$. Thus \[
+      \mu(F) = \mu(E) + \mu(F \setminus E) \geq \mu(E)
+    \]
+    since $\mu(F \setminus E) \geq 0$.
+  \item Let $(E_n)_{n \geq 1}$ be a sequence in $\M$. We introduce a
+    new sequence $(H_n)$ such that
+    \begin{align*}
+      H_1 & = E_1 \\
+      H_2 & = E_1 \cup E_2 \\
+      \cdots & \\
+      H_n & = \bigcup_{j=1}^n E_j
+    \end{align*}
+    and then another sequence $(F_n)$ such that $F_n = H_n \setminus
+    H_{n-1}$. We claim that the $F_n's$ are disjoint and, for all $n >
+    0$, \[
+      E_1 \cup \cdots \cup E_n = F_1 \cup \cdots \cup F_n = H_n.
+    \]
+    Moreover, $\bigcup_{i=1}^\infty E_i = \bigcup_{i=1}^\infty
+    F_i$. Thus,
+    \[
+      \mu(\bigcup_{n \geq 1} E_n) = \mu(\bigcup_{n \geq 1} F_n) =
+      \sum_{n=1}^\infty \mu(F_n)
+    \]
+    where the last equality follows from the fact that the $F_n$'s are
+    disjoint and $\sigma$-additivity. However, since $F_n \subset
+    E_n$, we get that \[
+      \mu(\bigcup_{n \geq 1} E_n) = 
+      \sum_{n=1}^\infty \mu(F_n) \leq \sum_{n=1}^\infty \mu(E_n).
+    \]
+  \item Consider $E_1 \subset E_2 \subset \cdots$. Using the same
+    trick as above with $F_n = E_n \setminus E_{n-1}$ (note here $H_n
+    = E_n$), we get that \[
+      \mu\left(\bigcup_{n \geq 1} E_n\right) = \mu\left( \bigcup_{n
+          \geq 1} F_n \right) = \sum_{n \geq 1} \mu(F_n) = \lim_{n \to
+      \infty} \sum_{j=1}^n \mu(F_j) = \lim_{n \to \infty} \mu(F_1 \cup
+    \cdots \cup F_n)
+\]
+where the last equality follows from the fact that $F_1 \cup \cdots
+\cup F_n = E_n$.
+  \item Using complements in $E_1$ and the property above, consider $E_1
+    \subset E_2 \subset \cdots$. Let $K_1 = \emptyset$, $K_2 = E_1
+    \setminus E_2$, $K_3 = E_1 \setminus E_3$, etc. In other words
+    $K_n = E_n^c$. Then $K_n$ is an increasing nested sequence ($K_n
+    \subset K_{n+1}$). So, we get that
+    \begin{align*}
+      \mu\left( \bigcup_{n \geq 1} E_n \right) & = \mu\left( E_1
+                                                 \setminus \left(
+                                                 \bigcup_{n \geq 1}
+                                                 K_n \right) \right)\\
+& = \mu(E_1) - \mu\left( \bigcup_{n \geq 1} K_n \right) & \text{
+                                                          because
+                                                          these sets
+                                                          are
+                                                          finite.}\\
+& = \mu(E_1) - \lim_{n \to \infty} \mu(K_n) & \text{by continuity from
+                                              below.} \\
+& = \lim_{n \geq \infty} \left[ \mu(E_1) - \mu(K_n) \right] & \text{
+                                                              because
+                                                              }K_n\text{
+                                                              is a
+                                                              bounded
+                                                              sequence.}\\
+      & = \lim_{n \geq \infty} E_n&
+    \end{align*}
+
+  \end{enumerate}
+\end{proof}
+\begin{rmk}
+  With the definition of + on $[0,\infty)$, we have $a+c = b+c \
+  \implies a=b$ if $c \neq \infty$. Otherwise, this need not be true.
+\end{rmk}
+\begin{defn}
+  $E \in \M$ is called a \de{null set} if and only if $\mu(E) = 0$.
+\end{defn}
+\begin{defn}
+  Suppose $P(x)$ is a logical predicate dependent on $x \in X \in (X,
+  \M, \mu)$. We say $P(x)$ is true \de{$\mu$-almost everywhere} if and
+  only if there exists $E \in \M$ a null set such that $\neg P(x) 
+  \implies  x \in E$. 
+\end{defn}
+\begin{rmk}
+  We note that $\{x \in X \mid P(x) \text{ is false}\} \subset E$ with
+  $E \subset \M$ such that $\mu(E) = 0$. 
+\end{rmk}
+\begin{defn}
+  A measure space $(X,\M,\mu)$ is called a \de{complete measure space}
+  if and only if every subset of a null set is contained in $\M$. 
+\end{defn}
+\begin{rmk}
+  This implies that the measure of any such set would be 0.
+\end{rmk}
+\begin{thm}
+  Let $(X,\M,\mu)$ be a measure space. Furthermore, let \[
+    \ov{\M} = \{E \cup F \mid E \in \M, \exists Z \in \M \text{ with }
+    \mu(Z) = 0 \text{ and } F \subset Z\}.
+  \]
+  Then, $\ov{M}$ is the $\sigma$-algebra on $X$ containing $\M$ and
+  there exists a unique $\ov{\mu}$ extending $\mu$ from $\M \to
+  \ov{M}$ such that $(X,\ov{M},\ov{\mu})$ is complete.
+\end{thm}
+\begin{proof}
+  Given such a complete space, we get that $\emptyset = \emptyset \cup
+  \emptyset$. Since $\emptyset \in \M$  and $\emptyset \subset
+  \emptyset \subset \M$ with $\mu(\emptyset) = 0$, we get $\emptyset
+  \in \ov{M}$. \\
+
+  Now, let $E \cup F \in \M$ where $F \subset Z$ with $Z$
+  null. Then,
+  \begin{align*}
+    (E \cup F)^c & = E^c \cap F^c \\
+                 & = E^c \cap \left( (F^c \setminus Z^c) \cup Z^c \right) \\
+    & = \left( E^c \cap (F^c \setminus Z^c) \right) \cup (E \cap Z^c)
+    \\
+    & = \left( E^c \cap (Z \setminus F) \right) \cup (E \cap Z^c)
+  \end{align*}
+  and since $Z \setminus F \subset Z$, we are done.
+\end{proof}
+\subsection*{(1/31/2017) Lecture 5}
+\subsection{Outer Measures}
+We have proven a decent amount about measures, but we still have not
+developed general purpose tools for creating many measures beyond the
+weighted counting measure. The outer measure is the first building
+block we will introduce that helps us define more measures.
+\begin{defn}
+  An \de{outer measure} on a set $X$ is a function $\mu^* \colon \P(X)
+  \to [0,\infty]$ such that
+  \begin{enumerate}
+  \item $\mu^*(\emptyset) = 0$,
+  \item $\mu^*(A) \leq \mu^*(B)$ if $A \subset B$,
+  \item $\mu^*(\bigcup_{j=1}^\infty A_j) \leq \sum_{j=1}^\infty
+    \mu^*(A_j)$ for all $A_j \subset X$. 
+  \end{enumerate}
+\end{defn}
+Notice that this is not quite a measure since it fails
+$\sigma$-additivity.
+\begin{thm}\label{outer-measure-space}
+  Let $\Ep \subset \P(X)$ such that $\emptyset, X \in \Ep$. Let $\rho
+  \colon \Ep \to [0,\infty]$ such that $\rho(\emptyset) = 0$. Now,
+  define for all $A \subset X$ \[
+    \mu^*(A) = \inf \left\{ \sum_{j=1}^\infty \rho(E_j) \mid (\forall
+      j, E_j \in \Ep), A \subset \bigcup_{j=1}^\infty E_j \right\}.
+  \]
+  Then, $\mu^*$ is an outer measure.
+\end{thm}
+\begin{proof}
+  First, we note that $\mu^*$ exists because there exists an $\inf(V)$
+  for all $V \subset [0,\infty]$.
+  \begin{enumerate}
+  \item Take $E_1 = E_2 = \cdots = \emptyset \in \Ep$. Then,
+    $\mu^*(\emptyset) \leq \sum_{j=1}^\infty \rho(E_j) = 0$.
+  \item Let $A \subset B$ and $E_j \in \Ep$ such that $A \subset B
+    \subset \bigcup E_j$. Then, $\mu^*(A) \leq \sum_{j=1}^\infty \rho
+    (E_j)$. So, if we take the inf over $E_j$, we get that $\mu^*(A)
+    \leq \mu^*(B)$.
+  \item Let $(A_n)_{n \in \N}$ with $A_n \subset X$. Let us take the
+    case that the right hand side of the inequality we want to prove
+    is $\infty$. Then, this is true by default. So, let us assume that
+    the right hand side is less than $\infty$ and let $\epsilon > 0$
+    be finite. Then $\epsilon = \sum_{n=1}^\infty 2^{-n} \epsilon$ by
+    the definition of inf. Then, for all $n \geq 1$, there exists a
+    sequence $(E_{n,j})_{j \geq 1}$ of elements in $\Ep$ such that
+    $A_n \subset \bigcup_{j \geq 1} E_{n,j}$. This gives us \[
+      \sum_{j \geq 1} \rho(E_{n,j}) \leq \mu^*(A_n) + 2^{-n} \epsilon.
+    \]
+    Now, collect $(E_{n_j})_{(n,j) \in \N^2}$ and
+    $\bigcup_{n=1}^\infty A_n \subset \bigcup_{(n,j \in
+      \N^2)}E_{n,j}$. Then, by the definition of $\mu^*$, we get that
+    \begin{align*}
+      \mu^*\left( \bigcup_{n=1}^\infty A_n \right) & \leq \sum_{n,j}
+                                                     \rho(E_{n,j}) \\
+      & = \sum_{n = 1}^\infty \left( \sum_{j=1}^\infty \rho(E_{n,j})
+        \right) \\
+      & \leq \sum_{n=1}^\infty \left( \mu^*(A_n) + 2^{-n} \epsilon
+        \right) \\
+      & \leq \left( \sum_{n=1}^\infty \mu^*(A_n) \right) + \left(
+        \sum_{n=1}^\infty 2^{-n} \epsilon \right)
+    \end{align*}
+    Since $\epsilon$ is arbitrary, we get that \[
+      \mu^*\left( \bigcup_{n \geq 1} A_n \right) \leq
+      \sum_{n=1}^\infty \mu^*(A_n)
+    \]
+  \end{enumerate}
+\end{proof}
+We now move on to a key definition.
+\begin{defn}[Caratheodory]
+  Let $\mu^*$ be an outer measure on $X$. A subset $A \subset X$ is
+  called \de{$\mu^*$-measurable} if and only if, for all $E \subset
+  X$, we get \[
+    \mu^*(E) = \mu^*(E \cap A) + \mu^*(E \cap A^c)
+  \]
+\end{defn}
+\begin{thm}[Caratheodory]\label{caratheodory}
+  If $\mu^*$ is an outer measure on $X$ and \[
+    \M := \{\mu^*\text{-measureable subsets of }X\}
+  \]
+  the, $\M$ is a $\sigma$-algebra and $\mu^*|_\M$is a measure, so
+  $(X,\M,\mu^*|_\M)$ is a complete measure space.
+\end{thm}
+\begin{proof}
+  The proof of this theorem is relatively straight-forward. One must
+  show that $\M$ as defined is a $\sigma$-algebra, that $\mu^*|_\M$ is
+  a measure, and that the space is complete. The proof is given on
+  pages 29--30 of Folland.
+\end{proof}
+One of the important things about Caratheodory's theorem is that it
+enables us to extend measures from algebras to $\sigma$-algebras.
+\begin{defn}
+  Let $\A$ be an algebra of sets of $X$. We say that $\mu_0 \colon A \to
+  [0,\infty]$ is a \de{premeasure} if it satisfies
+  \begin{enumerate}
+  \item $\mu_0(\emptyset) = 0$
+  \item $\mu_0(\emptyset)$ is $\sigma$-additive on $\A$, that is, for
+    all sequences $(A_n)_{n \geq 1}$ of disjoint sets in $\A$ such
+    that $\bigcup_{n=1}^\infty A_n \subset \A$, we have $\mu_0\left(
+      \bigcup_{n=0}^\infty A_n \right) = \sum_{n=1}^\infty
+    \mu_0(A_n)$. 
+  \end{enumerate}
+\end{defn}
+Now, to put these various not-quite-measures measures together, we
+note the following
+\begin{rmk}
+  Given such a premeasure $\mu_0$, take $\Ep = \A$ and $\rho =
+  \mu_0$. Then, by~\ref{outer-measure-space}, we get that $\mu^*$ is
+  an outer-measure on $X$. Then, by~\ref{caratheodory} gives us $\M$
+  is a $\sigma$-algebra of $\mu^*$-measurable sets: $\mu^*|_\M$. 
+\end{rmk}
+\begin{thm}
+  With this construction, we have that $\A \subset \M$ and $\mu^*|_\A
+  = \mu_0$.
+\end{thm}
 \end{document}
