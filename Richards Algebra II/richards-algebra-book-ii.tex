@@ -762,7 +762,7 @@ Let $V$ be the $F$-vector space $V = D\inv M$. Because $M$ is free, 3.2.8 (c) im
 \begin{enumerate}
 \item[(a)] $\gen{S}_R = M \overset{3.2.13 (a)}{\implies} \gen{j_M(S)}_F = D\inv M = V$. Basic linear algebra tells us that
 	\[|S| = |j_M(S)| \geq |j_M(B)| = |B| \]
-\item[(b)] $S$ being $R$-linearly independent $\implies j_M(S)$ is $F$-linearly independent $\overset{\tn{linear algebra}}{\implies} |S| = |j_M(S)| \leq |j_M(B) = |B|$.
+\item[(b)] $S$ being $R$-linearly independent $\implies j_M(S)$ is $F$-linearly independent $\overset{\tn{linear algebra}}{\implies} |S| = |j_M(S)| \leq |j_M(B)| = |B|$.
 \item[(c)] Follows from $(a)$ and $(b)$.
 \end{enumerate}
 
@@ -877,7 +877,7 @@ For a finitely generated $R$-module $M$ ($R$ a PID), the following hold
 \begin{proof}
 Choose a set $S = \{m_1,\dots,m_n\}$ which generates $M$. There is a unique linear map $\phi : R^n \ra M$ satisfying $\phi(e_i) = m_i$ for all $1 \leq i \leq n$. Hence $M \cong R^n/N$, where $N := \ker \phi$, by 3.1.9. By 3.3.5, there is a basis $B = \{x_1,\dots,x_n\}$ of $R^n$, an integer $0 \leq m \leq n$, and elements $a_1,\dots,a_m \in R \bs \{0\}$ with $a_1 \mid a_2 \mid \dots \mid a_m$ such that $\{a_1x_1,\dots,a_mx_M\}$ is a basis of $N$. Then
 	\[M \cong R^n/N = \bigoplus_{i=1}^n Rx_i/\bigoplus_{i=1}^m Ra_ix_i \cong \bigoplus_{i=1}^m \frac{Rx_i}{Ra_ix_i} \oplus \bigoplus_{i=m+1}^n Rx_i \cong \bigoplus_{i=1}^m R/(a_i) \oplus R^{n-m} \]
-If $a_i \in R\x$, then $R/(a_i) = \{0\}$, so we can omit this summand. We may therefore assume (renumbering, if necessary) that $a_i \in R \bs (R\x \cup \{0\})$. In summary, we have shown that there exists an isomorphism $\psi : M' := \bigoplus_{i=1}^m R/(a_i) \oplus R^{n-m} \ra M$. Note that $\bigoplus_{i=1}^n R/(a_i)$ is the torsion submodule of $M'$ (annihilated by $a_m$). Setting $M_0' = R^{n-m}$, we have that
+If $a_i \in R\x$, then $R/(a_i) = \{0\}$, so we can omit this summand. We may therefore assume (renumbering, if necessary) that $a_i \in R \bs (R\x \cup \{0\})$. In summary, we have shown that there exists an isomorphism $\psi : M' := \bigoplus_{i=1}^m R/(a_i) \oplus R^{n-m} \ra M$. Note that $\bigoplus_{i=1}^m R/(a_i)$ is the torsion submodule of $M'$ (annihilated by $a_m$). Setting $M_0' = R^{n-m}$, we have that
 	\[M' = T(M') \oplus M_0' \implies M = \psi(T(M') \oplus M_0') = \psi(T(M')) \oplus \psi(M_0') = T(M) + M_0, \]
 where $M_0 := \psi(M_0')$ is free. It follows from 3.2.12 (b) that $\rk M = \rk T(M) + \rk M_0 = 0 + \rk M_0$. This proves (a), (b), (c), and (d).
 \end{proof}
@@ -887,9 +887,9 @@ where $M_0 := \psi(M_0')$ is free. It follows from 3.2.12 (b) that $\rk M = \rk 
 \begin{remark}\
 \begin{enumerate}
 \item[(a)] $M$ determines $T(M)$ uniquely but not the complement $M_0$ of $T(M)$. For example, consider \[ \z_n \oplus \z \tn{ (external direct sum) } = \z_n \oplus \z(\ov{1},1) \tn{ (internal direct sum)} \]
-\item[(b)] If $M  T(M) \oplus M_0'$, then $M_0' \cong M/T(M) \cong M_0$, so also $M_0'$ is free of rank $\rk M$.
+\item[(b)] If $M = T(M) \oplus M_0'$, then $M_0' \cong M/T(M) \cong M_0$, so also $M_0'$ is free of rank $\rk M$.
 
-\item[(c)] If $R$ is Noetherian and $M$ is a finitely generated $R$-module, then any submodule of $M$ is again finitely generated, but $N$ might require \emph{more} generators than $M$. This is, however, not the case for $R$ a $PID$ (exercise).
+\item[(c)] If $R$ is Noetherian and $M$ is a finitely generated $R$-module, then any submodule of $M$ is again finitely generated, but $N$ might require \emph{more} generators than $M$. This is, however, not the case for $R$ a PID (exercise).
 
 \item[(d)] The implication "torsion free $\implies$ free" is not true for non-finitely generated $R$-modules. For example, take $M = \Q$ or $M = \prod_{n \in \N} \z$ as a $\z$-module.
 \end{enumerate}
