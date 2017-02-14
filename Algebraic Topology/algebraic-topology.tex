@@ -509,15 +509,22 @@ In this class, we follow the convention that \de{deformation retract} refers to 
 
 CW complexes are like a space built by gluing together balls.
 \begin{defn}
-  A \de{CW complex} is a space $X$ which is a union of $X_0 \subset X_1 \subset \subset \subset$ such that $X_n$ is constructed from $X_{n-1}$ by taking $X_{n-1} \dunion_{\alpha} D_{\alpha}^n$ modulo identifying (( --> he might have meant $S^n$ here.  i think the point is that he meant $\d D^n$)) $\phi_\alpha \colon S_\alpha^{n-1} \to X_{n-1}$.  $X_n$ is called $n$-Skeleton.  $X ~ \phi_\alpha$.
+  A \de{CW complex} is a space $X$ which is a union of
+  $X_0 \subset X_1 \subset \subset \subset$ such that $X_n$ is
+  constructed from $X_{n-1}$ by taking
+  $X_{n-1} \dunion_{\alpha} D_{\alpha}^n$ modulo identifying (( --> he
+  might have meant $S^n$ here.  i think the point is that he meant
+  $\d D^n$)) $\phi_\alpha \colon S_\alpha^{n-1} \to X_{n-1}$.  $X_n$
+  is called $n$-Skeleton.  $X ~ \phi_\alpha$.
 
   with topology s.t. $A$ is open iff $A \cap X_n$ is open for all $n$.
 \end{defn}
 \begin{example}
-  $S^n = D^{n-1}/\text{boundary}$ all goes to one point.
-  $X_0 =$ discrete set of points.  The $0$-skeleton is a point.
-  $X_1 =$ graph. (by connecting the points in $X_0$.)
-  $X_2 =$ take each cycle (can go around multiple times) in $X_1$ and glue it to the boundary of a disk (can go around multiple times).
+  $S^n = D^{n-1}/\text{boundary}$ all goes to one point.  $X_0 =$
+  discrete set of points.  The $0$-skeleton is a point.  $X_1 =$
+  graph. (by connecting the points in $X_0$.)  $X_2 =$ take each cycle
+  (can go around multiple times) in $X_1$ and glue it to the boundary
+  of a disk (can go around multiple times).
 \end{example}
 \begin{example}
   ((this example is incomplete and will be repeated next lecture))
@@ -528,19 +535,84 @@ CW complexes are like a space built by gluing together balls.
 \end{example}
 
 
-\begin{bibdiv}
-\begin{biblist}
-% THIS SHOULD BE MOVED TO A SEPARATE FILE IF IT GETS TOO CUMBERSOME
-% see http://ctan.math.utah.edu/ctan/tex-archive/macros/latex/contrib/amsrefs/amsrdoc.pdf
-  \bib{ncatlab}{webpage}{
-    title={Joyal's CatLab},
-    url={https://ncatlab.org/joyalscatlab/published/Categories},
-    accessdate={2017-02-06},
-    date={2010-05-30},
-  }
-\end{biblist}
-\end{bibdiv}
+\mydate{d12}{13}{2}{2017}
 
+Covering Spaces:
+
+One may ask what do all of the covering spaces of a given topological
+space look like. On the surface this may seem like a very hard
+problem, however using the Fundamental group it turns out this
+question has a very nice answer.
+
+Throughout this discussion we will use the homotopy lifting
+property. Next fix a cover
+
+\[\tilde{X} \xrightarrow{p} X.\]
+
+\begin{prop}
+  Given \([\alpha] \in \pi_1(X,x_0)\) we have that sending the
+  starting of a lift to the ending point is a bijection
+  \[\alpha \colon p^{-1}(x_0) \to p^{-1}(x_1).\]
+\end{prop} (this doesn't seem right)
+ 
+This gives an action of \(pi_1\) on the pre-images in the cover.
+
+Furthermore this gives us a new way of showing that \(\pi_1\) is
+non-trivial, simply show that action is non-trivial.
+
+\begin{example}
+  \(S^2 \to \R P^2\) yields \(\pi_1 \cong C_2\)
+\end{example}
+
+\begin{example}
+  \(\exp \C \to \C^\times\)
+\end{example}
+
+More generally we may consider the category of covering spaces of
+\(X\).
+
+\begin{center}
+  \begin{tabular}{l | l}
+    objects & coverings\\
+    morphisms & maps that respect coverings as follows
+  \end{tabular}
+\end{center}
+
+Given two coverings \(\tilde{X}\) and \(\tilde{\tilde{X}}\) with
+projections \(p_1\) and \(p_2\) respectively there must exist a map
+making the following diagram commute
+
+\begin{center}
+  \begin{tikzcd}
+    \tilde{X} \arrow[r,dashed] \arrow[d,"p_1",swap]& \tilde{\tilde{X}} \arrow[ld,"p_2"]\\
+    X.
+  \end{tikzcd}
+\end{center}
+
+\begin{def}
+  We say that \(X\) is semi locally simply connected (SLSC) if for all
+  \(x \in X\) there exists \(\mathcal{U}\) containing \(X\) which with
+  \(pi_1(\mathcal{U})=1\).
+\end{def}
+
+\begin{example}
+  Every \(CW\)-complex is SLSC.
+\end{example}
+
+\begin{prop}
+  \tilde{X} is connected \(\iff\) \(\pi_1\) action is transitive.
+\end{prop}
+
+\begin{bibdiv}
+  \begin{biblist}
+    % THIS SHOULD BE MOVED TO A SEPARATE FILE IF IT GETS TOO
+    % CUMBERSOME see
+    % http://ctan.math.utah.edu/ctan/tex-archive/macros/latex/contrib/amsrefs/amsrdoc.pdf
+    \bib{ncatlab}{webpage}{ title={Joyal's CatLab},
+      url={https://ncatlab.org/joyalscatlab/published/Categories},
+      accessdate={2017-02-06}, date={2010-05-30}, }
+  \end{biblist}
+\end{bibdiv}
 
 \end{document}
 
