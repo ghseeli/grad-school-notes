@@ -38,7 +38,7 @@
 \newcommand{\homotopic}{\simeq}
 \renewcommand{\epsilon}{\varepsilon}
 \renewcommand{\d}{\partial}
-\newcommand{\fund}{\pi_1}
+\newcommand{\fund}[1][1]{\pi_{#1}}
 \newcommand{\transverse}{\pitchfork}
 \newcommand{\x}{\times}
 \newcommand{\Map}{\text{Map}}
@@ -212,10 +212,10 @@ use a *partial* binary operation instead of a binary operation.
 \end{defn}
 \begin{defn}
   The \de{fundamental group of $X$ at the basepoint $x_0$}, denoted
-  $\pi_1(X, x_0)$, is the subgroupoid of the fundamental groupoid
+  $\fund(X, x_0)$, is the subgroupoid of the fundamental groupoid
   where there is exactly one object, $x_0$, and the morphisms are the
   morphisms of the fundamental groupoid that have source and target
-  $x_0$.  Another wording is to say that $\pi_1(X, x_0)$ is the full
+  $x_0$.  Another wording is to say that $\fund(X, x_0)$ is the full
   subcategory of $\Pi_1 X$ spanned by $x_0$.
 
   The elements of the group are the morphisms.  The operation is
@@ -234,21 +234,21 @@ use a *partial* binary operation instead of a binary operation.
 
 \begin{thm}[Hatcher 1.5]
   Let $X$ be a metric space and $x,x' \in X$.  If there exists
-  $p\from x \to x'$ and $[q] \in \pi_1(X,x')$, then
-  $p^{-1}qp \in \pi_1(X,x)$.  The ``conjugacy'' map that sends each $[q]$ to $[p^{-1}qp]$ is an isomorphism of fundamental groups.
+  $p\from x \to x'$ and $[q] \in \fund(X,x')$, then
+  $p^{-1}qp \in \fund(X,x)$.  The ``conjugacy'' map that sends each $[q]$ to $[p^{-1}qp]$ is an isomorphism of fundamental groups.
 \end{thm}
 \begin{thm}
   If $X$ is path connected, then for any $x_a, x_b \in X$,
-  $$\pi_1(X, x_a) \isom \pi_1(X, x_b).$$
+  $$\fund(X, x_a) \isom \fund(X, x_b).$$
 \end{thm}
 In the above situation, we can denote the fundamental
-group with $\pi_1(X)$ or $\pi_1 X$.
+group with $\fund(X)$ or $\fund X$.
 \begin{example}
   The isomorphism above is not canonical, because we could use path $p$ or $q$ to create the isomorphism, but $p$ and $q$ are not homotopic, as shown below.
 
   \includegraphics[scale=0.2]{images/isomorphism-not-canonical}
 
-  Note that $\pi_1 X$ is only well defined up to inner automorphism.  ((What does this mean?))
+  Note that $\fund X$ is only well defined up to inner automorphism.  ((What does this mean?))
 \end{example}
 \begin{defn}
   Given spaces $X, Y$ and a map $f\from X \to Y$, then the
@@ -465,27 +465,25 @@ Consider the polygon
   \label{fig:star}
 \end{figure}
 
-$X_0$ = picture
+$X_0$ = some points
 
-$X_1$ = picture ((it seems I am inconsistent with whether these are capital x's or lowercase.  Should they all be capital?  I went back and made them all capital.))
+$X_1$ = some paths attached onto those points
 
 \begin{thm}
-  If $X$ is a CW complex and $A$ a contractible subcomplex, then $X$ is \textbf{not} equal to $X/A$ (this is the quotient by the equivalence relation $x \sim x'$ iff $x = x'$ or $x, x' \in A$).
+  If $X$ is a CW complex and $A$ a contractible subcomplex, then $X$ is \textbf{not} equal to $X/A$, but $X$ \textbf{is} homotopy equivalent to $X/A$. (this is the quotient by the equivalence relation $x \sim x'$ iff $x = x'$ or $x, x' \in A$)
 \end{thm}
 
 Once we hit $X_1$, the connected components of the complex are determined.
 
 That's because for any $n$-dimensional disk where $n \geq 2$, it's boundary is connected, so that boundary must lie entirely in \textbf{one} of the connected components.
 
-In $\ref{fig:star}$, the set of connected components is $\pi_0(X_0) = \pi_0(X_1)$ ((let's make the fund command take in an optional argument, which will be the subscript of the pi))
+In $\ref{fig:star}$, the set of connected components is $\fund[0](X_0) = \fund[0](X_1)$ ((let's make the fund command take in an optional argument, which will be the subscript of the pi))
 
-If $X_0 = \{[*]\}$,
+If $X_0 = \{[*]\}$ (a single point), then $\fund(X_1) \isom F_{\text{set of 1-cells}}$
 
-$\pi_1(x_1) \isom F_{\text{set of 1-cells}}$
+$\fund\left( \frac{X_1 \union D^2}{\sim} \right) \isom \frac{\fund(B) * \fund(A)}{A \cap B} \isom \frac{\fund(X_1)}{[\phi] = 1}$, where * denotes the free group product.
 
-$\pi\left( \frac{X_1 \union D^2}{\sim} \right) \isom \frac{\fund(B) * \fund(A)}{A \cap B} \isom \frac{\fund(x_1)}{[\phi] = 1}$, where * denotes the free group product. (( i think he meant $\fund$ instead of $\pi$ at the beginning))
-
-In general, I have many gluing maps $\phi_\alpha\from S^1 \to X_1$ and I glue $D^2\alpha$ along $\phi_\alpha(S^1)$.  So $\fund(X_2) \isom \fund(X_1)/\langle[\phi_\alpha]\rangle$.  ((this one makes my head spin.  i dont get it))
+In general, I have many gluing maps $\phi_\alpha\from S^1 \to X_1$ and I glue $D^2\alpha$ along $\phi_\alpha(S^1)$.  So $\fund(X_2) \isom \fund(X_1)/\langle[\phi_\alpha]\rangle$.  So when you ``glue'' in a $D^2$, since each $D^2$ is contractible, a path along the boundary of the $D^2$ is now the identity. In other words, each $D^2$ adds a relation!  This is formalized in the following...
 
 \begin{thm}[Not to be proven]
   Every group is the fundamental group of some CW complex.  Construct as follows:
@@ -511,7 +509,7 @@ In general, I have many gluing maps $\phi_\alpha\from S^1 \to X_1$ and I glue $D
 
   $F_n \isom \fund(\#^n(S^{n-1} \x S^1)) = \fund(M \# N) \isom \fund(M) * \fund(N)$
 
-  and $\delta(S^0 \x D^n) = S^0 \x S^{n-1} - \delta(D^1 \x S^{n-1})$ ((ermm, maybe he means set subtraction)) ((what does it all mean.  surely there is an error in this line.  is delta meant to denote boundary?))
+  and $\d(S^0 \x D^n) = S^0 \x \d(D^n) = S^0 \x S^{n-1} = \d(D^1) \x S^{n-1}$
 
   Let $M$ be an $n$-manifold and $n > 3$.  Consider a non-self-intersecting loop
 
@@ -523,7 +521,7 @@ In general, I have many gluing maps $\phi_\alpha\from S^1 \to X_1$ and I glue $D
 
   <picture of cylindar> ((yeah so basically it's this proof that doesn't make sense to me at all.))
 
-  $\overset{~}{M} = M\U \dunion D^2 \x S^{n-2}$
+  $\tilde{M} = M \dunion D^2 \x S^{n-2}$
 \end{proof}
 \begin{thm}
   $\fund(X^2) \isom \fund(X)$ ((this is weird.  is $X^2$ derived from $X$ ?  Like does $X$ denote the entire CW complex, and $X^2$ just a piece of it or something?))
