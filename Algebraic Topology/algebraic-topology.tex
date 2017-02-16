@@ -460,6 +460,7 @@ In this class, we follow the convention that \de{deformation retract} refers to 
 
 Consider the polygon
 
+<<<<<<< HEAD
 \begin{figure}
   % \includegraphics{}
   \label{fig:star}
@@ -500,28 +501,56 @@ In general, I have many gluing maps $\phi_\alpha\from S^1 \to X_1$ and I glue $D
   Every finitely presented group is the fundamental group of a finite CW complex.
 \end{thm}
 \begin{thm}
-  If $n > 3$, then for any finitely presented group $G$, there exists a compact manifold $M$ s.t. $G \isom \fund(M)$.
+  If $n > 3$, then for any finitely presented group $G$, there exists
+  a compact manifold $M$ such that $G \isom \fund(M)$.
 \end{thm}
 \begin{proof}
-  If $n > 2$ and $M$ and $N$ are $n$-manifolds, then $M \# N$
+  If $n > 2$ and $M$ and $N$ are $n$-manifolds, then consider $M \#
+  N$. Recall that $\fund(M \# N) \isom \fund(M) * \fund(N)$. In
+  particular, we note that $\fund(\#^n (S^{n-1} \times S^1)) \isom
+  F_n$. 
 
   % \includegraphics{} ((that puncture-glueing thing))
 
-  $F_n \isom \fund(\#^n(S^{n-1} \x S^1)) = \fund(M \# N) \isom \fund(M) * \fund(N)$
+  Finally, note that $\d(S^0 \x D^n) = S^0 \x S^{n-1} \setminus
+  \d(D^1 \x S^{n-1})$ (If you really want, you can break these
+  previous facts into lemmas.)
 
-  and $\d(S^0 \x D^n) = S^0 \x \d(D^n) = S^0 \x S^{n-1} = \d(D^1) \x S^{n-1}$
+  % Here is where the actual proof starts.
+  Let $M = \#^r (S^1 \times S^{n-1})$ be an $n$-manifold and $n > 3$
+  with $r$ the number of generators in the presentation of our group.
+  Now, consider a non-self-intersecting loop 
 
-  Let $M$ be an $n$-manifold and $n > 3$.  Consider a non-self-intersecting loop
+  $\alpha \subset U \isom S^1 \x D^{n-1}$ where $U$ comes from the
+  tubular neighborhood theorem applied to $\alpha$. 
 
-  $\alpha \subset U \isom S^1 \x D^{n-1}$
+  Then, we get that $\d(D^2 \x S^{n-2}) \isom \d U \isom S^1 \x
+  S^{n-2}$. 
 
-  $\d(D^2 \x S^{n-2}) \isom \d U \isom S^1 \x S^{n-2}$
+  % For $n = 2$
 
-  For $n = 2$
+  % <picture of cylindar> ((yeah so basically it's this proof that doesn't make sense to me at all.))
 
-  <picture of cylindar> ((yeah so basically it's this proof that doesn't make sense to me at all.))
-
-  $\tilde{M} = M \dunion D^2 \x S^{n-2}$
+  Thus, $\widetilde{M} = \frac{{(M \setminus U) \dunion (D^2 \x S^{n-2})}}{\sim} = \left( M
+    \setminus U \right) \union \left( D^2 \times S^{n-2}
+  \right)$. Now, to complete the proof, we wish to compute
+  $\fund(\tilde{M})$ using Van Kampen's theorem. So, this tells us
+  that \[
+    \fund(\widetilde{M}) \isom \frac{\fund(M \setminus U) * \fund(D^2
+      \times S^{n-2})}{\fund((M \setminus U) \cap (D^2 \times S^{n-2}))}.
+  \]
+  So, we note that $(M \setminus U) \cap (D^2 \times S^{n-2})$ is
+  homotopically equivalent to $S^1 \times S^{n-2}$ and that $(M
+  \setminus U) \# (D^2 \times S^{n-2})$ is homeomorphic to
+  $M$. Thus, \[
+\fund(\widetilde{M}) \isom \frac{\fund(M \setminus U) * \fund(D^2
+      \times S^{n-2})}{\fund((M \setminus U) \cap (D^2 \times
+      S^{n-2}))} \isom \frac{\fund((M \setminus U) \# (D^2 \times
+      S^{n-2}))}{\fund(S^1 \times S^{n-2})} \isom \frac{\fund(M)}{\langle [\alpha] \rangle}
+  \]
+  and thus, $\fund(\widetilde{M})$ is isomorphic to the free group on
+  our generators with one relation given by $[\alpha]$. We can repeate
+  this process repeatedly until we get all our relations.
 \end{proof}
 \begin{thm}
   $\fund(X^2) \isom \fund(X)$ ((this is weird.  is $X^2$ derived from $X$ ?  Like does $X$ denote the entire CW complex, and $X^2$ just a piece of it or something?))
