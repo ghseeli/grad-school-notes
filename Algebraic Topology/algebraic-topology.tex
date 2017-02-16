@@ -32,6 +32,7 @@
 
 \everymath{\displaystyle}
 
+
 \newcommand{\minus}{\smallsetminus}
 \renewcommand{\setminus}{\smallsetminus}
 \renewcommand{\amalg}{\sqcup}
@@ -42,6 +43,7 @@
 \newcommand{\transverse}{\pitchfork}
 \newcommand{\x}{\times}
 \newcommand{\Map}{\text{Map}}
+\newcommand{\Mor}{\text{Mor}}
 \newcommand{\id}{\text{id}}
 \newcommand{\Arg}{\text{Arg}}
 \renewcommand{\bar}{\widebar}
@@ -434,7 +436,7 @@ $f_* = f'_*$ since $(f \of p) \homotopic (f' \of p)$ via $(h \of p)$.
 \begin{defn}
   A \de{strong deformation retract} is a weak deformation retract where the homotopy inverse is relative to $A$ and $g \of f = \id_A$. ((Webster's def)) ((umm, what does he mean by "relative"?))
 \end{defn}
-In this class, we follow the convention that \de{deformation retract} refers to strong deformation retract!
+By convention in this course, \de{deformation retract} refers to strong deformation retract!
 \begin{rmk}
   More generally, $g$ is a retraction of $A$ if $g \of f$ = $id_A$. ((Webster's def))
 \end{rmk}
@@ -453,6 +455,106 @@ In this class, we follow the convention that \de{deformation retract} refers to 
   Draw a circle and the points $x$ and $f(x)$.  Draw a ray from $f(x)$ through $x$ that ends at the boundary.  Consider a function $r$ that sends each $x$ to the endpoint of the ray.  This $r$ turns out to be a retraction.  This is our $g\from D^2 \to S^1$.  This is a deformation retract, so by our previous theorem, $\fund(D^2) \isom \fund(S^1)$.  A contradiction.
 \end{proof}
 
+\mydate{d8}{13}{2}{2017}
+
+\section{Classification of covering spaces (Hatcher 1.3)}
+
+Note that ``cover'' refers to ``covering space'' in this section.
+
+Convention!  In this class, \textbf{connected} means \textbf{path connected}!
+
+\begin{defn}
+  If $X$ is a space, then the \de{category of X covers} is the category where the objects are the covers of $X$ (such as $(\tilde{X}, p)$) and a function $f \from \tilde{X_1} \to \tilde{X_2}$ is a morphism iff the diagram
+
+  $$\begin{tikzcd}
+    &\tilde{X_1} \arrow[rd, "p_1"] \arrow[rr, "f"] &&\tilde{X_2} \arrow[ld, "p_2"] \\
+    &&X
+  \end{tikzcd}$$
+
+  commutes.
+\end{defn}
+\begin{defn}
+  A functor $F \from A \to B$ is called an \de{equivalence} if
+  \begin{itemize}
+    \item $F$ is \de{fully faithful}.  That is, for all $a_1, a_2 \in A$, the induced $F\from \Mor(a_1, a_2) \to \Mor(f(a_1), f(a_2))$ is a bijection.
+    \item $F$ is \de{essentially surjective}.  That is, every object $b \in B$ is isomorphic to $F(a)$ for some $a \in A$.
+  \end{itemize}
+\end{defn}
+\begin{rmk}
+  To better understand this definition, see the ``Special Functors'' section of \cite{functors}.
+
+  The above definition describes things that are *essentially* equivalent, in the sense that if we are only looking at the isomorphism classes of objects in $B$, then we have equivalence.  In categories, this is good enough, so we call this term *equivalence* instead of *essentially equivalent*.
+\end{rmk}
+\begin{rmk}
+  If $F$ is an equivalence, then $F(a_1) \isom F(a_2)$ implies $a_1 \isom a_2$.
+\end{rmk}
+
+\begin{defn}
+  The {category of subgroups of $\fund(X, x_0)$} is just that!  The morphisms of this category are group homomorphisms.  I think this is denoted $\fund$ - set, or something or other.
+\end{defn}
+
+\begin{thm}
+  There is an equivalence between fundamental sets and covers!
+
+  That is, if $X$ is connected and SLSC, then there exists an equivalence functor between the category of covers of $X$ and the category of subgroups of $\fund(X)$.
+
+  The functor equivalence maps each cover $(\tilde{X}, p)$ to $p_*(\fund(\tilde{X}, \tilde{x}))$, a subgroup of the fundamental group of $X$.
+\end{thm}
+
+((i think the following is strategies for proving something satisfies the above definition))
+1) Need to check that I can get any $\fund$ - set
+2) Need to check that maps of covers are in $\isom$ with maps of $\fund$ - sets,
+
+
+
+Most important:
+$\fund$ acts on $\fund$
+transitive: corresponds to a connected cover
+free: every point has a trivial stabilizer, that is, something is simply connected
+
+\begin{defn}
+  We call a cover \de{universal} if it is connected and simply connected.
+\end{defn}
+
+Let $X^a$ = {the paths in $X_1$ starting at $X_0$ up to endpoint preserving homotopy }
+$= \{ p \from X_0 \to X' \mid \forall x' \in X \}$
+
+LOWERCASE x's BELOW!!!
+$p \from x_0 to x'$
+$q \from x_0 \to x''$
+
+\begin{defn}
+  Topology: given $U \subset X$, then $p$ and $q$ are \de{close} if $p^{-1}*q$ contracts into a neighborhood of $x'$ and $x''$.  Woohoo!
+\end{defn}
+
+\begin{thm}
+  $X^a \to X$
+  $(p \from x_0 \to x') \mapsto x'$
+  is a universal cover.
+\end{thm}
+\begin{proof}
+  Why is it a cover?  Assume $U \subset X$ satisfies $\fund(U) = 1$.
+
+  Pick a path $p \from (U = stack of records) \to \fund()$ and (ONE) $q \from x_0 \to u \in U$.
+
+  given (TWO) $p \from x_0 \to u' \in U$.
+
+  I can think of a closed path via
+
+  <picture of p, q, U> to $\fund(X, x_0)$
+  because U is SC.
+
+  Take Im(p) starting at $u'$ and drag it onto Im(q) as much as possible.  You are left with some loop around $x_0$ (which could be the identity loop).  Call that loop $\alpha$.
+
+  preimage?  Fix $\alpha \in \fund(X, x_0)$.  What is the preimage under $\gamma$?, where $\gamma$ is defined by $\gamma \from (p^u)^{-1}(U) \to \fund(X, x_0)$, ((which was originally drawn above))
+
+  so $p^u$ is a cover if $X$ is SLSC.  Wohhoo!
+\end{proof}
+((not sure if we actually finished the proof yet))
+
+The preimage $(p^U)^{-1}(x_0) = \fund(X, x_0)$ with action being left multiplication.
+
+Therefore, $X^U$ is connected and simply connected.
 
 
 
