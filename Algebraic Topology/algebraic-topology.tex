@@ -349,8 +349,7 @@ $f_* = f'_*$ since $(f \of p) \homotopic (f' \of p)$ via $(h \of p)$.
   $$\begin{tikzcd}
     &\fund(X,x) \arrow[r, "f_*"] \arrow[rd, "f'_*"] &\fund(Y,f(x)) \arrow[d, "f_*'(p) = h_t(x) * f_*(p) * h_t(x)^{-1}"] \\
     & &\fund(Y, f'(x))
-  \end{tikzcd}$$
-  commutes.
+  \end{tikzcd}$$ commutes.
 \end{thm}
 \begin{proof}
   ((chris why wont it let me put pairs in this tikzcd diagram below?))
@@ -359,16 +358,8 @@ $f_* = f'_*$ since $(f \of p) \homotopic (f' \of p)$ via $(h \of p)$.
     &I \x I \arrow[r, ""] &X \x I \arrow[r, "h"] &Y
   \end{tikzcd}$$
 
-  the rectangle is simply connected
-  RECTANGLE:
-  LEFT
-  $f \of p$
-  RIGHT
-  $f' \of p$
-  UP
-  $h_t(x)$
-  DOWN
-  $h_t(x)$
+  the rectangle is simply connected RECTANGLE: LEFT $f \of p$ RIGHT
+  $f' \of p$ UP $h_t(x)$ DOWN $h_t(x)$
 
   If $A$ and $B$ are categories and $F,G\from A \to B$ are functors an \underline{isomorphism} of functors.
 
@@ -409,9 +400,7 @@ $f_* = f'_*$ since $(f \of p) \homotopic (f' \of p)$ via $(h \of p)$.
 \begin{rmk}
   If $A \into X$ and $A \into Y$, and $f$ as above is a homotopy equivalence relative to $A$ s.t. maps $f,g$ are homotopies must be identity on $A$, then $A = [*]$.
 
-  picture
-  sphere torus
-  sphere torus
+  picture sphere torus sphere torus
 
   If $f,g$ are homotopy inverse
 
@@ -506,6 +495,41 @@ Convention!  In this class, \textbf{connected} means \textbf{path connected}!
 2) Need to check that maps of covers are in $\isom$ with maps of $\fund$ - sets,
 
 
+\mydate{d5}{1}{2}{2017}
+
+The fundamental group may be used as a topological invariant. Yielding
+an easy proof of the fundamental theorem of algebra.
+
+\begin{thm}
+  Every polynomial \(p\) over \(\C\) of degree \(d\) admits \(d\)
+  zeros (including multiplicity).
+\end{thm}
+
+\begin{thm}[Inwards Van Kampen's Theorem]
+  If \(X= \bigcup_{i=1}^n {A_i}\) where each \(A_i \subset X\) is open, then
+  \begin{enumerate}[label=(\alph*)]
+    \item Any path in \(X\) may be written as a composition of paths
+      each of which is in \(A_i\) for some \(i\).
+    \item Any homotopic paths in \(X\) are homotopic via a composition
+      of homotopies, each of which are constant everywhere but one
+      \(A_i\) (the \(i\) changes for the different homotopies).
+  \end{enumerate}
+\end{thm}
+
+Consider the $n=2$ case, where \(X=A \cup B\) and \(A,B\) are open sets. In particular Van Kampen's Theorem yields the pushout
+
+\begin{rmk}
+  There is a ``full'' version of Van Kempen's Theorem in Hatcher, which talks about describing the fundamental group of $X$ as the free product of the fundamental groups of the $A$'s modded out by something normal.
+\end{rmk}
+
+\begin{center}
+  \begin{tikzcd}
+    &\Pi_1(A \cap B) \arrow[rd], \arrow[ld]&\\
+    \Pi_1(A) \arrow[rd] \arrow[rdd]&& \arrow[ld] \arrow[ldd]\Pi_1(B)\\
+    &\Pi_1(X)\arrow[d,dashed] &\\
+    &  G
+  \end{tikzcd}
+\end{center}
 
 Most important:
 $\fund$ acts on $\fund$
@@ -559,48 +583,72 @@ Therefore, $X^U$ is connected and simply connected.
 \mydate{d6}{3}{2}{2017}
 
 \begin{example}[Wirtinger presentation]
-  This is an in-depth example of how a Wirtinger presentation is derived.  This example can be generalized to a proof of the Wirtinger theorem!  The Wirtinger theorem appears below this example.
+  This is an in-depth example of how a Wirtinger presentation is
+  derived.  This example can be generalized to a proof of the
+  Wirtinger theorem!  The Wirtinger theorem appears below this
+  example.
 
-  Let $K \subset \R^3$ be a knot, that is, a smoothly embedded $S^1$.  In this example, we use $K =$ ``trefoil'', below
+  Let $K \subset \R^3$ be a knot, that is, a smoothly embedded $S^1$.
+  In this example, we use $K =$ ``trefoil'', below
 
   \includegraphics[scale=0.15]{images/trefoil.jpg}
 
-  What is $\fund(\R^3\minus K)$?  Draw two sets of open intervals, $A'$ in red and $B'$ in blue, as shown.
+  What is $\fund(\R^3\minus K)$?  Draw two sets of open intervals,
+  $A'$ in red and $B'$ in blue, as shown.
 
   \includegraphics[scale=0.2]{images/trefoil-with-red-and-blue.jpg}
 
-  What looks like the ``ends'' of the ``line segments'' in $A'$, for example, are in fact the height of the lines going down to negative infinity or up to infinity.  Or you can think of them as ``open intervals'', the point being that if there is a little loop (shown in white) around one of these, you cannot pull it off the interval, since the interval goes on ``forever''.
+  What looks like the ``ends'' of the ``line segments'' in $A'$, for
+  example, are in fact the height of the lines going down to negative
+  infinity or up to infinity.  Or you can think of them as ``open
+  intervals'', the point being that if there is a little loop (shown
+  in white) around one of these, you cannot pull it off the interval,
+  since the interval goes on ``forever''.
 
-  $A'$ = $K \cap \{(x,y,z) \in \R^3 \mid z > -\epsilon\}$ ($K$ minus the tunnels).
+  $A'$ = $K \cap \{(x,y,z) \in \R^3 \mid z > -\epsilon\}$ ($K$ minus
+  the tunnels).
 
-  $B'$ = $K \cap \{(x,y,z) \in \R^3 \mid z < \epsilon\}$ ($K$ minus the bridges).
+  $B'$ = $K \cap \{(x,y,z) \in \R^3 \mid z < \epsilon\}$ ($K$ minus
+  the bridges).
 
-  $A'$ is $m$ open line segments.  In our example, using $K =$ trefoil, $m = 3$.
+  $A'$ is $m$ open line segments.  In our example, using $K =$
+  trefoil, $m = 3$.
 
-  Let $A = (A')^C$.  Then $\fund(A) \isom F_m$, the free group on a set of size $m$.
+  Let $A = (A')^C$.  Then $\fund(A) \isom F_m$, the free group on a
+  set of size $m$.
 
   Let $B = (B')^C$.  Then $\fund(B) \isom F_m$.
 
-  So $A \cap B = \R^3 \minus (A' \union B')$.  $\fund(A \cap B) \isom F_{2m}$
+  So $A \cap B = \R^3 \minus (A' \union B')$.
+  $\fund(A \cap B) \isom F_{2m}$
 
   ((do we invoke Van Kampen's theorem here?))
 
   \includegraphics[scale=0.2]{images/mountains.jpg}
 
-  By sliding $a$ under the bridge, we see that $a$ and $b$ are conjugate via $c$!
+  By sliding $a$ under the bridge, we see that $a$ and $b$ are
+  conjugate via $c$!
 
   \includegraphics[scale=0.2]{images/mountains-with-explanation.jpg}
 
-  Finally, to compute the fundamental group of $K^C$, we pick an arbitrary basepoint $x$ and put loops around the knot as follows.
+  Finally, to compute the fundamental group of $K^C$, we pick an
+  arbitrary basepoint $x$ and put loops around the knot as follows.
 
-  We take exactly one loop per open line interval in $A'$.  For each crossing, we examine the three loops involved (which are called $a$, $b$, and $c$ above) and determine the appropriate conjugate relation.  The fundamental group is the group generated by the loops and modded out by the relations.
+  We take exactly one loop per open line interval in $A'$.  For each
+  crossing, we examine the three loops involved (which are called $a$,
+  $b$, and $c$ above) and determine the appropriate conjugate
+  relation.  The fundamental group is the group generated by the loops
+  and modded out by the relations.
 
-  In the case of the trefoil, the fundamental group is $${F_m}/{(a=c*b*c^{-1}, b=a*c*a^{-1}, c=b*a*b^{-1})}$$, as illustrated below.
+  In the case of the trefoil, the fundamental group
+  is $${F_m}/{(a=c*b*c^{-1}, b=a*c*a^{-1}, c=b*a*b^{-1})}$$, as
+  illustrated below.
 
   \includegraphics[scale=0.2]{images/trefoil-fully-described.jpg}
 \end{example}
 \begin{thm}[Wirtinger]
-  For any knot $K$, $\fund(\R^3\minus K)$ is generated by loops $\gamma_1,,,\gamma_m$ over crossings modulo $a = cbc^{-1}$.
+  For any knot $K$, $\fund(\R^3\minus K)$ is generated by loops
+  $\gamma_1,,,\gamma_m$ over crossings modulo $a = cbc^{-1}$.
 \end{thm}
 
 
@@ -608,15 +656,19 @@ Therefore, $X^U$ is connected and simply connected.
 
 CW complexes are like a space built by gluing together balls.
 \begin{defn}
-  A \de{CW complex} is a space $X$ which is a union of $X_0 \subset X_1 \subset \subset \subset$ such that $X_n$ is constructed from $X_{n-1}$ by taking $X_{n-1} \dunion_{\alpha} D_{\alpha}^n$ modulo identifying (( --> he might have meant $S^n$ here.  i think the point is that he meant $\d D^n$)) $\phi_\alpha \colon S_\alpha^{n-1} \to X_{n-1}$.  $X_n$ is called $n$-Skeleton.  $X ~ \phi_\alpha$.
+  A \de{CW complex} is a space $X$ which is a union of
+  $X_0 \subset X_1 \subset \subset \subset$ such that $X_n$ is
+  constructed from $X_{n-1}$ by taking
+  $X_{n-1} \dunion_{\alpha} D_{\alpha}^n$ modulo identifying $\phi_\alpha \colon S_\alpha^{n-1} \to X_{n-1}$ with $\d D_\alpha^n$.  Note that we are not attaching a $D^n$ to every possible image of $S^{n-1}$, but rather we get to choose which ones we want.
 
-  with topology s.t. $A$ is open iff $A \cap X_n$ is open for all $n$.
+  $X_n$ is called the \de{$n$-skeleton}.  $X$ has topology s.t. $A$ is open iff $A \cap X_n$ is open for all $n$.
 \end{defn}
 \begin{example}
-  $S^n = D^{n-1}/\text{boundary}$ all goes to one point.
-  $X_0 =$ discrete set of points.  The $0$-skeleton is a point.
-  $X_1 =$ graph. (by connecting the points in $X_0$.)
-  $X_2 =$ take each cycle (can go around multiple times) in $X_1$ and glue it to the boundary of a disk (can go around multiple times).
+  $S^n = D^{n-1}/\text{boundary}$ all goes to one point.  $X_0 =$
+  discrete set of points.  The $0$-skeleton is a point.  $X_1 =$
+  graph. (by connecting the points in $X_0$.)  $X_2 =$ take each cycle
+  (can go around multiple times) in $X_1$ and glue it to the boundary
+  of a disk (can go around multiple times).
 \end{example}
 \begin{example}
   ((this example is incomplete and will be repeated next lecture))
@@ -626,8 +678,60 @@ CW complexes are like a space built by gluing together balls.
   $\bunion \{ \R \dot (0, a_1,,, a_{n-1})\} \isom \R P^{n-1}$.
 \end{example}
 
+\mydate{d7}{6}{2}{2017}
 
+We wish to show how \(\R P^n\) is a \(CW\)-complex. First let the
+\(n-1\)-skeleton be \(\R P^{n-1}\). We add the \(n\)-cell \(D^n\) to the
+structure under the gluing map \(S^{n} \to \R P^{n-1}\) where
+antipodal points are identified. By induction this gives us a
+\(CW\)-complex structure.
 
+\begin{example}[Something that does not admit a \(CW\) structure]
+  The topological space known as the \emph{Hawaiian earring} is
+  constructed as follows.  For each \(n \in \N^{> 0}\) consider the circle of
+  radius \(1/n\) tangent to the \(y\)-axis inside the space \(R^2\). All of these circles
+  together with the subspace topology yield a topological space \(X\).
+
+  The only hope for putting a \(CW\)-structure on this space would be
+  to consider one \(0\)-cell along with a countable amount of
+  \(1\)-cells. However, recall that \(CW\)-structures gain their
+  topology through the quotient topology, that is, \(\mathcal{O}\) is
+  open in \(X\) if and only if \(q^{-1}(\mathcal{O})\) is open, where \(q\) is
+  the glueing map. However any open set centered at the origin
+  contains an infinite amount of balls, and thus no such
+  \(CW\)-structure may be imposed.
+\end{example}
+
+Next we show how to compute \(\pi_1\) of a few
+\(CW\)-structures. Using Morse Theory one may show that any compact
+manifold admits a \(CW\)-structure.
+
+To compute \(\pi_1\) of the torus one can first decompose it as a
+\(CW\)-complex as follows
+\begin{align*}
+  X_0 &= *\\
+  X_1 &= S^1 \vee S^1\\
+  X_2 &= D_2
+\end{align*}
+
+Then we have that \(\pi_1(T^2) = \pi_1(X_1)/\pi_1(A \cap B)\) where
+\(B\) is the thickening of the boundary of the square (the square with edges identified to represent the torus) and \(A\) is the thickening of a smaller square
+inside of it. \(A\) is clearly contractible.
+
+When talking about moding out by the fundamental group we are really
+talking about moding out by the normal subgroup it generates. In
+particular this means that conjugation is trivial, and thus we are
+free to pick any basepoint we want. This results in
+\[\pi_1(T^2) = \left\langle x,y \mid y^{-1}x^{-1}y x = 1 \right\rangle = \Z
+    \times \Z\]
+
+\begin{defn}
+  The \emph{connected sum} of two topological spaces \(X\) and \(Y\)
+  denoted \(X \# Y \) is given by cutting out some neighborhood of
+  each \(X\) and \(Y\) and identifying the new boundary.
+\end{defn}
+
+It is easy to see that \(T^2 \# T^2\) is the two holed torus, and in general \(\#^n T^2\) is the \(n\) holed torus.
 
 \mydate{d7}{8}{2}{2017}
 
