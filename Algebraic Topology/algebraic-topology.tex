@@ -1,5 +1,5 @@
 \documentclass[11pt,leqno,oneside]{amsart}
-\usepackage[margin=1in]{geometry}
+%\usepackage[margin=1in]{geometry}
 
 \usepackage{../notes}
 \usepackage{xfrac}
@@ -7,6 +7,7 @@
 \usepackage{tikz-cd}
 \usetikzlibrary{cd}
 \usepackage{hyperref}
+\usepackage{amsrefs} % AMS references % must be loaded AFTER hyperref if you use that
 \usepackage{mathtools}
 \mathtoolsset{showonlyrefs}
 
@@ -31,22 +32,21 @@
 
 \everymath{\displaystyle}
 
-\newcommand{\of}{\circ}
+
 \newcommand{\minus}{\smallsetminus}
 \renewcommand{\setminus}{\smallsetminus}
 \renewcommand{\amalg}{\sqcup}
 \newcommand{\homotopic}{\simeq}
 \renewcommand{\epsilon}{\varepsilon}
 \renewcommand{\d}{\partial}
-\newcommand{\fund}{\pi_1}
+\newcommand{\fund}[1][1]{\pi_{#1}}
 \newcommand{\transverse}{\pitchfork}
-\newcommand{\into}{\hookrightarrow}
-\newcommand{\onto}{\twoheadrightarrow}
 \newcommand{\x}{\times}
 \newcommand{\Map}{\text{Map}}
+\newcommand{\Mor}{\text{Mor}}
 \newcommand{\id}{\text{id}}
+\newcommand{\Arg}{\text{Arg}}
 \renewcommand{\bar}{\widebar}
-\newcommand{\de}{\emph}
 
 %%%%%%%%%%%%%% BEGIN CONTENT: %%%%%%%%%%%%%%
 
@@ -71,7 +71,7 @@ where as always \(I=[0,1]\).
 
 We will develop the tools to prove manifolds of different dimensions can
 certainly never be homeomorphic. Another surface result assures there exists no continuous
-retraction \(D^2 \to \d D\), which then immediately yields the
+retraction \(D^2 \to \d D^2\), which then immediately yields the
 Brouwer Fixed Pointed Theorem (every map \(D^2 \to D^2\) admits a
 fixed point).
 
@@ -81,7 +81,7 @@ continuous deformations between maps. While homology studies subspaces
 (known as ``cycles'') and gap filling.
 
 \section{Reference}
-
+%
 \begin{defn}
   $D^n$ denotes the $n$-dimensional closed unit disk.
 \end{defn}
@@ -90,14 +90,16 @@ continuous deformations between maps. While homology studies subspaces
 
 We now define homotopies in the space of maps between manifolds \(M\)
 and \(N\) denoted
-\[\Map(M,N)=\{f \colon M \to N \mid \text{$f$ is continuous}\}.\]
+\[\Map(M,N)=\{f \from M \to N \mid \text{$f$ is continuous}\}.\]
 
 In this course, we follow the convention that maps are continuous
 functions unless otherwise stated!
 
 \begin{defn}
-  A \emph{homotopy} from \(f \colon M \to N\) to \(g \colon M \to N\)
-  is a map \(h\) such that \(h_0=f\) and \(h_1=g\). We say \(f\) and
+  A \emph{homotopy} from \(f \in \Map(M, N)\) to \(g \in \Map(M, N)\) is a path in $\Map(M, N)$ that starts at $f$ and ends at $g$.  Therefore, $h_0 = f$ and $h_1 = g$.
+
+  Equivalently, a \emph{homotopy} from \(f \from M \to N\) to \(g \from M \to N\)
+  is a map \(h\from M \x I \to N\) such that \(h_0=f\) and \(h_1=g\). We say \(f\) and
   \(g\) are \emph{homotopic} if a homotopy between them exists.
 
   Often we write \(h_t(m)\) for \(h(m,t)\).
@@ -114,25 +116,28 @@ same path component.
 We denote the homotopy equivalence class of \(f\) by \([f]\).
 
 \begin{defn}
-  A \emph{path} in a topological space $X$ is a map
-  \[f \colon I \to X.\]
+  A homotopy $h\from I \x X \to Y$ is called \de{relative} to a subset $A$ of $X$ if for all $a \in A$ and all $t \in I$, $h(a, t) = f(a) = g(a)$.
+
+  We also say that ``$f$ and $g$ are homotopic relative to $A$''.
 \end{defn}
 
-By convention in this course, we always consider paths up to homotopy,
-however we will make a restriction and only consider homotopies that
-fix end points \((I,\{0,1\})\). Otherwise every path would collapse to
-a point up to homotopy. This is called \emph{relative homotopy}. When
-there are no restrictions placed one is working with \emph{free
-  homotopy}.
+When there are no restrictions placed on a homotopy, it is sometimes called a \emph{free} homotopy.
 
-Imagine two paths in \(\R \setminus (0,0)\) which agree on end points,
+\begin{defn}
+  A \emph{path} in a topological space $X$ is a map
+  \[f \from I \to X.\]
+\end{defn}
+
+By convention in this course, we always consider paths up to homotopy relative to $\{0, 1\}$.  That means that our homotopies fix the end points.  If they didn't, every path would collapse to a point up to homotopy!
+
+Imagine two paths in \(\R^2 \setminus (0,0)\) which agree on end points,
 however each path is on opposite sides of the origin. It is clear that
 there exists no end point fixing homotopy between the two paths.
 
 \begin{defn}
   If one has two paths \(f,g\) with \(f(1)=g(0)\) we may define a new
   path
-  \[f * g =
+  \[f * g :=
     \begin{cases}
       f(2t), & t \in [0,\frac{1}{2})\\
       g(2t - 1), & t \in [\frac{1}{2},1].
@@ -146,7 +151,7 @@ there exists no end point fixing homotopy between the two paths.
   \([f]=[f']\) and \([g]=[g']\) then \([f * g] = [f' * g']\). This
   operation may be generalized to \(*_{k}\) where \(k \in (0,1)\),
   simply replace \(\frac{1}{2}\) with \(k\). In this notation
-  \(f * g = f *_{\frac{1}{2}} g\). This operation is associative.
+  \(f * g = f *_{\frac{1}{2}} g\). Concatenation is associative.
 \end{defn}
 
 Given a topological space \(X\) with points \(P\), for any two points
@@ -156,29 +161,39 @@ objects in a category. We call this category the Fundamental Groupoid.
 
 \mydate{d2}{20}{1}{2017}
 
-\begin{defn}
-  A \de{category} is a directed graph.  Each vertex is called an
-  \de{object} and each directed edge is called a \de{morphism}.
+\begin{defn}[\cite{ncatlab}]
+  A \de{category} $\mathcal{C}$ consists of
+  \begin{itemize}
+    \item A class of objects $\Ob(\mathcal{C})$
+    \item For every pair of objects $A, B \in \Ob(\mathcal{C})$, a set $\Hom(A, B)$ of \de{morhpisms}
+    \item A composition operation.  That is, if $f \in \Hom(A,B)$ and $g \in \Hom(B,C)$, then there exists a morphism $h \in \Hom(A,C)$ s.t. $h = f.g$, where ``.'' denotes the composition operation.  The composition operation must be associative.
+    \item For every object $A \in \Ob(\mathcal{C})$, an \de{identity morphism} $\id_A\from A \to A$ s.t. for all $f\from A \to B$ we have $\id_A.f = f$ and for all $g\from B \to A$ we have $g.\id_A = g$, for all $B$.
+  \end{itemize}
 \end{defn}
+
 \begin{defn}
   In the category of \de{finite sets}, denoted $\text{FSet}$, the
   objects are the finite sets, each morphism from $A$ to $B$ is a
   function from $A$ to $B$.
 \end{defn}
 \begin{defn}
-  For any field $K$, the category of \de{$K$-vector spaces}, denoted
+  For any field $K$, the category of \de{$K$-vector spaces} (vector spaces over $K$), denoted
   $\text{Vect}_K$, has objects that are $K$-vector spaces and
   morphisms that are $K$-linear maps.
 \end{defn}
 \begin{defn}
   A \de{groupoid} is a category where every morphism has an inverse.
 
-  That is, if $a: x \to x'$, then there exists $a^{-1}:x' to x$
+  That is, for any objects $x$ and $x'$ and any morphism $a \from x \to x'$ between them, there exists $a^{-1} \from x' \to x$
   s.t. $aa^{-1} = \id_{x'}$ and $a^{-1}a = \id_{x}$.
-
-  The elements of the groupoid are the morphisms.  The operation is
-  composition.  Not every pair of morphisms can necessarily be composed!
 \end{defn}
+\begin{rmk}
+  A groupoid can be viewed as a more general notion than a group!
+
+  The elements of the groupoid are the morphisms.  The operation is composition.  Not every pair of morphisms can necessarily be composed!
+
+  So a groupoid is just like a group, but not every pair of elements can be multiplied!  Also, there is not a \textbf{single} identity, but rather, there could be many left and right identities.  That is, each object has a little loop.
+\end{rmk}
 \begin{prop}
   Every morphism in a groupoid is an isomorphism (by definition).
 \end{prop}
@@ -189,7 +204,7 @@ objects in a category. We call this category the Fundamental Groupoid.
   If $A$ is an object in a groupoid, then $\Hom(A, A)$ is a group.
 \end{prop}
 
-note We see that a groupoid is the same definition of a group, but we
+Note, we see that a groupoid is the same definition of a group, but we
 use a *partial* binary operation instead of a binary operation.
 
 \begin{defn}
@@ -199,112 +214,104 @@ use a *partial* binary operation instead of a binary operation.
 \end{defn}
 \begin{defn}
   The \de{fundamental group of $X$ at the basepoint $x_0$}, denoted
-  $\pi_1(X, x_0)$, is the subgroupoid of the fundamental groupoid
+  $\fund(X, x_0)$, is the subgroupoid of the fundamental groupoid
   where there is exactly one object, $x_0$, and the morphisms are the
   morphisms of the fundamental groupoid that have source and target
-  $x_0$.  Another wording is to say that $\pi_1(X, x_0)$ is the full
+  $x_0$.  Another wording is to say that $\fund(X, x_0)$ is the full
   subcategory of $\Pi_1 X$ spanned by $x_0$.
 
   The elements of the group are the morphisms.  The operation is
   composition.
 \end{defn}
 \begin{defn}
-  the \de{inverse path} of a path $p$ is $p^{-1}(s) := p(1-s)$.
-  (note: This is *not* the same as the function inverse of $p$)
+  The \de{inverse path} of a path $p$ is $p^{-1}(s) := p(1-s)$.  In Hatcher, this is denoted $\bar{p}$.
+  (Note: This is *not* the same as the function inverse of $p$)
 \end{defn}
 \begin{prop}
   If $p$ is a path, then
-  $[p^{-1}*p] = [id_{x}] = \text{the function where $s \mapsto x$ for
-    all $s \in [0,1]$}$.
+  $[p^{-1}*p] = [id_{x}]$, which is the equivalence class of the
+  function where $s \mapsto x$ for
+  all $s \in [0,1]$.
 \end{prop}
 
 \begin{thm}[Hatcher 1.5]
   Let $X$ be a metric space and $x,x' \in X$.  If there exists
-  $p: x \to x'$ and $[q] \in \pi_1(X,x')$, then
-  $p^{-1}qp \in \Pi_1(X,x)$ is an isomorphism of fundamental groups.
+  $p\from x \to x'$ and $[q] \in \fund(X,x')$, then
+  $p^{-1}qp \in \fund(X,x)$.  The ``conjugacy'' map that sends each $[q]$ to $[p^{-1}qp]$ is an isomorphism of fundamental groups.
 \end{thm}
 \begin{thm}
   If $X$ is path connected, then for any $x_a, x_b \in X$,
-  $$\Pi_1(X, x_a) \isom \Pi_1(X, x_b).$$
-  notation If $X$ is path connected, we can denote the fundamental
-  group with $\pi_1(X)$ or $\pi_1 X$.
+  $$\fund(X, x_a) \isom \fund(X, x_b).$$
 \end{thm}
+In the above situation, we can denote the fundamental
+group with $\fund(X)$ or $\fund X$.
 \begin{example}
-  pretty picture
+  The isomorphism above is not canonical, because we could use path $p$ or $q$ to create the isomorphism, but $p$ and $q$ are not homotopic, as shown below.
 
-  This isomorphism is not canonical
+  \includegraphics[scale=0.2]{images/isomorphism-not-canonical}
 
-
-  Note that $\pi_1 X$ is only well defined up to inner automorphism.
-  ((Chris, what does this mean?))
+  Note that $\fund X$ is only well defined up to inner automorphism.  ((What does this mean?))
 \end{example}
 \begin{defn}
-  Given metric spaces $X, Y$ and a map $f: X \to Y$, then the
+  Given spaces $X, Y$ and a map $f\from X \to Y$, then the
   \de{fundamental functor} induced by $f$,
-  $$f_* = \Pi_1 f : \Pi_1 X \to \Pi_1 Y$$ maps each object $x \in X$
+  $$f_* = \Pi_1 f \from \Pi_1 X \to \Pi_1 Y$$ maps each object $x \in X$
   to $f(x) \in Y$ and each path $[p] \in \Pi_1 X$ to
   $f([p]) = [f(p)] \in \Pi_1 Y$.
 \end{defn}
 \begin{prop}
   The above is well defined because
   \begin{itemize}
-  \item If $[p]=[q]$, then $[f(p)] = [f(q)]$ because $h.f$ gives a
-    homotopy.  ((What the heck is h?))
-  \item $(f_*p)*(f_*q) = f_*(p*q)$
+  \item If $[p]=[q]$, then $[f(p)] = [f(q)]$.  Proof:  Consider the homotopy $h$ s.t. $h_0 = p$ and $h_1 = q$.  $f$ is continuous, so $h.f$ is a homotopy, and $(h.f)_0 = f(p)$ and $(h.f)_1 = f(q)$.
+  \item If $p$ and $q$ represent equivalence classes, and if they can be concatenated, then $(f_*p)*(f_*q) = f_*(p*q)$.
   \end{itemize}
 \end{prop}
 
 \begin{prop}
-  Given a fundamental group $\Pi_1(X, x)$, then we can restrict $f_*$
-  to the functor $$f_* : \Pi_1(X, x) to \Pi_1(Y, f(x)).$$
+  Given a fundamental group $\fund(X, x)$, then we can restrict $f_*$
+  to the functor $$f_* \from \fund(X, x) \to \fund(Y, f(x)).$$ which is a group homomorphism.
 
-  picture $x$ (loop) to $f(x)$ (loop)
-
-  is a group homomorphism
+  \includegraphics[scale=0.17]{images/fundamental-functor}
 \end{prop}
 \begin{prop}
-  If $X,Y,Z$ are metric spaces and $f: X \to Y$, $g: Y \to Z$ are
+  If $X,Y,Z$ are metric spaces and $f \from X \to Y$, $g \from Y \to Z$ are
   maps, then ${(f.g)}_* = f_*.g_*$.
 \end{prop}
 
 \begin{example}
-  $\Pi_1(\R^n, x) = [*]$
+  $\fund(\R^n, x) = \{[*]\} = \{e\}$
 
-  in $\Pi_1 \R^n$, there exists a unique path between any two points,
+  In $\Pi_1 \R^n$, there exists a unique path between any two points,
   up to homotopy.
 
-  pf $p,q: I \to \R^n$
-
-  $p(0) = q(0)$ $p(1) = q(1)$
-
-  $h_t = tp + (1-t)q$
-
-  $h_0 = q$ $h_1 = p$
-
-  $B_n, I_n$ all have $\Pi_1 = [*]$
+  Note that $\fund(B_n) = \{e\}$ and $\fund(I_n) = \{e\}$ too!
 \end{example}
+\begin{proof}
+  Let $p,q \from I \to \R^n$ be any two paths that satisfy $p(0) = q(0)$ and $p(1) = q(1)$.
 
-\begin{thm}[Hatcher 1.6]
+  Define $h$ by $h_t = tp + (1-t)q$.  It follows that, $h_0 = q$, $h_1 = p$, and $h$ is a homotopy.
+\end{proof}
+
+\begin{defn} % I'm pretty sure this is the DEFINITION of simply connected.  We're just saying "the fundamental group is trivial" instead of saying "every loop can be shrunk continuously to a point".  I suppose we could create a separate definition if you wish.  Also, Hatcher 1.6 doesn't exist.
   A space $X$ is \de{simply connected} or \de{1-connected} iff it is path connected and its
   fundamental group is trivial.
-\end{thm}
+\end{defn}
 \begin{example}
   $\R^2 \minus (0,0) \isom \C \minus \{0\}$ is NOT simply connected.
-  $\Pi_1(\C \minus \{0\}) = \Z$
+  $\fund(\C \minus \{0\}) = \Z$
 \end{example}
 \begin{example}
-  pretty picture with yellow and blue dots
+  Consider a loop $A$ that goes around a hole in $X$ once, and a loop $B$ that looks exactly the same as $A$, but it goes around the hole in $X$ twice.
 
-  $A$ and $B$ can't be homotopic because $\log(A)$ and $\log(B)$ have
+  $A$ and $B$ can't be homotopic because $\Arg(A)$ and $\Arg(B)$ have
   different end points.
 \end{example}
 
 \begin{defn}
-  A \emph{covering space} of a space \(X\) is a space \(\tilde{X}\)
-  and map \(p \colon \tilde{X} \to X\). Where there eixsts a cover
-  \(\{U_\alpha\}\) of \(X\) such that \(p^{-1}(U_\alpha)\) is a
-  disjoint union of open sets in \(\tilde{X}\) each of which has image
-  under \(p\) homeomorphic to \(U_\alpha\).
+  A \emph{covering space} \((\tilde{X},p)\) of a space \(X\) is a space \(\tilde{X}\)
+  and map \(p \from \tilde{X} \to X\) where there exists an open cover
+  \(\{U_\alpha\}\) of \(X\) and for each $\alpha$, \(p^{-1}(U_\alpha)\) is a
+  disjoint union $\dunion V_j$ of open sets in \(\tilde{X}\) such that for all $j$, $p|_{V_j} \from V_j \to U_\alpha$ is a homeomorphism.
 \end{defn}
 
 Think of the stack of records theorem from Guillemin and Pollack. See
@@ -313,9 +320,9 @@ class. We now discuss homotopy lifting.
 
 \begin{prop}
   Given a covering space \((\tilde{X},p)\) of \(X\) and a homotopy
-  \(h_t \colon Y \to X\), and some map
-  \(\tilde{f}_0 \colon Y \to \tilde{X}\), then there exists a unique
-  homotopy \(f_t \colon Y \to X\) that lifts \(f_0\), that is
+  \(h_t \from Y \to X\), and some map
+  \(\tilde{f}_0 \from Y \to \tilde{X}\), then there exists a unique
+  homotopy \(f_t \from Y \to X\) that lifts \(f_0\), that is
   \begin{center}
     \begin{tikzcd}
       & & \tilde{X}\\
@@ -327,19 +334,15 @@ class. We now discuss homotopy lifting.
 
 \mydate{d4}{30}{1}{2017}
 
-\section{Functoriality of $\fund$}
+\section{Functoriality of the fundamental group}
 
-Let $X$, $Y$ be BLANKs and $f,f': X \to Y$ be BLANKs.
+Let $X$, $Y$ be spaces and $f,f' \from X \to Y$ be maps.
 
 We wish to prove (i think) that $f_* \of g_* = (f \of g)_*$.
 
-Let $h\colon X \x I \to Y$ be a homotopy from $f$ to $f'$.  In the
-easy version, we fix a basepoint $x \in X$ and require that $h_t(x)$
-is constant. ``based map'' (there exists a category of based spaces,
-i.e., top w/ fixed point)
+Let $h\from X \x I \to Y$ be a homotopy from $f$ to $f'$.  In the easy version, we fix a basepoint $x \in X$ and require that $h_t(x)$ is constant. ``based map'' (there exists a category of based spaces, i.e., top w/ fixed point)
 
-$f_* = f'_*$ since $(f \of p) \homotopic (f' \of p)$ via
-$h \of illegible$.
+$f_* = f'_*$ since $(f \of p) \homotopic (f' \of p)$ via $(h \of p)$.
 
 
 \begin{thm}
@@ -349,6 +352,7 @@ $h \of illegible$.
   \end{tikzcd}$$ commutes.
 \end{thm}
 \begin{proof}
+  ((chris why wont it let me put pairs in this tikzcd diagram below?))
   $$\begin{tikzcd}
     % &I \x I \arrow[r, "(p,\id)"] &X \x I \arrow[r, "h"] &Y
     &I \x I \arrow[r, ""] &X \x I \arrow[r, "h"] &Y
@@ -357,90 +361,138 @@ $h \of illegible$.
   the rectangle is simply connected RECTANGLE: LEFT $f \of p$ RIGHT
   $f' \of p$ UP $h_t(x)$ DOWN $h_t(x)$
 
-  If $A,B$ categories and $F,G\colon A \to B$ functors an
-  \underline{isomorphism} of functors.
+  If $A$ and $B$ are categories and $F,G\from A \to B$ are functors an \underline{isomorphism} of functors.
 
-  For all $a \in \Ob(A)$, $Z(a)\colon F(a) \to G(a)$ such that for all
-  $g: a \to a'$,
+  For all $a \in \Ob(A)$, $Z(a)\from F(a) \to G(a)$ such that for all $g \from a \to a'$,
 
   $$\begin{tikzcd}
     &F(a) \arrow[r, "Z(a)"] \arrow[d, "F(g)"] & G(a) \arrow[d, "G(g)"] \\
-    &F(a') \arrow[r, "Z(a)"] & G(a')
+    &F(a') \arrow[r, "Z(a')"]                  & G(a')
   \end{tikzcd}$$
 
-  Note: if $B$ is a groupoid, any natural transformation is an
-  isomorphism.
+  ((commutes?))
+
+  Note: if $B$ is a groupoid, any natural transformation is an isomorphism.
 \end{proof}
 
 \begin{thm}
-  restatement of above thm
+  Restatement of above thm
 
   Given
   $$\begin{tikzcd}
-    &X \arrow[r, "f", "bend left"] &Y % and also f' bent right!
+    &X \arrow[r, bend left, "f"] \arrow[r, bend right, "f'"'] &Y
   \end{tikzcd}$$
 
-  then
+  where $f \homotopic f'$ via $h$, then
 
-  % same diagram as above
-  % \PI(X) -- f_* \to \PI(Y)
+  $$\begin{tikzcd}
+    &\Pi(X) \arrow[r, bend left, "f_*"] \arrow[r, bend right, "f_*'"'] &\Pi(Y)
+  \end{tikzcd}$$
 
-  % ----f'_* \to
-
-  are isomorphic via the transformation for all $x \in X$,
-  $h_t(x)\colon f(x) \to f'(x)$
+  and $f_* \isom f_*'$ via the transformation defined by: for all $x \in X$, $h_t(x)\from f(x) \to f'(x)$.
 \end{thm}
 \begin{defn}
-  We call $f:X \to Y$ a \de{homotopy equivalence} if there exists
-  $g\colon Y \to X$ s.t. $[f \of g] = [\id_Y]$ and
-  $[g \of f] = [\id_X]$.
+  Given spaces $X$ and $Y$, we call the map $f\from X \to Y$ a \de{homotopy equivalence} if there exists $g\from Y \to X$ s.t. $[f.g] = [\id_X]$ and $[g.f] = [\id_Y]$.
 \end{defn}
 \begin{rmk}
-  If $A \into X$ and $A \into Y$ with $f,g$ as above is a homotopy
-  equivalence relative to $A$ s.t. maps $f,g$ are homotopies must be
-  identity on $A$, then $A = [*]$.
+  Note that $f$ is not a homotopy.  The point is that $f.g$ is homotopic to $\id_X$, and the other way around too.
+\end{rmk}
+\begin{rmk}
+  If $A \into X$ and $A \into Y$, and $f$ as above is a homotopy equivalence relative to $A$ s.t. maps $f,g$ are homotopies must be identity on $A$, then $A = [*]$.
 
   picture sphere torus sphere torus
 
   If $f,g$ are homotopy inverse
 
-  % \fund(X,x) \isomto \fund(Y, f(x)) \isomto \fund(X, g(f(x))
-  % \fund(X,x) by g \of f \isomto \fund(X, g(f(x))
+  $$\begin{tikzcd}
+    &\fund(X,x) \arrow[r, "f", "\isom"'] \arrow[rr, bend right, "\isom", "f.g"'] &\fund(Y, f(x)) \arrow[r, "g", "\isom"'] &\fund(X, g(f(x))
+  \end{tikzcd}$$
 \end{rmk}
-\begin{defn}
-  A \de{weak deformation retract} is when you have a homotopy
-  $f: A \into X$ and a homotopy inverse $g$ s.t. $[g \of f] = [id_A]$
-  and $[f \of g] = [id_X]$.
+\begin{defn}[retraction, retract, weak deformation retract, strong deformation retract]
+  ((these definitions from wolfram mathworld, and they make perfect sense to me))
+
+  For any subspace $A$ of $X$, a \de{retraction} is a map $f\from X \to A$ s.t. for all $a \in A$, $f(a) = a$.
+
+  $A$ is a \de{retract} (of $X$).
+
+  If additionally there exists a homotopy $F\from X \x I \to X$ s.t. $F_0 = \id_X$ and $F_1 = f$, then $A$ is a \de{weak deformation retract}.
+
+  If additionally we have that for all $t \in I$ and all $a \in A$, $F_t(a) = a$, then $A$ is a \de{strong deformation retract}.
 \end{defn}
 \begin{defn}
-  A \de{strong deformation retract} is a weak deformation retract
-  where the homotopy inverse is relative to $A$ and $g \of f = \id_A$.
+  A \de{weak deformation retract} is when you have a homotopy $f\from A \into X$ and a homotopy inverse $g$ s.t. $[g \of f] = [id_A]$ and $[f \of g] = [id_X]$. ((Webster's def))
 \end{defn}
+\begin{defn}
+  A \de{strong deformation retract} is a weak deformation retract where the homotopy inverse is relative to $A$ and $g \of f = \id_A$. ((Webster's def)) ((umm, what does he mean by "relative"?))
+\end{defn}
+By convention in this course, \de{deformation retract} refers to strong deformation retract!
 \begin{rmk}
-  \de{deformation retract} is used to refer to strong deformation
-  retract.
-\end{rmk}
-\begin{rmk}
-  More generally, $g$ is a retraction of $A$ if $g \of f$ = $id_A$.
+  More generally, $g$ is a retraction of $A$ if $g \of f$ = $id_A$. ((Webster's def))
 \end{rmk}
 \begin{example}
-  $S^1 \into \C\minus\{0\}$ is a d.r. where $h(x) = \frac{x}{|x|^w}$
-  where $w \in [0,1] \isom \Z$ and $g(x) = \frac{x}{|x|}$.
+  $S^1 \into \C\minus\{0\}$ is a d.r. where the homotopy is given by $h_w(x) = \frac{x}{|x|^w}$ where $w \in [0,1]$  and $g(x) = \frac{x}{|x|}$.
 
-  $id_{\C\minus\{0\}} \isom \fund(S^1)$.
+  ((i infer)) This allows us to conclude that $\fund(\C\minus\{0\}) \isom \fund(S^1)$.
 \end{example}
 \begin{thm}
-  Every map $f\colon D^2 \to D^2$ has a fixed point.
+  Every map $f\from D^2 \to D^2$ has a fixed point.
 \end{thm}
 
 
 
 \begin{proof}
-  Draw a circle and the points $x$ and $f(x)$.  Draw a ray from $f(x)$
-  through $x$ that ends at the boundary.  This is our
-  $g\colon D^2 \to S^1$.  This is a deformation retract, so by our
-  previous theorem, $\fund(D^2) \isom \fund(S^1)$.  A contradiction.
+  Draw a circle and the points $x$ and $f(x)$.  Draw a ray from $f(x)$ through $x$ that ends at the boundary.  Consider a function $r$ that sends each $x$ to the endpoint of the ray.  This $r$ turns out to be a retraction.  This is our $g\from D^2 \to S^1$.  This is a deformation retract, so by our previous theorem, $\fund(D^2) \isom \fund(S^1)$.  A contradiction.
 \end{proof}
+
+\mydate{d8}{13}{2}{2017}
+
+\section{Classification of covering spaces (Hatcher 1.3)}
+
+Note that ``cover'' refers to ``covering space'' in this section.
+
+Convention!  In this class, \textbf{connected} means \textbf{path connected}!
+
+\begin{defn}
+  If $X$ is a space, then the \de{category of X covers} is the category where the objects are the covers of $X$ (such as $(\tilde{X}, p)$) and a function $f \from \tilde{X_1} \to \tilde{X_2}$ is a morphism iff the diagram
+
+  $$\begin{tikzcd}
+    &\tilde{X_1} \arrow[rd, "p_1"] \arrow[rr, "f"] &&\tilde{X_2} \arrow[ld, "p_2"] \\
+    &&X
+  \end{tikzcd}$$
+
+  commutes.
+\end{defn}
+\begin{defn}
+  A functor $F \from A \to B$ is called an \de{equivalence} if
+  \begin{itemize}
+    \item $F$ is \de{fully faithful}.  That is, for all $a_1, a_2 \in A$, the induced $F\from \Mor(a_1, a_2) \to \Mor(f(a_1), f(a_2))$ is a bijection.
+    \item $F$ is \de{essentially surjective}.  That is, every object $b \in B$ is isomorphic to $F(a)$ for some $a \in A$.
+  \end{itemize}
+\end{defn}
+\begin{rmk}
+  To better understand this definition, see the ``Special Functors'' section of \cite{functors}.
+
+  The above definition describes things that are *essentially* equivalent, in the sense that if we are only looking at the isomorphism classes of objects in $B$, then we have equivalence.  In categories, this is good enough, so we call this term *equivalence* instead of *essentially equivalent*.
+\end{rmk}
+\begin{rmk}
+  If $F$ is an equivalence, then $F(a_1) \isom F(a_2)$ implies $a_1 \isom a_2$.
+\end{rmk}
+
+\begin{defn}
+  The {category of subgroups of $\fund(X, x_0)$} is just that!  The morphisms of this category are group homomorphisms.  I think this is denoted $\fund$ - set, or something or other.
+\end{defn}
+
+\begin{thm}
+  There is an equivalence between fundamental sets and covers!
+
+  That is, if $X$ is connected and SLSC, then there exists an equivalence functor between the category of covers of $X$ and the category of subgroups of $\fund(X)$.
+
+  The functor equivalence maps each cover $(\tilde{X}, p)$ to $p_*(\fund(\tilde{X}, \tilde{x}))$, a subgroup of the fundamental group of $X$.
+\end{thm}
+
+((i think the following is strategies for proving something satisfies the above definition))
+1) Need to check that I can get any $\fund$ - set
+2) Need to check that maps of covers are in $\isom$ with maps of $\fund$ - sets,
 
 
 \mydate{d5}{1}{2}{2017}
@@ -478,6 +530,55 @@ Consider the $n=2$ case, where \(X=A \cup B\) and \(A,B\) are open sets. In part
     &  G
   \end{tikzcd}
 \end{center}
+
+Most important:
+$\fund$ acts on $\fund$
+transitive: corresponds to a connected cover
+free: every point has a trivial stabilizer, that is, something is simply connected
+
+\begin{defn}
+  We call a cover \de{universal} if it is connected and simply connected.
+\end{defn}
+
+Let $X^a$ = {the paths in $X_1$ starting at $X_0$ up to endpoint preserving homotopy }
+$= \{ p \from X_0 \to X' \mid \forall x' \in X \}$
+
+LOWERCASE x's BELOW!!!
+$p \from x_0 to x'$
+$q \from x_0 \to x''$
+
+\begin{defn}
+  Topology: given $U \subset X$, then $p$ and $q$ are \de{close} if $p^{-1}*q$ contracts into a neighborhood of $x'$ and $x''$.  Woohoo!
+\end{defn}
+
+\begin{thm}
+  $X^a \to X$
+  $(p \from x_0 \to x') \mapsto x'$
+  is a universal cover.
+\end{thm}
+\begin{proof}
+  Why is it a cover?  Assume $U \subset X$ satisfies $\fund(U) = 1$.
+
+  Pick a path $p \from (U = stack of records) \to \fund()$ and (ONE) $q \from x_0 \to u \in U$.
+
+  given (TWO) $p \from x_0 \to u' \in U$.
+
+  I can think of a closed path via
+
+  <picture of p, q, U> to $\fund(X, x_0)$
+  because U is SC.
+
+  Take Im(p) starting at $u'$ and drag it onto Im(q) as much as possible.  You are left with some loop around $x_0$ (which could be the identity loop).  Call that loop $\alpha$.
+
+  preimage?  Fix $\alpha \in \fund(X, x_0)$.  What is the preimage under $\gamma$?, where $\gamma$ is defined by $\gamma \from (p^u)^{-1}(U) \to \fund(X, x_0)$, ((which was originally drawn above))
+
+  so $p^u$ is a cover if $X$ is SLSC.  Wohhoo!
+\end{proof}
+((not sure if we actually finished the proof yet))
+
+The preimage $(p^U)^{-1}(x_0) = \fund(X, x_0)$ with action being left multiplication.
+
+Therefore, $X^U$ is connected and simply connected.
 
 \mydate{d6}{3}{2}{2017}
 
@@ -630,8 +731,142 @@ free to pick any basepoint we want. This results in
   each \(X\) and \(Y\) and identifying the new boundary.
 \end{defn}
 
-
 It is easy to see that \(T^2 \# T^2\) is the two holed torus, and in general \(\#^n T^2\) is the \(n\) holed torus.
+
+\mydate{d7}{8}{2}{2017}
+
+\section{CW complexes and the fundamental group}
+
+Consider the polygon
+\begin{figure}
+  % \includegraphics{}
+  \label{fig:star}
+\end{figure}
+
+$X_0$ = some points
+
+$X_1$ = some paths attached onto those points
+
+
+\begin{thm}
+  If $X$ is a CW complex and $A$ a contractible subcomplex, $\fund(X) = \fund(X/A)$.
+\end{thm}
+\begin{rmk}
+  If $X$ is a CW complex and $A$ a contractible subcomplex, then $X$ is \textbf{not} equal to $X/A$, but $X$ \textbf{is} homotopy equivalent to $X/A$. (this is the quotient by the equivalence relation $x \sim x'$ iff $x = x'$ or $x, x' \in A$).
+\end{rmk}
+
+Once we hit $X_1$, the connected components of the complex are determined.
+
+That's because for any $n$-dimensional disk where $n \geq 2$, it's boundary is connected, so that boundary must lie entirely in \textbf{one} of the connected components.
+
+In $\ref{fig:star}$, the set of connected components is $\fund[0](X_0) = \fund[0](X_1)$ ((let's make the fund command take in an optional argument, which will be the subscript of the pi))
+
+If $X_0 = \{[*]\}$ (a single point), then $\fund(X_1) \isom F_{\text{set of 1-cells}}$
+
+$\fund\left( \frac{X_1 \union D^2}{\sim} \right) \isom \frac{\fund(B) * \fund(A)}{A \cap B} \isom \frac{\fund(X_1)}{[\phi] = 1}$, where * denotes the free group product.
+
+In general, I have many gluing maps $\phi_\alpha\from S^1 \to X_1$ and I glue $D^2\alpha$ along $\phi_\alpha(S^1)$.  So $\fund(X_2) \isom \fund(X_1)/\langle[\phi_\alpha]\rangle$.  So when you ``glue'' in a $D^2$, since each $D^2$ is contractible, a path along the boundary of the $D^2$ is now the identity. In other words, each $D^2$ adds a relation!  This is formalized in the following...
+
+\begin{thm}[Not to be proven]
+  Every group is the fundamental group of some CW complex.  Construct as follows:
+
+  $X_0$ = point
+
+  $X_1$ = every element in the group gets a loop (the free group)
+
+  $X_2$ = every entry in the multiplication table gets a disk (a relation)
+
+  So it's just like a group presentation!
+\end{thm}
+\begin{thm}
+  Every finitely presented group is the fundamental group of a finite CW complex.
+\end{thm}
+\begin{thm}
+  If $n > 3$, then for any finitely presented group $G$, there exists
+  a compact manifold $M$ such that $G \isom \fund(M)$.
+\end{thm}
+\begin{proof}
+  If $n > 2$ and $M$ and $N$ are $n$-manifolds, then consider $M \#
+  N$. Recall that $\fund(M \# N) \isom \fund(M) * \fund(N)$. In
+  particular, we note that $\fund(\#^n (S^{n-1} \times S^1)) \isom
+  F_n$.
+
+  % \includegraphics{} ((that puncture-glueing thing))
+
+  Finally, note that $\d(S^0 \x D^n) = S^0 \x S^{n-1} \setminus
+  \d(D^1 \x S^{n-1})$ (If you really want, you can break these
+  previous facts into lemmas.)
+
+  % Here is where the actual proof starts.
+  Let $M = \#^r (S^1 \times S^{n-1})$ be an $n$-manifold and $n > 3$
+  with $r$ the number of generators in the presentation of our group.
+  Now, consider a non-self-intersecting loop
+
+  $\alpha \subset U \isom S^1 \x D^{n-1}$ where $U$ comes from the
+  tubular neighborhood theorem applied to $\alpha$.
+
+  Then, we get that $\d(D^2 \x S^{n-2}) \isom \d U \isom S^1 \x
+  S^{n-2}$.
+
+  % For $n = 2$
+
+  % <picture of cylindar> ((yeah so basically it's this proof that doesn't make sense to me at all.))
+
+  Thus, $\widetilde{M} = \frac{{(M \setminus U) \dunion (D^2 \x S^{n-2})}}{\sim} = \left( M
+    \setminus U \right) \union \left( D^2 \times S^{n-2}
+  \right)$. Now, to complete the proof, we wish to compute
+  $\fund(\tilde{M})$ using Van Kampen's theorem. So, this tells us
+  that \[
+    \fund(\widetilde{M}) \isom \frac{\fund(M \setminus U) * \fund(D^2
+      \times S^{n-2})}{\fund((M \setminus U) \cap (D^2 \times S^{n-2}))}.
+  \]
+  So, we note that $(M \setminus U) \cap (D^2 \times S^{n-2})$ is
+  homotopically equivalent to $S^1 \times S^{n-2}$ and that $(M
+  \setminus U) \# (D^2 \times S^{n-2})$ is homeomorphic to
+  $M$. Thus, \[
+\fund(\widetilde{M}) \isom \frac{\fund(M \setminus U) * \fund(D^2
+      \times S^{n-2})}{\fund((M \setminus U) \cap (D^2 \times
+      S^{n-2}))} \isom \frac{\fund((M \setminus U) \# (D^2 \times
+      S^{n-2}))}{\fund(S^1 \times S^{n-2})} \isom \frac{\fund(M)}{\langle [\alpha] \rangle}
+  \]
+  and thus, $\fund(\widetilde{M})$ is isomorphic to the free group on
+  our generators with one relation given by $[\alpha]$. We can repeate
+  this process repeatedly until we get all our relations.
+\end{proof}
+\begin{thm}
+  $\fund(X^2) \isom \fund(X)$ ((this is weird.  is $X^2$ derived from $X$ ?  Like does $X$ denote the entire CW complex, and $X^2$ just a piece of it or something?))
+\end{thm}
+\begin{proof}
+  $\fund(X_{n-1}) \isom \fund(X_n)$.  $n \geq 3$.
+  Why does gluing on a higher level dimension disk not affect $\fund$?  It's because the boundary is simply connected.
+
+  $A$ = small disk in A homotopic *
+  $B$ = complement of a small disk homotopic $X^{n-1}$ ((i mean i think he meant underscore...))
+
+  $S^{n-1} \to x^{n-1}$.
+
+  $A \cap B \homotopic S^{n-1}$
+\end{proof}
+\begin{rmk}
+  Once $n$ reaches $4$, all bets are off ;(
+\end{rmk}
+
+
+
+
+\begin{bibdiv}
+\begin{biblist}
+% THIS SHOULD BE MOVED TO A SEPARATE FILE IF IT GETS TOO CUMBERSOME
+% see http://ctan.math.utah.edu/ctan/tex-archive/macros/latex/contrib/amsrefs/amsrdoc.pdf
+  \bib{ncatlab}{webpage}{
+    title={Joyal's CatLab},
+    url={https://ncatlab.org/joyalscatlab/published/Categories},
+    accessdate={2017-02-06},
+    date={2010-05-30},
+  }
+\end{biblist}
+\end{bibdiv}
+
 
 \end{document}
 
