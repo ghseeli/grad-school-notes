@@ -36,6 +36,7 @@
 \newcommand{\minus}{\smallsetminus}
 \renewcommand{\setminus}{\smallsetminus}
 \renewcommand{\amalg}{\sqcup}
+\renewcommand{\null}{\varnothing}
 \newcommand{\homotopic}{\simeq}
 \renewcommand{\epsilon}{\varepsilon}
 \renewcommand{\d}{\partial}
@@ -45,6 +46,7 @@
 \newcommand{\Map}{\text{Map}}
 \newcommand{\Mor}{\text{Mor}}
 \newcommand{\id}{\text{id}}
+\newcommand{\adj}{\sim} % for 'adjacent' in a graph
 \newcommand{\Arg}{\text{Arg}}
 \renewcommand{\bar}{\widebar}
 
@@ -941,6 +943,110 @@ theorem about covers and subgroups $\bij$ fundamental theorem of Galois theory
 
 \mydate{d12}{22}{2}{2017}
 
+\begin{defn}
+  Given a metric space, \de{positive curvature} is when straight lines (going through the same point $p$) don't depart from eachother linearly like in 0 curvature, but get closer to each other than that.  Curvature is a \textbf{local} property, so we only care about what happens as you are first leaving $p$.
+\end{defn}
+
+Distance between two points on a graph is merely the length of the shortest path between the two points on the graph.  Again, since curvature is a local property, this means that graphs have a very negative curvature!
+
+\begin{thm}
+  The fundamental group of a graph is obtained by ``pruning'' the graph of all branches.  What is left is cycles and paths between those cycles.  The paths between may be contracted to a point.  The result is a jumble of cycles, which can be organized via contraction and homotopy into a single vertex with loops.
+
+  The funamental group will always be $F_n$ for some $n$.
+\end{thm}
+\begin{thm}
+  A topological space $X$ is a graph iff $X^u$ is a tree.
+\end{thm}
+\begin{defn}
+  Given a graph $(V, E)$, an \de{automorphism} is a bijection $f \from V \bij V$ and the induced $E \to E$ such that $a \adj b \in V$ iff $f(a) \adj f(b)$.  (note that $\adj$ denotes adjacency)
+\end{defn}
+\begin{rmk}
+  In other words, $f(\Gamma) = \Gamma$, up to graph isomorphism.  See \cite{GA} for elaboration.
+\end{rmk}
+\begin{defn}
+  \de{A group $G$ acts on a graph $\Gamma$} if there is a homomorphism $h \from G \to \Aut(\Gamma)$.
+\end{defn}
+\begin{rmk}
+  That is, each element $g$ performs an automorphism on $\Gamma$.  For any vertex $v$ or edge $e$, we can write $g(v)$ or $g(e)$ to denote where $g$ sends $v$ or $e$, respectively.
+\end{rmk}
+
+If $G$ is a group acting freely on a graph $\Gamma$, then by definition, $g(v) \cap v = \null$.  If we include the ``edge ends'' touching $v$ in the above, the intersection is still empty.
+
+Now $\Gamma/G$ is the set of orbits.  But there is a different way to interpret $\Gamma/G$.  Take the original $\Gamma$, and for each orbit, collapse all the vertices in that orbit into a single vertex (with induced movement on the edges ((do edges collapse too?))).  The result is again a graph, and so $\Gamma \to \Gamma/G$ is a covering map.
+
+If additionally $\Gamma$ is a tree, then $\Gamma \to \Gamma/G$ is a universal covering map.
+
+\begin{thm}
+  ((this theorem doesn't make sense.  if Gamma is a tree, and G acts freely, what automorphisms exist on a tree with no fixed points?.  Even if you find one, it seems that $\fund(\Gamma/G)$ would be trivial, which is a contradiction.))
+  If $G$ acts freely on a tree $\Gamma$, then $G$ is free.  Specifically, $$G \isom \fund(\Gamma/G) \isom F_n$$.
+\end{thm}
+\begin{rmk}
+  Note.  If $\Gamma$ is not a tree, then $G$ could be anything.
+\end{rmk}
+
+$1 \to K \to F_n \to G \to 1$
+
+If $\Gamma$ is a tree that $F_n$ acts on, then $G$ acts on $\Gamma/K$.
+
+\begin{defn}
+  The \de{$n$-flower} is a graph with $1$ vertex and $n$ edges.  (Note that all edges are loops.)
+\end{defn}
+\begin{thm}[Nielson Schreier]
+  ((This theorem doesn't make sense either))
+  Subgroups of free groups are free.  Furthermore, a subgroup of finite index has rank determined by the index.  That is, in $F_n$, a subgroup of index $k$ has rank $k(n-1)+1$.
+\end{thm}
+\begin{proof}
+  $\fund(n\text{-flower}) \isom F_n \supset H \isom \fund(k\text{-sheeted cover}) \isom \fund(\text{$k$ vertices, $nk$ edges}) \isom \fund(\text{$nk - k + 1$-flower}) \isom F_{nk - k + 1}$
+
+  Picture this.  A connected graph with $k$ vertices and $nk$ edges.  Now take a path (with $k-1$ edges) that connects all $k$ vertices.  Contract the path to a single vertex.  Now there are only $nk - (k-1)$ edges left, and they are all loops!
+
+((what remains unclear is $F_n \supset H$.  Should it be facing the other way?  It is crucial to understand this argument.))
+\end{proof}
+
+\begin{defn}
+  A space $X$ is \de{$K(G,1)$} if $\fund(X) \isom G$ and the universal cover of $X$ is contractible.
+\end{defn}
+Note.  The space is unique up to homotopy equivalence.
+\begin{example}
+  \begin{itemize}
+    \item
+    $K(F_n, 1) \isom n$-flower.
+
+    \item
+    $K(\Z, 1) \isom S^1$
+
+    \item
+    $K(\Z^n, 1) \isom (S^1)^n$
+
+    \item
+    $K(G, 1) \isom$ a $g$-holed torus (or non-orientable surface $\not\isom \R P^1$)
+
+    $G = \langle a_1,b_1,,,a_g,b_g \st [a_1,b_1]\ldots[a_g,b_g] = e \rangle$
+  \end{itemize}
+\end{example}
+
+Given $G$, think of each element as a generator.
+
+So if $g_1, g_2 \in G$, then $g_1$, $g_2$, and $g_1g_2$ are all generators!  They each get a loop!.  But then, of course, we will need to glue faces to build the group.
+
+% \includegraphics[options]{name} pretty picture
+
+So for example, $g_1.g_2 = g_1g_2$, where the LHS is the directed edge concatenation, and the RHS is its very own directed edge.  The picture for this is the triangle.
+
+Similarly, we can create higher dimensional simplices.  For example
+$g_1g_2g3 = g_1.(g_2g3)$
+in the tetrahedron simplex (see pic).
+
+I have an $n$-cell for every $n$-tuple
+
+$D^n \isom \{ (x_0,,,x_n) \in \R^{n+1} \st \sum x_i = 1, x_i \geq 0 \}$
+
+If one of the coordinates is 0, we get a lower $d$-simplex.
+
+
+
+
+
 \mydate{d13}{24}{2}{2017}
 
 \mydate{d14}{27}{2}{2017}
@@ -979,7 +1085,13 @@ theorem about covers and subgroups $\bij$ fundamental theorem of Galois theory
     url={https://ncatlab.org/joyalscatlab/published/Categories},
     accessdate={2017-02-06},
     date={2010-05-30},
-  }
+  },
+  \bib{GA}{webpage}{
+    title={Graph Automorphism},
+    url={http://mathworld.wolfram.com/GraphAutomorphism.html},
+    accessdate={2017-02-22},
+    author={Weisstein, Eric W.},
+  },
 \end{biblist}
 \end{bibdiv}
 

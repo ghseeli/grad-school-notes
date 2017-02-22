@@ -787,7 +787,7 @@ Tuesday, Sept 27, 2016
 
 G.x is the orbit of x.
 
-X is partitioned into its orbits.
+X is partitioned into its orbits.  The partition is denoted X/G.
 
 Let's consider
 
