@@ -942,8 +942,193 @@ note the following
   an outer-measure on $X$. Then, by~\ref{caratheodory} gives us $\M$
   is a $\sigma$-algebra of $\mu^*$-measurable sets: $\mu^*|_\M$. 
 \end{rmk}
-\begin{thm}
+\begin{thm}\label{premeas-extension}
   With this construction, we have that $\A \subset \M$ and $\mu^*|_\A
-  = \mu_0$.
+  = \mu_0$. Furthermore, every set in $\A$ is $\mu^*$-measurable.
 \end{thm}
+\subsection*{(2/21/2017) Lecture 6}
+\begin{proof}
+  For the first part, let $E \in \A$ and $E \subset \Union_{j=1}^\infty A_j$ where each
+  $A_j \in \A$. Then, we can say \[
+    E = \Union_{j=1}^\infty B_j, \ B_n = E \intersect \left( A_n
+      \setminus \Union_{j=1}^{n-1} A_j \right)
+  \]
+  where each $B_n \in \A$ since $\A$is an algebra of sets. Since
+  $mu_0$ is a premeasure, \[
+    \mu_0(E) = \sum_{n=1}^\infty \mu_0(B_n) \leq \sum_{n=1}^\infty \mu_0(A_n).
+  \]
+  This is true for all $A_n$, so take the infimum to get $\mu_0(E)
+  \leq \mu^*(E)$. Then, take our sequence $(A_1, A_2, A_3, \ldots) =
+  (E, \emptyset, \emptyset, \ldots)$. By the definition of
+  outer-measure, this gives $\mu^*(E) \leq \mu_0(E)$ for all $E \in
+  \A$. Thus, $\mu^*|_\A = \mu_0$. \\
+
+  For the second part, let $A \in \A$ and $E \in \P(X)$. To show $A$
+  is outer-measurable, we break up into two cases. 
+  \begin{itemize}
+  \item Let $\mu^*(E) = \infty$. Then, since $\mu^*$ is an outer
+    measure, we use subadditivity to show that \[
+      \mu^*(E) \leq \mu^*(E \intersect A) + \mu^*(E \intersect A^c)
+   \]
+   Thus, the right hand side must also be infinite and thus we have
+   equality.
+  \item Let $\mu^*(E) < \infty$. Let $\epsilon > 0$. By definition of
+    $\mu^*(E)$, there exists a sequence of sets $(B_j)_{j \geq 1}$ in
+    $\A$ such that \[
+      E \subset B := \Union_{j=1}^\infty \text{ and }
+      \sum_{j=1}^\infty \mu_0(B_j) \leq \mu^*(E) + \epsilon.
+    \]
+    Then, we have that
+    \begin{align*}
+      \mu^*(E) + \epsilon & \geq \sum_{j=1}^\infty \mu_0(B_j) \\
+& = \sum_{j=1}^\infty \mu_0(B_j \intersect A) + \sum_{j=1}^\infty
+  \mu_0(B_j \intersect A^c) & \text{ by finite additivity of }\mu_0
+                              \text{ on }\A \\
+& \geq \mu^*(B \intersect A) + \mu^*(B \intersect A^c) & \text { by
+                                                         definition of
+                                                         }\mu^* \text{
+                                                         as } \inf \\
+& \geq \mu^*(E \intersect A) + \mu^*(E \intersect A^c) & \text{ since
+                                                         }E \subset B
+    \end{align*}
+    However, since $\epsilon$ was arbitrary, we get that $\mu^*(E)
+    \geq \mu^*(E \intersect A) + \mu^*(E \intersect A^c)$, so $A \in
+    \M$. 
+  \end{itemize}
+\end{proof}
+\begin{thm}
+  Let $\A \subset \P(X)$ be an algebra of sets and let $\mu_0$ be a
+  premeasure on $\A$. Then, let $\M = \M(\A)$. Then, we get that
+  \begin{enumerate}
+  \item There exists a measure $\mu$ on $\M$ such that $\mu|_\A =
+    \mu_0$, namely $\mu = \mu^*|_\M$.
+  \item If $\nu$ is another measure on $\M$ extending $\mu_0$, then
+    for all $E \in \M$, we get that $\nu(E) \leq \mu(E)$, with $\nu(E)
+    = \mu(E)$ if $\mu(E) < 0$. 
+  \item Thus, if $\mu_0$ is $\sigma$-finite,
+    then the measure extending $\mu_0$ to $\M = \M(\A)$ is unique.
+  \end{enumerate}
+\end{thm}
+\begin{proof}
+  \begin{enumerate}
+  \item This follows from Caratheodory's theorem (\ref{caratheodory})
+    and~\ref{premeas-extension} since $\A$ is in the $\sigma$-algebra
+    of $\mu^*$-measurable sets and thus, so is $\M$. 
+  \item Suppose that $E \subset \Union_{n \geq 1} A_n$ with each $A_n
+    \in \A$. Then, by the subadditivity of $\nu$, we get that \[
+      \nu(E) \leq \sum_{n \geq 1} \nu(A_n) = \sum \mu_0(A_n)
+    \]
+    where the last equality follow from the fact that $\nu|_\A =
+    \mu_0$. Now, take the infimum to get that $\nu(E) \leq
+    \mu(E)$. Next, let us assume that $\mu(E) < \infty$. Then, let
+    $\epsilon > 0$. There exists a sequence of sets $(A_n)_{n \geq 1}$
+    in $\A$ such that $E \subset \Union_{n \geq 1} A_n$ and $\sum_{n
+      \geq 1} \mu_0(A_n) \leq \mu(E) + \epsilon$. Note that $\mu(A)
+    \leq \sum_{n=1}^\infty \mu_0(A_n)$. This gives us that \[
+      \mu(E) + \mu(A \setminus E) \leq \mu(E) + \epsilon \implies
+      \mu(A \setminus E) \leq \epsilon.
+    \]
+    Finally, we note that
+    \begin{align*}
+      \mu(E) & \leq \mu(A) & \text{by monotonicity} \\
+& = \lim_{n \to \infty} \mu(\Union_{j=1}^n A_j) & \text{by continuity
+                                                  from below} \\
+& = \lim_{n \to \infty} \nu(\Union_{j=1}^n A_j) & \text{since }
+                                                  \mu|_\A = \mu_0 =
+                                                  \nu|_\A \\
+& = \nu(A)
+    \end{align*}
+    Putting it all together, we get that \[
+      \mu(E) \leq \nu(A) = \nu(E) + \nu(A \setminus E) \leq \nu(E) +
+      \mu(A \setminus E) \leq \nu(E) + \epsilon
+    \]
+    Since $\epsilon$ was arbitrary, we get that $\mu(E) = \nu(E)$.
+  \item Assume $\mu_0$ is $\sigma$-finite. Then, if we let $E \in
+    \M(\A)$, there is a sequence of disjoint sets $(A_n)_{n \geq 1}$
+    such that $\Dunion_{n \geq 1} A_n = X$ with $\mu(A_n) < \infty$
+    for all $n$. Thus, $\mu(E \intersect A_n) \leq \mu(A_n) <
+    \infty$. So, we get that \[
+      \nu(E) = \sum_{n=1}^\infty \nu(E \intersect A_n) =
+      \sum_{n=1}^\infty (E \intersect A_n)= \mu(E)
+    \]
+  \end{enumerate}
+\end{proof}
+\subsection{Borel measures on $\R$}
+We begin this section with an aside about probability. When $\mu(X) =
+1$, we say that $\mu$ is a probability measure. If $X=\R$, then we can
+define a cumulative distribution function given by $f(x) =
+\mu((-\infty,x])$. Such a function is both non-decreasing and is right
+continuous (follows from continuity from above for $\mu$).
+\begin{rmk}
+  If $-\infty < a < b < \infty$, then $\mu((a,b]) = \mu((-\infty,b]
+  \setminus (-\infty,a]) = f(b) - f(a)$. When $f(x) = x$, we have the
+  ``Lebesgue measure'', which is our goal to rigorously define this section.
+\end{rmk}
+\begin{thm}\label{unique-borel-measure}
+  Let $f \from \R \to \R$ be non-decreasing and right
+  continuous. Then, there exists a unique Borel measure $\mu_F$ such
+  that $\mu_F((a,b]) = f(b) - f(a)$ for all $a < b$ in $\R$. 
+\end{thm}
+\begin{proof}\let\qed\relax
+  We will only prove exitence here. Let \[
+    \Ep =
+    \begin{cases}
+      (a,b] & -\infty \leq a < b < \infty \\
+      (a, \infty) & -\infty \leq a < \infty \\
+      \emptyset
+    \end{cases}
+\]
+Clearly, this is an elementary family. Now, let $\A$ be the set of all
+finite disjoint unions of elements in $\Ep$. Then clearly $\A$ is an
+algebra of sets. Thus, we have $\Ep \subset \A \subset \M(\A) =
+\B_\R$. Now, we wish to show we can construct a $\mu|_\Ep$, then a
+$\mu|_\A$ and then induce a $\mu|_{\M(\A)}$. What we need to show that
+$\mu$ is $\sigma$-additive. (This is all oddly worded, but I could not
+quite follow what he was trying to say in class.)\\
+
+Now, we will define $\mu|_\Ep$ using the function $f \from \R \to \R$
+by saying $f(\infty) := \lim_{x \to \infty} f(x) \in
+(-\infty,\infty]$, $f(-\infty) := \lim_{x \to -\infty} f(x) \in
+[-\infty, \infty)$. It is easy to check that $\mu$ is a measure on
+$\Ep$.  \\
+
+Now, for $A \in \A$, let $A = E_1 \dunion \cdots \dunion E_n$
+with $E_i \in \Ep$ and let $\mu(A) = \sum_{i=1}^n \mu(E_i)$. We wish
+to show this definition is independent of our choice of decomposition.
+\end{proof}
+\subsection*{(2/23/2017) Lecture 7}
+To do this, we will need to utilize some lemmas. In the following
+lemmas, we are using the same definitions for variables as used in the
+assumption of the previous theorem (\ref{unique-borel-measure})
+\begin{lem}
+  If $E \in \Ep$, then $\mu(E) = \lim_{m \to \infty} \mu(E \intersect (-m,m])$.
+\end{lem}
+\begin{proof}
+  \begin{itemize}
+  \item Let $-\infty < a < b < \infty$, so $E = (a,b]$. If $m$ is
+    large enough, then $E = E \intersect (-m,m]$. Thus, $\mu(E)$ is a
+    limit of a constant sequence.
+  \item Let $a = -\infty$ and $b$ be finite. Then, $E =
+    (-\infty,b]$. For $m$ large, we get that $E \intersect (-m,b] =
+    (-m,b]$. Thus, $\mu(E \intersect (-m,m]) = f(b) -
+    f(-m)$. Moreover, $f(-m) \to f(-\infty) \in [-\infty,\infty)$, so
+    we are not subtracting $\infty$. Thus, as $m \to \infty$, $\mu(E
+    \intersect (-m,m]) \to f(b) - f(-\infty) = \mu(E)$
+  \end{itemize}
+\end{proof}
+\begin{lem}
+  Let $n \geq 3$ and let $E,E_1, \ldots, E_n \in \Ep$ be bounded and
+  such that $E = E_1 \dunion \cdots \dunion E_n$. Then, there exists
+  an $i \in \N$ with $1 \leq i \leq n$ such that \[
+    \Dunion_{j \neq i} E_j \in \Ep
+  \]
+\end{lem}
+\begin{proof}
+  
+\end{proof}
+\begin{lem}
+  If $E = E_1 \dunion \cdots \dunion E_n$ with $E, E_i \in \Ep$, then
+  $\mu(E) = \mu(E_1) + \cdots + \mu(E_n)$.
+\end{lem}
+
 \end{document}
