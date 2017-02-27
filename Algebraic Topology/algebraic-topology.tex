@@ -1051,6 +1051,73 @@ If one of the coordinates is 0, we get a lower $d$-simplex.
 
 \mydate{d14}{27}{2}{2017}
 
+\begin{rmk}
+  Technically, delta-complexes ($\delta$-complexes) need to be built from triangles.  So the following are not delta complexes:
+  \begin{itemize}
+    \item A two cycle
+    \item A 1 cycle
+    \item A path of length 1
+  \end{itemize}
+  But they still qualify as simplicial complexes.
+\end{rmk}
+
+\begin{defn}
+  Note: I don't think this is defined rigorously, and should be double-checked.
+  An \de{$n$-chain} is a union (with multiplicity, and negative multiplicity) of $n$-simplices.
+\end{defn}
+\begin{rmk}
+  An $n$-chain is a subspace of dimension $n$.
+
+  Also, negative multiplicities represent the opposite orientation of their positive counterparts.
+\end{rmk}
+
+An orientation of an $n$-simplex is specified by an order on the vertices.
+
+Also, an even permutation (on these vertices) is orientation preserving, while an odd permutation is orientation reversing.
+
+Convention: faces are orientated accoring to the induced order from their vertices.
+
+\begin{defn}
+  An \de{$n$-chain} $\delta_n(X)$ of a $\delta$-complex $X = \dunion \delta_{\alpha}^n /$\text{every face $\cong$ a lower $d$-simplex}  (Yes, mod out by that) is a  formal sum w/ coefficients in $\Z$ of $n$-simplices.
+\end{defn}
+
+Remember, i want the boundary of an $n$-chain.
+
+\begin{defn}
+  The boundary map $\d \from \delta_n(X) \to \delta_{n-1}(X)$ is the linear map $$\d(\sigma) = \sum_{i=0}^n (-1)^i \sigma|_{[0, 1,,,, \hat{i},,, n]}$$
+\end{defn}
+
+Houston we have a problem.  The induced orientation on the boundary doesn't neccessarily agree with the original orientation on the those lower dimensional simplices! (see above?)
+
+\begin{example}
+  % pretty picture
+  \d(X) = - a - b + c
+  \d(Y) =
+
+  $\sigma$ is the glueing map!  not a permutation! $\sigma \from \delta^n \to X$.
+  where $[0, 1, 2]$, for example, represents the triangle (path closed into a cycle) 0-->1-->2.
+\end{example}
+
+Claim: $\delta^2 = 0$.
+
+\begin{defn}
+  $$H_n^\delta(X) := \ker(\d \from \delta_n \to \delta_{n-1})/\im(\d \from \delta_{n+1} \to \delta_{n})$$
+\end{defn}
+
+\begin{example}
+  $H_2^\delta(K^2) = 0$
+  $H_1^\delta(K^2) \isom \Z \oplus \Z/2\Z$
+  $H_0^\delta(K^2) = \Z$
+
+  where
+  $\Z^2 \to(overset [-1 -1; -1 1; 1 1]) \Z^3 \to(overset 0) \Z$
+
+  $[0 2 0]^transpose$
+\end{example}
+
+
+
+
 \mydate{d15}{1}{3}{2017}
 
 \mydate{d16}{3}{3}{2017}
