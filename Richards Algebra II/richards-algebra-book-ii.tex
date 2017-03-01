@@ -331,7 +331,7 @@ An $R$-module $M$ is called \tb{indecomposable} if it cannot be written as the d
 
 \vs
 
-We can generalize in a straightforward way the construction of direct sums with finitely many summands: $\bigoplus_{i=1}^n M_i :+ \{(m_1,\dots,m_n) \mid m_i \in M_i\}$ (external direct sum). For $M_1,\dots,M_n \leq M$, $M = \bigoplus_{i=1}^n M_i$ (internal direct sum) iff $M = \sum_{i=1}^n M_i$ and $M_i \cap \sum_{1 \leq j \leq n, j \ne i} M_j = \{0\}$.
+We can generalize in a straightforward way the construction of direct sums with finitely many summands: $\bigoplus_{i=1}^n M_i := \{(m_1,\dots,m_n) \mid m_i \in M_i\}$ (external direct sum). For $M_1,\dots,M_n \leq M$, $M = \bigoplus_{i=1}^n M_i$ (internal direct sum) iff $M = \sum_{i=1}^n M_i$ and $M_i \cap \sum_{1 \leq j \leq n, j \ne i} M_j = \{0\}$.
 
 \vs
 
@@ -403,7 +403,7 @@ These isomorphisms are as abelian groups for arbitrary rings and as $R$-modules 
 \begin{defn*}
 Let $M$ be an $R$-module. Elements $m_1,\dots,m_n \in M$ are called \tb{linearly independent} if for all $r_1,\dots,r_n \in R$, we have that
 	\[\sum_{i = 1}^n r_i m_i = 0 \iff r_1 = r_2 = \dots = r_n = 0 \]
-More generally, a subset $S \sub M$ is called \tb{lienarly independent} if every finite subset of $S$ is linearly independent.
+More generally, a subset $S \sub M$ is called \tb{linearly independent} if every finite subset of $S$ is linearly independent.
 \end{defn*}
 
 \vs
@@ -497,7 +497,7 @@ For any ring $R$ any $n \in \N$, the map $\alpha : \tn{End}_R(R^n) \ra M_N(R\op)
 \vs
 
 \begin{defn}
-The \tb{dual} $M^*$ of the $R$-module $M$ is defined as $M^* :+ \hom_R(M,R)$, where we think of $R$ as a left $R$-module. By 3.1.10, $M^*$ is an abelian group and is an $R$-module if $R$ is commutative.
+The \tb{dual} $M^*$ of the $R$-module $M$ is defined as $M^* := \hom_R(M,R)$, where we think of $R$ as a left $R$-module. By 3.1.10, $M^*$ is an abelian group and is an $R$-module if $R$ is commutative.
 \end{defn}
 
 \vs
@@ -619,7 +619,7 @@ For $R$-modules $M,N$ and $\phi \in \hom_R(M,N)$, we define $D\inv \phi : D\inv 
 In the language of categories, $D\inv$ is in fact a \emph{covariant functor} from the category of $R$-modules to the category of $D\inv R$-modules. \\
 
 We call a (finite or infinite) sequence of $R$-module homomorphisms
-	\[...\longrightarrow M_i \overset{\phi_{I-1}}{\longrightarrow} M_i \overset{\phi_i}{\longrightarrow} M_{i+1} \longrightarrow \dots \]
+	\[...\longrightarrow M_i \overset{\phi_{i-1}}{\longrightarrow} M_i \overset{\phi_i}{\longrightarrow} M_{i+1} \longrightarrow \dots \]
 is called \tb{exact} if $\im \phi_{i-1} = \ker \phi_i$ for all $i$. A \tb{short exact sequence} (SES) is an exact sequence \\ $\mses{L}{\phi}{M}{\psi}{N}$.
 \end{defn}
 
@@ -657,7 +657,7 @@ If $R$ is an integral domain and $M$ is an $R$-module, then
 \begin{enumerate}
 \item[(a)] $T(M)$ is a submodule of $M$.
 \item[(b)] $M/T(M)$ is torsion free.
-\item[(b)] If $M$ is free, then $M$ is torsion free.
+\item[(c)] If $M$ is free, then $M$ is torsion free.
 \end{enumerate}
 \end{lemma}
 
@@ -669,9 +669,9 @@ If $R$ is an integral domain and $M$ is an $R$-module, then
 
 \item[(b)] Assume that $m + T(M) \in T(M/T(M))$. Let $r \in R \bs \{0\}$ be such that $r(m + T(M)) = rm + T(M) = 0 + T(M) \iff rm \in T(M)$. Then there exists $r' \in R \bs \{0\}$ with $0 = r'(rm) = (rr')m$, and $rr' \ne 0$, so $m \in T(M) \iff m + T(M) = 0 + T(M)$.
 
-\item[(b)] Let $B = \{m_i \mid i \in I\}$ be a basis of $M$, and let $m \in T(M)$. Write $m = \sum_{i \in I} r_i m_i$, where $r_i \in R$ and $r_i = 0$ for almost all $i \in I$. For some $r \in R \bs \{0\}$, we have
+\item[(c)] Let $B = \{m_i \mid i \in I\}$ be a basis of $M$, and let $m \in T(M)$. Write $m = \sum_{i \in I} r_i m_i$, where $r_i \in R$ and $r_i = 0$ for almost all $i \in I$. For some $r \in R \bs \{0\}$, we have
 	\[0 = rm = r \sum_{i \in I} r_i m_i = \sum_{i \in I} (rr_i) m_i \implies rr_i = 0 \tn{ for all } i \in I \]
-But $R$ is an integral domain and $R$ is an integral domain, so we must have that $r_i = 0$ for all $i \in I \iff m = \sum_{i \in I} r_i m_i = 0$. Thus $M$ is torsion free.
+But $R$ is an integral domain, so we must have that $r_i = 0$ for all $i \in I \iff m = \sum_{i \in I} r_i m_i = 0$. Thus $M$ is torsion free.
 \end{enumerate}
 \end{proof}
 
@@ -757,7 +757,7 @@ Let $V$ be the $F$-vector space $V = D\inv M$. Because $M$ is free, 3.2.8 (c) im
 \begin{enumerate}
 \item[(a)] $\gen{S}_R = M \overset{3.2.13 (a)}{\implies} \gen{j_M(S)}_F = D\inv M = V$. Basic linear algebra tells us that
 	\[|S| = |j_M(S)| \geq |j_M(B)| = |B| \]
-\item[(b)] $S$ being $R$-linearly independent $\implies j_M(S)$ is $F$-linearly independent $\overset{\tn{linear algebra}}{\implies} |S| = |j_M(S)| \leq |j_M(B) = |B|$.
+\item[(b)] $S$ being $R$-linearly independent $\implies j_M(S)$ is $F$-linearly independent $\overset{\tn{linear algebra}}{\implies} |S| = |j_M(S)| \leq |j_M(B)| = |B|$.
 \item[(c)] Follows from $(a)$ and $(b)$.
 \end{enumerate}
 
@@ -946,6 +946,7 @@ Let $M$ be an $R$-module, $p \in R$ a prime, and $j \in \N$. Define $M_{p,j} := 
 
 \item[(c)] There exists $j_0 \in \N$ with $M_{p,j_0} = M_p$ if $M$ is finitely generated (i.e., $M$ is "Noetherian").
 \end{enumerate}
+
 \end{remark}
 
 \vs
@@ -1168,4 +1169,68 @@ Let $A$ be a finite abelian group with $|A| = p_1^{e_1} p_2^{e_2} \cdots p_s^{e_
 \begin{remark*}
 The summand $\bigoplus_{i=1}^{n_k} \z_{p_k^{e_{k,i}}}$ is the $p_k$-primary component of $A$, which is also the Sylow $p_k$-subgroup of $A$ for each $1 \leq k \leq s$.
 \end{remark*}
+
+Recall that a commutative ring $R$ is \tb{Noetherian} iff every ideal of $R$ is finitely generated iff $R$ satisfies the ascending chain condition on ideals iff any nonempty set of ideals of $R$ has a maximal element. In particular, any PID is Noetherian.
+
+\vs
+
+\begin{theorem}[Compatible Basis Theorem]
+Let $M$ be a free $R$-module ($R$ a PID) of finite rank $n$ and let $N$ be a submodule of $M$. Then there is a basis $B = \{x_1,x_2,\dots,x_n\}$ of $M$, an integer $0 \leq m \leq n$, and elements $a_1,a_2\dots,a_m \in R \bs \{0\}$ with $a_1 \mid a_2 \mid \dots \mid a_m$ such that $\{a_1x_1,a_2x_2,\dots,a_mx_m\}$ is a basis of $N$.
+\end{theorem}
+
+\begin{proof}
+We prove the claim by induction on $n = \rk M$. We assume without loss of generality that $N \ne \{0\}$. For the base case $n = 1$, see 3.3.1. Consider $\Sigma := \{f(N) \mid f \in M^*\}$, a set of ideals of $R$ containing $(0)$. But $\Sigma \ne \{(0)\}$. Indeed, pick any basis $B_0 = \{e_1,\dots,e_n\}$ of $M$ and define the "projection" $\pi_i \in M^*$ by $\pi_i(\sum_{j=1}^n r_j e_j) = e_i$ for $1 \leq i \leq n$. For at least one $i$, we must have $\pi_i(N) \ne \{0\}$ since $N \ne \{0\}$. Now, because $R$ is a PID and hence Noetherian, $\Sigma$ must have a maximal element $I \ne (0)$. Now $R$ a PID $\implies I = (a_1)$ for some $a_1 \in R \bs \{0\}$. Now $I \in \Sigma$, so there exists $y_1 \in N$ and $f_1 \in M^*$ with $f(y_1) = a_1$. By 3.3.2, $N = \ker f_1 \oplus Ry_1 (\ast)$. \\
+
+We claim that $a_1 \mid f(y_1)$ for all $f \in M^*$. Let $f \in M^*$. Now $(a_1,f(y_1)) = (d)$ for some $d \in R$, hence there exist $r,s \in R$ such that
+	\begin{align*}
+	d &= ra_1 + s f(y_1) = r f_1(y_1) + s f(y_1) = (rf_1 + sf)(y_1) = f'(y_1) \\
+	\implies I &= (a_1) \sub (d) = (f'(y_1)) \sub f'(N) \in \Sigma,
+	\end{align*}
+where $f' = rf_1 + sf \in M^*$. But $I$ is maximal in $\Sigma$, so we must have $I = f'(N)$ $\implies (a_1) = (d) = (a_1,f(y_1)) \implies $ $f(y_1) \in (a_1) \implies a \mid f(y_1)$. \\
+
+The consequence of this fact is that there exists $x_1 \in M$ with $y_1 = a_1 x_1$. Indeed, write $y_1 = \sum_{i=1}^n r_i e_i$, so that $r_i = \pi_i(y_1)$ for each $1 \leq i \leq n$. Then, by the claim, $a_1 \mid r_i \implies$ there exists $b_i \in R$ with $r_i = b_i a_1 $ $\implies y_1 = a_1 \sum_{i=1}^n b_i e_i = a_1 x_1$, where $x_1 = \sum_{i=1}^n b_i e_i$. Then
+	\begin{align*}
+	a_1 &= f_1(y_1) = f_1(a_1x_1) = a_1 f_1(x_1) \\
+	\implies 1 &= f_1(x_1) \\
+	\implies R &= f_1(M) = (f_1(x_1)) \\
+	\overset{3.3.2}{\implies} M &= \ker f_1 \oplus R x_1 \tag{$\ast \ast$}
+	\end{align*}
+Now $\ker f_1 \leq M \implies \ker f_1$ is free by 3.3.3, and $\rk(\ker f_1) = \rk M - 1 = n-1$ by 3.2.12(b). We apply the induction hypothesis to $\ker f_1 \cap N \leq \ker f_1$ to find a basis $\{x_2,x_3,\dots,x_n\}$ of $\ker f_1$, an integer $2 \leq m \leq n$, and elements $a_2,a_3,\dots,a_m \in R \bs \{0\}$ with $a_2 \mid a_3 \mid \dots \mid a_m$ such that $\{a_2x_2,\dots,a_mx_m\}$ is a basis of $\ker f_1 \cap N$. But then $\{a_1,x_1,\dots,a_m,x_m\}$ is a basis of $N$ by observing $(\ast)$ and $\{x_1,x_2,\dots,x_n\}$ is a basis of $M$ by $(\ast \ast)$. \\
+
+It remains to check that $a_1 \mid a_2$. Consider $f \in M^*$ defined by $f(\sum_{i=1}^n r_i x_i) = r_1 + r_2$. Then $f(y_1) = (f(a_1x_1) = a_1$ and $f(a_2 x_2) = a_2$, so $I = (a_1) \sub (a_1,a_2) \sub f(N) \in \Sigma$, and $I$ is maximal in $\Sigma$, hence $(a_1) = (a_1,a_2) \implies a_2 \in (a_1) \implies a_1 \mid a_2$.
+\end{proof}
+
+\newpage
+
+\begin{theorem}[Structure of Finitely Generated Modules Over PIDs]
+For a finitely generated $R$-module $M$ ($R$ a PID), the following hold
+\begin{enumerate}
+\item[(a)] There exists a free submodule $M_0$ of $M$ with $\rk M_0 = \rk M$ such that $M = T(M) \oplus M_0$.
+\item[(b)] If $M$ is torsion free, then $M$ is free.
+\item[(c)] There exist elements $a_1,a_2,\dots,a_m \in R\bs(R\x \cup \{0\})$ with $a_1 \mid a_2 \mid \dots \mid a_m$ such that
+	\[T(M) \cong \bigoplus_{i=1}^m R/(a_i) \]
+\item[(d)] $M$ is a finite direct sum of cyclic modules.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Choose a set $S = \{m_1,\dots,m_n\}$ which generates $M$. There is a unique linear map $\phi : R^n \ra M$ satisfying $\phi(e_i) = m_i$ for all $1 \leq i \leq n$. Hence $M \cong R^n/N$, where $N := \ker \phi$, by 3.1.9. By 3.3.5, there is a basis $B = \{x_1,\dots,x_n\}$ of $R^n$, an integer $0 \leq m \leq n$, and elements $a_1,\dots,a_m \in R \bs \{0\}$ with $a_1 \mid a_2 \mid \dots \mid a_m$ such that $\{a_1x_1,\dots,a_mx_M\}$ is a basis of $N$. Then
+	\[M \cong R^n/N = \bigoplus_{i=1}^n Rx_i/\bigoplus_{i=1}^m Ra_ix_i \cong \bigoplus_{i=1}^m \frac{Rx_i}{Ra_ix_i} \oplus \bigoplus_{i=m+1}^n Rx_i \cong \bigoplus_{i=1}^m R/(a_i) \oplus R^{n-m} \]
+If $a_i \in R\x$, then $R/(a_i) = \{0\}$, so we can omit this summand. We may therefore assume (renumbering, if necessary) that $a_i \in R \bs (R\x \cup \{0\})$. In summary, we have shown that there exists an isomorphism $\psi : M' := \bigoplus_{i=1}^m R/(a_i) \oplus R^{n-m} \ra M$. Note that $\bigoplus_{i=1}^m R/(a_i)$ is the torsion submodule of $M'$ (annihilated by $a_m$). Setting $M_0' = R^{n-m}$, we have that
+	\[M' = T(M') \oplus M_0' \implies M = \psi(T(M') \oplus M_0') = \psi(T(M')) \oplus \psi(M_0') = T(M) + M_0, \]
+where $M_0 := \psi(M_0')$ is free. It follows from 3.2.12 (b) that $\rk M = \rk T(M) + \rk M_0 = 0 + \rk M_0$. This proves (a), (b), (c), and (d).
+\end{proof}
+
+\vs
+
+\begin{remark}\
+\begin{enumerate}
+\item[(a)] $M$ determines $T(M)$ uniquely but not the complement $M_0$ of $T(M)$. For example, consider \[ \z_n \oplus \z \tn{ (external direct sum) } = \z_n \oplus \z(\ov{1},1) \tn{ (internal direct sum)} \]
+\item[(b)] If $M = T(M) \oplus M_0'$, then $M_0' \cong M/T(M) \cong M_0$, so also $M_0'$ is free of rank $\rk M$.
+
+\item[(c)] If $R$ is Noetherian and $M$ is a finitely generated $R$-module, then any submodule of $M$ is again finitely generated, but $N$ might require \emph{more} generators than $M$. This is, however, not the case for $R$ a PID (exercise).
+
+\item[(d)] The implication "torsion free $\implies$ free" is not true for non-finitely generated $R$-modules. For example, take $M = \Q$ or $M = \prod_{n \in \N} \z$ as a $\z$-module.
+\end{enumerate}
+\end{remark}
 \end{document}
