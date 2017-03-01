@@ -172,12 +172,7 @@ If $S \leq M$, then $\ann{R}{S}$ is a two-sided ideal of $R$. Indeed, for $a \in
 \vs
 
 \begin{defn}
-Let $M,N$ be $R$-modules. A map $\phi : M \ra N$ is called an \tb{$\mb{R}$-module homomorphism} or \tb{$\mb{R}$-linear} if for all $m,m' \in M$ and $r \in R$,
-\begin{itemize}
-	\item $\phi(m+m') = \phi(m) + \phi(m')$
-	\item $\phi(rm) = r\phi(m)$
-\end{itemize}
-Clearly, $\ker \phi := \phi\inv(0_N) \leq M$, $\im \phi \leq N$, and $\phi$ is injective if and only if $\ker \phi = \{0_M\}$. $\phi$ is called an \tb{$\mb{R}$-module isomorphism} if $\phi$ is bijective, in which case $\phi\inv : N \ra M$ is also an $R$-module isomorphism.
+Let $M,N$ be $R$-modules. A map $\phi : M \ra N$ is called an \tb{$\mb{R}$-module homomorphism} or \tb{$\mb{R}$-linear} if $\phi(m+m') = \phi(m) + \phi(m')$ and $\phi(rm) = r\phi(m)$ for all $m,m' \in M$ and $r \in R$. Clearly, $\ker \phi := \phi\inv(0_N) \leq M$, $\im \phi \leq N$, and $\phi$ is injective if and only if $\ker \phi = \{0_M\}$. $\phi$ is called an \tb{$\mb{R}$-module isomorphism} if $\phi$ is bijective, in which case $\phi\inv : N \ra M$ is also an $R$-module isomorphism.
 \end{defn}
 
 \vs
@@ -830,6 +825,350 @@ If $M$ is any free $R$-module, then so is any submodule ($R$ is a PID). For a pr
 \end{remark}
 
 \vs
+
+Recall that a commutative ring $R$ is \tb{Noetherian} iff every ideal of $R$ is finitely generated iff $R$ satisfies the ascending chain condition on ideals iff any nonempty set of ideals of $R$ has a maximal element. In particular, any PID is Noetherian.
+
+\vs
+
+\begin{theorem}[Compatible Basis Theorem]
+Let $M$ be a free $R$-module ($R$ a PID) of finite rank $n$ and let $N$ be a submodule of $M$. Then there is a basis $B = \{x_1,x_2,\dots,x_n\}$ of $M$, an integer $0 \leq m \leq n$, and elements $a_1,a_2\dots,a_m \in R \bs \{0\}$ with $a_1 \mid a_2 \mid \dots \mid a_m$ such that $\{a_1x_1,a_2x_2,\dots,a_mx_m\}$ is a basis of $N$.
+\end{theorem}
+
+\begin{proof}
+We prove the claim by induction on $n = \rk M$. We assume without loss of generality that $N \ne \{0\}$. For the base case $n = 1$, see 3.3.1. Consider $\Sigma := \{f(N) \mid f \in M^*\}$, a set of ideals of $R$ containing $(0)$. But $\Sigma \ne \{(0)\}$. Indeed, pick any basis $B_0 = \{e_1,\dots,e_n\}$ of $M$ and define the "projection" $\pi_i \in M^*$ by $\pi_i(\sum_{j=1}^n r_j e_j) = e_i$ for $1 \leq i \leq n$. For at least one $i$, we must have $\pi_i(N) \ne \{0\}$ since $N \ne \{0\}$. Now, because $R$ is a PID and hence Noetherian, $\Sigma$ must have a maximal element $I \ne (0)$. Now $R$ a PID $\implies I = (a_1)$ for some $a_1 \in R \bs \{0\}$. Now $I \in \Sigma$, so there exists $y_1 \in N$ and $f_1 \in M^*$ with $f(y_1) = a_1$. By 3.3.2, $N = \ker f_1 \oplus Ry_1 (\ast)$. \\
+
+We claim that $a_1 \mid f(y_1)$ for all $f \in M^*$. Let $f \in M^*$. Now $(a_1,f(y_1)) = (d)$ for some $d \in R$, hence there exist $r,s \in R$ such that
+	\begin{align*}
+	d &= ra_1 + s f(y_1) = r f_1(y_1) + s f(y_1) = (rf_1 + sf)(y_1) = f'(y_1) \\
+	\implies I &= (a_1) \sub (d) = (f'(y_1)) \sub f'(N) \in \Sigma,
+	\end{align*}
+where $f' = rf_1 + sf \in M^*$. But $I$ is maximal in $\Sigma$, so we must have $I = f'(N)$ $\implies (a_1) = (d) = (a_1,f(y_1)) \implies $ $f(y_1) \in (a_1) \implies a \mid f(y_1)$. \\
+
+The consequence of this fact is that there exists $x_1 \in M$ with $y_1 = a_1 x_1$. Indeed, write $y_1 = \sum_{i=1}^n r_i e_i$, so that $r_i = \pi_i(y_1)$ for each $1 \leq i \leq n$. Then, by the claim, $a_1 \mid r_i \implies$ there exists $b_i \in R$ with $r_i = b_i a_1 $ $\implies y_1 = a_1 \sum_{i=1}^n b_i e_i = a_1 x_1$, where $x_1 = \sum_{i=1}^n b_i e_i$. Then
+	\begin{align*}
+	a_1 &= f_1(y_1) = f_1(a_1x_1) = a_1 f_1(x_1) \\
+	\implies 1 &= f_1(x_1) \\
+	\implies R &= f_1(M) = (f_1(x_1)) \\
+	\overset{3.3.2}{\implies} M &= \ker f_1 \oplus R x_1 \tag{$\ast \ast$}
+	\end{align*}
+Now $\ker f_1 \leq M \implies \ker f_1$ is free by 3.3.3, and $\rk(\ker f_1) = \rk M - 1 = n-1$ by 3.2.12(b). We apply the induction hypothesis to $\ker f_1 \cap N \leq \ker f_1$ to find a basis $\{x_2,x_3,\dots,x_n\}$ of $\ker f_1$, an integer $2 \leq m \leq n$, and elements $a_2,a_3,\dots,a_m \in R \bs \{0\}$ with $a_2 \mid a_3 \mid \dots \mid a_m$ such that $\{a_2x_2,\dots,a_mx_m\}$ is a basis of $\ker f_1 \cap N$. But then $\{a_1,x_1,\dots,a_m,x_m\}$ is a basis of $N$ by observing $(\ast)$ and $\{x_1,x_2,\dots,x_n\}$ is a basis of $M$ by $(\ast \ast)$. \\
+
+It remains to check that $a_1 \mid a_2$. Consider $f \in M^*$ defined by $f(\sum_{i=1}^n r_i x_i) = r_1 + r_2$. Then $f(y_1) = (f(a_1x_1) = a_1$ and $f(a_2 x_2) = a_2$, so $I = (a_1) \sub (a_1,a_2) \sub f(N) \in \Sigma$, and $I$ is maximal in $\Sigma$, hence $(a_1) = (a_1,a_2) \implies a_2 \in (a_1) \implies a_1 \mid a_2$.
+\end{proof}
+
+\newpage
+
+\begin{theorem}[Structure of Finitely Generated Modules Over PIDs]
+For a finitely generated $R$-module $M$ ($R$ a PID), the following hold
+\begin{enumerate}
+\item[(a)] There exists a free submodule $M_0$ of $M$ with $\rk M_0 = \rk M$ such that $M = T(M) \oplus M_0$.
+\item[(b)] If $M$ is torsion free, then $M$ is free.
+\item[(c)] There exist elements $a_1,a_2,\dots,a_m \in R\bs(R\x \cup \{0\})$ with $a_1 \mid a_2 \mid \dots \mid a_m$ such that
+	\[T(M) \cong \bigoplus_{i=1}^m R/(a_i) \]
+\item[(d)] $M$ is a finite direct sum of cyclic modules.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Choose a set $S = \{m_1,\dots,m_n\}$ which generates $M$. There is a unique linear map $\phi : R^n \ra M$ satisfying $\phi(e_i) = m_i$ for all $1 \leq i \leq n$. Hence $M \cong R^n/N$, where $N := \ker \phi$, by 3.1.9. By 3.3.5, there is a basis $B = \{x_1,\dots,x_n\}$ of $R^n$, an integer $0 \leq m \leq n$, and elements $a_1,\dots,a_m \in R \bs \{0\}$ with $a_1 \mid a_2 \mid \dots \mid a_m$ such that $\{a_1x_1,\dots,a_mx_M\}$ is a basis of $N$. Then
+	\[M \cong R^n/N = \bigoplus_{i=1}^n Rx_i/\bigoplus_{i=1}^m Ra_ix_i \cong \bigoplus_{i=1}^m \frac{Rx_i}{Ra_ix_i} \oplus \bigoplus_{i=m+1}^n Rx_i \cong \bigoplus_{i=1}^m R/(a_i) \oplus R^{n-m} \]
+If $a_i \in R\x$, then $R/(a_i) = \{0\}$, so we can omit this summand. We may therefore assume (renumbering, if necessary) that $a_i \in R \bs (R\x \cup \{0\})$. In summary, we have shown that there exists an isomorphism $\psi : M' := \bigoplus_{i=1}^m R/(a_i) \oplus R^{n-m} \ra M$. Note that $\bigoplus_{i=1}^n R/(a_i)$ is the torsion submodule of $M'$ (annihilated by $a_m$). Setting $M_0' = R^{n-m}$, we have that
+	\[M' = T(M') \oplus M_0' \implies M = \psi(T(M') \oplus M_0') = \psi(T(M')) \oplus \psi(M_0') = T(M) + M_0, \]
+where $M_0 := \psi(M_0')$ is free. It follows from 3.2.12 (b) that $\rk M = \rk T(M) + \rk M_0 = 0 + \rk M_0$. This proves (a), (b), (c), and (d).
+\end{proof}
+
+\vs
+
+\begin{remark}\
+\begin{enumerate}
+\item[(a)] $M$ determines $T(M)$ uniquely but not the complement $M_0$ of $T(M)$. For example, consider \[ \z_n \oplus \z \tn{ (external direct sum) } = \z_n \oplus \z(\ov{1},1) \tn{ (internal direct sum)} \]
+\item[(b)] If $M  T(M) \oplus M_0'$, then $M_0' \cong M/T(M) \cong M_0$, so also $M_0'$ is free of rank $\rk M$.
+
+\item[(c)] If $R$ is Noetherian and $M$ is a finitely generated $R$-module, then any submodule of $M$ is again finitely generated, but $N$ might require \emph{more} generators than $M$. This is, however, not the case for $R$ a $PID$ (exercise).
+
+\item[(d)] The implication "torsion free $\implies$ free" is not true for non-finitely generated $R$-modules. For example, take $M = \Q$ or $M = \prod_{n \in \N} \z$ as a $\z$-module.
+\end{enumerate}
+\end{remark}
+
+\vs
+
+For $R$ a PID and $M$ a finitely generated $R$-module, one might ask the following questions:
+\begin{enumerate}
+\item[(1)] \textit{What determines the structure of $M$?} Two things: the rank $n = \rk M$ ("Betti number") and $T(M)$, which together tell us that $M \cong T(M) \oplus R^n$.
+
+\item[(2)] \textit{What determines the structure of $T(M)$?} The "invariant factors" $a_1 \mid a_2 \mid \dots \mid a_m$, $a_i \in R \bs (R\x \cup \{0\})$, which tell us that $T(M) \cong \bigoplus_{i=1}^n R/(a_i)$.
+
+\item[(3)] Are the invariant factors unique up to units? Yes (as we shall see).
+\end{enumerate}
+
+\vs
+
+\begin{proposition}[CRT for PIDs]
+If $p_1,\dots,p_n \in R$ are pairwise non-associate primes of $R$ and $e_1,\dots,e_n \in \N$, then
+	\[R/(p_1^{e_1}\cdots p_n^{e_n}) \longrightarrow \bigoplus_{j=1}^n R/(p_J^{e_j}), \quad r+(p_1^{e_1}\cdots p_n^{e_n}) \mapsto (r+(p_j^{e_j}))_{j=1}^n \]
+is an isomorphism of rings and $R$-modules.
+\end{proposition}
+
+\vs
+
+\begin{corollary}[Existence of Elementary Divisors]
+If $M$ is a finitely generated $R$-module, then there exists $t \in \N_0$ and (possibly associate) primes $p_1,\dots,p_t \in R$ and $e_1,\dots,e_t \in \N$ such that
+	\[T(M) \cong \bigoplus_{k=1}^n R/(p_k^{e_k}) \tag{$\ast$} \]
+\end{corollary}
+
+\vs
+
+Number the primes $p_1,\dots,p_t$ as in the Corollary such that for some $s \leq t$, $p_1,\dots,p_s$ are precisely the nonassociate primes in the list. \\
+
+\noindent \underline{Notation:} For $X$ and $R$-module and $\ell \in \N_0$, write $\bigoplus_{\ell} := \bigoplus_{i=1}^\ell X$, $\bigoplus_0 X := \{0\}$. \\
+
+Then we can rewrite $(\ast)$ above as
+	\[T(M) \cong \bigoplus_{k=1}^s \bigoplus_{j \in \N} \bigoplus_{\ell_{k,j}} R/(p_k^j) \]
+with $\ell_{kj} \in \N_0$, almost all 0.
+
+\begin{example*}
+Take $T(M) = \z_4 \oplus \z_8 \oplus \z_3 \oplus \z_3 \oplus \z_{27} \oplus \z_4$. Then $t = 6, s = 2, p_1 = 2, p_2 = 3$, and
+	\[T(M) = \left(\bigoplus_0 \z_2\right) \oplus \left(\bigoplus_2 \z_4 \right) \oplus \left(\bigoplus_1 \z_8 \right) \oplus \left(\bigoplus_2 \z_3 \right) \oplus \left(\bigoplus_0 \z_9 \right) \oplus \left(\bigoplus_1 \z_{27} \right) \]
+\end{example*}
+
+\vs
+
+\begin{defn}[$p$-Primary Component]
+Let $M$ be an $R$-module, $p \in R$ a prime, and $j \in \N$. Define $M_{p,j} := \{m \in M \mid p^j m = 0\} \leq M$. The \tb{$\mb{p}$-primary component} of $M$ is $M_p := \bigcup_{j \in \N} M_{p,j} \leq M$.
+\end{defn}
+
+\vs
+
+\begin{remark}\
+\begin{enumerate}
+\item[(a)] $M_{p,j} \leq M_{p,j+1}$ for all $j \in \N$.
+\item[(b)] If $A$ and $B$ are $R$-modules, then $(A \oplus B)_{p,j} = A_{p,j} \oplus B_{p,j}$ and $(A \oplus B)_p = A_p \oplus B_p$.
+
+\item[(c)] There exists $j_0 \in \N$ with $M_{p,j_0} = M_p$ if $M$ is finitely generated (i.e., $M$ is "Noetherian").
+\end{enumerate}
+
+\end{remark}
+
+\vs
+
+\begin{lemma}
+Let $R$ be a PID, $a,b,d \in R$, $a \ne 0$, with $(a,b) = (d)$. Then
+\begin{enumerate}
+\item[(a)] $b \cdot R/(a) = d \cdot R/(a) \cong R/(a/d)$ as $R$-modules.
+\item[(b)] $b \cdot R/(a) = \{0\} \iff a \mid b$.
+\item[(c)] $p^{j-1} \cdot R/(p^j) \cong R/(p)$ for $p \in R$ prime and $j \in \N$.
+\item[(d)] For any prime $p \in R$, $(R/(a))_p \ne \{0\} \iff p \mid a$, and if $p^j \mid a$, then
+	\[(R/(a))_{p,j} = \frac{a}{p^j} \cdot R/(a) \]
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}\
+\begin{enumerate}
+\item[(a)] \[b \cot R/(a) = (Rb + Ra)/(a) = (a,b) \cdot R/(a) = d \cdot R/(a) \cong R/(a/d), \]
+where the isomorphism $d \cdot R/(a) \ra R/(a/d)$ is given by $dr + Ra \mapsto R + R \frac{a}{d}$.
+\item[(b)] $b \cdot R/(a) = \{0\} \iff b = b\cdot 1 \in (a) \iff a \mid b$.
+\item[(c)] Apply (a) with $b = p^{j-1} = d$ and $a = p^j$ to get that $p^{j-1} R/(p^j) \cong R/(p)$.
+\item[(d)] First, assume that $p^j \mid a$ for some $j \in \N$. Then for $r \in R$, we get $r + (a) \in (R/(a))_{p,j} \iff$ $p^j r \in (a) \iff$ $p^j \mid a \mid p^j r \iff$ $1 \mid \frac{a}{p^j} \mid r \iff $ $r \in \left(\frac{a}{p^j}\right)$, so
+	\[(R/(a))_{p,j} = \frac{a}{p^j} R/(a) \overset{\tn{part (a)}}{\cong} R/(p^j) \ne \{0\} \]
+In particular, if $p \mid a$ ($j = 1$), then $\{0\} \ne (R/(a)_{p,1} \sub (R/(a))_p$. It remains to show that if $p \nmid a$, then $(R/(a))_p = \{0\}$. For $r \in R$, $j \in \N$, we have $r + (a) \in (R/(a))_{p,j} \iff $ $p^j (r + (a)) = 0 + (a) \iff $ $p^j r \in (a) \iff $ $a \mid p^j r$. But $\gcd(a,p) = 1$ by assumption, so $a \mid p^j r \iff a \mid r \iff r + (a) = 0 + (a)$. Hence $(R/(a))_{p,j} = \{0\}$ for all $j \in \N$ if $p \nmid a$, and thus $(R/(a))_p = \{0\}$.
+\end{enumerate}
+\end{proof}
+
+\vs
+
+\begin{remark}
+For any prime $p \in R$ ($R$ a PID), the ideal $(p) \lhd R$ is maximal, hence $\kappa_p := R/(p)$ is a \tb{(residue) field}. Any $R$-module $M$ with $p \in \ann{R}{M}$ is also a $\kappa_p$-vector space with $(r + (p)) m := rm$ for all $r \in R, m \in M$. If also $N$ is an $R$-module with $p \in \ann{R}{N}$ and $f : M \ra N$ is $R$-linear, then $f$ is also $\kappa_p$-linear. \\
+
+For instance, in 3.3.12 (c), $p^{j-1}R/(p^j) \cong R/(p)$ is also an isomorphism of $\kappa_p$-vector spaces.
+\end{remark}
+
+\vs
+
+\begin{proposition}[Uniqueness of Elementary Divisors]
+Let $M$ be a finitely generated $R$-module with
+	\[M \cong \bigoplus_{k=1}^s \bigoplus_{j \in \N} \bigoplus_{\ell_{kj}} R/(p_k^j) =: M', \]
+where $p_1,\dots,p_s$ are pairwise nonassociate primes in $R$ and $\ell_{kj} \in \N_0$ are almost all 0 with the additional condition that for each $1 \leq k \leq s$, $\ell_{kj} \ne 0$ for at least on $j \in \N$. Then
+\begin{enumerate}
+\item[(a)] For any prime $p \in R$, we have $M_p \ne \{0\} \iff p \sim p_k $ (associates) for some $1 \leq k \leq j$.
+\item[(b)] $\ell_{kj} = \dim_{\kappa_{p_k}} (p_k^{j-1} M_{p_k,j}) - \dim_{\kappa_{p_k}} (p_k^j M_{p_k,j+1})$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+\begin{enumerate}
+\item[(a)] $M \cong M' \implies M_p \cong M'_p$ for all primes $p \in R$. Thus $M_p \ne \{0\} \iff$ $M'_p \ne \{0\} \overset{3.3.11 (b)}{\iff} (R/(p_k^j))_p \ne \{0\}$ for some $k,j \in \N$ with $\ell_{k,j} \geq 1$ $\overset{3.3.12 (d)}{\iff} p \mid p_k^j \iff p \sim p_k$ (associates).
+
+\item[(b)] Fix $p = p_k \in \{p_1,\dots,p_s\}$. If $M \cong M'$, then $M_{p,j} \cong M'_{p,j}$ for all $j \in \N$. For any $i \in \N$,
+	\[(R/(p^i))_{p,j} = \begin{cases}
+	R/(p^i), \quad & j \geq i \\
+	p^{i-j} R/(p^i), & j \leq i \tn{  by applying 3.3.12 (d) and observing } p^j \mid p^i
+	\end{cases} \]
+Now,
+\begin{align*}
+M'_{p,j} &= \bigoplus_{k'=1}^s \bigoplus_{i \in \N} \bigoplus_{\ell_{k',i}} (R/(p_k^i))_{p,j} \\ &\overset{3.3.12}{=} \bigoplus_{i \in \N} \bigoplus_{\ell_{k,i}} (R/(p^i))_{p,j} \\
+&= \bigoplus_{i=1}^{j-1} \bigoplus_{\ell_{k,i}} (R/(p^i)) \oplus \bigoplus_{i \geq j} \bigoplus_{\ell_{k,i}} p^{i-j} R/(p^i) \\
+\implies M'_{p,j} &= \bigoplus_{i \geq j} \bigoplus_{\ell_{k,i}} R/(p^i) \overset{3.2.12/13}{\cong} \bigoplus_{i \geq j} \bigoplus_{\ell_{k,i}} R/(p) \tag{as $\kappa_p$-vector spaces} \\
+\implies \dim_{\kappa_p} (p^{j-1} M_{p,j}) &= \dim_{\kappa_p} (p^{j-1} M'_{p,j}) = \sum_{i \geq j} \ell_{k,i} \tag{almost all $\ell_{k,i} = 0$}
+\end{align*}
+Now $\dim_{\kappa_p} (p^j M_{p,j+1}) = \dim_{\kappa_p} (p^j M_{p,j+1}) = \sum_{i \geq j+1} \ell_{k,i}$, so
+	\[\ell_{k,i} = \dim_{\kappa_p}(p^{j-1} M_{p,j}) - \dim_{\kappa_p} (p^j M_{p,j+1}) \]
+\end{enumerate}
+\end{proof}
+
+\vs
+
+In 3.3.14, we used the notation $M \cong \bigoplus_{k=1}^s \bigoplus_{j \in \N} \bigoplus_{\ell_{k,j}} R/(p_k^j)$. We now write this as
+	\[M \cong \bigoplus_{k=1}^s \bigoplus_{i=1}^{n_k} R/(p_k^{e_{k,i}}), \]
+with $e_{k,i} \in \N$ such that $1 \leq e_{k,1} \leq \dots \leq e_{k,n_k}$. By 3.3.14, the prime powers $p_k^{e_{k,i}}$ are uniquely determined (up to units) by $M$ and are called the \tb{elementary divisors} of $M$.
+
+\vs
+
+\begin{remark}[+ Discussion]
+The elementary divisors should be considered not as a set but as an \emph{unordered sequence.} A finitely generated $R$-module $M$ is determined up to isomorphism by its rank and its elementary divisors.
+
+Let us now discuss how the invariant factors determine the elementary divisors. Write the torsion module $M$ as
+	\[M = T(M) \cong \bigoplus_{i=1}^m R/(a_i), \quad a_i \in R\bs(R\x \cup \{0\}), \quad a_1 \mid a_2 \mid \dots \mid a_m \]
+Because $R$ is a UFD, we may write $a_m = u_m p_1^{e_1,m} \cdots p_s e^{e_{s,m}}$ with $u_m \in R\x$, $p_1,\dots,p_s \in R$ nonassociate primes, and $e_{1,m},\dots,e_{s,m} \in \N$. For all $1 \leq i \leq m$, we write $a_i = u_i p_1 ^{e_1,i} \cdots p_s ^{e_s,i}$ with $u_i \in R\x$, $e_{1,i},\dots,e_{s,i} \in \N_0$, and $0 \leq e_{k,1} \leq \dots \leq e_{k,m}$ for all $1 \leq k \leq s$ because $a_1 \mid a_2 \mid \dots \mid a_m$. By 3.3.8 (CRT), we have
+\begin{align*}
+R/(a_i) &\cong \bigoplus_{k=1}^m R/(p_k^{e_{k,i}}), \quad 1 \leq i \leq m \\
+\implies M &\cong \bigoplus_{i=1}^m \bigoplus_{k=1}^s R/(p_k^{e_{k,i}})
+\end{align*}
+The elementary divisors of $M$ are now those prime powers $p_k^{e_k,i}$ for which $e_{k,i} \geq 1$.
+
+\vs
+
+\begin{example*}
+Let $R = \z, M = \z_4 \oplus \z_{12} \oplus \z_36 \oplus \z_{720}$, so that $m = 4$ and $a_1 = 4 = 2^2$, $a_2 = 12 = 2^2 \cdot 3$, $a_3 = 36 = 2^2 \cdot 3^2$, $a_4 = 720 2^4 \cdot 3^2 \cdot 5$. Then $p_1 = 2, p_2 = 3, p_3 = 5 \implies s=3$, and
+\[\begin{array}{rrr}
+e_{1,4} = 4 & e_{2,4} = 2 & e_{3,4} = 1 \\
+e_{1,3} = 2 & e_{2,3} = 2 & e_{3,3} = 0 \\
+e_{1,2} = 2 & e_{2,2} = 1 & e_{2,3} = 0 \\
+e_{1,1} = 2 & e_{1,2} = 0 & e_{1,3} = 0
+\end{array} \]
+The elementary divisors of $M$ are then $2^4,2^2,2^2,2^2,3^2,3^2,3,5$.
+\end{example*}
+
+We now show that different (i.e., nonassociate) invariant factors lead to different elementary divisors. \\
+
+Assume that we have two chains $a_1 \mid \dots \mid a_m$ and $a'_1 \mid \dots \mid a'_{m'}$ with each $a_i,a'_j \in R\bs(R\x \cup \{0\})$. If $a_m$ and $a'_{m'}$ do not have the same prime divisors, then it is clear that we get different elementary divisors, so we may assume that $p_1,\dots,p_s$ are the same nonassociate prime divisors of $a_m$ and $a'_{m'}$. We write
+\begin{alignat*}{2}
+a_i &= u_i \prod_{k=1}^s p_k ^{e_{k,i}}, \quad && 1 \leq i \leq m \\
+a'_i &= u'_i \prod_{k=1}^s p_k^{e'_{k,i}}, && 1 \leq i \leq m'
+\end{alignat*}
+For each $k$, $e_{k,1} \leq \dots \leq e_{k,m}$ and $e'_{k,1} \leq \dots \leq e'_{k,m'}$. If $a_{m-j} \sim a'_{m'-j}$ for all $ \leq \min\{m-1,m'-1\}$ and $m \ne m'$, let's say $m > m'$, then $a_1 \mid \dots \mid a_m$ leads to strictly more elementary divisors than does $a'_1 \mid \dots \mid a'_{m'}$. So we may assume that there is $j \in \N_0$ with $j \leq \min\{m-1,m'-1\}$ such that $a_{m-j} \nsim a'_{m'-j}$ but $a_{m-\ell} \sim a'_{m'-\ell}$ for all $0 \leq \ell < j$. Then $e_{k,m-\ell} = e'_{k,m'-\ell}$ for all $1 \leq k \leq s, 0 \leq \ell < j$. But there exists $k_0 \in \N$ such that $e_{k_0,m-j} \ne e'_{k_0,m'-j}$, let's say $e_{k_0,m-j} > e'_{k_0,m'-j}$. Then the elementary divisor $p_{k_0}^{e_{k_0,m-j}}$ occurs with greater multiplicity for $a_1 \mid \dots \mid a_m$ than for $a'_1 \mid \dots \mid a'_{m'}$. That is, for all $1 \leq i \leq m'-j$, we have $e'_{k_0,i} \leq e'_{k_0,m'-j} < e_{k_0,m-j}$.
+
+As a consequence of the above argument, the (finitely generated) torsion module $M = T(M)$ uniquely determines the invariant factors $a_1 \mid a_2 \mid \dots \mid a_m$ with $M \cong \bigoplus_{i=1}^m R/(a_i)$.
+
+\end{remark}
+
+\vs
+
+\begin{remark}[+ Discussion]
+Let us discuss how elementary divisors determine invariant factors. Consider a torsion module $M = T(M) \cong \bigoplus_{k=1}^s \bigoplus_{i=1}^{n_k} R/(p_k^{e_{k,i}})$, where $p_1,\dots,p_s \in R$ are nonassociate primes, each $n_k \in \N$, and $1 \leq e_{k,1} \leq \dots \leq e_{k,n_k}$ for all $1 \leq k \leq s$. This means that $(p_k^{e_{k,i}} \mid 1 \leq k \leq s, 1 \leq i \leq n_k)$ are the elementary divisors of $M$. We set $m := \max \{n_k \mid 1 \leq k \leq s\}$ and renumber the exponents so that each $e_{k,i} \in \N_0$ with $1 \leq k \leq s$ and $1 \leq i \leq m$. That is, we "shift" the exponents to the right and fill in some zeros so that
+	\[0 \leq e_{k,1} \leq e_{k,2} \leq \dots \leq e_{k,m} \tag{$\ast$}, \]
+where each $e_{k,m} \geq 1$ and $e_{k,1} \geq 1$ for at least one $k$. Set $a_i := \prod_{k=1}^s p_k ^{e_{k,i}}$ for $1 \leq i \leq m$. Due to $(\ast)$, $a_1 \mid a_2 \mid \dots \mid a_m$. Then $a_1 \in R \bs (R\x \cup \{0\})$ since at least on $e_{k,1} \geq 1$. By 3.3.8 (CRT), we have
+\begin{align*}
+R/(a_i) &\cong \bigoplus_{k=1}^s R/(p_k^{e_{k,i}}), \quad 1 \leq i \leq m \\
+\implies \bigoplus_{i=1}^m R/(a_i) &= \bigoplus_{i=1}^m \bigoplus_{k=1}^s R/(p_k^{e_{k,i}}) \cong M
+\end{align*}
+\end{remark}
+
+\vs
+
+\begin{example*}
+Consider the $\z$-module $M = \z_4 \oplus \z_4 \oplus \z_4 \oplus \z_16 \oplus \z_3 \oplus \z_9 \oplus \z_9 \oplus \z_5$. Then $p_1 = 2, p_2 = 3, p_3 = 5 \implies s=3$ and the elementary divisors are $4,4,4,16,3,9,9,5$ and $n_1 = 4, n_2 = 3, n_3 = 1 \implies m = 4$. Then
+\begin{align*}
+\begin{array}{rrrr}
+e_{1,1} = 2 & e_{1,2} = 2 & e_{1,3} = 2 & e_{1,4} = 4 \\
+e_{2,1} = 0 & e_{2,2} = 1 & e_{2,3} = 2 & e_{2,4} = 2 \\
+e_{3,1} = 0 & e_{3,2} = 0 & e_{3,3} = 0 & e_{3,4} = 1
+\end{array} \Bigg\} \implies a_1 &= p_1^2 = 4 \\
+a_2 &= p_1^2 p_2 = 12 \\
+a_3 &= p_1^2 p_2^2 = 36 \\
+a_4 &= p_1^4 p_2^2 p_3 = 720
+\end{align*}
+Thus, $M \cong \z_4 \oplus \z_{12} \oplus \z_{36} \oplus \z_{720}$.
+\end{example*}
+
+\vs
+
+\begin{theorem}[Structure of Finitely Generated Modules of PIDs]
+For $R$ a PID and $M$ a finitely generated $R$ module, we get
+\begin{enumerate}
+\item[(a)] $M/T(M)$ is free, $n := \rk M = \rk M/T(M)$, and $M \cong R^n \oplus T(M)$.
+\item[(b)] If $T(M) \ne \{0\}$, then there exist $m,s \in \N$, nonassociate primes $p_1,\dots,p_s \in R$ and $e_{k,i} \in \N_0 (1 \leq k \leq s, 1 \leq i \leq m)$ where $e_{k,1} \leq e_{k,2} \leq \dots \leq e_{k,m}$ with each $e_{k,m} \geq 1$ and $e_{k,1} \geq 1$ for some $k$ such that
+	\[T(M) \cong \bigoplus_{k=1}^s \bigoplus_{i=1}^m R/(p_k^{e_{k,i}}) \]
+The prime powers $p_k^{e_{k,i}}$ such that $e_{k,i} \geq 1$ are called the \tb{elementary divisors} of $M$ (or $T(M)$) and are uniquely determined (up to associates) by $M$.
+\item[(c)] If $T(M) \ne \{0\}$, then there exists $m \in \N$ (same $m$ as in (b)) and elements $a_1,a_2,\dots,a_m \in R \bs (R\x \cup \{0\})$ such that $a_1 \mid a_2 \mid \dots \mid a_m$ and
+	\[T(M) \cong \bigoplus_{i=1}^m R/(a_i) \]
+The $a_i$ are called the \tb{invariant factors} of $M$ (or $T(M)$). They (up to associate) and $m$ are uniquely determined by $M$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}\
+\begin{enumerate}
+\item[(a)] See 3.3.6 (a).
+\item[(b)] For existence of elementary divisors, see 3.3.9; for uniqueness, see 3.3.14.
+\item[(c)] For existence of invariant factors, see 3.3.6 (c); for uniqueness, see 3.3.15.
+\end{enumerate}
+\end{proof}
+
+\vs
+
+\begin{corollary}
+The elements $a_1,a_2,\dots,a_m \in R\bs\{0\}$ (including units) in 3.3.5 are uniquely determined (up to associates) by $M$ and $N$.
+\end{corollary}
+
+\begin{proof}
+Recall the situation of 3.3.5: $M$ is a free $R$-module of rank $n$ and $N$ is a submodule of $M$. The result is that there exists a basis $B = \{x_1,x_2,\dots,x_n\}$ of $M$ and elements $a_1,a_2,\dots,a_m \in R\bs\{0\}$ with $a_1 \mid a_2 \mid \dots \mid a_m$ such that $\{a_1x_1,\dots,a_mx_m\}$ is a basis of $N \implies \rk N = m$. Then
+	\[M/N = \bigoplus_{i=1}^n R x_i/\bigoplus_{i=1}^m R a_i x_i \cong \bigoplus_{i=1}^m R/(a_i) \oplus R^{n-m} = \bigoplus_{i=\ell+1}^m R/(a_i) \oplus R^{n-m}, \]
+where $\ell := \max(\{1 \leq i \leq m \mid a_i \in R\x\} \cup \{0\})$, hence $a_{\ell+1} \mid a_{\ell+2} \mid \dots \mid a_m$ are the \tb{invariant factors} of $M/N$. Since $\ell = m - \#\tn{invariant factors of } M/N$, we have that $a_1,a_2,\dots,a_m$ are uniquely determined (up to associates) by $M$ and $N$.
+\end{proof}
+
+
+
+
+
+\chapter{Finitely Generated Abelian Groups}
+
+Recall that any abelian group $A$ is a $z$-module,$A$ is finitely generated as a group iff it is finitely generated as a $\z$-module, and $A$ is a \tb{free abelian group} iff $A$ is a free $\z$-module. By 3.1.26, $A$ is a free abelian group iff $A \cong \bigoplus_{I} \z$ for some index set $I$. The \tb{torsion subgroup} $T(A)$ of $A$ is just the torsion submodule of $A$, i.e.,
+	\[T(A) = \{a \in A \mid |a| < \infty\} \]
+
+\begin{remark}
+Any finitely generated abelian torsion group is finite. Indeed, if $A = \gen{x_1,x_2,\dots,x_n}$ is a finitely generated abelian torsion group and $m = \lcm\{|x_i| \mid 1 \leq i \leq n\}$, then $A = \{\sum_{i=1}^n k_i x_i \mid 0 \leq k_i \leq m-1\}$ is finite.
+\end{remark}
+
+\vs
+
+\begin{theorem}[Structure of F.G. Abelian Groups]
+If $A$ is a finitely generated abelian group, then
+\begin{enumerate}
+\item[(a)] $T(A)$ is finite, $A/T(A)$ is a free abelian group, and if $n = \rk_{\z} A/T(A) = \rk_{\z}A$, then $A \cong \z^n \oplus T(A)$.
+
+\item[(b)] There qre uniquely determined pairwise distinct prime numbers $p_1,p_2,\dots,p_s$ and uniquely determined exponents $e_{k,i} \in \N_0 (1 \leq k \leq s, 1 \leq i \leq m)$ with $e_{k,1} \leq \dots \leq e_{k,m}$, all $e_{k,m} \geq 1$, and $e_{k,1} \geq 1$ for at least one $k$ such that
+	\[T(A) \cong \bigoplus_{k=1}^s \bigoplus_{i=1}^m \z_{p_k^{e_{k,i}}} \]
+
+\item[(c)] There are uniquely determined natural numbers $m$ and $a_1,a_2,\dots,a_m$ with $a_1 \mid a_2 \mid \dots \mid a_m$ such that
+	\[T(A) \cong \bigoplus_{i=1}^m \z_{a_i} \]
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+This is a special case of 3.3.17.
+\end{proof}
+
+\vs
+
+\begin{corollary}[Fundamental Theorem of Finite Abelian Groups]
+Let $A$ be a finite abelian group with $|A| = p_1^{e_1} p_2^{e_2} \cdots p_s^{e_s}$, where $p_1,\dots,p_s$ are distinct prime numbers and all $e_k \in \N$. Then, for each $1 \leq k \leq s$, there exist uniquely determined $n_k \in \N$ and $e_{k,i} \in \N (1 \leq k \leq s, 1 \leq i \leq n_k)$ with $\sum_{i=1}^{n_k} e_{k,i} = e_k$ for all $1 \leq k \leq s$ such that
+	\[A \cong \bigoplus_{k=1}^s \bigoplus_{i=1}^{n_k} \z_{p_k^{e_{k,i}}} \]
+\end{corollary}
+
+\vs
+
+\begin{remark*}
+The summand $\bigoplus_{i=1}^{n_k} \z_{p_k^{e_{k,i}}}$ is the $p_k$-primary component of $A$, which is also the Sylow $p_k$-subgroup of $A$ for each $1 \leq k \leq s$.
+\end{remark*}
 
 Recall that a commutative ring $R$ is \tb{Noetherian} iff every ideal of $R$ is finitely generated iff $R$ satisfies the ascending chain condition on ideals iff any nonempty set of ideals of $R$ has a maximal element. In particular, any PID is Noetherian.
 
