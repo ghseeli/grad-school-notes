@@ -993,7 +993,7 @@ note the following
     \M$.
   \end{itemize}
 \end{proof}
-\begin{thm}
+\begin{thm}\label{meas-extension-thm}
   Let $\A \subset \P(X)$ be an algebra of sets and let $\mu_0$ be a
   premeasure on $\A$. Then, let $\M = \M(\A)$. Then, we get that
   \begin{enumerate}
@@ -1321,5 +1321,250 @@ where the first equality also relies on the fact that \[\Union_{j=1}^m \left( E_
      & = \sum_{m=1}^\infty \mu(A_n) & \text{ by \ref{lebesgue-lem-4}.}
    \end{align*}
  \end{proof}
- Thus, once we show $P_0$ is true, we have the existence of our measure.
+ Thus, once we show $P_0$ is true, we have the existence of our
+ measure.
+ \subsection*{(2/23/2017) Lecture 8}
+ We now seek to prove that $P_0$ holds for all $A \in \Ep$ with $A =
+ \Dunion_{n=1}^\infty A_n$ with $A_n \in \Ep$ bounded.
+ \begin{lem}\label{lebesgue-lem-5}
+   Given $a,b \in \R$ with $a < b$ and $a_i,b_i \in \R$ for $i \in I$ an index
+   set with $a_i < b_i$ for all $i \in I$, let $[a,b] \subset
+   \Union_{i \in I} (a_i,b_i)$. Then, $f(b) - f(a) \leq \sum_{i \in I}
+   (f(b_i) - f(a_i))$. 
+ \end{lem}
+ \begin{proof}
+   To prove this, we proceed by induction on $|I|$.
+
+   For $|I| = 0$, the hypothesis is not possible, and thus
+   false. Therefore, the overall implication is true.
+
+   For $|I| = 1$, $[a,b] \subset (a_1,b_1) \implies a_i < a < b <
+   b_i$. Thus, since $f$ is a monotonically increasing function, we
+   get $f(a_1) \leq f(a) \leq f(b) \leq f(b_1)$. Thus, we get that
+   $f(b) - f(a) \leq f(b_1) - f(a_1)$.
+
+   For $|I| \geq 2$, let $b \in [a,b] \subset \Union_{i \in I}
+   (a_i,b_i)$. So, there is an $i_0 \in I$ with $b \in (a_{i_0},
+   b_{i_0})$, thus $a_{i_0} < b < b_{i_0}$. Now, let $J = I \setminus
+   \{i_0\}$. So, let us divide this into 2 cases.
+   \begin{itemize}
+   \item ($a_{i_0} > a$) We claim that $[a,a_{i_0}] \subset \Union_{j
+       \in J} (a_j, b_j)$. To prove this, take $x \in [a,a_{i_0}]
+     \subset [a,b] \subset \Union_{i \in I} (a_i, b_i)$. So, there
+     exists an $i \in I$ with $x \in (a_i, b_i)$, but $x \leq a_{i_0}$
+     so $x \not \in (a_{i_0}, b_{i_0})$. Thus, $i \neq i_0$, so $x \in
+     (a_i,b_i)$. From this, we get \[
+       f(b) - f(a) = f(b) - f(a_{i_0}) + f(a_{i_0}) - f(a) 
+     \]
+     and since $b < b_{i_0}$, we get $f(b) - f(a_{i_0}) \leq
+     f(b_{i_0}) - f(a_{i_0})$ because $f$ is monotonically
+     increasing. Thus, from our inductive hypothesis, $f(a_{i_0}) -
+     f(a) \leq \sum (f(b_i) - f(a_i))$. If we add $f(b)-f(a_{i_0})
+     \leq f(b_{i_0}) - f(a_{i_0})$,
+     we get $f(b) - f(a) \leq
+     \sum_{i \in I} (f(b_i) - f(a_i))$. 
+   \item ($a_{i_0} \leq a$) We have that $a_{i_0} \leq a < b <
+     b_{i_0}$. So, applying $f$ to the inequality since $f$ is
+     monotonically increasing yields \[
+       f(b) - f(a) \leq f(b_{i_0}) - f(a_{i_0}) \leq \sum_{i \in
+         I}(f(b_i) - f(a_i))
+     \]
+   \end{itemize}
+ \end{proof}
+ \begin{prop}
+   $P_0$ holds for all $A \in \Ep$ with $A =
+ \Dunion_{n=1}^\infty A_n$ with $A_n \in \Ep$ bounded.
+\end{prop}
+\begin{proof}
+  We need to show that $\mu(A) = \sum_{n=0}^\infty \mu(A_n)$. If $a =
+  b$, then we have $0=0$. So, let us assume $a < b$. Let $\epsilon >
+  0$. Since $f$ is right-continuous, there exists a $\delta > 0$ such
+  that $x \in [a,a+\delta]$ with $f(x) \leq f(a) + \epsilon$. We can
+  also use this property by saying for every $n \geq 1$, there exists
+  $\delta_n > 0$ such that $x \in [b_n, b_n + \delta_n]$ with $f(x)
+  \leq f(b_n) + \frac{\epsilon}{2^n}$. So, pick $x_0 > a$ such that
+  $x_0 < b$ and $x_0 < a+ \delta$. We get \[
+    [x_0, b] \subset (a,b] = \Union_{n=1}^\infty = \Union_{n=1}^\infty
+    (a_n,b_n] \subset \Union_{n=1}^\infty (a_n,b_n + \delta_n)
+  \]
+  Now, use the compactness of $[x_0,b]$. There exists a finite $I
+  \subset \N$ such that $[x_0,b] \subset \Union_{n \in I} (a_n,b_n +
+  \delta_n)$. Now, \ref{lebesgue-lem-5} gives us
+  \begin{align*}
+    f(b) - f(x_0) & \leq \sum_{n \in I} \left( f(b_n + \delta_n) -
+    f(a_n) \right) \tag{1}\\
+    & \leq \sum_{n \in I} \left( f(b_n) + \frac{\epsilon}{2^n} -
+      f(a_n) \right) \\
+    \implies f(x) & \leq f(b_n) + \frac{\epsilon}{2^n}
+  \end{align*}
+  Furthermore, since $a < x_0 < a + \delta$, we get that \[ f(x_0) - f(a) \leq
+    \epsilon \tag{2}\]
+  Now, from (1) and (2), we get \[
+    f(b) - f(a) \leq \epsilon + \epsilon \sum_{n \in I} 2^{-n} +
+    \sum_{n \in I} (f(b_n) - f(a_n)) \leq \epsilon + \epsilon + \epsilon
+  \]
+  So, for all $\epsilon$, we get $\mu(A) \leq \sum_{n=1}^\infty
+  \mu(A_n)$. From here, all we neet to show is that each partial sum
+  is less than or equal to $\mu(A)$ using finite additivity. 
+\end{proof}
+Thus, we have completed the proof of existence. Now, we move on to
+uniqueness. To do this, we will use \ref{meas-extension-thm}. Let
+$\mu$ be the previously constructed Borel measure given by $\forall
+a,b \in \R$ such that $a < b$, $\mu((a,b]) = f(b) - f(a)$. Let $\nu$
+be another Borel measure satisfying the property. Then, take $E
+\subset \Ep$. We get that
+\begin{align*}
+  \nu(E) & = \lim_{m \to \infty} \nu(E \intersect (-m,m]) & \text{ by
+                                                            continuity
+                                                            from
+                                                            below.} \\
+& = \lim_{m \to \infty} \mu(E \intersect (-m,m]) & \text{ since these
+                                                   coincie on }(a,b]
+  \\
+& = \mu(E) & \text{ by continuity from below for }\mu
+\end{align*}
+If $A \in \A$, then $A = E_1 \dunion \cdots \dunion E_n$ with all $E_i
+\in \Ep$. Thus, we have \[
+  \nu(A) = \nu(E_1) + \cdots + \nu(E_n) = \mu(E_1) + \cdots + \mu(E_n)
+  = \mu(A)
+\]
+and thus $\mu|_\A = \nu|_\A$. So, using \ref{meas-extension-thm}, we
+get $\mu = \nu$ on $\M(\A) = \B_\R$. (Note, this requires $\mu|_\A$ to
+be $\sigma$-finite). However, for $m \in N$, we get $\mu((-m,m]) =
+f(m) - f(-m)$ is finite, but $\Union_{m \geq 1} (-m,m] = \R$. This
+completes our proof of \ref{unique-borel-measure}. \qed
+\begin{thm}
+  As part 2 of \ref{unique-borel-measure}, if $F,G$ are increasing and
+  right-continuous such that $\mu_F = \mu_G$ as measures on $\B_\R$,
+  then there exists a $c \in \R$ such that $g-f = c$. 
+\end{thm}
+\begin{proof}
+  If $x \geq 0$, then \[
+    \mu_F((0,x]) = \mu_G((0,x]) \implies F(x) - F(0) = G(x) - G(0)
+    \implies G(x) - F(x) = c
+  \]
+  where $c := G(0) - F(0)$.
+
+  If $x \leq 0$, then \[
+    \mu_F((0,x]) = \mu_G((0,x]) \implies F(0)-F(x) = G(0)-G(x)
+    \implies F(x) - G(x) = c.
+  \]
+\end{proof}
+\begin{rmk}
+  Using $F$ to get $\mu_F$ does not give the most general Borel
+  measure. Instead, this gives a measure such that if $A$ is bounded,
+  then $\mu_F(A) < \infty$. To see this, just take $A \subset
+  (-m,m]$, which exists since $A$ is bounded. 
+\end{rmk}
+\begin{thm}[Surjectivity Result]
+  As part 3 of \ref{unique-borel-measure}, let $\mu$ be a Borel
+  measure on $\R$ such that $\mu$ is finite on bounded sets. Let \[
+F(x) =
+\begin{cases}
+  \mu((0,x]) & x > 0 \\
+  0 & x = 0\\
+  -\mu((x,0]) & x < 0
+\end{cases}
+\]
+Then, $F$ is increasing, right continuous, and $\mu = \mu_F$. 
+\end{thm}
+\begin{proof}
+  The proof is left as a homework exercise, but can also be seen on
+  page 35 of Folland.
+\end{proof}
+\begin{example}
+  If we take $F(x) = x$, then $\mu_F$ gives us the Lebesgue
+  measure. Often, for the Lebesgue measure, people will complete such
+  a measure space, but in this class, we will stop at the Borel
+  set. For a general $F$, $\mu_F$ are called Lebesgue-Stieltjes measures.
+\end{example}
+\begin{example}
+  If we take $F(x) = \int_{-\infty}^x \frac{1}{\sqrt{2\pi}}
+  e^{\frac{t^2}{2}} dt$. Then, $\mu_F$ is the probability measure of
+  the standard Gaussian.
+\end{example}
+\begin{example}
+  Let $\delta_0$ be the Dirac mass at the origin given by $\delta_0
+  \from \B_\R \to [0,\infty]$ is \[
+    \delta_0(A) =
+    \begin{cases}
+      1 & 0 \in A \\
+      0 & 0 \not \in A
+    \end{cases}
+  \]
+  So, if we take $f(x)$ as the step function at $0$,
+  then we have $\lim_{x \to x_0^+} f(x) - \lim_{x \to x_0^-} f(x) = \mu_f(\{x_0\})$
+\end{example}
+\subsection{Regularity}
+\begin{defn}
+  Let $\mu$ be a Borel measure on $\R$ and let $E \in \B_\R$. Then,
+  $\mu$ is \de{outer regular on $E$} if and only if \[
+    \mu(E) = \inf \{\mu(V \mid V \text{ is open}, V \supset E)\}.
+  \]
+  Similarly, $\mu$ is \de{inner regular on $E$} if and only if \[
+    \mu(E) = \sup \{\mu(K) \mid K \text{ is compact}, K \subset E\}.
+  \]
+  Finally, $\mu$ is called \de{regular} is and only if it is inner and
+  outer regular on every Borel set.
+\end{defn}
+\begin{defn}
+  Given $\mu$ that is finite on bounded sets and regular, we say that
+  $\mu$ is a \de{Radon measure} on $\R$. (The definition of this is
+  different for a measure not on $\R$; see section 7.1 of Folland.)
+\end{defn}
+\begin{thm}
+  Let $F$ be increasing and right continuous. Then, $\mu_F$ is Radon.
+\end{thm}
+\begin{lem}
+  Let $\mu = \mu_F$. Then, for $E \in \B_\R$, \[
+    \mu(E) = \inf \left\{ \sum_{i=1}^\infty \mu((a_i,b_i)) \text{
+        finite} \mid E
+      \subset \Union_{i=1}^\infty (a_i,b_i) \right\}
+  \]
+\end{lem}
+\begin{proof}[Proof of lemma]
+  $\mu(E) \leq \inf \left\{ \sum_{i=1}^\infty \mu((a_i,b_i)) \text{
+        finite} \mid E
+      \subset \Union_{i=1}^\infty (a_i,b_i) \right\}$ by
+    subadditivity. Now, we break into cases.
+    \begin{itemize}
+    \item (Suppose $E$ is bounded). Then, $\mu(E) < \infty$. By
+      construction, we have \[
+        \mu(E) = \mu^+(E) := \inf\{ \sum \mu(A_n) \mid E \subset
+        \Union_{n=1}^\infty A_n, A_n \in \A\}.
+      \]
+      Let $\epsilon > 0$. Then there exists $A_n \in \A$ such that
+      $\sum_{n=1}^\infty \mu(A_n) \leq \mu(E) + \epsilon$. Then,
+      decompoising $A_n$ into elements of $\Ep$ and renumbering, we
+      can assume without loss of generality that $A_n \in \Ep$, since
+      if $A_n \not \in \Ep$, we can just take $A_n = A_n \intersect
+      (-m,m)$ with $E \subset (-m,m)$. So, now, take $A_n = (\alpha_n,
+      \beta_n) \subset \R$. Then, we get that $\mu(A_n) = F(\beta_n) -
+      F(\alpha_n)$. Thus, there exists a $\delta_n > 0$ with
+      $f(\beta_n + \delta_n) \leq f(\beta_n) +
+      \frac{\epsilon}{2^n}$. Therefore, $A_n \subset
+      (\alpha_n, \beta_n + \delta_n) \subset (\alpha_n, \beta_n +
+      \delta_n]$ and so $\mu((\alpha_n,\beta_n+\delta_n)) \leq
+      f(\beta_n + \delta_n) - f(\alpha_n) \leq
+      \frac{\epsilon}{2^n}$. Finally, adding all these terms together
+      yields the desired result.
+    \item ($E$ is unbounded.) If $\mu(E) = \infty$, then we trivially
+      get equality. So, let $\mu(E) < \infty$ and let $\epsilon >
+      0$. Also, let $g \from \N \to \Z$ be the bijection $g(2k) = k$
+      and $g(2k+1) = -k$. Then, we have \[
+        \mu(E) = \sum_{n \geq 1} \mu(E \intersect (g(n),g(n)+1)).
+      \]
+      So, for all $n$, let $a_{n,i} < b_{n,i}$. Then, \[
+        \sum_{i=1}^\infty \mu((a_{n,i},b_{n,i})) \leq \sum_{n \geq 1}
+        \mu(E \intersect (g(n),g(n)+1)) + \frac{\epsilon}{2^n}
+      \]
+      by the previous bounded base. Finally, this gives us $E \subset
+      \Union_{(n,i) \in \N^2} (a_{n,i},b_{n,i})$ and so \[
+        \sum_{(n,i) \in \N^2} \mu((a_{n,i},b_{n,i})) \leq \sum_{n \geq
+        1} \mu(E
+        \intersect (g(n),g(n)+1)) + \epsilon
+      \]
+      thereby completing the proof.
+    \end{itemize}
+\end{proof}
 \end{document}
