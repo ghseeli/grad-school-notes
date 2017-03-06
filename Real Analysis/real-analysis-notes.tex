@@ -1097,7 +1097,7 @@ to show this definition is independent of our choice of decomposition.
 To do this, we will need to utilize some lemmas. In the following
 lemmas, we are using the same definitions for variables as used in the
 assumption of the previous theorem (\ref{unique-borel-measure})
-\begin{lem}
+\begin{lem}\label{lebesgue-lem-1}
   If $E \in \Ep$, then $\mu(E) = \lim_{m \to \infty} \mu(E \intersect (-m,m])$.
 \end{lem}
 \begin{proof}
@@ -1113,7 +1113,7 @@ assumption of the previous theorem (\ref{unique-borel-measure})
     \intersect (-m,m]) \to f(b) - f(-\infty) = \mu(E)$
   \end{itemize}
 \end{proof}
-\begin{lem}
+\begin{lem}\label{lebesgue-lem-2}
   Let $n \geq 3$ and let $E,E_1, \ldots, E_n \in \Ep$ be bounded and
   such that $E = E_1 \dunion \cdots \dunion E_n$. Then, there exists
   an $i \in \N$ with $1 \leq i \leq n$ such that \[
@@ -1121,11 +1121,205 @@ assumption of the previous theorem (\ref{unique-borel-measure})
   \]
 \end{lem}
 \begin{proof}
+  We remark that we can easily assume each $E_i$ is nonempty. Let $E =
+  (a,b]$ with $a < b \in \R$ and $E_i = (a_i,b_i]$ with $a_i 
+  < b_i \in \R$. Now, since the $E_i$'s are disjoint, it must be that
+  the $b_i$'s are distinct. So, without loss of generality, we say
+  $b_1 < \cdots < b_n$. We want to show that taking $i=n$ satisfies
+  the lemma. So,
+  let $b \in E = \Dunion E_i$. Then, there exists an $i$ with $b \in
+  (a_i,b_i]$ with $b \leq b_i \leq b_n$. Conversely, given $b_n \in
+  E_n \subset E$, we get that $b_n \leq b$ and thus $b_n = b$. \\
 
+  Now, we claim that $E_1 \dunion \cdots \dunion E_{n-1} =
+  (a,b_{n-1}]$. 
+
+  For the $(\subset)$ direction, let $1 \leq i \leq
+  n-1$, $b_i > a_i$, and $\epsilon > 0$ be small. Then, $a_i +
+  \epsilon \in (a_i,b_i] = E_i \subset E = (a,b]$. Thus, $a_i +
+  \epsilon > a$ for all $\epsilon$. From this, we get that
+  $E=(a_i,b_i] \subset (a,b_{n-1}]$. 
+
+  For the $(\supset)$ direction, if $x \in (a,b_{n-1}] \subset (a,b_n]
+  = E$, there exists an $i$ such that $x \in E_i = (a_i,b_i]$. So, we
+  want to show for $i \neq n$. So, $b_{n-1} \in (a_{n-1},b_{n-1}] =
+  E_{n-1}$ but $b_{n-1} \not \in E_n$ since the two sets are
+  disjoint. Thus, $b_{n-1} \leq a_n$ or $b_{n-1} > b_n$, but this
+  second case is not possible. Therefore, if $x \in (a_n,b_n]$, then
+  $x > a_n \geq b_{n-1}$, but we already have that $x \leq b_{n-1}$,
+  so we have a contradiction. Thus, doing this for $1 \leq i \leq n-1$
+  gives us $x \in E_1 \dunion \cdots \dunion E_{n-1}$. 
 \end{proof}
-\begin{lem}
+\begin{lem}\label{lebesgue-lem-3}
   If $E = E_1 \dunion \cdots \dunion E_n$ with $E, E_i \in \Ep$, then
   $\mu(E) = \mu(E_1) + \cdots + \mu(E_n)$.
 \end{lem}
+\begin{proof}
+  It is enough to assume that all the sets are nonempty. To prove this
+  lemma, we will first proceed by induction on the bounded case.
 
+  For $n=0$, we simply get $0=0$.
+
+  For $n=1$, $\mu$ is well-defined on elements of $\Ep$, so we are
+  done.
+
+  For $n=2$, we take $E_1 = (a_1,b_1]$ and $E_2 = (a_2,b_2]$ and
+  assume, without loss of generality, that $b_1 < b_2$. Then, $E =
+  (a_1,b_2]$. Thus, we get that \[
+    \mu(E_2) + \mu(E_1) = f(b_2) - f(a_2) + f(b_1) - f(a_1) =
+    f(b_2)-f(a_1) = \mu(E)
+  \]
+
+  For $n \geq 3$, by \ref{lebesgue-lem-2}, we say $E = E_1 \dunion
+  \left( \Union_{j \neq i} E_i \right)$, a disjoint union of 2 sets in
+  $\Ep$. Then, using the $n=2$ case and induction, we say that \[
+    \mu(E) = \mu(E_i) + \mu(\Union_{j \neq i} E_j) = \mu(E_i) +
+    \sum_{j \neq i} \mu(E_j)
+  \]
+  by the inductive hypothesis.
+
+  To do the general case, we note
+  \begin{align*}
+    \mu(E) & = \lim_{m \to \infty} \mu(E \intersect (-m,m]) & \text{
+                                                              by
+                                                              \ref{lebesgue-lem-1}}
+    \\
+           & = \lim_{m \to \infty} \sum_{i=1}^n \mu(E_i \intersect (-m,m]) \\
+    & = \sum_{i=1}^n \lim_{m \to \infty} \mu(E_i \intersect (-m,m]) &
+                                                                      \text{by
+                                                                      continuity
+                                                                      of
+                                                                      addition
+                                                                      on
+                                                                       }[0,\infty]
+    \\
+    & = \sum_{i=1}^n \mu(E_i) & \text{ by \ref{lebesgue-lem-1}}
+  \end{align*}
+\end{proof}
+Now, we wish to show that
+\begin{prop}
+$\mu|_A$ is well-defined. (Remember, we are
+still tying to prove \ref{unique-borel-measure}).
+\end{prop}
+\begin{proof}
+  So, let $A \in
+\A$. We can say $A = E_1 \dunion \cdots \dunion E_n$ using the
+$\Ep$-decomposition. Now, let us also say $A = F_1 \dunion \cdots
+\dunion F_m$. Then,
+\begin{align*}
+  \sum_{i=1}^n \mu(E_i) & = \sum_{i=1}^n \left( \sum_{j=1}^m \mu(E_i
+                          \intersect F_j) \right) \\
+  & = \sum_{j=1}^m \left( \sum_{i=1}^n \mu(E_i \intersect F_j) \right)
+  \\
+  & = \sum_{j=1}^m \mu(F_j) & \text{ by \ref{lebesgue-lem-3}.}
+\end{align*}
+where the first equality also relies on the fact that \[\Union_{j=1}^m \left( E_i \intersect F_j \right) = E_i \intersect
+  \left( \Union_{j=1}^m F_j \right) = E_i\].
+\end{proof}
+  Now, given $\mu|_\A$, our ultimate goal is still to extent it to a
+  measure on $\M(\A) = \B_\R$. So, our next step is to show this is a
+  premeasure. In the following, we will freely use analysis facts from
+  homework involving summations of infinite non-negative sequences.
+  Now, let us define the following properties. 
+  \begin{defn*}[Property $P_\heartsuit$]
+    If $A \in \A$ is given as $A = \Dunion_{n=1}^\infty A_n$ for all
+    $A_n \in \A$, then $\mu(A) = \sum_{n=1}^\infty \mu(A_n)$. 
+  \end{defn*}
+  \begin{defn*}[Property $P_0$]
+    Given $A, A_n \in \Ep$ \textbf{all bounded}, then if $A =
+    \Dunion_{n=1}^\infty A_n$, then $\mu(A) = \sum_{n=1}^\infty
+    \mu(A_n)$. 
+  \end{defn*}
+  \begin{defn*}[Property $P_1$]
+    Given $A_n \in \Ep$ all bounded and $A \in \A$ and bounded, then
+    if $A = \Dunion_{n=1}^\infty A_n$, we have $\mu(A) =
+    \sum_{n-1}^\infty \mu(A_n)$.
+  \end{defn*}
+  \begin{prop}
+    Property $P_0$ implies property $P_1$.
+  \end{prop}
+  \begin{proof}
+    Let $A = \Dunion A_n$ with $A, A_n \in Ep$. Then, we also have
+    that $A = F_1 \dunion \cdots \dunion F_k$ with $F_k \in \Ep$ all
+    bounded. Now, by definition, $\mu(A) = \mu(F_1) + \cdots +
+    \mu(F_k)$. Furthermore, for all $i$ with $1 \leq i \leq k$, using
+    $P_0$ we get
+    that \[
+      \mu(F_i) = \sum_{n=1}^\infty \mu(F_i \intersect A_n)
+    \]
+    So, with this all in mind, we get that
+    \begin{align*}
+      \mu(A) & = \sum_{i=1}^k \sum_{n=1}^\infty \mu(F_i \intersect
+               A_n) \\
+      & = \sum_{n=1}^\infty \left( \sum_{i=1}^k \mu(F_i \intersect
+        A_n) \right) \\
+      & = \sum_{n=1}^\infty \mu(A_n) & \text{ by \ref{lebesgue-lem-3}}
+    \end{align*}
+    where the last equality uses the fact that \[
+      \Union_{i=1}^k \left( F_i \intersect A_n \right) = A_n
+      \intersect \left( \Union F_i \right) = A_n \intersect A = A_n
+    \]
+  \end{proof}
+  Now, consider
+  \begin{defn*}[Property $P_2$]
+    Given $A,A_n \in \A$ all bounded, then if $A =
+    \Dunion_{n=1}^\infty A_n$, then $\mu(A) = \sum_{n=1}^\infty
+    \mu(A_n)$. 
+  \end{defn*}
+  \begin{prop}
+    $P_1$ implies $P_2$.
+  \end{prop}
+  \begin{proof}
+    For all $n \in \N$, there exists a disjoint decomposition \[
+      A_n = E_{n,1} \dunion \cdots \dunion E_{n,k_n}
+    \]
+    for all $E_{n,m} \in \Ep$. Now, simply add $\emptyset$ infinitely
+    many times onto the end of these decompositions to say that \[
+      A_n = \Dunion_{m=1}^\infty E_{n,m}, \ E_{n,m} \neq \emptyset
+      \text{ for finitely many }m\text{'s.} 
+    \]
+    Then, we have that $A = \Dunion_{(n,m) \in \N^2} E_{n,m}$. From
+    this, we say that
+    \begin{align*}
+      \mu(A) & = \sum_{(n,m) \in \N^2} \mu(E_{n,m}) & \text{ by }P_1
+      \\
+      & = \sum_{n=1}^\infty \left(\sum_{m=1}^\infty
+        \mu(E_{n,m})\right) \\
+      & = \sum_{n=1}^\infty \mu(A_n) & \text{ by }P_1
+    \end{align*}
+  \end{proof}
+  \begin{lem}\label{lebesgue-lem-4}
+    If $A \in \A$, then $\mu(A) = \lim_{m \to \infty} \mu(A \intersect
+    (-m,m])$. 
+  \end{lem}
+  \begin{proof}
+    Let $A = E_1 \dunion \cdots \dunion E_n$ with $E_i \in \Ep$. Then,
+    \begin{align*}
+      \mu(A) & = \mu(E_1) + \cdots + \mu(E_n) & \text{ by definition.}
+      \\
+             & = \sum_{i=1}^n \mu(E_i \intersect (-m,m]) \\
+      & = \lim_{m \to \infty} \mu\left( \Union_{i=1}^n (E_i \intersect
+        (-m,m]) \right) \\
+& = \lim_{m \to \infty} \mu(A \intersect (-m,m])
+    \end{align*}
+  \end{proof}
+  \begin{prop}
+   $P_2$ implies $P_\heartsuit$.
+ \end{prop}
+ \begin{proof}
+   Let $A = \Dunion_{n=1}^\infty A_n$ a countable disjoint union in
+   $\A$. Then,
+   \begin{align*}
+     \mu(A) & = \lim_{m \to \infty} \mu(A \intersect (-m,m]) & \text{
+                                                               by
+                                                               \ref{lebesgue-lem-4}.}
+     \\
+     & = \lim_{m \to \infty} \sum_{n=1}^\infty \mu(A_n \intersect
+       (-m,m]) & \text{ by }P_2. \\
+     & = \sum_{n=1}^\infty \lim_{m \to \infty} \mu(A_n \intersect
+       (-m,m]) \\
+     & = \sum_{m=1}^\infty \mu(A_n) & \text{ by \ref{lebesgue-lem-4}.}
+   \end{align*}
+ \end{proof}
+ Thus, once we show $P_0$ is true, we have the existence of our measure.
 \end{document}
