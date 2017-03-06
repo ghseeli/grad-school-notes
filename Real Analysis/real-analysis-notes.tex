@@ -1566,5 +1566,196 @@ Then, $F$ is increasing, right continuous, and $\mu = \mu_F$.
       \]
       thereby completing the proof.
     \end{itemize}
-\end{proof}
+  \end{proof}
+  \subsection*{(2/28/2017) Lecture 9}
+  With this lemma in hand, we now seek to prove the theorem.
+  \begin{proof}[Proof of Theorem]
+    We have to show $\mu_F$ is finite on compact sets, outer
+    regular for all sets in $\B_\R$, and inner regular for all sets in
+    $\B_\R$.
+    \begin{itemize}
+    \item ($\mu_F$ is finite on compact sets). 
+      $\mu_F$ is finite on compact sets by definition.
+    \item (Outer regularity). We have the $\leq$ direction from
+      monotonicity and thus equality if $mu(E) = \infty$. Now, assume
+      that $\mu(E) < \infty$. Our lemma tells us that \[
+        \mu(E) = \inf \left\{ \sum \mu((a_i,b_i)) \mid a_i < b_i
+          \text{ finite}, E \subset \Union_{i=1}^\infty (a_i,b_i) \right\}
+      \]
+      Next, take $\epsilon > 0$. Then, there exists $a_i,b_i$ such
+      that $\sum \mu((a_i,b_i)) \leq \mu(E) +\epsilon$ by
+      subadditivity. Now, take $V = \Union_{i=1}^\infty (a_i,b_i)$
+      (open) to get $\mu(V) \leq \mu(E) + \epsilon$. Buth $\epsilon$
+      was arbitrary, so $\mu(E) = \inf\{ \cdots \}$ as desired.
+    \item (Inner regularity). The $\geq$ direction is trivial, so we
+      only need to show $\leq$. We can also reduce to $E$ being
+      bounded by using continuity from below and intersecting $E
+      \intersect [-m,m]$ to get $\mu(E) = \lim_{m \to \infty} \mu(E
+      \intersect [-m,m])$. So, if $\alpha < \mu(E)$, there exists an
+      $m$ such that $\mu(E \intersect [-m,m]) > \alpha$. Now, if $E$
+      is bounded, there exists a 
+      compact $K \subset E \intersect [-m,m] \subset E$ with $\mu(K) >
+      \alpha > \mu(E)$. Thus, for all $\alpha$, we have $\sup \{\mu(K)
+      \mid \text{ compact }K \subset E\} \geq \mu(E)$. Now assume that
+      $E$ is bounded. Then, there exists an $m \in \N$ such that $E
+      \subset [-m,m]$. Let $\epsilon > 0, F = [-m,m] \setminus E$, and
+      $\mu(F) < \infty$. Our previous case tells us that there exists
+      an open $V \supset F$  with $\mu(V) \leq \mu(F) + \epsilon$. So,
+      we take $K = [-m,m] \intersect V^c$ which is closed and bounded,
+      and therefore compact.
+
+      Next, we show that $K
+      \subset E$. If $x \in K$ and $x \not \in E$, we get $x \in
+      [-m,m] \setminus E = F \subset V$, yielding that $x \in V^c$ and
+      so $x \in E$, a contradiction. Similarly, we also have that $V
+      \supset F$, and so $\mu(V) \leq \mu(F) + \epsilon$ giving us
+      $\mu(V \setminus F) \leq \epsilon$.
+
+      Finally, we show $E \setminus K \subset V \setminus F$. We note
+      that
+      \begin{align*}
+        E \setminus F & = E \intersect K^c \\
+                      & = E \intersect ([-m,m] \intersect V^c)^c \\
+                      & = E \intersect ([-m,m]^c \union V) \\
+                      & = (E \intersect [-m,m]^c) \union (E \intersect
+                        V)\\
+                      & = E \intersect V
+      \end{align*}
+      since $E \intersect [-m,m]^c = \emptyset$. Furthermore,
+      \begin{align*}
+        V \setminus F & = V \intersect F^c \\
+                      & = V \intersect ([-m,m] \intersect F^c)^c \\
+                      & = V \intersect ([-m,m]^c \union F) \\
+        & = (V \intersect F) \union (V \intersect [-m,m]^c)
+      \end{align*}
+      Thus, we get that $\mu(E \setminus K) \leq \mu(V \setminus F)
+      \leq \epsilon$ for all $\epsilon$.
+    \end{itemize}
+  \end{proof}
+  \begin{defn}
+    We say $\mu$ is \de{tight} if, for all $\epsilon > 0$, there
+    exists a compact $K \subset \R$ such that $\mu(K) \geq
+    1-\epsilon$. 
+  \end{defn}
+  \begin{cor}
+    If $\mu$ is a Borel probability measure ($\mu(\R) = 1$), then
+    $\mu$ is tight.
+  \end{cor}
+  \begin{defn}
+    A sequence of Borel probability measures on $\R$, $(\mu_n)_{n \geq
+    1}$, is called \de{uniformly tight} if, for all $\epsilon > 0$,
+  there exists a compact $K \subset \R$ such that, for all $n$,
+  $\mu_n(K) \geq 1 - \epsilon$.
+  \end{defn}
+  \begin{defn}
+    (Aside). We say a sequence of Borel probability measures on $\R$,
+    $(\mu_n)_{n \geq 1}$, \de{converges weakly} to a Borel probability
+    measure such that, for all $f \from \R \to \R$ bounded an
+    continuous, \[
+      \int f d \mu_n \to \int f d\mu \text{ as } n \to \infty
+    \]
+  \end{defn}
+  Finally, we note some properties of the Lebesgue measure. Let $m =
+  \mu_F$, $F(x) = x$ be the Lebesgue measure.
+  \begin{itemize}
+  \item For all $A \in \B_\R$ and for all $c \in \R$, we have that
+    $A+c \in \B_\R$ and that $m(A+c) = m(A)$.
+  \item For all $A \in \B_\R$ and for all $\lambda \in \R$, then
+    $\lambda A \in \B_\R$, then $m(\lambda A) = |\lambda| m(A)$. 
+  \end{itemize}
+  The proof of such facts is ommitted but can be derived as a special
+  case of Proposition 2.6 in Folland on page 45.
+  \section{Integration}
+  \begin{prop}
+    Let $f \from X \to Y$ be $(\M,\mathcal{N})$-measurable. Suppose
+    $\mathcal{N} = \M(\Ep)$ for $\Ep \subset \P(Y)$. Then, $f$ 
+    is $(\M,\mathcal{N})$-measurable if and only if, for all $B \in
+    \Ep$, $f^{-1}(B) \subset \M$. 
+  \end{prop}
+  \begin{proof}
+    $\implies$ is easy because $\Ep \subset \mathcal{N}$. For
+    $\impliedby$, define $\tilde{\mathcal{N}} = \{B \in \P(Y) \mid f^{-1}(B)
+    \in \M\}$. This is a $\sigma$-algebra containing $\Ep$ by
+    hypothesis. Thus, $N \subset \tilde{\mathcal{N}}$ and so $f$ is
+    measurable. 
+  \end{proof}
+  \begin{cor}
+    If $X,Y$ are topological spaces and $f \from X \to Y$ is
+    continuous, then $f$ is $(\B_X, \B_Y)$-measurable. 
+  \end{cor}
+  \begin{proof}[Proof of Corollary]
+    Take $\Ep = \{\text{ Open sets in }Y\}$. Then $V \in \Ep$, so
+    $f^{-1}(V)$ is open in $X$ and thus in $\B_X$. 
+  \end{proof}
+  \begin{prop}
+    We note that if $f \from X \to Y$ is $(\M,\mathcal{N})$-measurable
+    and $g \from Y \to Z$ is $(\mathcal{N},\mathcal{O})$-measurable,
+    then $g \circ f$ is $(\M,\mathcal{O})$-measurable.
+  \end{prop}
+  \begin{proof}
+    The proof is a straightforward application of definitions.
+  \end{proof}
+  \begin{prop}
+    Let $(X,\M)$ be a measure space and let $(Y_\alpha,
+    \mathcal{N}_\alpha)_{\alpha \in A}$ be a family of measure spaces. Furthermore, we define
+    $Y = \prod_{\alpha \in A} Y_\alpha$ and $\mathcal{N} = \bigotimes_{\alpha
+      \in A} \mathcal{N}_\alpha$. Finally, let $f \from X \to Y$ and
+    for all $\alpha, f_\alpha = \pi_\alpha \circ f$. Then, $f$ is
+    $(\M,\mathcal{N})$-measurable if and only if, for all $\alpha,
+    f_\alpha$ is $(\M,\mathcal{N})$-measurable.
+  \end{prop}
+  \begin{proof}
+    For ($\implies$), we have that $f_\alpha = \pi_\alpha \circ f$, so
+    we only need to show that $\pi_\alpha$ is measurable. However, for
+    all $E_\alpha \in \mathcal{N}_\alpha$, $\pi_\alpha^{-1}(E_\alpha)
+    \in \mathcal{N}$ by definition of $\mathcal{N} = \bigotimes_\alpha
+    \mathcal{N}_\alpha$.
+
+    For ($\impliedby$), let $\Ep = \{\pi_\alpha^{-1}(E_\alpha) \mid
+    \alpha \in A, E_\alpha \in \mathcal{N}_\alpha\}$. By definition of
+    $\mathcal{N}$, we have $\mathcal{N} = \M(\Ep)$. Now, by the
+    previous proposition, it is enough to show that $f^{-1}(E) \in
+    \M$ for all $E \in \Ep$. Now, $E = \pi_\alpha^{-1}(E_\alpha)$ for
+    some $\alpha, E_\alpha$. Thus, \[
+      f^{-1}(E) = f^{-1}(\pi_\alpha^{-1}(E_\alpha)) = (\pi_\alpha
+      \circ f)^{-1}(E_\alpha) = f_\alpha^{-1}(E_\alpha) \in \M
+    \]
+    since $f_\alpha$ is $(\M,\mathcal{N})$-measurable.
+  \end{proof}
+  \begin{cor}
+    Let $(X,\M)$ be a measure space and $f \from X \to \C$ (also $\R^n$). Then, $f$
+    is measurable if and only if $\Re f$ and $\Im f$are measurable.
+  \end{cor}
+  \begin{rmk}
+    Here we used the fact that $\B_{\R^n} = \B_\R \otimes \cdots
+    \otimes \B_\R$ as a finite or countable product, as well as the
+    fact that $\R$ is a separable.
+  \end{rmk}
+  \begin{prop}
+    Let $f \from X \to K$ ($K = \R,\C$) and $g \from X \to K$. If $f$
+    and $g$ are measurable, then $f+g$ and $fg$ are also measurable. 
+  \end{prop}
+  \begin{proof}
+    Let $x \to (f(x),g(x)) \to f(x)+g(x)$ where the first function is
+    a $(\M,\B_{K \times K})$-measurable function, where $\M$ is a
+    $\sigma$-algebra on $X$. Each of these two functions is clearly
+    measurable, so their composition will be, too.
+  \end{proof}
+  \begin{prop}
+    Let $f \from X \to K$ ($K = \R,\C$). If $f$ is measurable, then
+    $|f|$ is $(\M,\B_K)$-measurable where $\M$ is a $\sigma$-algebra
+    on $X$. Furthermore, if $f,g \from X \to \R$ are measurable, then
+    $\max(f,g)$ and $\min(f,g)$ are measurable.
+  \end{prop}
+  \begin{prop}
+    Let $(X,\M)$ be a measurable space. Furthermore, for $E \in \P(X)$, let
+    $\chi_E \from X \to \{0,1\}$ be given by \[
+      \chi_E(x) =
+      \begin{cases}
+        1 & x \in E \\
+        0 & x \not \in E
+      \end{cases}
+   \]
+   Then, $\chi_E$ is measurable if and only if $E \in \M$.
+  \end{prop}
 \end{document}
