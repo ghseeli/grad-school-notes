@@ -50,4 +50,4 @@ deploy:
   - _build/real-analysis-notes.pdf
   on:
     repo: ghseeli/grad-school-notes
-    tags: true
+    branch: master
