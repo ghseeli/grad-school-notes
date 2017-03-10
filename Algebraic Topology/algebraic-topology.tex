@@ -1059,39 +1059,98 @@ If one of the coordinates is 0, we get a lower $d$-simplex.
 
 \mydate{d13}{24}{2}{2017}
 
+\section*{Simplicial homology}
+
+The fundamental group associates to a topological space (a not
+necessarily abelian) group, however we have already seen that this
+comes with many insufficiency. For example, the fundamental group
+fails to detect the cell structure beyond \(2\)-cells. One way to get
+around this problem is to consider the higher homotopy groups, defined
+in an analogous way. While these groups are able to detected the
+higher dimensional cell structure, they are very difficult to compute.
+
+We will now begin to develop the theory of homology, which is much
+easier to compute with. However this easy of use comes with a cost, in
+particular, the basic definitions are more complicated. Instead of
+attaching to a given topology space a single group, we will attach a
+chain of abelian subgroups.
+
+Define the \(n\)-simplex to be the smallest convex figure in
+\(\R^{n+1}\) that does not lay completely in any \(n\)-dim
+hyper-plane. In practice just think \(0\)-simplex is a point
+\(1\)-simplex is a line, \(2\)-simplex is a triangle, \(3\)-simplex is
+a pyramid, etc. Now what Hatcher calls a face is more generally
+commonly referred to as a facet. Normally a face refers to any part of
+the boundary of the simplex, while facet specifically refers to the
+faces of dimension \(n-1\). Another way to say this is that a facet is
+a maximal face. In general usage face includes all of the following
+\(\emptyset\), vertices, edges, and yes even facets.
+
+We will start with simplicial homology as it appears to be more tame
+(key word being appears), than singular homology. However singular
+homology is defined in such a way that many important properties are
+immediately apparent (i.e. homotopy invariance).
+
+Built out of \(n\)-simplices are simplicial-complexes, however we will
+study Hatcher's \(\Delta\)-complex which is more convenient to work with. 
+
 \mydate{d14}{27}{2}{2017}
 
 \begin{rmk}
-  Hatcher created the notion of Delta-complexes because they are more convenient than simplicial complexes.  The following are examples of $\Delta$-complexes that are not simplicial complexes.
+  Hatcher created the notion of Delta-complexes because they are more
+  convenient than simplicial complexes.  The following are examples of
+  $\Delta$-complexes that are not simplicial complexes.
   \begin{itemize}
-    \item \includegraphics[scale=0.22]{images/not-delta-complex1}
-    \item \includegraphics[scale=0.2]{images/not-delta-complex2}
-    \item \includegraphics[scale=0.2]{images/not-delta-complex3}
+  \item \includegraphics[scale=0.22]{images/not-delta-complex1}
+  \item \includegraphics[scale=0.2]{images/not-delta-complex2}
+  \item \includegraphics[scale=0.2]{images/not-delta-complex3}
   \end{itemize}
-  $\Delta$-complexes allow you to glue vertices together, but simplicial complexes do not. ((John Harnois))
+  $\Delta$-complexes allow you to glue vertices together, but
+  simplicial complexes do not. ((John Harnois))
 \end{rmk}
 
-An $n$-chain (non-rigorous idea) is a union (with multiplicity, and negative multiplicity) of $n$-simplices.  Therefore, an $n$-chain is a subspace of dimension $n$.  Also, negative multiplicities represent the opposite orientation of their positive counterparts.
+An $n$-chain (non-rigorous idea) is a union (with multiplicity, and
+negative multiplicity) of $n$-simplices.  Therefore, an $n$-chain is a
+subspace of dimension $n$.  Also, negative multiplicities represent
+the opposite orientation of their positive counterparts.
 
-An orientation of an $n$-simplex is specified by an order on the vertices.  Also, an even permutation (on these vertices) is orientation preserving, while an odd permutation is orientation reversing.  By convention in Hatcher (and this course), faces are oriented according to the induced order from their vertices.
+An orientation of an $n$-simplex is specified by an order on the
+vertices.  Also, an even permutation (on these vertices) is
+orientation preserving, while an odd permutation is orientation
+reversing.  By convention in Hatcher (and this course), faces are
+oriented according to the induced order from their vertices.
 
 \begin{defn}
-  \de{The group of $n$-chains} \de{$\Delta_n(X)$} is the free abelian group with basis the open $n$-simplices $e_\alpha^n$ of $X$.  An element of $\Delta_n(X)$ is an \de{$n$-chain}, and is written $\sum_\alpha n_\alpha e_\alpha^n$ with coefficients $n_\alpha \in \Z$.
+  \de{The group of $n$-chains} \de{$\Delta_n(X)$} is the free abelian
+  group with basis the open $n$-simplices $e_\alpha^n$ of $X$.  An
+  element of $\Delta_n(X)$ is an \de{$n$-chain}, and is written
+  $\sum_\alpha n_\alpha e_\alpha^n$ with coefficients
+  $n_\alpha \in \Z$.
 \end{defn}
 \begin{rmk}
-  Equivalently, we could write $\sum_\alpha n_\alpha \sigma_\alpha$ where $\sigma_\alpha \from \Delta^n \to X$ is the characteristic map.
+  Equivalently, we could write $\sum_\alpha n_\alpha \sigma_\alpha$
+  where $\sigma_\alpha \from \Delta^n \to X$ is the characteristic
+  map.
 
-  If there do not exist any $n$-dim simplices, then $\Delta_n(X) = \{0\}$.
+  If there do not exist any $n$-dim simplices, then
+  $\Delta_n(X) = \{0\}$.
 \end{rmk}
 
 \begin{defn}[boundary of an oriented $n$-simplex]
-  The boundary of an $n$-simplex $[0, 1,,, n]$ is defined by $$\d([0, 1,,, n]) := \sum_{i=0}^n (-1)^i [0, 1,,, \hat{i},,, n]$$
+  The boundary of an $n$-simplex $[0, 1,,, n]$ is defined by
+  $$\d([0, 1,,, n]) := \sum_{i=0}^n (-1)^i [0, 1,,, \hat{i},,, n]$$
 \end{defn}
 \begin{defn}[boundary of an $n$-chain]
-  The boundary map $\d \from \Delta_n(X) \to \Delta_{n-1}(X)$ is linear, and so $$\d(\sum_\alpha n_\alpha e_\alpha^n) := \sum_\alpha n_\alpha \d(e_\alpha^n)$$
+  The boundary map $\d \from \Delta_n(X) \to \Delta_{n-1}(X)$ is
+  linear, and so
+  $$\d(\sum_\alpha n_\alpha e_\alpha^n) := \sum_\alpha n_\alpha
+  \d(e_\alpha^n)$$
 \end{defn}
 
-Houston we have a problem.  The induced orientation on the boundary doesn't neccessarily agree with the original orientation on the those lower dimensional simplices!  (See above).  So what to do?  I think that's where the $(-1)^i$ comes into play.
+Houston we have a problem.  The induced orientation on the boundary
+doesn't neccessarily agree with the original orientation on the those
+lower dimensional simplices!  (See above).  So what to do?  I think
+that's where the $(-1)^i$ comes into play.
 
 \begin{example}[Hatcher, p.105]
   \quad
@@ -1104,8 +1163,9 @@ Houston we have a problem.  The induced orientation on the boundary doesn't necc
   $$\d(X) = - a - b + c$$
   $$\d(Y) =$$
 
-  $\sigma$ is the glueing map!  not a permutation! $\sigma \from \Delta^n \to X$.
-  where $[0, 1, 2]$ denotes the simplex.
+  $\sigma$ is the glueing map!  not a permutation!
+  $\sigma \from \Delta^n \to X$.  where $[0, 1, 2]$ denotes the
+  simplex.
 \end{example}
 
 Claim: $\d^2 = 0$.
@@ -1115,12 +1175,10 @@ Claim: $\d^2 = 0$.
 \end{defn}
 
 \begin{example}
-  $H_2^\Delta(K^2) = 0$
-  $H_1^\Delta(K^2) \isom \Z \oplus \Z/2\Z$
+  $H_2^\Delta(K^2) = 0$ $H_1^\Delta(K^2) \isom \Z \oplus \Z/2\Z$
   $H_0^\Delta(K^2) = \Z$
 
-  where
-  $\Z^2 \to(overset [-1 -1; -1 1; 1 1]) \Z^3 \to(overset 0) \Z$
+  where $\Z^2 \to(overset [-1 -1; -1 1; 1 1]) \Z^3 \to(overset 0) \Z$
 
   $[0 2 0]^transpose$
 \end{example}
@@ -1132,9 +1190,14 @@ Claim: $\d^2 = 0$.
 
 \mydate{d16}{3}{3}{2017}
 
-When using normal subgroups that corr to covering spaces, you get maximal symmetry.  it looks the same at every point.  it's the same as taking universal cover and modding out by relations.
+When using normal subgroups that corr to covering spaces, you get
+maximal symmetry.  it looks the same at every point.  it's the same as
+taking universal cover and modding out by relations.
 
-When you use regular subgroups that corres to cov spaces, you cannot do the modding out trick.  (or maybe you can only do it locally).  It won't be symmetric.  It will look like example <a> in Hatcher for S1 V S1.
+When you use regular subgroups that corres to cov spaces, you cannot
+do the modding out trick.  (or maybe you can only do it locally).  It
+won't be symmetric.  It will look like example <a> in Hatcher for S1 V
+S1.
 
 \section*{Singular homology}
 
