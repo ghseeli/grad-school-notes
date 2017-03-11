@@ -878,7 +878,7 @@ In general, I have many gluing maps $\phi_\alpha\from S^1 \to X_1$ and I glue $D
   Given $X$ is connected and SLSC, and $p_1$ and $p_2$ are covering maps, then if a map from $X_1$ to $X_2$ exists, it must be unique and is $\fund$ - equivariant.
 \end{thm}
 
-% \includegraphics{} % picture of paths in X, X1, X2.  including alpha, etc.
+\includegraphics[scale=0.4]{images/fund-equivariant}
 
 \begin{defn}
   A \de{$\fund$-set} is a set that $\fund$ acts on.
@@ -907,9 +907,10 @@ Note.  If $G/H \isom G/H'$ where $H \mapsto gH'$, then $\Stab(H) = H$, $\Stab(gH
   $p_h^{-1}(x_0) = \{ (q_0, gH) \}_{gH \in G/H}$
 
   $gHg^{-1} \isom \fund(X^U/H, (q_0, gH) ) \to \fund(X_1, x_0)$
-
-  % \includegraphics{} % fractal picture labelled "X^U" and "\fund \isom F_2"
 \end{proof}
+
+\includegraphics[scale=0.3]{images/universal-cover-f2}
+
 \begin{example}
   We will use $H =  \langle a \rangle $ in our image above.
 
@@ -917,12 +918,12 @@ Note.  If $G/H \isom G/H'$ where $H \mapsto gH'$, then $\Stab(H) = H$, $\Stab(gH
 
   Now look at the image of $\fund(X^U/ \langle a \rangle )$.
 
-  % \includegraphics{} % loop thing w/ two trees
+  \includegraphics[scale=0.2]{images/loop-tree-cover}
 
   Note that this is homotopic to a loop!  Woohoo!
 \end{example}
 \begin{example}
-  % \includegraphics{} % loopy pic
+  \includegraphics[scale=0.26]{images/loopy}
 
   $1 \mapsto a$
 
@@ -1065,17 +1066,17 @@ Given $G$, think of each element as a generator.
 
 So if $g_1, g_2 \in G$, then $g_1$, $g_2$, and $g_1g_2$ are all generators!  They each get a loop!.  But then, of course, we will need to glue faces to build the group.
 
-% \includegraphics[options]{name} pretty picture
+\includegraphics[scale=0.3]{images/group-as-fund-group}
 
 So for example, $g_1.g_2 = g_1g_2$, where the LHS is the directed edge concatenation, and the RHS is its very own directed edge.  The picture for this is the triangle.
 
-Similarly, we can create higher dimensional simplices.  For example
-$g_1g_2g_3 = g_1.(g_2g_3)$
-in the tetrahedron simplex (see pic).
+Similarly, we can create higher dimensional simplices.  For example $g_1g_2g_3 = g_1.(g_2g_3)$ in the tetrahedron simplex:
+
+\includegraphics[scale=0.4]{images/tetrahedron}
 
 I have an $n$-cell for every $n$-tuple
 
-$D^n \isom \left\{ (x_0,,,x_n) \in \R^{n+1} \st \sum x_i = 1, x_i \geq 0 \right\}$
+$$D^n \isom \left\{ (x_0,,,x_n) \in \R^{n+1} \st \sum x_i = 1, x_i \geq 0 \right\}$$
 
 If one of the coordinates is 0, we get a lower $d$-simplex.
 
@@ -1182,16 +1183,6 @@ that's where the $(-1)^i$ comes into play.
   \quad
 
   \includegraphics[scale=0.5]{images/boundary-of-oriented-simplex}
-\end{example}
-
-\begin{example}
-  % pretty picture
-  $$\d(X) = - a - b + c$$
-  $$\d(Y) =$$
-
-  $\sigma$ is the glueing map!  not a permutation!
-  $\sigma \from \Delta^n \to X$.  where $[0, 1, 2]$ denotes the
-  simplex.
 \end{example}
 
 Claim: $\d^2 = 0$.
