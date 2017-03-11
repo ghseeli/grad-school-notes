@@ -749,38 +749,43 @@ It is easy to see that \(T^2 \# T^2\) is the two holed torus, and in general \(\
 
 \section{CW complexes and the fundamental group}
 
-Consider the polygon
-\begin{figure}
-  % \includegraphics{}
-  \label{fig:star}
-\end{figure}
-
 $X_0$ = some points
 
 $X_1$ = some paths attached onto those points
 
 
+\begin{defn}
+  If $X$ is a space and $A$ is a subspace, then the \de{quotient space} $X/A$ is the partition of $X$ resulting from the equivalence relation $$(x \sim x') \quad \text{iff} \quad (x = x' \quad \text{or} \quad x, x' \in A).$$
+\end{defn}
+\begin{example}
+  \includegraphics[scale=0.2]{images/quotient-space}
+\end{example}
 \begin{thm}
   If $X$ is a CW complex and $A$ a contractible subcomplex, $\fund(X) = \fund(X/A)$.
 \end{thm}
 \begin{rmk}
-  If $X$ is a CW complex and $A$ a contractible subcomplex, then $X$ is \textbf{not} equal to $X/A$, but $X$ \textbf{is} homotopy equivalent to $X/A$. (this is the quotient by the equivalence relation $x \sim x'$ iff $x = x'$ or $x, x' \in A$).
+  If $X$ is a CW complex and $A$ a contractible subcomplex, then $X$ is \textbf{not} equal to $X/A$, but $X$ \textbf{is} homotopy equivalent to $X/A$.
 \end{rmk}
+\begin{thm}
+  If $X$ is a CW complex, then the 1-skeleton of $X$ completely determines the connected components of $X$.
+\end{thm}
+\begin{proof}
+  Consider we have $X_1$ and observe its connected components.  Later, we glue in some $n$-dimensional disk where $n > 1$. It's boundary is connected, so that boundary must lie entirely in \textbf{one} of the connected components, and so cannot further connect anything.  Therefore, the connected components of $X_1$ are unchanged under all future glueings.
+\end{proof}
 
-Once we hit $X_1$, the connected components of the complex are determined.
+If $X_0 = \{[*]\}$ (a single point), then $\fund(X_1) \isom F_{|\text{set of 1-cells}|}$
 
-That's because for any $n$-dimensional disk where $n \geq 2$, it's boundary is connected, so that boundary must lie entirely in \textbf{one} of the connected components.
+\subsection{How to glue one disk onto $X_1$}
 
-In $\ref{fig:star}$, the set of connected components is $\fund[0](X_0) = \fund[0](X_1)$ ((let's make the fund command take in an optional argument, which will be the subscript of the pi))
+$\fund\left( \frac{X_1 \dunion D^2}{\sim} \right) \isom \frac{\fund(X_1) * \fund(D^2)}{X_1 \cap D^2} \isom \frac{\fund(X_1)}{[\phi] = 1}$, where * denotes the free group product, and modding out by $X_1 \cap D^2$ denotes the identification of the loop $X_1 \cap D^2 \subset X_1$ with the loop $X_1 \cap D^2 \subset D^2$.
 
-If $X_0 = \{[*]\}$ (a single point), then $\fund(X_1) \isom F_{\text{set of 1-cells}}$
+In general, I have many gluing maps $\phi_\alpha\from S^1 \to X_1$ and I glue $D^2_\alpha$ along $\phi_\alpha(S^1)$.  So $\fund(X_2) \isom \fund(X_1)/\langle[\phi_\alpha]\rangle$.  So when you ``glue'' in a $D^2$, since each $D^2$ is contractible, a path along the boundary of the $D^2$ is now the identity. In other words, each $D^2$ adds a relation!  This is formalized in the following...
 
-$\fund\left( \frac{X_1 \union D^2}{\sim} \right) \isom \frac{\fund(B) * \fund(A)}{A \cap B} \isom \frac{\fund(X_1)}{[\phi] = 1}$, where * denotes the free group product.
-
-In general, I have many gluing maps $\phi_\alpha\from S^1 \to X_1$ and I glue $D^2\alpha$ along $\phi_\alpha(S^1)$.  So $\fund(X_2) \isom \fund(X_1)/\langle[\phi_\alpha]\rangle$.  So when you ``glue'' in a $D^2$, since each $D^2$ is contractible, a path along the boundary of the $D^2$ is now the identity. In other words, each $D^2$ adds a relation!  This is formalized in the following...
-
-\begin{thm}[Not to be proven]
-  Every group is the fundamental group of some CW complex.  Construct as follows:
+\begin{thm}
+  Every group is the fundamental group of some CW complex.
+\end{thm}
+\begin{proof}
+  Construct as follows:
 
   $X_0$ = point
 
@@ -789,15 +794,26 @@ In general, I have many gluing maps $\phi_\alpha\from S^1 \to X_1$ and I glue $D
   $X_2$ = every entry in the multiplication table gets a disk (a relation)
 
   So it's just like a group presentation!
-\end{thm}
-\begin{thm}
+\end{proof}
+\begin{example}
+  \includegraphics[scale=0.4]{images/cw-complex-group-presentation}
+\end{example}
+\begin{cor}
   Every finitely presented group is the fundamental group of a finite CW complex.
-\end{thm}
+\end{cor}
+\begin{lem}
+  If $a, b \in \N$, then $$\d( S^a \x D^{b+1} ) = S^a \x S^b = \d(D^{a+1} \x S^b)$$
+\end{lem}
+\begin{proof}
+  From proposition 4.4 of differential topology notes, we have that the boundary operator $\d$ is a derivation, so we apply the formula to the LHS.  Since $\d^2 = \null$ and $S^a$ is already the boundary of something, then $\d(S^a) = \null$.  This gives the first equality.  The second equality is true by symmetry.
+\end{proof}
 \begin{thm}
-  If $n > 3$, then for any finitely presented group $G$, there exists
-  a compact manifold $M$ such that $G \isom \fund(M)$.
+  If $n \geq 4$, then for any finitely presented group $G$, there exists
+  a compact $n$-dimensional manifold $M$ such that $G \isom \fund(M)$.
 \end{thm}
 \begin{proof}
+  WARNING.  This proof may not be accurate or well explained.  You should read the proof on~\cite{chiasme} instead.
+
   If $n > 2$ and $M$ and $N$ are $n$-manifolds, then consider $M \#
   N$. Recall that $\fund(M \# N) \isom \fund(M) * \fund(N)$. In
   particular, we note that $\fund(\#^n (S^{n-1} \times S^1)) \isom
@@ -805,9 +821,7 @@ In general, I have many gluing maps $\phi_\alpha\from S^1 \to X_1$ and I glue $D
 
   % \includegraphics{} ((that puncture-glueing thing))
 
-  Finally, note that $\d(S^0 \x D^n) = S^0 \x S^{n-1} \setminus
-  \d(D^1 \x S^{n-1})$ (If you really want, you can break these
-  previous facts into lemmas.)
+  Also note that $\d(S^0 \x D^n) = \d(D^1 \x S^{n-1})$.
 
   % Here is where the actual proof starts.
   Let $M = \#^r (S^1 \times S^{n-1})$ be an $n$-manifold and $n > 3$
@@ -846,29 +860,22 @@ In general, I have many gluing maps $\phi_\alpha\from S^1 \to X_1$ and I glue $D
   this process repeatedly until we get all our relations.
 \end{proof}
 \begin{thm}
-  $\fund(X^2) \isom \fund(X)$ ((this is weird.  is $X^2$ derived from $X$ ?  Like does $X$ denote the entire CW complex, and $X^2$ just a piece of it or something?))
+  $\fund(X_2) \isom \fund(X)$
 \end{thm}
 \begin{proof}
-  $\fund(X_{n-1}) \isom \fund(X_n)$.  $n \geq 3$.
-  Why does gluing on a higher level dimension disk not affect $\fund$?  It's because the boundary is simply connected.
+  We will show that when $n > 2$, $\fund(X_{n-1}) \isom \fund(X_n)$.
 
-  $A$ = small disk in A homotopic *
-  $B$ = complement of a small disk homotopic $X^{n-1}$ ((i mean i think he meant underscore...))
+  Why does gluing on a higher level dimension disk not affect $\fund$?  It's because the boundary is simply connected!
 
-  $S^{n-1} \to x^{n-1}$.
-
-  $A \cap B \homotopic S^{n-1}$
+  For example, consider that we have $X_2$ or a higher dimension skeleton, and we want to glue on a disk $D^3$ or higher dimension.  Since the boundary of $D^3$ is $S^2$ or higher, then the boundary is simply connected.  Since the boundary was ALREADY simply connected before the glueing, we haven't allowed any MORE loops to collapse by adding in the glueing.  So we have not altered the fundamental group in any way.
 \end{proof}
-\begin{rmk}
-  Once $n$ reaches $4$, all bets are off ;(
-\end{rmk}
 
 
 
 \mydate{d10}{17}{2}{2017}
 
 \begin{thm}
-  (Continued from last time) Given $X$ is connected and SLSC, and $p1$ and $p2$ are covering maps, then if a map from $X_1$ to $X_2$ exists, it must be unique and is $\fund$ - equivariant.
+  (Continued from last time) Given $X$ is connected and SLSC, and $p_1$ and $p_2$ are covering maps, then if a map from $X_1$ to $X_2$ exists, it must be unique and is $\fund$ - equivariant.
 \end{thm}
 
 % \includegraphics{} % picture of paths in X, X1, X2.  including alpha, etc.
@@ -1092,7 +1099,7 @@ homology is defined in such a way that many important properties are
 immediately apparent (i.e. homotopy invariance).
 
 Built out of \(n\)-simplices are simplicial-complexes, however we will
-study Hatcher's \(\Delta\)-complex which is more convenient to work with. 
+study Hatcher's \(\Delta\)-complex which is more convenient to work with.
 
 \mydate{d14}{27}{2}{2017}
 
@@ -1262,6 +1269,11 @@ If $X$, $Y$ are spaces and $f \from X \to Y$, then I have an induced map $$C_n(X
     url={http://mathworld.wolfram.com/GraphAutomorphism.html},
     accessdate={2017-02-22},
     author={Weisstein, Eric W.},
+  },
+  \bib{chiasme}{webpage}{
+    title={Amalgamated products and HNN extensions (IV): Markov properties},
+    url={https://chiasme.wordpress.com/2014/05/28/amalgamated-products-and-hnn-extensions-iv-markov-properties/},
+    accessdate={2017-03-10},
   },
   \bib{Hatcher}{book}{
     title={Algebraic Topology},
