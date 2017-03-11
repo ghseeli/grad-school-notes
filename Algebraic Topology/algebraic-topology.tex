@@ -91,7 +91,7 @@ continuous deformations between maps. While homology studies subspaces
 
 We now define homotopies in the space of maps between manifolds \(M\)
 and \(N\) denoted
-\[\Map(M,N)=\{f \from M \to N \mid \text{$f$ is continuous}\}.\]
+\[\Map(M,N)=\{f \from M \to N \suchthat \text{$f$ is continuous}\}.\]
 
 In this course, we follow the convention that maps are continuous
 functions unless otherwise stated!
@@ -553,7 +553,7 @@ free: every point has a trivial stabilizer, that is, something is simply connect
 \end{defn}
 
 Let $X^a$ = {the paths in $X_1$ starting at $X_0$ up to endpoint preserving homotopy }
-$= \{ p \from X_0 \to X' \mid \forall x' \in X \}$
+$= \{ p \from X_0 \to X' \suchthat \forall x' \in X \}$
 
 LOWERCASE x's BELOW!!!
 $p \from x_0 to x'$
@@ -584,7 +584,7 @@ $q \from x_0 \to x''$
 
   preimage?  Fix $\alpha \in \fund(X, x_0)$.  What is the preimage under $\gamma$?, where $\gamma$ is defined by $\gamma \from (p^u)^{-1}(U) \to \fund(X, x_0)$, ((which was originally drawn above))
 
-  so $p^u$ is a cover if $X$ is SLSC.  Wohhoo!
+  so $p^u$ is a cover if $X$ is SLSC.  Woohoo!
 \end{proof}
 ((not sure if we actually finished the proof yet))
 
@@ -617,10 +617,10 @@ Therefore, $X^U$ is connected and simply connected.
   in white) around one of these, you cannot pull it off the interval,
   since the interval goes on ``forever''.
 
-  $A'$ = $K \cap \{(x,y,z) \in \R^3 \mid z > -\epsilon\}$ ($K$ minus
+  $A'$ = $K \cap \{(x,y,z) \in \R^3 \suchthat z > -\epsilon\}$ ($K$ minus
   the tunnels).
 
-  $B'$ = $K \cap \{(x,y,z) \in \R^3 \mid z < \epsilon\}$ ($K$ minus
+  $B'$ = $K \cap \{(x,y,z) \in \R^3 \suchthat z < \epsilon\}$ ($K$ minus
   the bridges).
 
   $A'$ is $m$ open line segments.  In our example, using $K =$
@@ -734,7 +734,7 @@ When talking about moding out by the fundamental group we are really
 talking about moding out by the normal subgroup it generates. In
 particular this means that conjugation is trivial, and thus we are
 free to pick any basepoint we want. This results in
-\[\pi_1(T^2) = \left\langle x,y \mid y^{-1}x^{-1}y x = 1 \right\rangle = \Z
+\[\pi_1(T^2) = \left\langle x,y \suchthat y^{-1}x^{-1}y x = 1 \right\rangle = \Z
     \times \Z\]
 
 \begin{defn}
@@ -875,24 +875,26 @@ In general, I have many gluing maps $\phi_\alpha\from S^1 \to X_1$ and I glue $D
 \mydate{d10}{17}{2}{2017}
 
 \begin{thm}
-  (Continued from last time) Given $X$ is connected and SLSC, and $p_1$ and $p_2$ are covering maps, then if a map from $X_1$ to $X_2$ exists, it must be unique and is $\fund$ - equivariant.
+  Given $X$ is connected and SLSC, and $p_1$ and $p_2$ are covering maps, then if a map from $X_1$ to $X_2$ exists, it must be unique and is $\fund$ - equivariant.
 \end{thm}
 
 % \includegraphics{} % picture of paths in X, X1, X2.  including alpha, etc.
 
-(AGAIN FROM LAST TIME)
+\begin{defn}
+  A \de{$\fund$-set} is a set that $\fund$ acts on.
+\end{defn}
 \begin{thm}
   The category of covers of $X$ is equivalent to the category of $\fund$-sets.
 \end{thm}
 
-Recall given $H \subset \fund(X, x_0)$, then
+Given $H \subset \fund(X, x_0)$, then we can design a cover that corresponds to $H$:
 $$X_H := X_{\fund/H} = \frac{X^U \x \fund/H}{\fund} = X^U/H$$
 
 \begin{align}
   &\quad (q, \alpha H) \\
   &=(q\alpha, H) \\
-  &=(q\alpha h, H)
-\end{align} for all $h \in H$.
+  &=(q\alpha h, H)~\text{for all $h \in H$.}
+\end{align}
 
 Note.  If $G/H \isom G/H'$ where $H \mapsto gH'$, then $\Stab(H) = H$, $\Stab(gH') = gH'g^{-1}$, and $H = gH'g^{-1}$.
 
@@ -940,20 +942,15 @@ Note.  If $G/H \isom G/H'$ where $H \mapsto gH'$, then $\Stab(H) = H$, $\Stab(gH
 
 $\#p^{-1}(x) = \#$ of sheets in cover.  $X_S$ is a $\#S$-sheeted cover.  $X_H$ is a $[G:H]$ sheeted cover.
 
-Note: very similar to Galois theory.
-
-topological spaces $\bij$ fields
-
-covers $\bij$ field extensions
-
-$\fund(X)$ $\bij$ absolute Galois group
-
-deck transformations of $X$ $\bij$ field extension automorphism
-
-universal cover $\bij$ algebraic closure
-
-theorem about covers and subgroups $\bij$ fundamental theorem of Galois theory
-
+\subsection{Covering spaces are analagous to Galois theory}
+\begin{align}
+  \text{topological spaces} &\bij \text{fields} \\
+  \text{covering spaces} &\bij \text{field extensions} \\
+  \fund(X) &\bij \text{absolute Galois group} \\
+  \text{deck transformations of $X$} &\bij \text{field extension automorphism} \\
+  \text{universal cover} &\bij \text{algebraic closure} \\
+  \text{thm about covers and subgroups} &\bij \text{fundamental thm of Galois theory}
+\end{align}
 
 
 \mydate{d11}{20}{2}{2017}
@@ -967,15 +964,18 @@ theorem about covers and subgroups $\bij$ fundamental theorem of Galois theory
 Distance between two points on a graph is merely the length of the shortest path between the two points on the graph.  Again, since curvature is a local property, this means that graphs have a very negative curvature!
 
 \begin{thm}
+  The fundamental group of any graph is free.
+\end{thm}
+\begin{proof}
   The fundamental group of a graph is obtained by ``pruning'' the graph of all branches.  What is left is cycles and paths between those cycles.  The paths between may be contracted to a point.  The result is a jumble of cycles, which can be organized via contraction and homotopy into a single vertex with loops.
 
-  The funamental group will always be $F_n$ for some $n$.
-\end{thm}
+  So the fundamental group is  $F_n$, where $n$ is the final number of loops.
+\end{proof}
 \begin{thm}
-  A topological space $X$ is a graph iff $X^u$ is a tree.
+  A topological space $X$ is a graph iff $X^U$ is a tree.
 \end{thm}
 \begin{defn}
-  Given a graph $(V, E)$, an \de{automorphism} is a bijection $f \from V \bij V$ and the induced $E \to E$ such that $a \adj b \in V$ iff $f(a) \adj f(b)$.  (note that $\adj$ denotes adjacency)
+  Given a graph $(V, E)$, an \de{automorphism} is a bijection $f \from V \bij V$ and the induced $E \to E$ such that for all $a,b \in V$, $a \adj b$ iff $f(a) \adj f(b)$.  (note that $\adj$ denotes adjacency)
 \end{defn}
 \begin{rmk}
   In other words, $f(\Gamma) = \Gamma$, up to graph isomorphism.  See~\cite{GA} for elaboration.
@@ -987,18 +987,26 @@ Distance between two points on a graph is merely the length of the shortest path
   That is, each element $g$ performs an automorphism on $\Gamma$.  For any vertex $v$ or edge $e$, we can write $g(v)$ or $g(e)$ to denote where $g$ sends $v$ or $e$, respectively.
 \end{rmk}
 
-If $G$ is a group acting freely on a graph $\Gamma$, then by definition, $g(v) \cap v = \null$.  If we include the ``edge ends'' touching $v$ in the above, the intersection is still empty.
+If $G$ is a group acting freely on a graph $\Gamma$, then by definition for all $g \neq e$, $g(v) \cap v = \null$.  If we include the ``edge ends'' touching $v$ in the above, the intersection is still empty.
 
-Now $\Gamma/G$ is the set of orbits.  But there is a different way to interpret $\Gamma/G$.  Take the original $\Gamma$, and for each orbit, collapse all the vertices in that orbit into a single vertex (with induced movement on the edges ((do edges collapse too?))).  The result is again a graph, and so $\Gamma \to \Gamma/G$ is a covering map.
+Now $\Gamma/G$ is the set of orbits.  Here is a way to interpret $\Gamma/G$.  Take the original $\Gamma$, and for each orbit of vertices, collapse all those vertices into a single vertex.  Do the same for the edges.  The result is again a graph, and so $\Gamma \to \Gamma/G$ is a covering map.
 
 If additionally $\Gamma$ is a tree, then $\Gamma \to \Gamma/G$ is a universal covering map.
 
 \begin{thm}
-  ((this theorem doesn't make sense.  if Gamma is a tree, and G acts freely, what automorphisms exist on a tree with no fixed points?.  Even if you find one, it seems that $\fund(\Gamma/G)$ would be trivial, which is a contradiction.))
-  If $G$ acts freely on a tree $\Gamma$, then $G$ is free.  Specifically, $$G \isom \fund(\Gamma/G) \isom F_n$$.
+  If $G$ acts freely on a tree $\Gamma$, then $G$ is free.  Specifically, $$G \isom \fund(\Gamma/G).$$
 \end{thm}
+\begin{example}
+  Let $\Gamma$ be the infinite linearly ordered set (the vertices are $\Z$ and there is an edge between every pair of consecutive integers).
+
+  Let $G$ be the group of translations.
+
+  Notice that $G$ acts freely on $\Gamma$ (if any vertex is fixed, then the element of $G$ must be the identity).
+
+  Finally, observe that $G$ is in fact free.  In particular, $G \isom F_1$.
+\end{example}
 \begin{rmk}
-  Note.  If $\Gamma$ is not a tree, then $G$ could be anything.
+  In order for $G$ to act freely on $\Gamma$ in the first place, $\Gamma$ will have to be infinite.  If $\Gamma$ is not a tree, then $G$ could be anything.
 \end{rmk}
 
 $1 \to K \to F_n \to G \to 1$
@@ -1009,15 +1017,25 @@ If $\Gamma$ is a tree that $F_n$ acts on, then $G$ acts on $\Gamma/K$.
   The \de{$n$-flower} is a graph with $1$ vertex and $n$ edges.  (Note that all edges are loops.)
 \end{defn}
 \begin{thm}[Nielson Schreier]
-  ((This theorem doesn't make sense either))
-  Subgroups of free groups are free.  Furthermore, a subgroup of finite index has rank determined by the index.  That is, in $F_n$, a subgroup of index $k$ has rank $k(n-1)+1$.
+  \mbox{}
+  \begin{itemize}
+    \item Subgroups of free groups are free.
+    \item If a subgroup $H$ of $F_n$ has finite index $k$, then $\text{rank}(H) = k(n-1)+1$.
+  \end{itemize}
 \end{thm}
 \begin{proof}
-  $\fund(n\text{-flower}) \isom F_n \supset H \isom \fund(k\text{-sheeted cover}) \isom \fund(\text{$k$ vertices, $nk$ edges}) \isom \fund(\text{$nk - k + 1$-flower}) \isom F_{nk - k + 1}$
+  \begin{align}
+    &\fund(n\text{-flower}) \\
+    &\isom F_n \\
+    & \supset H \\
+    &\isom \fund(\text{$k$-sheeted cover}) ~\text{which is path connected}\\
+    &\isom \fund(\text{$k$ vertices, $nk$ edges}) \\
+    &\isom \fund(\text{$(nk - (k - 1))$-flower}) \\
+    &\isom \fund(\text{$(nk-k+1)$-flower}) \\
+    &\isom F_{nk - k + 1}
+  \end{align}
 
   Picture this.  A connected graph with $k$ vertices and $nk$ edges.  Now take a path (with $k-1$ edges) that connects all $k$ vertices.  Contract the path to a single vertex.  Now there are only $nk - (k-1)$ edges left, and they are all loops!
-
-((what remains unclear is $F_n \supset H$.  Should it be facing the other way?  It is crucial to understand this argument.))
 \end{proof}
 
 \begin{defn}
@@ -1025,6 +1043,7 @@ If $\Gamma$ is a tree that $F_n$ acts on, then $G$ acts on $\Gamma/K$.
 \end{defn}
 Note.  The space is unique up to homotopy equivalence.
 \begin{example}
+  \mbox{}
   \begin{itemize}
     \item
     $K(F_n, 1) \isom n$-flower.
@@ -1036,9 +1055,9 @@ Note.  The space is unique up to homotopy equivalence.
     $K(\Z^n, 1) \isom (S^1)^n$
 
     \item
-    $K(G, 1) \isom$ a $g$-holed torus (or non-orientable surface $\not\isom \R P^1$)
+    $K(G, 1) \isom$ a $g$-holed torus (or non-orientable surface $\not\isom \R P^1$),
 
-    $G = \langle a_1,b_1,,,a_g,b_g \st [a_1,b_1]\ldots[a_g,b_g] = e \rangle$
+    where $G = \langle a_1,b_1,,,a_g,b_g \st [a_1,b_1]\cdots[a_g,b_g] = e \rangle$
   \end{itemize}
 \end{example}
 
@@ -1051,12 +1070,12 @@ So if $g_1, g_2 \in G$, then $g_1$, $g_2$, and $g_1g_2$ are all generators!  The
 So for example, $g_1.g_2 = g_1g_2$, where the LHS is the directed edge concatenation, and the RHS is its very own directed edge.  The picture for this is the triangle.
 
 Similarly, we can create higher dimensional simplices.  For example
-$g_1g_2g3 = g_1.(g_2g3)$
+$g_1g_2g_3 = g_1.(g_2g_3)$
 in the tetrahedron simplex (see pic).
 
 I have an $n$-cell for every $n$-tuple
 
-$D^n \isom \{ (x_0,,,x_n) \in \R^{n+1} \st \sum x_i = 1, x_i \geq 0 \}$
+$D^n \isom \left\{ (x_0,,,x_n) \in \R^{n+1} \st \sum x_i = 1, x_i \geq 0 \right\}$
 
 If one of the coordinates is 0, we get a lower $d$-simplex.
 
