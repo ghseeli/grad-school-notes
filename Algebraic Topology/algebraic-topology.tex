@@ -40,6 +40,8 @@
 \renewcommand{\epsilon}{\varepsilon}
 \renewcommand{\d}{\partial}
 \newcommand{\fund}[1][1]{\pi_{#1}}
+\newcommand{\homl}[1][n]{H_{#1}}
+\newcommand{\rhoml}[1][n]{\overset{~}{\homl[#1]}}
 \newcommand{\transverse}{\pitchfork}
 \newcommand{\x}{\times}
 \newcommand{\Map}{\text{Map}}
@@ -1188,11 +1190,12 @@ that's where the $(-1)^i$ comes into play.
 Claim: $\d^2 = 0$.
 
 \begin{defn}
+  The nth \de{simplicial homology group} of $X$ is defined by
   $$H_n^\Delta(X) := \ker(\d \from \Delta_n \to \Delta_{n-1})/\im(\d \from \Delta_{n+1} \to \Delta_{n})$$
 \end{defn}
 
 \begin{example}
-  $H_2^\Delta(K^2) = 0$ $H_1^\Delta(K^2) \isom \Z \oplus \Z/2\Z$
+  $H_2^\Delta(K^2) = 0$ $H_1^\Delta(K^2) \isom \Z \dsum \Z/2\Z$
   $H_0^\Delta(K^2) = \Z$
 
   where $\Z^2 \to(overset [-1 -1; -1 1; 1 1]) \Z^3 \to(overset 0) \Z$
@@ -1230,7 +1233,7 @@ S1.
 \end{rmk}
 
 
-The definition of $homology$ $H_n(X) = \frac{}{}$ is the same as before, but now notice that these $H$'s can be really big!
+The definition of \de{singular homology} $H_n(X) = \frac{}{}$ is the same as before, but now notice that these $H$'s can be really big!
 
 If $X$, $Y$ are spaces and $f \from X \to Y$, then I have an induced map $$C_n(X) \to C_n(Y)$$ where $$ \sigma \mapsto f \of \sigma$$ obviously commutes with $\d$.
 
@@ -1242,6 +1245,120 @@ If $X$, $Y$ are spaces and $f \from X \to Y$, then I have an induced map $$C_n(X
 \mydate{d17}{13}{3}{2017}
 
 \mydate{d18}{15}{3}{2017}
+
+If $f,g \from X \to Y$ are homotopic, then $f_*=g_* \from \homl(X) \to \homl(Y)$
+
+If $f,\phi$ together create a homotopy equivalence, then $f_*.\phi_* = \id_{\homl(X)}$ and $\phi_*.f_* = \id_{\homl(Y)}$.
+
+If $A \subset X$ is a deformation retract, then the inclusion $\homl(A) \into \homl(X)$ is an isomorphism!
+
+\begin{thm}
+  The homology of a contractible space $X$ satisfies $H_0(X) \isom \Z$ and $\homl(X) = 0$ for all $n > 0$.
+\end{thm}
+
+\subsection{Reduced homology $\rhoml[i](X)$}
+
+$C_2(X) \to C_1(X) \to C_0(X) \to C_{-1}(X) \isom \Z$
+
+$\rhoml[i](X) \isom
+\begin{cases}
+  H_i(X) &\text{if $i > 0$} \\
+  H_0(X)/\Z &\text{if $i=0$}
+\end{cases}$
+
+$H_0 \isom \rhoml[0](X) \dsum \Z$
+
+Assume I have $A \subset X$.  How are $\homl(A) \to \homl(X)$
+
+$A/A \subset X/A$
+
+Let $X/A$ be the quotient space.
+
+$S' = I/{0,1} = I/S^0$
+
+$S^n = D^n/S^{n-1}$
+
+pretty picture below
+connected banana = torus w/ point pinched $\isom S^2/S^0$ = sphere/(NP~SP)
+
+(north pole ~ south pole)
+It's cool that these are isomorphic, even though they don't look it!
+
+NOTE:  The TILDA over the H denotes the REDUCED homology (rhoml) (FIND WHERE THIS IS DEFINED)
+  % &\homl[2](A) \arrow &\homl[2](X) \arrow &\homl[2](X/A) \arrow \\
+
+
+% \overset{~}{H_0}(X/A) \rto(by p_*) \overset{~}{H_0}(X) \rto(by i_*) \overset{~}{H_0}(A) \rto(by \delta) \overset{~}{H_1}(X/A) \rto(and repeat!) \overset{~}{H_1}(X) \rto \overset{~}{H_1}(A) \rto \overset{~}{H_2}(X/A) \rto \overset{~}{H_2}(X) and so forth!
+% (see below)
+
+\begin{thm}
+  $\delta \from H_{i+1}(X/A) \to H_i(A)$
+
+  (note that hatcher uses the $\partial$ symbol for this, but Webster uses the $\delta$ symbol.)
+\end{thm}
+\begin{example}
+  $$\vdots\qquad\qquad\qquad\vdots\qquad\qquad\qquad\vdots$$
+  $$\begin{tikzcd}
+    &\homl[2](A) \arrow[r, "i_*"] &\homl[2](X) \arrow[r, "p_*"] &\homl[2](X/A) \arrow[r, "\delta"] &~ \\
+    &\homl[1](A) \arrow[r, "i_*"] &\homl[1](X) \arrow[r, "p_*"] &\homl[1](X/A) \arrow[r, "\delta"] &~ \\
+    &\homl[0](A) \arrow[r, "i_*"] &\homl[0](X) \arrow[r, "p_*"] &\homl[0](X/A)                     &~
+  \end{tikzcd}$$
+\end{example}
+
+The sequence of maps shown
+\begin{enumerate}
+  \item are a complex, that is
+  \begin{itemize}
+    \item $i_*.p_* = 0$
+    \item $\delta.i_* = 0$
+    \item $p_*.\delta_* = 0$
+  \end{itemize}
+  in all degrees.
+
+  \item with trivial homology, that is, it is \textbf{exact}:
+  \begin{itemize}
+    \item $\ker(p_*) = \im(i_*)$
+    \item $\ker(i_*) = \im(\delta)$
+    \item $\ker(\delta) = \im(p_*).$
+  \end{itemize}
+\end{enumerate}
+
+Then has hypothesis.  A must
+
+pretty picture with red and purple!
+$\d c' \neq 0$, but $\d c' \in \homl(A)$
+
+Note.  If $X$ is contractible,
+\begin{itemize}
+  \item $\rhoml[i](X) = 0$
+  \item $\rhoml[n+1](X/A) \isom \rhoml[n](A)$
+  \item $\rhoml[0](X/A) = 0$
+  \item $H^m(X \dunion Y) \isom H^m(X) \dsum H^m(Y)$
+\end{itemize}
+
+In application,
+\begin{align}
+  &\quad \rhoml[m](S^n) \\
+  &\isom \rhoml[m-1](S^{n-1}) \\
+  &\isom \rhoml[m-2](S^{n-2}) \\
+  &\isom \rhoml[m-n](S^0) \\
+  &\begin{cases}\Z &\text{when $m=n$} \\ 0 &\text{otherwise}\end{cases}
+\end{align}
+
+$$H_m(S^n) \isom
+\begin{cases}
+  \Z &\text{if $m=0$ or $m=n$} \\
+  0 &\text{otherwise}
+\end{cases}$$
+
+$$H_m(S^0) \isom
+\begin{cases}
+  \Z &\text{if $m=0$} \\
+  0 &\text{otherwise}
+\end{cases}$$
+
+
+
 
 \mydate{d19}{17}{3}{2017}
 
