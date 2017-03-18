@@ -59,13 +59,12 @@
 \newcommand{\pf}[1]{$ #1 = p_1^{e_1} p_2^{e_2} \cdots p_r^{e_r}$, with $p_1,p_2,\dots,p_r$ distinct primes and $e_1,e_2,\dots,e_r\in \N$}
 \newcommand{\inn}{\textnormal{Inn}}   \newcommand{\out}{\textnormal{Out}}   \newcommand{\car}{\textnormal{ char }}   \newcommand{\id}{\textnormal{id}}   \newcommand{\triv}{\{e\}}
 \newcommand{\tl}{\triangleleft}   \newcommand{\sd}[1]{\rtimes_{#1}}   \newcommand{\x}{^{\times}}   \newcommand{\cyc}[1]{\begin{pmatrix} #1 \end{pmatrix}}
-\newcommand{\gen}[1]{\left\langle #1 \right\rangle}   \newcommand{\stab}[2]{\tn{Stab}_{#1}(#2)}   \newcommand{\fix}[2]{\tn{Fix}_{#1}(#2)}   \newcommand{\op}{^{\tn{op}}}
+\newcommand{\gen}[1]{\langle #1 \rangle}   \newcommand{\stab}[2]{\tn{Stab}_{#1}(#2)}   \newcommand{\fix}[2]{\tn{Fix}_{#1}(#2)}   \newcommand{\op}{^{\tn{op}}}
 \newcommand{\hooklongrightarrow}{\lhook\joinrel\longrightarrow}   \newcommand{\twoheadlongrightarrow}{\relbar\joinrel\twoheadrightarrow}
 \newcommand{\ses}[5]{1 \longrightarrow #1 \overset{#2}{\hooklongrightarrow} #3 \overset{#4}{\twoheadlongrightarrow} #5 \longrightarrow 1}
 \newcommand{\mses}[5]{0 \longrightarrow #1 \overset{#2}{\hooklongrightarrow} #3 \overset{#4}{\twoheadlongrightarrow} #5 \longrightarrow 0}
 \renewcommand{\arrowvert}{\arrow}   \renewcommand{\i}{\mathbf{i}}   \renewcommand{\j}{\mathbf{j}}   \renewcommand{\k}{\mathbf{k}}    \renewcommand{\H}{\mathbb{H}}  \renewcommand{\hom}{\tn{Hom}}
 \newcommand{\ann}[2]{\textnormal{Ann}_{#1}(#2)}   \newcommand{\rk}{\textnormal{rk}}
-\newcommand{\Chi}{\mbox{\Large $\chi$}}
 
 
 \DeclareMathOperator{\pow}{\mathcal{P}}   \DeclareMathOperator{\C}{\mathbb{C}}
@@ -1136,7 +1135,7 @@ where $\ell := \max(\{1 \leq i \leq m \mid a_i \in R\x\} \cup \{0\})$, hence $a_
 
 \section*{Finitely Generated Abelian Groups}
 
-Recall that any abelian group $A$ is a $\z$-module, $A$ is finitely generated as a group iff it is finitely generated as a $\z$-module, and $A$ is a \tb{free abelian group} iff $A$ is a free $\z$-module. By 3.1.26, $A$ is a free abelian group iff $A \cong \bigoplus_{I} \z$ for some index set $I$. The \tb{torsion subgroup} $T(A)$ of $A$ is just the torsion submodule of $A$, i.e.,
+Recall that any abelian group $A$ is a $\z$-module,$A$ is finitely generated as a group iff it is finitely generated as a $\z$-module, and $A$ is a \tb{free abelian group} iff $A$ is a free $\z$-module. By 3.1.26, $A$ is a free abelian group iff $A \cong \bigoplus_{I} \z$ for some index set $I$. The \tb{torsion subgroup} $T(A)$ of $A$ is just the torsion submodule of $A$, i.e.,
 	\[T(A) = \{a \in A \mid |a| < \infty\} \]
 
 \begin{remark}
@@ -1182,18 +1181,18 @@ Let $R$ be an arbitrary commutative ring with 1. Recall that we have the map $\d
 \begin{enumerate}
 \item[$\bullet$] $\det$ is an alternating $n$-multilinear form on $M_n(R)$ (thought of as $(R^n)^n$).
 \item[$\bullet$] $\det(A) = \det (A^t)$ and $\det (AB) = \det (A) \det (B)$ for all $A,B \in M_n(R)$.
-\item[$\bullet$] For $A \in M_n(R)$, there exists a matrix $\tn{adj}(A) \in M_n(R)$, called the \tb{adjoint} of $A$, which is the transpose of the matrix of cofactors such that $A\ \tn{adj}(A) = \tn{adj}(A) A = \det(A) I_n$.
+\item[$\bullet$] For $A \in M_n(R)$, there exists a matrix $\tn{adj}(A) \in M_n(R)$, called the \tb{adjoint} of $A$, which is the transpose of the matrix of cofactors such that $A \tn{adj}(A) = \tn{adj}(A) A = \det(A) I_n$.
 \end{enumerate}
 
-If $R$ is an integral domain with field of fractions $F$, then $\det : M_n(R) \ra R$ is obtained from $\det : M_n(F) \ra F$. For more on arbitrary commutative rings, see [DF] section 11.4. We set $GL_n(R) := M_n(R)\x$. From the facts stated above, we get the following corollary.
+If $R$ is an integral domain with field of fractions $F$, then $\det : M_n(R) \ra R$ is obtained from $\det : M_n(F) \ra F$. For more on arbitrary commutative rings, see [DF] section 11.4. We set $GL_n(R) := M_N(R)\x$. From the facts stated above, we get the following corollary.
 
 \begin{corollary}
 $GL_n(R) = \{A \in M_n(R) \mid \det (A) \in R\x\}$.
 \end{corollary}
 
 \begin{proof}
-For "$\sub$", let $A,B \in M_n(R)$ with $AB = I_n$. Then $1 = \det (I_n) = \det(AB) = \det (A) \det (B)$, hence $\det(A),\det(B) \in R\x$. To show "$\supseteq$", assume $\det(A)= u\in R\x$ for some $A \in M_n(R)$. Set $B := u\inv \tn{adj}(A) \in M_n(R)$. Then
-	\[AB = A (u\inv \tn{adj}(A)) = u\inv (A\ \tn{adj}(A)) = u\inv(u I_n) = I_n \]
+For "$\sub$", let $A,B \in M_n(R)$ with $AB = I_n$. Then $1 = \det (I_n) = \det(AB) = \det (A) \det (B)$, hence $\det(A),\det(AB) \in R\x$. To show "$\supseteq$", assume $\det(A)= u\in R\x$ for some $A \in M_n(R)$. Set $B := u\inv \tn{adj}(A) \in M_n(R)$. Then
+	\[AB = A (u\inv \tn{adj}(A)) = u\inv (A \tn{adj}(A)) = u\inv(u I_n) = I_n \]
 In the same way, $BA = I_n$, so $B = A\inv$.
 \end{proof}
 
@@ -1217,8 +1216,8 @@ Let $y_1,y_2,\dots,y_n \in \z^n$ (column vectors), $N := \gen{y_1,y_2,\dots,y_N}
 \begin{enumerate}
 \item[(b)] $\det(A) \ne 0 \iff y_1,y_2,\dots,y_n $ are $\Q$-linearly independent $\iff y_1,y_2,\dots,y_n$ are $\z$-linearly independent (3.2.13 (b)) $\iff \{y_1,y_2,\dots,y_n\}$ is a $\z$-basis of $N \implies \rk_{\z} N = n$. \\
 
-If $\rk_{\z} N = \dim_{\Q} D\inv N = n$, where $D = \z\bs\{0\}$, then $\gen{y_1,y_2,\dots,y_n}_{\z} = N$ $\overset{3.2.13 \ (a)}{\implies} \gen{y_1,y_2,\dots,y_n}_{\Q} = D\inv N$ $\implies \{y_1,y_2,\dots,y_n\}$ is a $\Q$-basis of $D\inv N \iff \det (A) \ne 0$, as shown above.
-\item[(b)] $\rk_{\z} N = n \overset{3.3.5}{\implies}$ there exists a basis $B = \{x_1,x_2,\dots,x_n\}$ of $\z^n$ and invariant factors $1 \leq a_1 \mid a_2 \mid \dots \mid a_m$ in $\z$ such that $\{a_1x_1,a_2x_2,\dots,a_n x_n\}$ is a $\z$-basis of $N$. Consider $\z^n/N$; the set
+If $\rk_{\z} N = \dim_{\Q} D\inv N = n$, where $D = \z\bs\{0\}$, then $\gen{y_1,y_2,\dots,y_n}_{\z} \overset{3.2.13 \ (a)}{\implies} \gen{y_1,y_2,\dots,y_n}_{\Q} = D\inv N$ $\implies \{y_1,y_2,\dots,y_n\}$ is a $\Q$-basis of $D\inv N \iff \det (A) \ne 0$, as shown above.
+\item[(b)] $\rk_{\z} N = n \overset{3.3.5}{\implies}$ there exists a basis $B = \{x_1,x_2,\dots,x_n\}$ of $\z^n$ and invariant factors $1 \leq _1 \mid a_2 \mid \dots \mid a_m$ in $\z$ such that $\{a_1x_1,a_2x_2,\dots,a_n x_n\}$ is a $\z$-basis of $N$. Consider $\z^n/N$.
 	\[T := \left\{\sum_{i=1}^n k_i x_i \mid k_i \in \z, 0 \leq k_i \leq a_i - 1\right\} \]
 is a complete and irredundant system of coset representatives of $\z^n/N$, thus $[\z^n : N] = |T| = a_1 a_2 \cdots a_n$. \\
 
@@ -1230,12 +1229,12 @@ where $(x_1 \ x_2 \cdots x_n) \in GL_n(\z)$, thus $\det(A) = \pm a_1 a_2 \cdots 
 \vs
 
 \begin{remark}(Application)
-Let $m \in \z \bs\{0,1\}$ be square-free (see 2.4.11) and $R = \mc{O}(m) = \z[\omega] = \z \oplus \z\omega$, thought of as a $\z$-module with basis $\{1,\omega\}$, where
+Let $m \in \z \bs\{0,1\}$ be square-free (see 2.4.11) and $R = \mc{O}(m) = \z[\omega] = \z \oplus \z\omega$ thought of as a $\z$-module with basis $\{1,\omega\}$, where
 	\[\omega = \omega_m := \begin{cases}
 	\sqrt{m}, \quad & m \equiv 2,3 \pmod{4}\\
 	\frac{1+\sqrt{m}}{2}, & m \equiv 1 \pmod{4}
 	\end{cases} \]
-For $x \in R\bs\{0\}$, consider the submodule $(x) = Rx = \z x \oplus \z \omega x \cong \z^2$ of $R$ which has $\z$-basis $\{x,\omega x\}$. In the field $F := \Q(\sqrt{m}) = \Q \oplus \Q \sqrt{m}$, we have the "conjugation" automorphism $\phi : F \ra F, s+t \sqrt{m} \mapsto s-t\sqrt{m}$ for $s,t \in \Q$ which gives rise to a "norm" function $N : F \ra \Q$, $z = s+t \sqrt{m} \mapsto z \phi(z) = s^2 - mt^2$. The restriction of $N$ to $R$ is a norm $N : R \ra \z$. \\
+For $x \in R\bs\{0\}$, consider the submodule $(x) = Rx = \zx \oplus \z \omega x \cong \z^2$ of $R$ which has $\z$-basis $\{x,\omega x\}$. In the field $F := \Q(\sqrt{m}) = \Q \oplus \Q \sqrt{m}$, we have the "conjugation" automorphism $\phi : F \ra F, s+t \sqrt{m} \mapsto s-t\sqrt{m}$ for $s,t \in \Q$ which gives rise to a "norm" function $N : F \ra \Q$, $z = s+t \sqrt{m} \mapsto z \phi(z) = s^2 - mt^2$. The restriction of $N$ to $R$ is a norm $N : R \ra \z$. \\
 
 We claim that $|R/(x)| = [R : Rx] = |N(x)|$. We prove this in two cases.
 \begin{enumerate}
@@ -1250,14 +1249,14 @@ We claim that $|R/(x)| = [R : Rx] = |N(x)|$. We prove this in two cases.
 
 \noindent \tb{Another Exercise:} If $x \in R = \mc{O}(m)$ and $N(x) = \pm p$ for a prime number $p$, then $x$ is prime in $R$. \\
 
-\noindent \tb{Question} If a finitely generated abelian group $A$ is given in the form $A = \z^n/N$ and $N = \gen{y_1, y_2,\dots, y_m}$ with $y_i = \sum_{j=1}^n a_{i,j} e_j$, how can you determine the structure of $A$? The key is the \emph{relations matrix} $C = (a_{i,j})$ which, after a series of elementary row and column operations, can be brought into the form $\mymatrix{cc}{D & 0 \\ 0 & 0}$, where $D = \mymatrix{ccc}{a_1 & \cdots & 0 \\ \vdots & \ddots & \vdots \\ 0 & \cdots & a_k}$ and $1 \leq a_1 \mid a_2 \mid \dots \mid a_k$. Then $A \cong \bigoplus_{i=1}^k \z_{a_i} \oplus \z^{n-k}$. To get a better understanding of this procedure and why it works, see Exercises $17-19$ on page $470-471$ in $[DF]$.
+\noindent \tb{Question} If a finitely generated abelian group $A$ is given in the form $A = \z^n/N$ and $N = \gen{y_1, y_2,\dots, y_m}$ with $y_i = \sum_{j=1}^n a_{i,j} e_j$, how can you determine the structure of $a$? The key is the \emph{relations matrix} $C = (a_{i,j})$ which, after a series of elementary row and column operations, can be brought into the form $\mymatrix{cc}{D & 0 \\ 0 & 0}$, where $D = \mymatrix{ccc}{a_1 & \cdots & 0 \\ \vdots & \ddots & \vdots \\ 0 & \cdots & a_k}$ and $1 \leq a_1 \mid a_2 \mid \dots \mid a_k$. Then $A \cong \bigoplus_{i=1}^k \z_{a_i} \oplus \z^{n-k}$. To get a better understanding of this procedure and why it works, see Exercises $17-19$ on page $470-471$ in $[DF]$.
 
 \vs
 
 \begin{example}
 Consider the abelian group
 	\[N := \gen{y_1 = \mymatrix{c}{4 \\ 10}, y_2 = \mymatrix{c}{6 \\ 15}, y_3 = \mymatrix{c}{8 \\ 25}} \leq \z^2 \ (n = 2) \]
-What is the structure of $A = \z^2/N$? We apply row and column operations on the relations matrix $C$:
+What is the structure of $A = \z^2/N$? We now apply row and column operations on the relations matrix $C$:
 \begin{alignat*}{5}
 & \qquad \qquad C = \mymatrix{rr}{4 & 10 \\ 6 & 15 \\ 8 & 25} \quad && \overset{R_3 - 2R_1 \mapsto R_3}{\longrightarrow} \quad && \mymatrix{rr}{4 & 10 \\ 2 & 5 \\ 0 & 5} \quad && \overset{R_2 - R_3 \mapsto R_2}{\longrightarrow} \quad && \mymatrix{rr}{4 & 0 \\ 2 & 0 \\ 0 & 5} \\
 & \overset{R_1 - 2R_2 \mapsto R_1}{\longrightarrow} \quad \mymatrix{rr}{0 & 0 \\ 2 & 0 \\ 0 & 5} && \overset{(R_3 \ R_2 \ R_1)}{\longrightarrow} && \mymatrix{rr}{2 & 0 \\ 0 & 5 \\ 0 & 0} && \overset{R_2 + 2 R_1 \mapsto R_2}{\longrightarrow} && \mymatrix{cc}{2 & 0 \\ 4 & 5 \\ 0 & 0} \\
@@ -1274,17 +1273,11 @@ Therefore, $x_1 = \mymatrix{r}{-4 \\ -5}, x_2 = \mymatrix{r}{1 \\ 1}$ is a basis
 
 
 
-\part{Rational and Jordan Canonical Forms}
+\chapter{Rational and Canonical Forms}
 
-
-
-
-
-\chapter{Rational Canonical Form}
-
-In this chapter, $F$ denotes an arbitrary field, $R$ denotes the Euclidean domain $F[x]$, $V$ denotes the $n$-dimensional $F$-vector space $F^n$ with the standard basis $\{e_1,e_2,\dots,e_n\}$, $M_n(F)$ acts on $V$ by left multiplication, and we fix a matrix $A \in M_n(F)$ which defines an $F$-linear ring homomorphism (i.e., $F$-algebra homomorphism) $\phi_A : F[x] \ra F[A] \sub M_n(F)$ given by
+In this chapter, $F$ denotes an arbitrary field, $R$ denotes the Euclidean domain $F[x]$, $V$ denotes the $n$-dimensional $F$-vector space $F^n$ with the standard basis, $M_n(F)$ acts on $V$ by left multiplication, and we fix a matrix $A \in M_n(F)$ to define the $F$-linear ring homomorphism (i.e., $F$-algebra homomorphism) \\ $\phi_A : F[x] \ra F[A] \sub M_n(F)$ given by
 	\[f(x) = \sum_{i=0}^n c_i x^i \mapsto \sum_{i=0}^n c_i A^i = f(A) \]
-$V$ thus becomes an $R$-module via $\phi_A$ with $f \cdot v = f(A) v$ (see 3.1.2 (g)). We denote by $_AV$ the set $V$ with this $R$-module structure.
+$V$ thus becomes an $R$-module via $\phi_A$, i.e., $f \cdot v = f(A) v$ (see 3.1.2 (g)). We denote by $_AV$ the set $V$ with this $R$-module structure.
 
 \section{Rational Canonical Form}
 
@@ -1323,7 +1316,7 @@ $_AV$ is a finitely generated torsion $R$-module with $\ann{R}{_AV} = (\mu_A)$.
 \end{lemma}
 
 \begin{proof}
-$V = \gen{e_1,e_2,\dots,e_n}_F \implies _AV = \gen{e_1,e_2,\dots,e_n}_R$, so $_AV$ is finitely generated. $_AV$ is torsion as $\mu_A \cdot v = \mu_A(A) v = 0$ for all $v \in {_AV}$. This also shows that $(\mu_A) \sub \ann{R}{_AV}$. If $f \in \ann{R}{_AV}$, then $f \cdot v = 0$ for all $v \in V$, so $f \in \ker \phi_A = (\mu_A)$ $\implies \ann{R}{_AV} \sub (\mu_A)$, since only the zero matrix satisfies $B v = 0$ for all $v \in _AV$.
+$V = \gen{e_1,e_2,\dots,e_n}_F \implies _AV = \gen{e_1,e_2,\dots,e_n}_R$, so $_AV$ is finitely generated. $_AV$ is torsion as $\mu_A \cdot v = \mu_A(A) v = 0$ for all $v \in _AV$. This also shows that $(\mu_A) \sub \ann{R}{_AV}$. If $f \in \ann{R}{_AV}$, then $f \cdot v = 0$ for all $v \in V$, so $f \in \ker \phi_A = (\mu_A)$ $\implies \ann{R}{_AV} \sub (\mu_A)$, since only the zero matrix satisfies $B v = 0$ for all $v \in _AV$.
 \end{proof}
 
 Recalling our fixed matrix $A \in M_n(F)$, define the linear map $L_A : F^n \ra F^n, v \mapsto Av$. If $L_A$ is described with respect to a different basis of $V$, by say $B \in M_n(F)$, then $A$ and $B$ are \tb{similar} (equivalently, conjugate). Then there exists a matrix $T \in M_n(F)\x$ such that $B = TAT\inv \iff A = T\inv BT$, and we write $A \sim B$ to mean "$A$ is similar to $B$" (not to be confused with associates). It is easy to see that $\sim$ is an equivalence relation on $M_n(F)$. \\
@@ -1337,16 +1330,16 @@ For $A,B \in M_n(F)$, $_AV$ and $_BV$ are isomorphic as $R$-modules if and only 
 \end{lemma}
 
 \begin{proof}
-First, assume there exists an $R$-module isomorphism $T : {_AV} \ra {_BV}$. In particular, $T$ is an $F$-linear isomorphism $V \ra V$, so we may think of $T$ as an element of $GL_n(F)$. Since $T$ is $R$-linear, \\ $T(Av) = T(x \cdot v) = x \cdot T(v) = B T(v)$ for all $v \in V$, hence $TA = BT \implies A = T\inv BT$. \\
+First, assume there exists an $R$-module isomorphism $T : _AV \ra _BV$. In particular, $T$ is an $F$-linear isomorphism $V \ra V$, so we may think of $T$ as an element of $GL_n(F)$. Since $T$ is $R$-linear, \\ $T(Av) = T(x \cdot v) = x \cdot T(v) = B T(v)$ for all $v \in V$, hence $TA = BT \iff A = T\inv BT$. \\
 
-Now suppose $B = TAT\inv$ for some $T \in GL_n(F)$. Again, we may think of $T$ as a bijective linear map $V \ra V, v \mapsto Tv$. It remains to show that $T$ is $R$-linear as a map $_AV \ra _BV$. Note that
+Now suppose $B = TAT\inv$ for some $T \in GL_n(F)$. Again, we may think of $T$ as a bijective linear map $V \ra V, v \mapsto Tv$. It remains to show that $T$ is $R$-linear as a maps $_AV \ra _BV$. Note that
 	\[T(x \cdot v) = T(Av) = (TAT\inv)(Tv) = B(Tv) = x \cdot T(v) \quad \tn{for all } v \in V \]
 Inductively, we get
-	\[T(x^k \cdot v) = T((x x^{k-1}) \cdot v) = B T(x^{k-1} \cdot v) \overset{I. H.}{=} B(B^{k-1} T(v)) = B^k T(v) = x^{k} \cdot T(v) \quad \forall \ v \in V \]
+	\[T(x^k \cdot v) = T((x x^{K-1}) \cdot v) = B T(x^{k-1} \cdot v) \overset{I. H.}{=} B(B^{k-1} T(v)) = B^k T(v) = x^{k} \cdot T(v) \quad \forall \ v \in V \]
 Since $T$ is also $F$-linear, we have $T(f \cdot v) = f \cdot T(v)$ for all $f \in R$ and all $v \in V$ to complete the proof.
 \end{proof}
 
-\newpage
+\vs
 
 \begin{proposition}\
 \begin{enumerate}
@@ -1359,7 +1352,7 @@ Since $T$ is also $F$-linear, we have $T(f \cdot v) = f \cdot T(v)$ for all $f \
 \begin{proof}\
 \begin{enumerate}
 \item[(a)] $_AV$ is a finitely generated torsion $R$-module, so part (a) is a special case of 3.3.17 (c). The uniqueness is established because monic polynomials in $F[x]$ are associate iff they are equal.
-\item[(b)] The isomorphism in (a) implies $\ann{R}{_AV} = \ann{R}{\bigoplus_{i=1}^m R/(a_i)} \nsg R$. $\ann{R}{_AV} = (\mu_A)$ by 4.1.3. and $\ann{R}{\bigoplus_{i=1}^m R/(a_i)} = a_m$, so $a_m = \mu_A$. Since $_AV$ and $\bigoplus_{i=1}^m R/(a_i)$ are isomorphic as vector spaces,
+\item[(b)] The isomorphism in (a) implies $\ann{R}{_AV} = \ann{R}{\bigoplus_{i=1}^m R/(a_i)} \nsg R$. $\ann{R}{_AV} = (\mu_A)$ by 4.1.3. and $\ann{R}{\bigoplus_{i=1}^m R/(a_i)} = a_m$, so $a_m = \mu_A$. Since $_AV$ and $\bigplus_{i=1}^m R/(a_i)$ are isomorphic as vector spaces,
 	\[n = \dim_F {_AV} = \dim_F \bigoplus_{i=1}^m R/(a_i) = \sum_{i=1}^m \dim_F R/(a_i) = \sum_{i=1}^m \deg a_i \]
 \end{enumerate}
 \end{proof}
@@ -1371,7 +1364,7 @@ The monic polynomials $a_1,a_2,\dots,a_m$ in 4.1.5 (a) are called the \tb{invari
 
 Assume now that $a_1,_2,\dots,a_m \in F[x]$ are the invariant factors of $A \in M_n(F)$, i.e,
 	\[_AV \cong \bigoplus_{i=1}^m F[x]/(a_i) \]
-There exists an isomorphism $\psi : {_AV} \ra \bigoplus_{i=1}^m R/(a_i)$ of $R$-modules. If we define $V_i := \psi\inv(R/(a_i))$ for $1 \leq i \leq m$, then $V_i$ is an $A$-invariant subspace of $V$ as $\psi(x \cdot v) = x \cdot \psi(v)$ for all $v \in {_AV}$. Also,
+There exists an isomorphism $\psi : _AV \ra \bigplus_{i=1}^m R/(a_i)$ of $R$-modules. If we define $V_i := \psi\inv(R/(a_i))$ for $1 \leq i \leq m$, then $V_i$ is an $A$-invariant subspace of $V$ as $\psi(x \cdot v) = x \cdot \psi(v)$ for all $v \in _AV$. Also,
 	\[V \cong \sum_{i=1}^m V_i \]
 We want to describe the $F$-linear transformation of $R/(f)$ given by multiplication by $x$ with respect to the standard basis $\ov{1},\ov{x},\dots,\ov{x}^{d-1}$ of $F[x]/(F)$ for any $f = \sum_{i=0}^d c_i x^i \in F[x]\bs F$, $\deg f = d \geq 1$.
 	\[x \cdot \ov{x}^j = \begin{cases}
@@ -1405,7 +1398,7 @@ That is, $A \sim \bigoplus_{I=1}^m C_{a_i}$.
 \end{corollary}
 
 \begin{proof}
-Recall the $R$-module isomorphism $\psi : {_AV} = \bigoplus_{i=1}^m V_i \ra \bigoplus_{I=1}^m R/(a_i)$, where $V_i = \psi\inv(R/(a_i))$ is $A$-invariant. Describe $A|_{V_i}$ with respect to a basis which corresponds to the basis $\ov{1},\ov{x},\dots,\ov{x}^{d_{i} - 1}$ of $R/(a_i)$, where $d_i := \deg a_i$. Then the corresponding matrix is $C_{a_i}$. Taking a basis for $V$ which is a disjoint union of the so constructed basis of the $V_i$'s, we get that $A$ can be described with respect to this basis (in the appropriate order) by $\bigoplus_{i=1}^m C_{a_i}$.
+Recall the $R$-module isomorphism $\psi : _AV = \bigoplus_{i=1}^m V_i \ra \bigoplus_{I=1}^m R/(a_i)$, where $V_i = \psi\inv(R/(a_i))$ is $A$-invariant. Describe $A|_{V_i}$ with respect to a basis which corresponds to the basis $\ov{1},\ov{x},\dots,\ov{x}^{d_{i} - 1}$ of $R/(a_i)$, where $d_i := \deg a_i$. Then the corresponding matrix is $C_{a_i}$. Taking a basis fo $V$ which is a disjoint union of the so constructed basis of the $V_i$'s, we get that $A$ can be described with respect to this basis (in the appropriate order) by $\bigoplus_{i=1}^m C_{a_i}$.
 \end{proof}
 
 \vs
@@ -1414,7 +1407,7 @@ Recall the $R$-module isomorphism $\psi : {_AV} = \bigoplus_{i=1}^m V_i \ra \big
 For $f = \sum_{i=0}^{n-1} c_i x^i + x^n \in F[x]$, we obtain
 \begin{enumerate}
 \item[(a)] $_{C_f}V$ is isomorphic to $R/(f)$ as $R$-modules.
-\item[(b)] $\mu_{C_f} = f = \Chi_{C_f}$, where $\Chi_{C_f}$ is the characteristic polynomial of $C_f$.
+\item[(b)] $\mu_{C_f} = f = \chi_{C_f}$, where $\chi_{C_f}$ is the characteristic polynomial of $C_f$.
 \end{enumerate}
 \end{lemma}
 
@@ -1425,13 +1418,13 @@ For $f = \sum_{i=0}^{n-1} c_i x^i + x^n \in F[x]$, we obtain
 When $i = n$, we have
 	\[\alpha(x \cdot e_n) = \alpha(A e_n) = \alpha\left(-\sum_{j=1}^n c_j e_j \right) = -\sum_{j=1}^n c_j \alpha(e_j) = -\sum_{j=0}^{n-1} \ov{x}^j = x \cdot \ov{x}^{n-1} = x \cdot \alpha(e_n) \]
 
-\item[(b)] From (a) we get that $f$ is the single invariant factor of $C_f$. In particular, $m = 1 \implies \mu_{C_f} = a_m = a_1 = f$. We prove that $\Chi_{C_f} = f$ by induction on $n$. \\
+\item[(b)] From (a) we get that $f$ is the single invariant factor of $C_f$. In particular, $m = 1 \implies \mu_{C_f} = a_m = a_1 = f$. We prove that $\chi_{C_f} = f$ by induction on $n$. \\
 
-$n = 1$. Then $f = c_0 + x \implies $ $C_f = (-c_0) \implies $ $\Chi_{C_f} = \det(xI - C_f) = c_0 + x = f$. \\
+$n = 1$. Then $f = c_0 + x \implies $ $C_f = (-c_0) \implies $ $\chi_{C_f} = \det(xI - C_f) = c_0 + x = f$. \\
 
-$n \geq 2$. $\Chi_f = \det (xI_n - C_f)$. We expand this determinant along the first row to get that
+$n \geq 2$. $\chi_f = \det (xI_n - C_f)$. We expand this determinant along the first row to get that
 \begin{align*}
-\Chi_c &= \mydet{rrrrr}{x & 0 & 0 & \cdots & c_0 \\
+\chi_c &= \mydet{rrrrr}{x & 0 & 0 & \cdots & c_0 \\
                        -1 & x & 0 & \cdots & c_1 \\
                        0 & -1 & x & \vdots  & c_2\\
                        \vdots & \vdots & \vdots & \ddots & \vdots \\
@@ -1451,156 +1444,8 @@ where $g = \sum_{i=0}^{n-2} c_{i+1} x^i + x_{n-1}$.
 \end{enumerate}
 \end{proof}
 
-\vs
+Hey guys.  This is Richard here with some new content.  Testing.  Ten four.
 
-\begin{lemma}
-Assume $k,\ell \in \N$ with $k + \ell = n$, $D \in M_k(F)$, $E \in M_\ell(F)$, and
-	\[A = D \oplus F := \mymatrix{cc}{D & 0 \\ 0 & E} \in M_n(F) \]
-Then ${_AF^n} \cong {_DF^k} \oplus {_EF^\ell}$ as $R$-modules.
-\end{lemma}
-
-\begin{proof}
-Obviously $F^n \cong F^k \oplus F^\ell$ as $F$-vector spaces. If $f(x) \in F[x]$, then a straightforward computation shows that $f(A) = f(D) \oplus f(E)$. If $v = u \oplus w \in F^n$ with $u \in F^k$ and $w \in F^\ell$, then for all $f \in F[x]$,
-	\[f \cdot v = f(A) v = (f(D) \oplus f(E)) (u \oplus w) = f(D)u \oplus f(E)w \]
-Hence the canonical vector space isomorphism between $F^n$ and $F^k \oplus F^\ell$ is $R$-linear.
-\end{proof}
-
-\vs
-
-\begin{theorem}
-Let $A \in M_n(F)$.
-\begin{enumerate}
-\item[(a)] If $a_1,\dots,a_m \in F[x]$ are the invariant factors of $A$, then $A \sim \bigoplus_{i=1}^m C_{a_i} \in M_n(F)$.
-\item[(b)] If $a'_1,\dots,a'_{m'}$ are monic polynomials in $F[x]\bs F$ with $a'_1\mid a'_2 \mid \dots \mid a'_{m'}$ and $A \sim \bigoplus_{i=1}^{m'} C_{a'_i}$, then $m = m'$ and $a_i = a_i'$ for all $1 \leq i \leq m = m'$.
-\item[(c)] $\mu_A = a_m$ and $\Chi_A = \prod_{i=1}^m a_i$.
-\end{enumerate}
-\end{theorem}
-
-\begin{proof}\
-\begin{enumerate}
-\item[(a)] See 4.1.8.
-\item[(b)] Define $B_i := C_{a_i}$, $B := \bigoplus_{i=1}^m B_i$, $B_i' := C_{a'_i}$, $B' := \bigoplus_{i=1}^{m'} B_i'$, $n_i := \deg a_i$. By assumption, $B \sim A \sim B' \implies B \sim B'$ $\overset{4.1.4}{\implies} {_BV} \cong {_{B'}V}$ as $R$-modules. Thus
-	\[{_BV} \overset{4.1.10}{\cong} \bigoplus_{i=1}^m {_{C_{a_i}}}F^{n_i} \overset{4.1.9 \ (a)}{\cong} \bigoplus_{I=1}^m R/(a_i) \]
-as $R$-modules. Similarly, ${_{B'}V} \cong \bigoplus_{i=1}^{m'} R/(a'_i)$. So $a_1,\dots,a_m$ are the invariant factors of ${_BV}$ and $a'_1,\dots,a'_{m'}$ are the invariant factors of ${_{B'}V} \cong {_BV}$, and the uniqueness follows from 3.3.17 (c).
-
-\item[(c)] $\mu_A = a_m$ by 4.1.5. Now $\Chi_A = \Chi_B$, since $A \sim B := \bigoplus_{i=1}^m B_i$ as in (b), and
-	\[\Chi_B = \det(xI_n-B) = \det \left(\bigoplus_{i=1}^m xI_{n_i} - B_i\right) = \prod_{i=1}^m \det(xI_{n_i} - B_i) = \prod_{i=1}^m \Chi_{B_i} \overset{4.1.9\ (b)}{=} \prod_{i=1}^m a_i \]
-\end{enumerate}
-\end{proof}
-
-\vs
-
-\begin{corollary}[Cayley-Hamilton Theorem]\
-\begin{enumerate}
-\item[(a)] $\mu_A \mid \Chi_A$ in $F[x]$, i.e., $\Chi_A \in (\mu_A) = \ker \phi_A$, hence $\Chi_A(A) = O$.
-\item[(b)] $\Chi_A$ and $\mu_A$ have the same prime factors in $F[x]$, so if $\Chi_A = \prod_{i=1}^r p_i^{e_i}$, where each $p_i \in F[x]$ is a distinct monic irreducible and each $e_i \in \N$, then $\mu_A = \prod{i=1}^r p_i^{e_i}$ for some $f_i \in \N$ with $f_i \leq e_i$.
-\end{enumerate}
-\end{corollary}
-
-\vs
-
-\begin{defn}
-A matrix $A \in M_n(F)$ is said to be in \tb{rational canonical form} (RCF) if $A = \bigoplus_{i=1}^m C_{a_i}$ for some monic $a_i \in F[x]\bs F$ with $a_1 \mid a_2 \mid \dots \mid a_m$. By 4.1.11, any matrix in $M_n(F)$ is similar to precisely one matrix $A'$ in rational canonical form  (the "RCF of $A$").
-\end{defn}
-
-Note that knowledge of the RCF of $A$ is equivalent to knowledge of the invariant factors of $A$.
-
-\vs
-
-\begin{proposition}
-If $K/F$ is a field extension and $A,B \in M_n(F) \sub M_n(K)$, then $A$ and $B$ are similar in $M_n(K)$ if and only if they are similar in $M_n(F)$.
-\end{proposition}
-
-\begin{proof}
-Clearly, $A \sim B$ in $M_n(F) \implies A \sim B$ in $M_n(K)$. Suppose that $A \sim B$ in $M_n(K)$. Let $A'$ be the RCF of $A$ and $B'$ the RCF of $B$, so that $A \sim A'$ and $B \sim B'$ in $M_n(F)$. By the uniqueness of the RCF, $A'$ is the RCF of $A$ in $M_n(K)$ and $B'$ is the RCF of $B$ in $M_n(K)$, and $A' \sim A \sim B \sim B'$ in $M_n(K) \implies A' = B'$, again, by the uniqueness of the RCF.
-\end{proof}
-
-\vs
-
-\begin{proposition}
-For all $A \in M_n(F)$, $A \sim A^t$.
-\end{proposition}
-
-\begin{proof}
- There are more than one argument one might use.
- \begin{enumerate}
- \item[(1)] (See the discussion of SNF below) Whether we start with $xI_n - A^t$ or $xI_n - A$, we will end up with the same SNF since both row and column operations are allowed when computing the SNF.
- \item[(2)] Since $A \sim A' := RCF$, it suffices to check that $C_f \sim C_f^t$ for any monic $f \in F[x]\bs F$. We know that $\mu_{C_f} = \Chi_f = f$, $\Chi_{C_f^t} = \Chi_{C_f}$, and $\mu_{C_f^t} = \mu_{C_f}$ (in fact, $\mu_{A^t} = \mu_A$ for any $A \in M_n(F)$) by definition of $\mu_A$ and the fact that $g(A^t) = g(A)^t$ for all $g \in F[x]$. Therefore, $C_f^t$ has only one invariant factor, namely $f$, so $C_f^t \sim C_f$.
- \end{enumerate}
-\end{proof}
-
-\noindent \tb{Question:} Given $A \in M_n(F)$, how do you compute the RCF? The key is the \tb{Smith Normal Form} (see [DF], p. 479--490). \\
-
-Consider the free $R$-module $R^n$ with standard basis $e_1,\dots,e_n$. Note that $V = F^n$ includes into $R^n$ in a natural, but ${_AV}$is NOT a submodule of $R^n$ since ${_AV}$ is torsion. There is, however, a natural surjective $R$-module homomorphism $\phi : R^n \ra {_AV}$ given by
-	\[\sum_{i=1}^n f_i e_i \mapsto \sum_{i=1}^n f_i \cdot e_i = \sum_{i=1}^n f_i(A) e_i \]
-If $N := \ker \phi$, then ${_AV} \cong R^n/N$.
-
-\begin{lemma}[Exercises 22--25 on p. 491 in {[DF]} ]
-In the notation above, $N = \gen{\nu_j \mid 1 \leq j \leq n}_R$, where $\nu_j := xe_j - \sum_{i=1}^n a_{ij} e_i \in R^n$, where $A = (a_{ij})$.
-\end{lemma}
-
-\begin{proof}\
-\begin{enumerate}
-\item[(1)] For $1 \leq j \leq n$,
-	\begin{align*}
-	\phi(\nu_j) &= x \phi(e_j) - \sum_{i=1}^n a_{ij} \phi(e_{ij}) = Ae_j - \sum_{i=1}^n a_{ij} e_i = Ae_j - Ae_j = 0 \\
-	\implies \nu_j &\in N
-	\end{align*}
-Thus $N' \sub N = \ker \phi$.
-\item[(2)] We claim that $R = N' \oplus V$ as $F$-vector spaces. Note that $\phi|_V = \id_V$ and $\phi|_{N'} \equiv 0 \implies N' \cap V = \{0\}$. To show $R^n = N' + V$, it suffices to show that $f(x) e_j \in N' + V$ for all $1 \leq j \leq n$ and $f(x) \in R$. We have
-\begin{align*}
-x e_j &= \nu_j + \sum_{i=1}^n e_{ij} \in N' + v \quad \tn{for all } 1 \leq j \leq n \\
-\implies x v &\in N' + V \quad \tn{for all } v \in V \\
-\implies xv &\in N' + V \quad \tn{for all } v \in N' + V \tn{ (by definition of $N'$)}
-\end{align*}
-By easy induction, one sees that $x^\ell v \in N' + V$ for all $v \in N' + V$, and it follows that $f(x) v \in N' + V$ for all $f(x) \in R, v \in N' + V$. In particular, $f(x) e_j \in N' + V$ for all $1 \leq j \leq n$ and $f(x) \in R$.
-
-\item[(3)] We have $N' \sub N = \ker \phi$, $\phi|_V = \id_V$, and $R^n = N' \oplus V$. If $u \in N'$ and $v \in V$, then
-	\[\phi(u + v) = \phi(u) + \phi(v) = 0 + v = 0 \iff v = 0 \implies u \in N \]
-Thus $N \sub N'$.
-\end{enumerate}
-\end{proof}
-
-\vs
-
-\begin{corollary}
-$xI_n - A^t$ is the relations matrix for ${_AV}$ with respect to the generators $\nu_1,\dots,\nu_n$ of $N$.
-\end{corollary}
-
-\vs
-
-\begin{defn}[+ Corollary]
-We now know that $N = \ker \phi$ is generated by the elements
-	\[\nu_j = -a_{1,j} e_1 - \dots - a_{j-1,j}e_{j-1} + (x-a_{jj})e_j - a_{j+1,j} e_{j+1} - \dots - a_{nj} e_n \]
-for $1 \leq j \leq n$, so the relations matrix for $R^n/N \cong {_AV}$ is $xI_n - A^t \in M_n(R)$. As for $\z$-modules in III.4, one can now transform this relations matrix, via elementary row and columns operations in $M_n(R)$, into the \tb{Smith Normal Form} (SNF)
-	\[\mymatrix{cccccc}{1 &  &  &  & & 0 \\ & \ddots & & & & \\ & & 1 & & &  \\ & & & a_1 & & \\ & & & & \ddots & \\ 0 & & & & & a_m} \]
-where $a_1 \mid a_2 \mid \dots \mid a_m \in R$ are the invariant factors of $A$.
-\end{defn}
-
-For practical purposes, one often does not have to compute the SNF with elementary row or column operations, because:
-\begin{enumerate}
-\item[$\bullet$] If $n \leq 4$, then the RCF (with one simple exception) is determined by $\Chi_A$ and $\mu_A$.
-\item[$\bullet$] If $\Chi_A$ splits over $F$, then the JCF determines the RCF. This is because from the JCF, one can easily read off the elementary divisors of $A$ which then give you the invariant factors.
-\end{enumerate}
-
-\vs
-
-\begin{remark}[Cases where $\mu_A$ and $\Chi_A$ alone determine RCF]\
-\begin{enumerate}
-\item[(a)] If $\deg \mu_A = 1$, then by 4.1.12 (b) $\Chi_A = \mu_A^n$, and $\mu_A,\dots,\mu_A$ ($n$-times) are the invariant factors of $A$. In this case, $A = \lambda I_n$ and $\mu_A = x - \lambda$ for some $\lambda \in F$.
-\item[(b)] If $\deg \mu_A = n$, then $\Chi_A = \mu_A$ is the single invariant factor.
-\item[(c)] $\deg \mu_A = n-1$. Write $\mu_A = \prod_{i=1}^r p_i^{e_i}$ for some distinct monic irreducibles $p_1,\dots,p_r \in F[x]$ and $e_i \in \N$. Then $\Chi_A = \mu_A p_i$ for some $1 \leq i \leq r$ with $\deg p_i = 1$, so the invariant factors of $A$ are $p_i, \mu_A$. \\
-
-Note that this covers all cases when $n \leq 4$ except $(n,\deg \mu_{A}) = (4,2)$.
-
-\item[(d)] Assume $n = 4$ and $\deg \mu_A = 2$. There are three subcases:
-	\begin{enumerate}
-	\item[(i)] $\mu_A$ is irreducible. Then $\Chi_A = \mu_A^2$, and $\mu_A^2,\mu_A^2$ are the invariant factors.
-	\item[(ii)] $\mu_A = pq$ for some monic irreducibles $p,q \in F[x]$ of degree 1. Then $\Chi_A = p^e q^d$ for some $e,d \in \N$ with $e+d = 4$. Without loss of generality, assume $e \geq d$. If $\Chi_A = p^3 q$, then $p,p,pq = \mu_A$ are the invariant factors. If $\Chi_A = p^2 q^2$, then $pq,pq=\mu_A$ are the invariant factors.
-	\item[(iii)] $\mu_A = p^2$ for some monic irreducible $p \in F[x]$ with $\deg p = 1$. Then $\Chi_A = p^4$, and the invariant factors are either $p,p,p^2$ or $p^2,p^2$.
-	\end{enumerate}
-\end{enumerate}
-\end{remark}
-
+Some even newer content.  Richard here again.  I promise.
 
 \end{document}
