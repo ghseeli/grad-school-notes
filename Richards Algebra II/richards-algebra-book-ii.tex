@@ -333,7 +333,7 @@ An $R$-module $M$ is called \tb{indecomposable} if it cannot be written as the d
 
 \vs
 
-We can generalize in a straightforward way the construction of direct sums with finitely many summands: $\bigoplus_{i=1}^n M_i :+ \{(m_1,\dots,m_n) \mid m_i \in M_i\}$ (external direct sum). For $M_1,\dots,M_n \leq M$, $M = \bigoplus_{i=1}^n M_i$ (internal direct sum) iff $M = \sum_{i=1}^n M_i$ and $M_i \cap \sum_{1 \leq j \leq n, j \ne i} M_j = \{0\}$.
+We can generalize in a straightforward way the construction of direct sums with finitely many summands: $\bigoplus_{i=1}^n M_i := \{(m_1,\dots,m_n) \mid m_i \in M_i\}$ (external direct sum). For $M_1,\dots,M_n \leq M$, $M = \bigoplus_{i=1}^n M_i$ (internal direct sum) iff $M = \sum_{i=1}^n M_i$ and $M_i \cap \sum_{1 \leq j \leq n, j \ne i} M_j = \{0\}$.
 
 \vs
 
@@ -621,7 +621,7 @@ For $R$-modules $M,N$ and $\phi \in \hom_R(M,N)$, we define $D\inv \phi : D\inv 
 In the language of categories, $D\inv$ is in fact a \emph{covariant functor} from the category of $R$-modules to the category of $D\inv R$-modules. \\
 
 We call a (finite or infinite) sequence of $R$-module homomorphisms
-	\[...\longrightarrow M_i \overset{\phi_{I-1}}{\longrightarrow} M_i \overset{\phi_i}{\longrightarrow} M_{i+1} \longrightarrow \dots \]
+\[...\longrightarrow M_i \overset{\phi_{I-1}}{\longrightarrow} M_i \overset{\phi_i}{\longrightarrow} M_{i+1} \longrightarrow \dots \]
 is called \tb{exact} if $\im \phi_{i-1} = \ker \phi_i$ for all $i$. A \tb{short exact sequence} (SES) is an exact sequence \\ $\mses{L}{\phi}{M}{\psi}{N}$. 
 \end{defn}
 
@@ -659,7 +659,7 @@ If $R$ is an integral domain and $M$ is an $R$-module, then
 \begin{enumerate}
 \item[(a)] $T(M)$ is a submodule of $M$.
 \item[(b)] $M/T(M)$ is torsion free.
-\item[(b)] If $M$ is free, then $M$ is torsion free.
+\item[(c)] If $M$ is free, then $M$ is torsion free.
 \end{enumerate}
 \end{lemma}
 
@@ -671,9 +671,9 @@ If $R$ is an integral domain and $M$ is an $R$-module, then
 
 \item[(b)] Assume that $m + T(M) \in T(M/T(M))$. Let $r \in R \bs \{0\}$ be such that $r(m + T(M)) = rm + T(M) = 0 + T(M) \iff rm \in T(M)$. Then there exists $r' \in R \bs \{0\}$ with $0 = r'(rm) = (rr')m$, and $rr' \ne 0$, so $m \in T(M) \iff m + T(M) = 0 + T(M)$. 
 
-\item[(b)] Let $B = \{m_i \mid i \in I\}$ be a basis of $M$, and let $m \in T(M)$. Write $m = \sum_{i \in I} r_i m_i$, where $r_i \in R$ and $r_i = 0$ for almost all $i \in I$. For some $r \in R \bs \{0\}$, we have
-	\[0 = rm = r \sum_{i \in I} r_i m_i = \sum_{i \in I} (rr_i) m_i \implies rr_i = 0 \tn{ for all } i \in I \] 
-But $R$ is an integral domain and $R$ is an integral domain, so we must have that $r_i = 0$ for all $i \in I \iff m = \sum_{i \in I} r_i m_i = 0$. Thus $M$ is torsion free. 
+\item[(c)] Let $B = \{m_i \mid i \in I\}$ be a basis of $M$, and let $m \in T(M)$. Write $m = \sum_{i \in I} r_i m_i$, where $r_i \in R$ and $r_i = 0$ for almost all $i \in I$. For some $r \in R \bs \{0\}$, we have
+	\[0 = rm = r \sum_{i \in I} r_i m_i = \sum_{i \in I} (rr_i) m_i \implies rr_i = 0 \tn{ for all } i \in I \]
+But $R$ is an integral domain, so we must have that $r_i = 0$ for all $i \in I \iff m = \sum_{i \in I} r_i m_i = 0$. Thus $M$ is torsion free.
 \end{enumerate}
 \end{proof}
 
@@ -1174,7 +1174,6 @@ Let $A$ be a finite abelian group with $|A| = p_1^{e_1} p_2^{e_2} \cdots p_s^{e_
 \begin{remark*}
 The summand $\bigoplus_{i=1}^{n_k} \z_{p_k^{e_{k,i}}}$ is the $p_k$-primary component of $A$, which is also the Sylow $p_k$-subgroup of $A$ for each $1 \leq k \leq s$. 
 \end{remark*}
-
 
 
 \section*{Linear Algebra}

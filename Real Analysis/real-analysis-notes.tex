@@ -152,7 +152,7 @@ it unique? We must prove it.
 \subsection*{(1/23/2017) Lecture 2}
 \begin{defn}[Product $\sigma$-algebra]
   Let $(x_\alpha)_{\alpha \in A}$ be an indexed family of sets as
-  described above in \ref{gen-sigma-alg-product}. Then, for each $\alpha \in A$, let $M_\alpha$ be a
+  described above in~\ref{gen-sigma-alg-product}. Then, for each $\alpha \in A$, let $M_\alpha$ be a
   $\sigma$-algebra on $X_\alpha$. Given \[
     X = \prod_{\alpha \in A} X_\alpha
   \]
@@ -634,14 +634,14 @@ We note that for $a \in [0,\infty]$, we have the relations that
 \item $a + \infty = \infty$,
 \item $a \infty = \infty$ if $a \neq 0$,
 \item and $0 \infty = 0$.
-\end{itemize}  
+\end{itemize}
 \end{rmk}
 It is left as an exercise to the reader to show that $\mu$ is actually
 a measure.
 \begin{defn}
   Given the weighted counting measure with $f(x) = 1$, we say $\mu$ is
   the \de{counting measure}. In particular
-\[  
+\[
     \mu(E) =
     \begin{cases}
       \text{\# of elements in }E&\text{if }E\text{ is finite} \\
@@ -687,13 +687,13 @@ a measure.
       \mu\left( \bigcup_{n \geq 1} E_n \right) \geq \sum_{n \geq 1} \mu(E_n)
     \]
   \item (Continuity from below.) Given $E_i \in \M$, if $E_1 \subset
-    E_2 \subset \cdots$, 
+    E_2 \subset \cdots$,
     then \[
       \mu(\bigcup_{n \geq 1} E_n) = \lim_{n \to \infty} \mu(E_n).
     \]
   \item (Continuity from above.) Given $E_i \in \M$, if  $E_1 \supset
     E_2 \supset \cdots$ and there exists an $n$ such that $\mu(E_n) <
-    \infty$, 
+    \infty$,
     then \[
       \mu(\bigcap_{n \geq 1} E_n) = \lim_{n \to \infty} \mu(E_n).
     \]
@@ -705,7 +705,7 @@ a measure.
   and $E_n = \{n,n+1,\ldots\}$. Then, the left hand side is
   $\mu(\bigcup E_n) = \mu(\emptyset) = 0$, but the right hand side is
   $\lim_{n \to \infty} \mu(E_n) = \lim_{n \to \infty} \infty =
-  \infty$. 
+  \infty$.
 \end{example}
 \begin{proof}
   \begin{enumerate}
@@ -742,7 +742,7 @@ a measure.
     where the last equality follows from the fact that the $F_n$'s are
     disjoint and $\sigma$-additivity. However, since $F_n \subset
     E_n$, we get that \[
-      \mu(\bigcup_{n \geq 1} E_n) = 
+      \mu(\bigcup_{n \geq 1} E_n) =
       \sum_{n=1}^\infty \mu(F_n) \leq \sum_{n=1}^\infty \mu(E_n).
     \]
   \item Consider $E_1 \subset E_2 \subset \cdots$. Using the same
@@ -793,16 +793,16 @@ where the last equality follows from the fact that $F_1 \cup \cdots
 \begin{defn}
   Suppose $P(x)$ is a logical predicate dependent on $x \in X \in (X,
   \M, \mu)$. We say $P(x)$ is true \de{$\mu$-almost everywhere} if and
-  only if there exists $E \in \M$ a null set such that $\neg P(x) 
-  \implies  x \in E$. 
+  only if there exists $E \in \M$ a null set such that $\neg P(x)
+  \implies  x \in E$.
 \end{defn}
 \begin{rmk}
   We note that $\{x \in X \mid P(x) \text{ is false}\} \subset E$ with
-  $E \subset \M$ such that $\mu(E) = 0$. 
+  $E \subset \M$ such that $\mu(E) = 0$.
 \end{rmk}
 \begin{defn}
   A measure space $(X,\M,\mu)$ is called a \de{complete measure space}
-  if and only if every subset of a null set is contained in $\M$. 
+  if and only if every subset of a null set is contained in $\M$.
 \end{defn}
 \begin{rmk}
   This implies that the measure of any such set would be 0.
@@ -846,7 +846,7 @@ block we will introduce that helps us define more measures.
   \item $\mu^*(\emptyset) = 0$,
   \item $\mu^*(A) \leq \mu^*(B)$ if $A \subset B$,
   \item $\mu^*(\bigcup_{j=1}^\infty A_j) \leq \sum_{j=1}^\infty
-    \mu^*(A_j)$ for all $A_j \subset X$. 
+    \mu^*(A_j)$ for all $A_j \subset X$.
   \end{enumerate}
 \end{defn}
 Notice that this is not quite a measure since it fails
@@ -900,18 +900,18 @@ $\sigma$-additivity.
   \end{enumerate}
 \end{proof}
 We now move on to a key definition.
-\begin{defn}[Caratheodory]
+\begin{defn}[Carathéodory]
   Let $\mu^*$ be an outer measure on $X$. A subset $A \subset X$ is
   called \de{$\mu^*$-measurable} if and only if, for all $E \subset
   X$, we get \[
     \mu^*(E) = \mu^*(E \cap A) + \mu^*(E \cap A^c)
   \]
 \end{defn}
-\begin{thm}[Caratheodory]\label{caratheodory}
+\begin{thm}[Carathéodory]\label{caratheodory}
   If $\mu^*$ is an outer measure on $X$ and \[
-    \M := \{\mu^*\text{-measureable subsets of }X\}
+    \M := \{\mu^*\text{-measureable subsets of }X\},
   \]
-  the, $\M$ is a $\sigma$-algebra and $\mu^*|_\M$is a measure, so
+  then $\M$ is a $\sigma$-algebra, $\mu^*|_\M$is a measure, and
   $(X,\M,\mu^*|_\M)$ is a complete measure space.
 \end{thm}
 \begin{proof}
@@ -920,7 +920,7 @@ We now move on to a key definition.
   a measure, and that the space is complete. The proof is given on
   pages 29--30 of Folland.
 \end{proof}
-One of the important things about Caratheodory's theorem is that it
+One of the important things about Carathéodory's theorem is that it
 enables us to extend measures from algebras to $\sigma$-algebras.
 \begin{defn}
   Let $\A$ be an algebra of sets of $X$. We say that $\mu_0 \colon A \to
@@ -931,7 +931,7 @@ enables us to extend measures from algebras to $\sigma$-algebras.
     all sequences $(A_n)_{n \geq 1}$ of disjoint sets in $\A$ such
     that $\bigcup_{n=1}^\infty A_n \subset \A$, we have $\mu_0\left(
       \bigcup_{n=0}^\infty A_n \right) = \sum_{n=1}^\infty
-    \mu_0(A_n)$. 
+    \mu_0(A_n)$.
   \end{enumerate}
 \end{defn}
 Now, to put these various not-quite-measures measures together, we
@@ -939,43 +939,40 @@ note the following
 \begin{rmk}
   Given such a premeasure $\mu_0$, take $\Ep = \A$ and $\rho =
   \mu_0$. Then, by~\ref{outer-measure-space}, we get that $\mu^*$ is
-  an outer-measure on $X$. Then, by~\ref{caratheodory} gives us $\M$
-  is a $\sigma$-algebra of $\mu^*$-measurable sets: $\mu^*|_\M$. 
+  an outer-measure on $X$. Then~\ref{caratheodory} gives us the $\sigma$-algebra $\M$
+  of $\mu^*$-measurable sets: $\mu^*|_\M$.
 \end{rmk}
 \begin{thm}\label{premeas-extension}
-  With this construction, we have that $\A \subset \M$ and $\mu^*|_\A
-  = \mu_0$. Furthermore, every set in $\A$ is $\mu^*$-measurable.
+  With this construction, we have that $\A \subset \M$ (every set in $\A$ is $\mu^*$-measurable) and $\mu^*|_\A
+  = \mu_0$ (the outer-measure is an extension of the premeasure).
 \end{thm}
 \subsection*{(2/21/2017) Lecture 6}
 \begin{proof}
-  For the first part, let $E \in \A$ and $E \subset \Union_{j=1}^\infty A_j$ where each
-  $A_j \in \A$. Then, we can say \[
-    E = \Union_{j=1}^\infty B_j, \ B_n = E \intersect \left( A_n
+  For the second part of the theorem, let $E \in \A$.  For every cover $E \subset \Union_{j=1}^\infty A_j$ where each
+  $A_j \in \A$, we can say \[
+    E = \Union_{j=1}^\infty B_j \quad\text{where}\quad \ B_n := E \intersect \left( A_n
       \setminus \Union_{j=1}^{n-1} A_j \right)
   \]
-  where each $B_n \in \A$ since $\A$is an algebra of sets. Since
-  $mu_0$ is a premeasure, \[
+  and each $B_n \in \A$ since $\A$ is an algebra of sets. Since
+  $\mu_0$ is a premeasure, \[
     \mu_0(E) = \sum_{n=1}^\infty \mu_0(B_n) \leq \sum_{n=1}^\infty \mu_0(A_n).
   \]
-  This is true for all $A_n$, so take the infimum to get $\mu_0(E)
-  \leq \mu^*(E)$. Then, take our sequence $(A_1, A_2, A_3, \ldots) =
-  (E, \emptyset, \emptyset, \ldots)$. By the definition of
-  outer-measure, this gives $\mu^*(E) \leq \mu_0(E)$ for all $E \in
-  \A$. Thus, $\mu^*|_\A = \mu_0$. \\
+  This is true for all such covers, so take the infimum to get $\mu_0(E)
+  \leq \mu^*(E)$. For the other direction, notice that the union over
+  $(E, \emptyset, \emptyset, \ldots)$ is itself a cover.  By the definition of
+  outer-measure, this gives $\mu^*(E) \leq \mu_0(E)$.  Thus, $\mu^*|_\A = \mu_0$. \\
 
-  For the second part, let $A \in \A$ and $E \in \P(X)$. To show $A$
-  is outer-measurable, we break up into two cases. 
-  \begin{itemize}
-  \item Let $\mu^*(E) = \infty$. Then, since $\mu^*$ is an outer
-    measure, we use subadditivity to show that \[
+  For the first part of the theorem, let $A \in \A$ and $E \in \P(X)$. To show $A$
+  is outer-measurable, we first note that \[
       \mu^*(E) \leq \mu^*(E \intersect A) + \mu^*(E \intersect A^c)
    \]
-   Thus, the right hand side must also be infinite and thus we have
-   equality.
+   is always true by subadditivity.  For the opposite inequality, we break up into two cases:
+  \begin{itemize}
+  \item Let $\mu^*(E) = \infty$. Then $\mu^*(E) \geq \mu^*(E \intersect A) + \mu^*(E \intersect A^c)$ is clearly true since the RHS can't be bigger than $\infty$.
   \item Let $\mu^*(E) < \infty$. Let $\epsilon > 0$. By definition of
     $\mu^*(E)$, there exists a sequence of sets $(B_j)_{j \geq 1}$ in
     $\A$ such that \[
-      E \subset B := \Union_{j=1}^\infty \text{ and }
+      E \subset B := \Union_{j=1}^\infty B_j \quad\text{and}\quad
       \sum_{j=1}^\infty \mu_0(B_j) \leq \mu^*(E) + \epsilon.
     \]
     Then, we have that
@@ -993,10 +990,10 @@ note the following
     \end{align*}
     However, since $\epsilon$ was arbitrary, we get that $\mu^*(E)
     \geq \mu^*(E \intersect A) + \mu^*(E \intersect A^c)$, so $A \in
-    \M$. 
+    \M$.
   \end{itemize}
 \end{proof}
-\begin{thm}
+\begin{thm}\label{meas-extension-thm}
   Let $\A \subset \P(X)$ be an algebra of sets and let $\mu_0$ be a
   premeasure on $\A$. Then, let $\M = \M(\A)$. Then, we get that
   \begin{enumerate}
@@ -1004,19 +1001,19 @@ note the following
     \mu_0$, namely $\mu = \mu^*|_\M$.
   \item If $\nu$ is another measure on $\M$ extending $\mu_0$, then
     for all $E \in \M$, we get that $\nu(E) \leq \mu(E)$, with $\nu(E)
-    = \mu(E)$ if $\mu(E) < 0$. 
+    = \mu(E)$ when $\mu(E) < \infty$.
   \item Thus, if $\mu_0$ is $\sigma$-finite,
     then the measure extending $\mu_0$ to $\M = \M(\A)$ is unique.
   \end{enumerate}
 \end{thm}
 \begin{proof}
   \begin{enumerate}
-  \item This follows from Caratheodory's theorem (\ref{caratheodory})
+  \item This follows from Carathéodory's theorem (\ref{caratheodory})
     and~\ref{premeas-extension} since $\A$ is in the $\sigma$-algebra
-    of $\mu^*$-measurable sets and thus, so is $\M$. 
+    of $\mu^*$-measurable sets and thus, so is $\M$.
   \item Suppose that $E \subset \Union_{n \geq 1} A_n$ with each $A_n
     \in \A$. Then, by the subadditivity of $\nu$, we get that \[
-      \nu(E) \leq \sum_{n \geq 1} \nu(A_n) = \sum \mu_0(A_n)
+      \nu(E) \leq \sum_{n \geq 1} \nu(A_n) = \sum_{n \geq 1} \mu_0(A_n)
     \]
     where the last equality follow from the fact that $\nu|_\A =
     \mu_0$. Now, take the infimum to get that $\nu(E) \leq
@@ -1049,7 +1046,7 @@ note the following
     for all $n$. Thus, $\mu(E \intersect A_n) \leq \mu(A_n) <
     \infty$. So, we get that \[
       \nu(E) = \sum_{n=1}^\infty \nu(E \intersect A_n) =
-      \sum_{n=1}^\infty (E \intersect A_n)= \mu(E)
+      \sum_{n=1}^\infty \mu(E \intersect A_n)= \mu(E)
     \]
   \end{enumerate}
 \end{proof}
@@ -1067,7 +1064,7 @@ continuous (follows from continuity from above for $\mu$).
 \begin{thm}\label{unique-borel-measure}
   Let $f \from \R \to \R$ be non-decreasing and right
   continuous. Then, there exists a unique Borel measure $\mu_F$ such
-  that $\mu_F((a,b]) = f(b) - f(a)$ for all $a < b$ in $\R$. 
+  that $\mu_F((a,b]) = f(b) - f(a)$ for all $a < b$ in $\R$.
 \end{thm}
 \begin{proof}\let\qed\relax
   We will only prove exitence here. Let \[
@@ -1100,7 +1097,7 @@ to show this definition is independent of our choice of decomposition.
 To do this, we will need to utilize some lemmas. In the following
 lemmas, we are using the same definitions for variables as used in the
 assumption of the previous theorem (\ref{unique-borel-measure})
-\begin{lem}
+\begin{lem}\label{lebesgue-lem-1}
   If $E \in \Ep$, then $\mu(E) = \lim_{m \to \infty} \mu(E \intersect (-m,m])$.
 \end{lem}
 \begin{proof}
@@ -1116,7 +1113,7 @@ assumption of the previous theorem (\ref{unique-borel-measure})
     \intersect (-m,m]) \to f(b) - f(-\infty) = \mu(E)$
   \end{itemize}
 \end{proof}
-\begin{lem}
+\begin{lem}\label{lebesgue-lem-2}
   Let $n \geq 3$ and let $E,E_1, \ldots, E_n \in \Ep$ be bounded and
   such that $E = E_1 \dunion \cdots \dunion E_n$. Then, there exists
   an $i \in \N$ with $1 \leq i \leq n$ such that \[
@@ -1124,11 +1121,641 @@ assumption of the previous theorem (\ref{unique-borel-measure})
   \]
 \end{lem}
 \begin{proof}
-  
+  We remark that we can easily assume each $E_i$ is nonempty. Let $E =
+  (a,b]$ with $a < b \in \R$ and $E_i = (a_i,b_i]$ with $a_i 
+  < b_i \in \R$. Now, since the $E_i$'s are disjoint, it must be that
+  the $b_i$'s are distinct. So, without loss of generality, we say
+  $b_1 < \cdots < b_n$. We want to show that taking $i=n$ satisfies
+  the lemma. So,
+  let $b \in E = \Dunion E_i$. Then, there exists an $i$ with $b \in
+  (a_i,b_i]$ with $b \leq b_i \leq b_n$. Conversely, given $b_n \in
+  E_n \subset E$, we get that $b_n \leq b$ and thus $b_n = b$. \\
+
+  Now, we claim that $E_1 \dunion \cdots \dunion E_{n-1} =
+  (a,b_{n-1}]$. 
+
+  For the $(\subset)$ direction, let $1 \leq i \leq
+  n-1$, $b_i > a_i$, and $\epsilon > 0$ be small. Then, $a_i +
+  \epsilon \in (a_i,b_i] = E_i \subset E = (a,b]$. Thus, $a_i +
+  \epsilon > a$ for all $\epsilon$. From this, we get that
+  $E=(a_i,b_i] \subset (a,b_{n-1}]$. 
+
+  For the $(\supset)$ direction, if $x \in (a,b_{n-1}] \subset (a,b_n]
+  = E$, there exists an $i$ such that $x \in E_i = (a_i,b_i]$. So, we
+  want to show for $i \neq n$. So, $b_{n-1} \in (a_{n-1},b_{n-1}] =
+  E_{n-1}$ but $b_{n-1} \not \in E_n$ since the two sets are
+  disjoint. Thus, $b_{n-1} \leq a_n$ or $b_{n-1} > b_n$, but this
+  second case is not possible. Therefore, if $x \in (a_n,b_n]$, then
+  $x > a_n \geq b_{n-1}$, but we already have that $x \leq b_{n-1}$,
+  so we have a contradiction. Thus, doing this for $1 \leq i \leq n-1$
+  gives us $x \in E_1 \dunion \cdots \dunion E_{n-1}$. 
 \end{proof}
-\begin{lem}
+\begin{lem}\label{lebesgue-lem-3}
   If $E = E_1 \dunion \cdots \dunion E_n$ with $E, E_i \in \Ep$, then
   $\mu(E) = \mu(E_1) + \cdots + \mu(E_n)$.
 \end{lem}
+\begin{proof}
+  It is enough to assume that all the sets are nonempty. To prove this
+  lemma, we will first proceed by induction on the bounded case.
 
+  For $n=0$, we simply get $0=0$.
+
+  For $n=1$, $\mu$ is well-defined on elements of $\Ep$, so we are
+  done.
+
+  For $n=2$, we take $E_1 = (a_1,b_1]$ and $E_2 = (a_2,b_2]$ and
+  assume, without loss of generality, that $b_1 < b_2$. Then, $E =
+  (a_1,b_2]$. Thus, we get that \[
+    \mu(E_2) + \mu(E_1) = f(b_2) - f(a_2) + f(b_1) - f(a_1) =
+    f(b_2)-f(a_1) = \mu(E)
+  \]
+
+  For $n \geq 3$, by \ref{lebesgue-lem-2}, we say $E = E_1 \dunion
+  \left( \Union_{j \neq i} E_i \right)$, a disjoint union of 2 sets in
+  $\Ep$. Then, using the $n=2$ case and induction, we say that \[
+    \mu(E) = \mu(E_i) + \mu(\Union_{j \neq i} E_j) = \mu(E_i) +
+    \sum_{j \neq i} \mu(E_j)
+  \]
+  by the inductive hypothesis.
+
+  To do the general case, we note
+  \begin{align*}
+    \mu(E) & = \lim_{m \to \infty} \mu(E \intersect (-m,m]) & \text{
+                                                              by
+                                                              \ref{lebesgue-lem-1}}
+    \\
+           & = \lim_{m \to \infty} \sum_{i=1}^n \mu(E_i \intersect (-m,m]) \\
+    & = \sum_{i=1}^n \lim_{m \to \infty} \mu(E_i \intersect (-m,m]) &
+                                                                      \text{by
+                                                                      continuity
+                                                                      of
+                                                                      addition
+                                                                      on
+                                                                       }[0,\infty]
+    \\
+    & = \sum_{i=1}^n \mu(E_i) & \text{ by \ref{lebesgue-lem-1}}
+  \end{align*}
+\end{proof}
+Now, we wish to show that
+\begin{prop}
+$\mu|_A$ is well-defined. (Remember, we are
+still tying to prove \ref{unique-borel-measure}).
+\end{prop}
+\begin{proof}
+  So, let $A \in
+\A$. We can say $A = E_1 \dunion \cdots \dunion E_n$ using the
+$\Ep$-decomposition. Now, let us also say $A = F_1 \dunion \cdots
+\dunion F_m$. Then,
+\begin{align*}
+  \sum_{i=1}^n \mu(E_i) & = \sum_{i=1}^n \left( \sum_{j=1}^m \mu(E_i
+                          \intersect F_j) \right) \\
+  & = \sum_{j=1}^m \left( \sum_{i=1}^n \mu(E_i \intersect F_j) \right)
+  \\
+  & = \sum_{j=1}^m \mu(F_j) & \text{ by \ref{lebesgue-lem-3}.}
+\end{align*}
+where the first equality also relies on the fact that \[\Union_{j=1}^m \left( E_i \intersect F_j \right) = E_i \intersect
+  \left( \Union_{j=1}^m F_j \right) = E_i\].
+\end{proof}
+  Now, given $\mu|_\A$, our ultimate goal is still to extent it to a
+  measure on $\M(\A) = \B_\R$. So, our next step is to show this is a
+  premeasure. In the following, we will freely use analysis facts from
+  homework involving summations of infinite non-negative sequences.
+  Now, let us define the following properties. 
+  \begin{defn*}[Property $P_\heartsuit$]
+    If $A \in \A$ is given as $A = \Dunion_{n=1}^\infty A_n$ for all
+    $A_n \in \A$, then $\mu(A) = \sum_{n=1}^\infty \mu(A_n)$. 
+  \end{defn*}
+  \begin{defn*}[Property $P_0$]
+    Given $A, A_n \in \Ep$ \textbf{all bounded}, then if $A =
+    \Dunion_{n=1}^\infty A_n$, then $\mu(A) = \sum_{n=1}^\infty
+    \mu(A_n)$. 
+  \end{defn*}
+  \begin{defn*}[Property $P_1$]
+    Given $A_n \in \Ep$ all bounded and $A \in \A$ and bounded, then
+    if $A = \Dunion_{n=1}^\infty A_n$, we have $\mu(A) =
+    \sum_{n-1}^\infty \mu(A_n)$.
+  \end{defn*}
+  \begin{prop}
+    Property $P_0$ implies property $P_1$.
+  \end{prop}
+  \begin{proof}
+    Let $A = \Dunion A_n$ with $A, A_n \in Ep$. Then, we also have
+    that $A = F_1 \dunion \cdots \dunion F_k$ with $F_k \in \Ep$ all
+    bounded. Now, by definition, $\mu(A) = \mu(F_1) + \cdots +
+    \mu(F_k)$. Furthermore, for all $i$ with $1 \leq i \leq k$, using
+    $P_0$ we get
+    that \[
+      \mu(F_i) = \sum_{n=1}^\infty \mu(F_i \intersect A_n)
+    \]
+    So, with this all in mind, we get that
+    \begin{align*}
+      \mu(A) & = \sum_{i=1}^k \sum_{n=1}^\infty \mu(F_i \intersect
+               A_n) \\
+      & = \sum_{n=1}^\infty \left( \sum_{i=1}^k \mu(F_i \intersect
+        A_n) \right) \\
+      & = \sum_{n=1}^\infty \mu(A_n) & \text{ by \ref{lebesgue-lem-3}}
+    \end{align*}
+    where the last equality uses the fact that \[
+      \Union_{i=1}^k \left( F_i \intersect A_n \right) = A_n
+      \intersect \left( \Union F_i \right) = A_n \intersect A = A_n
+    \]
+  \end{proof}
+  Now, consider
+  \begin{defn*}[Property $P_2$]
+    Given $A,A_n \in \A$ all bounded, then if $A =
+    \Dunion_{n=1}^\infty A_n$, then $\mu(A) = \sum_{n=1}^\infty
+    \mu(A_n)$. 
+  \end{defn*}
+  \begin{prop}
+    $P_1$ implies $P_2$.
+  \end{prop}
+  \begin{proof}
+    For all $n \in \N$, there exists a disjoint decomposition \[
+      A_n = E_{n,1} \dunion \cdots \dunion E_{n,k_n}
+    \]
+    for all $E_{n,m} \in \Ep$. Now, simply add $\emptyset$ infinitely
+    many times onto the end of these decompositions to say that \[
+      A_n = \Dunion_{m=1}^\infty E_{n,m}, \ E_{n,m} \neq \emptyset
+      \text{ for finitely many }m\text{'s.} 
+    \]
+    Then, we have that $A = \Dunion_{(n,m) \in \N^2} E_{n,m}$. From
+    this, we say that
+    \begin{align*}
+      \mu(A) & = \sum_{(n,m) \in \N^2} \mu(E_{n,m}) & \text{ by }P_1
+      \\
+      & = \sum_{n=1}^\infty \left(\sum_{m=1}^\infty
+        \mu(E_{n,m})\right) \\
+      & = \sum_{n=1}^\infty \mu(A_n) & \text{ by }P_1
+    \end{align*}
+  \end{proof}
+  \begin{lem}\label{lebesgue-lem-4}
+    If $A \in \A$, then $\mu(A) = \lim_{m \to \infty} \mu(A \intersect
+    (-m,m])$. 
+  \end{lem}
+  \begin{proof}
+    Let $A = E_1 \dunion \cdots \dunion E_n$ with $E_i \in \Ep$. Then,
+    \begin{align*}
+      \mu(A) & = \mu(E_1) + \cdots + \mu(E_n) & \text{ by definition.}
+      \\
+             & = \sum_{i=1}^n \mu(E_i \intersect (-m,m]) \\
+      & = \lim_{m \to \infty} \mu\left( \Union_{i=1}^n (E_i \intersect
+        (-m,m]) \right) \\
+& = \lim_{m \to \infty} \mu(A \intersect (-m,m])
+    \end{align*}
+  \end{proof}
+  \begin{prop}
+   $P_2$ implies $P_\heartsuit$.
+ \end{prop}
+ \begin{proof}
+   Let $A = \Dunion_{n=1}^\infty A_n$ a countable disjoint union in
+   $\A$. Then,
+   \begin{align*}
+     \mu(A) & = \lim_{m \to \infty} \mu(A \intersect (-m,m]) & \text{
+                                                               by
+                                                               \ref{lebesgue-lem-4}.}
+     \\
+     & = \lim_{m \to \infty} \sum_{n=1}^\infty \mu(A_n \intersect
+       (-m,m]) & \text{ by }P_2. \\
+     & = \sum_{n=1}^\infty \lim_{m \to \infty} \mu(A_n \intersect
+       (-m,m]) \\
+     & = \sum_{m=1}^\infty \mu(A_n) & \text{ by \ref{lebesgue-lem-4}.}
+   \end{align*}
+ \end{proof}
+ Thus, once we show $P_0$ is true, we have the existence of our
+ measure.
+ \subsection*{(2/23/2017) Lecture 8}
+ We now seek to prove that $P_0$ holds for all $A \in \Ep$ with $A =
+ \Dunion_{n=1}^\infty A_n$ with $A_n \in \Ep$ bounded.
+ \begin{lem}\label{lebesgue-lem-5}
+   Given $a,b \in \R$ with $a < b$ and $a_i,b_i \in \R$ for $i \in I$ an index
+   set with $a_i < b_i$ for all $i \in I$, let $[a,b] \subset
+   \Union_{i \in I} (a_i,b_i)$. Then, $f(b) - f(a) \leq \sum_{i \in I}
+   (f(b_i) - f(a_i))$. 
+ \end{lem}
+ \begin{proof}
+   To prove this, we proceed by induction on $|I|$.
+
+   For $|I| = 0$, the hypothesis is not possible, and thus
+   false. Therefore, the overall implication is true.
+
+   For $|I| = 1$, $[a,b] \subset (a_1,b_1) \implies a_i < a < b <
+   b_i$. Thus, since $f$ is a monotonically increasing function, we
+   get $f(a_1) \leq f(a) \leq f(b) \leq f(b_1)$. Thus, we get that
+   $f(b) - f(a) \leq f(b_1) - f(a_1)$.
+
+   For $|I| \geq 2$, let $b \in [a,b] \subset \Union_{i \in I}
+   (a_i,b_i)$. So, there is an $i_0 \in I$ with $b \in (a_{i_0},
+   b_{i_0})$, thus $a_{i_0} < b < b_{i_0}$. Now, let $J = I \setminus
+   \{i_0\}$. So, let us divide this into 2 cases.
+   \begin{itemize}
+   \item ($a_{i_0} > a$) We claim that $[a,a_{i_0}] \subset \Union_{j
+       \in J} (a_j, b_j)$. To prove this, take $x \in [a,a_{i_0}]
+     \subset [a,b] \subset \Union_{i \in I} (a_i, b_i)$. So, there
+     exists an $i \in I$ with $x \in (a_i, b_i)$, but $x \leq a_{i_0}$
+     so $x \not \in (a_{i_0}, b_{i_0})$. Thus, $i \neq i_0$, so $x \in
+     (a_i,b_i)$. From this, we get \[
+       f(b) - f(a) = f(b) - f(a_{i_0}) + f(a_{i_0}) - f(a) 
+     \]
+     and since $b < b_{i_0}$, we get $f(b) - f(a_{i_0}) \leq
+     f(b_{i_0}) - f(a_{i_0})$ because $f$ is monotonically
+     increasing. Thus, from our inductive hypothesis, $f(a_{i_0}) -
+     f(a) \leq \sum (f(b_i) - f(a_i))$. If we add $f(b)-f(a_{i_0})
+     \leq f(b_{i_0}) - f(a_{i_0})$,
+     we get $f(b) - f(a) \leq
+     \sum_{i \in I} (f(b_i) - f(a_i))$. 
+   \item ($a_{i_0} \leq a$) We have that $a_{i_0} \leq a < b <
+     b_{i_0}$. So, applying $f$ to the inequality since $f$ is
+     monotonically increasing yields \[
+       f(b) - f(a) \leq f(b_{i_0}) - f(a_{i_0}) \leq \sum_{i \in
+         I}(f(b_i) - f(a_i))
+     \]
+   \end{itemize}
+ \end{proof}
+ \begin{prop}
+   $P_0$ holds for all $A \in \Ep$ with $A =
+ \Dunion_{n=1}^\infty A_n$ with $A_n \in \Ep$ bounded.
+\end{prop}
+\begin{proof}
+  We need to show that $\mu(A) = \sum_{n=0}^\infty \mu(A_n)$. If $a =
+  b$, then we have $0=0$. So, let us assume $a < b$. Let $\epsilon >
+  0$. Since $f$ is right-continuous, there exists a $\delta > 0$ such
+  that $x \in [a,a+\delta]$ with $f(x) \leq f(a) + \epsilon$. We can
+  also use this property by saying for every $n \geq 1$, there exists
+  $\delta_n > 0$ such that $x \in [b_n, b_n + \delta_n]$ with $f(x)
+  \leq f(b_n) + \frac{\epsilon}{2^n}$. So, pick $x_0 > a$ such that
+  $x_0 < b$ and $x_0 < a+ \delta$. We get \[
+    [x_0, b] \subset (a,b] = \Union_{n=1}^\infty = \Union_{n=1}^\infty
+    (a_n,b_n] \subset \Union_{n=1}^\infty (a_n,b_n + \delta_n)
+  \]
+  Now, use the compactness of $[x_0,b]$. There exists a finite $I
+  \subset \N$ such that $[x_0,b] \subset \Union_{n \in I} (a_n,b_n +
+  \delta_n)$. Now, \ref{lebesgue-lem-5} gives us
+  \begin{align*}
+    f(b) - f(x_0) & \leq \sum_{n \in I} \left( f(b_n + \delta_n) -
+    f(a_n) \right) \tag{1}\\
+    & \leq \sum_{n \in I} \left( f(b_n) + \frac{\epsilon}{2^n} -
+      f(a_n) \right) \\
+    \implies f(x) & \leq f(b_n) + \frac{\epsilon}{2^n}
+  \end{align*}
+  Furthermore, since $a < x_0 < a + \delta$, we get that \[ f(x_0) - f(a) \leq
+    \epsilon \tag{2}\]
+  Now, from (1) and (2), we get \[
+    f(b) - f(a) \leq \epsilon + \epsilon \sum_{n \in I} 2^{-n} +
+    \sum_{n \in I} (f(b_n) - f(a_n)) \leq \epsilon + \epsilon + \epsilon
+  \]
+  So, for all $\epsilon$, we get $\mu(A) \leq \sum_{n=1}^\infty
+  \mu(A_n)$. From here, all we neet to show is that each partial sum
+  is less than or equal to $\mu(A)$ using finite additivity. 
+\end{proof}
+Thus, we have completed the proof of existence. Now, we move on to
+uniqueness. To do this, we will use \ref{meas-extension-thm}. Let
+$\mu$ be the previously constructed Borel measure given by $\forall
+a,b \in \R$ such that $a < b$, $\mu((a,b]) = f(b) - f(a)$. Let $\nu$
+be another Borel measure satisfying the property. Then, take $E
+\subset \Ep$. We get that
+\begin{align*}
+  \nu(E) & = \lim_{m \to \infty} \nu(E \intersect (-m,m]) & \text{ by
+                                                            continuity
+                                                            from
+                                                            below.} \\
+& = \lim_{m \to \infty} \mu(E \intersect (-m,m]) & \text{ since these
+                                                   coincie on }(a,b]
+  \\
+& = \mu(E) & \text{ by continuity from below for }\mu
+\end{align*}
+If $A \in \A$, then $A = E_1 \dunion \cdots \dunion E_n$ with all $E_i
+\in \Ep$. Thus, we have \[
+  \nu(A) = \nu(E_1) + \cdots + \nu(E_n) = \mu(E_1) + \cdots + \mu(E_n)
+  = \mu(A)
+\]
+and thus $\mu|_\A = \nu|_\A$. So, using \ref{meas-extension-thm}, we
+get $\mu = \nu$ on $\M(\A) = \B_\R$. (Note, this requires $\mu|_\A$ to
+be $\sigma$-finite). However, for $m \in N$, we get $\mu((-m,m]) =
+f(m) - f(-m)$ is finite, but $\Union_{m \geq 1} (-m,m] = \R$. This
+completes our proof of \ref{unique-borel-measure}. \qed
+\begin{thm}
+  As part 2 of \ref{unique-borel-measure}, if $F,G$ are increasing and
+  right-continuous such that $\mu_F = \mu_G$ as measures on $\B_\R$,
+  then there exists a $c \in \R$ such that $g-f = c$. 
+\end{thm}
+\begin{proof}
+  If $x \geq 0$, then \[
+    \mu_F((0,x]) = \mu_G((0,x]) \implies F(x) - F(0) = G(x) - G(0)
+    \implies G(x) - F(x) = c
+  \]
+  where $c := G(0) - F(0)$.
+
+  If $x \leq 0$, then \[
+    \mu_F((0,x]) = \mu_G((0,x]) \implies F(0)-F(x) = G(0)-G(x)
+    \implies F(x) - G(x) = c.
+  \]
+\end{proof}
+\begin{rmk}
+  Using $F$ to get $\mu_F$ does not give the most general Borel
+  measure. Instead, this gives a measure such that if $A$ is bounded,
+  then $\mu_F(A) < \infty$. To see this, just take $A \subset
+  (-m,m]$, which exists since $A$ is bounded. 
+\end{rmk}
+\begin{thm}[Surjectivity Result]
+  As part 3 of \ref{unique-borel-measure}, let $\mu$ be a Borel
+  measure on $\R$ such that $\mu$ is finite on bounded sets. Let \[
+F(x) =
+\begin{cases}
+  \mu((0,x]) & x > 0 \\
+  0 & x = 0\\
+  -\mu((x,0]) & x < 0
+\end{cases}
+\]
+Then, $F$ is increasing, right continuous, and $\mu = \mu_F$. 
+\end{thm}
+\begin{proof}
+  The proof is left as a homework exercise, but can also be seen on
+  page 35 of Folland.
+\end{proof}
+\begin{example}
+  If we take $F(x) = x$, then $\mu_F$ gives us the Lebesgue
+  measure. Often, for the Lebesgue measure, people will complete such
+  a measure space, but in this class, we will stop at the Borel
+  set. For a general $F$, $\mu_F$ are called Lebesgue-Stieltjes measures.
+\end{example}
+\begin{example}
+  If we take $F(x) = \int_{-\infty}^x \frac{1}{\sqrt{2\pi}}
+  e^{\frac{t^2}{2}} dt$. Then, $\mu_F$ is the probability measure of
+  the standard Gaussian.
+\end{example}
+\begin{example}
+  Let $\delta_0$ be the Dirac mass at the origin given by $\delta_0
+  \from \B_\R \to [0,\infty]$ is \[
+    \delta_0(A) =
+    \begin{cases}
+      1 & 0 \in A \\
+      0 & 0 \not \in A
+    \end{cases}
+  \]
+  So, if we take $f(x)$ as the step function at $0$,
+  then we have $\lim_{x \to x_0^+} f(x) - \lim_{x \to x_0^-} f(x) = \mu_f(\{x_0\})$
+\end{example}
+\subsection{Regularity}
+\begin{defn}
+  Let $\mu$ be a Borel measure on $\R$ and let $E \in \B_\R$. Then,
+  $\mu$ is \de{outer regular on $E$} if and only if \[
+    \mu(E) = \inf \{\mu(V \mid V \text{ is open}, V \supset E)\}.
+  \]
+  Similarly, $\mu$ is \de{inner regular on $E$} if and only if \[
+    \mu(E) = \sup \{\mu(K) \mid K \text{ is compact}, K \subset E\}.
+  \]
+  Finally, $\mu$ is called \de{regular} is and only if it is inner and
+  outer regular on every Borel set.
+\end{defn}
+\begin{defn}
+  Given $\mu$ that is finite on bounded sets and regular, we say that
+  $\mu$ is a \de{Radon measure} on $\R$. (The definition of this is
+  different for a measure not on $\R$; see section 7.1 of Folland.)
+\end{defn}
+\begin{thm}
+  Let $F$ be increasing and right continuous. Then, $\mu_F$ is Radon.
+\end{thm}
+\begin{lem}
+  Let $\mu = \mu_F$. Then, for $E \in \B_\R$, \[
+    \mu(E) = \inf \left\{ \sum_{i=1}^\infty \mu((a_i,b_i)) \text{
+        finite} \mid E
+      \subset \Union_{i=1}^\infty (a_i,b_i) \right\}
+  \]
+\end{lem}
+\begin{proof}[Proof of lemma]
+  $\mu(E) \leq \inf \left\{ \sum_{i=1}^\infty \mu((a_i,b_i)) \text{
+        finite} \mid E
+      \subset \Union_{i=1}^\infty (a_i,b_i) \right\}$ by
+    subadditivity. Now, we break into cases.
+    \begin{itemize}
+    \item (Suppose $E$ is bounded). Then, $\mu(E) < \infty$. By
+      construction, we have \[
+        \mu(E) = \mu^+(E) := \inf\{ \sum \mu(A_n) \mid E \subset
+        \Union_{n=1}^\infty A_n, A_n \in \A\}.
+      \]
+      Let $\epsilon > 0$. Then there exists $A_n \in \A$ such that
+      $\sum_{n=1}^\infty \mu(A_n) \leq \mu(E) + \epsilon$. Then,
+      decompoising $A_n$ into elements of $\Ep$ and renumbering, we
+      can assume without loss of generality that $A_n \in \Ep$, since
+      if $A_n \not \in \Ep$, we can just take $A_n = A_n \intersect
+      (-m,m)$ with $E \subset (-m,m)$. So, now, take $A_n = (\alpha_n,
+      \beta_n) \subset \R$. Then, we get that $\mu(A_n) = F(\beta_n) -
+      F(\alpha_n)$. Thus, there exists a $\delta_n > 0$ with
+      $f(\beta_n + \delta_n) \leq f(\beta_n) +
+      \frac{\epsilon}{2^n}$. Therefore, $A_n \subset
+      (\alpha_n, \beta_n + \delta_n) \subset (\alpha_n, \beta_n +
+      \delta_n]$ and so $\mu((\alpha_n,\beta_n+\delta_n)) \leq
+      f(\beta_n + \delta_n) - f(\alpha_n) \leq
+      \frac{\epsilon}{2^n}$. Finally, adding all these terms together
+      yields the desired result.
+    \item ($E$ is unbounded.) If $\mu(E) = \infty$, then we trivially
+      get equality. So, let $\mu(E) < \infty$ and let $\epsilon >
+      0$. Also, let $g \from \N \to \Z$ be the bijection $g(2k) = k$
+      and $g(2k+1) = -k$. Then, we have \[
+        \mu(E) = \sum_{n \geq 1} \mu(E \intersect (g(n),g(n)+1)).
+      \]
+      So, for all $n$, let $a_{n,i} < b_{n,i}$. Then, \[
+        \sum_{i=1}^\infty \mu((a_{n,i},b_{n,i})) \leq \sum_{n \geq 1}
+        \mu(E \intersect (g(n),g(n)+1)) + \frac{\epsilon}{2^n}
+      \]
+      by the previous bounded base. Finally, this gives us $E \subset
+      \Union_{(n,i) \in \N^2} (a_{n,i},b_{n,i})$ and so \[
+        \sum_{(n,i) \in \N^2} \mu((a_{n,i},b_{n,i})) \leq \sum_{n \geq
+        1} \mu(E
+        \intersect (g(n),g(n)+1)) + \epsilon
+      \]
+      thereby completing the proof.
+    \end{itemize}
+  \end{proof}
+  \subsection*{(2/28/2017) Lecture 9}
+  With this lemma in hand, we now seek to prove the theorem.
+  \begin{proof}[Proof of Theorem]
+    We have to show $\mu_F$ is finite on compact sets, outer
+    regular for all sets in $\B_\R$, and inner regular for all sets in
+    $\B_\R$.
+    \begin{itemize}
+    \item ($\mu_F$ is finite on compact sets). 
+      $\mu_F$ is finite on compact sets by definition.
+    \item (Outer regularity). We have the $\leq$ direction from
+      monotonicity and thus equality if $mu(E) = \infty$. Now, assume
+      that $\mu(E) < \infty$. Our lemma tells us that \[
+        \mu(E) = \inf \left\{ \sum \mu((a_i,b_i)) \mid a_i < b_i
+          \text{ finite}, E \subset \Union_{i=1}^\infty (a_i,b_i) \right\}
+      \]
+      Next, take $\epsilon > 0$. Then, there exists $a_i,b_i$ such
+      that $\sum \mu((a_i,b_i)) \leq \mu(E) +\epsilon$ by
+      subadditivity. Now, take $V = \Union_{i=1}^\infty (a_i,b_i)$
+      (open) to get $\mu(V) \leq \mu(E) + \epsilon$. Buth $\epsilon$
+      was arbitrary, so $\mu(E) = \inf\{ \cdots \}$ as desired.
+    \item (Inner regularity). The $\geq$ direction is trivial, so we
+      only need to show $\leq$. We can also reduce to $E$ being
+      bounded by using continuity from below and intersecting $E
+      \intersect [-m,m]$ to get $\mu(E) = \lim_{m \to \infty} \mu(E
+      \intersect [-m,m])$. So, if $\alpha < \mu(E)$, there exists an
+      $m$ such that $\mu(E \intersect [-m,m]) > \alpha$. Now, if $E$
+      is bounded, there exists a 
+      compact $K \subset E \intersect [-m,m] \subset E$ with $\mu(K) >
+      \alpha > \mu(E)$. Thus, for all $\alpha$, we have $\sup \{\mu(K)
+      \mid \text{ compact }K \subset E\} \geq \mu(E)$. Now assume that
+      $E$ is bounded. Then, there exists an $m \in \N$ such that $E
+      \subset [-m,m]$. Let $\epsilon > 0, F = [-m,m] \setminus E$, and
+      $\mu(F) < \infty$. Our previous case tells us that there exists
+      an open $V \supset F$  with $\mu(V) \leq \mu(F) + \epsilon$. So,
+      we take $K = [-m,m] \intersect V^c$ which is closed and bounded,
+      and therefore compact.
+
+      Next, we show that $K
+      \subset E$. If $x \in K$ and $x \not \in E$, we get $x \in
+      [-m,m] \setminus E = F \subset V$, yielding that $x \in V^c$ and
+      so $x \in E$, a contradiction. Similarly, we also have that $V
+      \supset F$, and so $\mu(V) \leq \mu(F) + \epsilon$ giving us
+      $\mu(V \setminus F) \leq \epsilon$.
+
+      Finally, we show $E \setminus K \subset V \setminus F$. We note
+      that
+      \begin{align*}
+        E \setminus F & = E \intersect K^c \\
+                      & = E \intersect ([-m,m] \intersect V^c)^c \\
+                      & = E \intersect ([-m,m]^c \union V) \\
+                      & = (E \intersect [-m,m]^c) \union (E \intersect
+                        V)\\
+                      & = E \intersect V
+      \end{align*}
+      since $E \intersect [-m,m]^c = \emptyset$. Furthermore,
+      \begin{align*}
+        V \setminus F & = V \intersect F^c \\
+                      & = V \intersect ([-m,m] \intersect F^c)^c \\
+                      & = V \intersect ([-m,m]^c \union F) \\
+        & = (V \intersect F) \union (V \intersect [-m,m]^c)
+      \end{align*}
+      Thus, we get that $\mu(E \setminus K) \leq \mu(V \setminus F)
+      \leq \epsilon$ for all $\epsilon$.
+    \end{itemize}
+  \end{proof}
+  \begin{defn}
+    We say $\mu$ is \de{tight} if, for all $\epsilon > 0$, there
+    exists a compact $K \subset \R$ such that $\mu(K) \geq
+    1-\epsilon$. 
+  \end{defn}
+  \begin{cor}
+    If $\mu$ is a Borel probability measure ($\mu(\R) = 1$), then
+    $\mu$ is tight.
+  \end{cor}
+  \begin{defn}
+    A sequence of Borel probability measures on $\R$, $(\mu_n)_{n \geq
+    1}$, is called \de{uniformly tight} if, for all $\epsilon > 0$,
+  there exists a compact $K \subset \R$ such that, for all $n$,
+  $\mu_n(K) \geq 1 - \epsilon$.
+  \end{defn}
+  \begin{defn}
+    (Aside). We say a sequence of Borel probability measures on $\R$,
+    $(\mu_n)_{n \geq 1}$, \de{converges weakly} to a Borel probability
+    measure such that, for all $f \from \R \to \R$ bounded an
+    continuous, \[
+      \int f d \mu_n \to \int f d\mu \text{ as } n \to \infty
+    \]
+  \end{defn}
+  Finally, we note some properties of the Lebesgue measure. Let $m =
+  \mu_F$, $F(x) = x$ be the Lebesgue measure.
+  \begin{itemize}
+  \item For all $A \in \B_\R$ and for all $c \in \R$, we have that
+    $A+c \in \B_\R$ and that $m(A+c) = m(A)$.
+  \item For all $A \in \B_\R$ and for all $\lambda \in \R$, then
+    $\lambda A \in \B_\R$, then $m(\lambda A) = |\lambda| m(A)$. 
+  \end{itemize}
+  The proof of such facts is ommitted but can be derived as a special
+  case of Proposition 2.6 in Folland on page 45.
+  \section{Integration}
+  \begin{prop}
+    Let $f \from X \to Y$ be $(\M,\mathcal{N})$-measurable. Suppose
+    $\mathcal{N} = \M(\Ep)$ for $\Ep \subset \P(Y)$. Then, $f$ 
+    is $(\M,\mathcal{N})$-measurable if and only if, for all $B \in
+    \Ep$, $f^{-1}(B) \subset \M$. 
+  \end{prop}
+  \begin{proof}
+    $\implies$ is easy because $\Ep \subset \mathcal{N}$. For
+    $\impliedby$, define $\tilde{\mathcal{N}} = \{B \in \P(Y) \mid f^{-1}(B)
+    \in \M\}$. This is a $\sigma$-algebra containing $\Ep$ by
+    hypothesis. Thus, $N \subset \tilde{\mathcal{N}}$ and so $f$ is
+    measurable. 
+  \end{proof}
+  \begin{cor}
+    If $X,Y$ are topological spaces and $f \from X \to Y$ is
+    continuous, then $f$ is $(\B_X, \B_Y)$-measurable. 
+  \end{cor}
+  \begin{proof}[Proof of Corollary]
+    Take $\Ep = \{\text{ Open sets in }Y\}$. Then $V \in \Ep$, so
+    $f^{-1}(V)$ is open in $X$ and thus in $\B_X$. 
+  \end{proof}
+  \begin{prop}
+    We note that if $f \from X \to Y$ is $(\M,\mathcal{N})$-measurable
+    and $g \from Y \to Z$ is $(\mathcal{N},\mathcal{O})$-measurable,
+    then $g \circ f$ is $(\M,\mathcal{O})$-measurable.
+  \end{prop}
+  \begin{proof}
+    The proof is a straightforward application of definitions.
+  \end{proof}
+  \begin{prop}
+    Let $(X,\M)$ be a measure space and let $(Y_\alpha,
+    \mathcal{N}_\alpha)_{\alpha \in A}$ be a family of measure spaces. Furthermore, we define
+    $Y = \prod_{\alpha \in A} Y_\alpha$ and $\mathcal{N} = \bigotimes_{\alpha
+      \in A} \mathcal{N}_\alpha$. Finally, let $f \from X \to Y$ and
+    for all $\alpha, f_\alpha = \pi_\alpha \circ f$. Then, $f$ is
+    $(\M,\mathcal{N})$-measurable if and only if, for all $\alpha,
+    f_\alpha$ is $(\M,\mathcal{N})$-measurable.
+  \end{prop}
+  \begin{proof}
+    For ($\implies$), we have that $f_\alpha = \pi_\alpha \circ f$, so
+    we only need to show that $\pi_\alpha$ is measurable. However, for
+    all $E_\alpha \in \mathcal{N}_\alpha$, $\pi_\alpha^{-1}(E_\alpha)
+    \in \mathcal{N}$ by definition of $\mathcal{N} = \bigotimes_\alpha
+    \mathcal{N}_\alpha$.
+
+    For ($\impliedby$), let $\Ep = \{\pi_\alpha^{-1}(E_\alpha) \mid
+    \alpha \in A, E_\alpha \in \mathcal{N}_\alpha\}$. By definition of
+    $\mathcal{N}$, we have $\mathcal{N} = \M(\Ep)$. Now, by the
+    previous proposition, it is enough to show that $f^{-1}(E) \in
+    \M$ for all $E \in \Ep$. Now, $E = \pi_\alpha^{-1}(E_\alpha)$ for
+    some $\alpha, E_\alpha$. Thus, \[
+      f^{-1}(E) = f^{-1}(\pi_\alpha^{-1}(E_\alpha)) = (\pi_\alpha
+      \circ f)^{-1}(E_\alpha) = f_\alpha^{-1}(E_\alpha) \in \M
+    \]
+    since $f_\alpha$ is $(\M,\mathcal{N})$-measurable.
+  \end{proof}
+  \begin{cor}
+    Let $(X,\M)$ be a measure space and $f \from X \to \C$ (also $\R^n$). Then, $f$
+    is measurable if and only if $\Re f$ and $\Im f$are measurable.
+  \end{cor}
+  \begin{rmk}
+    Here we used the fact that $\B_{\R^n} = \B_\R \otimes \cdots
+    \otimes \B_\R$ as a finite or countable product, as well as the
+    fact that $\R$ is a separable.
+  \end{rmk}
+  \begin{prop}
+    Let $f \from X \to K$ ($K = \R,\C$) and $g \from X \to K$. If $f$
+    and $g$ are measurable, then $f+g$ and $fg$ are also measurable. 
+  \end{prop}
+  \begin{proof}
+    Let $x \to (f(x),g(x)) \to f(x)+g(x)$ where the first function is
+    a $(\M,\B_{K \times K})$-measurable function, where $\M$ is a
+    $\sigma$-algebra on $X$. Each of these two functions is clearly
+    measurable, so their composition will be, too.
+  \end{proof}
+  \begin{prop}
+    Let $f \from X \to K$ ($K = \R,\C$). If $f$ is measurable, then
+    $|f|$ is $(\M,\B_K)$-measurable where $\M$ is a $\sigma$-algebra
+    on $X$. Furthermore, if $f,g \from X \to \R$ are measurable, then
+    $\max(f,g)$ and $\min(f,g)$ are measurable.
+  \end{prop}
+  \begin{prop}
+    Let $(X,\M)$ be a measurable space. Furthermore, for $E \in \P(X)$, let
+    $\chi_E \from X \to \{0,1\}$ be given by \[
+      \chi_E(x) =
+      \begin{cases}
+        1 & x \in E \\
+        0 & x \not \in E
+      \end{cases}
+   \]
+   Then, $\chi_E$ is measurable if and only if $E \in \M$.
+  \end{prop}
 \end{document}
