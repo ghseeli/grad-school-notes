@@ -41,7 +41,7 @@
 \renewcommand{\d}{\partial}
 \newcommand{\fund}[1][1]{\pi_{#1}}
 \newcommand{\homl}[1][n]{H_{#1}}
-\newcommand{\rhoml}[1][n]{\overset{~}{\homl[#1]}}
+\newcommand{\rhoml}[1][n]{\widetilde{H}_{#1}}
 \newcommand{\transverse}{\pitchfork}
 \newcommand{\x}{\times}
 \newcommand{\Map}{\text{Map}}
@@ -311,10 +311,10 @@ group with $\fund(X)$ or $\fund X$.
 \end{example}
 
 \begin{defn}
-  A \emph{covering space} \((\tilde{X},p)\) of a space \(X\) is a space \(\tilde{X}\)
-  and map \(p \from \tilde{X} \to X\) where there exists an open cover
+  A \emph{covering space} \((\widetilde{X},p)\) of a space \(X\) is a space \(\widetilde{X}\)
+  and map \(p \from \widetilde{X} \to X\) where there exists an open cover
   \(\{U_\alpha\}\) of \(X\) and for each $\alpha$, \(p^{-1}(U_\alpha)\) is a
-  disjoint union $\dunion V_j$ of open sets in \(\tilde{X}\) such that for all $j$, $p|_{V_j} \from V_j \to U_\alpha$ is a homeomorphism.
+  disjoint union $\dunion V_j$ of open sets in \(\widetilde{X}\) such that for all $j$, $p|_{V_j} \from V_j \to U_\alpha$ is a homeomorphism.
 \end{defn}
 
 Think of the stack of records theorem from Guillemin and Pollack. See
@@ -338,11 +338,11 @@ class.
 We now discuss homotopy lifting.
 
 \begin{prop}[Hatcher, Prop 1.30]
-  Given a covering space \((\tilde{X},p)\) of \(X\) and a homotopy
+  Given a covering space \((\widetilde{X},p)\) of \(X\) and a homotopy
   \(h \from I \x Y \to X\), if just $h_0$ has a lift through $p$, then there exists a lift of \(h\) through $p$.  The lift is unique up to the choice of preimage of the original point.
   \begin{center}
     \begin{tikzcd}
-      & & \tilde{X}\\
+      & & \widetilde{X}\\
       Y \times \{0\} \arrow[r,hook] \arrow[rru,"\tilde{h}_0", bend
       left]& Y \times I \arrow[r,"h",swap] \arrow[ru,dashed,"\tilde{h}_t"]& X \arrow[u,"p"]
     \end{tikzcd}
@@ -465,10 +465,10 @@ Note that ``cover'' refers to ``covering space'' in this section.
 Convention!  In this class, \textbf{connected} means \textbf{path connected}!
 
 \begin{defn}
-  If $X$ is a space, then the \de{category of X covers} is the category where the objects are the covers of $X$ (such as $(\tilde{X}, p)$) and a function $f \from \tilde{X_1} \to \tilde{X_2}$ is a morphism iff the diagram
+  If $X$ is a space, then the \de{category of X covers} is the category where the objects are the covers of $X$ (such as $(\widetilde{X}, p)$) and a function $f \from \widetilde{X}_1 \to \widetilde{X}_2$ is a morphism iff the diagram
 
   $$\begin{tikzcd}
-    &\tilde{X_1} \arrow[rd, "p_1"'] \arrow[rr, "f"] &&\tilde{X_2} \arrow[ld, "p_2"] \\
+    &\widetilde{X}_1 \arrow[rd, "p_1"'] \arrow[rr, "f"] &&\widetilde{X}_2 \arrow[ld, "p_2"] \\
     &&X
   \end{tikzcd}$$
 
@@ -501,7 +501,7 @@ Note.  ``$\fund$ - set'' refers to a set that is acted upon by $\fund$.
 
   That is, if $X$ is connected and SLSC, then there exists an equivalence functor between the category of covers of $X$ and the category of subgroups of $\fund(X)$.
 
-  The functor equivalence maps each cover $(\tilde{X}, p)$ to $p_*(\fund(\tilde{X}, \tilde{x}))$, a subgroup of the fundamental group of $X$.
+  The functor equivalence maps each cover $(\widetilde{X}, p)$ to $p_*(\fund(\widetilde{X}, \tilde{x}))$, a subgroup of the fundamental group of $X$.
 \end{thm}
 
 ((i think the following is strategies for proving something satisfies the above definition))
@@ -1305,23 +1305,28 @@ NOTE:  The TILDA over the H denotes the REDUCED homology (rhoml) (FIND WHERE THI
   \end{tikzcd}$$
 \end{example}
 
-The sequence of maps shown
-\begin{enumerate}
-  \item are a complex, that is
-  \begin{itemize}
-    \item $i_*.p_* = 0$
-    \item $\delta.i_* = 0$
-    \item $p_*.\delta_* = 0$
-  \end{itemize}
-  in all degrees.
+\begin{thm}
+  The sequence of maps shown
+  \begin{enumerate}
+    \item are a complex, that is
+    \begin{itemize}
+      \item $i_*.p_* = 0$
+      \item $\delta.i_* = 0$
+      \item $p_*.\delta_* = 0$
+    \end{itemize}
+    in all degrees.
 
-  \item with trivial homology, that is, it is \textbf{exact}:
-  \begin{itemize}
-    \item $\ker(p_*) = \im(i_*)$
-    \item $\ker(i_*) = \im(\delta)$
-    \item $\ker(\delta) = \im(p_*).$
-  \end{itemize}
-\end{enumerate}
+    \item with trivial homology, that is, it is \textbf{exact}:
+    \begin{itemize}
+      \item $\ker(p_*) = \im(i_*)$
+      \item $\ker(i_*) = \im(\delta)$
+      \item $\ker(\delta) = \im(p_*).$
+    \end{itemize}
+  \end{enumerate}
+\end{thm}
+\begin{proof}
+  Please refer to~\cite{Hatcher}, p.117, theorem 2.16.
+\end{proof}
 
 Then has hypothesis.  A must
 
@@ -1363,6 +1368,53 @@ $$H_m(S^0) \isom
 \mydate{d19}{17}{3}{2017}
 
 \mydate{d20}{20}{3}{2017}
+
+Applied to $0 \to C_0(A) \into C_0(X) \onto C_0(X,A) \to 0$,
+
+we have the long exact sequence again.
+
+True for $\rhoml$.  So the previous stuff we did is true for reduced homology too!
+
+Note $\rhoml(X) \isom \rhoml(X, \{x\})$ for any $x \in X$.
+
+If $B \subset A \subset X$, then
+$H_n(A,B) \to H_n(X,B) \to H_n(X,A) \to$ ...
+
+Note that $H_n(X) = H_n(X, \null)$.
+
+Excision
+-----------
+(NOT the integers)
+If $Z \subset A \subset X$
+Then $H_n(X \minus Z, A \minus Z) \isomto H_n(X, A)$
+-----------------
+Let $B = X \minus Z$
+$\text{int}(A) + \text{int}(B) = X$
+$H_n(B, A \cap B)$
+
+\begin{defn}
+  We say that two cycles $x, y \in C_n$ are \de{homologous} (denoted $x~y$) if their difference is a boundary.  (Note, they need not be closed)
+\end{defn}
+\begin{example}
+  \includegraphics[scale=0.4]{images/homologous}
+
+  In $C_1(X,A)$, consider $x$ and $y$ are the same in $X \minus A$, but different in $A$.  Then $x ~ a+b = a  = a+c ~ y$.
+\end{example}
+
+Let $C^U_0(X)$ for $U = \{U_i\}$ an open cover be the subcomplex of $C_0(X)$ consisting of all chains $\sigma$ s.t. $\im(\sigma) \subset U_i$
+
+$C_0(U_1 +++ U_n)$
+
+Claim $C^U_0(X) \into C_0(X)$ is a homotopy equivalence.
+
+$A^0 \to B^0$ is a homotopy equivalence if it behaves like $C_0(X)$ for h.e. spaces.
+
+-----------------
+
+Two maps $f,g \from A^0 \to B^0$ are homotopic if $f - g = \delta h + h \delta$ for $h \from A^n \to B^{n+1}$ some map.  We call $f$ a homotopy equivalence if there exists $a_n$ inverse up to homotopy, that is, $k \from B^0 \to A$(def of hom equiv)
+
+
+
 
 \mydate{d21}{22}{3}{2017}
 
