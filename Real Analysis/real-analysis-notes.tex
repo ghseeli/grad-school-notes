@@ -1747,15 +1747,79 @@ Then, $F$ is increasing, right continuous, and $\mu = \mu_F$.
     on $X$. Furthermore, if $f,g \from X \to \R$ are measurable, then
     $\max(f,g)$ and $\min(f,g)$ are measurable.
   \end{prop}
-  \begin{prop}
-    Let $(X,\M)$ be a measurable space. Furthermore, for $E \in \P(X)$, let
-    $\chi_E \from X \to \{0,1\}$ be given by \[
-      \chi_E(x) =
-      \begin{cases}
+  \begin{defn}
+    Let $E \subset X$. Then \[
+      \mathbb{1}_E(x) = \chi_E(x) := \begin{cases}
         1 & x \in E \\
         0 & x \not \in E
       \end{cases}
+    \]
+    is the \de{indicator function} or \de{characteristic function} of
+    the subset $E$. 
+  \end{defn}
+  \begin{prop}
+    Let $(X,\M)$ be a measurable space. Furthermore, for $E \in
+    \P(X)$,  $\chi_E$ is measurable if and only if $E \in \M$.
+ \end{prop}
+ \subsection*{(3/14/2017) Lecture 10}
+ \begin{prop}
+   Let $(X,\M)$ be a measurable space and $(f_n)_{n \geq 1}$ be a
+   family of measurable functions $f_n \from X \to [0,\infty]$. Then, $\inf f_n$ and $\sup f_n$ are
+   measurable. Furthermore, $\lim \inf f_n$ and $\lim \sup f_n$ are measurable.
+ \end{prop}
+ \begin{proof}
+   We will present to proof for $\sup$. The proof for $\inf$ is
+   analogous. Let $f(x) = \sup_{n \geq 1} f_n(x)$. Then, take \[
+     f^{-1}((\alpha,\infty]) = \{x \in X \mid \sup_{n \geq 1} f_n(x) >
+     \alpha\} = \Union_{n \geq 1} f_n^{-1}((\alpha,\infty])
    \]
-   Then, $\chi_E$ is measurable if and only if $E \in \M$.
-  \end{prop}
+   Since the union is a union of measurable sets, we are done. \\
+
+   The proof for $\lim \inf$ and $\lim \sup$ comes from the fact that
+   $\lim \inf \mu_n = \sup_{n \geq 1} \inf{k \geq n} \mu_k$ and $\lim
+   \sup$'s analgous definition. 
+ \end{proof}
+ \begin{cor}
+   Let $(f_n)_{n \geq 1}$ be a sequence of measurable functions with
+   $f_n \from X \to [0, \infty]$. Suppose that $\forall x$, $f(x) :=
+   \lim_{n \to \infty} f_n(x)$ exists. Then, $f \from X \to
+   [0,\infty]$ is measurable.
+ \end{cor}
+ \begin{prop}
+   Let $f_n \from X \to \R$ be measurable. If $f_n(x) \to f(x)$
+   pointwise, then $f \from X \to \R$ is measurable. 
+ \end{prop}
+ \begin{prop}
+   Let $(X,\M)$ be a measurable space. Then, $E \in \M$ if and only if
+   $\chi_E$ is $(\M,\B_\R)$-measurable.
+ \end{prop}
+ \begin{defn}
+   Given $f \from X \to [0,\infty]$ measurable with $X \neq
+   \emptyset$, $f$ is called a \de{simple} function if and only if the
+   image of $f$ is a finite set not containing $\infty$ (``finite and
+   finite''). This formulation works equally well for $f$ with
+   codomain $\R$ or $\C$. 
+ \end{defn}
+ \begin{prop}
+   The following are equivalent
+   \begin{enumerate}
+   \item[(1)] $f$ is simple.
+   \item[(2)] $f$ is a finite linear combination of indicator functions.
+   \item[(3)] There exist $n \geq 1$, $E_1, \ldots, E_n$ measurable in $X$
+     forming a ``decomposition'' (weak set partition) of $X$, then
+     there exist finite values $\alpha_1, \ldots, \alpha_n$ such that
+     $f = \sum_{i=1}^n \alpha_i \chi_{E_i}$. 
+   \end{enumerate}
+ \end{prop}
+ \begin{proof}
+   \begin{itemize}
+   \item ((1) $\implies$ (3)). Let the image of $f$ be $\{\alpha_1,
+     \ldots, \alpha_n\}$ with $n \geq 1$ where all $\alpha_i$'s are
+     distinct in the codomain. Then, take $E_i = f^{-1}(\alpha_i)$ and
+     this gets us a partition of $X$. Thus, forall $x$, $f(x) =
+     \sum_{i=1}^n \alpha_i \chi_{E_i}(x)$.
+   \item ((3) $\implies$ (2)). This is trivially true.
+   \item ((2) $\implies$ (1)). Suppose
+   \end{itemize}
+ \end{proof}
 \end{document}
