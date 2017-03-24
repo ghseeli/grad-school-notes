@@ -1195,12 +1195,37 @@ Claim: $\d^2 = 0$.
 \end{defn}
 
 \begin{example}
-  $H_2^\Delta(K^2) = 0$ $H_1^\Delta(K^2) \isom \Z \dsum \Z/2\Z$
-  $H_0^\Delta(K^2) = \Z$
+  \includegraphics[scale=0.2]{images/klein-bottle-CW}
 
-  where $\Z^2 \to(overset [-1 -1; -1 1; 1 1]) \Z^3 \to(overset 0) \Z$
+  Consider $K =$ the klein bottle above.  The chain complex is
 
-  $[0 2 0]^transpose$
+  \begin{tikzcd}
+    &\Delta_2(K) \arrow[r, "\d_2"] &\Delta_1(K) \arrow[r, "\d_1"] &\Delta_0(K) \\
+    &\Z^2 \arrow[r, "M"] &\Z^3 \arrow[r, "0"] &\Z
+  \end{tikzcd}
+
+  where $M = \begin{bmatrix}
+    1 &1 \\
+    -1 &-1 \\
+    1 &-1
+  \end{bmatrix}$
+
+
+  Observe that $\d(U) = -a -b +c$
+
+  and $\d(L) = a - b - c$
+
+  and so $\d(U + L) = -2b$,
+
+  so that $-2b \sim 0$, but $b \not\sim 0$.
+
+  The matrix takes in coefficient vectors $\begin{bmatrix}c_1 \\ c_2\end{bmatrix}$ for $U$ and $L$, and spits out coefficient vectors for $a$, $b$, and $c$.
+
+  Note also that $\d_2$ is 0 because the boundary of any 1-dim chain is 0.
+
+  Finally, we compute $H_1 \isom \Z^3 / \im(\d_1) \isom <a,b,c>/<-a-b+c, a-b-c> \isom <a,b,c \st -a-b+c = 0, a-b-c = 0> \isom <a,b \st a-b-c = 0> \isom <a,b>/<-2b>$.
+
+
 \end{example}
 
 
