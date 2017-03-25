@@ -44,7 +44,7 @@
 
 \newcommand{\ov}{\overline}   \newcommand{\wt}{\widetilde}
 \newcommand{\blt}{$\bullet$}   \newcommand{\tn}{\textnormal}   \newcommand{\tb}{\textbf}   \newcommand{\mbb}{\mathbb}
-\newcommand{\bs}{\backslash}   \newcommand{\A}{\mathcal{A}}   \newcommand{\sy}{\textnormal{Syl}}   \newcommand{\size}[1]{\left| #1 \right|}
+\newcommand{\bs}{\setminus}   \newcommand{\A}{\mathcal{A}}   \newcommand{\sy}{\textnormal{Syl}}   \newcommand{\size}[1]{\left| #1 \right|}
 \newcommand{\zx}[1]{(\z/#1\z)^{\times}}   \newcommand{\zn}[1]{\z/#1\z}   \newcommand{\pr}[1]{\textbf{Problem #1.}}   \newcommand{\abc}{(\alph*)}
 \newcommand{\nsg}{\mathrel{\unlhd}}   \newcommand{\ind}{\parindent24pt}   \newcommand{\vn}{\varnothing}
 \newcommand{\ve}{\varepsilon}   \newcommand{\im}{\textnormal{im }}   \newcommand{\re}{\textnormal{Re }}   \newcommand{\mb}[1]{\mathbf{#1}}
@@ -183,7 +183,7 @@ Let $M,N$ be $R$-modules. A map $\phi : M \ra N$ is called an \tb{$\mb{R}$-modul
 Let $\phi : M \ra N$ be $R$-linear.
 \begin{enumerate}
 \item[(a)] If $M' \leq M$, then $\phi(M') \leq N$, and if $N' \leq N$, then $\phi\inv(N') \leq M$. 
-\item[(b)] (Correspondence Theorem) Assume $\phi$ is surjective. Then $\phi$ induces a bijection $\{M' \leq M \mid \ker \phi \leq M\} \ra \{N' \leq N\}, M' \mapsto \phi(M')$ with inverse $N' \mapsto \phi\inv(N')$.
+\item[(b)] (Correspondence Theorem) Assume $\phi$ is surjective. Then $\phi$ induces a bijection $\{M' \leq M \mid \ker \phi \leq M'\} \ra \{N' \leq N\}, M' \mapsto \phi(M')$ with inverse $N' \mapsto \phi\inv(N')$.
 \end{enumerate}
 \end{lemma}
 
@@ -333,7 +333,7 @@ An $R$-module $M$ is called \tb{indecomposable} if it cannot be written as the d
 
 \vs
 
-We can generalize in a straightforward way the construction of direct sums with finitely many summands: $\bigoplus_{i=1}^n M_i :+ \{(m_1,\dots,m_n) \mid m_i \in M_i\}$ (external direct sum). For $M_1,\dots,M_n \leq M$, $M = \bigoplus_{i=1}^n M_i$ (internal direct sum) iff $M = \sum_{i=1}^n M_i$ and $M_i \cap \sum_{1 \leq j \leq n, j \ne i} M_j = \{0\}$.
+We can generalize in a straightforward way the construction of direct sums with finitely many summands: $\bigoplus_{i=1}^n M_i := \{(m_1,\dots,m_n) \mid m_i \in M_i\}$ (external direct sum). For $M_1,\dots,M_n \leq M$, $M = \bigoplus_{i=1}^n M_i$ (internal direct sum) iff $M = \sum_{i=1}^n M_i$ and $M_i \cap \sum_{1 \leq j \leq n, j \ne i} M_j = \{0\}$.
 
 \vs
 
@@ -405,7 +405,7 @@ These isomorphisms are as abelian groups for arbitrary rings and as $R$-modules 
 \begin{defn*}
 Let $M$ be an $R$-module. Elements $m_1,\dots,m_n \in M$ are called \tb{linearly independent} if for all $r_1,\dots,r_n \in R$, we have that 
 	\[\sum_{i = 1}^n r_i m_i = 0 \iff r_1 = r_2 = \dots = r_n = 0 \]
-More generally, a subset $S \sub M$ is called \tb{lienarly independent} if every finite subset of $S$ is linearly independent. 
+More generally, a subset $S \sub M$ is called \tb{linearly independent} if every finite subset of $S$ is linearly independent. 
 \end{defn*}
 
 \vs
@@ -499,7 +499,7 @@ For any ring $R$ any $n \in \N$, the map $\alpha : \tn{End}_R(R^n) \ra M_N(R\op)
 \vs
 
 \begin{defn}
-The \tb{dual} $M^*$ of the $R$-module $M$ is defined as $M^* :+ \hom_R(M,R)$, where we think of $R$ as a left $R$-module. By 3.1.10, $M^*$ is an abelian group and is an $R$-module if $R$ is commutative. 
+The \tb{dual} $M^*$ of the $R$-module $M$ is defined as $M^* := \hom_R(M,R)$, where we think of $R$ as a left $R$-module. By 3.1.10, $M^*$ is an abelian group and is an $R$-module if $R$ is commutative. 
 \end{defn}
 
 \vs
@@ -1603,5 +1603,227 @@ Note that this covers all cases when $n \leq 4$ except $(n,\deg \mu_{A}) = (4,2)
 \end{enumerate}
 \end{remark}
 
+
+
+
+
+\chapter{Jordan Canonical Form}
+
+
+The general assumptions of IV.2 are kept in this chapter ($A \in M_n(F), R = F[x]$, etc.). Additionally, we assume that $\Chi_A$ splits over $F$, i.e., $\Chi_A = \prod_{i=1}^s (x-\lambda_i)^{m_i}$, where $\lambda_1,\dots,\lambda_s \in F$, $m_i \in \N$, and $\sum_{i=1}^s m_i = n$. $m_i$ is called the (algebraic) \tb{multiplicity} of the root $\lambda_i$ of $\Chi_a$. \\
+
+Note that our extra assumption is satisfied for all for all $A \in M_n(F)$ when $F$ is an algebraically closed field, e.g., $F = \C$. Note also that, by 4.1.12, $\Chi_A$ splits over $F \iff \mu_A$ splits over $F$. In this case,
+	\[\mu_A = \prod_{i=1}^s (x-\lambda_i)^{e_i}, \quad 1 \leq e_i \leq m_i \]
+Recall from IV.1 that we have an $R$-module isomorphism $\psi : {_AV} \ra \bigoplus_{I=1}^m R/(a_i)$ such that $\psi|_{V_i} : V_i \ra R/(a_i)$ is also an $R$-linear isomorphism, where $V_i := \psi\inv(R/(a_i)) \leq {_AV}$ and ${_AV} = \bigoplus_{i=1}^m V_i$. 
+
+\vs
+
+\begin{remark*}
+A subspace $W$ of $V$ is an $R$-submodule of $V$ if and only if $W$ is $A$-invariant. 
+\end{remark*}
+
+\vs
+
+Consider the following ordered basis of $R/(a_i)$: $\ov{1} = 1 + (a_i), \ov{x} = x + (a_i),\dots, \ov{x}^{d-1} = x^{d-1} + (a_i)$, where $d = \deg a_i$. If $v := \psi\inv(\ov{1})$, then we also get the corresponding basis of $V_i$: $v, Av, \dots, A^{d-1}v$ (so $V_i$ is an $A$-cyclic subspace of $V$). If we write $a_i = \sum_{i=0}^{d-1} a_i x^i + x^d$, then $\ov{x}^d = -\sum_{i=0}^{d-1} c_i \ov{x}^i$ and $C_{a_i}$ is the matrix describing $L_A|_{V_i}$ with respect to the basis $v,Av,\dots,A^{d-1}v$ of $V$. IF we instead use the basis $A^{d-1},A^{d-2},\dots,Av,v$, then $L_A|_{V_i}$ is described by the matrix
+	\[C_{a_i}^t = \mymatrix{cccc}{-c_{d-1} & 1 & \cdots & 0 \\ -c_{d-2} & 0 & \ddots & \vdots \\ \vdots & \vdots & \ddots & 1 \\ -c_0 & 0 & \cdots & 0} \]
+If $a_i = x^d$, then this matrix is $J_d(0)$, the Jordan block of size $d$ corresponding to $\lambda = 0$. 
+
+\vs
+
+\begin{defn}
+A \tb{Jordan block} of size $d$ in $M_d(F)$ corresponding to $\lambda \in F$ is the matrix
+	\[J_d(\lambda) := \mymatrix{cccc}{\lambda & 1 & \cdots & 0 \\ 0 & \lambda & \ddots & \vdots \\ \vdots & \ddots & \ddots & 1 \\ 0 & 0 & \cdots & \lambda} = \lambda I_d + J_d(0), \]
+i.e., the matrix with $\lambda$'s on the main diagonal, $1$'s on the super diagonal, and $0$'s elsewhere. 
+\end{defn}
+
+\vs
+
+\begin{lemma}
+For $J = J_d(\lambda)$, $\mu_J = \Chi_J = (x-\lambda)^d$.
+\end{lemma}
+
+\begin{proof}
+By expanding along the first column of $xI_d - J$, we see that $\Chi_J = \det(xI_d - J) = (x-\lambda)^d$. Since $\mu_J \mid \Chi_J$, we have $\mu_J = (x-\lambda)^e$ for some $1 \leq e \leq d$. We show that $(x-\lambda)^k(J) \ne 0$ for all $k < d$. Note that $(J-\lambda I_d)e_i = e_{i-1}$ for all $1 \leq i \leq d$. If $k < d$, then $(J-\lambda I_d)e_{k+1} = e_1 \ne 0$, so $(J-\lambda I_d)^k \ne 0$. Consequentially, $\mu_J = (x-\lambda)^d = \Chi_J$. 
+\end{proof}
+
+\vs
+
+\begin{lemma}
+The following are equivalent for any $A \in M_n(F)$:
+\begin{enumerate}
+\item[(i)] $A$ is nilpotent, i.e., $A^k = 0$ for some $k \in \N$. 
+\item[(ii)] $\Chi_A = x^n$.
+\item[(iii)] $A^n = 0$.
+\item[(iv)] All eigenvalues of $A$ are 0 (we assume $\Chi_A$ splits over $F$). 
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+$[(i) \implies (ii)]$ $A^k = 0 \implies x^k \in \ker \phi_A = (\mu_A) \implies \mu_A \mid x^k$, and $x$ is prime in $F[x]$, so $\mu_A = x^\ell$ for some $1 \leq \ell \leq n$. Because $\mu_A$ and $\Chi_A$ have the same prime factors, $\Chi_A = x^n$. \\
+
+$[(ii) \implies (iii)]$ Cayley Hamilton Theorem. \\
+
+$[(iii) \implies (i)]$ Clear. \\
+
+$[(ii) \iff (iv)]$ This follows from the fact that the roots of $\Chi_A$ are precisely the eigenvalues of $A$. 
+\end{proof}
+
+\vs
+
+Because $\Chi_A$ splits over $F$, we can write $\Chi_A = \prod_{i=1}^s (x-\lambda_i)^{m_i}$, where $x-\lambda_1,\dots,x-\lambda_s$ are the distinct monic prime divisors of $\Chi_A$. By 4.1.11 (a), $\Chi_A = a_1 \cdots a_m$, so all prime divisors of the invariant factors are of the form $x-\lambda_k$ for some $1 \leq k \leq s$. These primes $x-\lambda_k$ then correspond to the elementary divisors $p_k$ in 3.3.15 (invariant factors $\ra$ elementary divisors). \\
+
+It follows that the \emph{elementary divisors} of ${_AV}$ (also the elementary divisors of $A$) are of the form $(x-\lambda_k)^{e_{k,i}}$ where $1 \leq k \leq s$, $1 \leq e_{k,i} \leq n_k$. Recall the $R$-module isomorphism 
+	\[\psi : {_AV} \ra \bigoplus_{i=1}^m R/(a_m) \cong \bigoplus_{k=1}^s \bigoplus_{i} R/((x-\lambda_k)^{e_{k,i}}) \]
+Then each $R/((x-\lambda_k)^{e_{k,i}})$ is isomorphic to some submodule $V_{k,i}$ of ${_AV}$, hence ${_AV} = \bigoplus_{k,i} V_{k,i}$. Of course, the fact that $V_{k,i}$ is an $R$-submodule of ${_AV}$ equivalently means that $V_{k,i}$ is an $A$-invariant subspace of $V$. \\
+
+Our next goal: Show that $L_A|_{V_{k,i}}$ is described by a Jordan block $J_{e_{k,i}}(\lambda_k)$ with respect to a suitable basis of $V_{k,i}$. Consequentially, we can then describe $L_A$, with respect to a suitable basis (a "Jordan basis") in the form $\bigoplus_{k=1}^s \bigoplus_i j_{e_{k,i}}(\lambda_k)$, which will be called the \emph{Jordan Canonical Form} of $A$. 
+
+\vs \vs \ \\ \ \\
+
+\begin{lemma}\ 
+\begin{enumerate}
+\item[(a)] For all $\ell \in \N$ and all $\lambda \in F$, 
+	\[\gen{1,x,\dots,x^\ell}_F = \gen{1,x-\lambda,\dots,(x-\lambda)^\ell}_F \]
+in $R = F[x]$.
+\item[(b)] $\ov{1},\ov{x-\lambda},\dots,\ov{x-\lambda}^\ell$ is an $F$-basis of $F[x]/((x-\lambda)^{\ell+1})$. 
+\end{enumerate}
+\end{lemma}
+
+\begin{proof} \ 
+\begin{enumerate}
+\item[(a)] The inclusion $\supseteq$ is clear. To prove the other inclusion, we show by induction on $0 \leq k \leq \ell$ that $x^k \in \gen{1,x-\lambda,\dots,(x-\lambda)^\ell}_F =: N$. The base case $k = 0$ is clear. For the induction step, we have $0 \leq k \leq \ell$, and we assume $(1,x,\dots,x^{k-1} \in N$. Then
+	\[x^{k} = x^{k} + \sum_{j=0}^{k-1} {k \choose j} x^j (-\lambda)^{k-j} - \sum_{j=0}^{k-1} {k \choose j} x^j (-\lambda)^{k-j} = (x-\lambda)^{k+1} - \sum_{j=0}^{k-1} {k \choose j}(-\lambda)^{k-j} x^j \in N \]
+
+\item[(b)] By 4.1.2, $\ov{1},\ov{x},\dots,\ov{x}^\ell$ is an $F$-basis of $M := F[x]/(x-\lambda)^{\ell+1}$, and by (a) we get 
+	\[\gen{1,x,\dots,x^\ell}_F = \gen{1,x-\lambda,\dots,(x-\lambda)^\ell}_F \implies \gen{\ov{1},\ov{x},\dots,\ov{x}^\ell}_F = \gen{\ov{1},\ov{x-\lambda},\dots,\ov{x-\lambda}^\ell}_F \]
+Since $\{\ov{1},\ov{x-\lambda},\dots,\ov{x-\lambda}^\ell\}$ is a spanning set with $\ell+1 = \dim M$ elements, it is an $F$-basis of $M$. 
+\end{enumerate}
+\end{proof}
+
+\vs
+
+We now wish to describe the $F$-linear transformation of $M$ (see proof above) given by left multiplication by $x$ with respect to the basis $\ov{x-\lambda}^\ell,\dots,\ov{x-\lambda},\ov{1}$. For $1 \leq k \leq \ell$,
+	\[x \cdot \ov{(x-\lambda)}^k = (x-\lambda + \lambda) \cdot \ov{(x-\lambda)}^k = \lambda \ov{(x-\lambda)}^k + \ov{x-\lambda}^{k+1}\]
+Noting that $\ov{x-\lambda}^{\ell+1} = 0$ in $M$, the matrix is
+	\[\mymatrix{cccc}{\lambda & 1 & \cdots & 0 \\ 0 & \lambda & \ddots & \vdots \\ \vdots & \vdots & \ddots & 1 \\ 0 & 0 & \cdots & \lambda} = J_{\ell+1}(\lambda) \]
+Returning the situation in which $M = R/(x-\lambda_k)^{e_{k,i}}$, if we set $v := \psi\inv(\ov{1})$, then $A^{e_{k,i}-1} v, A^{e_{k,i}-2}v, \dots, v$ is a basis of $V_{k,i} = \psi\inv(M)$ corresponding to the basis $\ov{x-\lambda_k}^{e_{k,i}-1},\ov{x-\lambda_k}^{e_{k,i}-2},\dots,\ov{1}$ of $M$. \\
+
+In summary, the matrix describing $L_A|_{V_{k,i}}$ with respect to this basis is $J_{e_{k,i}}(\lambda_k)$. 
+
+\vs \ \\ \ \\ \ \\ \ \\
+
+\begin{theorem}[Existence and Uniqueness of the JCF] Let $A \in M_n(F)$, and suppose that $\Chi_A$ splits over $F$.
+\begin{enumerate}
+\item[(a)] $A$ is similar in $M_n(F)$ to precisely one (up to permutation of the Jordan blocks) Jordan matrix
+	\[J = \bigoplus_{k=1}^s \bigoplus_{i=1}^{n_k} J_{e_{k,i}}(\lambda_k), \]
+where $\lambda_1,\dots,\lambda_s$ are the eigenvalues of $A$. Moreover, $\sum_{i=1}^{n_k} e_{k,i} = m_k$, where $m_k$ is the multiplicity of $\lambda_k$ as a root of $\Chi_A$, and $\sum_{k=1}^s \sum_{i=1}^{n_k} e_{k,i} = n$.
+
+\item[(b)] If we set $e_k := \max\{e_{k,1},e_{k,2},\dots,e_{k,n_k}\}$, so $e_k$ is the size of the largest $\lambda_k$-block, then $\mu_A = \prod_{k=1}^s (x-\lambda_k)^{e_k}$. 
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}\ 
+\begin{enumerate}
+\item[(a)] If we choose a basis of $V$ which is a disjoint union of bases of the $V_{k,i}$ as in the discussion above, then $L_A$ can be described with respect to this basis by $J = \bigoplus_{k,i} J_{e_{k,i}}(\lambda_k)$. The "Moreover..." statement is clear from this construction. \\
+
+We now show uniqueness of the JCF. $A \sim J \overset{4.1.4}{\implies} {_AV} \sim {_JV}$ as $R$-modules, where $_JV \overset{4.1.10}{\cong} \bigoplus_{k,i} {_{J_{e_{k,i}}(\lambda_k)} F^{e_{k,i}}}$. By 4.2.2, $C := J_{e_{k,i}}(\lambda_K)$ has a single invariant factor, namely $\Chi_C = \mu_C = (x-\lambda_k)^{e_{k,i}}$, which is a prime power in $F[x]$, hence this is the only elementary divisor of $C$, so ${_AV} \cong {_V} \cong \bigoplus_{k,i} R/((x-\lambda_k)^{e_{k,i}})$. Therefore, $((x-\lambda_k)^{e_{k,i}} \mid 1 \leq k \leq s, 1 \leq i \leq n_k)$ is the sequence of elementary divisors of $A$ (i.e., of ${_AV}$), so the uniqueness of elementary divisors implies the uniqueness of the Jordan blocks.
+\item[(b)] For $f(x) \in F[x]$, 
+\begin{align*}
+f \in (\mu_A) \iff f \in (\mu_J) \iff \bigoplus_{k,i} f(J_{e_{k,}}(\lambda_k)) = 0 &\iff \tn{ each } f(J_{e_{k,}}(\lambda_k)) = 0 \\
+& \iff f \in \mu_{J_{e_{k,}}(\lambda_k)} = ((x-\lambda_k)^{e_{k,i}}) \tn{ for all }k,i \\
+&\iff (x-\lambda_k)^{e_k} \mid f \tn{ for all } k \\
+&\iff \prod_{k=1}^s (x-\lambda_k)^{e_k} \mid f, 
+\end{align*} 
+since the $(x-\lambda_k)$'s are distinct primes in $F[x]$. Therefore $\mu_A = \prod_{k=1}^s (x-\lambda_k)^{e_k}$. 
+\end{enumerate}
+\end{proof}
+
+\vs
+
+\begin{defn}
+The matrix $J = \bigoplus_{k,i} J_{e_{k,i}}(\lambda_k)$ is called the \tb{Jordan Canonical Form} (JCF) of $A$. By 4.2.5, every $A \in M_n(F)$ for which $\Chi_A$ splits over $F$ is similar to precisely one (up to permutation of the Jordan blocks) matrix $A'$ in JCF, called the JCF of $A$.
+\end{defn}
+
+\vs
+
+\begin{remark}
+If $\Chi_A$ splits over $F$, then $A$ is diagonalizable over $F$ if and only if its JCF is diagonal, since every diagonal matrix is in JCF.
+\end{remark}
+
+\vs
+
+\begin{proposition}
+For any $A \in M_n(F)$, $A$ is diagonalizable over $F$ if and only if $\mu_A$ splits over $F$ and is \tb{separable}, i.e., $\mu_A$ has no multiple roots. 
+\end{proposition}
+
+\begin{proof}
+$[\implies]$ If $A$ is similar to a diagonal matrix $D = \bigoplus_{k=1}^s \lambda_k I_{m_k}$, then $\mu_A = \mu_D = \prod_{k=1}^s (x-\lambda_k)$. $[\impliedby]$ If $\mu_A$ splits over $F$, then by 4.1.12 (b) $\Chi_A$ splits over $F$, hence $A$ has a JCF $J \in M_n(F)$. Now $A \sim J \implies \mu_A = \mu_J = \prod_{k=1}^s (x-\lambda_k)^{e_k}$ by 4.2.5 (b), and $\mu_A$ is separable, so all $e_k = 1 \implies$ all Jordan blocks have size 1. Thus $J$ is diagonal. 
+\end{proof}
+
+\vs
+
+\begin{proposition}
+If $A \in GL_n(\C)$ has finite order, then $A$ is diagonalizable.
+\end{proposition}
+
+\begin{proof}
+If $A^m = I_n$ for some $m \in \N$, then $\mu_A \mid x^m-1$. Since $x^m-1$ is separable, $\mu_A$ is separable, and so the JCF of $A$ is diagonal. 
+\end{proof}
+
+\vs
+
+\begin{remark*}
+If you wish to compute the JCF of $A$:
+\begin{enumerate}
+\item[(1)] Compute $\Chi_A = \det(xI_n - A)$.
+\item[(2)] Find the distinct roots $\lambda_1,\dots,\lambda_s$ of $\Chi_A$.
+\item[(3)] Compute for each $1 \leq k \leq s$ the number $j_{\lambda_k} = n_k$ of Jordan $\lambda_k$-blocks. 
+\end{enumerate}
+\end{remark*}
+
+\vs
+
+\begin{lemma}
+For any $\lambda \in F$, $j_\lambda = n - \rk(A - \lambda I_n) = \tn{null}(A - \lambda I_n) = \dim E_\lambda$, where $E_\lambda$ is the $\lambda$-eigenspace. 
+\end{lemma}
+
+\begin{proof}
+Let $J \sim A$ by the JCF of $A$ so that $A - \lambda I_n \sim J - \lambda I_n$. If $\lambda$ is not an eigenvalue of $A$, then clearly $\rk(A - \lambda I_n) = n$ and $j_\lambda = 0 = n - n$. Assume $\lambda = \lambda_j$ for some $1 \leq j \leq s$. Then
+\begin{align*}
+\rk(A - \lambda I_n) = \rk(J - \lambda I_n) &= \sum_{k=1}^s \sum_{i=1}^{j_{\lambda_k}} \rk(J_{e_{\lambda_k,i}}(\lambda_k-\lambda)) \\
+&= \sum_{j \ne k = 1}^{s} \sum_{i=1}^{j_{\lambda_k}} e_{\lambda_k,i} \\
+&= n - \sum_{i=1}^{j_\lambda} 1 \\
+&= n - j_\lambda
+\end{align*}
+\end{proof}
+
+\vs
+
+\begin{remark}
+If $m_\lambda \leq 4$ and $(m_\lambda,j_\lambda) \ne (4,2)$, then all of the $\lambda$-blocks are determined by $j_\lambda$ and $m_\lambda$. 
+\end{remark}
+
+\vs
+
+For $\lambda$ an eigenvalue of $A$ and $e \in \N$, define the number $r_{e,\lambda} := \rk(A-\lambda I_n)^e = \rk(J-\lambda I_n)^e$, where $J$ is the JCF of $A$. We also define $r_{0,\lambda} := n$. Define also the number $\ell_{e,\lambda}$ to be the number of $\lambda$-blocks of size $e$ in $J$. 
+
+\vs
+
+\begin{lemma}
+For all $e \in \N$, $\ell_{e,\lambda} = r_{e-1,\lambda} - 2 r_{e,\lambda} + r_{e+1,\lambda}$. 
+\end{lemma}
+
+\begin{proof}
+Note that $\tn{null}(A-\lambda I_n)^e = \sum_{i=1}^{j_\lambda} \min\{e_{\lambda,i},e\} \implies \rk(A-\lambda I_n) = n - \sum_{i=1}^{j_\lambda} \min\{e_{\lambda,i},e\}$. Therefore, $r_{e-1,\lambda} - 2 r_{e,\lambda} + r_{e+1,\lambda}$ can be written as
+\begin{align*}
+& \quad  [n - \tn{null}(A-\lambda I_n)^{e-1}] - 2 [n- \tn{null}(A-\lambda I_n)^e] + [n-\tn{null}(A-\lambda I_n)^{e+1}] \\
+&= 2 \tn{null}(A-\lambda)^e - \tn{null}(A-\lambda I_n)^{e-1} - \tn{nul}(A-\lambda I_n)^{e+1} \\
+&= 2\left[ \sum_{k=1}^e \ell_{k,\lambda} k + \sum_{k \geq e+1} \ell_{k,\lambda} e\right] - \left[ \sum_{k=1}^{e-1} \ell_{k,\lambda} k + \sum_{k \geq e} \ell_{k,\lambda} (e-1) \right] - \left[\sum_{k=1}^e \ell_{k,\lambda} k + \sum_{k \geq e+1} \ell_{k,\lambda} (e+1)\right] \\
+&= \ell_{e,\lambda}e - \ell_{e,\lambda} \\
+&= \left[2 \sum_{k=1}^e \ell_{k,\lambda} k - \sum_{k=1}^{e-1} \ell_{k,\lambda} k - \sum_{k=1}^e \ell_{k,\lambda} k\right] + \left[2 \sum_{k \geq e+1} \ell_{k,\lambda} e - \sum_{k \geq e} \ell_{k,\lambda} (e-1) - \sum_{k \geq e+1} \ell_{k,\lambda} (e+1)\right] \\
+&= \ell_{e,\lambda} e + \left( - \ell_{e,\lambda}e + \ell_{e,\lambda} \right) \\
+&= \ell_{e,\lambda}
+\end{align*}
+\end{proof}
 
 \end{document} 
