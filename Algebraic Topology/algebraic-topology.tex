@@ -1445,6 +1445,85 @@ Two maps $f,g \from A^0 \to B^0$ are homotopic if $f - g = \delta h + h \delta$ 
 
 \mydate{d22}{24}{3}{2017}
 
+Fixed $V$ f.d. R-VS
+
+LC(V) \onacts S
+
+S is the "Slicer".  It cuts up a linear simplex.  It barycenter subdivides it!  It is defined recursively.
+
+S(\lambda) = b_\lambda(S \d \lambda)
+\begin{example}
+  What is S(empty set)?
+
+  S(\null) = \null by definition
+\end{example}
+\begin{example}
+  What is S(point)?
+
+  S([v0]) = b(S \d [v0]) = b(S \null) = b(\null) = [b] = [v0]
+\end{example}
+\begin{example}
+  What is S(interval)?
+
+  S(I) = b(S \d I) = b(S ([v0] - [v1])) = b([v1] - [v0]) = [b,v1] - [b,v0].
+\end{example}
+
+Thanks to using the $\d$ operator in the definition, the $S$ function maintains orientation!  Note also that $S$ is linear automatically, as long as we define $S(k\null) := \null$ for all $k \in \Z$.
+
+\begin{thm}
+  $S$ is a chain map.  That is, $\d S = S \d$.
+\end{thm}
+\begin{proof}
+  ($\lambda$ is the input variable)
+
+  $\d S = \d b (S \d \lambda) = S \d \lambda - b \d S \d \lambda$
+
+  apply induction on $n$
+
+  $= S \d \lambda - b S \d^2 \lambda = S \d \lambda$.
+\end{proof}
+\begin{defn}
+  T \from LC_n(V) \to LC_{n+1}(V)
+
+  T\null = 0
+
+  T\lambda = b(\lambda - T \d \lambda)
+\end{defn}
+\begin{example}
+  pretty picture
+\end{example}
+\begin{thm}
+  $\d T + T \d = 1 - S$
+\end{thm}
+\begin{proof}
+  Induct on $n$.
+  \begin{itemize}
+    \item Base Case ($n = -1$):
+
+    $\d T + T \d(\null) = 0$
+
+    \item Inductive Step ($n > -1$):
+
+    $\d T \lambda = \d b(\lambda - T \d \lambda)
+    = \lambda - T \d \lambda - b \d(\lambda - T \d \lambda)
+    = \lambda - T \d \lambda - b (S \d \lambda)
+    = \lambda - T \d \lambda - S \lambda $
+  \end{itemize}
+  Note since $T \null = 0$ still works on $LC$ without $LC_{-1}$.
+\end{proof}
+
+\sigma \from \delta^n \to X
+
+$S \sigma = \sum_{} \sigma |_{\text{simplices in subdivision}} = \sigma_{\#} S \delta^n$
+
+again,
+$S \d = \d S$ and $\d T + T \d = 1 - S$
+
+$S \from C_n(X) \to C_n(X)$ inducing isomorphism on homology.
+
+
+
+
 \mydate{d23}{27}{3}{2017}
 
 \mydate{d24}{29}{3}{2017}
