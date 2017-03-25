@@ -2001,8 +2001,62 @@ to check that the new definition agrees with the old one.
     and then take sup over $\phi$ to get \[
       \int f + \int g \leq \int(f+g).
     \]
-    For the other inequality, take $0 \leq \phi \leq f+g$ for $\phi$
-    simple. Then, ... (The proof in my notes does not make sense.)
+    For the other inequality, we will need the following lemma
+    \subsection*{(3/21/2017) Lecture 12}
+    \begin{lem}
+  Let $f \in L^+$. Then, if $\phi_n$ is a sequence of simple functions
+  with, for all $x$, $\phi_n(x)$ a non-decreasing sequence and
+  $\lim_{n \to \infty} \phi_n(x) = f(x)$, then \[
+    \lim_{n \to \infty} \int \phi_n d\mu = \int f d\mu
+  \]
+  \end{lem}
+  Then, take $\phi_n$ a non-decreasing sequence converging to $f$ and
+  $\psi_n$ a non-decreasing sequence converging to $g$. Then, $\phi_n
+  + \psi_n$ simple functions converge to $f+g$ and so we apply the
+  lemma to get
+  \begin{align*}
+    \int (f+g) d\mu & = \lim_{n \to \infty} \int (\phi_n+\psi_n) \\
+                    & = \lim_{n \to \infty}\left( \int \phi_n + \int \psi_n \right)\\
+    & = \lim_{n \to \infty} \int \phi_n + \lim_{n \to \infty} \int
+      \psi_n \\
+    & = \int f + \int g
+  \end{align*}
   \end{enumerate}
 \end{proof}
+Of course, we need to prove this lemma, so we seek to do that now.
+\begin{prop}
+  Let $\phi$ be simple in $L^+$. Then,
+  \begin{enumerate}
+  \item \[
+      \nu_\phi(E) = \int_E \phi d\mu := \int_X \phi \chi_E d\mu
+    \]
+    is a measure.
+  \item For all $\psi$ simple in $L^+$, \[
+      \int \psi d\nu_\phi = \int \psi \phi d \mu
+    \]
+  \end{enumerate}
+  \begin{proof}
+    (a) is trivial. For (b), we must call Bootstrap Bill.
+    \begin{itemize}
+    \item ($\psi = \chi_E$). If $\psi = \chi_E$, then $\psi = 1 \cdot
+      \chi_E + 0 \cdot \chi_{E^c}$ is a good decomposition of
+      $\psi$. Thus, \[
+        \int \psi d\nu_\phi = \nu_\phi(E) = \int \chi_E \phi d \mu =
+        \int \psi \phi d\mu
+      \]
+    \item (General $\psi$). Let $\psi$ have a good decomposition $\psi
+      = \sum_{i=1}^n a_i \chi_{E_i}$ for $a_i \in [0,\infty)$ and
+      $\Dunion E_i = X$. By definition, we get that
+      \begin{align*}
+        \int \psi d\nu_\phi & = \sum_{i=1}^n a_i \int \chi_{E_i} d
+                         \nu_\phi \\
+                       & = \sum a_i \int \chi_{E_i} \phi d\mu \\
+                       & = \int \left( \sum a_i \chi_{E_i} \right)
+                         \phi d\mu \\
+        & = \int \psi \phi d\mu
+      \end{align*}
+    \end{itemize}
+
+  \end{proof}
+\end{prop}
 \end{document}
