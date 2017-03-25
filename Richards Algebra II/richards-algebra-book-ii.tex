@@ -182,7 +182,7 @@ Let $M,N$ be $R$-modules. A map $\phi : M \ra N$ is called an \tb{$\mb{R}$-modul
 \begin{lemma}
 Let $\phi : M \ra N$ be $R$-linear.
 \begin{enumerate}
-\item[(a)] If $M' \leq M$, then $\phi(M') \leq N$, and if $N' \leq N$, then $\phi\inv(N') \leq M$. 
+\item[(a)] If $M' \leq M$, then $\phi(M') \leq N$, and if $N' \leq N$, then $\phi\inv(N') \leq M$.
 \item[(b)] (Correspondence Theorem) Assume $\phi$ is surjective. Then $\phi$ induces a bijection $\{M' \leq M \mid \ker \phi \leq M'\} \ra \{N' \leq N\}, M' \mapsto \phi(M')$ with inverse $N' \mapsto \phi\inv(N')$.
 \end{enumerate}
 \end{lemma}
@@ -1289,7 +1289,7 @@ $V$ thus becomes an $R$-module via $\phi_A$ with $f \cdot v = f(A) v$ (see 3.1.2
 \section{Rational Canonical Form}
 
 \begin{remark}[+ Definition]
-$\ker \phi_A \ne R$, since $\phi_A \ne 0$, and $\ker \phi_A \ne (0)$ since $\phi_A$ is not injective as $F[x]$ has infinite $F$-dimension while $F[A]$ has dimension at most $n^2 < \infty$. \\
+$\ker \phi_A \ne R$, since there exists an element $1 \in F[x]$ that does get mapped to 0.  $\phi_A \ne 0$, and $\ker \phi_A \ne (0)$ since $\phi_A$ is not injective as $F[x]$ has infinite $F$-dimension while $F[A]$ has dimension at most $n^2 < \infty$. \\
 
 Because $R$ is a PID, we can write $\ker \phi_A = (\mu_A)$ for some $\mu_A \in F[x]\bs F$, called the \tb{minimal polynomial of $A$}. We take $\mu_A$ to be monic, so that $\mu_A$ is the unique monic polynomial of minimal degree satisfying $\mu_A(A) = 0 \in M_n(F)$.
 \end{remark}
@@ -1337,12 +1337,12 @@ For $A,B \in M_n(F)$, $_AV$ and $_BV$ are isomorphic as $R$-modules if and only 
 \end{lemma}
 
 \begin{proof}
-First, assume there exists an $R$-module isomorphism $T : {_AV} \ra {_BV}$. In particular, $T$ is an $F$-linear isomorphism $V \ra V$, so we may think of $T$ as an element of $GL_n(F)$. Since $T$ is $R$-linear, \\ $T(Av) = T(x \cdot v) = x \cdot T(v) = B T(v)$ for all $v \in V$, hence $TA = BT \implies A = T\inv BT$. \\
+First, assume there exists an $R$-module isomorphism $L_T : {_AV} \ra {_BV}$. In particular, $L_T$ is an $F$-linear isomorphism $V \ra V$, so we may think of $T$ as an element of $GL_n(F)$. Since $L_T$ is $R$-linear, \\ $(TA)(v) = T(Av) = T(x \cdot v) = x \cdot T(v) = B T(v) = (BT)(v)$ for all $v \in V$, hence $TA = BT$ and so $A = T\inv BT$. \\
 
 Now suppose $B = TAT\inv$ for some $T \in GL_n(F)$. Again, we may think of $T$ as a bijective linear map $V \ra V, v \mapsto Tv$. It remains to show that $T$ is $R$-linear as a map $_AV \ra _BV$. Note that
-	\[T(x \cdot v) = T(Av) = (TAT\inv)(Tv) = B(Tv) = x \cdot T(v) \quad \tn{for all } v \in V \]
+	\[T(x \cdot v) = T(Av) = (TA)v = (TA)(T\inv T)(v) = (TAT\inv)(T)(v) = BT(v) = x \cdot T(v) \quad \tn{for all } v \in V \]
 Inductively, we get
-	\[T(x^k \cdot v) = T((x x^{k-1}) \cdot v) = B T(x^{k-1} \cdot v) \overset{I. H.}{=} B(B^{k-1} T(v)) = B^k T(v) = x^{k} \cdot T(v) \quad \forall \ v \in V \]
+	\[T(x^k \cdot v) = T(x x^{k-1}v) = T(x (x^{k-1}v)) = xT(x^{k-1}v) \overset{I. H.}{=} xx^{k-1}T(v) = x^k T(v)  \quad \forall \ v \in V \]
 Since $T$ is also $F$-linear, we have $T(f \cdot v) = f \cdot T(v)$ for all $f \in R$ and all $v \in V$ to complete the proof.
 \end{proof}
 
@@ -1352,15 +1352,18 @@ Since $T$ is also $F$-linear, we have $T(f \cdot v) = f \cdot T(v)$ for all $f \
 \begin{enumerate}
 \item[(a)] There exist unique monic polynomials $a_1,a_2,\dots,a_m \in F[x]\bs F$ with $a_1 \mid a_2 \mid \dots \mid a_m$ such that
 	\[_AV \cong \bigoplus_{i=1}^m R/(a_i) \]
-\item[(b)] $a_m = \mu_A$ and $\sum_{i=1}^m \deg a_i = n$.
+\item[(b)] $a_m = \mu_A$
+\item[(c)] $\sum_{i=1}^m \deg a_i = n$
 \end{enumerate}
 \end{proposition}
 
 \begin{proof}\
 \begin{enumerate}
 \item[(a)] $_AV$ is a finitely generated torsion $R$-module, so part (a) is a special case of 3.3.17 (c). The uniqueness is established because monic polynomials in $F[x]$ are associate iff they are equal.
-\item[(b)] The isomorphism in (a) implies $\ann{R}{_AV} = \ann{R}{\bigoplus_{i=1}^m R/(a_i)} \nsg R$. $\ann{R}{_AV} = (\mu_A)$ by 4.1.3. and $\ann{R}{\bigoplus_{i=1}^m R/(a_i)} = a_m$, so $a_m = \mu_A$. Since $_AV$ and $\bigoplus_{i=1}^m R/(a_i)$ are isomorphic as vector spaces,
-	\[n = \dim_F {_AV} = \dim_F \bigoplus_{i=1}^m R/(a_i) = \sum_{i=1}^m \dim_F R/(a_i) = \sum_{i=1}^m \deg a_i \]
+\item[(b)] By 4.1.3, $$(\mu_A) = \ann{R}{_AV} = \ann{R}{\bigoplus_{i=1}^m R/(a_i)} = (a_m),$$ and since $R$ is a PID, we have $a_m = \mu_A$.
+\item[(c)] Since $_AV$ and $\bigoplus_{i=1}^m R/(a_i)$ are isomorphic as vector spaces,
+	\[n = \dim_F {_AV} = \dim_F \bigoplus_{i=1}^m R/(a_i) = \sum_{i=1}^m \dim_F R/(a_i) = \sum_{i=1}^m \dim_F F[x]/(a_i) = \sum_{i=1}^m \deg a_i \]
+by 4.1.2.
 \end{enumerate}
 \end{proof}
 
@@ -1372,13 +1375,13 @@ The monic polynomials $a_1,a_2,\dots,a_m$ in 4.1.5 (a) are called the \tb{invari
 Assume now that $a_1,_2,\dots,a_m \in F[x]$ are the invariant factors of $A \in M_n(F)$, i.e,
 	\[_AV \cong \bigoplus_{i=1}^m F[x]/(a_i) \]
 There exists an isomorphism $\psi : {_AV} \ra \bigoplus_{i=1}^m R/(a_i)$ of $R$-modules. If we define $V_i := \psi\inv(R/(a_i))$ for $1 \leq i \leq m$, then $V_i$ is an $A$-invariant subspace of $V$ as $\psi(x \cdot v) = x \cdot \psi(v)$ for all $v \in {_AV}$. Also,
-	\[V \cong \sum_{i=1}^m V_i \]
+	\[V \cong \bigoplus_{i=1}^m V_i \]
 We want to describe the $F$-linear transformation of $R/(f)$ given by multiplication by $x$ with respect to the standard basis $\ov{1},\ov{x},\dots,\ov{x}^{d-1}$ of $F[x]/(F)$ for any $f = \sum_{i=0}^d c_i x^i \in F[x]\bs F$, $\deg f = d \geq 1$.
 	\[x \cdot \ov{x}^j = \begin{cases}
 	\ov{x}^{j+1}, \quad & 0 \leq j \leq d-2 \\
 	-\sum_{i=0}^{d-1} c_i x^i, & j = d-1
 	\end{cases} \]
-So the matrix $C_f$ of this transformation with respect to $\ov{1},\ov{x},\dots,\ov{x}^{d-1}$ is
+So the matrix $C_f$ of this transformation (multiplication by $x$) with respect to $\ov{1},\ov{x},\dots,\ov{x}^{d-1}$ is
 	\[C_f = \mymatrix{cccccl}{0 & 0 & 0 & \cdots & 0 & -c_0 \\
 							  1 & 0 & 0 & \cdots & 0 & -c_1 \\
 							  0 & 1 & 0 & \cdots & 0 & -c_2 \\
@@ -1405,7 +1408,7 @@ That is, $A \sim \bigoplus_{I=1}^m C_{a_i}$.
 \end{corollary}
 
 \begin{proof}
-Recall the $R$-module isomorphism $\psi : {_AV} = \bigoplus_{i=1}^m V_i \ra \bigoplus_{I=1}^m R/(a_i)$, where $V_i = \psi\inv(R/(a_i))$ is $A$-invariant. Describe $A|_{V_i}$ with respect to a basis which corresponds to the basis $\ov{1},\ov{x},\dots,\ov{x}^{d_{i} - 1}$ of $R/(a_i)$, where $d_i := \deg a_i$. Then the corresponding matrix is $C_{a_i}$. Taking a basis for $V$ which is a disjoint union of the so constructed basis of the $V_i$'s, we get that $A$ can be described with respect to this basis (in the appropriate order) by $\bigoplus_{i=1}^m C_{a_i}$.
+Recall the $R$-module isomorphism $\psi : {_AV} = \bigoplus_{i=1}^m V_i \ra \bigoplus_{I=1}^m R/(a_i)$, where $V_i = \psi\inv(R/(a_i))$ is $A$-invariant. Describe $A$'s action on $V_i$ with respect to a basis which corresponds to the basis $\ov{1},\ov{x},\dots,\ov{x}^{d_{i} - 1}$ of $R/(a_i)$, where $d_i := \deg a_i$. Then the corresponding matrix is $C_{a_i}$. Taking a basis for $V$ which is a disjoint union of the so constructed basis of the $V_i$'s, we get that $A$ can be described with respect to this basis (in the appropriate order) by $\bigoplus_{i=1}^m C_{a_i}$.
 \end{proof}
 
 \vs
@@ -1420,10 +1423,11 @@ For $f = \sum_{i=0}^{n-1} c_i x^i + x^n \in F[x]$, we obtain
 
 \begin{proof}\
 \begin{enumerate}
-\item[(a)] Set $A = C_f$. We define an $F$-linear isomorphism $\alpha : V \ra R/(f)$ by $\alpha(e_i) = \ov{x}^{i-1}$ for $1 \leq i \leq n$. To verify that $\alpha$ is $R$-linear, it suffices to show that $\alpha(x \cdot v) = x \cdot \alpha(v)$ (see 4.1.4); in fact, it suffices to show $\alpha(x \cdot e_i) = x \cdot \alpha(e_i)$ for $1 \leq i \leq n$. If $1 \leq i \leq n-1$, then
-	\[\alpha(x \cdot e_i) = \alpha(A e_i) = \alpha(e_{i+1}) = \ov{x}^i = x \cdot \ov{x}^{i-1} = x \cdot \alpha(e_i) \]
-When $i = n$, we have
-	\[\alpha(x \cdot e_n) = \alpha(A e_n) = \alpha\left(-\sum_{j=1}^n c_j e_j \right) = -\sum_{j=1}^n c_j \alpha(e_j) = -\sum_{j=0}^{n-1} \ov{x}^j = x \cdot \ov{x}^{n-1} = x \cdot \alpha(e_n) \]
+\item[(a)] Set $A = C_f$.  For ease, relable $(e_1,,,e_n)$ to $(e_0,,,e_{n-1})$ and then define an $F$-linear isomorphism $\alpha : V \ra R/(f)$ by $\alpha(e_i) = \ov{x}^{i}$. To verify that $\alpha$ is $R$-linear, it suffices to show that $\alpha(x \cdot v) = x \cdot \alpha(v)$ (see 4.1.4); in fact, it suffices to show $\alpha(x \cdot e_i) = x \cdot \alpha(e_i)$ for $1 \leq i \leq n$. If $1 \leq i \leq n-1$, then
+	\[\alpha(x \cdot e_i) = \alpha(A e_i) = \alpha(e_{i+1}) = \ov{x}^{i+1} = x \cdot \ov{x}^{i} = x \cdot \alpha(e_i) \]
+When $i = n-1$, we have
+	\[\alpha(x \cdot e_{n-1}) = \alpha(A e_{n-1}) = \alpha\left(-\sum_{j=0}^{n-1} c_j e_j \right) = -\sum_{j=0}^{n-1} c_j \alpha(e_j) =\]
+	\[ -\sum_{j=0}^{n-1} c_j \ov{x}^{j}  = x \cdot \ov{x}^{n-1} = x \cdot \alpha(e_{n-1}) \]
 
 \item[(b)] From (a) we get that $f$ is the single invariant factor of $C_f$. In particular, $m = 1 \implies \mu_{C_f} = a_m = a_1 = f$. We prove that $\Chi_{C_f} = f$ by induction on $n$. \\
 
@@ -1447,7 +1451,7 @@ $n \geq 2$. $\Chi_f = \det (xI_n - C_f)$. We expand this determinant along the f
         &\overset{\tn{I.H.}}{=} x g + c_0 (-1)^{n+1} (-1)^{n+1} \\
         &= f,
 \end{align*}
-where $g = \sum_{i=0}^{n-2} c_{i+1} x^i + x_{n-1}$.
+where $g = \sum_{i=0}^{n-2} c_{i+1} x^i + x^{n-1}$.
 \end{enumerate}
 \end{proof}
 
@@ -1461,7 +1465,7 @@ Then ${_AF^n} \cong {_DF^k} \oplus {_EF^\ell}$ as $R$-modules.
 
 \begin{proof}
 Obviously $F^n \cong F^k \oplus F^\ell$ as $F$-vector spaces. If $f(x) \in F[x]$, then a straightforward computation shows that $f(A) = f(D) \oplus f(E)$. If $v = u \oplus w \in F^n$ with $u \in F^k$ and $w \in F^\ell$, then for all $f \in F[x]$,
-	\[f \cdot v = f(A) v = (f(D) \oplus f(E)) (u \oplus w) = f(D)u \oplus f(E)w \]
+	\[f \cdot v = f(A) v = (f(D) \oplus f(E)) (u \oplus w) = f(D)u \oplus f(E)w = f.u \oplus f.w \]
 Hence the canonical vector space isomorphism between $F^n$ and $F^k \oplus F^\ell$ is $R$-linear.
 \end{proof}
 
@@ -1483,7 +1487,7 @@ Let $A \in M_n(F)$.
 	\[{_BV} \overset{4.1.10}{\cong} \bigoplus_{i=1}^m {_{C_{a_i}}}F^{n_i} \overset{4.1.9 \ (a)}{\cong} \bigoplus_{I=1}^m R/(a_i) \]
 as $R$-modules. Similarly, ${_{B'}V} \cong \bigoplus_{i=1}^{m'} R/(a'_i)$. So $a_1,\dots,a_m$ are the invariant factors of ${_BV}$ and $a'_1,\dots,a'_{m'}$ are the invariant factors of ${_{B'}V} \cong {_BV}$, and the uniqueness follows from 3.3.17 (c).
 
-\item[(c)] $\mu_A = a_m$ by 4.1.5. Now $\Chi_A = \Chi_B$, since $A \sim B := \bigoplus_{i=1}^m B_i$ as in (b), and
+\item[(c)] $\mu_A = a_m$ by 4.1.5.  (We will not prove here, but it is easy to prove that similar matrices have the same characteristic polynomial...) Now $\Chi_A = \Chi_B$, since $A \sim B := \bigoplus_{i=1}^m B_i$ as in (b), and
 	\[\Chi_B = \det(xI_n-B) = \det \left(\bigoplus_{i=1}^m xI_{n_i} - B_i\right) = \prod_{i=1}^m \det(xI_{n_i} - B_i) = \prod_{i=1}^m \Chi_{B_i} \overset{4.1.9\ (b)}{=} \prod_{i=1}^m a_i \]
 \end{enumerate}
 \end{proof}
@@ -1492,15 +1496,15 @@ as $R$-modules. Similarly, ${_{B'}V} \cong \bigoplus_{i=1}^{m'} R/(a'_i)$. So $a
 
 \begin{corollary}[Cayley-Hamilton Theorem]\
 \begin{enumerate}
-\item[(a)] $\mu_A \mid \Chi_A$ in $F[x]$, i.e., $\Chi_A \in (\mu_A) = \ker \phi_A$, hence $\Chi_A(A) = O$.
-\item[(b)] $\Chi_A$ and $\mu_A$ have the same prime factors in $F[x]$, so if $\Chi_A = \prod_{i=1}^r p_i^{e_i}$, where each $p_i \in F[x]$ is a distinct monic irreducible and each $e_i \in \N$, then $\mu_A = \prod{i=1}^r p_i^{e_i}$ for some $f_i \in \N$ with $f_i \leq e_i$.
+\item[(a)] $\mu_A \mid \Chi_A$ in $F[x]$, i.e., $\Chi_A \in (\mu_A) = \ker \phi_A$, hence $\Chi_A(A) = 0$.
+\item[(b)] $\Chi_A$ and $\mu_A$ have the same prime factors in $F[x]$, so if $\Chi_A = \prod_{i=1}^r p_i^{e_i}$, where each $p_i \in F[x]$ is a distinct monic irreducible and each $e_i \in \N$, then $\mu_A = \prod{i=1}^r p_i^{f_i}$ for some $f_i \in \N$ with $f_i \leq e_i$.
 \end{enumerate}
 \end{corollary}
 
 \vs
 
 \begin{defn}
-A matrix $A \in M_n(F)$ is said to be in \tb{rational canonical form} (RCF) if $A = \bigoplus_{i=1}^m C_{a_i}$ for some monic $a_i \in F[x]\bs F$ with $a_1 \mid a_2 \mid \dots \mid a_m$. By 4.1.11, any matrix in $M_n(F)$ is similar to precisely one matrix $A'$ in rational canonical form  (the "RCF of $A$").
+A matrix $A \in M_n(F)$ is said to be in \tb{rational canonical form} (RCF) if $A = \bigoplus_{i=1}^m C_{a_i}$ for some monic $a_i \in F[x]\bs F$ with $a_1 \mid a_2 \mid \dots \mid a_m$. By 4.1.11(b), any matrix in $M_n(F)$ is similar to precisely one matrix $A'$ in rational canonical form  (the "RCF of $A$").
 \end{defn}
 
 Note that knowledge of the RCF of $A$ is equivalent to knowledge of the invariant factors of $A$.
@@ -1508,7 +1512,7 @@ Note that knowledge of the RCF of $A$ is equivalent to knowledge of the invarian
 \vs
 
 \begin{proposition}
-If $K/F$ is a field extension and $A,B \in M_n(F) \sub M_n(K)$, then $A$ and $B$ are similar in $M_n(K)$ if and only if they are similar in $M_n(F)$.
+If $K|F$ is a field extension and $A,B \in M_n(F) \sub M_n(K)$, then $A$ and $B$ are similar in $M_n(K)$ if and only if they are similar in $M_n(F)$.
 \end{proposition}
 
 \begin{proof}
@@ -1525,7 +1529,7 @@ For all $A \in M_n(F)$, $A \sim A^t$.
  There are more than one argument one might use.
  \begin{enumerate}
  \item[(1)] (See the discussion of SNF below) Whether we start with $xI_n - A^t$ or $xI_n - A$, we will end up with the same SNF since both row and column operations are allowed when computing the SNF.
- \item[(2)] Since $A \sim A' := RCF$, it suffices to check that $C_f \sim C_f^t$ for any monic $f \in F[x]\bs F$. We know that $\mu_{C_f} = \Chi_f = f$, $\Chi_{C_f^t} = \Chi_{C_f}$, and $\mu_{C_f^t} = \mu_{C_f}$ (in fact, $\mu_{A^t} = \mu_A$ for any $A \in M_n(F)$) by definition of $\mu_A$ and the fact that $g(A^t) = g(A)^t$ for all $g \in F[x]$. Therefore, $C_f^t$ has only one invariant factor, namely $f$, so $C_f^t \sim C_f$.
+ \item[(2)] Since $A \sim A' := RCF$, it suffices to check that $C_f \sim C_f^t$ for any monic $f \in F[x]\bs F$. We know that $\mu_{C_f} = \Chi_{C_f} = f$, so $\Chi_{C_f^t} = \Chi_{C_f}$, which implies $\mu_{C_f^t} = \mu_{C_f}$ (in fact, $\mu_{A^t} = \mu_A$ for any $A \in M_n(F)$) by definition of $\mu_A$ and the fact that $g(A^t) = g(A)^t$ for all $g \in F[x]$. Therefore, $C_f^t$ has only one invariant factor, namely $f$, so $C_f^t \sim C_f$.
  \end{enumerate}
 \end{proof}
 
