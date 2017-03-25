@@ -1195,12 +1195,37 @@ Claim: $\d^2 = 0$.
 \end{defn}
 
 \begin{example}
-  $H_2^\Delta(K^2) = 0$ $H_1^\Delta(K^2) \isom \Z \dsum \Z/2\Z$
-  $H_0^\Delta(K^2) = \Z$
+  \includegraphics[scale=0.2]{images/klein-bottle-CW}
 
-  where $\Z^2 \to(overset [-1 -1; -1 1; 1 1]) \Z^3 \to(overset 0) \Z$
+  Consider $K =$ the klein bottle above.  The chain complex is
 
-  $[0 2 0]^transpose$
+  \begin{tikzcd}
+    &\Delta_2(K) \arrow[r, "\d_2"] &\Delta_1(K) \arrow[r, "\d_1"] &\Delta_0(K) \\
+    &\Z^2 \arrow[r, "M"] &\Z^3 \arrow[r, "0"] &\Z
+  \end{tikzcd}
+
+  where $M = \begin{bmatrix}
+    1 &1 \\
+    -1 &-1 \\
+    1 &-1
+  \end{bmatrix}$
+
+
+  Observe that $\d(U) = -a -b +c$
+
+  and $\d(L) = a - b - c$
+
+  and so $\d(U + L) = -2b$,
+
+  so that $-2b \sim 0$, but $b \not\sim 0$.
+
+  The matrix takes in coefficient vectors $\begin{bmatrix}c_1 \\ c_2\end{bmatrix}$ for $U$ and $L$, and spits out coefficient vectors for $a$, $b$, and $c$.
+
+  Note also that $\d_2$ is 0 because the boundary of any 1-dim chain is 0.
+
+  Finally, we compute $H_1 \isom \Z^3 / \im(\d_1) \isom <a,b,c>/<-a-b+c, a-b-c> \isom <a,b,c \st -a-b+c = 0, a-b-c = 0> \isom <a,b \st a-b-c = 0> \isom <a,b>/<-2b>$.
+
+
 \end{example}
 
 
@@ -1211,13 +1236,14 @@ Claim: $\d^2 = 0$.
 \mydate{d16}{3}{3}{2017}
 
 When using normal subgroups that corr to covering spaces, you get
-maximal symmetry.  it looks the same at every point.  it's the same as
+maximal symmetry. It looks the same at every point. It's the same as
 taking universal cover and modding out by relations.
 
-When you use regular subgroups that corres to cov spaces, you cannot
+When you use regular subgroups that correspond to covering spaces, you cannot
 do the modding out trick.  (or maybe you can only do it locally).  It
-won't be symmetric.  It will look like example <a> in Hatcher for S1 V
-S1.
+won't be symmetric.  It will look like example (a) in Hatcher for $S^1 \vee
+S^1$.
+
 
 \section*{Singular homology}
 
@@ -1419,6 +1445,85 @@ Two maps $f,g \from A^0 \to B^0$ are homotopic if $f - g = \delta h + h \delta$ 
 \mydate{d21}{22}{3}{2017}
 
 \mydate{d22}{24}{3}{2017}
+
+Fixed $V$ f.d. R-VS
+
+LC(V) \onacts S
+
+S is the "Slicer".  It cuts up a linear simplex.  It barycenter subdivides it!  It is defined recursively.
+
+S(\lambda) = b_\lambda(S \d \lambda)
+\begin{example}
+  What is S(empty set)?
+
+  S(\null) = \null by definition
+\end{example}
+\begin{example}
+  What is S(point)?
+
+  S([v0]) = b(S \d [v0]) = b(S \null) = b(\null) = [b] = [v0]
+\end{example}
+\begin{example}
+  What is S(interval)?
+
+  S(I) = b(S \d I) = b(S ([v0] - [v1])) = b([v1] - [v0]) = [b,v1] - [b,v0].
+\end{example}
+
+Thanks to using the $\d$ operator in the definition, the $S$ function maintains orientation!  Note also that $S$ is linear automatically, as long as we define $S(k\null) := \null$ for all $k \in \Z$.
+
+\begin{thm}
+  $S$ is a chain map.  That is, $\d S = S \d$.
+\end{thm}
+\begin{proof}
+  ($\lambda$ is the input variable)
+
+  $\d S = \d b (S \d \lambda) = S \d \lambda - b \d S \d \lambda$
+
+  apply induction on $n$
+
+  $= S \d \lambda - b S \d^2 \lambda = S \d \lambda$.
+\end{proof}
+\begin{defn}
+  T \from LC_n(V) \to LC_{n+1}(V)
+
+  T\null = 0
+
+  T\lambda = b(\lambda - T \d \lambda)
+\end{defn}
+\begin{example}
+  pretty picture
+\end{example}
+\begin{thm}
+  $\d T + T \d = 1 - S$
+\end{thm}
+\begin{proof}
+  Induct on $n$.
+  \begin{itemize}
+    \item Base Case ($n = -1$):
+
+    $\d T + T \d(\null) = 0$
+
+    \item Inductive Step ($n > -1$):
+
+    $\d T \lambda = \d b(\lambda - T \d \lambda)
+    = \lambda - T \d \lambda - b \d(\lambda - T \d \lambda)
+    = \lambda - T \d \lambda - b (S \d \lambda)
+    = \lambda - T \d \lambda - S \lambda $
+  \end{itemize}
+  Note since $T \null = 0$ still works on $LC$ without $LC_{-1}$.
+\end{proof}
+
+\sigma \from \delta^n \to X
+
+$S \sigma = \sum_{} \sigma |_{\text{simplices in subdivision}} = \sigma_{\#} S \delta^n$
+
+again,
+$S \d = \d S$ and $\d T + T \d = 1 - S$
+
+$S \from C_n(X) \to C_n(X)$ inducing isomorphism on homology.
+
+
+
 
 \mydate{d23}{27}{3}{2017}
 
