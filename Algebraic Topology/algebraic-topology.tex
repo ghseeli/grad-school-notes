@@ -1463,25 +1463,26 @@ The proof of this theorem is based on the notion of barycentric subdivision. Bar
 
 Fixed $V$ f.d. R-VS
 
-LC(V) \onacts S
+$S \actson LC(V)$
 
-S is the "Slicer".  It cuts up a linear simplex.  It barycenter subdivides it!  It is defined recursively.
+$S$ is the ``Slicer'', the ``subdivider'', the ``barycentric subdivider''.  It cuts up a linear simplex.  It is defined recursively!
 
-S(\lambda) = b_\lambda(S \d \lambda)
+\begin{defn}
+  $S \from LC_n \to LC_n$ is defined recursively by
+  $$S(k\null) = \null \qquad\text{for any $k \in \Z$}$$
+  $$S(\lambda) = b_\lambda(S \d \lambda)$$
+\end{defn}
 \begin{example}
-  What is S(empty set)?
-
-  S(\null) = \null by definition
+  What is $S(\text{empty set})$?
+  $$S(\null) = \null$$
 \end{example}
 \begin{example}
-  What is S(point)?
-
-  S([v0]) = b(S \d [v0]) = b(S \null) = b(\null) = [b] = [v0]
+  What is $S(\text{point})$?
+  $$S([v_0]) = b(S \d [v_0]) = b(S \null) = b(\null) = [b] = [v_0]$$
 \end{example}
 \begin{example}
-  What is S(interval)?
-
-  S(I) = b(S \d I) = b(S ([v0] - [v1])) = b([v1] - [v0]) = [b,v1] - [b,v0].
+  What is $S(\text{interval})$?
+  $$S(I) = b(S \d I) = b(S ([v_1] - [v_0])) = b([v1] - [v0]) = [b,v1] - [b,v0]$$
 \end{example}
 
 Thanks to using the $\d$ operator in the definition, the $S$ function maintains orientation!  Note also that $S$ is linear automatically, as long as we define $S(k\null) := \null$ for all $k \in \Z$.
@@ -1490,53 +1491,67 @@ Thanks to using the $\d$ operator in the definition, the $S$ function maintains 
   $S$ is a chain map.  That is, $\d S = S \d$.
 \end{thm}
 \begin{proof}
-  ($\lambda$ is the input variable)
+  Since $S$ is defined recursively, we shall use induction on the dimension of $\lambda$.
+  \begin{itemize}
+    \item Base Case ($\dim(\lambda) = 0$):
+      $$\d S(\null) = \d(\null) = \null = S(\null) = \d S(\null)$$
 
-  $\d S = \d b (S \d \lambda) = S \d \lambda - b \d S \d \lambda$
+    \item Inductive Step ($\dim(\lambda) > 0$):
+      $$(\d S)(\lambda) = \d b (S \d (\lambda)) = S \d (\lambda) - b \d S \d (\lambda)$$
 
-  apply induction on $n$
+      We have a $\d S$ in our expression again, but this time it is acting on a linear simplex of lower dimension.  By the inductive hypothesis, $\d S = S \d$ on lower dimensions:
+      $$ = S \d (\lambda) - b S \d\d (\lambda) = S \d (\lambda) - b S \d^2 (\lambda) = S \d (\lambda)$$
 
-  $= S \d \lambda - b S \d^2 \lambda = S \d \lambda$.
+      since $\d^2 = 0$.
+  \end{itemize}
 \end{proof}
 \begin{defn}
-  T \from LC_n(V) \to LC_{n+1}(V)
+  The \de{table} function $T \from LC_n(V) \to LC_{n+1}(V)$ is defined recursively by
+  $$T(\null) = 0$$
 
-  T\null = 0
-
-  T\lambda = b(\lambda - T \d \lambda)
+  $$T(\lambda) = b(\lambda - T \d (\lambda))$$
 \end{defn}
 \begin{example}
-  pretty picture
+  What is $T(\text{interval})$?
+
+  \includegraphics[scale=0.3]{images/table-example-2d}
+\end{example}
+\begin{example}
+  What is $T(\text{triangle})$?
+
+  \includegraphics[scale=0.3]{images/table-example-3d}
 \end{example}
 \begin{thm}
-  $\d T + T \d = 1 - S$
+  $\d T + T \d = 1 - S$, where $1$ is the identity function.
 \end{thm}
 \begin{proof}
-  Induct on $n$.
+  Induct on the dimension $n$.
   \begin{itemize}
     \item Base Case ($n = -1$):
-
-    $\d T + T \d(\null) = 0$
+    $$\d T(\null) + T \d(\null) = \d(\null) + T(\null) = \null + \null = 2\null$$
 
     \item Inductive Step ($n > -1$):
-
-    $\d T \lambda = \d b(\lambda - T \d \lambda)
-    = \lambda - T \d \lambda - b \d(\lambda - T \d \lambda)
-    = \lambda - T \d \lambda - b (S \d \lambda)
-    = \lambda - T \d \lambda - S \lambda $
+    \begin{align}
+      &\quad\, \d T (\lambda) \\
+      &= \d b(\lambda - T \d (\lambda)) \\
+      &= \lambda - T \d (\lambda) - b \d(\lambda - T \d (\lambda)) \\
+      &= \lambda - T \d (\lambda) - b (S \d (\lambda)) \\
+      &= \lambda - T \d (\lambda) - S (\lambda)
+    \end{align}
   \end{itemize}
-  Note since $T \null = 0$ still works on $LC$ without $LC_{-1}$.
+  Rearranging, we end with the desired
+  $$\d T (\lambda) + T \d (\lambda) = \lambda - S (\lambda),$$
+
+  Note since $T(\null) = 0$ still works on $LC$ without $LC_{-1}$.
 \end{proof}
 
-\sigma \from \delta^n \to X
+$\sigma \from \Delta^n \to X$
 
-$S \sigma = \sum_{} \sigma |_{\text{simplices in subdivision}} = \sigma_{\#} S \delta^n$
+$S \sigma = \sum \sigma |_{\text{simplices in subdivision}} = \sigma_{\#} S \Delta^n$
 
-again,
-$S \d = \d S$ and $\d T + T \d = 1 - S$
+again, $S \d = \d S$ and $\d T + T \d = 1 - S$
 
 $S \from C_n(X) \to C_n(X)$ inducing isomorphism on homology.
-
 
 
 
@@ -1558,28 +1573,28 @@ $S \from C_n(X) \to C_n(X)$ inducing isomorphism on homology.
     url={https://ncatlab.org/joyalscatlab/published/Categories},
     accessdate={2017-02-06},
     date={2010-05-30},
-  },
+  }
   \bib{functors}{webpage}{
     title={Joyal's CatLab},
     url={https://ncatlab.org/joyalscatlab/published/Functors},
-  },
+  }
   \bib{GA}{webpage}{
     title={Graph Automorphism},
     url={http://mathworld.wolfram.com/GraphAutomorphism.html},
     accessdate={2017-02-22},
     author={Weisstein, Eric W.},
-  },
+  }
   \bib{chiasme}{webpage}{
     title={Amalgamated products and HNN extensions (IV): Markov properties},
     url={https://chiasme.wordpress.com/2014/05/28/amalgamated-products-and-hnn-extensions-iv-markov-properties/},
     accessdate={2017-03-10},
-  },
+  }
   \bib{Hatcher}{book}{
     title={Algebraic Topology},
     author={Hatcher, Allen},
     publisher={Cambridge University Press},
     date={2002},
-  },
+  }
 \end{biblist}
 \end{bibdiv}
 
