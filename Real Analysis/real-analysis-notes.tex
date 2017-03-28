@@ -8,6 +8,8 @@
 \newcommand{\F}{\mathcal{F}}
 \newcommand{\Ep}{\mathcal{E}}
 \newcommand{\Top}{\mathcal{T}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cN}{\mathcal{N}}
 
 \renewcommand{\emptyset}{\varnothing}
 
@@ -2003,7 +2005,7 @@ to check that the new definition agrees with the old one.
     \]
     For the other inequality, we will need the following lemma
     \subsection*{(3/21/2017) Lecture 12}
-    \begin{lem}
+    \begin{lem}\label{lem26}
   Let $f \in L^+$. Then, if $\phi_n$ is a sequence of simple functions
   with, for all $x$, $\phi_n(x)$ a non-decreasing sequence and
   $\lim_{n \to \infty} \phi_n(x) = f(x)$, then \[
@@ -2056,7 +2058,219 @@ Of course, we need to prove this lemma, so we seek to do that now.
         & = \int \psi \phi d\mu
       \end{align*}
     \end{itemize}
-
   \end{proof}
 \end{prop}
+\begin{prop}
+  Let \((\phi_n)_{n \geq 1}, \psi\) all be simple functions such that
+  \(\phi_n\) increases to \(\psi\). Then, \[
+    \lim_{n \to \infty} \int \phi_n d\mu = \int \psi d\mu
+  \]
+\end{prop}
+\begin{proof}
+  Let \(\alpha \in [0,1) \) and, for all \(n\), let \(E_n = \{\alpha
+  \in X \st \phi_n(x) \geq \alpha \psi(x)\}\). It is clear that
+  \(E_n\) is measurable since \(\phi_n - \alpha \psi\) is measurable
+  and \(E_n\) is the inverse image of \([0,\infty) \). Furthermore, it
+  is easy to check \(E_n \subset E_{n+1}\). Now, we note that \[
+    \Union_{n=1}^\infty E_n = X.
+  \]
+  Let \(x \in X\). If \(\psi(x) = 0\), then \(x \in E_n\). Otherwise,
+  \(\psi(x) > 0\) is finite and so \(\alpha \psi(x) < \psi(x)\). Thus,
+  \(\phi_n(x) \to \psi(x)\) and thus there exists an \(n\) such that
+  \(\phi_n(x) \geq \alpha \psi(x)\). Thus, we now have \[
+    \lim \int \phi_n \leq \int \psi.
+  \]
+  We still want to show the other inequality. Consider \(\nu_{\alpha
+    \psi}\). We have that \(\nu_{\alpha \psi}(E_n) \to \nu_{\alpha
+    \psi}(x)\) as \(n \to \infty \) using continuity from
+  below. Furthermore, \[
+    \nu_{\alpha \psi}(X) = \int \chi_X \alpha \psi d\mu = \alpha \int
+    \psi d\mu.
+  \]
+  Now, \(\phi_n \geq \alpha \psi \chi_{E_n}\) for all \(x \in X\) and
+  thus \[
+    \int \phi_n d\mu \geq \int \alpha \psi E_n d\mu = \nu_{\alpha \psi}(E_n).
+  \]
+  Taking \(n \to \infty\), we get \[
+    \lim \int \phi_n d\mu \geq \alpha \int \psi d\mu
+  \]
+  for \(\alpha \in (0,1)\) and so we take \(\alpha = 1\) to complete
+  the proof.
+\end{proof}
+Finally, we can now prove \ref{lem26}.
+\begin{proof}[Proof of Lemma]
+  Take \((\phi_n)\) as a sequence of simple functions increasing to
+  \(f\) in \(L^+\). Since \(0 \leq \phi_n \leq f\), we get \[
+    \int \phi_n \leq \int f
+  \]
+  by definition and so \[
+    \lim_{n \to \infty} \int \phi_n \leq \int f.
+  \]
+  To get the \(\geq\) direction, take \(0 \leq \phi_n \leq f\). Then,
+  \(\min(\phi_n,\psi)\) is simple and increases to \(\psi\). Thus, by
+  our proposition above, we get that \[
+    \lim \int \phi_n \geq \lim \int \min(\phi_n,\psi) = \int \psi
+  \]
+  However, this is true for all \(\psi\). So, taking the supremum, we
+  get \[
+  \lim_{n \to \infty} \int \phi_n \geq \int f.
+  \]
+\end{proof}
+\begin{thm}[Monotone Convergence theorem]
+  Let \((f_n)_{n \geq 1}, f \in L^+\) with \(f_n\) increasing to
+  \(f\). Then, \[
+    \lim_{n \to \infty} \int f_n d\mu = \int f d\mu
+  \]
+\end{thm}
+\begin{proof}
+  The \(\leq\) direction is trivial by properties of integrals. For
+  the \(\geq\) direction, let \(\alpha \in (0,1)\) and \(\psi\) be 
+  a simple function with \(0 \leq \psi \leq f\). Furthermore, let
+  \(E_n = \{x \in E \st f_n(x) \geq \alpha \psi(x)\}\), which is
+  measurable as discussed in the previous proof of the proposition, as
+  well as increasing and satisfying \(\Union_n E_n = X\). Now,
+  consider \(\nu_{\alpha \psi}\) as a measure. We have that
+  \(\nu_{\alpha \psi}(E_n) \to \nu_{\alpha \psi}(X)\) and so this
+  gives us that \[
+    \int f_n d\mu \geq \int \alpha \psi \chi_{E_n} d\mu \to \alpha
+    \int \psi \implies \lim_{n \to \infty} \int f_n d\mu \geq \alpha
+    \int \psi d\mu
+  \]
+  Since this is true for all \(\alpha \in (0,1)\), it is true for
+  \(\alpha = 1\). Now, simply take the supremum over \(\psi\) to get
+  the theorem.
+\end{proof}
+Here I will choose to judiciously skip some pages of notes for the
+sake of getting the more important theorems into the notes.
+\begin{lem}[Fatou's Lemma]
+  Let \((f_n)_{n \geq 1} \in L^+\). Then, \[
+    \int (\lim \inf f_n) d\mu \leq \lim \inf \int f_n d\mu
+  \]
+\end{lem}
+\begin{proof}
+  For a perfectly good proof using our program, see page 52 of
+  Folland, 2.18. 
+\end{proof}
+\subsection*{(3/23/2017) Lecture 13}
+\begin{prop}
+  Let \((X,\M,\mu)\) be a measure space with \(f \in L^+\). If
+  \(\mu(E) = 0\), then \(\nu_f(E) = 0\).
+\end{prop}
+\begin{defn}
+  Let \((X,\M)\) be a measurable space with measures \(\mu,\nu\) both
+  defined on it.
+  \begin{enumerate}
+  \item \(\nu\) is called \de{absolutely continuous with respect to
+      \(\mu\)} (denoted \(\nu \ll \mu\)) if and only if for all \(E
+    \in \M\), \(\mu(E) = 0 \implies \nu(E) = 0\).
+  \item \(\mu\) is \de{singular with respect to \(\nu\)} if and only
+    if there exists an \(E \in \M\) such that \(\nu(E) = \mu(E^c) =
+    0\). 
+  \end{enumerate}
+\end{defn}
+\begin{prop}
+  \(\mu\) is singular with respect to \(\nu\) if and only if \(\nu\)
+  is singular with respect to \(\mu\).
+\end{prop}
+\begin{defn}
+  \(\mu\) and \(\nu\) in the proposition above may be called
+  \de{mutually singular}, denoted \(\mu \perp \nu\). 
+\end{defn}
+\begin{rmk}
+  If \(\nu \ll \mu\) and \(\nu \perp \mu\), then \(\nu \equiv 0\).
+\end{rmk}
+\begin{rmk}
+  For all \(f \in L^+\), \(\nu_f \ll \mu\). Later, we will see the
+  converse in the Radon-Nicodyn Theorem.
+\end{rmk}
+I am choosing to skip the section of restriction of measures to
+subsets.
+\begin{defn}
+  We say measurable \(f \from X \to \R\) is \de{integrable} if and only if \[
+    \int |f| d\mu < \infty.
+  \]
+  We denote this \(f \in \L^1(X,\R) = \cL^1(X,\M,\mu,\R)\)
+\end{defn}
+\begin{defn}
+  Let \(f \in \cL^1\). A \de{good representation} of \(f\) is \[
+    f = g-h
+  \]
+  where \(g,h \in \cL^1\) take values in \([0,\infty]\) and are
+  measurable.
+\end{defn}
+\begin{defn}
+  \[
+    \int_X f d\mu := \int_X g d\mu - \int_X h d\mu
+  \]
+\end{defn}
+We would need to show this definition makes sense. Once again, I will
+omit such details for the time being.
+\begin{prop}
+  Let \(\mathbb{K} = \R,\C,[0,\infty]\). Then,
+  \begin{enumerate}
+  \item \(\cL^1(X,\mathbb{K})\) is a \(\mathbb{K}\)-vector space.
+  \item \(f \mapsto \int_X f d\mu\) is a \(\mathbb{K}\)-linear form.
+  \end{enumerate}
+\end{prop}
+\subsection*{(3/23/2017) Lecture 14}
+\begin{prop}
+  Let \(\mathbb{K} = \R,\C\) and \(f \in
+  \cL^1(X,\mathbb{K})\). Then, \[
+    \left| \int f \right| \leq \int \left| f \right|
+  \]
+\end{prop}
+\begin{prop}
+  Using the same hypotheses as above,
+  \begin{enumerate}
+  \item \(f \in \cL^1 \implies \{x \st f(x) \neq 0\}\) is
+    \(\sigma\)-finite.
+  \item For all \(f,g \in \cL^1\), \[
+      \int_E f = \int_E g, \ \forall E \in \M \iff \int |f-g| = 0 \iff
+      f=g \ \mu-\text{almost everywhere}.
+    \]
+  \end{enumerate}
+
+\end{prop}
+\begin{defn}
+  \(L^1 = \cL^1/\sim\) where \(f \sim g\) if \(f=g\) \(\mu\)-almost everywhere.
+\end{defn}
+\section{Elements of Functional Analysis}
+\begin{defn}
+  Let \(V\) be a \(\mathbb{K} = \R,\C\) vector space. \(V\) is called
+  a \de{\(\mathbb{K}\)-topological vector space} (TVS) if \(V\) comes with
+  a topology \(\Top\) such that \(+ \from V \times V \to V\) and
+  \(\cdot \from \mathbb{K} \times V \to V\) are continuous. 
+\end{defn}
+\begin{defn}
+  Give \(V\) a \(\mathbb{K}\)-vector space, \(||\cdot|| \from V \to
+  [0,\infty)\) is called a \de{semi-norm} if
+  \begin{enumerate}
+  \item for all \(u,v \in V\), \(||u+v|| \leq ||u|| + ||v||\)
+  \item for all \(\lambda \in \mathbb{K}\) and \(v \in V\),
+    \(||\lambda v|| = |\lambda|\cdot ||V||\)
+  \end{enumerate}
+\end{defn}
+Note that this differs from the definition of a norm since \(||v||=0\)
+does not imply \(v = 0\).
+\begin{defn}
+  \(||\cdot||\) is a \de{norm} if it is a seminorm with the property
+  \(||u||=0\) if and only if \(u = 0\). 
+\end{defn}
+\begin{defn}
+  Given a finite set of semi-norms \(F\) on a vector space \(V\),
+  define a \de{multi-ball} with radius \(\epsilon > 0\) to be \[
+    B(u,F,\epsilon) = \left\{ v \st \ \forall ||\cdot|| \in F, ||v-u|| <
+    \epsilon\right\}
+  \]
+\end{defn}
+\begin{defn}
+  Let \(V\) be a \(\mathbb{K}\)-vector space and let \(\cN\) be a set
+  of semi-norms \((\cN \subset [0,\infty)^V \). Then, there is a
+  canonical topology \(\Top_\cN\) on \(V\) which makes it a
+  topological vector space. Namely, \[
+    \Top_\cN = \left\{ U \in \P(V) \st \forall u \in U, \exists \text{
+      finite } F \in \cN, \forall \epsilon > 0, 
+  B(u,F,\epsilon) \subset U \right\}
+  \]
+\end{defn}
 \end{document}
