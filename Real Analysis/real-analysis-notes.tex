@@ -8,6 +8,8 @@
 \newcommand{\F}{\mathcal{F}}
 \newcommand{\Ep}{\mathcal{E}}
 \newcommand{\Top}{\mathcal{T}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cN}{\mathcal{N}}
 
 \renewcommand{\emptyset}{\varnothing}
 
@@ -1747,15 +1749,528 @@ Then, $F$ is increasing, right continuous, and $\mu = \mu_F$.
     on $X$. Furthermore, if $f,g \from X \to \R$ are measurable, then
     $\max(f,g)$ and $\min(f,g)$ are measurable.
   \end{prop}
-  \begin{prop}
-    Let $(X,\M)$ be a measurable space. Furthermore, for $E \in \P(X)$, let
-    $\chi_E \from X \to \{0,1\}$ be given by \[
-      \chi_E(x) =
-      \begin{cases}
+  \begin{defn}
+    Let $E \subset X$. Then \[
+      \mathbb{1}_E(x) = \chi_E(x) := \begin{cases}
         1 & x \in E \\
         0 & x \not \in E
       \end{cases}
+    \]
+    is the \de{indicator function} or \de{characteristic function} of
+    the subset $E$. 
+  \end{defn}
+  \begin{prop}
+    Let $(X,\M)$ be a measurable space. Furthermore, for $E \in
+    \P(X)$,  $\chi_E$ is measurable if and only if $E \in \M$.
+ \end{prop}
+ \subsection*{(3/14/2017) Lecture 10}
+ \begin{prop}
+   Let $(X,\M)$ be a measurable space and $(f_n)_{n \geq 1}$ be a
+   family of measurable functions $f_n \from X \to [0,\infty]$. Then, $\inf f_n$ and $\sup f_n$ are
+   measurable. Furthermore, $\lim \inf f_n$ and $\lim \sup f_n$ are measurable.
+ \end{prop}
+ \begin{proof}
+   We will present to proof for $\sup$. The proof for $\inf$ is
+   analogous. Let $f(x) = \sup_{n \geq 1} f_n(x)$. Then, take \[
+     f^{-1}((\alpha,\infty]) = \{x \in X \mid \sup_{n \geq 1} f_n(x) >
+     \alpha\} = \Union_{n \geq 1} f_n^{-1}((\alpha,\infty])
    \]
-   Then, $\chi_E$ is measurable if and only if $E \in \M$.
-  \end{prop}
+   Since the union is a union of measurable sets, we are done. \\
+
+   The proof for $\lim \inf$ and $\lim \sup$ comes from the fact that
+   $\lim \inf \mu_n = \sup_{n \geq 1} \inf{k \geq n} \mu_k$ and $\lim
+   \sup$'s analgous definition. 
+ \end{proof}
+ \begin{cor}
+   Let $(f_n)_{n \geq 1}$ be a sequence of measurable functions with
+   $f_n \from X \to [0, \infty]$. Suppose that $\forall x$, $f(x) :=
+   \lim_{n \to \infty} f_n(x)$ exists. Then, $f \from X \to
+   [0,\infty]$ is measurable.
+ \end{cor}
+ \begin{prop}
+   Let $f_n \from X \to \R$ be measurable. If $f_n(x) \to f(x)$
+   pointwise, then $f \from X \to \R$ is measurable. 
+ \end{prop}
+ \begin{prop}
+   Let $(X,\M)$ be a measurable space. Then, $E \in \M$ if and only if
+   $\chi_E$ is $(\M,\B_\R)$-measurable.
+ \end{prop}
+ \begin{defn}
+   Given $f \from X \to [0,\infty]$ measurable with $X \neq
+   \emptyset$, $f$ is called a \de{simple} function if and only if the
+   image of $f$ is a finite set not containing $\infty$ (``finite and
+   finite''). This formulation works equally well for $f$ with
+   codomain $\R$ or $\C$. 
+ \end{defn}
+ \begin{prop}
+   The following are equivalent
+   \begin{enumerate}
+   \item[(1)] $f$ is simple.
+   \item[(2)] $f$ is a finite linear combination of indicator functions.
+   \item[(3)] There exist $n \geq 1$, $E_1, \ldots, E_n$ measurable in $X$
+     forming a ``decomposition'' (weak set partition) of $X$, then
+     there exist finite values $\alpha_1, \ldots, \alpha_n$ such that
+     $f = \sum_{i=1}^n \alpha_i \chi_{E_i}$. 
+   \end{enumerate}
+ \end{prop}
+ \begin{proof}
+   \begin{itemize}
+   \item ((1) $\implies$ (3)). Let the image of $f$ be $\{\alpha_1,
+     \ldots, \alpha_n\}$ with $n \geq 1$ where all $\alpha_i$'s are
+     distinct in the codomain. Then, take $E_i = f^{-1}(\alpha_i)$ and
+     this gets us a partition of $X$. Thus, forall $x$, $f(x) =
+     \sum_{i=1}^n \alpha_i \chi_{E_i}(x)$.
+   \item ((3) $\implies$ (2)). This is trivially true.
+   \item ((2) $\implies$ (1)). Suppose we have the finite linear
+     combination \[
+       f = \sum_{i=1}^n \alpha_i \chi_{E_i}
+     \]
+     with the image of $f$ a subset in the appropriate set
+     $([0,\infty],\R,\C)$. Since the image of $f$ is a subset of
+     $\{\sum_{i \in I} \alpha_i \st I \subset \{1,\ldots,n\}\}$, it
+     must be that the image of $f$ is finite.
+   \end{itemize}
+ \end{proof}
+ \begin{defn}
+   Let $f$ be a simple function. Then, a \de{good representation} of
+   $f$ is one of the form \[
+     f = \sum_{i=1}^n \alpha_i \chi_{E_i}, n \geq 1
+   \]
+   such that the $E_i$'s are disjoint, $\Dunion E_i = X$, and
+   $\alpha_i$ are finite.
+ \end{defn}
+Among such representations, there is a canonical representation where,
+if $\{\alpha_1, \ldots, \alpha_n\}$ is the image of $f$, then $E_i =
+f^{-1}(\{\alpha_i\})$. 
+\begin{defn}
+  Given $(X, \M, \mu)$ a measure space, let $L^+$ be the set of
+  measurable functions $X \to [0,\infty]$. Furthermore, if $f \in L^+$
+  is a simple function, then we say \[
+    \int f d\mu := \sum_{i=1}^n \alpha_i \mu(E_i)
+  \]
+  for any good representation $f = \sum_i \alpha_i \chi_{E_i}$. 
+\end{defn}
+Now, for such a definition, we must check that it is well-defined by
+making sure the result is independent of choice of good
+representation.
+\begin{proof}[Proof of well-definedness]
+  Supposed \[
+    f = \sum_{i=1}^n \alpha_i \chi_{E_i} = \sum_{j=1}^m \beta_j \chi_{F_j}
+  \]
+  for $\alpha_i, \beta_i \in [0,\infty]$ and $\{E_1, \ldots, E_n\},
+  \{F_1, \ldots, F_m\}$ decompositions of $X$. Then,
+  \begin{align*}
+    \sum_{i=1}^n \alpha_i \mu(E_i) & = \sum_{i=1}^n \alpha_i
+                                     \mu \left(\Union_{j=1}^m (E_i
+                                     \intersect F_j)\right) \\
+    & = \sum_{i=1}^n \sum_{j=1}^m \alpha_i \mu(E_i \intersect F_j)
+  \end{align*}
+  Likewise, we have that \[
+    \sum_{j=1}^m \beta_j \mu(F_j) = \sum_{j=1}^m \sum_{i=1}^n \beta_j
+    \mu(E_i \intersect F_j).
+  \]
+  Thus, this reduces to showing that, for all $i,j$, that $\alpha_i
+  \mu(E_i \intersect F_j) = \beta_j \mu(E_i \intersect F_j)$. If $E_i
+  \intersect F_j = \emptyset$, then both sides are equal to 0. If not,
+  then pick $x \in E_i \intersect F_j$. We get that
+  \begin{align*}
+    f(x) & = \sum_{i'=1}^n \alpha_{i'} \chi_{E_{i'}} = \alpha_i \\
+    & = \sum_{j'=1}^m \beta_{j'} \chi_{E_{j'}} = \beta_j
+  \end{align*}
+  and thus $\alpha_i = \beta_j$ and we are done.
+\end{proof}
+\begin{prop}\label{integration-props}
+  Given a measure space $(X,\M,\mu)$,
+  \begin{enumerate}
+  \item for all $c \in [0,\infty)$ and for all simple $\phi \in L^+$,
+    we have \[
+      \int c \phi = c \int \phi
+    \]
+  \item For all $\phi,\psi$ simple in $L^+$, we have \[
+      \int (\phi+\psi) = \int \phi + \int \psi
+    \]
+  \item For all $\phi, \psi$ simple in $L^+$, \[
+      \phi \leq \psi \implies \int \phi \leq \int \psi
+    \]
+  \item For all $\phi$ simple in $L^+$ and all $A \in \M$, $\phi
+    \chi_A$ is simple in $L^+$ and \[
+      \int_A \phi d \mu := \int_X \phi \chi_A d\mu
+    \]
+    satisfies $\nu_\phi(A) :=  \int_A \phi d \mu$ is a measure on $(X,\M)$. 
+  \end{enumerate}
+\end{prop}
+\begin{proof}
+  For a proof, see pages 49--50 of Folland (Proposition 2.13). Our
+  proof is slightly easier since our definition for $\int \phi$ uses
+  an arbitrary ``good representation'' and we have the following lemma
+  \begin{lem}
+    Let $\phi,\psi$ be simple in $L^+$. Then, there is a common good
+    representation for $\phi$ and $\psi$. i.e., there exists a
+    decomposition $\{E_1, \ldots, E_n\}$ of $X$ and finite values
+    $\alpha_1, \ldots, \alpha_n, \beta_1, \ldots, \beta_n$ such that
+    $\phi = \sum_{i=1}^n \alpha_i \chi_{E_i}$ and $\psi = \sum_{i=1}^n
+    \beta_i \chi_{E_i}$.
+  \end{lem}
+\end{proof}
+\subsection*{(3/16/2017) Lecture 11}
+Now that we have established the definition for integration on simple
+functions, we wish to extend it to arbitrary measurable functions.
+\begin{defn}
+  Let $(X,\M,\mu)$ be a measure space. If $f \in L^+$, then \[
+    \int f d\mu := \sup \left\{ \int \phi d\mu \st \phi \text{ simple
+        in } L^+, 0 \leq \phi \leq f \right\}
+  \]
+\end{defn}
+\begin{example}
+  A special case of this definition comes from exercise 1 of homework
+  4 using $\mu$ as the counting measure.
+\end{example}
+When defining a generalization of a definition, it is always important
+to check that the new definition agrees with the old one.
+\begin{prop}
+  The new definition $\int_{\text{new}} f d\mu$  agrees with the old
+  one if $f$ is simple.
+\end{prop}
+\begin{proof}
+  \begin{itemize}
+  \item ($\geq$). \[
+      \int_{\text{new}} f d\mu = \sup_{\phi \in L^+ \text{ simple},
+        \phi \leq f} \int_{\text{old}} \phi d\mu \geq
+      \int_{\text{old}} f d\mu
+    \]
+    because one can just take $\phi = f$.
+  \item ($\leq$). Use part c of proposition \ref{integration-props} to get \[
+      \phi \leq f \implies \int_{\text{old}} \phi d \mu \leq
+      \int_{\text{old}} f d\mu
+    \]
+    Then, just take suprememum over $\phi$ to get \[
+      \int_{\text{new}} f d\mu \leq \int_{\text{old}} f d\mu
+    \]
+  \end{itemize}
+\end{proof}
+\begin{thm}
+  Let $f \in L^+$. Then, there exists a sequence $(\phi_n)_{n \geq 1}$
+  of simple functions in $L^+$ such that, for all $x$, $\phi_n(x)$
+  increases to $f(x)$ when $n \to \infty$ and $\phi_n(x)$
+  nondecreasing. Moreover, convergence is uniform on any $Y \subset X$
+  such that $f|_Y$ is bounded, i.e., there exists an $M \in
+  [0,\infty)$ for all $x \in Y$ such that $f(x) \leq M$. 
+\end{thm}
+\begin{proof}
+  This proof is somewhat difficult to reproduce in text. We seek to
+  subdivide our function by partitioning the range of the function and
+  approximating it by simple
+  functions. \\
+  \begin{figure}[h]
+  \includegraphics[scale=0.5]{images/lebesgue-integral-simple-functions.png}   
+    \caption{Lebesgue integration. 
+      \url{https://commons.wikimedia.org/wiki/File:Lebesgueintegralsimplefunctions.svg}}
+    \label{fig:lebesgue-integration}
+  \end{figure}
+\end{proof}
+\begin{prop}
+  Parts a,b, and c from \ref{integration-props} apply to the new
+  definition of integration for $f,g \in L^+$. 
+\end{prop}
+\begin{proof}
+  \begin{enumerate}
+  \item[(a)] If $c=0$, the statement is trivial. Let $c > 0$. Then, \[
+      \int c f d\mu = \sup_{\phi \leq cf, \phi \text{ simple}} \int
+      \phi d\mu
+    \]
+    Take $\psi := \frac{1}{c}\phi$ is simple. Then, $\psi \leq f$
+    and \[
+      \int f \geq \int \psi = \int \frac{1}{c} \phi = \frac{1}{c} \int \phi
+    \]
+    which then implies that \[
+      \int \phi \leq c \int f
+    \]
+    Then just take the supremum over $\phi$ to get \[
+      \int cf \leq c \int f.
+    \]
+    Changing $c \to \frac{1}{c}$ yields the other inequality.
+  \item[(c)] If $\phi$ is finite, we have $\phi \leq f \leq g$ and so
+    $\int \phi \leq \int g$ by definition. Take supremum over $\phi$
+    to get $\int f \leq \int g$.
+  \item[(b)] If $0 \leq \phi \leq f$ and $0 \leq \psi \leq g$ for
+    simple $\phi,\psi$, then $0 \leq \phi+\psi \leq f+g$ and so \[
+      \int \phi + \int \psi = \int(\phi + \psi) \leq \int (f+g)
+    \]
+    by definition. Now, fix $\phi$ and take supremum over $\psi$ to
+    get, for all $\phi$, that \[
+      \int \phi + \int g \leq \int(f+g)
+    \]
+    and then take sup over $\phi$ to get \[
+      \int f + \int g \leq \int(f+g).
+    \]
+    For the other inequality, we will need the following lemma
+    \subsection*{(3/21/2017) Lecture 12}
+    \begin{lem}\label{lem26}
+  Let $f \in L^+$. Then, if $\phi_n$ is a sequence of simple functions
+  with, for all $x$, $\phi_n(x)$ a non-decreasing sequence and
+  $\lim_{n \to \infty} \phi_n(x) = f(x)$, then \[
+    \lim_{n \to \infty} \int \phi_n d\mu = \int f d\mu
+  \]
+  \end{lem}
+  Then, take $\phi_n$ a non-decreasing sequence converging to $f$ and
+  $\psi_n$ a non-decreasing sequence converging to $g$. Then, $\phi_n
+  + \psi_n$ simple functions converge to $f+g$ and so we apply the
+  lemma to get
+  \begin{align*}
+    \int (f+g) d\mu & = \lim_{n \to \infty} \int (\phi_n+\psi_n) \\
+                    & = \lim_{n \to \infty}\left( \int \phi_n + \int \psi_n \right)\\
+    & = \lim_{n \to \infty} \int \phi_n + \lim_{n \to \infty} \int
+      \psi_n \\
+    & = \int f + \int g
+  \end{align*}
+  \end{enumerate}
+\end{proof}
+Of course, we need to prove this lemma, so we seek to do that now.
+\begin{prop}
+  Let $\phi$ be simple in $L^+$. Then,
+  \begin{enumerate}
+  \item \[
+      \nu_\phi(E) = \int_E \phi d\mu := \int_X \phi \chi_E d\mu
+    \]
+    is a measure.
+  \item For all $\psi$ simple in $L^+$, \[
+      \int \psi d\nu_\phi = \int \psi \phi d \mu
+    \]
+  \end{enumerate}
+  \begin{proof}
+    (a) is trivial. For (b), we must call Bootstrap Bill.
+    \begin{itemize}
+    \item ($\psi = \chi_E$). If $\psi = \chi_E$, then $\psi = 1 \cdot
+      \chi_E + 0 \cdot \chi_{E^c}$ is a good decomposition of
+      $\psi$. Thus, \[
+        \int \psi d\nu_\phi = \nu_\phi(E) = \int \chi_E \phi d \mu =
+        \int \psi \phi d\mu
+      \]
+    \item (General $\psi$). Let $\psi$ have a good decomposition $\psi
+      = \sum_{i=1}^n a_i \chi_{E_i}$ for $a_i \in [0,\infty)$ and
+      $\Dunion E_i = X$. By definition, we get that
+      \begin{align*}
+        \int \psi d\nu_\phi & = \sum_{i=1}^n a_i \int \chi_{E_i} d
+                         \nu_\phi \\
+                       & = \sum a_i \int \chi_{E_i} \phi d\mu \\
+                       & = \int \left( \sum a_i \chi_{E_i} \right)
+                         \phi d\mu \\
+        & = \int \psi \phi d\mu
+      \end{align*}
+    \end{itemize}
+  \end{proof}
+\end{prop}
+\begin{prop}
+  Let \((\phi_n)_{n \geq 1}, \psi\) all be simple functions such that
+  \(\phi_n\) increases to \(\psi\). Then, \[
+    \lim_{n \to \infty} \int \phi_n d\mu = \int \psi d\mu
+  \]
+\end{prop}
+\begin{proof}
+  Let \(\alpha \in [0,1) \) and, for all \(n\), let \(E_n = \{\alpha
+  \in X \st \phi_n(x) \geq \alpha \psi(x)\}\). It is clear that
+  \(E_n\) is measurable since \(\phi_n - \alpha \psi\) is measurable
+  and \(E_n\) is the inverse image of \([0,\infty) \). Furthermore, it
+  is easy to check \(E_n \subset E_{n+1}\). Now, we note that \[
+    \Union_{n=1}^\infty E_n = X.
+  \]
+  Let \(x \in X\). If \(\psi(x) = 0\), then \(x \in E_n\). Otherwise,
+  \(\psi(x) > 0\) is finite and so \(\alpha \psi(x) < \psi(x)\). Thus,
+  \(\phi_n(x) \to \psi(x)\) and thus there exists an \(n\) such that
+  \(\phi_n(x) \geq \alpha \psi(x)\). Thus, we now have \[
+    \lim \int \phi_n \leq \int \psi.
+  \]
+  We still want to show the other inequality. Consider \(\nu_{\alpha
+    \psi}\). We have that \(\nu_{\alpha \psi}(E_n) \to \nu_{\alpha
+    \psi}(x)\) as \(n \to \infty \) using continuity from
+  below. Furthermore, \[
+    \nu_{\alpha \psi}(X) = \int \chi_X \alpha \psi d\mu = \alpha \int
+    \psi d\mu.
+  \]
+  Now, \(\phi_n \geq \alpha \psi \chi_{E_n}\) for all \(x \in X\) and
+  thus \[
+    \int \phi_n d\mu \geq \int \alpha \psi E_n d\mu = \nu_{\alpha \psi}(E_n).
+  \]
+  Taking \(n \to \infty\), we get \[
+    \lim \int \phi_n d\mu \geq \alpha \int \psi d\mu
+  \]
+  for \(\alpha \in (0,1)\) and so we take \(\alpha = 1\) to complete
+  the proof.
+\end{proof}
+Finally, we can now prove \ref{lem26}.
+\begin{proof}[Proof of Lemma]
+  Take \((\phi_n)\) as a sequence of simple functions increasing to
+  \(f\) in \(L^+\). Since \(0 \leq \phi_n \leq f\), we get \[
+    \int \phi_n \leq \int f
+  \]
+  by definition and so \[
+    \lim_{n \to \infty} \int \phi_n \leq \int f.
+  \]
+  To get the \(\geq\) direction, take \(0 \leq \phi_n \leq f\). Then,
+  \(\min(\phi_n,\psi)\) is simple and increases to \(\psi\). Thus, by
+  our proposition above, we get that \[
+    \lim \int \phi_n \geq \lim \int \min(\phi_n,\psi) = \int \psi
+  \]
+  However, this is true for all \(\psi\). So, taking the supremum, we
+  get \[
+  \lim_{n \to \infty} \int \phi_n \geq \int f.
+  \]
+\end{proof}
+\begin{thm}[Monotone Convergence theorem]
+  Let \((f_n)_{n \geq 1}, f \in L^+\) with \(f_n\) increasing to
+  \(f\). Then, \[
+    \lim_{n \to \infty} \int f_n d\mu = \int f d\mu
+  \]
+\end{thm}
+\begin{proof}
+  The \(\leq\) direction is trivial by properties of integrals. For
+  the \(\geq\) direction, let \(\alpha \in (0,1)\) and \(\psi\) be 
+  a simple function with \(0 \leq \psi \leq f\). Furthermore, let
+  \(E_n = \{x \in E \st f_n(x) \geq \alpha \psi(x)\}\), which is
+  measurable as discussed in the previous proof of the proposition, as
+  well as increasing and satisfying \(\Union_n E_n = X\). Now,
+  consider \(\nu_{\alpha \psi}\) as a measure. We have that
+  \(\nu_{\alpha \psi}(E_n) \to \nu_{\alpha \psi}(X)\) and so this
+  gives us that \[
+    \int f_n d\mu \geq \int \alpha \psi \chi_{E_n} d\mu \to \alpha
+    \int \psi \implies \lim_{n \to \infty} \int f_n d\mu \geq \alpha
+    \int \psi d\mu
+  \]
+  Since this is true for all \(\alpha \in (0,1)\), it is true for
+  \(\alpha = 1\). Now, simply take the supremum over \(\psi\) to get
+  the theorem.
+\end{proof}
+Here I will choose to judiciously skip some pages of notes for the
+sake of getting the more important theorems into the notes.
+\begin{lem}[Fatou's Lemma]
+  Let \((f_n)_{n \geq 1} \in L^+\). Then, \[
+    \int (\lim \inf f_n) d\mu \leq \lim \inf \int f_n d\mu
+  \]
+\end{lem}
+\begin{proof}
+  For a perfectly good proof using our program, see page 52 of
+  Folland, 2.18. 
+\end{proof}
+\subsection*{(3/23/2017) Lecture 13}
+\begin{prop}
+  Let \((X,\M,\mu)\) be a measure space with \(f \in L^+\). If
+  \(\mu(E) = 0\), then \(\nu_f(E) = 0\).
+\end{prop}
+\begin{defn}
+  Let \((X,\M)\) be a measurable space with measures \(\mu,\nu\) both
+  defined on it.
+  \begin{enumerate}
+  \item \(\nu\) is called \de{absolutely continuous with respect to
+      \(\mu\)} (denoted \(\nu \ll \mu\)) if and only if for all \(E
+    \in \M\), \(\mu(E) = 0 \implies \nu(E) = 0\).
+  \item \(\mu\) is \de{singular with respect to \(\nu\)} if and only
+    if there exists an \(E \in \M\) such that \(\nu(E) = \mu(E^c) =
+    0\). 
+  \end{enumerate}
+\end{defn}
+\begin{prop}
+  \(\mu\) is singular with respect to \(\nu\) if and only if \(\nu\)
+  is singular with respect to \(\mu\).
+\end{prop}
+\begin{defn}
+  \(\mu\) and \(\nu\) in the proposition above may be called
+  \de{mutually singular}, denoted \(\mu \perp \nu\). 
+\end{defn}
+\begin{rmk}
+  If \(\nu \ll \mu\) and \(\nu \perp \mu\), then \(\nu \equiv 0\).
+\end{rmk}
+\begin{rmk}
+  For all \(f \in L^+\), \(\nu_f \ll \mu\). Later, we will see the
+  converse in the Radon-Nicodyn Theorem.
+\end{rmk}
+I am choosing to skip the section of restriction of measures to
+subsets.
+\begin{defn}
+  We say measurable \(f \from X \to \R\) is \de{integrable} if and only if \[
+    \int |f| d\mu < \infty.
+  \]
+  We denote this \(f \in \L^1(X,\R) = \cL^1(X,\M,\mu,\R)\)
+\end{defn}
+\begin{defn}
+  Let \(f \in \cL^1\). A \de{good representation} of \(f\) is \[
+    f = g-h
+  \]
+  where \(g,h \in \cL^1\) take values in \([0,\infty]\) and are
+  measurable.
+\end{defn}
+\begin{defn}
+  \[
+    \int_X f d\mu := \int_X g d\mu - \int_X h d\mu
+  \]
+\end{defn}
+We would need to show this definition makes sense. Once again, I will
+omit such details for the time being.
+\begin{prop}
+  Let \(\mathbb{K} = \R,\C,[0,\infty]\). Then,
+  \begin{enumerate}
+  \item \(\cL^1(X,\mathbb{K})\) is a \(\mathbb{K}\)-vector space.
+  \item \(f \mapsto \int_X f d\mu\) is a \(\mathbb{K}\)-linear form.
+  \end{enumerate}
+\end{prop}
+\subsection*{(3/23/2017) Lecture 14}
+\begin{prop}
+  Let \(\mathbb{K} = \R,\C\) and \(f \in
+  \cL^1(X,\mathbb{K})\). Then, \[
+    \left| \int f \right| \leq \int \left| f \right|
+  \]
+\end{prop}
+\begin{prop}
+  Using the same hypotheses as above,
+  \begin{enumerate}
+  \item \(f \in \cL^1 \implies \{x \st f(x) \neq 0\}\) is
+    \(\sigma\)-finite.
+  \item For all \(f,g \in \cL^1\), \[
+      \int_E f = \int_E g, \ \forall E \in \M \iff \int |f-g| = 0 \iff
+      f=g \ \mu-\text{almost everywhere}.
+    \]
+  \end{enumerate}
+
+\end{prop}
+\begin{defn}
+  \(L^1 = \cL^1/\sim\) where \(f \sim g\) if \(f=g\) \(\mu\)-almost everywhere.
+\end{defn}
+\section{Elements of Functional Analysis}
+\begin{defn}
+  Let \(V\) be a \(\mathbb{K} = \R,\C\) vector space. \(V\) is called
+  a \de{\(\mathbb{K}\)-topological vector space} (TVS) if \(V\) comes with
+  a topology \(\Top\) such that \(+ \from V \times V \to V\) and
+  \(\cdot \from \mathbb{K} \times V \to V\) are continuous. 
+\end{defn}
+\begin{defn}
+  Give \(V\) a \(\mathbb{K}\)-vector space, \(||\cdot|| \from V \to
+  [0,\infty)\) is called a \de{semi-norm} if
+  \begin{enumerate}
+  \item for all \(u,v \in V\), \(||u+v|| \leq ||u|| + ||v||\)
+  \item for all \(\lambda \in \mathbb{K}\) and \(v \in V\),
+    \(||\lambda v|| = |\lambda|\cdot ||V||\)
+  \end{enumerate}
+\end{defn}
+Note that this differs from the definition of a norm since \(||v||=0\)
+does not imply \(v = 0\).
+\begin{defn}
+  \(||\cdot||\) is a \de{norm} if it is a seminorm with the property
+  \(||u||=0\) if and only if \(u = 0\). 
+\end{defn}
+\begin{defn}
+  Given a finite set of semi-norms \(F\) on a vector space \(V\),
+  define a \de{multi-ball} with radius \(\epsilon > 0\) to be \[
+    B(u,F,\epsilon) = \left\{ v \st \ \forall ||\cdot|| \in F, ||v-u|| <
+    \epsilon\right\}
+  \]
+\end{defn}
+\begin{defn}
+  Let \(V\) be a \(\mathbb{K}\)-vector space and let \(\cN\) be a set
+  of semi-norms \((\cN \subset [0,\infty)^V \). Then, there is a
+  canonical topology \(\Top_\cN\) on \(V\) which makes it a
+  topological vector space. Namely, \[
+    \Top_\cN = \left\{ U \in \P(V) \st \forall u \in U, \exists \text{
+      finite } F \in \cN, \forall \epsilon > 0, 
+  B(u,F,\epsilon) \subset U \right\}
+  \]
+\end{defn}
 \end{document}
