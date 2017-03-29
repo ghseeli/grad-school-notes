@@ -42,6 +42,9 @@
 \newcommand{\fund}[1][1]{\pi_{#1}}
 \newcommand{\homl}[1][n]{H_{#1}}
 \newcommand{\rhoml}[1][n]{\widetilde{H}_{#1}}
+\newcommand{\dhoml}[1][n]{\homl^\Delta}
+\newcommand{\Dcomplex}{$\Delta$-complex}
+\newcommand{\Dcomplexes}{$\Delta$-complexes}
 \newcommand{\transverse}{\pitchfork}
 \newcommand{\x}{\times}
 \newcommand{\Map}{\text{Map}}
@@ -1543,9 +1546,127 @@ $S \from C_n(X) \to C_n(X)$ inducing isomorphism on homology.
 \mydate{d23}{27}{3}{2017}
 
 \mydate{d24}{29}{3}{2017}
+\renewcommand{\homl}[1][i]{H_{#1}}
+
+
+\begin{defn}
+  $(X, A)$ is a \de{good pair} if $A$ is a closed subspace of $X$ and there exists an open $V \supset A$ s.t. $A \into V$ is a deformation retract.
+\end{defn}
+\begin{example}
+  \includegraphics[scale=0.18]{images/good-pair-1} \includegraphics[scale=0.16]{images/good-pair-2}
+\end{example}
+\begin{thm}
+  If $A \subset X$ is a good pair, then $$\homl(X, A) \isom \rhoml(X/A) \isom \homl(X/A, A/A).$$
+\end{thm}
+\begin{proof}
+  $$\begin{tikzcd}
+    &(X, A) \arrow[d] \arrow[r] &(X/A, A/A) \\
+    &(X, V) \arrow[r] &(X/A, V/A) \\
+    &(X \minus A, V \minus A) \arrow[u] \arrow[r, "\isom"] &(X/A \minus A/A, V/A \minus A/A) \arrow[u]
+  \end{tikzcd}$$
+
+  I claim that every arrow in the above diagram induces an isomorphism.  The each bottom arrow uses excision.  Each top arrow uses a long exact sequence.  For example, the top left arrow uses:
+  $$0 = \homl(V, A) \to \homl(X, A) \isomto \homl(X, V)$$
+  $$\homl(A) \isomto \homl(V) \to \homl(V, A) = 0$$
+\end{proof}
+
+\section{Equivalence of singular and simplicial homology}
+
+\begin{thm}
+  Given $A \subset X$ and $B \subset Y$.
+  $$\begin{tikzcd}
+    &X \arrow[r, "f"] &Y \\
+    &A \arrow[r, "f"] &B
+  \end{tikzcd}$$
+
+  and a long exact sequence, then
+  $$\begin{tikzcd}
+    &\homl(A) \arrow[d] \arrow[r, "f_*"] &\homl(B) \arrow[d] \\
+    &\homl(X, \null) \arrow[d] \arrow[r, "f_*"] &\homl(Y, \null) \arrow[d] \\
+    &\homl(X, A) \arrow[d] \arrow[r, "f_*"] &\homl(Y, B) \arrow[d] \\
+    &\homl[i-1](A) \arrow[r, "f_*"] &\homl[i-1](B)
+  \end{tikzcd}$$
+
+  commutes!
+\end{thm}
+
+$$\dhoml(X) \to \homl(X)$$
+
+Think of a simplicial chain as a singular chain.
+
+\begin{thm}
+  If $A \subset X$ is a closed (if you include a simplex, also include its faces) subspace and a sub-$\Delta$-complex, then
+  $$\begin{tikzcd}
+    &\, \arrow[r] &\dhoml(A) \arrow[d] \arrow[r] &\dhoml(X) \arrow[d] \arrow[r] &\dhoml(X, A) \arrow[d] \arrow[r] &\dhoml[i-1](A) \arrow[r] &\, \\
+    &\, \arrow[r] &\homl(A) \arrow[r] &\homl(X) \arrow[r] &\homl(X, A) \arrow[r] &\homl[i-1](A) \arrow[r] &\,
+  \end{tikzcd}$$
+
+  commutes!
+\end{thm}
+
+\begin{thm}
+  $\dhoml(X) \isom \homl(X)$ for any $\Delta$-complex.
+\end{thm}
+\begin{proof}
+  It is enough to prove the statement for finite dimensional \Dcomplexes since $\dhoml(X_{i+1}) \isom \dhoml(X)$.
+
+  We now induct on the dimension $k$ of \Dcomplex:
+  \begin{itemize}
+    \item Base Case ($k=0$):
+
+    $X = U\{*\}$
+
+    $$\dhoml[0](X) \isom \homl[0](X)$$
+    $$\dhoml(X) \isom \homl(X) = 0$$
+
+    \item Inductive Step ($k>0$):
+
+    Assume $X$ is $k$-dimensional.  $X \supset X_{k-1}$.
+
+    $$\begin{tikzcd}
+      &\dhoml[i+1](X, X_{k-1}) \arrow[d] \arrow[r] &\dhoml[i+1](X_{k-1}) \arrow[d, "\isom"] \arrow[r] &\dhoml[i+1](X) \arrow[d] \arrow[r] &\dhoml[i+1](X, X_{k-1}) \arrow[d, "\isom"] \arrow[r] &\dhoml[i+1](X_{k-1}) \\
+      &\homl[i+1](X, X_{k-1}) \arrow[r] &\homl[i+1](X_{k-1}) \arrow[r] &\homl[i+1](X) \arrow[r] &\homl[i+1](X, X_{k-1}) \arrow[r] &\homl[i+1](X_{k-1})
+    \end{tikzcd}$$
+
+    $$\dhoml(X, X_{k-1}) \isom \begin{cases}
+      \Z &\text{if $i=k$} \\
+      0 &\text{otherwise}
+    \end{cases}$$ the number of simplices of dimension $k$.
+
+    $$\homl(X, X_{k-1}) \isom \rhoml(X/X_{k-1}) = \begin{cases}
+      \Z &\text{if $i=k$} \\
+      0 &\text{otherwise}
+    \end{cases}$$
+
+    $$X/X_{k-1} \isom \vee_{\text{simplices of dim $k$}} S^k$$.
+
+    Note that we have shown that the first and second-to-last vertical arrows are also isomorphisms.
+  \end{itemize}
+\end{proof}
+\begin{thm}[5-Lemma]
+  Given a commutative diagram
+  $$\begin{tikzcd}
+    &A \arrow[d, "\isom", "\alpha"'] \arrow[r] &B \arrow[d, "\isom", "\beta"'] \arrow[r] &C \arrow[d, "\gamma"'] \arrow[r] &D \arrow[d, "\isom", "\delta"'] \arrow[r] &E \arrow[d, "\isom", "\epsilon"'] \\
+    &A' \arrow[r] &B' \arrow[r] &C' \arrow[r] &D' \arrow[r] &E'
+  \end{tikzcd}$$
+
+  with exact rows and all but middle vertical map an isomorphism, then the middle map is an isomorphism!
+\end{thm}
+\begin{proof}
+  Assume $\gamma(C) = 0$.  Since $\delta$ is an isomorphism, then $c = \d b$.
+
+  Thus
+  \begin{align}
+    &\d \beta(b) = 0 \\
+    &\d \beta(b) = \d a \\
+    &b = \d \alpha^{-1}(a) \\
+    &c = 0
+  \end{align}
+\end{proof}
+
+
 
 \mydate{d25}{31}{3}{2017}
-
 
 
 
