@@ -10,6 +10,7 @@
 \newcommand{\Top}{\mathcal{T}}
 \newcommand{\cL}{\mathcal{L}}
 \newcommand{\cN}{\mathcal{N}}
+\newcommand{\norms}{\cN}
 
 \renewcommand{\emptyset}{\varnothing}
 
@@ -2273,4 +2274,217 @@ does not imply \(v = 0\).
   B(u,F,\epsilon) \subset U \right\}
   \]
 \end{defn}
+\subsection*{(3/28/2017) Lecture 15}
+\begin{defn}
+  Let \(V\) be a TVS with topology \(\Top_\norms\) for some set of
+  semi-norms \(\norms\). Then, we call \((V,\Top_\norms)\) a
+  \de{locally convex topological vector space} (LCTVS).
+\end{defn}
+\begin{rmk}
+  \(B(x,F,\epsilon)\) with finite \(F \subset \norms\), \(x \in
+  V\), and \(\epsilon > 0\) is an open set in \(\Top_\N\). 
+\end{rmk}
+\begin{proof}[Proof of remark]
+  Let \(F = \{\norm_1, \ldots, \norm_k\}\). Then, take \(y \in
+  B(x,F,\epsilon)\). We want to find some \(\epsilon' > 0\) such that
+  \(B(y,F,\epsilon') \subset B(x,F,\epsilon)\). Now, if we take \(1
+  \leq \ell \leq k\), we get \[
+    \norm[x-z]_\ell \leq \norm[x-y]_\ell + \norm[y-x]_\ell <
+    \norm[x-y]_\ell + \epsilon'
+  \]
+  and we want this to be less than \(\epsilon\), so take \(\epsilon' =
+  \min_{1 \leq \ell \leq k}(\epsilon - \norm[x-y]_\ell)\).
+\end{proof}
+\begin{prop}
+  Given \(V,\Top_\norms\) an LCTVS, it is Hausdorff separated if and
+  only if, for all \(x \in V \setminus \{0\}\) there exists \(\norm
+  \in \norms\) with \(\norm[x] \neq 0\). 
+\end{prop}
+\begin{proof}
+  \begin{itemize}
+  \item (\(\implies\)). Take \(x \neq 0\) and \((V,\Top_\norms)\)
+    Hausdorff separated. Then, there are \(U_1,U_2\) open disjoint
+    sets with \(0 \in U_1\) and \(x \in U_2\). Therefore, there exists
+    \(F,\epsilon\) such that \(0 \in B(0,F,\epsilon) \subset U_1\) but
+    \(x\) is not. Thus, there exists an \(\ell, 1 \leq \ell \leq k\)
+    such that \(\norm[x]_\ell \geq \epsilon > 0\).
+  \item (\(\impliedby\)). Let \(x,y \in V\)with \(x \neq y\). Then
+    there exists \(\norm\) such that \(\epsilon := \norm[x-y] >
+    0\). Thus, take \(F = \{\norm\}\) and we get that \[
+      B\left(x,F,\frac{\epsilon}{2}\right) \intersect B\left(y,F,\frac{\epsilon}{2}\right) = \emptyset
+    \]
+  \end{itemize}
+\end{proof}
+We will mostly focus on HAusdorff LCTVS's.
+\begin{defn}
+  \(X,\Top\) a topology is called \de{first countable} if, for all
+  \(x\), there exists a sequence \((V_n)_{n \geq 1}\) of open
+  neighborhoods of \(x\) such that, for all \(U \in \Top\) with \(x
+  \in U\), there exists an \(n\) with \(V_n \subset U\). 
+\end{defn}
+Without loss of generality, we can assume \((V_n)\) is decreasing
+using the standard trick.
+\begin{example}
+  All metric spaces \(X,d\) are first countable by taking \(V_n =
+  B(x,\frac{1}{n})\). 
+\end{example}
+\begin{prop}[Sequential Characterization of Limits]
+  Suppose \(X, \Top_X\) is first countable with \(\Top_\infty \subset
+  X\) a union of neighborhoods of a point \(x_\infty \in X\). Then,
+  given a function \(f \from U \setminus \{x_\infty\} \to (Y,
+  \Top_Y)\) and \(y \in Y\), we have \(\lim_{x \to x_\infty} f(x) = y\)
+  if and only if, for all sequences \((x_n)\) in \(U \setminus
+  \{x_\infty\}\) such that \(x_n \to x_\infty\), we get \(f(x_n) \to y\).
+\end{prop}
+\begin{proof}
+  \begin{itemize}
+  \item (\(\implies\)). Take \(W \in \Top_Y, y \in W\) with \(\lim_{x
+      \to x_\infty} f(x) = y\). Thus, there exists a \(V \in \Top_X,
+    x_\infty \in V, V \subset U\) such that for all \(x \in V
+    \setminus \{x_\infty\}\), \(f(x) \in W\). Thus, \(\lim f(x_n) =
+    y\).
+  \item (\(\impliedby\)). We seek to prove the contrapositive. Let
+    there exist a \(W\) open neighborhood of \(y\) such that, for all
+    \(V \in \Top_X\) with \(x_\infty \in V\) and \(V \subset U\),
+    there exists \(x \in V \setminus \{x_\infty\}\) such that \(f(x)
+    \not \in W\). Here we use the first countable property, so there
+    exists a non-increasing \((V_n)\) that is a neighborhood basis for
+    \(x_\infty\). Without loss of generality \((V_n) \subset
+    U\). Thus, there exists an \(N\) such that, for all \(n \geq N\),
+    \(V_n \subset U\). So, we renumber our sequence from \(N\) and
+    apply above to \(V = V_n\) to get that there exists an \(x_n \in
+    V_n \setminus \{x_\infty\}\) with \(f(x_n) \not \in W\). Thus,
+    \(\lim_{n \to \infty} f(x_n) = y\) is false. Moreover, \(x_n \neq
+    x_\infty\) for all \(n\), but \(\lim x_n = x_\infty\). If
+    \(\Omega\) is a neighborhood of \(x_\infty\), there exists an
+    \(n\) where \(V_n \subset \Omega\) implies that, for all \(m \geq
+    n\), \(V_m \subset \Omega\). 
+  \end{itemize}
+\end{proof}
+\begin{prop}
+  Let (\(V,\Top_\norms\)) be a Hausdorff LCTVS. Then, the following
+  are equivalent.
+  \begin{enumerate}
+  \item \(V\) is measurable.
+  \item \(V\) is first countable.
+  \item There exists a countable \(\norms_c \subset \norms\) such that
+  \(\Top_{\norms_c} = \Top_\norms\). 
+  \end{enumerate}
+\end{prop}
+\begin{proof}
+  (a) implies (b) is trivial since all metric spaces are first
+  countable. The proofs of the other two statements are omitted for
+  the time being since they are somewhat long and technical. 
+\end{proof}
+\begin{rmk}
+  In summary, we have that, given a Hausdorff LCTVS
+  \((V,\Top_\norms)\) (where \(\norms\) is non-unique), we ask what is
+  the smallest \(\norms\) needed to define our topology?
+  \begin{itemize}
+  \item If \(\norms\) is finite, we have shown we really only need one
+    norm.
+  \item If \(\norms\) is countable, we have shown \(V\) is metrizable.
+  \item If \(\norms\) is uncountable, then \(V\) is not metrizable
+    (see homework 6).
+  \end{itemize}
+\end{rmk}
+\begin{example}
+  The space of all functions \(f \from \R^d \to \mathbb{K}\) that are
+  in \(\mathcal{C}^\infty\)
+\end{example}
+We now seek to fix some notation.
+\begin{defn}
+  \begin{itemize}
+  \item Take \(\alpha \in \N_0^d\) as a multi-index. \(\alpha =
+    (\alpha_1, \ldots, \alpha_d)\).
+  \item Say \(|\alpha| = \alpha_1 + \cdots + \alpha_d\) the \de{length
+      of \(\alpha\)}.
+  \item \[
+      \partial^\alpha f(x) := \frac{\partial^{|\alpha|}}{\partial
+        x_1^{\alpha_1} \cdots \partial x_d^{\alpha_d}}(x)
+    \]
+  \item \(\langle x \rangle := \sqrt{1+\norm[x]_2^2}\) where
+    \(\norm_2\) is the standard Euclidean norm.
+  \item For all \(\alpha\) and \(k \geq 0\), \[
+      \norm[f]_{\alpha,k} := \sup_{x \in \R^d} \langle x \rangle^k
+      \left| \partial^d f(x) \right| \in [0,\infty]
+    \]
+  \item Define the \(\mathbb{K}\)-vector space \[
+      S(\R^d,\mathbb{K}) := \left\{ f \from \R^d \to \mathbb{K} \in
+        \mathcal{C}^\infty \st \forall \alpha, k, \norm[f]_{\alpha,k}
+        < \infty \right\}
+    \]
+  \item Thus, \(\norm_{\alpha,k}\) restricted to \(S\) are seminorms
+    on \(S\), so we say \[
+      \norms = \{\norm_{\alpha,k} \st \alpha \in \N_0^d, k \in \N_0\}.
+    \]
+  \end{itemize}
+  So, \(S(\R^d,\mathbb{K}), \Top_\norms\) is a \(\mathbb{K}\)-LCTVS
+  metrizable space called \de{Schwartz space}. Also, let
+  \(S'(\R^d,\mathbb{K})\) be its topological dual, that is, continuous
+  \(\mathbb{K}\)-linear forms \(S \to K\). 
+\end{defn}
+\subsection*{(3/30/2017) Lecture 16}
+\subsection*{(3/30/2017) Lecture 17}
+\begin{defn}
+  Given a LCTVS \((V,\Top_\norms)\), define \[
+    V_{\text{null}} := \left\{ x \in V \st \forall \norm \in \norms,
+      \norm[x] = 0 \right\}.
+  \]
+  This is a \(\mathbb{K}\)-linear subspace of \(V\).
+\end{defn}
+\begin{rmk}
+  Given LCTVS \((V,\Top_\norms)\)  that is not Hausdorff, one can fix
+  this by defining the equivalence relation \(x \sim y \iff \forall
+  \norm, \norm[x-y] = 0\). Then \(\ov{V} := V/\sim\) is
+  Hausdorff. Equivalently, one could define \(\ov{V} :=
+  V/V_{\text{null}}\). We then get \(\ov{\norms}\) on \(\ov{V}\) given
+  by \(\{\ov{\norm} \st \norm \in \norms\}\) where \(\ov{\norm[[x]]}
+  := \norm[x]\), which is clearly well-defined. Thus, \(\ov{\norm}\)
+  is a seminorm of the quotient \(\ov{V}\) and so we get an LCTVS
+  \((\ov{V}, \Top_{\ov{\norms}})\). 
+\end{rmk}
+\begin{example}
+  Take \(V = \cL^1(X,\M,\mu,\mathbb{K})\), \(\norms =
+  \{\norm_{L^1}\}\), \(\norm[f]_{L^1} = \int_X |f|d\mu\), \(\ov{V} =
+  L^1(X,\M,\mu,\mathbb{K})\), and \(V_\text{null} = \{f \st f=0
+  \mu-\text{almost everywhere}\}\). 
+\end{example}
+\subsection{Normed spaces}
+\begin{defn}
+  Given a space \(V\) and a norm \(\norm\),  \((V,\norm)\) is called a
+  \de{normed space} if it is equipped with the metric topology using
+  the metric \(d(x,y) = \norm[x-y]\). 
+\end{defn}
+\begin{defn}
+  A normed space \((V,\norm)\) is a \de{Banach space} if it is
+  complete. 
+\end{defn}
+we will eventually show that \(L^1(X,\M,\mu,\mathbb{K})\) is a Banach
+space.
+\begin{rmk}
+  Given \(f \in L^1\), \(\int_X f d\mu\) is well-defined independent
+  of choice of representative.
+\end{rmk}
+\begin{thm}[Dominated Convergence Theorem v1.0]
+  Let \((X,\M,\mu)\) be a measure space and let \(f_n \from X \to
+  \mathbb{K}\) be a sequence of functions in \(\cL^1\) such that, for
+  all \(x\), \(\lim_{n \to \infty} f_n(x)\) exists and there exists an
+  integrable \(g \in L^+ \intersect \cL^1\) with \(\infty > g \geq
+  0\) such that, for all \(n \geq 1\) and for all \(x\), \(|f_n(x)|
+  \leq g(x)\) (that is to say, \(g\) is a dominating function), then
+  \(f \in \cL^1\) and \[
+    \lim_{n \to \infty} \int_X f_n d\mu = \int_X f d\mu
+  \]
+\end{thm}
+\begin{proof}
+  To be filled in later.
+\end{proof}
+\begin{thm}[Dominated Convergence Theorem v2.0]
+  Let \((f_n)\) be integrable and \(g \geq 0\) be
+  integrable. Furthermore, for all \(n\), let \(|f_n| \leq g\)
+  \(mu\)-almost everywhere and let \(\lim_{n \to \infty} f_n(x)\)
+  exist \(\mu\)-almost everywhere. Then, ``\(f \in L^1\)''  and \(\lim_{n
+    \to \infty \int f_n = \int f}\). 
+\end{thm}
 \end{document}
