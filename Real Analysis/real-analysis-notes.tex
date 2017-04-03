@@ -1,16 +1,19 @@
 \documentclass[11pt,leqno,oneside]{amsbook}
 
 \usepackage{../notes}
+\newcommand{\mathbbm}[1]{\text{\usefont{U}{bbm}{m}{n}#1}} % from mathbbm.sty
 \numberwithin{thm}{section}
 \renewcommand{\P}{\mathcal{P}}
 \renewcommand{\A}{\mathcal{A}}
 \newcommand{\M}{\mathcal{M}}
 \newcommand{\F}{\mathcal{F}}
-\newcommand{\Ep}{\mathcal{E}}
-\newcommand{\Top}{\mathcal{T}}
+\newcommand{\Ep}{\mathcal{E}} 
+\newcommand{\Top}{\mathcal{T}} % Topology
 \newcommand{\cL}{\mathcal{L}}
 \newcommand{\cN}{\mathcal{N}}
 \newcommand{\norms}{\cN}
+\newcommand{\K}{\mathbb{K}} % Arbitrary field
+\newcommand{\supp}{\operatorname{Supp}}
 
 \renewcommand{\emptyset}{\varnothing}
 
@@ -21,6 +24,8 @@
 \date{Spring 2017}
 \begin{document}
 \maketitle
+\setcounter{tocdepth}{1}
+\tableofcontents
 \section{Measures}
 \subsection*{(1/19/2017) Lecture 1}
 Riemann integration is great, but it is insufficient for many classes
@@ -800,7 +805,8 @@ where the last equality follows from the fact that $F_1 \cup \cdots
   \implies  x \in E$.
 \end{defn}
 \begin{rmk}
-  We note that $\{x \in X \mid P(x) \text{ is false}\} \subset E$ with
+  Given the logical predicate \(P(X)\) as above, we note that $\{x \in
+  X \mid P(x) \text{ is false}\} \subset E$ with 
   $E \subset \M$ such that $\mu(E) = 0$.
 \end{rmk}
 \begin{defn}
@@ -1065,9 +1071,9 @@ continuous (follows from continuity from above for $\mu$).
   ``Lebesgue measure'', which is our goal to rigorously define this section.
 \end{rmk}
 \begin{thm}\label{unique-borel-measure}
-  Let $f \from \R \to \R$ be non-decreasing and right
+  Let $F \from \R \to \R$ be non-decreasing and right
   continuous. Then, there exists a unique Borel measure $\mu_F$ such
-  that $\mu_F((a,b]) = f(b) - f(a)$ for all $a < b$ in $\R$.
+  that $\mu_F((a,b]) = F(b) - F(a)$ for all $a < b$ in $\R$.
 \end{thm}
 \begin{proof}\let\qed\relax
   We will only prove exitence here. Let \[
@@ -1086,9 +1092,9 @@ $\mu|_\A$ and then induce a $\mu|_{\M(\A)}$. What we need to show that
 $\mu$ is $\sigma$-additive. (This is all oddly worded, but I could not
 quite follow what he was trying to say in class.)\\
 
-Now, we will define $\mu|_\Ep$ using the function $f \from \R \to \R$
-by saying $f(\infty) := \lim_{x \to \infty} f(x) \in
-(-\infty,\infty]$, $f(-\infty) := \lim_{x \to -\infty} f(x) \in
+Now, we will define $\mu|_\Ep$ using the function $F \from \R \to \R$
+by saying $F(\infty) := \lim_{x \to \infty} F(x) \in
+(-\infty,\infty]$, $F(-\infty) := \lim_{x \to -\infty} F(x) \in
 [-\infty, \infty)$. It is easy to check that $\mu$ is a measure on
 $\Ep$.  \\
 
@@ -1502,7 +1508,7 @@ Then, $F$ is increasing, right continuous, and $\mu = \mu_F$.
 \begin{defn}
   Let $\mu$ be a Borel measure on $\R$ and let $E \in \B_\R$. Then,
   $\mu$ is \de{outer regular on $E$} if and only if \[
-    \mu(E) = \inf \{\mu(V \mid V \text{ is open}, V \supset E)\}.
+    \mu(E) = \inf \{\mu(V) \mid V \text{ is open}, V \supset E\}.
   \]
   Similarly, $\mu$ is \de{inner regular on $E$} if and only if \[
     \mu(E) = \sup \{\mu(K) \mid K \text{ is compact}, K \subset E\}.
@@ -1515,7 +1521,7 @@ Then, $F$ is increasing, right continuous, and $\mu = \mu_F$.
   $\mu$ is a \de{Radon measure} on $\R$. (The definition of this is
   different for a measure not on $\R$; see section 7.1 of Folland.)
 \end{defn}
-\begin{thm}
+\begin{thm}\label{radon-thm}
   Let $F$ be increasing and right continuous. Then, $\mu_F$ is Radon.
 \end{thm}
 \begin{lem}
@@ -1571,7 +1577,7 @@ Then, $F$ is increasing, right continuous, and $\mu = \mu_F$.
     \end{itemize}
   \end{proof}
   \subsection*{(2/28/2017) Lecture 9}
-  With this lemma in hand, we now seek to prove the theorem.
+  With this lemma in hand, we now seek to prove the theorem (\ref{radon-thm}).
   \begin{proof}[Proof of Theorem]
     We have to show $\mu_F$ is finite on compact sets, outer
     regular for all sets in $\B_\R$, and inner regular for all sets in
@@ -1658,14 +1664,20 @@ Then, $F$ is increasing, right continuous, and $\mu = \mu_F$.
       \int f d \mu_n \to \int f d\mu \text{ as } n \to \infty
     \]
   \end{defn}
-  Finally, we note some properties of the Lebesgue measure. Let $m =
-  \mu_F$, $F(x) = x$ be the Lebesgue measure.
+  \begin{defn}
+    The \de{Lebesgue measure} is the Borel measure given by \(m :=
+    \mu_F\) where \(F(x)=x\). 
+  \end{defn}
+  Finally, we note some properties of the Lebesgue measure.
+  \begin{prop}
+    Let \(m\) be the Lebesgue measure on \(\R\).
   \begin{itemize}
   \item For all $A \in \B_\R$ and for all $c \in \R$, we have that
     $A+c \in \B_\R$ and that $m(A+c) = m(A)$.
   \item For all $A \in \B_\R$ and for all $\lambda \in \R$, then
     $\lambda A \in \B_\R$, then $m(\lambda A) = |\lambda| m(A)$. 
-  \end{itemize}
+  \end{itemize}    
+  \end{prop}
   The proof of such facts is ommitted but can be derived as a special
   case of Proposition 2.6 in Folland on page 45.
   \section{Integration}
@@ -1679,7 +1691,7 @@ Then, $F$ is increasing, right continuous, and $\mu = \mu_F$.
     $\implies$ is easy because $\Ep \subset \mathcal{N}$. For
     $\impliedby$, define $\tilde{\mathcal{N}} = \{B \in \P(Y) \mid f^{-1}(B)
     \in \M\}$. This is a $\sigma$-algebra containing $\Ep$ by
-    hypothesis. Thus, $N \subset \tilde{\mathcal{N}}$ and so $f$ is
+    hypothesis. Thus, $\mathcal{N} \subset \tilde{\mathcal{N}}$ and so $f$ is
     measurable. 
   \end{proof}
   \begin{cor}
@@ -1735,24 +1747,24 @@ Then, $F$ is increasing, right continuous, and $\mu = \mu_F$.
     fact that $\R$ is a separable.
   \end{rmk}
   \begin{prop}
-    Let $f \from X \to K$ ($K = \R,\C$) and $g \from X \to K$. If $f$
+    Let $f \from X \to \K$ ($\K = \R,\C$) and $g \from X \to \K$. If $f$
     and $g$ are measurable, then $f+g$ and $fg$ are also measurable. 
   \end{prop}
   \begin{proof}
     Let $x \to (f(x),g(x)) \to f(x)+g(x)$ where the first function is
-    a $(\M,\B_{K \times K})$-measurable function, where $\M$ is a
+    a $(\M,\B_{\K \times \K})$-measurable function, where $\M$ is a
     $\sigma$-algebra on $X$. Each of these two functions is clearly
     measurable, so their composition will be, too.
   \end{proof}
   \begin{prop}
-    Let $f \from X \to K$ ($K = \R,\C$). If $f$ is measurable, then
-    $|f|$ is $(\M,\B_K)$-measurable where $\M$ is a $\sigma$-algebra
+    Let $f \from X \to \K$ ($\K = \R,\C$). If $f$ is measurable, then
+    $|f|$ is $(\M,\B_\K)$-measurable where $\M$ is a $\sigma$-algebra
     on $X$. Furthermore, if $f,g \from X \to \R$ are measurable, then
     $\max(f,g)$ and $\min(f,g)$ are measurable.
   \end{prop}
   \begin{defn}
     Let $E \subset X$. Then \[
-      \mathbb{1}_E(x) = \chi_E(x) := \begin{cases}
+      \mathbbm{1}_E(x) = \chi_E(x) := \begin{cases}
         1 & x \in E \\
         0 & x \not \in E
       \end{cases}
@@ -1779,7 +1791,7 @@ Then, $F$ is increasing, right continuous, and $\mu = \mu_F$.
    Since the union is a union of measurable sets, we are done. \\
 
    The proof for $\lim \inf$ and $\lim \sup$ comes from the fact that
-   $\lim \inf \mu_n = \sup_{n \geq 1} \inf{k \geq n} \mu_k$ and $\lim
+   $\lim \inf \mu_n = \sup_{n \geq 1} \inf_{k \geq n} \mu_k$ and $\lim
    \sup$'s analgous definition. 
  \end{proof}
  \begin{cor}
@@ -1961,7 +1973,7 @@ to check that the new definition agrees with the old one.
   This proof is somewhat difficult to reproduce in text. We seek to
   subdivide our function by partitioning the range of the function and
   approximating it by simple
-  functions. \\
+  functions. For more, see page 47 of Folland, theorem 2.10 and proof.\\
   \begin{figure}[h]
   \includegraphics[scale=0.5]{images/lebesgue-integral-simple-functions.png}   
     \caption{Lebesgue integration. 
@@ -2190,7 +2202,7 @@ subsets.
   We say measurable \(f \from X \to \R\) is \de{integrable} if and only if \[
     \int |f| d\mu < \infty.
   \]
-  We denote this \(f \in \L^1(X,\R) = \cL^1(X,\M,\mu,\R)\)
+  We denote this \(f \in \cL^1(X,\R) = \cL^1(X,\M,\mu,\R)\)
 \end{defn}
 \begin{defn}
   Let \(f \in \cL^1\). A \de{good representation} of \(f\) is \[
@@ -2236,6 +2248,7 @@ omit such details for the time being.
   \(L^1 = \cL^1/\sim\) where \(f \sim g\) if \(f=g\) \(\mu\)-almost everywhere.
 \end{defn}
 \section{Elements of Functional Analysis}
+\subsection{Topological Vector Spaces}
 \begin{defn}
   Let \(V\) be a \(\mathbb{K} = \R,\C\) vector space. \(V\) is called
   a \de{\(\mathbb{K}\)-topological vector space} (TVS) if \(V\) comes with
@@ -2315,7 +2328,7 @@ does not imply \(v = 0\).
     \]
   \end{itemize}
 \end{proof}
-We will mostly focus on HAusdorff LCTVS's.
+We will mostly focus on Hausdorff LCTVS's.
 \begin{defn}
   \(X,\Top\) a topology is called \de{first countable} if, for all
   \(x\), there exists a sequence \((V_n)_{n \geq 1}\) of open
@@ -2425,6 +2438,106 @@ We now seek to fix some notation.
   \(\mathbb{K}\)-linear forms \(S \to K\). 
 \end{defn}
 \subsection*{(3/30/2017) Lecture 16}
+Take \(d=1\), then we can study \(L^1(\R,m,\K) \to S'(\R,\K)\) given
+by \(f \mapsto L_f\), a linear form on \(S\). So, \(L_f(g) = \int_\R
+fg dm\) for \(g \in S\). However, we would like to pick \(f \in
+\cL^1\) a representative and show that this form is well-defined, linear,
+and continuous in both variables. 
+\begin{prop}[\(L^1-L^\infty\) bound]
+  Given \(f,g\) measurable functions with \(f \in L^1\) and \(g \in
+  \mathcal{C}^\infty\), we get \[
+    \int |fg|dm \leq \norm[f]_{L^1} \cdot \norm[g]_\infty =
+    \left(\int_\R |f| dm\right) \cdot \sup_{x \in \R} |g(x)|.
+  \]
+\end{prop}
+...
+\begin{rmk}
+  We will skip sections 3.1 and 3.3 in Folland on signed measures and
+  complex measures respectively.
+\end{rmk}
+\begin{defn}
+  We say \(f \from X \to Z\) is \de{locally constant} if, for all \(x \in
+  X\), there exists an open set \(U \subset X\) with \(x \in U\) such
+  that, for all \(y \in U\), we get \(f(y) = f(x)\).
+\end{defn}
+Note that a locally constant function is continuous.
+\begin{defn}
+  Let \(f \from X \to \K\). We define the \de{support of \(f\)} to
+  be \[
+    \supp(f) = \ov{\{x \st f(x) \neq 0\}}
+  \]
+\end{defn}
+\begin{defn}
+  Let \(f \from X \to \K\). We say \(f\) is \de{compactly supported}
+  if \(\supp(f)\) is compact.
+\end{defn}
+We now take some time to do an aside on \(p\)-adic numbers, which one
+should recall from homeworks 1 and 4.
+\begin{defn}
+  Recall that the \(p\)-adic numbers, \(\Q_p\), are the normed vector
+  space with elements \[ 
+    x = \sum_{n \in \Z} a_n(x) p^n, \ a_n(x) \in \{0, \ldots, p-1\}
+  \]
+  such that \(a_n(x) = 0\) for negative enough \(n\), and norm \[
+    |x|_p = p^{-k}
+  \]
+  where \(k \in \Z\) is the index such that \(a_k(x) \neq 0\), but
+  \(a_n(x) = 0\) for all \(n < k\). Note that this also gives the nice
+  characterization that \[
+    |x-y|_p = p^{-N} \text{ where } N = \min\{n \st a_n(x) \neq a_n(y)\}.
+  \]
+  is a metric and so we can define closed balls \(B(x,p^k)\) for \(k
+  \in \Z\). 
+\end{defn}
+\begin{rmk}
+  Taking \(d \from \Q_p \times \Q_p \to [0,\infty)\) as \(d(x,y) :=
+  |x-y|_p\), we have that \(d\) is actually an \de{ultrametric}, that
+  is \[
+    d(x,z) \leq \max(d(x,y), d(y,z))
+  \]
+\end{rmk}
+\begin{defn}
+  Given \(d \in \N\), we define the \de{Schwartz-Bruhat} space as \[
+    S(\Q_p^d,\K) := \left\{ f \from \Q_p^d \to \K \st f \text{ is
+        locally constant and compactly supported} \right\}.
+  \]
+  It is easy to show this is a \(\K\)-vector space.
+\end{defn}
+\begin{example}
+  If we take \(\norms_\text{all}\) to be the set of all seminorms on
+  \(S(\Q_p^d,\K)\) and equip it with the topology
+  \(\Top_{\norms_\text{all}}\), then we get \(S'(\Q_p^d,\K)\) as the
+  topological dual of \(S\). In this case, it also happens to coincide
+  with the algebraic dual.
+\end{example}
+\begin{prop}
+  Let \(f \in S(\Q_p,\K)\). Then, there exists \(k,\ell \in \Z\) with
+  \(k \leq \ell\) such that
+  \begin{enumerate}
+  \item \(\supp(f) \subset B(0,p^\ell)\)
+  \item For all \(x,y \in \Q_p\), \(|x-y|_p \leq p^k \iff f(x) =
+    f(y)\). 
+  \end{enumerate}
+\end{prop}
+\begin{proof}[``Proof'']
+  For some \(ell\), we have \(\supp(f) \subset B(0,p^\ell)\) and a
+  locally constant function on a compact metric space gives us a
+  uniform local constant. 
+\end{proof}
+\begin{defn}
+  Let \(k,\ell \in \Z\) with \(k \leq \ell\). Define
+  \(S_{k,\ell}(\Q_p,\K) = \{f \st \text{ (a) and (b) from the 
+    proposition above hold}\}\). So, \[
+    S(\Q_p,\K) = \Union_{k,\ell} S_{k,\ell} = \Union_{n \in \N} S_{-n,n}
+  \]
+\end{defn}
+We note that \(\dim_\K S_{k,\ell}\) is the number of closed balls of
+radius \(p^k\) inside \(\ov{B}(0,p^\ell)\), which is \(p^{\ell-k}\).
+\begin{rmk}
+  We get that \(S = \Union_{n \geq 0} S_{-n,n} \isom \bigoplus_{n \in
+    \N_0} \K = \K[x] \) and so there exists a countable Hamel basis
+  for \(S\).
+\end{rmk}
 \subsection*{(3/30/2017) Lecture 17}
 \begin{defn}
   Given a LCTVS \((V,\Top_\norms)\), define \[
@@ -2460,7 +2573,7 @@ We now seek to fix some notation.
   A normed space \((V,\norm)\) is a \de{Banach space} if it is
   complete. 
 \end{defn}
-we will eventually show that \(L^1(X,\M,\mu,\mathbb{K})\) is a Banach
+We will eventually show that \(L^1(X,\M,\mu,\mathbb{K})\) is a Banach
 space.
 \begin{rmk}
   Given \(f \in L^1\), \(\int_X f d\mu\) is well-defined independent
@@ -2478,13 +2591,66 @@ space.
   \]
 \end{thm}
 \begin{proof}
-  To be filled in later.
+  We first note that if \(f\) is the pointwise limit of measurable
+  functions, then \(f\) is measurable. Thus, if \(\norm[f_n(x)] \leq
+  g(x)\) for all \(n\), then \(\norm[f(x)] \leq g(x)\) in
+  \(\cL^1\). Thus, \[
+    \int g < \infty \implies \int |f| < \infty
+  \]
+  for \(f \in \cL^1\).
+  \begin{itemize}
+  \item (\(\K = \R\)). Let \(f_n(x) + g(x) \geq 0\) for all
+    \(x,n\). Then we use Fatou's lemma.
+    \begin{align*}
+      \int \lim \inf (f_n+g)
+      & \leq \lim \inf \int f_n+g \text{ in }L^+ \\
+      & \leq \lim \inf \int f_n+g \text{ in }\R \\
+      \implies \int f + \int g & \leq \left( \lim \inf \int f_n \right)
+      + \int g \\
+      \implies \int f \leq \lim \inf \int f_n & \leq \lim \sup \int f_n
+    \end{align*}
+    Now, we wish to show \(\lim \sup \int f_n \leq \int f\). Take
+    \(-f_n(x) + g(x) \geq 0\) and do the argument above again for
+    \(-f_n\). This will yield \[
+      \int (-f) \leq \lim \inf \int (-f_n)
+    \]
+    and so moving the minus signs outside gets \[
+      \int f \geq \lim \sup \int f_n
+    \]
+    and so we are done.
+  \item (\(\K = \C\)). Simply use the real case on \(|\operatorname{Re}
+   f_n| \leq |f_n| \leq g\) and similarly for the imaginary part.
+  \end{itemize}
 \end{proof}
-\begin{thm}[Dominated Convergence Theorem v2.0]
+\begin{thm}[Dominated Convergence Theorem v2.0, ``\(\mu\)-almost
+  everywhere everywhere'']
   Let \((f_n)\) be integrable and \(g \geq 0\) be
   integrable. Furthermore, for all \(n\), let \(|f_n| \leq g\)
-  \(mu\)-almost everywhere and let \(\lim_{n \to \infty} f_n(x)\)
+  \(\mu\)-almost everywhere and let \(\lim_{n \to \infty} f_n(x)\)
   exist \(\mu\)-almost everywhere. Then, ``\(f \in L^1\)''  and \(\lim_{n
-    \to \infty \int f_n = \int f}\). 
+    \to \infty} \int f_n = \int f\). 
 \end{thm}
+\begin{rmk}
+  ``\(f \in L^1\)'' means there exists a true function \(f \in \cL^1\)
+  such that, for \(\mu\)-almost all \(x\), \(\lim_{n \to \infty}
+  f_n(x) = f(x)\) exists. If \(g \in \cL^1\), it also works with
+  \(f=g\) \(\mu\)-almost everywhere.
+\end{rmk}
+\begin{proof}
+  There exists \(Z,(Z_n)_{n \geq 1}\) in \(\M\) of measure 0 such that
+  \(|f_n(x)| \leq g(x)\) on \(Z_n^c\) and such that \(\lim_{n \to
+    \infty} f_n(x)\) exists on \(Z^c\). Take \(N = Z \union \left(
+    \Union_{n \geq 1} Z_n \right)\). Then, we let \[
+    f(x) :=
+    \begin{cases}
+      \lim_{n \to \infty} f_n(x) & \text{ if } x \in N^c \subset Z^c
+      \\
+      0 & \text{ else }
+    \end{cases}
+  \]
+  Then, we have that \(f_n \chi_{N^c} \to f\) pointwise everywhere
+  and, for all \(n\), \(|f_n \chi_{N^c}| \leq g\). Thus, we can use
+  the Dominated Convergence Theorem 1.0 to conclude that \(f \in
+  \cL^1\) and, moreover, that \(\lim \int f_n \chi_{N^c} = \int f\). 
+\end{proof}
 \end{document}
