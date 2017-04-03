@@ -1,7 +1,7 @@
 \documentclass[11pt,leqno,oneside]{amsbook}
 
 \usepackage{../notes}
-\usepackage{bbm}
+\newcommand{\mathbbm}[1]{\text{\usefont{U}{bbm}{m}{n}#1}} % from mathbbm.sty
 \numberwithin{thm}{section}
 \renewcommand{\P}{\mathcal{P}}
 \renewcommand{\A}{\mathcal{A}}
