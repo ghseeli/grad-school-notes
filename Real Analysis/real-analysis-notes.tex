@@ -1,16 +1,18 @@
 \documentclass[11pt,leqno,oneside]{amsbook}
 
 \usepackage{../notes}
+\usepackage{bbm}
 \numberwithin{thm}{section}
 \renewcommand{\P}{\mathcal{P}}
 \renewcommand{\A}{\mathcal{A}}
 \newcommand{\M}{\mathcal{M}}
 \newcommand{\F}{\mathcal{F}}
-\newcommand{\Ep}{\mathcal{E}}
-\newcommand{\Top}{\mathcal{T}}
+\newcommand{\Ep}{\mathcal{E}} 
+\newcommand{\Top}{\mathcal{T}} % Topology
 \newcommand{\cL}{\mathcal{L}}
 \newcommand{\cN}{\mathcal{N}}
 \newcommand{\norms}{\cN}
+\newcommand{\K}{\mathbb{K}} % Arbitrary field
 
 \renewcommand{\emptyset}{\varnothing}
 
@@ -21,6 +23,8 @@
 \date{Spring 2017}
 \begin{document}
 \maketitle
+\setcounter{tocdepth}{1}
+\tableofcontents
 \section{Measures}
 \subsection*{(1/19/2017) Lecture 1}
 Riemann integration is great, but it is insufficient for many classes
@@ -800,7 +804,8 @@ where the last equality follows from the fact that $F_1 \cup \cdots
   \implies  x \in E$.
 \end{defn}
 \begin{rmk}
-  We note that $\{x \in X \mid P(x) \text{ is false}\} \subset E$ with
+  Given the logical predicate \(P(X)\) as above, we note that $\{x \in
+  X \mid P(x) \text{ is false}\} \subset E$ with 
   $E \subset \M$ such that $\mu(E) = 0$.
 \end{rmk}
 \begin{defn}
@@ -1065,9 +1070,9 @@ continuous (follows from continuity from above for $\mu$).
   ``Lebesgue measure'', which is our goal to rigorously define this section.
 \end{rmk}
 \begin{thm}\label{unique-borel-measure}
-  Let $f \from \R \to \R$ be non-decreasing and right
+  Let $F \from \R \to \R$ be non-decreasing and right
   continuous. Then, there exists a unique Borel measure $\mu_F$ such
-  that $\mu_F((a,b]) = f(b) - f(a)$ for all $a < b$ in $\R$.
+  that $\mu_F((a,b]) = F(b) - F(a)$ for all $a < b$ in $\R$.
 \end{thm}
 \begin{proof}\let\qed\relax
   We will only prove exitence here. Let \[
@@ -1086,9 +1091,9 @@ $\mu|_\A$ and then induce a $\mu|_{\M(\A)}$. What we need to show that
 $\mu$ is $\sigma$-additive. (This is all oddly worded, but I could not
 quite follow what he was trying to say in class.)\\
 
-Now, we will define $\mu|_\Ep$ using the function $f \from \R \to \R$
-by saying $f(\infty) := \lim_{x \to \infty} f(x) \in
-(-\infty,\infty]$, $f(-\infty) := \lim_{x \to -\infty} f(x) \in
+Now, we will define $\mu|_\Ep$ using the function $F \from \R \to \R$
+by saying $F(\infty) := \lim_{x \to \infty} F(x) \in
+(-\infty,\infty]$, $F(-\infty) := \lim_{x \to -\infty} F(x) \in
 [-\infty, \infty)$. It is easy to check that $\mu$ is a measure on
 $\Ep$.  \\
 
@@ -1502,7 +1507,7 @@ Then, $F$ is increasing, right continuous, and $\mu = \mu_F$.
 \begin{defn}
   Let $\mu$ be a Borel measure on $\R$ and let $E \in \B_\R$. Then,
   $\mu$ is \de{outer regular on $E$} if and only if \[
-    \mu(E) = \inf \{\mu(V \mid V \text{ is open}, V \supset E)\}.
+    \mu(E) = \inf \{\mu(V) \mid V \text{ is open}, V \supset E\}.
   \]
   Similarly, $\mu$ is \de{inner regular on $E$} if and only if \[
     \mu(E) = \sup \{\mu(K) \mid K \text{ is compact}, K \subset E\}.
@@ -1515,7 +1520,7 @@ Then, $F$ is increasing, right continuous, and $\mu = \mu_F$.
   $\mu$ is a \de{Radon measure} on $\R$. (The definition of this is
   different for a measure not on $\R$; see section 7.1 of Folland.)
 \end{defn}
-\begin{thm}
+\begin{thm}\label{radon-thm}
   Let $F$ be increasing and right continuous. Then, $\mu_F$ is Radon.
 \end{thm}
 \begin{lem}
@@ -1571,7 +1576,7 @@ Then, $F$ is increasing, right continuous, and $\mu = \mu_F$.
     \end{itemize}
   \end{proof}
   \subsection*{(2/28/2017) Lecture 9}
-  With this lemma in hand, we now seek to prove the theorem.
+  With this lemma in hand, we now seek to prove the theorem (\ref{radon-thm}).
   \begin{proof}[Proof of Theorem]
     We have to show $\mu_F$ is finite on compact sets, outer
     regular for all sets in $\B_\R$, and inner regular for all sets in
@@ -1658,14 +1663,20 @@ Then, $F$ is increasing, right continuous, and $\mu = \mu_F$.
       \int f d \mu_n \to \int f d\mu \text{ as } n \to \infty
     \]
   \end{defn}
-  Finally, we note some properties of the Lebesgue measure. Let $m =
-  \mu_F$, $F(x) = x$ be the Lebesgue measure.
+  \begin{defn}
+    The \de{Lebesgue measure} is the Borel measure given by \(m :=
+    \mu_F\) where \(F(x)=x\). 
+  \end{defn}
+  Finally, we note some properties of the Lebesgue measure.
+  \begin{prop}
+    Let \(m\) be the Lebesgue measure on \(\R\).
   \begin{itemize}
   \item For all $A \in \B_\R$ and for all $c \in \R$, we have that
     $A+c \in \B_\R$ and that $m(A+c) = m(A)$.
   \item For all $A \in \B_\R$ and for all $\lambda \in \R$, then
     $\lambda A \in \B_\R$, then $m(\lambda A) = |\lambda| m(A)$. 
-  \end{itemize}
+  \end{itemize}    
+  \end{prop}
   The proof of such facts is ommitted but can be derived as a special
   case of Proposition 2.6 in Folland on page 45.
   \section{Integration}
@@ -1679,7 +1690,7 @@ Then, $F$ is increasing, right continuous, and $\mu = \mu_F$.
     $\implies$ is easy because $\Ep \subset \mathcal{N}$. For
     $\impliedby$, define $\tilde{\mathcal{N}} = \{B \in \P(Y) \mid f^{-1}(B)
     \in \M\}$. This is a $\sigma$-algebra containing $\Ep$ by
-    hypothesis. Thus, $N \subset \tilde{\mathcal{N}}$ and so $f$ is
+    hypothesis. Thus, $\mathcal{N} \subset \tilde{\mathcal{N}}$ and so $f$ is
     measurable. 
   \end{proof}
   \begin{cor}
@@ -1735,24 +1746,24 @@ Then, $F$ is increasing, right continuous, and $\mu = \mu_F$.
     fact that $\R$ is a separable.
   \end{rmk}
   \begin{prop}
-    Let $f \from X \to K$ ($K = \R,\C$) and $g \from X \to K$. If $f$
+    Let $f \from X \to \K$ ($\K = \R,\C$) and $g \from X \to \K$. If $f$
     and $g$ are measurable, then $f+g$ and $fg$ are also measurable. 
   \end{prop}
   \begin{proof}
     Let $x \to (f(x),g(x)) \to f(x)+g(x)$ where the first function is
-    a $(\M,\B_{K \times K})$-measurable function, where $\M$ is a
+    a $(\M,\B_{\K \times \K})$-measurable function, where $\M$ is a
     $\sigma$-algebra on $X$. Each of these two functions is clearly
     measurable, so their composition will be, too.
   \end{proof}
   \begin{prop}
-    Let $f \from X \to K$ ($K = \R,\C$). If $f$ is measurable, then
-    $|f|$ is $(\M,\B_K)$-measurable where $\M$ is a $\sigma$-algebra
+    Let $f \from X \to \K$ ($\K = \R,\C$). If $f$ is measurable, then
+    $|f|$ is $(\M,\B_\K)$-measurable where $\M$ is a $\sigma$-algebra
     on $X$. Furthermore, if $f,g \from X \to \R$ are measurable, then
     $\max(f,g)$ and $\min(f,g)$ are measurable.
   \end{prop}
   \begin{defn}
     Let $E \subset X$. Then \[
-      \mathbb{1}_E(x) = \chi_E(x) := \begin{cases}
+      \mathbbm{1}_E(x) = \chi_E(x) := \begin{cases}
         1 & x \in E \\
         0 & x \not \in E
       \end{cases}
@@ -1779,7 +1790,7 @@ Then, $F$ is increasing, right continuous, and $\mu = \mu_F$.
    Since the union is a union of measurable sets, we are done. \\
 
    The proof for $\lim \inf$ and $\lim \sup$ comes from the fact that
-   $\lim \inf \mu_n = \sup_{n \geq 1} \inf{k \geq n} \mu_k$ and $\lim
+   $\lim \inf \mu_n = \sup_{n \geq 1} \inf_{k \geq n} \mu_k$ and $\lim
    \sup$'s analgous definition. 
  \end{proof}
  \begin{cor}
@@ -1961,7 +1972,7 @@ to check that the new definition agrees with the old one.
   This proof is somewhat difficult to reproduce in text. We seek to
   subdivide our function by partitioning the range of the function and
   approximating it by simple
-  functions. \\
+  functions. For more, see page 47 of Folland, theorem 2.10 and proof.\\
   \begin{figure}[h]
   \includegraphics[scale=0.5]{images/lebesgue-integral-simple-functions.png}   
     \caption{Lebesgue integration. 
@@ -2190,7 +2201,7 @@ subsets.
   We say measurable \(f \from X \to \R\) is \de{integrable} if and only if \[
     \int |f| d\mu < \infty.
   \]
-  We denote this \(f \in \L^1(X,\R) = \cL^1(X,\M,\mu,\R)\)
+  We denote this \(f \in \cL^1(X,\R) = \cL^1(X,\M,\mu,\R)\)
 \end{defn}
 \begin{defn}
   Let \(f \in \cL^1\). A \de{good representation} of \(f\) is \[
@@ -2236,6 +2247,7 @@ omit such details for the time being.
   \(L^1 = \cL^1/\sim\) where \(f \sim g\) if \(f=g\) \(\mu\)-almost everywhere.
 \end{defn}
 \section{Elements of Functional Analysis}
+\subsection{Topological Vector Spaces}
 \begin{defn}
   Let \(V\) be a \(\mathbb{K} = \R,\C\) vector space. \(V\) is called
   a \de{\(\mathbb{K}\)-topological vector space} (TVS) if \(V\) comes with
@@ -2315,7 +2327,7 @@ does not imply \(v = 0\).
     \]
   \end{itemize}
 \end{proof}
-We will mostly focus on HAusdorff LCTVS's.
+We will mostly focus on Hausdorff LCTVS's.
 \begin{defn}
   \(X,\Top\) a topology is called \de{first countable} if, for all
   \(x\), there exists a sequence \((V_n)_{n \geq 1}\) of open
@@ -2483,8 +2495,8 @@ space.
 \begin{thm}[Dominated Convergence Theorem v2.0]
   Let \((f_n)\) be integrable and \(g \geq 0\) be
   integrable. Furthermore, for all \(n\), let \(|f_n| \leq g\)
-  \(mu\)-almost everywhere and let \(\lim_{n \to \infty} f_n(x)\)
+  \(\mu\)-almost everywhere and let \(\lim_{n \to \infty} f_n(x)\)
   exist \(\mu\)-almost everywhere. Then, ``\(f \in L^1\)''  and \(\lim_{n
-    \to \infty \int f_n = \int f}\). 
+    \to \infty} \int f_n = \int f\). 
 \end{thm}
 \end{document}
