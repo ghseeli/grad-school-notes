@@ -13,6 +13,7 @@
 \newcommand{\cN}{\mathcal{N}}
 \newcommand{\norms}{\cN}
 \newcommand{\K}{\mathbb{K}} % Arbitrary field
+\newcommand{\supp}{\operatorname{Supp}}
 
 \renewcommand{\emptyset}{\varnothing}
 
@@ -2437,6 +2438,106 @@ We now seek to fix some notation.
   \(\mathbb{K}\)-linear forms \(S \to K\). 
 \end{defn}
 \subsection*{(3/30/2017) Lecture 16}
+Take \(d=1\), then we can study \(L^1(\R,m,\K) \to S'(\R,\K)\) given
+by \(f \mapsto L_f\), a linear form on \(S\). So, \(L_f(g) = \int_\R
+fg dm\) for \(g \in S\). However, we would like to pick \(f \in
+\cL^1\) a representative and show that this form is well-defined, linear,
+and continuous in both variables. 
+\begin{prop}[\(L^1-L^\infty\) bound]
+  Given \(f,g\) measurable functions with \(f \in L^1\) and \(g \in
+  \mathcal{C}^\infty\), we get \[
+    \int |fg|dm \leq \norm[f]_{L^1} \cdot \norm[g]_\infty =
+    \left(\int_\R |f| dm\right) \cdot \sup_{x \in \R} |g(x)|.
+  \]
+\end{prop}
+...
+\begin{rmk}
+  We will skip sections 3.1 and 3.3 in Folland on signed measures and
+  complex measures respectively.
+\end{rmk}
+\begin{defn}
+  We say \(f \from X \to Z\) is \de{locally constant} if, for all \(x \in
+  X\), there exists an open set \(U \subset X\) with \(x \in U\) such
+  that, for all \(y \in U\), we get \(f(y) = f(x)\).
+\end{defn}
+Note that a locally constant function is continuous.
+\begin{defn}
+  Let \(f \from X \to \K\). We define the \de{support of \(f\)} to
+  be \[
+    \supp(f) = \ov{\{x \st f(x) \neq 0\}}
+  \]
+\end{defn}
+\begin{defn}
+  Let \(f \from X \to \K\). We say \(f\) is \de{compactly supported}
+  if \(\supp(f)\) is compact.
+\end{defn}
+We now take some time to do an aside on \(p\)-adic numbers, which one
+should recall from homeworks 1 and 4.
+\begin{defn}
+  Recall that the \(p\)-adic numbers, \(\Q_p\), are the normed vector
+  space with elements \[ 
+    x = \sum_{n \in \Z} a_n(x) p^n, \ a_n(x) \in \{0, \ldots, p-1\}
+  \]
+  such that \(a_n(x) = 0\) for negative enough \(n\), and norm \[
+    |x|_p = p^{-k}
+  \]
+  where \(k \in \Z\) is the index such that \(a_k(x) \neq 0\), but
+  \(a_n(x) = 0\) for all \(n < k\). Note that this also gives the nice
+  characterization that \[
+    |x-y|_p = p^{-N} \text{ where } N = \min\{n \st a_n(x) \neq a_n(y)\}.
+  \]
+  is a metric and so we can define closed balls \(B(x,p^k)\) for \(k
+  \in \Z\). 
+\end{defn}
+\begin{rmk}
+  Taking \(d \from \Q_p \times \Q_p \to [0,\infty)\) as \(d(x,y) :=
+  |x-y|_p\), we have that \(d\) is actually an \de{ultrametric}, that
+  is \[
+    d(x,z) \leq \max(d(x,y), d(y,z))
+  \]
+\end{rmk}
+\begin{defn}
+  Given \(d \in \N\), we define the \de{Schwartz-Bruhat} space as \[
+    S(\Q_p^d,\K) := \left\{ f \from \Q_p^d \to \K \st f \text{ is
+        locally constant and compactly supported} \right\}.
+  \]
+  It is easy to show this is a \(\K\)-vector space.
+\end{defn}
+\begin{example}
+  If we take \(\norms_\text{all}\) to be the set of all seminorms on
+  \(S(\Q_p^d,\K)\) and equip it with the topology
+  \(\Top_{\norms_\text{all}}\), then we get \(S'(\Q_p^d,\K)\) as the
+  topological dual of \(S\). In this case, it also happens to coincide
+  with the algebraic dual.
+\end{example}
+\begin{prop}
+  Let \(f \in S(\Q_p,\K)\). Then, there exists \(k,\ell \in \Z\) with
+  \(k \leq \ell\) such that
+  \begin{enumerate}
+  \item \(\supp(f) \subset B(0,p^\ell)\)
+  \item For all \(x,y \in \Q_p\), \(|x-y|_p \leq p^k \iff f(x) =
+    f(y)\). 
+  \end{enumerate}
+\end{prop}
+\begin{proof}[``Proof'']
+  For some \(ell\), we have \(\supp(f) \subset B(0,p^\ell)\) and a
+  locally constant function on a compact metric space gives us a
+  uniform local constant. 
+\end{proof}
+\begin{defn}
+  Let \(k,\ell \in \Z\) with \(k \leq \ell\). Define
+  \(S_{k,\ell}(\Q_p,\K) = \{f \st \text{ (a) and (b) from the 
+    proposition above hold}\}\). So, \[
+    S(\Q_p,\K) = \Union_{k,\ell} S_{k,\ell} = \Union_{n \in \N} S_{-n,n}
+  \]
+\end{defn}
+We note that \(\dim_\K S_{k,\ell}\) is the number of closed balls of
+radius \(p^k\) inside \(\ov{B}(0,p^\ell)\), which is \(p^{\ell-k}\).
+\begin{rmk}
+  We get that \(S = \Union_{n \geq 0} S_{-n,n} \isom \bigoplus_{n \in
+    \N_0} \K = \K[x] \) and so there exists a countable Hamel basis
+  for \(S\).
+\end{rmk}
 \subsection*{(3/30/2017) Lecture 17}
 \begin{defn}
   Given a LCTVS \((V,\Top_\norms)\), define \[
@@ -2472,7 +2573,7 @@ We now seek to fix some notation.
   A normed space \((V,\norm)\) is a \de{Banach space} if it is
   complete. 
 \end{defn}
-we will eventually show that \(L^1(X,\M,\mu,\mathbb{K})\) is a Banach
+We will eventually show that \(L^1(X,\M,\mu,\mathbb{K})\) is a Banach
 space.
 \begin{rmk}
   Given \(f \in L^1\), \(\int_X f d\mu\) is well-defined independent
@@ -2490,13 +2591,66 @@ space.
   \]
 \end{thm}
 \begin{proof}
-  To be filled in later.
+  We first note that if \(f\) is the pointwise limit of measurable
+  functions, then \(f\) is measurable. Thus, if \(\norm[f_n(x)] \leq
+  g(x)\) for all \(n\), then \(\norm[f(x)] \leq g(x)\) in
+  \(\cL^1\). Thus, \[
+    \int g < \infty \implies \int |f| < \infty
+  \]
+  for \(f \in \cL^1\).
+  \begin{itemize}
+  \item (\(\K = \R\)). Let \(f_n(x) + g(x) \geq 0\) for all
+    \(x,n\). Then we use Fatou's lemma.
+    \begin{align*}
+      \int \lim \inf (f_n+g)
+      & \leq \lim \inf \int f_n+g \text{ in }L^+ \\
+      & \leq \lim \inf \int f_n+g \text{ in }\R \\
+      \implies \int f + \int g & \leq \left( \lim \inf \int f_n \right)
+      + \int g \\
+      \implies \int f \leq \lim \inf \int f_n & \leq \lim \sup \int f_n
+    \end{align*}
+    Now, we wish to show \(\lim \sup \int f_n \leq \int f\). Take
+    \(-f_n(x) + g(x) \geq 0\) and do the argument above again for
+    \(-f_n\). This will yield \[
+      \int (-f) \leq \lim \inf \int (-f_n)
+    \]
+    and so moving the minus signs outside gets \[
+      \int f \geq \lim \sup \int f_n
+    \]
+    and so we are done.
+  \item (\(\K = \C\)). Simply use the real case on \(|\operatorname{Re}
+   f_n| \leq |f_n| \leq g\) and similarly for the imaginary part.
+  \end{itemize}
 \end{proof}
-\begin{thm}[Dominated Convergence Theorem v2.0]
+\begin{thm}[Dominated Convergence Theorem v2.0, ``\(\mu\)-almost
+  everywhere everywhere'']
   Let \((f_n)\) be integrable and \(g \geq 0\) be
   integrable. Furthermore, for all \(n\), let \(|f_n| \leq g\)
   \(\mu\)-almost everywhere and let \(\lim_{n \to \infty} f_n(x)\)
   exist \(\mu\)-almost everywhere. Then, ``\(f \in L^1\)''  and \(\lim_{n
     \to \infty} \int f_n = \int f\). 
 \end{thm}
+\begin{rmk}
+  ``\(f \in L^1\)'' means there exists a true function \(f \in \cL^1\)
+  such that, for \(\mu\)-almost all \(x\), \(\lim_{n \to \infty}
+  f_n(x) = f(x)\) exists. If \(g \in \cL^1\), it also works with
+  \(f=g\) \(\mu\)-almost everywhere.
+\end{rmk}
+\begin{proof}
+  There exists \(Z,(Z_n)_{n \geq 1}\) in \(\M\) of measure 0 such that
+  \(|f_n(x)| \leq g(x)\) on \(Z_n^c\) and such that \(\lim_{n \to
+    \infty} f_n(x)\) exists on \(Z^c\). Take \(N = Z \union \left(
+    \Union_{n \geq 1} Z_n \right)\). Then, we let \[
+    f(x) :=
+    \begin{cases}
+      \lim_{n \to \infty} f_n(x) & \text{ if } x \in N^c \subset Z^c
+      \\
+      0 & \text{ else }
+    \end{cases}
+  \]
+  Then, we have that \(f_n \chi_{N^c} \to f\) pointwise everywhere
+  and, for all \(n\), \(|f_n \chi_{N^c}| \leq g\). Thus, we can use
+  the Dominated Convergence Theorem 1.0 to conclude that \(f \in
+  \cL^1\) and, moreover, that \(\lim \int f_n \chi_{N^c} = \int f\). 
+\end{proof}
 \end{document}
