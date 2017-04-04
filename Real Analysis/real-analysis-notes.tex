@@ -2653,5 +2653,16 @@ space.
   the Dominated Convergence Theorem 1.0 to conclude that \(f \in
   \cL^1\) and, moreover, that \(\lim \int f_n \chi_{N^c} = \int f\). 
 \end{proof}
-\subsection*{(4/4/2017) Lecture }
+\subsection*{(4/4/2017) Lecture 18}
+\begin{thm}[Dominated Convergence Theorem v2.1, Series Version]
+  Let \((f_n)_{n \geq 1}\) be a sequence in \(L^1\) such that
+  \(\sum_{n=1}^\infty \norm[f_n]_{L^1} < \infty\). Then, \(\lim_{N \to
+  \infty} \sum_{n=1}^N f_n =: f\) exists
+  and \[
+    \sum_{n=1}^\infty \int_X f_n d\mu = \int_X f d\mu
+  \]
+\end{thm}
+\begin{proof}
+  The proof is a combination of using MCT and DCT.
+\end{proof}
 \end{document}
