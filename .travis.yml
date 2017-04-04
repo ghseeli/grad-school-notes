@@ -11,6 +11,7 @@ before_install:
   fi
 - export PATH=$(pwd)/texlive/bin/x86_64-linux:$PATH
 - sudo apt-get install texlive-full
+- sudo apt-get install latexmk
 - tlmgr install $(cat .tlmgr-dep)
 - tlmgr update --self
 - tlmgr update --all
