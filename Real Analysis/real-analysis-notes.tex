@@ -2654,6 +2654,37 @@ space.
   \cL^1\) and, moreover, that \(\lim \int f_n \chi_{N^c} = \int f\). 
 \end{proof}
 \subsection*{(4/4/2017) Lecture 18}
+\begin{example}
+  Take \((\N,\B_\N,\mu)\) as a measure space where \(\mu\) is the
+  counting measure. Then, a function \(f \from \N \to \K\) is a
+  sequence \(a = (a_n)_{n \geq 1}\). If \(a \in L^1\), then \[
+    \int_\N |a_n| d\mu(w) = \sum_{n=1}^\infty |a_n| < \infty
+  \]
+  and thus saying \(a \in L^1(\N,\K)\) is the same as saying the
+  series corresponding to \(a\) converges absolutely.
+\end{example}
+\begin{defn}
+  We defined \(\ell^1 = \ell^1(\N,\K) := L^1(\N,\P(\N),\mu,\K)\) where
+  \(\mu\) is the counting measure. This is a normed space with \[
+    \norm[a]_{L^1} = \sum_{n=1}^\infty |a_n|
+  \]
+\end{defn}
+\begin{cor}
+  Let \((a_{i,j})_{(i,j) \in \N^2}\) with values in \(\C\) such that
+  there exists a sequence 
+  \((b_i)_{i \geq 1}\) with \(\sum_{i=1}^\infty a_{i,j} <
+  \sum_{i=1}^\infty b_i < \infty\).
+  Then, \[
+    \sum_{i=1}^\infty \lim_{j \to \infty} a_{i,j}
+  \]
+  is absolutely convergent and we get the equality \[
+    \sum_{i=1}^\infty \lim_{j \to \infty} a_{i,j} = \lim_{j \to
+      \infty} \sum_{i=1}^\infty a_{i,j}
+  \]
+\end{cor}
+\begin{proof}
+  Proof is elementary and left as exercise.
+\end{proof}
 \begin{thm}[Dominated Convergence Theorem v2.1, Series Version]
   Let \((f_n)_{n \geq 1}\) be a sequence in \(L^1\) such that
   \(\sum_{n=1}^\infty \norm[f_n]_{L^1} < \infty\). Then, \(\lim_{N \to
@@ -2663,6 +2694,37 @@ space.
   \]
 \end{thm}
 \begin{proof}
-  The proof is a combination of using MCT and DCT.
+  The proof is a combination of using MCT and DCT. Take representatives
+  in \(\cL^1\) for \(f_n\) and define \[
+    g(x) := \sum_{n=1}^\infty |f_n(x)|.
+  \]
+  (Read ahead to see why this converges.) Then, using a MCT corollary, we
+  get \[
+    \int g d\mu = \sum_{n=1}^\infty \int |f_n| d\mu < \infty.
+  \]
+  Thus, it must be that \(g(x) < \infty\) \(\mu\)-almost everywhere.
+  Thus, one construction we could use is, given \(Z \in \M\) the set
+  of measure 0 on which \(g(x) = \infty\), we can define \[
+    \tilde{g}(x) =
+    \begin{cases}
+      g(x) & \text{ if } x \not\in Z \\
+      0 & \text{ else }
+    \end{cases}
+  \]
+  So, \(\tilde{g} \in \cL^1\) and \(L^1\) with \(\tilde{g}(x) <
+  \infty\) for all \(x\). Now, to use DCT v2.0, we note \[
+    \left| \sum_{n=1}^N f_n(x) \leq \tilde{g}(x) \right|, \
+    \mu\text{-almost everywhere}
+  \]
+  and so \[
+    \lim_{N \to \infty} \int \sum_{n=1}^N f_n(x) = \int f(x) dx.
+  \]
+  Finally, we check that \[
+    \norm[f - \sum_{n=1}^\infty f_n]_{L^1} = \int \left|
+      \sum_{n=N+1}^\infty f_n \right| \leq \int \sum_{n=N+1}^\infty
+    |f_n| = \sum_{n=N+1}^\infty \norm[f_n]_{L^1} \to 0 \text{ as } N
+    \to \infty
+  \]
+  where the last equality follows from MCT.
 \end{proof}
 \end{document}
