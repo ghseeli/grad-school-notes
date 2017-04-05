@@ -2727,4 +2727,68 @@ space.
   \]
   where the last equality follows from MCT.
 \end{proof}
+\subsection{Aside: \(\K\)-valued measures}
+\begin{defn}
+  Given a measurable space \((X,\M)\), a \(\K\)-valued measure is a
+  function \(\mu \from \M \to \K\) such that \(\mu(\emptyset) = 0\)
+  and if \(E = \Dunion_{n=1}^\infty E_n\), a disjoint union, then \[
+    \sum_{n=1}^\infty \mu(E_n) = \mu(E) \text{ converges absolutely}
+  \]
+  is called a \de{signed measure} if \(\K=\R\) and a \de{complex
+    measure} is \(\K=\C\). 
+\end{defn}
+\begin{rmk}
+  One can drop the absolute convergence from the definition, but then
+  one needs the Riemann series rearrangement theorem.
+\end{rmk}
+\begin{prop}
+  Let \(f \in \cL^1(X,\M,\mu,\K)\). Then, given \(E \in \M\), \[
+    \nu_f(E) = \int_E f d\mu := \int_X f \chi_E d\mu
+  \]
+  is a \(\K\)-valued measure such that, for all \(E\), \(|\nu_f(E)|
+  \leq \nu_{|f|}(E)\). 
+\end{prop}
+Note that this agrees with the old definition.
+\begin{proof}
+  See Folland page 94, Proposition 3.13(a)
+\end{proof}
+\subsection{Restriction to Subsets}
+In this section, we would like to introduce the idea of extension by
+0.
+\begin{prop}
+  Let \((X,\M,\mu)\) be a measure space and let \(Y \in \M\). Then,
+  using notation from before, we have \[
+    \M_Y := \P(Y) \intersect \M, \ \mu_Y = \mu|_{\M_Y}.
+  \]
+  Let \(f \from Y \to \K\) be \((\M_Y,\B_\K)\)-measurable and let
+  \(\tilde{f} \from X \to \K\) be its ``extension by zero'', that
+  is \[
+    \tilde{f} =
+    \begin{cases}
+      f(x) & \text{ if }x \in Y \\
+      0 & \text{ else }
+    \end{cases}
+  \]
+  Then, we have
+  \begin{enumerate}
+  \item \(\tilde{f}\) is \((\M,\B_\K)\)-measurable.
+  \item \(f \in \cL^1(Y,\M_Y,\mu_Y,\K)\) if and only if \(\tilde{f}
+    \in \cL^1(X,\M,\mu,\K)\), in which case \[
+      \int_Y f d\mu_Y = \int_X \tilde{f} d\mu = \int_X \tilde{f}
+      \chi_Y d\mu = \int_Y \tilde{f} d\mu = \int_Y f d\mu
+    \]
+  \end{enumerate}
+\end{prop}
+\begin{proof}
+  \begin{enumerate}
+  \item Let \(B \in \B_\K\). Then, we get \[
+      \tilde{f}^{-1}(B) = \left( \tilde{f}^{-1}(B) \intersect Y
+      \right) \union \left( \tilde{f}^{-1}(B) \intersect Y^c \right)
+    \]
+    However, the left set is just \(f^{-1}(B) \in \M_Y \subset \M\)
+    and the right set is either empty or equal to \(Y^c\), either of
+    which is in \(\M\).
+  \item 
+  \end{enumerate}
+\end{proof}
 \end{document}
