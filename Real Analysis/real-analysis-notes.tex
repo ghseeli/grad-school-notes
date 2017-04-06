@@ -1661,7 +1661,7 @@ Then, $F$ is increasing, right continuous, and $\mu = \mu_F$.
     $(\mu_n)_{n \geq 1}$, \de{converges weakly} to a Borel probability
     measure such that, for all $f \from \R \to \R$ bounded an
     continuous, \[
-      \int f d \mu_n \to \int f d\mu \text{ as } n \to \infty
+      \int f d \mu_n \to \int f \d\mu \text{ as } n \to \infty
     \]
   \end{defn}
   \begin{defn}
@@ -1859,7 +1859,7 @@ f^{-1}(\{\alpha_i\})$.
   Given $(X, \M, \mu)$ a measure space, let $L^+$ be the set of
   measurable functions $X \to [0,\infty]$. Furthermore, if $f \in L^+$
   is a simple function, then we say \[
-    \int f d\mu := \sum_{i=1}^n \alpha_i \mu(E_i)
+    \int f \d\mu := \sum_{i=1}^n \alpha_i \mu(E_i)
   \]
   for any good representation $f = \sum_i \alpha_i \chi_{E_i}$. 
 \end{defn}
@@ -1907,7 +1907,7 @@ representation.
     \]
   \item For all $\phi$ simple in $L^+$ and all $A \in \M$, $\phi
     \chi_A$ is simple in $L^+$ and \[
-      \int_A \phi d \mu := \int_X \phi \chi_A d\mu
+      \int_A \phi d \mu := \int_X \phi \chi_A \d\mu
     \]
     satisfies $\nu_\phi(A) :=  \int_A \phi d \mu$ is a measure on $(X,\M)$. 
   \end{enumerate}
@@ -1930,7 +1930,7 @@ Now that we have established the definition for integration on simple
 functions, we wish to extend it to arbitrary measurable functions in \(L^+\).
 \begin{defn}
   Let $(X,\M,\mu)$ be a measure space. If $f \in L^+$, then \[
-    \int f d\mu := \sup \left\{ \int \phi d\mu \st \phi \text{ simple
+    \int f \d\mu := \sup \left\{ \int \phi \d\mu \st \phi \text{ simple
         in } L^+, 0 \leq \phi \leq f \right\}
   \]
 \end{defn}
@@ -1941,23 +1941,23 @@ functions, we wish to extend it to arbitrary measurable functions in \(L^+\).
 When defining a generalization of a definition, it is always important
 to check that the new definition agrees with the old one.
 \begin{prop}
-  The new definition $\int_{\text{new}} f d\mu$  agrees with the old
+  The new definition $\int_{\text{new}} f \d\mu$  agrees with the old
   one if $f$ is simple.
 \end{prop}
 \begin{proof}
   \begin{itemize}
   \item ($\geq$). \[
-      \int_{\text{new}} f d\mu = \sup_{\phi \in L^+ \text{ simple},
-        \phi \leq f} \int_{\text{old}} \phi d\mu \geq
-      \int_{\text{old}} f d\mu
+      \int_{\text{new}} f \d\mu = \sup_{\phi \in L^+ \text{ simple},
+        \phi \leq f} \int_{\text{old}} \phi \d\mu \geq
+      \int_{\text{old}} f \d\mu
     \]
     because one can just take $\phi = f$.
   \item ($\leq$). Use part c of proposition \ref{integration-props} to get \[
-      \phi \leq f \implies \int_{\text{old}} \phi d \mu \leq
-      \int_{\text{old}} f d\mu
+      \phi \leq f \implies \int_{\text{old}} \phi \d\mu \leq
+      \int_{\text{old}} f \d\mu
     \]
     Then, just take suprememum over $\phi$ to get \[
-      \int_{\text{new}} f d\mu \leq \int_{\text{old}} f d\mu
+      \int_{\text{new}} f \d\mu \leq \int_{\text{old}} f \d\mu
     \]
   \end{itemize}
 \end{proof}
@@ -1988,8 +1988,8 @@ to check that the new definition agrees with the old one.
 \begin{proof}
   \begin{enumerate}
   \item[(a)] If $c=0$, the statement is trivial. Let $c > 0$. Then, \[
-      \int c f d\mu = \sup_{\phi \leq cf, \phi \text{ simple}} \int
-      \phi d\mu
+      \int c f \d\mu = \sup_{\phi \leq cf, \phi \text{ simple}} \int
+      \phi \d\mu
     \]
     Take $\psi := \frac{1}{c}\phi$ is simple. Then, $\psi \leq f$
     and \[
@@ -2022,7 +2022,7 @@ to check that the new definition agrees with the old one.
   Let $f \in L^+$. Then, if $\phi_n$ is a sequence of simple functions
   with, for all $x$, $\phi_n(x)$ a non-decreasing sequence and
   $\lim_{n \to \infty} \phi_n(x) = f(x)$, then \[
-    \lim_{n \to \infty} \int \phi_n d\mu = \int f d\mu
+    \lim_{n \to \infty} \int \phi_n \d\mu = \int f \d\mu
   \]
   \end{lem}
   Then, take $\phi_n$ a non-decreasing sequence converging to $f$ and
@@ -2030,7 +2030,7 @@ to check that the new definition agrees with the old one.
   + \psi_n$ simple functions converge to $f+g$ and so we apply the
   lemma to get
   \begin{align*}
-    \int (f+g) d\mu & = \lim_{n \to \infty} \int (\phi_n+\psi_n) \\
+    \int (f+g) \d\mu & = \lim_{n \to \infty} \int (\phi_n+\psi_n) \\
                     & = \lim_{n \to \infty}\left( \int \phi_n + \int \psi_n \right)\\
     & = \lim_{n \to \infty} \int \phi_n + \lim_{n \to \infty} \int
       \psi_n \\
@@ -2043,7 +2043,7 @@ Of course, we need to prove this lemma, so we seek to do that now.
   Let $\phi$ be simple in $L^+$. Then,
   \begin{enumerate}
   \item \[
-      \nu_\phi(E) = \int_E \phi d\mu := \int_X \phi \chi_E d\mu
+      \nu_\phi(E) = \int_E \phi \d\mu := \int_X \phi \chi_E \d\mu
     \]
     is a measure.
   \item For all $\psi$ simple in $L^+$, \[
@@ -2057,7 +2057,7 @@ Of course, we need to prove this lemma, so we seek to do that now.
       \chi_E + 0 \cdot \chi_{E^c}$ is a good decomposition of
       $\psi$. Thus, \[
         \int \psi d\nu_\phi = \nu_\phi(E) = \int \chi_E \phi d \mu =
-        \int \psi \phi d\mu
+        \int \psi \phi \d\mu
       \]
     \item (General $\psi$). Let $\psi$ have a good decomposition $\psi
       = \sum_{i=1}^n a_i \chi_{E_i}$ for $a_i \in [0,\infty)$ and
@@ -2065,10 +2065,10 @@ Of course, we need to prove this lemma, so we seek to do that now.
       \begin{align*}
         \int \psi d\nu_\phi & = \sum_{i=1}^n a_i \int \chi_{E_i} d
                          \nu_\phi \\
-                       & = \sum a_i \int \chi_{E_i} \phi d\mu \\
+                       & = \sum a_i \int \chi_{E_i} \phi \d\mu \\
                        & = \int \left( \sum a_i \chi_{E_i} \right)
-                         \phi d\mu \\
-        & = \int \psi \phi d\mu
+                         \phi \d\mu \\
+        & = \int \psi \phi \d\mu
       \end{align*}
     \end{itemize}
   \end{proof}
@@ -2076,7 +2076,7 @@ Of course, we need to prove this lemma, so we seek to do that now.
 \begin{prop}
   Let \((\phi_n)_{n \geq 1}, \psi\) all be simple functions such that
   \(\phi_n\) increases to \(\psi\). Then, \[
-    \lim_{n \to \infty} \int \phi_n d\mu = \int \psi d\mu
+    \lim_{n \to \infty} \int \phi_n \d\mu = \int \psi \d\mu
   \]
 \end{prop}
 \begin{proof}
@@ -2097,15 +2097,15 @@ Of course, we need to prove this lemma, so we seek to do that now.
     \psi}\). We have that \(\nu_{\alpha \psi}(E_n) \to \nu_{\alpha
     \psi}(X)\) as \(n \to \infty \) using continuity from
   below. Furthermore, \[
-    \nu_{\alpha \psi}(X) = \int \chi_X \alpha \psi d\mu = \alpha \int
-    \psi d\mu.
+    \nu_{\alpha \psi}(X) = \int \chi_X \alpha \psi \d\mu = \alpha \int
+    \psi \d\mu.
   \]
   Now, \(\phi_n \geq \alpha \psi \chi_{E_n}\) for all \(x \in X\) and
   thus \[
-    \int \phi_n d\mu \geq \int \alpha \psi \chi_{E_n} d\mu = \nu_{\alpha \psi}(E_n).
+    \int \phi_n \d\mu \geq \int \alpha \psi \chi_{E_n} \d\mu = \nu_{\alpha \psi}(E_n).
   \]
   Taking \(n \to \infty\), we get \[
-    \lim \int \phi_n d\mu \geq \alpha \int \psi d\mu
+    \lim \int \phi_n \d\mu \geq \alpha \int \psi \d\mu
   \]
   for \(\alpha \in (0,1)\) and so we take \(\alpha \to 1\) to complete
   the proof.
@@ -2133,7 +2133,7 @@ Finally, we can now prove \ref{lem26}.
 \begin{thm}[Monotone Convergence theorem]
   Let \((f_n)_{n \geq 1}, f \in L^+\) with \(f_n\) increasing to
   \(f\). Then, \[
-    \lim_{n \to \infty} \int f_n d\mu = \int f d\mu
+    \lim_{n \to \infty} \int f_n \d\mu = \int f \d\mu
   \]
 \end{thm}
 \begin{proof}
@@ -2146,9 +2146,9 @@ Finally, we can now prove \ref{lem26}.
   consider \(\nu_{\alpha \psi}\) as a measure. We have that
   \(\nu_{\alpha \psi}(E_n) \to \nu_{\alpha \psi}(X)\) and so this
   gives us that \[
-    \int f_n d\mu \geq \int \alpha \psi \chi_{E_n} d\mu \to \alpha
-    \int \psi \implies \lim_{n \to \infty} \int f_n d\mu \geq \alpha
-    \int \psi d\mu
+    \int f_n \d\mu \geq \int \alpha \psi \chi_{E_n} \d\mu \to \alpha
+    \int \psi \implies \lim_{n \to \infty} \int f_n \d\mu \geq \alpha
+    \int \psi \d\mu
   \]
   Since this is true for all \(\alpha \in (0,1)\), it is true for
   \(\alpha = 1\). Now, simply take the supremum over \(\psi\) to get
@@ -2158,7 +2158,7 @@ Here I will choose to judiciously skip some pages of notes for the
 sake of getting the more important theorems into the notes.
 \begin{lem}[Fatou's Lemma]
   Let \((f_n)_{n \geq 1} \in L^+\). Then, \[
-    \int (\lim \inf f_n) d\mu \leq \lim \inf \int f_n d\mu
+    \int (\lim \inf f_n) \d\mu \leq \lim \inf \int f_n \d\mu
   \]
 \end{lem}
 \begin{proof}
@@ -2201,7 +2201,7 @@ I am choosing to skip the section of restriction of measures to
 subsets.
 \begin{defn}
   We say measurable \(f \from X \to \R\) is \de{integrable} if and only if \[
-    \int |f| d\mu < \infty.
+    \int |f| \d\mu < \infty.
   \]
   We denote this \(f \in \cL^1(X,\R) = \cL^1(X,\M,\mu,\R)\)
 \end{defn}
@@ -2214,7 +2214,7 @@ subsets.
 \end{defn}
 \begin{defn}
   \[
-    \int_X f d\mu := \int_X g d\mu - \int_X h d\mu
+    \int_X f \d\mu := \int_X g \d\mu - \int_X h \d\mu
   \]
 \end{defn}
 We would need to show this definition makes sense. Once again, I will
@@ -2223,7 +2223,7 @@ omit such details for the time being.
   Let \(\mathbb{K} = \R,\C\), or \([0,\infty]\). Then,
   \begin{enumerate}
   \item \(\cL^1(X,\mathbb{K})\) is a \(\mathbb{K}\)-vector space.
-  \item \(f \mapsto \int_X f d\mu\) is a \(\mathbb{K}\)-linear form.
+  \item \(f \mapsto \int_X f \d\mu\) is a \(\mathbb{K}\)-linear form.
   \end{enumerate}
 \end{prop}
 \subsection*{(3/23/2017) Lecture 14}
@@ -2441,14 +2441,14 @@ We now seek to fix some notation.
 \subsection*{(3/30/2017) Lecture 16}
 Take \(d=1\), then we can study \(L^1(\R,m,\K) \to S'(\R,\K)\) given
 by \(f \mapsto L_f\), a linear form on \(S\). So, \(L_f(g) = \int_\R
-fg dm\) for \(g \in S\). However, we would like to pick \(f \in
+fg \d m\) for \(g \in S\). However, we would like to pick \(f \in
 \cL^1\) a representative and show that this form is well-defined, linear,
 and continuous in both variables. 
 \begin{prop}[\(L^1-L^\infty\) bound]
   Given \(f,g\) measurable functions with \(f \in L^1\) and \(g \in
   \mathcal{C}^\infty\), we get \[
-    \int |fg|dm \leq \norm[f]_{L^1} \cdot \norm[g]_\infty =
-    \left(\int_\R |f| dm\right) \cdot \sup_{x \in \R} |g(x)|.
+    \int |fg| \d m \leq \norm[f]_{L^1} \cdot \norm[g]_\infty =
+    \left(\int_\R |f| \d m\right) \cdot \sup_{x \in \R} |g(x)|.
   \]
 \end{prop}
 ...
@@ -2560,7 +2560,7 @@ radius \(p^k\) inside \(\ov{B}(0,p^\ell)\), which is \(p^{\ell-k}\).
 \end{rmk}
 \begin{example}
   Take \(V = \cL^1(X,\M,\mu,\mathbb{K})\), \(\norms =
-  \{\norm_{L^1}\}\), \(\norm[f]_{L^1} = \int_X |f|d\mu\), \(\ov{V} =
+  \{\norm_{L^1}\}\), \(\norm[f]_{L^1} = \int_X |f|\d\mu\), \(\ov{V} =
   L^1(X,\M,\mu,\mathbb{K})\), and \(V_\text{null} = \{f \st f=0
   \mu-\text{almost everywhere}\}\). 
 \end{example}
@@ -2577,7 +2577,7 @@ radius \(p^k\) inside \(\ov{B}(0,p^\ell)\), which is \(p^{\ell-k}\).
 We will eventually show that \(L^1(X,\M,\mu,\mathbb{K})\) is a Banach
 space.
 \begin{rmk}
-  Given \(f \in L^1\), \(\int_X f d\mu\) is well-defined independent
+  Given \(f \in L^1\), \(\int_X f \d\mu\) is well-defined independent
   of choice of representative.
 \end{rmk}
 \begin{thm}[Dominated Convergence Theorem v1.0]
@@ -2588,7 +2588,7 @@ space.
   0\) such that, for all \(n \geq 1\) and for all \(x\), \(|f_n(x)|
   \leq g(x)\) (that is to say, \(g\) is a dominating function), then
   \(f \in \cL^1\) and \[
-    \lim_{n \to \infty} \int_X f_n d\mu = \int_X f d\mu
+    \lim_{n \to \infty} \int_X f_n \d\mu = \int_X f \d\mu
   \]
 \end{thm}
 \begin{proof}
@@ -2659,7 +2659,7 @@ space.
   Take \((\N,\B_\N,\mu)\) as a measure space where \(\mu\) is the
   counting measure. Then, a function \(f \from \N \to \K\) is a
   sequence \(a = (a_n)_{n \geq 1}\). If \(a \in L^1\), then \[
-    \int_\N |a_n| d\mu(w) = \sum_{n=1}^\infty |a_n| < \infty
+    \int_\N |a_n| \d\mu(w) = \sum_{n=1}^\infty |a_n| < \infty
   \]
   and thus saying \(a \in L^1(\N,\K)\) is the same as saying the
   series corresponding to \(a\) converges absolutely.
@@ -2691,7 +2691,7 @@ space.
   \(\sum_{n=1}^\infty \norm[f_n]_{L^1} < \infty\). Then, \(\lim_{N \to
   \infty} \sum_{n=1}^N f_n =: f\) exists
   and \[
-    \sum_{n=1}^\infty \int_X f_n d\mu = \int_X f d\mu
+    \sum_{n=1}^\infty \int_X f_n \d\mu = \int_X f \d\mu
   \]
 \end{thm}
 \begin{proof}
@@ -2701,7 +2701,7 @@ space.
   \]
   (Read ahead to see why this converges.) Then, using a MCT corollary, we
   get \[
-    \int g d\mu = \sum_{n=1}^\infty \int |f_n| d\mu < \infty.
+    \int g \d\mu = \sum_{n=1}^\infty \int |f_n| \d\mu < \infty.
   \]
   Thus, it must be that \(g(x) < \infty\) \(\mu\)-almost everywhere.
   Thus, one construction we could use is, given \(Z \in \M\) the set
@@ -2744,7 +2744,7 @@ space.
 \end{rmk}
 \begin{prop}
   Let \(f \in \cL^1(X,\M,\mu,\K)\). Then, given \(E \in \M\), \[
-    \nu_f(E) = \int_E f d\mu := \int_X f \chi_E d\mu
+    \nu_f(E) = \int_E f \d\mu := \int_X f \chi_E \d\mu
   \]
   is a \(\K\)-valued measure such that, for all \(E\), \(|\nu_f(E)|
   \leq \nu_{|f|}(E)\). 
@@ -2775,8 +2775,8 @@ In this section, we would like to introduce the idea of extension by
   \item \(\tilde{f}\) is \((\M,\B_\K)\)-measurable.
   \item \(f \in \cL^1(Y,\M_Y,\mu_Y,\K)\) if and only if \(\tilde{f}
     \in \cL^1(X,\M,\mu,\K)\), in which case \[
-      \int_Y f d\mu_Y = \int_X \tilde{f} d\mu = \int_X \tilde{f}
-      \chi_Y d\mu = \int_Y \tilde{f} d\mu = \int_Y f d\mu
+      \int_Y f \d\mu_Y = \int_X \tilde{f} \d\mu = \int_X \tilde{f}
+      \chi_Y \d\mu = \int_Y \tilde{f} \d\mu = \int_Y f \d\mu
     \]
   \end{enumerate}
 \end{prop}
@@ -2792,15 +2792,15 @@ In this section, we would like to introduce the idea of extension by
   \item We have the if and only if statement because \(|\tilde{f}| =
     \widetilde{|f|}\) using the previous version of this proposition
     (currently missing) for \(L^+\). Thus, we have \[
-      \int_X |\tilde{f}| d\mu = \int_Y |f| d\mu_Y.
+      \int_X |\tilde{f}| \d\mu = \int_Y |f| \d\mu_Y.
     \]
     Now, for \(\K=\R\), take a good decomposition \(f = g-h\) with
     \(g,h \in L^+ \intersect \cL^1\). Then, we get that
     \begin{align*}
-      \int_Y f d\mu_Y & = \int_Y g d\mu_Y - \int_Y h d\mu_Y \\
-                      & = \int_X \tilde{g} d\mu - \int_X \tilde{h} d\mu \\
-                      & = \int_X (\tilde{g} - \tilde{h}) d\mu \\
-      & = \int_X \widetilde{g-h} d\mu = \int_X \tilde{f} d\mu.
+      \int_Y f \d\mu_Y & = \int_Y g \d\mu_Y - \int_Y h \d\mu_Y \\
+                      & = \int_X \tilde{g} \d\mu - \int_X \tilde{h} \d\mu \\
+                      & = \int_X (\tilde{g} - \tilde{h}) \d\mu \\
+      & = \int_X \widetilde{g-h} \d\mu = \int_X \tilde{f} \d\mu.
     \end{align*}
     For \(\K = \C\), apply the result above to the real and imaginary
     parts of \(f\). (\(\widetilde{\Re f} = \Re \tilde{f}\), etc.)
@@ -2874,7 +2874,7 @@ integral again.
 \begin{thm}
   Let \(a<b\) be in \(\R\) with \(f \from [a,b] \to \K\) a continuous
   function. Then, \(f \in L^1([a,b],m)\) and \[
-    \int_{[a,b]} f(x) dm(x) = \int_a^b f(x) dx, \text{ the Riemann integral.}
+    \int_{[a,b]} f(x) \d m(x) = \int_a^b f(x) dx, \text{ the Riemann integral.}
   \]
 \end{thm}
 \begin{proof}
@@ -2885,7 +2885,7 @@ integral again.
     \int_a^b f(x) dx & = \lim_{n \to \infty} \sum_{i=0}^{n-1}
                        \frac{b-a}{n} f(a + i \frac{b-a}{n}) \\
     & = \lim_{n \to \infty} \int \sum_{i=0}^{n-1} f(a+i\frac{b-a}{n})
-      \chi_{E_{n,i}}(x) dm \\
+      \chi_{E_{n,i}}(x) \d m \\
     & \text{ where }  E_{n,i} = [a+i\frac{b-a}{n},a+(i+1)\frac{b-a}{n})
       \text{ if } 0 \leq i < n-1 \\
     & \text{ and } E_{n,n-1} = [a+\frac{n-1}{n}(b-a), b]
