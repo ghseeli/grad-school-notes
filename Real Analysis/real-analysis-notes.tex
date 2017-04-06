@@ -2863,8 +2863,8 @@ We now wish to apply this to the situation where \(Y \subset X\) via
   \(\Top_Y\), then \(\tilde{f}\) is \((\B_X, \B_\K)\)-measurable.
 \end{prop}
 \begin{proof}
-  Since \(f \from Y \to \K\) is continuous, it is \(\B_{(Y,\Top_Y)},
-  \B_\K\)-measurable. However, \(\B_{(Y,\Top_Y)} =
+  Since \(f \from Y \to \K\) is continuous, it is \((\B_{(Y,\Top_Y)},
+  \B_\K)\)-measurable. However, \(\B_{(Y,\Top_Y)} =
   (\B_{(X,\Top_X)})_Y\) by the previous proposition. Since \(Y \in
   \B_{(X,\Top)}\), then \(\tilde{f}\) is \((\B_X, \B_\K)\)-measurable.
 \end{proof}
@@ -2892,8 +2892,13 @@ integral again.
 Taking \(f_n(x) = \sum_{i=0}^{n-1} f(a+i \frac{b-a}{n})
 \chi_{E_{n,i}}(x)\), then there exists an \(M\) such that \(|f_n(x)|
 \leq M\) for all \(x,n\). Thus, for all \(x\), we get that \[
-  \lim_{n \to \infty} f_n(x) = f(x) = f(\xi_{n,x})
+  \lim_{n \to \infty} f_n(x) = \lim_{n \to \infty} f(\xi_{n,x}) = f(x)
 \]
-where \(\xi_{n,x}\) is...?
+where \(\xi_{n,x}\) is some point in the domain such that the equality
+\(f_n(x) = f(\xi_{n,x})\) is true. (This exists by the construction of
+\(f_n\); it looks like a step function that agrees with \(f\) at left
+endpoints.) However, \(|\xi_{n,x}-x| \leq \frac{b-a}{n}\), so we can
+use continuity at \(x\) to create a dominating function and apply the
+DCT. Note that this did not use uniform continuity.
 \end{proof}
 \end{document}
