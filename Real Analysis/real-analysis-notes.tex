@@ -2788,7 +2788,112 @@ In this section, we would like to introduce the idea of extension by
     However, the left set is just \(f^{-1}(B) \in \M_Y \subset \M\)
     and the right set is either empty or equal to \(Y^c\), either of
     which is in \(\M\).
-  \item 
+  \item We have the if and only if statement because \(|\tilde{f}| =
+    \widetilde{|f|}\) using the previous version of this proposition
+    (currently missing) for \(L^+\). Thus, we have \[
+      \int_X |\tilde{f}| d\mu = \int_Y |f| d\mu_Y.
+    \]
+    Now, for \(\K=\R\), take a good decomposition \(f = g-h\) with
+    \(g,h \in L^+ \intersect \cL^1\). Then, we get that
+    \begin{align*}
+      \int_Y f d\mu_Y & = \int_Y g d\mu_Y - \int_Y h d\mu_Y \\
+                      & = \int_X \tilde{g} d\mu - \int_X \tilde{h} d\mu \\
+                      & = \int_X (\tilde{g} - \tilde{h}) d\mu \\
+      & = \int_X \widetilde{g-h} d\mu = \int_X \tilde{f} d\mu.
+    \end{align*}
+    For \(\K = \C\), apply the result above to the real and imaginary
+    parts of \(f\). (\(\widetilde{\Re f} = \Re \tilde{f}\), etc.)
   \end{enumerate}
+\end{proof}
+\subsection{Restriction with Topology}
+Let \((X,\Top)\) be a topological space with \(Y \subset X\). We ask
+how \(\B_{(Y,\Top_Y)}\), the Borel of the induced topology, and
+\((\B_{(X,\Top)})_Y\), the induced \(\sigma\)-algebra from the Borel,
+are related. It turns out they are, in fact, equal.
+\begin{defn}
+  Recall \(\Top_Y = \iota^* \Top := \{\iota^{-1}(V) \st V \in \Top\}\)
+  where \(\iota \from Y \to X\) is the inclusion map. 
+\end{defn}
+\begin{defn}
+  Given a function \(f \from U \to V\), the \de{push-forward}
+    of a \(\sigma\)-algebra \(\M \subset \P(U)\), is \(f_* \M := \{B 
+  \subset V \st f^{-1}(B) \in \M\}\)
+\end{defn}
+\begin{defn}
+  Given a function \(f \from U \to V\), the \de{pull-back}
+    of a \(\sigma\)-algebra \(\M \subset \P(V)\), is \(f^* \M :=
+    \{f^{-1}(B) \st B \in \M\}\) 
+\end{defn}
+\begin{prop}
+  Given 2 sets \(U,V\), \(f \from U \to V\), and \(\Ep \subset
+  \P(V)\), then \[
+    \M(f^{-1}(\Ep)) = f^* \M(\Ep)
+  \]
+  where \(f^{-1}(\Ep) = \{f^{-1}(E) \st E \in \Ep\}\).
+\end{prop}
+\begin{proof}
+  For the \((\subset)\) direction, we note that \(\Ep \subset \M(\Ep)
+  \implies f^{-1}(\Ep) \subset f^* \M(\Ep)\), which is a
+  \(\sigma\)-algebra. Thus, \(\M(f^{-1}(\Ep)) \subset f^*
+  \M(\Ep)\). \\
+
+  To prove \((\supset)\), we claim \(\Ep \subset f_*
+  \M(f^{-1}(\Ep))\), which is a \(\sigma\)-algebra. To show this, let
+  \(B \in \Ep\). Then, \[f^{-1}(B) \in f^{-1}(\Ep) \subset
+    \M(f^{-1}(\Ep)) \implies B \in f_* \M(f^{-1}(\Ep)).\]
+  Now, from this claim, we can get \(\M(\Ep) \subset f_*
+  \M(f^{-1}(\Ep))\). Thus, for all \(B \in \M(\Ep)\), we have
+  \(f^{-1}(B) \subset \M(f^{-1}(\Ep))\), and so \(f^*\M(\Ep) \subset \M(f^{-1}(\Ep))\).
+\end{proof}
+We now wish to apply this to the situation where \(Y \subset X\) via
+\(\iota \from Y \to X\).
+\begin{cor}
+  Given a topological space \((X,\Top)\) with \(Y \subset X\), we have
+  \((\B_{(X,\Top)})_Y = \B_{Y,\Top_Y}\)
+\end{cor}
+\begin{proof}
+    Given \(\iota \from Y \into X\), we have that \(\iota^* \M(\Top) =
+  \M(\iota^{-1}(\Top))\). Since \(\M(\Top) = \B_{(X,\Top)}\),
+  \(\iota^{-1}(\Top) = \Top_Y\), and \(\iota^* \B_{(X,\Top)} =
+  (\B_{(X,\Top)})_Y\), we are done.
+\end{proof}
+\begin{prop}
+  If \((X,\Top)\) is a topological space with \(Y \subset
+  \B_{(X,\Top)}\) and if \(f \from Y \to \K\) is continuous for
+  \(\Top_Y\), then \(\tilde{f}\) is \((\B_X, \B_\K)\)-measurable.
+\end{prop}
+\begin{proof}
+  Since \(f \from Y \to \K\) is continuous, it is \(\B_{(Y,\Top_Y)},
+  \B_\K\)-measurable. However, \(\B_{(Y,\Top_Y)} =
+  (\B_{(X,\Top_X)})_Y\) by the previous proposition. Since \(Y \in
+  \B_{(X,\Top)}\), then \(\tilde{f}\) is \((\B_X, \B_\K)\)-measurable.
+\end{proof}
+Now, we wish to show that one never needs to do another Riemann
+integral again.
+\begin{thm}
+  Let \(a<b\) be in \(\R\) with \(f \from [a,b] \to \K\) a continuous
+  function. Then, \(f \in L^1([a,b],m)\) and \[
+    \int_{[a,b]} f(x) dm(x) = \int_a^b f(x) dx, \text{ the Riemann integral.}
+  \]
+\end{thm}
+\begin{proof}
+  There are many proofs of this statement, but an overpowered one is
+  to use the DCT. Since \(f\) is bounded (continuous on a compact
+  set), we get that
+  \begin{align*}
+    \int_a^b f(x) dx & = \lim_{n \to \infty} \sum_{i=0}^{n-1}
+                       \frac{b-a}{n} f(a + i \frac{b-a}{n}) \\
+    & = \lim_{n \to \infty} \int \sum_{i=0}^{n-1} f(a+i\frac{b-a}{n})
+      \chi_{E_{n,i}}(x) dm \\
+    & \text{ where }  E_{n,i} = [a+i\frac{b-a}{n},a+(i+1)\frac{b-a}{n})
+      \text{ if } 0 \leq i < n-1 \\
+    & \text{ and } E_{n,n-1} = [a+\frac{n-1}{n}(b-a), b]
+  \end{align*}
+Taking \(f_n(x) = \sum_{i=0}^{n-1} f(a+i \frac{b-a}{n})
+\chi_{E_{n,i}}(x)\), then there exists an \(M\) such that \(|f_n(x)|
+\leq M\) for all \(x,n\). Thus, for all \(x\), we get that \[
+  \lim_{n \to \infty} f_n(x) = f(x) = f(\xi_{n,x})
+\]
+where \(\xi_{n,x}\) is...?
 \end{proof}
 \end{document}
