@@ -1927,7 +1927,7 @@ representation.
 \end{proof}
 \subsection*{(3/16/2017) Lecture 11}
 Now that we have established the definition for integration on simple
-functions, we wish to extend it to arbitrary measurable functions.
+functions, we wish to extend it to arbitrary measurable functions in \(L^+\).
 \begin{defn}
   Let $(X,\M,\mu)$ be a measure space. If $f \in L^+$, then \[
     \int f d\mu := \sup \left\{ \int \phi d\mu \st \phi \text{ simple
@@ -1963,8 +1963,8 @@ to check that the new definition agrees with the old one.
 \end{proof}
 \begin{thm}
   Let $f \in L^+$. Then, there exists a sequence $(\phi_n)_{n \geq 1}$
-  of simple functions in $L^+$ such that, for all $x$, $\phi_n(x)$
-  increases to $f(x)$ when $n \to \infty$ and $\phi_n(x)$
+  of simple functions in $L^+$ such that, for all $x$, $\phi_n(x) \to
+  f(x)$ when $n \to \infty$ and $(\phi_n(x))_{n \geq 1}$ 
   nondecreasing. Moreover, convergence is uniform on any $Y \subset X$
   such that $f|_Y$ is bounded, i.e., there exists an $M \in
   [0,\infty)$ for all $x \in Y$ such that $f(x) \leq M$. 
@@ -2080,7 +2080,7 @@ Of course, we need to prove this lemma, so we seek to do that now.
   \]
 \end{prop}
 \begin{proof}
-  Let \(\alpha \in [0,1) \) and, for all \(n\), let \(E_n = \{\alpha
+  Let \(\alpha \in [0,1) \) and, for all \(n\), let \(E_n = \{x
   \in X \st \phi_n(x) \geq \alpha \psi(x)\}\). It is clear that
   \(E_n\) is measurable since \(\phi_n - \alpha \psi\) is measurable
   and \(E_n\) is the inverse image of \([0,\infty) \). Furthermore, it
@@ -2095,19 +2095,19 @@ Of course, we need to prove this lemma, so we seek to do that now.
   \]
   We still want to show the other inequality. Consider \(\nu_{\alpha
     \psi}\). We have that \(\nu_{\alpha \psi}(E_n) \to \nu_{\alpha
-    \psi}(x)\) as \(n \to \infty \) using continuity from
+    \psi}(X)\) as \(n \to \infty \) using continuity from
   below. Furthermore, \[
     \nu_{\alpha \psi}(X) = \int \chi_X \alpha \psi d\mu = \alpha \int
     \psi d\mu.
   \]
   Now, \(\phi_n \geq \alpha \psi \chi_{E_n}\) for all \(x \in X\) and
   thus \[
-    \int \phi_n d\mu \geq \int \alpha \psi E_n d\mu = \nu_{\alpha \psi}(E_n).
+    \int \phi_n d\mu \geq \int \alpha \psi \chi_{E_n} d\mu = \nu_{\alpha \psi}(E_n).
   \]
   Taking \(n \to \infty\), we get \[
     \lim \int \phi_n d\mu \geq \alpha \int \psi d\mu
   \]
-  for \(\alpha \in (0,1)\) and so we take \(\alpha = 1\) to complete
+  for \(\alpha \in (0,1)\) and so we take \(\alpha \to 1\) to complete
   the proof.
 \end{proof}
 Finally, we can now prove \ref{lem26}.
@@ -2119,12 +2119,13 @@ Finally, we can now prove \ref{lem26}.
   by definition and so \[
     \lim_{n \to \infty} \int \phi_n \leq \int f.
   \]
-  To get the \(\geq\) direction, take \(0 \leq \phi_n \leq f\). Then,
+  To get the \(\geq\) direction, take \(0 \leq \phi_n \leq f\). Also,
+  let \(\psi\) be any simple function with \(\phi_n \leq \psi\). Then,
   \(\min(\phi_n,\psi)\) is simple and increases to \(\psi\). Thus, by
   our proposition above, we get that \[
     \lim \int \phi_n \geq \lim \int \min(\phi_n,\psi) = \int \psi
   \]
-  However, this is true for all \(\psi\). So, taking the supremum, we
+  However, this is true for all \(\psi \leq f\). So, taking the supremum, we
   get \[
   \lim_{n \to \infty} \int \phi_n \geq \int f.
   \]
@@ -2219,7 +2220,7 @@ subsets.
 We would need to show this definition makes sense. Once again, I will
 omit such details for the time being.
 \begin{prop}
-  Let \(\mathbb{K} = \R,\C,[0,\infty]\). Then,
+  Let \(\mathbb{K} = \R,\C\), or \([0,\infty]\). Then,
   \begin{enumerate}
   \item \(\cL^1(X,\mathbb{K})\) is a \(\mathbb{K}\)-vector space.
   \item \(f \mapsto \int_X f d\mu\) is a \(\mathbb{K}\)-linear form.
@@ -2592,19 +2593,19 @@ space.
 \end{thm}
 \begin{proof}
   We first note that if \(f\) is the pointwise limit of measurable
-  functions, then \(f\) is measurable. Thus, if \(\norm[f_n(x)] \leq
-  g(x)\) for all \(n\), then \(\norm[f(x)] \leq g(x)\) in
-  \(\cL^1\). Thus, \[
+  functions, then \(f\) is measurable. Thus, \(\norm[f_n(x)] \leq
+  g(x)\) for all \(n\) tells us \(\norm[f(x)] \leq g(x)\) in
+  \(\cL^1\). Thus, since \(g \in \cL^1\), \[
     \int g < \infty \implies \int |f| < \infty
   \]
-  for \(f \in \cL^1\).
+  and so \(f \in \cL^1\).
   \begin{itemize}
   \item (\(\K = \R\)). Let \(f_n(x) + g(x) \geq 0\) for all
     \(x,n\). Then we use Fatou's lemma.
     \begin{align*}
       \int \lim \inf (f_n+g)
-      & \leq \lim \inf \int f_n+g \text{ in }L^+ \\
-      & \leq \lim \inf \int f_n+g \text{ in }\R \\
+      & \leq \lim \inf \int (f_n+g) \text{ in }L^+ \\
+      & \leq \lim \inf \int (f_n+g) \text{ in }\R \\
       \implies \int f + \int g & \leq \left( \lim \inf \int f_n \right)
       + \int g \\
       \implies \int f \leq \lim \inf \int f_n & \leq \lim \sup \int f_n
