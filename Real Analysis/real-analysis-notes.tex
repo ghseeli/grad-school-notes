@@ -2378,7 +2378,7 @@ using the standard trick.
   Let (\(V,\Top_\norms\)) be a Hausdorff LCTVS. Then, the following
   are equivalent.
   \begin{enumerate}
-  \item \(V\) is measurable.
+  \item \(V\) is metrizable.
   \item \(V\) is first countable.
   \item There exists a countable \(\norms_c \subset \norms\) such that
   \(\Top_{\norms_c} = \Top_\norms\). 
@@ -2726,5 +2726,179 @@ space.
     \to \infty
   \]
   where the last equality follows from MCT.
+\end{proof}
+\subsection{Aside: \(\K\)-valued measures}
+\begin{defn}
+  Given a measurable space \((X,\M)\), a \(\K\)-valued measure is a
+  function \(\mu \from \M \to \K\) such that \(\mu(\emptyset) = 0\)
+  and if \(E = \Dunion_{n=1}^\infty E_n\), a disjoint union, then \[
+    \sum_{n=1}^\infty \mu(E_n) = \mu(E) \text{ converges absolutely}
+  \]
+  is called a \de{signed measure} if \(\K=\R\) and a \de{complex
+    measure} is \(\K=\C\). 
+\end{defn}
+\begin{rmk}
+  One can drop the absolute convergence from the definition, but then
+  one needs the Riemann series rearrangement theorem.
+\end{rmk}
+\begin{prop}
+  Let \(f \in \cL^1(X,\M,\mu,\K)\). Then, given \(E \in \M\), \[
+    \nu_f(E) = \int_E f d\mu := \int_X f \chi_E d\mu
+  \]
+  is a \(\K\)-valued measure such that, for all \(E\), \(|\nu_f(E)|
+  \leq \nu_{|f|}(E)\). 
+\end{prop}
+Note that this agrees with the old definition.
+\begin{proof}
+  See Folland page 94, Proposition 3.13(a)
+\end{proof}
+\subsection{Restriction to Subsets}
+In this section, we would like to introduce the idea of extension by
+0.
+\begin{prop}
+  Let \((X,\M,\mu)\) be a measure space and let \(Y \in \M\). Then,
+  using notation from before, we have \[
+    \M_Y := \P(Y) \intersect \M, \ \mu_Y = \mu|_{\M_Y}.
+  \]
+  Let \(f \from Y \to \K\) be \((\M_Y,\B_\K)\)-measurable and let
+  \(\tilde{f} \from X \to \K\) be its ``extension by zero'', that
+  is \[
+    \tilde{f} =
+    \begin{cases}
+      f(x) & \text{ if }x \in Y \\
+      0 & \text{ else }
+    \end{cases}
+  \]
+  Then, we have
+  \begin{enumerate}
+  \item \(\tilde{f}\) is \((\M,\B_\K)\)-measurable.
+  \item \(f \in \cL^1(Y,\M_Y,\mu_Y,\K)\) if and only if \(\tilde{f}
+    \in \cL^1(X,\M,\mu,\K)\), in which case \[
+      \int_Y f d\mu_Y = \int_X \tilde{f} d\mu = \int_X \tilde{f}
+      \chi_Y d\mu = \int_Y \tilde{f} d\mu = \int_Y f d\mu
+    \]
+  \end{enumerate}
+\end{prop}
+\begin{proof}
+  \begin{enumerate}
+  \item Let \(B \in \B_\K\). Then, we get \[
+      \tilde{f}^{-1}(B) = \left( \tilde{f}^{-1}(B) \intersect Y
+      \right) \union \left( \tilde{f}^{-1}(B) \intersect Y^c \right)
+    \]
+    However, the left set is just \(f^{-1}(B) \in \M_Y \subset \M\)
+    and the right set is either empty or equal to \(Y^c\), either of
+    which is in \(\M\).
+  \item We have the if and only if statement because \(|\tilde{f}| =
+    \widetilde{|f|}\) using the previous version of this proposition
+    (currently missing) for \(L^+\). Thus, we have \[
+      \int_X |\tilde{f}| d\mu = \int_Y |f| d\mu_Y.
+    \]
+    Now, for \(\K=\R\), take a good decomposition \(f = g-h\) with
+    \(g,h \in L^+ \intersect \cL^1\). Then, we get that
+    \begin{align*}
+      \int_Y f d\mu_Y & = \int_Y g d\mu_Y - \int_Y h d\mu_Y \\
+                      & = \int_X \tilde{g} d\mu - \int_X \tilde{h} d\mu \\
+                      & = \int_X (\tilde{g} - \tilde{h}) d\mu \\
+      & = \int_X \widetilde{g-h} d\mu = \int_X \tilde{f} d\mu.
+    \end{align*}
+    For \(\K = \C\), apply the result above to the real and imaginary
+    parts of \(f\). (\(\widetilde{\Re f} = \Re \tilde{f}\), etc.)
+  \end{enumerate}
+\end{proof}
+\subsection{Restriction with Topology}
+Let \((X,\Top)\) be a topological space with \(Y \subset X\). We ask
+how \(\B_{(Y,\Top_Y)}\), the Borel of the induced topology, and
+\((\B_{(X,\Top)})_Y\), the induced \(\sigma\)-algebra from the Borel,
+are related. It turns out they are, in fact, equal.
+\begin{defn}
+  Recall \(\Top_Y = \iota^* \Top := \{\iota^{-1}(V) \st V \in \Top\}\)
+  where \(\iota \from Y \to X\) is the inclusion map. 
+\end{defn}
+\begin{defn}
+  Given a function \(f \from U \to V\), the \de{push-forward}
+    of a \(\sigma\)-algebra \(\M \subset \P(U)\), is \(f_* \M := \{B 
+  \subset V \st f^{-1}(B) \in \M\}\)
+\end{defn}
+\begin{defn}
+  Given a function \(f \from U \to V\), the \de{pull-back}
+    of a \(\sigma\)-algebra \(\M \subset \P(V)\), is \(f^* \M :=
+    \{f^{-1}(B) \st B \in \M\}\) 
+\end{defn}
+\begin{prop}
+  Given 2 sets \(U,V\), \(f \from U \to V\), and \(\Ep \subset
+  \P(V)\), then \[
+    \M(f^{-1}(\Ep)) = f^* \M(\Ep)
+  \]
+  where \(f^{-1}(\Ep) = \{f^{-1}(E) \st E \in \Ep\}\).
+\end{prop}
+\begin{proof}
+  For the \((\subset)\) direction, we note that \(\Ep \subset \M(\Ep)
+  \implies f^{-1}(\Ep) \subset f^* \M(\Ep)\), which is a
+  \(\sigma\)-algebra. Thus, \(\M(f^{-1}(\Ep)) \subset f^*
+  \M(\Ep)\). \\
+
+  To prove \((\supset)\), we claim \(\Ep \subset f_*
+  \M(f^{-1}(\Ep))\), which is a \(\sigma\)-algebra. To show this, let
+  \(B \in \Ep\). Then, \[f^{-1}(B) \in f^{-1}(\Ep) \subset
+    \M(f^{-1}(\Ep)) \implies B \in f_* \M(f^{-1}(\Ep)).\]
+  Now, from this claim, we can get \(\M(\Ep) \subset f_*
+  \M(f^{-1}(\Ep))\). Thus, for all \(B \in \M(\Ep)\), we have
+  \(f^{-1}(B) \subset \M(f^{-1}(\Ep))\), and so \(f^*\M(\Ep) \subset \M(f^{-1}(\Ep))\).
+\end{proof}
+We now wish to apply this to the situation where \(Y \subset X\) via
+\(\iota \from Y \to X\).
+\begin{cor}
+  Given a topological space \((X,\Top)\) with \(Y \subset X\), we have
+  \((\B_{(X,\Top)})_Y = \B_{Y,\Top_Y}\)
+\end{cor}
+\begin{proof}
+    Given \(\iota \from Y \into X\), we have that \(\iota^* \M(\Top) =
+  \M(\iota^{-1}(\Top))\). Since \(\M(\Top) = \B_{(X,\Top)}\),
+  \(\iota^{-1}(\Top) = \Top_Y\), and \(\iota^* \B_{(X,\Top)} =
+  (\B_{(X,\Top)})_Y\), we are done.
+\end{proof}
+\begin{prop}
+  If \((X,\Top)\) is a topological space with \(Y \subset
+  \B_{(X,\Top)}\) and if \(f \from Y \to \K\) is continuous for
+  \(\Top_Y\), then \(\tilde{f}\) is \((\B_X, \B_\K)\)-measurable.
+\end{prop}
+\begin{proof}
+  Since \(f \from Y \to \K\) is continuous, it is \((\B_{(Y,\Top_Y)},
+  \B_\K)\)-measurable. However, \(\B_{(Y,\Top_Y)} =
+  (\B_{(X,\Top_X)})_Y\) by the previous proposition. Since \(Y \in
+  \B_{(X,\Top)}\), then \(\tilde{f}\) is \((\B_X, \B_\K)\)-measurable.
+\end{proof}
+Now, we wish to show that one never needs to do another Riemann
+integral again.
+\begin{thm}
+  Let \(a<b\) be in \(\R\) with \(f \from [a,b] \to \K\) a continuous
+  function. Then, \(f \in L^1([a,b],m)\) and \[
+    \int_{[a,b]} f(x) dm(x) = \int_a^b f(x) dx, \text{ the Riemann integral.}
+  \]
+\end{thm}
+\begin{proof}
+  There are many proofs of this statement, but an overpowered one is
+  to use the DCT. Since \(f\) is bounded (continuous on a compact
+  set), we get that
+  \begin{align*}
+    \int_a^b f(x) dx & = \lim_{n \to \infty} \sum_{i=0}^{n-1}
+                       \frac{b-a}{n} f(a + i \frac{b-a}{n}) \\
+    & = \lim_{n \to \infty} \int \sum_{i=0}^{n-1} f(a+i\frac{b-a}{n})
+      \chi_{E_{n,i}}(x) dm \\
+    & \text{ where }  E_{n,i} = [a+i\frac{b-a}{n},a+(i+1)\frac{b-a}{n})
+      \text{ if } 0 \leq i < n-1 \\
+    & \text{ and } E_{n,n-1} = [a+\frac{n-1}{n}(b-a), b]
+  \end{align*}
+Taking \(f_n(x) = \sum_{i=0}^{n-1} f(a+i \frac{b-a}{n})
+\chi_{E_{n,i}}(x)\), then there exists an \(M\) such that \(|f_n(x)|
+\leq M\) for all \(x,n\). Thus, for all \(x\), we get that \[
+  \lim_{n \to \infty} f_n(x) = \lim_{n \to \infty} f(\xi_{n,x}) = f(x)
+\]
+where \(\xi_{n,x}\) is some point in the domain such that the equality
+\(f_n(x) = f(\xi_{n,x})\) is true. (This exists by the construction of
+\(f_n\); it looks like a step function that agrees with \(f\) at left
+endpoints.) However, \(|\xi_{n,x}-x| \leq \frac{b-a}{n}\), so we can
+use continuity at \(x\) to create a dominating function and apply the
+DCT. Note that this did not use uniform continuity.
 \end{proof}
 \end{document}
