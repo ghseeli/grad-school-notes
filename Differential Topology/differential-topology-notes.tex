@@ -39,11 +39,12 @@
   {.5em} % Space after theorem head
   {} % Theorem head spec (can be left empty, meaning `normal')
 
-\theoremstyle{mystyle} \newtheorem{thrm}[thm]{Theorem}
-\theoremstyle{mystyle} \newtheorem{defi}[thm]{Definition}
-\theoremstyle{mystyle} \newtheorem{coro}[thm]{Corollary}
-\theoremstyle{mystyle} \newtheorem{propo}[thm]{Proposition}
-\theoremstyle{mystyle} \newtheorem{lemm}[thm]{Lemma}
+\theoremstyle{mystyle} % this applies to ALL following new theorems % SEE research seminar, week 10 writeup for a possible way to exclude amsthm and [thm].
+\newtheorem{thrm}[thm]{Theorem}
+\newtheorem{defi}[thm]{Definition}
+\newtheorem{coro}[thm]{Corollary}
+\newtheorem{propo}[thm]{Proposition}
+\newtheorem{lemm}[thm]{Lemma}
 
 \numberwithin{thm}{section}
 
