@@ -47,11 +47,11 @@
 \newcommand{\Dcomplexes}{$\Delta$-complexes}
 \newcommand{\transverse}{\pitchfork}
 \newcommand{\x}{\times}
-\newcommand{\Map}{\text{Map}}
-\newcommand{\Mor}{\text{Mor}}
-\newcommand{\id}{\text{id}}
+\newcommand{\Map}{\operatorname{Map}}
+\newcommand{\Mor}{\operatorname{Mor}}
+\newcommand{\id}{\operatorname{id}}
 \newcommand{\adj}{\sim} % for 'adjacent' in a graph
-\newcommand{\Arg}{\text{Arg}}
+\newcommand{\Arg}{\operatorname{Arg}}
 \renewcommand{\bar}{\widebar}
 
 %%%%%%%%%%%%%% BEGIN CONTENT: %%%%%%%%%%%%%%
@@ -1691,6 +1691,83 @@ Think of a simplicial chain as a singular chain.
 \mydate{dh}{10}{4}{2017}
 
 \mydate{di}{12}{4}{2017}
+
+\begin{thm}[Hatcher, p.140]
+  If $X$ is connected, then the boundary map $d_1 \from \Delta_1 \to \Delta_0$ is 0.
+\end{thm}
+\begin{proof}
+  If $X$ is connected, then
+  $$\Z = \homl[0](X) = \ker(d_0)/\im(d_1) = \Delta_0/\im(d_1) =? \Z/\im(d_1)$$
+
+  which implies that $\im(d_1) = 0$.
+\end{proof}
+
+\begin{thm}
+  All closed 2-manifolds are $S^2$ or $T^2 \#\#\# T^2$ if orientable, or $\R P^2 \#\#\# \R P^2$ if nonorientable.
+\end{thm}
+
+For $M_n = n$ $T^2$'s, then we have the CW-complex representation with the regular $2n$-polygon lined with edges $aba^{-1}b^{-1}$ $n$ times, with different pairs $(a,b)$ each time.
+
+The CW-complex has 1 0-cell, $2n$ 1-cells, and 1 2-cell.  Therefore, the chain-complex is
+$$\begin{tikzcd}
+  &0 \arrow[r, ""] &\Z \arrow[r, ""] &\Z^{2n} \arrow[r, "0"] &\Z \arrow[r, ""] &0
+\end{tikzcd}$$
+
+For the chain-complex, we find the homologies are
+\begin{align}
+  \homl[0](M_n) &= \Z \\
+  \homl[1](M_n) &= \Z^{2n} \\
+  \homl[2](M_n) &= \Z
+\end{align}
+
+For $X = n$ $\R P^2$'s, then we have the CW-complex representation with the regular $2n$-polygon lined with edges $aabb$ $n$ times, with different pairs $(a,b)$ each time.
+
+Under the rules where we could each cell once (no redundancies), we have 1 0-cell, $n$ 1-cells, and 1 2-cell.  Therefore, the chain-complex is
+$$\begin{tikzcd}
+  &0 \arrow[r, ""] &\Z \arrow[r, ""] &\Z^{n} \arrow[r, "0"] &\Z \arrow[r, ""] &0
+\end{tikzcd}$$
+
+For the chain-complex, we find the homologies are
+\begin{align}
+  \homl[0](M_n) &= \Z \\
+  \homl[1](M_n) &= \Z^{n - 1} \dsum \Z_2 \\
+  \homl[2](M_n) &= 0
+\end{align}
+
+\begin{defn}
+  Let X be a finite CW-complex.  Then the \de{Euler characteristic} is
+  $$\chi(X) := \sum_{i=0}^\oo (-1)^i \#\{\text{i-cells}\}. $$
+\end{defn}
+
+\begin{thm}
+  $\chi(X)$ is a topological invariant (invariant under homeomorphism).  In particular,
+  $$ \chi(X) = \sum_{i=0}^\oo (-1)^i \rank(H_i(X)). $$
+
+  Note that $\rank(H_i(X)) = \dim_{\Q}(\Q \dsum H_i(X))$.
+\end{thm}
+\begin{proof}
+  Recall from the rank-nullity theorem that given a linear transformation $T \from V \to W$, then $\dim(V) = \dim(\ker(T)) + \dim(\im(T))$.  Otherwise stated, given a short exact sequence $0 \to K \to V \to I \to 0$, then $\dim(V) = \dim(K) + \dim(I)$.
+
+  Let $C_i$ be the set of $i$-chains, $Z_i$ be the set of $i$-cycles, and $B_i$ be the set of $i$-boundaries.  Then by the rank-nullity theorem,
+  $$ H_i = Z_i/B_i $$
+
+  implies $\dim(Z_i) = \dim(B_i) + \dim(H_i)$.  Also, the SES
+  $$ 0 \to Z_i \into C_i \overset{\d}{\onto} B_{i-1} \to 0 $$
+
+  implies $\dim(C_i) = \dim(Z_i) + \dim(B_{i-1})$.  Substituting the first equation into the second, we have
+  $$ \dim(C_i) = \dim(B_i) + \dim(H_i) + \dim(B_{i-1}).$$
+
+  Therefore, we compute
+  \begin{align}
+    \chi(X) &= \sum_{i=0}^\oo (-1)^i \#\{\text{i-cells}\} \\
+    \chi(X) &= \sum_{i=0}^\oo (-1)^i \dim(C_i) \\
+    \chi(X) &= \sum_{i=0}^\oo (-1)^i (\dim(B_i) + \dim(H_i) + \dim(B_{i-1})) \\
+    \chi(X) &= \dim(B_{-1}) + \left(\sum_{i=0}^\oo (-1)^i \dim(H_i)\right) + \dim(B_N)
+  \end{align}
+
+  But $\dim(B_N) = 0$ for $N$ large enough such that there are no objects of dimension $N$.  Also, $\dim(B_{-1})$ is 0 since the boundary of any point is the empty set, so there are no boundaries of dimension $-1$.
+\end{proof}
+
 
 \mydate{dj}{14}{4}{2017}
 
