@@ -1735,7 +1735,12 @@ For the chain-complex, we find the homologies are
 \end{align}
 
 \begin{defn}
-  Let X be a finite CW-complex.  Then the \de{Euler characteristic} is
+  The \de{$\rank$} of a module is the cardinality of a maximal linearly independent subset.
+\end{defn}
+(Note: in our situation, this is the same as finding a maximal free abelian subgroup and looking at its power)
+
+\begin{defn}
+  Let $X$ be a finite CW-complex.  Then the \de{Euler characteristic} is
   $$\chi(X) := \sum_{i=0}^\oo (-1)^i \#\{\text{i-cells}\}. $$
 \end{defn}
 
@@ -1746,30 +1751,64 @@ For the chain-complex, we find the homologies are
   Note that $\rank(H_i(X)) = \dim_{\Q}(\Q \dsum H_i(X))$.
 \end{thm}
 \begin{proof}
-  Recall from the rank-nullity theorem that given a linear transformation $T \from V \to W$, then $\dim(V) = \dim(\ker(T)) + \dim(\im(T))$.  Otherwise stated, given a short exact sequence $0 \to K \to V \to I \to 0$, then $\dim(V) = \dim(K) + \dim(I)$.
+  Recall from the rank-nullity theorem that given a linear transformation $T \from V \to W$, then $\dim(V) = \dim(\ker(T)) + \dim(\im(T))$.  Otherwise stated, given a short exact sequence $0 \to K \to V \to I \to 0$, then $\dim(V) = \dim(K) + \dim(I)$.  The more general version of this theorem refers to $\rank$ instead of $\dim$.
 
   Let $C_i$ be the set of $i$-chains, $Z_i$ be the set of $i$-cycles, and $B_i$ be the set of $i$-boundaries.  Then by the rank-nullity theorem,
   $$ H_i = Z_i/B_i $$
 
-  implies $\dim(Z_i) = \dim(B_i) + \dim(H_i)$.  Also, the SES
+  implies $\rank(Z_i) = \rank(B_i) + \rank(H_i)$.  Also, the SES
   $$ 0 \to Z_i \into C_i \overset{\d}{\onto} B_{i-1} \to 0 $$
 
-  implies $\dim(C_i) = \dim(Z_i) + \dim(B_{i-1})$.  Substituting the first equation into the second, we have
-  $$ \dim(C_i) = \dim(B_i) + \dim(H_i) + \dim(B_{i-1}).$$
+  implies $\rank(C_i) = \rank(Z_i) + \rank(B_{i-1})$.  Substituting the first equation into the second, we have
+  $$ \rank(C_i) = \rank(B_i) + \rank(H_i) + \rank(B_{i-1}).$$
 
-  Therefore, we compute
+  Therefore, we compute (using the hypothesis that $X$ is finite (has dimension $N \in \N$)):
   \begin{align}
     \chi(X) &= \sum_{i=0}^\oo (-1)^i \#\{\text{i-cells}\} \\
-    \chi(X) &= \sum_{i=0}^\oo (-1)^i \dim(C_i) \\
-    \chi(X) &= \sum_{i=0}^\oo (-1)^i (\dim(B_i) + \dim(H_i) + \dim(B_{i-1})) \\
-    \chi(X) &= \dim(B_{-1}) + \left(\sum_{i=0}^\oo (-1)^i \dim(H_i)\right) + \dim(B_N)
+    \chi(X) &= \sum_{i=0}^N (-1)^i \#\{\text{i-cells}\} \\
+    \chi(X) &= \sum_{i=0}^N (-1)^i \rank(C_i) \\
+    \chi(X) &= \sum_{i=0}^N (-1)^i (\rank(B_i) + \rank(H_i) + \rank(B_{i-1})) \\
+    \chi(X) &= \rank(B_{-1}) + \left(\sum_{i=0}^\oo (-1)^i \rank(H_i)\right) + \rank(B_N)
   \end{align}
 
-  But $\dim(B_N) = 0$ for $N$ large enough such that there are no objects of dimension $N$.  Also, $\dim(B_{-1})$ is 0 since the boundary of any point is the empty set, so there are no boundaries of dimension $-1$.
+  But $\rank(B_N) = 0$ since there are no objects of dimension $N+1$.  Also, $\rank(B_{-1})$ is 0 since the boundary of any point is the empty set, so there are no boundaries of dimension $-1$.
 \end{proof}
 
-
 \mydate{dj}{14}{4}{2017}
+(chris)
+
+\section*{Homology w/ group coefficients}
+\begin{defn}
+  Let $G$ be an abelian group.  Then the \de{n-chains with $G$-coefficients}, denoted $C_n(X; G)$, is the set of $G$-linear combinations of singulart simplices in $X$.
+\end{defn}
+\begin{prop}
+  $$ C_n(X; G) \isom G \tprod_\Z C_n(X) $$
+\end{prop}
+  We still have $C_n(X; G) \overset{\d}{\to} C_{n-1}(X; G)$.
+
+  Thanks to the fact that $G$ is abelian, we still have $H_n(X; G)$ defined from above chain complex!
+
+  ALSO, if you do the simplicial simplices instead of the singular simplices, you can write the chain complex as
+
+  $$G^{\#\{\text{$i$-cells}\}} \to G^{\#\{\text{$i-1$-cells}\}} \to \ldots$$
+
+  intead of
+
+  $$\Z^{\#\{\text{$i$-cells}\}} \to \Z^{\#\{\text{$i-1$-cells}\}} \to \ldots$$
+
+  ...
+
+  \begin{thm}
+    For every dimension $n$ and degree $m$, there exists a map of degree $m$ from $S^n$ to $S^n$.
+  \end{thm}
+  \begin{example}
+    For any $m$, a map $S^2 \to S^2$ may be obtained by
+
+    <pretty picture>
+
+    cutting out $m$ open disks on $S^2$, and sending each homeomorphically to all of $S^2$ minus a single point.  All other points get sent to that single point on $S^2$, which is the boundary of the image of the open disks.
+  \end{example}
+
 
 \mydate{dk}{17}{4}{2017}
 
