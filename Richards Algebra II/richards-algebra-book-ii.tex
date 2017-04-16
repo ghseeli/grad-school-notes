@@ -39,7 +39,11 @@
 \newtheorem*{defn*}{Definition}
 \newtheorem{blank}[counter]{}   \newtheorem{remark}[counter]{Remark(s)}   \newtheorem*{remark*}{Remark(s)}   \newtheorem{generalization}[counter]{Generalization}
 \newtheorem{consequence}[counter]{Consequence(s)}   \newtheorem*{consequence*}{Consequence(s)}   \newtheorem*{problem*}{Problem}   \newtheorem{notation}[counter]{Notation}
-\newtheorem*{notation*}{Notation}   \newtheorem{example}[counter]{Example(s)}   \newtheorem*{example*}{Example(s)}   \newtheorem*{warning}{Warning} \newtheorem*{corollary*}{Corollary}
+\newtheorem*{notation*}{Notation}   \newtheorem{example}[counter]{Example(s)} 
+\newtheorem{exercise}[counter]{Exercise}
+\newtheorem*{example*}{Example(s)}   \newtheorem*{warning}{Warning}
+\newtheorem*{exercise*}{Exercise}
+ \newtheorem*{corollary*}{Corollary}
 \newtheorem*{question}{Question}   \newtheorem*{answer}{Answer}   \newtheorem{modification}[counter]{Modification}   \newtheorem{numitem}[counter]{}
 
 \newcommand{\ov}{\overline}   \newcommand{\wt}{\widetilde}
@@ -62,7 +66,7 @@
 \newcommand{\gen}[1]{\left\langle #1 \right\rangle}   \newcommand{\stab}[2]{\tn{Stab}_{#1}(#2)}   \newcommand{\fix}[2]{\tn{Fix}_{#1}(#2)}   \newcommand{\op}{^{\tn{op}}}
 \newcommand{\hooklongrightarrow}{\lhook\joinrel\longrightarrow}   \newcommand{\twoheadlongrightarrow}{\relbar\joinrel\twoheadrightarrow}
 \newcommand{\ses}[5]{1 \longrightarrow #1 \overset{#2}{\hooklongrightarrow} #3 \overset{#4}{\twoheadlongrightarrow} #5 \longrightarrow 1}
-\newcommand{\mses}[5]{0 \longrightarrow #1 \overset{#2}{\hooklongrightarrow} #3 \overset{#4}{\twoheadlongrightarrow} #5 \longrightarrow 0}
+\newcommand{\mses}[5]{0 \longrightarrow #1 \overset{#2}{\longrightarrow} #3 \overset{#4}{\longrightarrow} #5 \longrightarrow 0}
 \renewcommand{\arrowvert}{\arrow}   \renewcommand{\i}{\mathbf{i}}   \renewcommand{\j}{\mathbf{j}}   \renewcommand{\k}{\mathbf{k}}    \renewcommand{\H}{\mathbb{H}}  \renewcommand{\hom}{\tn{Hom}}   
 \newcommand{\ann}[2]{\textnormal{Ann}_{#1}(#2)}   \newcommand{\rk}{\textnormal{rk}} 
 \newcommand{\Chi}{\mbox{\Large $\chi$}}
@@ -1825,5 +1829,347 @@ Note that $\tn{null}(A-\lambda I_n)^e = \sum_{i=1}^{j_\lambda} \min\{e_{\lambda,
 &= \ell_{e,\lambda}
 \end{align*}
 \end{proof}
+
+
+
+
+
+
+\part{Tensor Products}
+
+
+
+\chapter{Basic Properties}
+
+
+
+
+In this chapter, $R$ is a commutative ring with $1 \ne 0$. 
+
+\vs
+
+\begin{defn}
+Let $M,N,P$ be $R$-modules. A map $f : M \times N \ra P$ is called $\mb{R}$\tb{-bilinear} if 
+\begin{enumerate}
+\item[(i)] $f(m_1 + m_1,n) = f(m_1,n) + f(m_2,n)$
+\item[(ii)] $f(m,n_1 + n_2) = f(m,n_1) + f(m,n_2)$
+\item[(iii)] $f(rm,n) = rf(m,n) = f(m,rn)$
+\end{enumerate}
+for all $r \in R$, $m,m_1,m_2 \in M$, $n,n_1,n_2 \in N$. 
+\end{defn}
+
+\vs
+
+\begin{remark*}
+Note that (iii) above implies that 
+\begin{align*}
+f(r_1r_1m,n) = r_1f(r_2m,n) &= f(r_2m,r_1n) \\
+&= r_2f(m,r_1n) \\
+&= f(m,(r_2r_1)n) \\
+&= f(r_2r_1m,n),
+\end{align*}
+so condition (iii) is in general only reasonable when $R$ is commutative. 
+\end{remark*}
+
+\vs
+
+\begin{defn}
+Given 2 $R$-modules $M,N$, the \tb{tensor product} of $M$ and $N$ over $R$ is a pair $(T,t)$ consisting of an $R$-module $T$ and an $R$-bilinear map $t : M \times N \ra T$ such that the following universal property is satisfied: For any $R$-module $P$ and $R$-bilinear map $\phi : M \times N \ra P$, there exists a unique $R$-linear map $\Phi : T \ra P$ such that $\Phi \circ t = \phi$. That is, the following diagram commutes:
+
+\begin{tikzcd}
+M \times N \arrow{rr}{\phi}
+\arrow[swap]{dr}{t} & & P \\
+& T \arrow[dotted,swap]{ur}{\exists \ ! \ \Phi}
+\end{tikzcd}
+\end{defn}
+
+\vs
+
+\noindent \tb{Notation} We usually write $M \otimes_R N$ instead of $t$, and $m \otimes n = m \otimes_R n$ instead of $t(m,n)$. Elements of the form $m \otimes n$ are called \tb{simple tensors}.
+
+\newpage
+
+\begin{proposition}
+For any two $R$-modules $M$ and $N$, their tensor product over $R$ exists and is unique up to isomorphism.
+\end{proposition}
+
+\begin{proof}\ \\
+\noindent \tb{Uniqueness} Suppose that $(T,t)$ and $(T',t')$ are two tensor products of $M$ and $N$ over $R$. Then, by their common universal property, there exist (unique) homomorphisms $\theta : T \ra T'$ and $\theta' : T' \ra T$ such that $\theta \circ t = t'$ and $\theta' \circ t' = t$:
+\begin{tikzcd}
+M \times N \arrow{rr}{t'}
+\arrow[swap]{dr}{t} & & T' \\
+& T \arrow[dotted,swap]{ur}{\exists \ ! \ \theta}
+\end{tikzcd}
+\begin{tikzcd}
+M \times N \arrow{rr}{t}
+\arrow[swap]{dr}{t'} & & T \\
+& T' \arrow[dotted,swap]{ur}{\exists \ ! \ \theta'}
+\end{tikzcd}
+
+Then $\theta' \circ : T \ra T$ satisfies $(\theta' \circ \theta) \circ t = t$, and $\theta \circ \theta' : T' \ra T'$ satisfies $(\theta \circ \theta') \circ t' = t'$. But $\id_T$ and $\id_{T'}$, respectively, also satisfy these conditions, so by the universal property of the tensor product, $\theta \circ \theta' = \id_T$ and $\theta' \circ \theta = \id_{T'}$. \\
+
+\noindent \tb{Existence} Define the free $R$-module $\wt{T} := \bigoplus_{M \times N} R$, and denote its standard basis elements by $(m,n)$ instead of $e_{(m,n)}$. Let $\wt{U}$ be the submodule of $\wt{T}$ generated by all elements of the form
+\begin{enumerate} 
+\item[(i)] $(m_1+m_2,n) - (m_1,n) - (m_2,n)$
+\item[(ii)] $ (rm,n) - r(m,n)$ 
+\item[(iii)] $ (m,n_1+n_2) - (m,n_1)-(m,n_2), (m,rn)-r(m,n) $
+\end{enumerate}
+where $r \in R, m,m_1,m_2 \in M, n,n_1,n_2 \in N$. Let $T := \wt{T}/\wt{U}$ be the quotient. We now have canonical homomorphisms $\iota : M \times N \ra \wt{T}, (m,n) \mapsto (m,n)$ and $\pi : \wt{T} \ra T, (m,n) \mapsto \ov{(m,n)}$. After defining $t = \pi \circ \iota : M \times N \ra T$, we have a candidate $(T,t)$ for the tensor product. \\
+
+Let's check that $(T,t)$ satisfies the universal property. Let $P$ be an $R$-module and $\phi : M \times N \ra P$ a bilinear map. Define $\wt{\phi} : \wt{T} \ra P$ by $(m,n) \mapsto \phi(m,n)$ (obviously well-defined by 3.1.26). Note that $\wt{\phi} \circ \iota = \phi$. We claim that $\ker \wt{\phi} \supseteq \wt{U}$. This is clear, since each element of the generating set defining $\wt{U}$ is obviously in $\ker \wt{\phi}$. Therefore, there exists a homomorphism $\Phi : T \ra P$ satisfying $\Phi \circ \pi = \wt{\phi}$. That is,
+	\[\Phi \circ t = \Phi \circ (\pi \circ \iota) = (\Phi \circ \pi) \circ \iota = \wt{\phi} \circ \iota = \phi \]
+Finally, $\Phi$ is obviously unique since $T$ is generated by elements of the form $\ov{(m,n)}$, and the evaluation of $\Phi$ on such elements is determined by the condition $\Phi \circ t = \phi$. 
+\end{proof}
+
+\vs
+
+\begin{remark}\ 
+\begin{enumerate}
+\item[(a)] Any element of $M \otimes_R N$ is a finite sum of elements of the form $\sum m_i \otimes n_i$. This is because, by the of $T$, every element is of the form $\sum r_i (m_i \times n_i) = \sum (r_i m_i) \otimes n_i$. 
+
+\item[(b)] However, we cannot write all elements of $M\otimes_R N$ as simple tensors $m \otimes n$. Also, $m \otimes n = m' \otimes n'$ doe not imply $m = m'$ and $n = n'$, e.g., $rm \otimes n = m \otimes rn$, but $n \ne rn$ usually. 
+
+\item[(c)]By the $R$-bilinearity of $t$, $m \otimes 0 = 0 \otimes n = 0$ for all $m \in M$, $n \in N$.
+
+\item[(d)] If a finite sum $x = \sum m_i \otimes n_i = 0$ in $M \otimes_R N$, then there exists finitely generated $R$-submodules $M_0 \leq M$ and $N_0 \leq N$ such that $m_i \in M_0$ and $n_i \in N_0$, and $\sum m_i \otimes n_i = 0$ in $M_0 \otimes_R N_0$. Indeed, $x = 0$ implies that $\sum (m_i,n_i) \in \ker \pi = \wt{U}$, hence it is a (finite) linear combination of generators of $\wt{U}$. Let $M_0$ and $N_0$ be the modules generated by the left and right entries of elements in this linear combination. Then $\sum m_i \otimes n_i = 0$ in $M_0 \otimes_R N_0 = \wt{T_0}/\wt{U_0}$, where $\wt{T_0}$ and $\wt{U_0}$ are constructed in the same way as $\wt{T}$ and $\wt{U}$. 
+\end{enumerate}
+\end{remark}
+
+\vs
+
+\begin{lemma}
+For $R$-modules $M, (M_i)_{i \in I}, N, P$, we have:
+\begin{enumerate}
+\item[(a)] $M \otimes_R N \cong N \otimes_R M$
+\item[(b)] $(M \otimes_R n) \otimes_R P \cong M \otimes_R (N \otimes_R P)$
+\item[(c)] $R \otimes_R M \cong M$
+\item[(d)] $\left(\bigoplus_{i \in I} M_i\right) \otimes_R N \cong \bigoplus_{i \in I} M_i \otimes_R N$
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}\ 
+\begin{enumerate}
+\item[(a)] The $R$-bilinear map $\Phi : M \times N \ra N \otimes_R M, (m,n) \mapsto n \otimes m$ induces, by the universal property, a unique $R$-linear map $\Phi : M \otimes_R N \ra N \otimes_R M$ satisfying $m \otimes n \mapsto n \otimes m$. Similarly, we can construct an $R$-linear map $\Psi : N \otimes_R M \ra M \otimes_R N$ satisfying $n \otimes m \mapsto m \otimes n$, which is clearly the inverse of $\Phi$. 
+
+\item[(b)] By a quick application of the universal property, one obtains $R$-linear maps $R \otimes_R M \ra M, r \otimes m \mapsto rm$ and $M \ra R \otimes_R M$, $m \mapsto 1 \otimes m$, which are clearly inverses. 
+
+\item[(c)] For a fixed $p \in P$, consider the $R$-bilinear map $\phi_p : M \times N \ra M \otimes_R (N \otimes_R P), (m,n) \mapsto m \otimes (n \otimes p)$ which induces an $R$-linear map $\Phi_p : M \otimes_R N \ra M \otimes_R (N \otimes_R P), m \otimes n \mapsto m \otimes (n \otimes p)$. One easily verifies that $\Phi_{p+p'} = \Phi_p + \Phi_{p'}$ and $\Phi_{rp} = r \Phi_p$. Thus, the map
+	\[\Phi : M \otimes_R N \times P \ra M \otimes_R (N \otimes_R P), \quad (x,p) \mapsto \Phi_p(x) \]
+is $R$-bilinear. By the universal property, there exists a unique homomorphism $\wt{\Phi} : (M \otimes_R N) \otimes_R P \ra M \otimes_R (N \otimes_R P)$, $(m \otimes n) \otimes p \mapsto m \otimes (n \otimes p)$. In the same way, on constructs a map $\wt{\Psi} : M \otimes_R (N \otimes_R P) \ra (M \otimes_R N) \otimes_R P, m \otimes (n \otimes p) \mapsto (m \otimes n) \otimes p$, and it is immediately seen that $\wt{\Phi}$ and $\wt{\Psi}$ are inverses. 
+
+\item[(d)] Define the $R$-bilinear map $\phi : \left(\bigoplus_{i \in I} M_i \right) \times N \ra \bigoplus_{i \in I} \left( M_i \otimes_R N \right)$ by $((m_i)_{i \in I},n) \mapsto (m_i \times n)_{i \in I}$ which induces a unique $R$-linear map $\Phi : \left(\bigoplus_{i \in I} M_i \right) \otimes_R N \ra \bigoplus_{i \in I} \left(M_i \otimes_R N\right), (m_i)_{i \in I} \otimes n \mapsto (m_i \otimes n)_{i \in I}$. \\
+
+We also have the canonical injections $g_i : M_i \hookrightarrow \bigoplus_{j \in I} M_j$ from which we can define the bilinear maps $\psi_i : M_i \times N \ra \left(\bigoplus_{j \in I} m_j \right) \otimes_R N$, $(m_i,n) \mapsto g_i(m_i) \otimes n$. These induce unique linear maps $\Psi_i : M_i \otimes_R N \ra \left( \bigoplus_{j \in I} M_j \right) \otimes_R N$ satisfying $m_i \otimes n \mapsto g_i(m_i) \otimes n$. If $\iota_i : M_i \otimes_R N \hookrightarrow \bigoplus_{j \in I} \left(M_i \otimes_R N \right)$, then by the universal property of the \emph{direct sum}, there exists a unique linear map $\Psi : \bigoplus_{j \in I} \left(M_i \otimes_R N\right) \ra \left(\bigoplus_{j \in I} M_i\right) \otimes_R N$ such that $\Psi \circ \iota_i = \psi_i$. 
+
+\begin{tikzcd}
+M_i \otimes_R N \arrow{r}{\Psi_i} 
+\arrow[swap,hook]{d}{\iota_i} & \left(\bigoplus_{j \in I} M_i\right) \otimes_R N  \\
+\bigoplus_{j \in I} \left(M_i \otimes_R N\right) 
+\arrow[dotted,swap]{ur}{\exists \ ! \ \Psi} 
+\end{tikzcd}
+\end{enumerate}
+
+\vs
+
+We claim $\Phi$ and $\Psi$ are inverses. Indeed, for simple tensors $(m_i)_{i \in I} \otimes n$, we have
+\begin{align*}
+\Psi \circ \Phi ((m_i)_{i \in i} \otimes n) = \Psi ((m_i \otimes n)_{i \in I}) &= \Psi \left( \sum_{i \in I} \iota_i (m_i \otimes n)\right) \tag{finite sum} \\
+&= \sum_{i \in I} \Psi_i(m_i \otimes n) \\
+&= \sum_{i \in I} g_i(m_i) \otimes n \\
+&= (m_i)_{i \in I} \otimes n
+\end{align*}
+
+But then we immediately have that $\Psi \circ \Phi(x) = x$ for all $x \in \left(\bigoplus_{i \in i} M_i\right) \otimes_R N$. On the other hand, for all elements of the form $(m_i \otimes n_i)_{i \in I} $ in $ \bigoplus_{i \in I} (M_i \otimes_R N)$, we have
+\begin{align*}
+\Phi \circ \Psi ((m_i \otimes n_i)_{i \in I}) = \Phi \circ \Psi \left(\sum_{i \in I} \iota_i (m_i \otimes n_i) \right) &= \Phi \left(\sum_{i \in I} \Psi_i(m_i \otimes n_i) \right) \\
+&= \sum_{i \in I} \Phi (g_i(m_i) \otimes n_i) \\
+&= \sum_{i \in I} \iota_i(m_i \otimes n_i) \\
+&= (m_i \otimes n_i)_{i \in I} 
+\end{align*}
+Since every element of $\bigoplus_{i \in I} (M_i \otimes_R N)$ is a linear combination of elements of this form, we immediately get that $\Phi \circ \Psi (x) = x$ for all $x \in \bigoplus_{i \in I} (M_i \otimes_R N)$ by the linearity of $\Phi$ and $\Psi$. 
+\end{proof}
+
+\vs
+
+\begin{exercise}
+Prove or disprove: $\left(\prod_{i \in I} M_i\right) \otimes_R N \cong \prod_{i \in I} M_i \otimes_R N$ in general. 
+\end{exercise}
+
+\vs
+
+\begin{example}\ 
+\begin{enumerate}
+\item[(a)] \[R^n \otimes_R R^m = \left(\bigoplus_{I=1}^n R\right) \otimes_R^m \cong \bigoplus_{i=1}^n R \otimes_R R^m \cong \bigoplus_{i=1}^n R^m \cong R^{nm} \]
+
+\item[(b)] (Special case of (a)) If $V,W$ are finite dimensional $F$-vector spaces, then $\dim (V \otimes_R W) = \dim V \dim W$. 
+
+\item[(c)] $\z_n \otimes \Q = \{0\}$. Indeed, for simple tensors we have
+	\[ \ov{a} \otimes q = \ov{a} \otimes n \frac{q}{n} = n \ov{a} \otimes \frac{q}{n} = \ov{0} \otimes \frac{q}{n} = 0 \]
+
+More generally, one has the rule ``torsion tensor divisible $= 0$'', where for $R$ and integral domain an $R$-module $M$ is called \tb{divisible} if $rM = M$ for all $r \in R \bs \{0\}$, e.g., $\Q, \Q/\z$. 
+
+\item[(d)] $\z_m \otimes_{\z} \z_n \cong \z_{\gcd(m,n)}$. Put $d = \gcd(m,n)$. The map $\phi : \z_m \times \z_n \ra \z_d, ([a]_m,[b]_n) \mapsto [ab]_d$ is well-defined and clearly $\z$-bilinear, so it induces a map $\Phi : \z_m \otimes_{\z} \z_n \ra \z_d$ satisfying $[a]_m \otimes [b]_n \mapsto [ab]_d$. The map $\psi : \z \ra \z_m \otimes_{\z} \z_n, a \mapsto [a]_m \otimes [1]_n$ is $\z$-linear. We observe that $d \in \ker \psi$, since writing $d = mx + ny$ for some $x,y \in \z$ gives us
+\begin{align*}
+\psi(d) = \psi(mx+ny) = [mx+ny]_m \otimes [1]_n &= n[y]_m \otimes [1]_n \\
+&= [y]_m \otimes [n]_n \\
+&= [y]_m \otimes [0]_n \\
+&= 0
+\end{align*}
+Thus $(d) \sub \ker \psi$, so $\psi$ induces a $\z$-linear map $\Psi : \z_d \ra \z_m \otimes_{\z} \z_n$ satisfying $\Psi([a]_d) = [a]_m \otimes [1]_n$. We claim $\Phi$ and $\Psi$ are inverses. We have
+	\[\Phi \circ \Psi ([a]_d) = \Phi([a]_m \otimes [1]_n) = [a \cdot 1]_d = [a]_d \]
+On the other hand,
+	\[\Psi \circ \Phi ([a]_m \otimes [b]_n) = \Psi [ab]_d = [ab]_m \otimes [1]_n = [a]_m \otimes [b]_n \]
+\end{enumerate}
+\end{example}
+
+\vs
+
+\begin{exercise*}
+Generalizing part (d) above, show that if $I,J \nsg R$, then $R/I \otimes_R R/J \cong R/(I+j)$. 
+\end{exercise*}
+
+\vs
+
+\begin{proposition}
+Let $M,N$ be $R$-modules and $S = \{e_i \mid i \in I\} \sub M$.
+\begin{enumerate}
+\item[(a)] If $\gen{S}_R = M$, then each $x \in M \otimes_R N$ can be expressed in the form
+	\[x = \sum_{i \in I} e_i \otimes n_i, \quad n_i \in N \]
+\item[(b)] If $S$ is a basis of $M$, then the $n_i$ above are uniquely determined by $x \in M \otimes_R N$. 
+\item[(c)] If $S$ is a basis of $M$ and $\{f_j \mid j \in J\}$ is a basis of $N$, then $\{e_i \otimes f_j \mid i \in I, j \in J\}$ is a basis of $M \otimes_R N$. 
+\end{enumerate}
+\end{proposition}
+
+%Proof of 5.1.8 through 5.1.11 is missing
+
+%The following lemma is actually 5.1.12
+
+Right now, we are working in $\tn{Mod}_R$, the category of $R$-modules, and whenever we talk about a functor $T : \tn{Mod}_R \ra \tn{Mod}_R$, we require that $T 0 = 0$, i.e., $T$ takes the zero module to the zero module. \\
+
+\begin{lemma}
+If a (covariant) functor $T : \tn{Mod}_R \ra \tn{Mor}_R$ preserves the exactness of a short exact sequence, then it is exact.
+\end{lemma}
+
+\begin{proof}
+We first show that $T$ preserves injectivity and surjectivity. Suppose $L \overset{f}{\longrightarrow} M$ is injective. Then $\mses{L}{f}{M}{}{M/\im f}$ is a SES, so by assumption 
+	\[\mses{T L}{Tf}{TM}{}{T (M/\im f)}\]
+is a SES, i.e., $Tf$ is injective. Similarly, if $M \overset{g}{\longrightarrow} N$ is surjective, then $\mses{\ker g}{}{M}{g}{N}$ is a SES, so by assumption $\mses{T \ker g}{}{T M}{Tg}{TN}$ is a SES, i.e., $Tg$ is surjective. \\
+
+Now let $L \overset{f}{\longrightarrow} M \overset{g}{\longrightarrow} N$ be exact. We show that $TL \overset{Tf}{\longrightarrow} TM \overset{Tg}{\longrightarrow} TN$ is exact, i.e., $\im Tf = \ker Tg$. The following commutative diagrams tell the whole story.
+
+
+\begin{tabular}{|c|c|}
+
+\hline
+{\small \begin{tikzcd}
+& & 0 \arrow{dr} & & 0 \\
+& & & \im g \arrow{ur} \arrow{dr}{d} \\
+L \arrow{rr}{f} \arrow[swap]{dr}{a} & & M \arrow{ur}{c} \arrow{rr}{g} & & N \\
+& \im f \arrow{ur}{b} \arrow{dr} \\
+0 \arrow{ur} & & 0
+\end{tikzcd} } & 
+
+{\small \begin{tikzcd}
+& & 0 \arrow{dr} & & 0 \\
+& & & T(\im g) \arrow{ur} \arrow{dr}{T d} \\
+TL \arrow{rr}{Tf} \arrow[swap]{dr}{Ta} & & TM \arrow{ur}{Tc} \arrow{rr}{Tg} & & TN \\
+& T(\im f) \arrow{ur}{Tb} \arrow{dr} \\
+0 \arrow{ur} & & 0
+\end{tikzcd} } \\
+\hline
+\end{tabular} \\ \ \\
+
+Because $a$ is surjective, $Ta$ is also surjective. Moreover, $\mses{\im f}{b}{M}{c}{\im g}$ is a SES, so $\mses{T(\im f)}{Tb}{TM}{Tc}{T(\im g)}$ is also an SES. Therefore,
+\begin{align*}
+\im Tf = \im(Tb \circ Ta) &= \im Tb \tag{$Ta$ is surjective} \\
+&= \ker Tc \\
+&= \ker (Td \circ Tc) \tag{$Td$ is injective} \\
+&= \ker Tg
+\end{align*}
+\end{proof}
+
+\vs
+
+\begin{defn}
+The $R$-module $P$ is called \tb{flat} if $P \otimes_R : \tn{Mod}_R \ra \tn{Mod}_R$ is an exact functor. 
+\end{defn}
+
+\vs
+
+\begin{remark*}
+Note that $P \otimes_R$ is flat iff $P \otimes_R$ preserves injectivity as $P \otimes_R$ is always right exact.
+\end{remark*}
+
+\vs
+
+\begin{lemma}
+An $R$-module $P$ is flat if
+\begin{enumerate}
+\item[(a)] $P$ is free, or
+\item[(b)] there exists an $R$-module $Q$ such that $P \oplus Q$ is free, or
+\item[(c)] every finitely generated submodule of $P$ is flat.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}\ 
+\begin{enumerate}
+\item[(a)] Write $P \cong \bigoplus_{I} R$, and suppose $\iota : L \hookrightarrow M$ is injective. Consider the following commutative diagram:
+
+\begin{tikzcd}
+P \otimes L \arrow{dd}{p \otimes \ell \mapsto p \otimes \iota(\ell)} \arrow{rr}{\sim}  
+& & \left(\bigoplus_I R\right) \otimes L \arrow{dd}{(r_i) \otimes \ell \mapsto (r_i) \otimes \iota(\ell)} \arrow{rr}{\sim} 
+& & \bigoplus_I R \otimes L \arrow{dd}{(r_i \otimes \ell_i) \mapsto (r_i \otimes \iota(\ell_i))}  \arrow{rr}{\sim} 
+& & \bigoplus_I L \arrow{dd}{(\ell_i) \mapsto (\iota(\ell_i))}  \\ \\
+P \otimes M \arrow{rr}{\sim} & & \left(\bigoplus_I R\right) \otimes M \arrow{rr}{\sim} & & \bigoplus_I R \otimes M \arrow{rr}{\sim} & & \bigoplus_I M
+\end{tikzcd}
+
+Since the map $(\ell_i)_{i \in I} \mapsto (\iota(\ell_i))_{i \in I}$ is injective, all the vertical arrows are injections. In particular, $\id_P \otimes \iota : P \otimes L \ra P \otimes M$ is injective. 
+
+\item[(b)]Suppose that $P \oplus Q =: F$ is free and $\iota : L \hookrightarrow M$ is injective. We have the commutative diagram:
+
+\begin{tikzcd}
+F \otimes L \arrow{dd}{f \otimes \ell \mapsto f \otimes \iota(\ell)} \arrow{rr}{=} 
+& & (P \oplus Q) \arrow{dd}{(p,q) \otimes \ell \mapsto (p,q) \otimes \iota(\ell)} \otimes L \arrow{rr}{\sim} 
+& & P \otimes L \oplus Q \otimes L \arrow{dd}{(p \otimes \ell, q \otimes \ell') \mapsto (p \otimes \iota(\ell),q \otimes \iota(\ell'))} \\ \\
+F \otimes M \arrow{rr}{=} 
+& & (P \oplus Q) \otimes M \arrow{rr}{\sim} 
+& & P \otimes M \oplus Q \otimes M
+\end{tikzcd}
+
+By (a), $f \otimes \ell \mapsto f \otimes \iota(\ell)$ is injective, hence all of the vertical arrows above are injections. Restricting the rightmost vertical arrow above to $P \otimes L$ gives an injection $P \otimes L \hookrightarrow P \otimes M$, namely $\id_P \otimes \iota$. 
+
+\item[(c)] Suppose $\iota : L \hookrightarrow M$ is an injection. We of course want to show that $\id_P \otimes \iota : P \otimes L \ra P \otimes M$ is injective. Pick an element $x = \sum p_i \ell_i \in \ker \id_P \otimes \iota$. There exists a finitely generated submodule $P_0$ of $P$ such that $\sum p_i \otimes \iota(\ell_i)$ is $0$ in $P_0 \otimes M$, and $P_0$ is by assumption flat, so $\sum p_i \otimes \ell_i$ is $0$ in $P_0 \otimes L \implies x = \sum p_i \otimes \ell_i = 0$ in $P \otimes L$. 
+\end{enumerate}
+\end{proof}
+
+\vs
+
+\begin{remark*}
+A finitely generated submodule of a flat module $P$ needn't be flat. For example, let $F$ be a field and $R = F[x,y]$. Since $R$ is free, $R$ is flat. However, one can show that $I = (x,y) \nsg R$ is not flat. 
+\end{remark*}
+
+\vs
+
+\begin{corollary}
+If $R$i s a PID and $M$ is an $R$-module, then $M$ is flat iff $M$ is torsion free. 
+\end{corollary}
+
+\begin{proof}
+For ``$\implies$'', if $F$ is the field of fractions of $R$, then by 5.1.11 (a) the injectivity of $0 \ra R \ra F$ is preserved iff $T(M) = \{0\}$. For ``$\impliedby$'', we have that every finitely generated submodule $M_0$ of $M$ is torsion free, hence free by 3.3.6 (b). In particular, $M_0$ is flat, so $M$ is flat by 5.1.14. 
+\end{proof}
+
+
+
+
+
+\chapter{Some Applications of Tensor Products}
+
+
+
+
+Our first objective in this chapter is the so called ''extension of scalars''. We still assume that $R$ is a commutative ring with $1 \ne 0$. 
+
+
+
 
 \end{document} 
