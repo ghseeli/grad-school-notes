@@ -11,25 +11,26 @@ before_install:
   fi
 - export PATH=$(pwd)/texlive/bin/x86_64-linux:$PATH
 - sudo apt-get install texlive-full
+- sudo apt-get install latexmk
 - tlmgr install $(cat .tlmgr-dep)
 - tlmgr update --self
 - tlmgr update --all
 script:
 - mkdir _build
 - cd Algebra
-- pdflatex -output-directory ../_build master.tex
+- pdflatex -interaction=nonstopmode -output-directory ../_build master.tex
 - cd ../Richards\ Algebra
-- pdflatex -output-directory ../_build richards-algebra-book.tex
+- pdflatex -interaction=nonstopmode -output-directory ../_build richards-algebra-book.tex
 - cd ../Richards\ Algebra\ II
-- pdflatex -output-directory ../_build richards-algebra-book-ii.tex
+- pdflatex -interaction=nonstopmode -output-directory ../_build richards-algebra-book-ii.tex
 - cd ../Complex\ Analysis
-- pdflatex -output-directory ../_build complex-analysis-notes.tex
+- pdflatex -interaction=nonstopmode -output-directory ../_build complex-analysis-notes.tex
 - cd ../Real\ Analysis
-- pdflatex -output-directory ../_build real-analysis-notes.tex
+- latexmk -pdf -interaction=nonstopmode -output-directory=../_build real-analysis-notes.tex
 - cd ../Differential\ Topology
-- pdflatex -output-directory ../_build differential-topology-notes.tex
+- pdflatex -interaction=nonstopmode -output-directory ../_build differential-topology-notes.tex
 - cd ../Algebraic\ Topology
-- pdflatex -output-directory ../_build algebraic-topology.tex
+- pdflatex -interaction=nonstopmode -output-directory ../_build algebraic-topology.tex
 - cd ..
 
 before_deploy:
@@ -50,4 +51,4 @@ deploy:
   - _build/real-analysis-notes.pdf
   on:
     repo: ghseeli/grad-school-notes
-    tags: true
+    branch: master
