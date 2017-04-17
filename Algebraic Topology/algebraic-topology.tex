@@ -1681,14 +1681,19 @@ Think of a simplicial chain as a singular chain.
 
 
 \mydate{d25}{31}{3}{2017}
+(chris)
 
 \mydate{de}{3}{4}{2017}
+(matt)
 
 \mydate{df}{5}{4}{2017}
+(chris)
 
 \mydate{dg}{7}{4}{2017}
+(matt)
 
 \mydate{dh}{10}{4}{2017}
+(chris)
 
 \mydate{di}{12}{4}{2017}
 
@@ -1818,10 +1823,26 @@ For the chain-complex, we find the homologies are
 \mydate{dk}{17}{4}{2017}
 
 \section*{Torsion of pairs of groups}
-((actually, I think it's referring to the torsion of A tensor B.  ask george.))
+
+Warning!  The notation $\Z^{\dsum X}$ written by Webster means $\Z^{\#X} = \Z^{|X|} = \dsum_X \Z$.
 
 \begin{defn}
-  If $A, B$ are abelian groups, then $\Tor(A, B)$ is BLANK.
+  For $A$ an abelian group presentation of $A$, a \de{free resolution} of $A$ is an exact sequence of free abelian groups ending in $A \to 0$:
+
+  $$0 \lto A \lonto \Z^{\# X} \linto \Z^{\# Y} \lto 0$$
+
+  where $X \subset A$ is the set of generators, and $Y$ is the minimal set of relations.  Note that this exact sequence is short.  There is a more general definition of free resolution where $A$ need not be abelian, and the sequence could even be infinitely long.
+\end{defn}
+
+Note that because $\Z^{\# Y} \into \Z^{\# X} \onto A \to 0$ is right exact, it follows from Algebra II 5.1.10 ($\tprod_\Z B$ is right exact) that $\Z^{\# Y} \tprod B_\Z \to \Z^{\# X} \tprod B_\Z \onto A \tprod B_\Z \to 0$ is also right exact.
+
+Using this information, we can NOW can define $\Tor(A, B)$!  The definition of $\Tor$ is confusing, but look at the examples below to see that it behaves how you would expect.
+
+\begin{defn}
+  If $A, B$ are abelian groups, then $\Tor(A, B) := \ker(\pi \tprod 1_B)$ where
+  $$\ker(\pi \tprod 1_B) \into \Z^{\# Y} \tprod_\Z B \overset{\pi \tprod 1_B}{\to} \Z^{\# X} \tprod_\Z B \onto A \tprod_\Z B \to 0$$
+
+  is the right exact sequence discussed above.
 \end{defn}
 \begin{example}
   $\Tor(\Z/m\Z, B) = mB$
@@ -1829,25 +1850,14 @@ For the chain-complex, we find the homologies are
 \begin{example}
   $\Tor(\Z, B) = 0$
 \end{example}
-\begin{defn}
-  For $A$ an abelian group presentation of $A$, a \de{free resolution} of $A$ is an exact sequence of free abelian groups going to $A$:
-
-  $$0 \lto A \lonto \Z^{\dsum X} \linto \Z^{\dsum Y} \lto 0$$
-
-  where $X \subset A$ is the set of generators, and $Y$ is the minimal set of relations.  Note that this exact sequence is short.  There is a more general definition of free resolution where $A$ need not be abelian, and the sequence could even be infinitely long.
-\end{defn}
-
-\begin{defn}
-  $\ker(\pi \tprod 1_B) = \Tor(A, B) \into \Z^{\dsum Y} \tprod_\Z B \overset{\pi \tprod 1_B}{\to} \Z^{\dsum X} \tprod_\Z B \to A \tprod_\Z B = \coker(\pi \tprod 1_B)$
-\end{defn}
 
 \begin{thm}
   $\Tor(A, B)$ is independent of choice of presentation.
 \end{thm}
 \begin{proof}
   $$\begin{tikzcd}
-    & \Z^{\dsum Y} \arrow[rr, ""] \arrow[d, ""] &\, & \Z^{\dsum Y'} \arrow[d, ""] \\
-    & \Z^{\dsum X} \arrow[rr, ""] \arrow[rd, ""] &\, & \Z^{\dsum X'} \arrow[dl, ""] \\
+    & \Z^{\# Y} \arrow[rr, ""] \arrow[d, ""] &\, & \Z^{\# Y'} \arrow[d, ""] \\
+    & \Z^{\# X} \arrow[rr, ""] \arrow[rd, ""] &\, & \Z^{\# X'} \arrow[dl, ""] \\
     &\, & A
   \end{tikzcd}$$
 
@@ -1908,11 +1918,12 @@ For the chain-complex, we find the homologies are
 
   or as he wrote,...
 
-  $$0 \lto A \tprod B \lto A \tprod \Z^u \lto A \tprod \Z^w \lto \Tor(A, B) \lto 0$$
+  \begin{align}
+    & 0 \lto A \tprod B \lto A \tprod \Z^u \lto A \tprod \Z^w \lto \Tor(A, B) \lto 0 \\
+    & 0 \lto B \tprod A \lto \Z^u \tprod A \lto \Z^w \tprod A \lto \Tor(B, A) \lto 0
+  \end{align}
 
-  $$0 \lto B \tprod A \lto \Z^u \tprod A \lto \Z^w \tprod A \lto \Tor(B, A) \lto 0$$
-
-  and then you can see that they are isomorphic.
+  and then since $ S \tprod T \isom T \tprod S$ in general, each vertical alignment is an isomorphism, and then each $\Tor$ is defined as the kernel of these isomorphic structures, resulting in $\Tor(A, B) \isom \Tor(B, A)$.
 \end{proof}
 
 \begin{lem}
