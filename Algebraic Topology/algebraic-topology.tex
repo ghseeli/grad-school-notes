@@ -1317,7 +1317,7 @@ NOTE:  The TILDA over the H denotes the REDUCED homology (rhoml) (FIND WHERE THI
   % &\homl[2](A) \arrow &\homl[2](X) \arrow &\homl[2](X/A) \arrow \\
 
 
-% \overset{~}{H_0}(X/A) \rto(by p_*) \overset{~}{H_0}(X) \rto(by i_*) \overset{~}{H_0}(A) \rto(by \delta) \overset{~}{H_1}(X/A) \rto(and repeat!) \overset{~}{H_1}(X) \rto \overset{~}{H_1}(A) \rto \overset{~}{H_2}(X/A) \rto \overset{~}{H_2}(X) and so forth!
+% \overset{~}{H_0}(X/A) \lto(by p_*) \overset{~}{H_0}(X) \lto(by i_*) \overset{~}{H_0}(A) \lto(by \delta) \overset{~}{H_1}(X/A) \lto(and repeat!) \overset{~}{H_1}(X) \lto \overset{~}{H_1}(A) \lto \overset{~}{H_2}(X/A) \lto \overset{~}{H_2}(X) and so forth!
 % (see below)
 
 \begin{thm}
@@ -1798,31 +1798,184 @@ For the chain-complex, we find the homologies are
 
   ...
 
-  \begin{thm}
-    For every dimension $n$ and degree $m$, there exists a map of degree $m$ from $S^n$ to $S^n$.
-  \end{thm}
-  \begin{example}
-    For any $m$, a map $S^2 \to S^2$ may be obtained by
+\begin{thm}
+  For every dimension $n \in \N^{\geq 1}$ and degree $k \in \Z$, there exists a map of degree $k$ from $S^n$ to $S^n$.
+\end{thm}
+\begin{example}[Hatcher p.136, Example 2.31]
+  For any $k \in \N$, a map $S^2 \to S^2$ may be obtained by
 
-    <pretty picture>
+  <pretty picture>
 
-    cutting out $m$ open disks on $S^2$, and sending each homeomorphically to all of $S^2$ minus a single point.  All other points get sent to that single point on $S^2$, which is the boundary of the image of the open disks.
-  \end{example}
+  cutting out $k$ open disks on $S^2$, and sending each homeomorphically to all of $S^2$ minus a single point.  All other points get sent to that single point on $S^2$, which is the boundary of the image of the open disks.
+
+  The local degree of each point in the image is $\pm 1$.  If we orient the homeomorphisms how we want, we can make them all $+1$, and so the degree of the map is the sum of the local degrees, hence $k$.
+\end{example}
+\begin{proof}
+  The example above becomes a proof when you substitute $n$ for 2, and allow $k$ to be any integer.  In the case where $k$ is negative, we choose the opposite orientations of the homeomorphisms so that the local degrees are all $-1$.
+\end{proof}
 
 
 \mydate{dk}{17}{4}{2017}
 
+\section*{Torsion of pairs of groups}
+((actually, I think it's referring to the torsion of A tensor B.  ask george.))
+
+\begin{defn}
+  If $A, B$ are abelian groups, then $\Tor(A, B)$ is BLANK.
+\end{defn}
+\begin{example}
+  $\Tor(\Z/m\Z, B) = mB$
+\end{example}
+\begin{example}
+  $\Tor(\Z, B) = 0$
+\end{example}
+\begin{defn}
+  For $A$ an abelian group presentation of $A$, a \de{free resolution} of $A$ is an exact sequence of free abelian groups going to $A$:
+
+  $$0 \lto A \lonto \Z^{\dsum X} \linto \Z^{\dsum Y} \lto 0$$
+
+  where $X \subset A$ is the set of generators, and $Y$ is the minimal set of relations.  Note that this exact sequence is short.  There is a more general definition of free resolution where $A$ need not be abelian, and the sequence could even be infinitely long.
+\end{defn}
+
+\begin{defn}
+  $\ker(\pi \tprod 1_B) = \Tor(A, B) \into \Z^{\dsum Y} \tprod_\Z B \overset{\pi \tprod 1_B}{\to} \Z^{\dsum X} \tprod_\Z B \to A \tprod_\Z B = \coker(\pi \tprod 1_B)$
+\end{defn}
+
+\begin{thm}
+  $\Tor(A, B)$ is independent of choice of presentation.
+\end{thm}
+\begin{proof}
+  $$\begin{tikzcd}
+    & \Z^{\dsum Y} \arrow[rr, ""] \arrow[d, ""] &\, & \Z^{\dsum Y'} \arrow[d, ""] \\
+    & \Z^{\dsum X} \arrow[rr, ""] \arrow[rd, ""] &\, & \Z^{\dsum X'} \arrow[dl, ""] \\
+    &\, & A
+  \end{tikzcd}$$
+
+  which commutes in the bottom triangle.
+
+  $$\begin{tikzcd}
+    & \Z^X \arrow[r, "f"] \arrow[r, bend left, "f'"] \arrow[rd, "f-f'"] & \Z^{X'} \\
+    & \Z^Y \arrow[r, bend right, "f"] \arrow[r, "f'"] \arrow[u, ""] & \Z^{Y'} \arrow[u, ""]
+  \end{tikzcd}$$
+
+  The map $f - f'$ between these complexes is homotopic to 0.
+
+  $$\begin{tikzcd}
+    & \Z^X \arrow[r, ""] & \Z^{X'} \arrow[r, ""] & \Z
+  \end{tikzcd}$$
+
+  $$\begin{tikzcd}
+    & \Z^X \tprod B \arrow[r, ""] \arrow[rd, ""] & \Z^{X'} \tprod B \\
+    & \Z^Y \tprod B \arrow[r, ""] \arrow[u, ""] \arrow[u, ""] & \Z^{Y'} \tprod B \arrow[u, ""]
+  \end{tikzcd}$$
+
+  is a homotopy equivalence, so induces a map between kernels.
+
+  $\Tor(A, B)$ is a unique up to ``unique isomorphism''.
+
+  $$\Z \lto \Z \lto 0$$
+
+  $$\Z/m\Z \lto \Z \overset{m}{\lto} \Z$$
+
+  $$B/mB \lonto B \overset{m}{\lto} B \linto mB$$
+\end{proof}
+
+\begin{thm}
+  Given a SES $0 \lto B \lto C \lto D \lto 0$, then
+
+  $$\begin{tikzcd}
+    & 0 & A \tprod B \arrow[l, ""] & A \tprod C \arrow[l, ""] & A \tprod D \arrow[l, ""] &\, \arrow[l, ""] \\
+    & \Tor(A, B) & \Tor(A, C) \arrow[l, ""] & \Tor(A, D) \arrow[l, ""] & 0 \arrow[l, ""]
+  \end{tikzcd}$$
+
+  is a LES.
+\end{thm}
+\begin{proof}
+  Use the snake lemma and the diagram
+
+  $$\begin{tikzcd}
+    & 0 & B^X \arrow[l, ""] & C^X \arrow[l, ""] & D^X \arrow[l, ""] & 0 \arrow[l, ""] \\
+    & 0 & B^Y \arrow[l, ""] \arrow[u, ""] & C^Y \arrow[l, ""] \arrow[u, ""] & D^Y \arrow[l, ""] \arrow[u, ""] & 0 \arrow[l, ""]
+  \end{tikzcd}$$
+\end{proof}
+\begin{thm}
+  $\Tor(A, B) \isom \Tor(B, A).$
+\end{thm}
+\begin{proof}
+  Apply previous theorem to $C = \Z^u$ and $D = \Z^w$:  Given $0 \lto B \lto \Z^u \lto \Z^w \lto 0$, then
+
+  $0 \lto A \tprod B \lto A \tprod \Z^u \lto A \tprod \Z^w \lto \Tor(A, B) \lto \Tor(A, \Z^u) \lto \Tor(A, \Z^w) \lto 0$
+
+  or as he wrote,...
+
+  $$0 \lto A \tprod B \lto A \tprod \Z^u \lto A \tprod \Z^w \lto \Tor(A, B) \lto 0$$
+
+  $$0 \lto B \tprod A \lto \Z^u \tprod A \lto \Z^w \tprod A \lto \Tor(B, A) \lto 0$$
+
+  and then you can see that they are isomorphic.
+\end{proof}
+
+\begin{lem}
+  $C_n(X) \isom Z_n \dsum \sigma_n(B_{n-1})$
+
+  where $Z_n$ is the set of $n$-cycles.
+\end{lem}
+\begin{proof}
+  $C = \sigma_n(\d C) + (C - \sigma_n(\d C))$
+  where the first summand is an element of $\sigma_n(B_{n-1})$ and the second summand is an element of $Z_n$ ((or maybe just the second half of the second summand))
+
+  \begin{align}
+    &\quad\, \d(C - \sigma_n(\d C)) \\
+    &= \d C - \d\sigma_n(\d C) \\
+    &= 0
+  \end{align}
+
+  $\begin{bmatrix}
+    0 & \d \\
+    0 & 0
+  \end{bmatrix}$
+  ((the above matrix appeared just above the $B_{n-1}$ below.))
+
+  $$\begin{tikzcd}
+    &Z_{n+1} &\dsum &\sigma_{n+1}(B_n) \arrow[lld, hook', ""] \\
+    &Z_{n} &\dsum &\sigma_{n}(B_{n-1}) \arrow[lld, hook', ""] \\
+    &Z_{n-1} &\dsum &\sigma_{n-1}(B_{n-2})
+  \end{tikzcd}$$
+
+  Note that $0 \to \sigma_{n+1}(B_n) \to Z_n \to H_n \to 0$ is an exact sequence, so this is a free resolution of $H_n$.
+
+  $$\begin{tikzcd}
+    &Z_{n+1} \tprod G &\dsum &\sigma_{n+1}(B_n) \tprod G \arrow[lld, hook', ""] \\
+    &Z_{n} \tprod G &\dsum &\sigma_{n}(B_{n-1}) \tprod G \arrow[lld, hook', ""] \\
+    &Z_{n-1} \tprod G &\dsum &\sigma_{n-1}(B_{n-2}) \tprod G
+  \end{tikzcd}$$
+
+  and then
+
+  $$H_{n+1}(X) \tprod G \quad\dsum\quad \Tor(H_n(X), G)$$
+
+  $$H_{n}(X) \tprod G \quad\dsum\quad \Tor(H_{n-1}(X), G) \isom H_n(X, G)$$
+
+  This splitting is not canonical nor natural.
+\end{proof}
+
 \mydate{dl}{19}{4}{2017}
+(chris)
 
 \mydate{dm}{21}{4}{2017}
+(matt)
 
 \mydate{dn}{24}{4}{2017}
+(chris)
 
 \mydate{do}{26}{4}{2017}
+(matt)
 
 \mydate{dp}{28}{4}{2017}
+(chris)
 
 \mydate{dq}{1}{5}{2017}
+(matt)
 
 
 
