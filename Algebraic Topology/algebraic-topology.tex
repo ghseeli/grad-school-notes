@@ -53,6 +53,7 @@
 \newcommand{\adj}{\sim} % for 'adjacent' in a graph
 \newcommand{\Arg}{\operatorname{Arg}}
 \renewcommand{\bar}{\widebar}
+\newcommand{\rk}{\rank}
 
 %%%%%%%%%%%%%% BEGIN CONTENT: %%%%%%%%%%%%%%
 
@@ -1974,7 +1975,114 @@ Using this information, we can NOW can define $\Tor(A, B)$!  The definition of $
 (chris)
 
 \mydate{dm}{21}{4}{2017}
-(matt)
+\renewcommand{\homl}[1][n]{H_{#1}}
+\subsection{Mayer-Vietoris sequence}
+
+This is a long exact sequence similar to the one given by the snake lemma.
+
+Let $A$ and $B$ be subspaces of $X$ s.t. $X = \interior{A} \union \interior{B}$.  We know
+$$ \homl(X, A) = \homl(B, B \cap A) $$
+
+We have a commutative diagram (we need that $i_* j_* = i'_* j'_*$, so we make one of the i's negative) (i believe both the $i$'s and $j$'s are just induced by inclusions!)
+
+$$\begin{tikzcd}
+  &\, & \homl(A) \arrow[rd, "j_*"] \\
+  &\homl(A \cap B) \arrow[ru, "i_*"] \arrow[rd, "-i'_*"] & &\homl(X) \\
+  & &\homl(B) \arrow[ru, "j'_*"]
+\end{tikzcd}$$
+
+(Note also that for any $c \in \homl(X)$, there exists an $a \in \homl(A)$ and a $b \in \homl(B)$ s.t. $c = a + b$.  We also have that $\d c = 0$, so $\d a = - \d b$ follows immediately.)
+
+which means that
+$$ \homl(A \cap B) \to \homl(A) \dsum \homl(B) \to \homl(X) $$
+
+is exact.  And then $\d$ sends the last guy to the first guy in one dimension smaller, so you get a long exact sequence like in the snake lemma!
+
+\begin{proof}
+  Consider
+
+  $$\begin{tikzcd}
+  &\, & C_n(A) \arrow[rd, "j"] \\
+  &C_n(A \cap B) \arrow[ru, "i"] \arrow[rd, "-i'"] &\dsum &C_n(A + B) \\
+  & &C_n(B) \arrow[ru, "j'"]
+  \end{tikzcd}$$
+
+  This is a SES.  (To justify, think about which $n$-chains go to 0.  Compute kernel and image directly.)
+
+  Look at the proof of the Snake Lemma.  The same reasoning implies that the boundary map $\d$ sends $C_n(A + B) \to C_{n-1}(A \cap B)$ in an exact way.
+
+  We also know that $\homl(C_\bullet(A+B)) \isom H_n(X)$, so looking at the induced map on homologies gives us the desired LES!
+
+  (Note also that this is the ``homology version of the Van Kampen theorem''.
+\end{proof}
+
+\begin{example}
+  Consider the Klein bottle $K^2$ with the CW-complex structure:
+
+  \includegraphics[scale=0.15]{images/klein-cw-mayer-vietoris}
+
+  where $A$ and $B$ are both mobius bands, and so denoted by $M$.
+
+  Applying Mayer-Vietoris gives
+
+  $$\begin{tikzcd}
+    & & \homl[2](M) = 0 \arrow[rd, "j_*"'] \\
+    & & &\homl[2](K^2) \arrow[r, "\d_2"] &\,\\
+    & &\homl[2](M) = 0 \arrow[ru, "j'_*"] \\
+    \\
+    & & \homl[1](M) \isom \Z \arrow[rd, "j_*"'] \\
+    &\homl[1](S^1 \x I) \isom \Z \arrow[ru, "i_* = 2"'] \arrow[rd, "-i'_* = -2"] & &\homl[1](K^2) \arrow[r, "\d_1 = 0"] &\,\\
+    & &\homl[1](M) \isom \Z \arrow[ru, "j'_*"] \\
+    \\
+    & & \homl[0](M) \isom \Z \arrow[rd, "j_*"'] \\
+    &\homl[0](S^1 \x I) \isom \Z \arrow[ru, "i_* = 1"'] \arrow[rd, "-i'_* = -1"] & &\homl[0](K^2) \arrow[r, "\d_0"] &0 &\,\\
+    & &\homl[0](M) \isom \Z \arrow[ru, "j'_*"] \\
+  \end{tikzcd}$$
+
+  Therefore, from these known homologies of $A \isom M$, $B \isom M$, and $A \cap B$, we are able to deduce that $H_2(K^2) = 0$, $H_1(K^2) \isom \Z_2 \dsum \Z$, and $H_0(K^2) \isom \Z$.
+\end{example}
+\begin{example}
+  Consider the torus $T^2$ with the structure:
+
+  \includegraphics[scale=0.15]{images/torus-cw-mayer-vietoris}
+
+  where $A$ and $B$ are both annuli ($S^1 \x I$), and so denoted by $M$.
+
+  Applying Mayer-Vietoris gives
+
+  $$\begin{tikzcd}
+    & & \homl[2](M) = 0 \arrow[rd, "j_*"'] \\
+    & & &\homl[2](T^2) \arrow[r, "\d_2"] &\,\\
+    & &\homl[2](M) = 0 \arrow[ru, "j'_*"] \\
+    \\
+    & & \homl[1](M) \isom \Z \arrow[rd, "j_*"'] \\
+    &\homl[1](S^1 \x I) \isom \Z \arrow[ru, "i_*"'] \arrow[rd, "-i'_*"] & &\homl[1](T^2) \arrow[r, "\d_1 = 0"] &\,\\
+    & &\homl[1](M) \isom \Z \arrow[ru, "j'_*"] \\
+    \\
+    & & \homl[0](M) \isom \Z \arrow[rd, "j_*"'] \\
+    &\homl[0](S^1 \x I) \isom \Z \arrow[ru, "i_*"'] \arrow[rd, "-i'_*"] & &\homl[0](T^2) \arrow[r, "\d_0"] &0 &\,\\
+    & &\homl[0](M) \isom \Z \arrow[ru, "j'_*"] \\
+  \end{tikzcd}$$
+
+  Therefore, from these known homologies of $A \isom M$, $B \isom M$, and $A \cap B$, we are able to deduce that $H_2(T^2) \isom \Z$, $H_1(T^2) \isom \Z^2$, and $H_0(T^2) \isom \Z$.
+\end{example}
+
+\begin{thm}
+  If we have a LES with finitely many nonzero terms...
+
+  $0 \lto M1 \lto M2 \lto M3 \lto \lto \lto 0$
+
+  ...then the alternating sum (meaning multiply every other dim by negative 1 before adding them) of dim is 0.
+
+
+  $M_1$'s are VS over a field
+  $d$'s a linear maps
+
+  $\dim(M_1) = \rk(d_1)$.  (now repeatedy apply rank nullity theorem...)
+  $\dim(M_2) = \rk(d_1) + \rk(d_2)$
+  $\dim(M_3) = \rk(d_1) + \rk(d_2) + \rk(d_3)$
+  ...
+\end{thm}
 
 \mydate{dn}{24}{4}{2017}
 (chris)
