@@ -2902,4 +2902,28 @@ endpoints.) However, \(|\xi_{n,x}-x| \leq \frac{b-a}{n}\), so we can
 use continuity at \(x\) to create a dominating function and apply the
 DCT. Note that this did not use uniform continuity.
 \end{proof}
+\subsection*{(4/6/2017 Lecture 19)}
+\begin{thm}[Dominated Convergence Theorem v3.0]
+  Let \((X,\M,\mu)\) be a measure space and \(\Lambda\) a first
+  countable topological space. Furthermore, let \(\lambda_\infty \in
+  \Lambda\) be a limit point, \(f \from X \times (\Lambda
+  \setminus \{\lambda_\infty\}) \to \R\), and \(g \from X \to
+  [0,\infty)\) be in \(\cL^1\) such that,
+  \begin{itemize}
+  \item for all \(\lambda \in
+  \Lambda \setminus \{\lambda_\infty\}\), \(f(\cdot, \lambda)\) is
+  \((\M,\B_\K)\)-measurable,
+  \item for all \((x,\lambda) \in X \times
+  (\Lambda \setminus \{\lambda_\infty\})\), \(|f(x,\lambda)| \leq
+  g(x)\),
+  \item For all \(x \in X\), \(\lim_{\lambda \to \lambda_\infty}
+    f(x,\lambda)\) exists in \(\K\).
+  \end{itemize}
+  Then, \(x \mapsto \lim_{\lambda \to \lambda_\infty} f(x,\lambda)\)
+  is in \(\cL^1\) and \[
+    \lim_{\lambda \to \lambda_\infty} \int_X f(x,\lambda) \d \mu(x) =
+    \int_X \left( \lim_{\lambda \to \lambda_\infty} f(x,\lambda)
+    \right) \d \mu(x)
+  \]
+\end{thm}
 \end{document}
