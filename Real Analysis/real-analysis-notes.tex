@@ -14,6 +14,7 @@
 \newcommand{\norms}{\cN}
 \newcommand{\K}{\mathbb{K}} % Arbitrary field
 \newcommand{\supp}{\operatorname{Supp}}
+\newcommand{\ess}{\operatorname{ess}}
 
 \renewcommand{\emptyset}{\varnothing}
 
@@ -2444,9 +2445,9 @@ by \(f \mapsto L_f\), a linear form on \(S\). So, \(L_f(g) = \int_\R
 fg \d m\) for \(g \in S\). However, we would like to pick \(f \in
 \cL^1\) a representative and show that this form is well-defined, linear,
 and continuous in both variables. 
-\begin{prop}[\(L^1-L^\infty\) bound]
-  Given \(f,g\) measurable functions with \(f \in L^1\) and \(g \in
-  \mathcal{C}^\infty\), we get \[
+\begin{prop}[\(L^1-L^\infty\) bound]\label{L1-Linf-bound-1}
+  Given \(f,g\) measurable functions with \(f \in L^1\) and \(g\)
+  continuous and bounded, we get \[
     \int |fg| \d m \leq \norm[f]_{L^1} \cdot \norm[g]_\infty =
     \left(\int_\R |f| \d m\right) \cdot \sup_{x \in \R} |g(x)|.
   \]
@@ -3218,6 +3219,188 @@ Thus, we have that \(\norm_{L^p}\) is a seminorm on
   \end{enumerate}
 \end{thm}
 \subsection*{(4/13/17) Lecture 21}
+\begin{proof}
+  For (a) \(\implies\) (b), just take \(p=1\).\\
+
+  For (b) \(\implies\) (c), we take the canonical representation \(f =
+  \sum_{k=1}^n \alpha_k \chi_{E_k}\) where \(f(x) = \{\alpha_1,
+  \ldots, \alpha_n\}\) distinct and \(E_k =
+  f^{-1}(\{\alpha_k\})\). Then, we get \[
+    |f|^p = \sum_{k=1}^n |\alpha_k|^p \chi_{E_k}
+  \]
+  and so \[
+    \norm[f]_p^p = \sum_{k=1}^n |\alpha_k|^p \mu(E_k).
+  \]
+  Suppose \(\norm[f]_p < \infty\). Then, for all \(k\), we get
+  \(\alpha_k = 0\) or \(\mu(E_k) < \infty\). So, for some other \(q
+  \in [1,\infty)\), we get \[
+    \norm[f]_q^q = \sum_{k=1}^n |\alpha_k|^q \mu(E_k) < \infty
+  \]
+  (this reasoning seems suspect to me). \\
+
+  For (c) \(\implies\) (d), take \(p=1\). Then, \[
+    \infty > \int |f| \geq \int |\alpha| \chi_E, \ E = f^{-1}(\{\alpha\})
+  \]
+  and so \(|\alpha|\mu(E) < \infty \implies \mu(E) < \infty\) if
+  \(\alpha \neq 0\). \\
+
+  For (d) \(\implies\) (e), we use the canonical representation and
+  take \(J := \{k \st 1 \leq k \leq n, \alpha_k \neq 0\}\). So, (d)
+  tells us that \(\mu(E_k) < \infty\) for \(k \in J\).\\
+
+  For (e) \(\implies\) (a), we note that \(L^1\) is a vector space,
+  and so \[
+    \int |\chi_E| = \mu(E) < \infty
+  \]
+  tells us that \(\chi_E \in L^1\).
+\end{proof}
+\begin{defn}
+  If any of the properties in the theorem above hold, \(f\) is called
+  a \de{simple integrable function}. 
+\end{defn}
+\begin{thm}
+  Let \(1 \leq p < \infty\). Simple integrable functions are dense in \(L^p(X,\M,\mu,\K)\).
+\end{thm}
+\begin{rmk}
+  A general proof strategy for showing a property that respects sums
+  holds on \(L^p\) spaces is to show the property holds for simple
+  integrable functions and then bootstrap using this theorem.
+\end{rmk}
+\begin{proof}[Proof of Theorem]
+  To see a proof for real \(L^p\) spaces, see Folland p 183. For
+  complex \(L^p\) spaces, if \(f \in L^p\), then its real and
+  imaginary parts are in real \(L^p\).
+\end{proof}
+\subsection{\(L^\infty\) space}
+\begin{defn}
+  Let \(f \from X \to [0,\infty]\) be measureable. Then, we define the
+  \de{essential supremeum} to be \[
+    \ess\sup f = \inf \left\{ \alpha \st \mu(f^{-1}((\alpha,\infty])))
+      = 0 \right\}
+  \]
+\end{defn}
+\begin{prop}
+  \begin{enumerate}
+  \item If \(\alpha > \ess\sup f\), then \(\{x \st f(x) > \alpha\}\)
+    has measure 0.
+  \item \(f(x) \leq \ess \sup f\)
+  \item There exists \(g\) with \(f = g\) \(\mu\)-almost everwhere
+    such that \(\ess \sup f(x) = \sup g(x)\). 
+  \end{enumerate}
+\end{prop}
+\begin{proof}
+  \begin{enumerate}
+  \item If \(\alpha > \inf \{\beta \st \mu(\{x \st f(x) > \beta\}) =
+    0\}\), then there exists a \(beta,\ \alpha > \beta \geq \ess\sup
+    f\) such that \(\mu(\{x \st f(x) > \beta\}) = 0\). However, \(\{x
+    \st f(X) > \alpha\} \subset \{x \st f(x) > \beta\}\), so \(\mu(\{x
+    \st f(x) > \alpha\} = 0)\).
+  \item If \(s := \ess \sup f = \infty\), the proposition is
+    trivial. IF \(s < \infty\), for \(n \geq 1\), we have \(\mu(\{x
+    \st f(x) > s + \frac{1}{n}\}) = 0\) by part (a). So, if \[
+      Z = \Union_{n \geq 1} \{x \st f(x) > s + \frac{1}{n}\}
+    \]
+    then \(\mu(Z) = 0\) and \(f(x) \leq s\) on \(Z^c\).
+  \item If \(s = \ess\sup f = \infty\), then for all \(n\), there
+    exists an \(x\) such that \(f(x) \geq n\). If not, there exists an
+    \(n\) such that, for all \(x\), \(f(x) \leq n\). Then, for
+    \(\alpha > n\), \(\mu(f(x) > \alpha) = \mu(\emptyset) = 0\). Then,
+    \(s \leq n\), which is a contradiction. So, \(s = f\) gives us
+    \(\sup g = \infty\). (What is going on here?) \\
+
+    If \(s < \infty\), use the same \(Z\) as above and take \(g = f
+    \chi_{Z^c}\). Then, \(g = f\) \(\mu\)-almost everywhere and we
+    simply need to show that \(\ess \sup f = \sup g\). It is trivial
+    that \[
+      \ess\sup f = \inf \{\alpha \st \mu(\{x \st f(x) > \alpha\}) = 0\} \leq \inf
+      \{\alpha \st \{x \st g(x) > \alpha\} = \emptyset\} = \sup g
+    \]
+    For the other inequality, take \(W = \{x \st f(x) > s\}\). If \(x
+    \in W^c\), then \(g(x) = f(x) \leq s\). If \(x \in W\), then
+    \(g(x) = 0 \leq s\). 
+  \end{enumerate}
+\end{proof}
+\begin{defn}
+  Let \(f \from X \to \K\) be measurable. Then, we define \[
+    \norm[f]_{L^\infty} := \ess \sup |f|
+  \]
+  and \[\cL^\infty(X,\M,\mu,\K) := \{f \from X \to \K \text{
+      measurable},\ \norm[f]_{L^\infty} < \infty\}\]
+\end{defn}
+\begin{prop}
+  \(\cL^\infty\) is a vector space and \(\norm_{L^\infty}\) is a
+  seminorm on \(\cL^\infty\).
+\end{prop}
+\begin{proof}
+  Ommitted for the time being. It is relatively straight forward.
+\end{proof}
+\begin{defn}
+  If we take \(V_\text{null} = \{f \in \cL^\infty \st \norm[f]_\infty
+  = 0\}\), it is a subspace of \(\cL^\infty\). Then, we define \[
+    L^\infty(X,\M,\mu,\K) = \cL^\infty / V_\text{null}
+  \]
+  with \(\norm_\infty\) descending to the quotient and becoming a norm.
+\end{defn}
+\begin{thm}
+  \(L^\infty\) is a Banach space.
+\end{thm}
+\begin{proof}
+  Use the series criterion for completeness
+  (\ref{series-criterion-for-completeness}). 
+\end{proof}
+With this construction, we can generalize our original
+\(L^1-L^\infty\) bound (\ref{L1-Linf-bound-1}). 
+\begin{prop}[\(L^1-L^\infty\)-bound v2]
+  If \(f \in L^1\), \(g \in L^\infty\), and \(fg \in \cL^1\), then \[
+    \norm[fg]_1 \leq \norm[f]_1 \norm[g]_\infty
+  \]
+\end{prop}
+\begin{thm}
+  Simple functions are dense in \(L^\infty\).
+\end{thm}
+\begin{rmk}
+  Note that simple integrable functions are not dense in
+  \(L^\infty\). For example, the constant function \(f \equiv 1 \in
+  L^\infty(\R)\) but cannot be approximated by integrable functions.
+\end{rmk}
+\begin{proof}
+  The proof trivially reduces to proving for positive functions. If
+  \(f \from X \to [0,\infty)\), then \(\norm[f]_\infty = M <
+  \infty\). Change on \(Z\) of measure 0. So, we can assume, for all
+  \(x\), that \(f(x) \leq M\). So, a sequence of simple functions
+  \(\phi_n\) converges upwards to \(f\) uniformly where \(f\) is bounded.
+\end{proof}
+Now, we go into two important examples.
+\begin{example}
+  Consider series where \(X = \N\), \(\M = \P(X)\), and \(\mu\) is the
+  counting measure. For \(p \in [1,\infty]\), we consider the sequence
+  spaces \(\ell^p = \ell^p(\N) = \ell^p(N,\K)\). \\
+  If \(p < \infty\), this is teh spaec of sequences \((x_n)\) where \[
+    \sum_{n=1}^\infty |x_n|^p < \infty
+  \]
+  If \(p = \infty\), we instead require \(\sup_{n \geq 1} |x_n| <
+  \infty\). 
+\end{example}
+\begin{thm}
+  If \(p < q \in [1,\infty]\), then \(\ell^p \subset \ell^q\). 
+\end{thm}
+\begin{proof}
+  If \(q = \infty\), then \(\sum |x_n|^p\) converges so \(x_n \to 0\)
+  and thus \(x_n\) is bounded.\\
+
+  If \(p < q < \infty\), then \(\sum |x_n|^p < \infty\) and so
+  \begin{align*}
+    \sum |x_n|^q & = \sum |x_n|^p |x_n|^{q-p} \\
+                 & \leq |x_n|^p M^{q-p} \\
+                 & \leq M' \sum |x_n|^p < \infty \\
+  \end{align*}
+\end{proof}
+  However, the opposite direction certainly does not hold. Consider
+  that \(\left( \frac{1}{n} \right)_{n \geq 1} \in \ell^2(\N,\R)\) but
+  not in \(\ell^1(\N,\R)\). \\
+
+  Furthermore, there is a canonical injection from \(\ell^p \into
+  \ell^q\) and it \emph{is} continuous.
 \subsection*{(4/13/17) Lecture 22}
 \subsection*{(4/18/17) Lecture 23}
 \subsection*{(4/20/17) Lecture 24}
