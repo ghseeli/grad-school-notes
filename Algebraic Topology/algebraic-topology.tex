@@ -1234,6 +1234,13 @@ Claim: $\d^2 = 0$.
 
 \end{example}
 
+\begin{thm}
+  A cycle in $X$ is \de{hollow} if it is not the boundary of some other chain in $X$.
+\end{thm}
+\begin{rmk}
+  Therefore, we can think of $H_k(X)$ as the homotopy equivalence classes of hollow $k$-cycles in $X$.
+\end{rmk}
+
 
 
 
@@ -2095,7 +2102,7 @@ is exact.  And then $\d$ sends the last guy to the first guy in one dimension sm
 \renewcommand{\rchains}[1][m]{\widetilde{C}_{#1}}
 
 
-\begin{thm}
+\begin{thm}[Hatcher Prop 2B.1(a), p.169]
   If $m, n, k \in \N$ and $h\from D^k \to S^n$ is an embedding, then
   $$\rhoml(S^n - h(D^k)) = 0.$$
 \end{thm}
@@ -2133,16 +2140,15 @@ is exact.  And then $\d$ sends the last guy to the first guy in one dimension sm
     by the inductive hypothesis, since $k-1 < k$ and $h'$ is an embedding.
 
     By reduced Mayer Vietoris, we get
-    $$\rhoml(A \cap B) \isomto \rhoml(A) \dsum \rhoml(B)$$
+    $$\Phi \from \rhoml(A \cap B) \isomto \rhoml(A) \dsum \rhoml(B)$$
     or
-    $$\rhoml(X) \isom \rhoml(A) \dsum \rhoml(B).$$
+    $$\rhoml(X) \isom \rhoml(A) \dsum \rhoml(B)$$
 
-    Thus if $c \in \rchains(X)$ represents a nontrivial homology class (hollow cycle), then it must be in $\rchains(A)$ or $\rchains(B)$.
+    where the two components of $\Phi$ (modulo signs) are induced by inclusions $X \into A$ and $X \into B$.
 
-    WLOG, it's in $\rchains(A)$.  Now
-    $$ [0, \tfrac 12] \x D^{k-1} = [0, \tfrac 14] \x D^{k-1} \union [\tfrac 14, \tfrac 12] \x D^{k-1}.$$
+    Thus if $c \in \rchains(X)$ represents a nontrivial homology class (hollow cycle), then it must also be hollow in $\rchains(A)$ or $\rchains(B)$ (But not necessarily both).
 
-    Applied inductively, there exists a sequence of intervals $(I_l)_{l=1}^{\oo}$ of length $(\tfrac 12)^l$ s.t. $I \supset I_1 \supset I_2 \supset I_3 \supset \supset \supset$ and
+    By iteration we can then produce a nested sequence of closed intervals $(I_l)_{l=1}^{\oo}$ of length $(\tfrac 12)^l$ s.t. $I \supset I_1 \supset I_2 \supset I_3 \supset \supset \supset$ shrinking down to a point $p \in I$, such that $c$ is hollow in $S^n − h(I_l \x D^{k-1})$ for any $l$.  Also,
     \begin{align*}
       \rchains(X) &\to \rchains(S^n - h(I_l \x D^{k-1})) \\
       c &\mapsto \text{nontrivial homology class}
@@ -2156,26 +2162,16 @@ is exact.  And then $\d$ sends the last guy to the first guy in one dimension sm
 
     $$\rhoml(X) \to \rhoml(X_1) \to \rhoml(X_2) \to \rhoml(X_3) \to \to \to \rhoml(X_\oo) = 0$$
 
-    where all the $\rhoml$'s above are nonzero except for the last.
+    where all the $\rhoml$'s above are nonzero (because they contain the hollow $c$) except for the last (so $c$ must be a boundary in $X_\oo$).  This will soon cause a contradiction!
 
-    There exists a $b$ in $\rchains[m+1](X_\oo)$ s.t. $c = \d b$.  $b$ is a finite sum of $\Delta^{m+1} \to X_\oo = S^n - h(\{q\} \x D^{k-1})$
+    We know there exists a chain $b$ in $X_\oo$ ($b \in \rchains[m+1](X_\oo)$) s.t. $c = \d b$.  $b$ is a chain, and thus a finite sum of simplices $\Delta^{m+1} \to X_\oo = S^n - h(\{q\} \x D^{k-1})$.
 
-    For any metric on $S^n$, there exists an $\epsilon$ s.t. $d(supp(b), h(\{q\} \x D^{k-1})) > \epsilon > 0$.
+    But since this is only a finite number of simplices, there exists an $l$ large enough such that $b$ is entirely contained within $X_l$ ($b \in \rchains[m+1](X_l)$)!  (Rigorously, for any metric on $S^n$, there exists an $\epsilon$ s.t. $\text{dist}(\text{supp}(b), h(\{q\} \x D^{k-1})) > \epsilon > 0$.)
 
-    Thus $b \in \rchains[m+1](X_l)$!
-
-    $X_\oo \minus X_l = h(I_l \minus \{q\} \x D^{k-1})$
-
-    as $l \to \oo$
-
-    $\max_{y \in I_l \x D^{k-1}} dist(y, \{d\} \x D^{k-1}) \to 0$
-
-    That is, for $n$ sufficiently large, $X_l \union \{\text{-neighborhood around $S^n \minus X_\oo$}\} = S^n$.
-
-    CONTRADICTION.
+    But then $c$ is a boundary in $X_l$!  A contradiction! (before we said $c$ was hollow in $X_l$)
   \end{itemize}
 \end{proof}
-\begin{cor}
+\begin{cor}[Hatcher Prop 2B.1(b), p.169]
   If $m, n, k \in \N$ and $h \from S^k \to S^n$ is an embedding, then
   $$\rhoml(S^n - h(S^k)) \isom \begin{cases}
     \Z &\text{$m = n - k - 1$} \\
@@ -2231,7 +2227,7 @@ $k = n-2$.  Higher dimensional knot theory.
 
 $k = n-1$.  Our corollary shows $S^n - h(S^{n-1})$ has two components.  But are they disks?  No!
 
-\begin{example}
+\begin{example}[Hatcher Example 2B.2, p.170]
   $k = 2, n = 3$.
 
   The Alexander horned sphere is obtained as follows. Take a torus, cut it, and insert two handles at the ends that interlock.  Then cut each handle and perform the same trick.  Repeat this process forever.
