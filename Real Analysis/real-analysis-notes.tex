@@ -2342,7 +2342,7 @@ using the standard trick.
   All metric spaces \(X,d\) are first countable by taking \(V_n =
   B(x,\frac{1}{n})\). 
 \end{example}
-\begin{prop}[Sequential Characterization of Limits]
+\begin{prop}[Sequential Characterization of Limits]\label{seq-char-of-lims}
   Suppose \(X, \Top_X\) is first countable with \(\Top_\infty \subset
   X\) a union of neighborhoods of a point \(x_\infty \in X\). Then,
   given a function \(f \from U \setminus \{x_\infty\} \to (Y,
@@ -2580,7 +2580,7 @@ space.
   Given \(f \in L^1\), \(\int_X f \d\mu\) is well-defined independent
   of choice of representative.
 \end{rmk}
-\begin{thm}[Dominated Convergence Theorem v1.0]
+\begin{thm}[Dominated Convergence Theorem v1.0]\label{dct-v1}
   Let \((X,\M,\mu)\) be a measure space and let \(f_n \from X \to
   \mathbb{K}\) be a sequence of functions in \(\cL^1\) such that, for
   all \(x\), \(\lim_{n \to \infty} f_n(x)\) exists and there exists an
@@ -2926,4 +2926,213 @@ DCT. Note that this did not use uniform continuity.
     \right) \d \mu(x)
   \]
 \end{thm}
+\begin{rmk}
+  DCT v1.0 (\ref{dct-v1}) is just this version with \(\Lambda = \N \union \{\infty\}
+  \subset [0,\infty]\) where \(\lambda_\infty = \infty\).
+\end{rmk}
+\begin{proof}[Proof of Theorem]
+  We first note that \(|f(\cdot,\lambda)| \leq g(\cdot) \in \cL^1\),
+  so \(f(\cdot, \lambda) \in \cL^1\) for all \(\lambda \in \Lambda
+  \setminus \{\lambda_\infty\}\). Thus, \(\int_X f(x,\lambda) \d
+  \mu(x)\) is well-defined. \\
+
+  Since \(\lambda_\infty\) is a limit point, there exists a sequence
+  \((\lambda_n)_{n \geq 1}\) with \(\lambda_n \in \Lambda \setminus
+  \{\lambda_\infty\}\) such that \(\lambda_n \to
+  \lambda_\infty\). Thus, \(\lim_{\lambda \to \lambda_\infty}
+  f(x,\lambda) = \lim_{n \to \infty} f(x,\lambda_n)\) (pointwise
+  limit) exists and is measurable as a function of \(x\). Thus, since
+  we have for all \(x,n\) that \(|f(x,\lambda_n)| \leq g(x)\), we also
+  have that \[
+   \left|  \lim_{\lambda \to \lambda_\infty} f(x,\lambda) \right| \leq
+   g(x) \in \cL^1
+  \]
+  and thus\[
+    \int_X \lim_{\lambda \to \lambda_\infty} f(x,\lambda) \d \mu(x)
+  \]
+  is well-defined. \\
+
+  Now, we wish to show that we can commute the limit, and so we need
+  to use that \(\Lambda\) is first countable. Let \((\lambda_n)_{n
+    \geq 1}\) be \emph{any} sequence in \(\Lambda \setminus
+  \{\lambda_\infty\}\) such that \(\lambda_n \to
+  \lambda_\infty\). Then, the sequence of function \(x \mapsto
+  f(x,\lambda_n)\) satisfies the hypotheses of DCT v1.0
+  (\ref{dct-v1}). Thus,
+  \begin{align*}
+    \lim_{n \to \infty} \int_X f(x,\lambda_n) \d \mu(x)
+    & = \int_X \lim_{n \to \infty} f(x,\lambda_n) \d \mu(x) \\
+    & = \int_X \lim_{\lambda \to \lambda_\infty} f(x,\lambda) \d \mu(x)
+  \end{align*}
+  This is true for all such \((\lambda_n)\) and first countable
+  \(\Lambda\). Using the sequential characterization of limits
+  (\ref{seq-char-of-lims}), we get \[
+    \lim_{\lambda \to \lambda_\infty} \int_X f(x,\lambda) \d \mu(x) =
+    \int_X \lim_{\lambda \to \lambda_\infty} f(x,\lambda) \d \mu(x)
+  \]
+\end{proof}
+\begin{cor}[Continuity of integrals dependent on a parameter; weaker
+  version of Folland 2.27a]
+  Let \(I\) be a closed interval and \(t_0 \in I\). Furthermore, let
+  \(f \from X \times X \to \K\) such that, for all \(t\), \(f(\cdot,t)
+  \in \cL^1\). Next, let \[
+    F(t) := \int_X f(x,t) \d\mu(x)
+  \]
+  and let \(g \in \cL^1 \intersect L^+\) such that, for all \(x \in X,
+  t \in I\), we have \(|f(x,t)| \leq g(x)\). Finally, suppose that,
+  for all \(x \in X\), \(t \mapsto f(x,t)\) is continuous at
+  \(t_o\). Then, \(\lim_{t \to t_0} F(t) = F(t_0)\), that is to say
+  \(F\) is continuous at \(t_0\). 
+\end{cor}
+\begin{proof}
+  Take \(\Lambda = I \subset \R, \lambda_\infty = t_0\) and apply DCT
+  v3.0.
+\end{proof}
+\begin{cor}[Differentiation under the integral sign]
+  Let \(f \from X \times I \to \K\). Suppose that,
+  \begin{itemize}
+  \item For all \(t \in  I\), \(f(\cdot, t) \in \cL^1(X,\K)\),
+  \item For all \(x \in X\), \(\frac{\partial f}{\partial
+      t}(x,\cdot)\) exists on \(I\), and
+  \item There exists \(g \in \cL^1(X) \intersect L^+(X)\) such that,
+    for all \(x \in X,\ t \in I\), \(\left| \frac{\partial f}{\partial
+      t}(x,t)\right| \leq g(x)\).
+  \end{itemize}
+  Then, for all \(t \in I\), we get \(\frac{\partial f}{\partial
+    t}(\cdot, t) \in \cL^1\)  and \[
+    F(t) := \int_X f(x,t) \d\mu(x)
+  \]
+  is differentiable on \(I\) with derivative \[
+    f'(t) = \int_X \frac{\partial f}{\partial t}(x,t) \d\mu(x)
+  \]
+\end{cor}
+\begin{proof}
+  Take, \(t \in I\) fixed, \(\Lambda = I\), and \(\lambda_\infty =
+  t\). Define \(h \from X \times (I \setminus \{t\} \to \K)\) by
+  \[h(x,\lambda) = \frac{f(x,\lambda) - f(x,t)}{\lambda - t}\]
+  Then, for all \(\lambda \in I \setminus \{t\}\), we get \(h(\cdot,
+  \lambda)\) is measurable. Now, we use the Mean Value Theorem to say
+  that for all \(x \in X\), for all \(\lambda \in I \setminus \{t\}\),
+  there exists \(\xi \in I\) such that \[
+    h(x,\lambda) = \frac{\partial f}{\partial t}(x, \xi)
+  \]
+  and so \(|h(x,\lambda)| \leq \left| \frac{\partial f}{\partial
+      t}(x,\xi) \right| \leq g(x)\). So, for all \(x \in X\), we
+  get \[
+    \lim_{\lambda \to t} h(x,\lambda) = \frac{\partial f}{\partial
+      t}(x,t) \text{ (why?)}
+  \]
+  Therefore, \(h(x,\lambda)\) satisfies the hypotheses of DCT v3.0 and
+  so \[
+    \lim_{\lambda \to t} \int_X h(x,\lambda) \d \mu(x) = \int_X
+    \lim_{\lambda \to t} h(x,\lambda) \d\mu(x) = \int_X \frac{\partial
+      f}{\partial t}(x,t) \d\mu(x)
+  \]
+\end{proof}
+\begin{thm}
+  \(L^1(X,\M,\mu,\K)\) equipped with norm \(\norm[f]_{L^1} = \int_X
+  |f|\d\mu\) is a Banach space using induced metric.
+\end{thm}
+The proof of this theorem requires some prep work in the form of the
+following lemma
+\begin{lem}
+  Let \((X,d)\) be a metric space. Then, \(X\) is complete if and only
+  if, for all sequences \((x_n)_{n \geq 1}\) in \(X\) such that \[
+    \sum_{n=1}^\infty d(x_n,x_{n+1}) \leq \infty,
+  \]
+  \((x_n)_{n \geq 1}\) converges in \(X\). 
+\end{lem}
+\begin{proof}[Proof of Lemma]
+  The proof of this lema is ommitted since it is a purely topological argument.
+\end{proof}
+\begin{proof}[Proof of Theorem]
+  Let \((f_n)\) be a sequence of function in \(L^1\) such that \[
+    \sum_{n=1}^\infty \norm[f_{n+1}-f_n] < \infty
+  \]
+  Then, DCT v2.1 tells us that \[
+    f = \sum_{n=1}^\infty \left( f_{n+1} - f_n \right)
+  \]
+  converges in the \(L^1\) norm and so \[
+    \sum_{n=1}^N (f_{n+1}-f_n) \to F
+  \]
+  in the \(L^1\) norm as \(N \to \infty\). Thus, \[
+    \norm[f_{N+1} - (f_1+F)]_{L^1} \to 0 \text{ as } N \to \infty
+  \]
+  and so \((f_n)\) converges in \(L^1\). Thus, \(L^1\) is complete.
+\end{proof}
+\subsection{\(L^p\) spaces}
+We have introduced the space \(L^1\), but this notion can be
+generalized to the idea of \(L^p\) spaces for \(1 \leq p \leq
+\infty\). For now, we will postpone the discussion of \(p = \infty\).
+\begin{defn}
+  For any \(p \in (0,\infty)\) and \(a \in [0,\infty]\), we will
+  define \[
+    a^p :=
+    \begin{cases}
+      e^{p \log a} & \text{ if } 0 < a < \infty \\
+      0 & \text{ if } a = 0 \\
+      \infty & \text{ if } a = \infty
+    \end{cases}
+  \]
+\end{defn}
+We note that this function is continuous, bijective, and strictly
+increasing.
+\begin{defn}[\(L^p\) spaces for \(p \neq 1,\infty\)]
+  For \(1 < p < \infty\), we say \[
+    \cL^p(X,\M,\mu,\K) := \left\{ f \from X \to \K \st f \text{ is
+      }(\M,\B_\K)\text{-measurable and }\int_X |f|^p \d\mu < \infty \right\}
+  \]
+  Furthermore, since \(\cL^p\) is a \(\K\)-vector space, if we take
+  \(V_\text{null} = \{f \in \cL^p \st f=0\ 
+  \mu\text{-almost everywhere}\}\), then \(V_\text{null}\) is a
+  subspace and so we can define \[
+    L^p(X,\M,\mu,\K) := \cL^p/V_\text{null}
+  \]
+  with norm \[
+    \norm[f]_{L^p} = \left( \int_X |f|^p \d\mu \right)^{\frac{1}{p}}
+  \]
+\end{defn}
+For this definition, we need to prove that \(\norm_{L^p}\) is actually
+a norm, but this will take some work. The easy part is given a
+proposition (proof left to the reader)
+\begin{prop}
+  If \(f \in L^p\), then
+  \begin{itemize}
+  \item \(\norm[f]_{L^p} = 0 \iff f = 0\)
+  \item for \(\lambda \in \K\), we have \(\norm[\lambda f]_{L^p} = |\lambda|\norm[f]_{L^p}\).
+  \end{itemize}
+\end{prop}
+Now, all that we have left to show is the triangle inequality
+holds. We seek to do this by showing H\"{o}lder's inequality, which
+gives us Minkowski's inequality and then we will be able to show the
+triangle inequality.
+\begin{lem}
+  For all \(\lambda \in (0,1)\) and for all \(a,b \in [0,\infty)\), we
+  have \[
+    a^\lambda b^{1-\lambda} \leq \lambda a + (1-\lambda)b
+  \]
+  with equality if and only if \(a=b\). 
+\end{lem}
+\begin{proof}
+  This can be proved using elementary calculus. In class, we used a
+  ``multi-scale'' approach, but there is no reason to spend time
+  recreating it here.
+\end{proof}
+\begin{defn}
+  Given \(V\) a \(\K\)-topological vector space and a subset \(C
+  \subset V\), \(C\) is called a \de{convex subset} if, for all \(x,y
+  \in C\) and for all \(\lambda \in [0,1]\), \(\lambda x +
+  (1-\lambda)y \in C\). 
+\end{defn}
+\begin{prop}
+  If \(C \subset V\) is closed, then \(C\) is convex if and only if,
+  for all \(x,y \in C\), \(\frac{x+y}{2} \in C\). 
+\end{prop}
+\begin{proof}
+  For the forward direction, take our lemma with \(\lambda =
+  \frac{1}{2}\) and for the backwards direction, just use some clever
+  approximation that will be guaranteed to converge since
+  \(\frac{x+y}{2} \in C\). 
+\end{proof}
+\subsection*{(4/11/17) Lecture 20}
 \end{document}
