@@ -3176,7 +3176,7 @@ triangle inequality.
   \]
   and thus
   \begin{align*}
-    \int_X |f+g|^p \d\mu(x) = \norm[f+g]_{L^p}^p
+    \int_X |f+g|^p \d\mu(x) & = \norm[f+g]_{L^p}^p\\
     & \leq \int_X |f||f+g|^{p-1} + |g||f+g|^{p-1} \d\mu(x) \\
     & \leq \norm[f]_{L^p} \norm[(f+g)^{p-1}]_{L^q} +
       \norm[g]_{L^p}\norm[(f+g)^{p-1}]_{L^q} & \text{ by H\"{o}lder's
@@ -3401,7 +3401,59 @@ Now, we go into two important examples.
 
   Furthermore, there is a canonical injection from \(\ell^p \into
   \ell^q\) and it \emph{is} continuous.
-\subsection*{(4/13/17) Lecture 22}
+  \begin{example}
+    The other important example covered is probability spaces, which I
+    seem to have not written down the details about.
+  \end{example}
+  \subsection*{(4/13/17) Lecture 22}
+  \subsection{Continuity of Normed Spaces}
+  \begin{rmk}
+    Let \((V,\norm_V)\) and \((W,\norm_W)\) be 2 normed spaces and let
+    \(L \from V \to W\) be \(\K\)-linear. Then, \(L\) is continuous
+    (everywhere on \(V\)) if and only if it is continuous at
+    0. To see this, we define linear \(T_x(y) = y+x\), then it is
+    continuous for every choice of \(x\) and a homemorphism with
+    inverse \(T_{-x}\). Thus, we see that \(L\) is continous at \(x\)
+    if and only if \(T_{-L(x)} \circ L \circ T_x\) is continuous at
+    \(0\). 
+  \end{rmk}
+  \begin{prop}
+    The following are equivalent for \(L \from V \to W\) linear.
+    \begin{enumerate}
+    \item \(L\)is continuous.
+    \item \(\exists c \geq 0\) such that, for all \(x \in V\), we get
+      \(\norm[L(x)]_W \leq c \norm[x]_V\).
+    \item \(L\) sends bounded sets to bounded sets.
+    \end{enumerate}
+  \end{prop}
+  To prove this, we need the lemma
+  \begin{lem}
+    If \(A \subset V\) a normed space, \(A\) is bounded if and only if
+    \(\sup_{x \in A} \norm[x] < \infty\).
+  \end{lem}
+  \begin{proof}[Proof of Lemma]
+    Ommitted for now.
+  \end{proof}
+  \begin{proof}[Proof of Theorem]
+    Ommitted for now.
+  \end{proof}
+  Between normed spaces, continuous maps are the same as bounded
+  linear maps. If \(W = V\), then \(L\) is sometimes called an
+  \de{operator}. We also denote \(\cL(V,W)\) to be the space of linear
+  and continuous maps from \(V\) to \(W\). If \(W = \K\), then
+  \(\cL(V,\K)=V\) is the topological dual, also called the space of
+  continuous linear forms on \(V\) or the space of bounded linear
+  functionals.
+  \begin{prop}
+    \(\cL(V,W)\) is also a normed space with \[
+      \norm[L]_{\cL(V,W)} = \sup_{\norm[x] \leq 1} \norm[L(X)]_W
+    \]
+    called the \de{operator norm}. 
+  \end{prop}
+  \begin{thm}
+    If \(W\) is complete, then \((\cL(V,W),\norm_{\cL(V,W)})\) is a
+    Banach space.
+  \end{thm}
 \subsection*{(4/18/17) Lecture 23}
 \subsection*{(4/20/17) Lecture 24}
 \subsection*{(4/25/17) Lecture 25}
