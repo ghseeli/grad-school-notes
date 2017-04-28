@@ -3402,8 +3402,8 @@ Now, we go into two important examples.
   Furthermore, there is a canonical injection from \(\ell^p \into
   \ell^q\) and it \emph{is} continuous.
   \begin{example}
-    The other important example covered is probability spaces, which I
-    seem to have not written down the details about.
+    The other important example covered is probability spaces, which
+    will be covered next lecture
   \end{example}
   \subsection*{(4/13/17) Lecture 22}
   \subsection{Continuity of Normed Spaces}
@@ -3454,6 +3454,67 @@ Now, we go into two important examples.
     If \(W\) is complete, then \((\cL(V,W),\norm_{\cL(V,W)})\) is a
     Banach space.
   \end{thm}
+  \begin{proof}[Sketch of Proof]
+    Take a Cauchy sequence \((L_n)\), so then, for all bounded \(A
+    \subset W\), \(\sup_{x \in A} \norm[L_n(x) - L_m(x)]_W \leq
+    \norm[l_n - L_m]\). Then, argue that \(L_n(x)\) converges
+    uniformly on \(A\).
+  \end{proof}
+  In particular, \(V'\) is always a Banach space.
+  \begin{example}
+    We now discuss probability spaces. [Omitted for now.]
+  \end{example}
+\subsection{Density of Continuous Functions}
+  \begin{thm}
+    Let \(X = \R\) or \([a,b]\). Then, for \(1 < p < \infty\), the
+    space of continuous functions is dense in \(L^p(X,m)\).
+  \end{thm}
+  \begin{rmk}
+    This is not true for \(p=\infty\)
+  \end{rmk}
+  \begin{proof}
+    For \(X=\R\), it is enough to approximate \(\chi_E \in L^p\) for \(E \in
+    \B_X\). To do this we will use regularity. We also need the
+    following lemma:
+    \begin{lem}
+      Let \((X,d)\) be a metric space with closed \(A,B \subset X\)
+      and \(A \intersect B = \emptyset\). Then, there exists a continuous \(f
+      \from X \to [0,1]\) such that \(f|_A \equiv 1\) and \(f|_B
+      \equiv 0\). 
+    \end{lem}
+    To see this lemma is true, just take \[
+      f(x) = \frac{d(x,B)}{d(x,A) + d(x,B)}
+    \]
+    Now, for \(\chi_E \in L^p\), we get \(\int |\chi_E| \d m <
+    \infty\) and so \(m(E) < \infty\). Furthermore, given any
+    \(\epsilon > 0\), \(m\) is regular so there exists a compact \(K
+    \subset E\) and an open \(U \supset E\) such that \(m(U) <
+    m(E)+\epsilon\) and \(m(K) > m(E)-\epsilon\). Now, we apply our
+    lemma with \(A = K\) and \(B = U^c\) to get an \(f \from \R \to
+    [0,1]\). Then, we examine \[
+      \norm[\chi_E - f]_p^p = \int |\chi_E - f|^p \d m \leq m(U
+      \setminus K) \leq 2 \epsilon
+    \]
+    For \(X = [a,b]\), we take \(g \in L^p([a,b])\) and extend \(g\)
+    by 0 to get \(\tilde{g} \in L^p(\R)\). Then, we apply the above
+    result to get the final proof.
+  \end{proof}
+  \begin{rmk}
+    For \(p=1\) and \(X = [a,b]\), this shows that \(L^1([a,b],m)\) is
+    the completion of \(\mathcal{C}^0([a,b],\K)\) with
+    \(\norm_{L^1}\). \\
+
+    This is not true for \(p=\infty\). If \(f \from [a,b] \to \K\) is
+    continuous, then \[
+      \norm[f]_{l^\infty} = \sup_{x \in [a,b]} |f(x)|
+    \]
+    which is the norm of uniform convergence on \([a,b]\).  However,
+    there exist bounded functions in \(L^\infty\) that cannot be
+    approximated by continuous functions in this norm. Take, for
+    example, the step function that is \(1\) when \(x \geq 0\) and
+    \(0\) elsewhere. If \(\epsilon = \frac{1}{3}\), no such continuous
+    function can have \(\norm[f-g]_\infty < \frac{1}{3}\).
+  \end{rmk}
 \subsection*{(4/18/17) Lecture 23}
 \subsection*{(4/20/17) Lecture 24}
 \subsection*{(4/25/17) Lecture 25}
