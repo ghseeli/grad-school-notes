@@ -3569,15 +3569,15 @@ Now, we go into two important examples.
       \item \s additivity:
 
       Recall that $\M \ox \cN = \M(\E)$ by definition.  Suppose we have a countable disjoint union $A \x B = \Dunion A_n \x B_n$.  Note that
-      $$\sum \chi_{A_n}(x)\chi_{B_n}(x) = \chi_{A \x B}(x,y) = \chi_A(x)\chi_B(y).$$
+      $$\sum \chi_{A_n}(x)\chi_{B_n}(y) = \chi_{A \x B}(x,y) = \chi_A(x)\chi_B(y).$$
 
       Fix $x \in X$ and integrate the equality above with respect to
       $\nu(y)$.  Once we finish that, we will repeat the trick, integrating with respect to $\mu$!
       \begin{align*}
-        \sum \chi_{A_n}(x)\chi_{B_n}(x) &= \chi_A(x)\chi_B(y) \\
-        \implies \int_Y\left(\sum \chi_{A_n}(x)\chi_{B_n}(x)\right)\d\nu(y) &= \int_Y \chi_A(x)\chi_B(y) \d\nu(y) \\
-        \implies \sum \left(\int_Y\chi_{A_n}(x)\chi_{B_n}(x)\d\nu(y)\right) &= \int_Y \chi_A(x)\chi_B(y) \d\nu(y) \\
-        \implies \sum \left(\chi_{A_n}(x)\int_Y\chi_{B_n}(x)\d\nu(y)\right) &= \chi_A(x)\int_Y \chi_B(y) \d\nu(y) \\
+        \sum \chi_{A_n}(x)\chi_{B_n}(y) &= \chi_A(x)\chi_B(y) \\
+        \implies \int_Y\left(\sum \chi_{A_n}(x)\chi_{B_n}(y)\right)\d\nu(y) &= \int_Y \chi_A(x)\chi_B(y) \d\nu(y) \\
+        \implies \sum \left(\int_Y\chi_{A_n}(x)\chi_{B_n}(y)\d\nu(y)\right) &= \int_Y \chi_A(x)\chi_B(y) \d\nu(y) \\
+        \implies \sum \left(\chi_{A_n}(x)\int_Y\chi_{B_n}(y)\d\nu(y)\right) &= \chi_A(x)\int_Y \chi_B(y) \d\nu(y) \\
         \implies \sum \chi_{A_n}(x)\nu(B_n) &= \chi_A(x)\nu(B) \\
         \implies \int_X \left(\sum \chi_{A_n}(x)\nu(B_n)\right) \d\mu(x) &= \int_X \chi_A(x)\nu(B)\d\mu(x) \\
         \implies \sum \left(\int_X \chi_{A_n}(x)\nu(B_n) \d\mu(x)\right) &= \int_X \chi_A(x)\nu(B)\d\mu(x) \\
@@ -3594,7 +3594,7 @@ Now, we go into two important examples.
 \begin{thm}
   The product measure above is associative and could have been built up in a different way, giving the same measure.  Proving this is in HW 8.
 \end{thm}
-\subsection*{Sections, and prep for Tonelli thm}
+\subsection*{Sections, and Preparation for Tonelli Theorem}
 \begin{defn}
   Let $E \subset X \x Y$.  For any fixed $x \in X$, we define $$E_x := \{y \st (x,y) \in E\} \subset Y$$ and symmetrically, for a fixed $y \in Y$, we define $$E_y := \{x \st (x,y) \in E\} \subset X.$$
 \end{defn}
