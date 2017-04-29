@@ -166,8 +166,8 @@ it unique? We must prove it.
 \end{example}
 \subsection*{(1/23/2017) Lecture 2}
 \begin{defn}[Product \s algebra]
-  Let $(x_\alpha)_{\alpha \in A}$ be an indexed family of sets as
-  described above in~\ref{gen-sigma-alg-product}. Then, for each $\alpha \in A$, let $M_\alpha$ be a
+  Let $(X_\alpha)_{\alpha \in A}$ be an indexed family of sets as
+  described above in~\ref{gen-sigma-alg-product}. Then, for each $\alpha \in A$, let $\M_\alpha$ be a
   \s algebra on $X_\alpha$. Given \[
     X = \prod_{\alpha \in A} X_\alpha
   \]
@@ -582,8 +582,8 @@ open intervals, all sets of the form $(a, \infty)$ with $a \in \R$ or
 even $a \in \Q$. So, we have a reduction that $\B_\R = \M(\{(a,b] \mid
 -\infty \leq a \leq b < \infty\})$.
 \begin{defn}
-  Let $X$ be a set and $\Ep \subset \P(X)$. Then $\Ep$ is called an
-  elementary family if
+  Let $X$ be a set and $\Ep \subset \P(X)$. Then $\Ep$ is an
+  \de{elementary family} if
   \begin{enumerate}
   \item $\varnothing \in \Ep$,
   \item $E,F \in \Ep \ \implies \ E \cap F \in \Ep$,
@@ -2450,7 +2450,7 @@ Take \(d=1\), then we can study \(L^1(\R,m,\K) \to S'(\R,\K)\) given
 by \(f \mapsto L_f\), a linear form on \(S\). So, \(L_f(g) = \int_\R
 fg \d m\) for \(g \in S\). However, we would like to pick \(f \in
 \cL^1\) a representative and show that this form is well-defined, linear,
-and continuous in both variables. 
+and continuous in both variables.
 \begin{prop}[\(L^1-L^\infty\) bound]\label{L1-Linf-bound-1}
   Given \(f,g\) measurable functions with \(f \in L^1\) and \(g\)
   continuous and bounded, we get \[
@@ -3262,7 +3262,7 @@ Thus, we have that \(\norm_{L^p}\) is a seminorm on
 \end{proof}
 \begin{defn}
   If any of the properties in the theorem above hold, \(f\) is called
-  a \de{simple integrable function}. 
+  a \de{simple integrable function}.
 \end{defn}
 \begin{thm}
   Let \(1 \leq p < \infty\). Simple integrable functions are dense in \(L^p(X,\M,\mu,\K)\).
@@ -3291,7 +3291,7 @@ Thus, we have that \(\norm_{L^p}\) is a seminorm on
     has measure 0.
   \item \(f(x) \leq \ess \sup f\)
   \item There exists \(g\) with \(f = g\) \(\mu\)-almost everwhere
-    such that \(\ess \sup f(x) = \sup g(x)\). 
+    such that \(\ess \sup f(x) = \sup g(x)\).
   \end{enumerate}
 \end{prop}
 \begin{proof}
@@ -3323,7 +3323,7 @@ Thus, we have that \(\norm_{L^p}\) is a seminorm on
     \]
     For the other inequality, take \(W = \{x \st f(x) > s\}\). If \(x
     \in W^c\), then \(g(x) = f(x) \leq s\). If \(x \in W\), then
-    \(g(x) = 0 \leq s\). 
+    \(g(x) = 0 \leq s\).
   \end{enumerate}
 \end{proof}
 \begin{defn}
@@ -3352,10 +3352,10 @@ Thus, we have that \(\norm_{L^p}\) is a seminorm on
 \end{thm}
 \begin{proof}
   Use the series criterion for completeness
-  (\ref{series-criterion-for-completeness}). 
+  (\ref{series-criterion-for-completeness}).
 \end{proof}
 With this construction, we can generalize our original
-\(L^1-L^\infty\) bound (\ref{L1-Linf-bound-1}). 
+\(L^1-L^\infty\) bound (\ref{L1-Linf-bound-1}).
 \begin{prop}[\(L^1-L^\infty\)-bound v2]
   If \(f \in L^1\), \(g \in L^\infty\), and \(fg \in \cL^1\), then \[
     \norm[fg]_1 \leq \norm[f]_1 \norm[g]_\infty
@@ -3385,10 +3385,10 @@ Now, we go into two important examples.
     \sum_{n=1}^\infty |x_n|^p < \infty
   \]
   If \(p = \infty\), we instead require \(\sup_{n \geq 1} |x_n| <
-  \infty\). 
+  \infty\).
 \end{example}
 \begin{thm}
-  If \(p < q \in [1,\infty]\), then \(\ell^p \subset \ell^q\). 
+  If \(p < q \in [1,\infty]\), then \(\ell^p \subset \ell^q\).
 \end{thm}
 \begin{proof}
   If \(q = \infty\), then \(\sum |x_n|^p\) converges so \(x_n \to 0\)
@@ -3421,7 +3421,7 @@ Now, we go into two important examples.
     continuous for every choice of \(x\) and a homemorphism with
     inverse \(T_{-x}\). Thus, we see that \(L\) is continous at \(x\)
     if and only if \(T_{-L(x)} \circ L \circ T_x\) is continuous at
-    \(0\). 
+    \(0\).
   \end{rmk}
   \begin{prop}
     The following are equivalent for \(L \from V \to W\) linear.
@@ -3454,7 +3454,7 @@ Now, we go into two important examples.
     \(\cL(V,W)\) is also a normed space with \[
       \norm[L]_{\cL(V,W)} = \sup_{\norm[x] \leq 1} \norm[L(X)]_W
     \]
-    called the \de{operator norm}. 
+    called the \de{operator norm}.
   \end{prop}
   \begin{thm}
     If \(W\) is complete, then \((\cL(V,W),\norm_{\cL(V,W)})\) is a
@@ -3486,7 +3486,7 @@ Now, we go into two important examples.
       Let \((X,d)\) be a metric space with closed \(A,B \subset X\)
       and \(A \intersect B = \emptyset\). Then, there exists a continuous \(f
       \from X \to [0,1]\) such that \(f|_A \equiv 1\) and \(f|_B
-      \equiv 0\). 
+      \equiv 0\).
     \end{lem}
     To see this lemma is true, just take \[
       f(x) = \frac{d(x,B)}{d(x,A) + d(x,B)}
@@ -3523,21 +3523,19 @@ Now, we go into two important examples.
   \end{rmk}
 \subsection*{(4/18/17) Lecture 23}
 \subsection{Product Measures and Fubini}
-\begin{thm}[Practical Carathéodory Theorem]
-  If $X$ is a set, $\E$ is an elementary family of subsets of $X$, and $\mu \from \E \to [0, \oo]$ is a function such that
+\begin{defn}
+  If $\E$ is an elementary family of subsets of $X$, then $\mu \from \E \to [0, \oo]$ is an \de{elementary measure} or a \de{pre-premeasure} if
   \begin{itemize}
     \item $\mu(\emptyset) = \emptyset$
-    \item $\mu$ is \s additive on $\E$ (but the disjoint union need not land back in $\E$)
-    \item $\mu$ is \s finite,
+    \item $\mu$ is \s additive on $\E$
   \end{itemize}
-  then there exists a unique measure $\mu$ on $\M(\E)$ that extends the above $\mu$.  Moreover, for any $A \in \M(\E)$, $$\mu(A) = \inf\sum_{n=1}^N \mu(E_n)$$ where each $\{E_n\}_{n=1}^N$ is a finite disjoint cover of $A$.
+\end{defn}
+\begin{thm}[Practical Carathéodory Theorem]
+  If $\E$ is an elementary family on $X$ and $\mu$ is a pre-premeasure that is \s finite on $\E$, then there exists a unique measure $\bar\mu$ on $\M(\E)$ that extends $\mu$.  Moreover, for any $A \in \M(\E)$, $$\bar\mu(A) = \inf\sum_{n=1}^N \mu(E_n)$$ where the infimum is taken over all finite disjoint covers $\{E_n\}_{n=1}^N$ of $A$, where all $E_n \in \E$.
 \end{thm}
 \begin{proof}
   HW 8.
 \end{proof}
-\begin{defn}
-  If $\M$ and $\cN$ are \s algebras, then the \de{product \s algebra} is $$\M \ox \cN := \M(\{A \x Y \st A \in \M\}\union\{X \x B \st B \in \N\}),$$ that is, the \s algebra generated by that set.  This is also equal to the \s algebra generated by $\{A \x B \st A \in \M, B \in \cN\}$.
-\end{defn}
 \begin{thm}
   The below is true for any $n \in \N$, not just $n = 2$.  Proving this will be homework.
 \end{thm}
