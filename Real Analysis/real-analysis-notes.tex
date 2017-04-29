@@ -3542,18 +3542,20 @@ Now, we go into two important examples.
   The below is true for any $n \in \N$, not just $n = 2$.  Proving this will be homework.
 \end{thm}
 \begin{thm}
-  Let $(X, \M, \mu)$ and $(Y, \cN, \nu)$ be \s finite measure spaces.  Then there exists a unique measure $\mu \ox \nu$ on $(X \x Y, \M \ox \cN)$ s.t. for all $A \in \M$, for all $B \in \cN$, $$(\mu \ox \nu)(A \x B) = \mu(A)\nu(B).$$  Further, this measure is \s finite.
+  Let $(X, \M, \mu)$ and $(Y, \cN, \nu)$ be \s finite measure spaces.
+  Then there exists a unique measure $\mu \ox \nu$ on $(X \x Y, \M \ox
+  \cN)$ such that for all $A \in \M$, for all $B \in \cN$, $$(\mu \ox \nu)(A \x B) = \mu(A)\nu(B).$$  Further, this measure is \s finite.
 \end{thm}
 \begin{proof}
   \mbox{}
   \begin{enumerate}[label=(\arabic{*})]
-    \item I claim that $(X \x Y, \M \ox \cN, \mu \ox \nu)$ is \s finite (assuming it ends up being a legit measure):
+    \item We claim that $(X \x Y, \M \ox \cN, \mu \ox \nu)$ is \s finite (assuming it ends up being a legit measure):
 
-    We know $(X, \M, \mu)$ and $(Y, \cN, \nu)$ are \s finite by hypothesis, so there exist \s finite covers $\union A_m$ from $\M$ and $\union B_n$ from $\cN$ (whose indecis are countable).
+    We know $(X, \M, \mu)$ and $(Y, \cN, \nu)$ are \s finite by hypothesis, so there exist \s finite covers $\Union A_m$ from $\M$ and $\Union B_n$ from $\cN$ (whose indices are countable).
 
-    Notice that $(m, n) \in \N^2$ is countable, and the union $\union_{m,n}\left(A_m \x B_n\right) = X \x Y$ is a cover of the space.  Finally, each individual set $A_m \x B_n$ satisfies $(\mu\ox\nu)(A_m \x B_n) = \mu(A_m)\nu(B_n) < \oo$.
+    Notice that $(m, n) \in \N^2$ is countable, and the union $\Union_{m,n}\left(A_m \x B_n\right) = X \x Y$ is a cover of the space.  Finally, each individual set $A_m \x B_n$ satisfies $(\mu\ox\nu)(A_m \x B_n) = \mu(A_m)\nu(B_n) < \oo$.
 
-    \item I claim that $\E := \{A \x B \st A \in \M, B \in \cN\}$ is an elementary family:
+    \item We claim that $\E := \{A \x B \st A \in \M, B \in \cN\}$ is an elementary family:
 
     \begin{itemize}
       \item $\emptyset = \emptyset \x Y \in \E$
@@ -3561,27 +3563,28 @@ Now, we go into two important examples.
       \item If $A \x B \in \E$, then $$(A \x B)^c = (A^c \x Y) \dunion (A \x B^c).$$
     \end{itemize}
 
-    \item I claim that $\mu \ox \nu$ defined by $(\mu\ox\nu)(A \x B) = \mu(A)\nu(B)$ is a pre-pre-measure (like a measure, but on an elementary family, for now):
+    \item We claim that $\mu \ox \nu$ defined by $(\mu\ox\nu)(A \x B) = \mu(A)\nu(B)$ is a pre-pre-measure (like a measure, but on an elementary family, for now):
 
     \begin{itemize}
       \item $(\mu\ox\nu)\from\E\to[0, \oo]$
       \item $(\mu\ox\nu)(\emptyset) = \mu(\emptyset)\nu(B) = 0\nu(B) = 0$
       \item \s additivity:
 
-      Recall that $\M \ox \cN = \M(\E)$ by definition.  Suppose we have a countable disjoint union $A \x B = \dunion A_n \x B_n$.  Note that
+      Recall that $\M \ox \cN = \M(\E)$ by definition.  Suppose we have a countable disjoint union $A \x B = \Dunion A_n \x B_n$.  Note that
       $$\sum \chi_{A_n}(x)\chi_{B_n}(x) = \chi_{A \x B}(x,y) = \chi_A(x)\chi_B(y).$$
 
-      Fix $x \in X$ and integrate the equality above with respect to $\nu(y)$.  Once we finish that, we'll repeat the trick, integrating with respect to $\mu$!
+      Fix $x \in X$ and integrate the equality above with respect to
+      $\nu(y)$.  Once we finish that, we will repeat the trick, integrating with respect to $\mu$!
       \begin{align*}
         \sum \chi_{A_n}(x)\chi_{B_n}(x) &= \chi_A(x)\chi_B(y) \\
-        \int_Y\left(\sum \chi_{A_n}(x)\chi_{B_n}(x)\right)\d\nu(y) &= \int_Y \chi_A(x)\chi_B(y) \d\nu(y) \\
-        \sum \left(\int_Y\chi_{A_n}(x)\chi_{B_n}(x)\d\nu(y)\right) &= \int_Y \chi_A(x)\chi_B(y) \d\nu(y) \\
-        \sum \left(\chi_{A_n}(x)\int_Y\chi_{B_n}(x)\d\nu(y)\right) &= \chi_A(x)\int_Y \chi_B(y) \d\nu(y) \\
-        \sum \chi_{A_n}(x)\nu(B_n) &= \chi_A(x)\nu(B) \\
-        \int_X \left(\sum \chi_{A_n}(x)\nu(B_n)\right) \d\mu(x) &= \int_X \chi_A(x)\nu(B)\d\mu(x) \\
-        \sum \left(\int_X \chi_{A_n}(x)\nu(B_n) \d\mu(x)\right) &= \int_X \chi_A(x)\nu(B)\d\mu(x) \\
-        \sum \left(\int_X \chi_{A_n}(x) \d\mu(x)\right)\nu(B_n) &= \left(\int_X \chi_A(x)\d\mu(x)\right)\nu(B) \\
-        \sum \mu(A_n)\nu(B_n) &= \mu(A)\nu(B)
+        \implies \int_Y\left(\sum \chi_{A_n}(x)\chi_{B_n}(x)\right)\d\nu(y) &= \int_Y \chi_A(x)\chi_B(y) \d\nu(y) \\
+        \implies \sum \left(\int_Y\chi_{A_n}(x)\chi_{B_n}(x)\d\nu(y)\right) &= \int_Y \chi_A(x)\chi_B(y) \d\nu(y) \\
+        \implies \sum \left(\chi_{A_n}(x)\int_Y\chi_{B_n}(x)\d\nu(y)\right) &= \chi_A(x)\int_Y \chi_B(y) \d\nu(y) \\
+        \implies \sum \chi_{A_n}(x)\nu(B_n) &= \chi_A(x)\nu(B) \\
+        \implies \int_X \left(\sum \chi_{A_n}(x)\nu(B_n)\right) \d\mu(x) &= \int_X \chi_A(x)\nu(B)\d\mu(x) \\
+        \implies \sum \left(\int_X \chi_{A_n}(x)\nu(B_n) \d\mu(x)\right) &= \int_X \chi_A(x)\nu(B)\d\mu(x) \\
+        \implies \sum \left(\int_X \chi_{A_n}(x) \d\mu(x)\right)\nu(B_n) &= \left(\int_X \chi_A(x)\d\mu(x)\right)\nu(B) \\
+        \implies \sum \mu(A_n)\nu(B_n) &= \mu(A)\nu(B)
       \end{align*}
     \end{itemize}
   \end{enumerate}
@@ -3652,7 +3655,7 @@ Now, we go into two important examples.
   \begin{enumerate}[label=(\arabic{*})]
     \item This is true by the previous proposition.
     \item This will be proved along with (3)\ldots
-    \item For all $f \in L^+(X \x Y)$, first consider the case where $f$ is $\chi_E$.  Then we'll get it for $f$ simple, and then we let simple guys converge pointwise to a nonsimple $f$ to complete the proof (yeah, we really shouldn't skip all of this though)
+    \item For all $f \in L^+(X \x Y)$, first consider the case where $f$ is $\chi_E$.  Then we'll get it for $f$ simple, and then we let simple functions converge pointwise to a nonsimple $f$ to complete the proof (yeah, we really shouldn't skip all of this though)
 
     Here is the last step:
 
