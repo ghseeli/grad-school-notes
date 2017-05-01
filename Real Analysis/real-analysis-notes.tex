@@ -1539,7 +1539,8 @@ Then, $F$ is increasing, right continuous, and $\mu = \mu_F$.
   \]
 \end{lem}
 \begin{proof}[Proof of lemma]
-  $\mu(E) \leq \inf \left\{ \sum_{i=1}^\infty \mu((a_i,b_i)) \text{
+  Note, Folland also proves this as Lemma 1.17 on page 35.\\
+  First, $\mu(E) \leq \inf \left\{ \sum_{i=1}^\infty \mu((a_i,b_i)) \text{
         finite} \mid E
       \subset \Union_{i=1}^\infty (a_i,b_i) \right\}$ by
     subadditivity. Now, we break into cases.
@@ -1549,21 +1550,26 @@ Then, $F$ is increasing, right continuous, and $\mu = \mu_F$.
         \mu(E) = \mu^+(E) := \inf\{ \sum \mu(A_n) \mid E \subset
         \Union_{n=1}^\infty A_n, A_n \in \A\}.
       \]
-      Let $\epsilon > 0$. Then there exists $A_n \in \A$ such that
-      $\sum_{n=1}^\infty \mu(A_n) \leq \mu(E) + \epsilon$. Then,
+      Let $\epsilon > 0$. Then there exists a sequence of $A_n \in \A$ such that
+      $\sum_{n=1}^\infty \mu(A_n) \leq \mu(E) + \epsilon$ and \(E
+      \subset \Union A_n\). So,
       decompoising $A_n$ into elements of $\Ep$ and renumbering, we
       can assume without loss of generality that $A_n \in \Ep$, since
       if $A_n \not \in \Ep$, we can just take $A_n = A_n \intersect
-      (-m,m)$ with $E \subset (-m,m)$. So, now, take $A_n = (\alpha_n,
+      (-m,m)$ using the assumption $E \subset (-m,m)$. So, now, take $A_n = (\alpha_n,
       \beta_n) \subset \R$. Then, we get that $\mu(A_n) = F(\beta_n) -
       F(\alpha_n)$. Thus, there exists a $\delta_n > 0$ with
-      $f(\beta_n + \delta_n) \leq f(\beta_n) +
+      $F(\beta_n + \delta_n) \leq F(\beta_n) +
       \frac{\epsilon}{2^n}$. Therefore, $A_n \subset
       (\alpha_n, \beta_n + \delta_n) \subset (\alpha_n, \beta_n +
       \delta_n]$ and so $\mu((\alpha_n,\beta_n+\delta_n)) \leq
-      f(\beta_n + \delta_n) - f(\alpha_n) \leq
-      \frac{\epsilon}{2^n}$. Finally, adding all these terms together
-      yields the desired result.
+      \mu((\alpha_n,\beta_n)) + \frac{\epsilon}{2^n}$. Finally, adding
+      all these terms together 
+      yields the desired result that \[
+        \sum_{n=1}^\infty \mu((\alpha_n,\beta_n+\delta_n]) \leq
+        \sum_{n=1}^\infty \mu((\alpha_n,\beta_n]) + \epsilon \leq
+        \mu(E) + 2 \epsilon
+      \]
     \item ($E$ is unbounded.) If $\mu(E) = \infty$, then we trivially
       get equality. So, let $\mu(E) < \infty$ and let $\epsilon >
       0$. Also, let $g \from \N \to \Z$ be the bijection $g(2k) = k$
