@@ -27,8 +27,8 @@
 
 %%%%%%%%%%%%%%BEGIN CONTENT: %%%%%%%%%%%%%%
 
-\title[Real Analysis]{Real Analysis}
-\author{George H. Seelinger (inspired from class by Abdelmalek Abdesselam)}
+\title[Real Analysis]{Real Analysis: Lecture notes from a class taught by Abdelmalek Abdesselam}
+\author{George H. Seelinger, Matthew Lancellotti}
 \date{Spring 2017}
 \begin{document}
 \maketitle
@@ -3813,9 +3813,33 @@ Now, we are ready to complete our proof of Tonelli's Theorem.
     Thus, \(\cC\) is stable by increasing limits of sets. Since
     \(\mu,\nu\) are finite by assumption, \(\cC\) is also stable by
     decreasing limits of sets using the dominated convergence theorem.
-  \item (\(\mu,\nu\) are \s finite). This seems fishy, but by the
-    monotone class lemma, we get \(\cC(A) = \M(\A)\), so the theorem
-    is true for all \(E \in \M(\A) = \M(\Ep) = \M \ox \N\). 
+  \item (\(\mu,\nu\) are \s finite). Let \(X = \Union_{i=1}^\infty
+    X_i\) with \(X_1 \subset X_2 \subset \cdots\) and \(\mu(X_i) <
+    \infty\) and similarly let \(Y = \Union_{j=1}^\infty\) with \(Y_1
+    \subset Y_2 \subset \cdots\) and \(\mu(Y_i) < \infty\). Then,
+    given \(f \from X \times Y \to [0,\infty]\), we wish to show that
+    it is \(\M \ox \cN,
+    \B_{[0,\infty]}\)-measurable, and we wish to show \(f\) satisfies
+    Tonelli. To do this, recall the induction to subsets \\
+    \begin{tikzcd}
+      \text{Topo}, X \arrow[r,"\text{Induce}"] \arrow[d,"\text{Borel}"]&
+      \text{Topo}, Y \subset X \arrow[d] \\
+      \B_X \arrow[r,"\text{Induce}"] & \B_Y
+    \end{tikzcd} \\
+    We then need to make use of the following lemma.
+    \begin{lem}
+      Let \(\phi \from U \to V\). Then, if \(F \subset \P(V)\), we get
+      \(\phi^{-1}(\M(F)) = \M(\phi^{-1}(F))\).
+    \end{lem}
+    Now, let \(\M_i := \M \intersect \P(X_i)\), \(\cN_i := \cN
+    \intersect \P(Y_i)\), \(\mu_i := \mu|_{\M_i}\), \(\nu_i :=
+    \nu|_{\cN_i}\), and \(f_i := f|_{X_i \times Y_i}\)...\\
+
+    Because of the lemma, given \(\iota \from X_i \times Y_i \into X
+    \times Y\) the canonical injection,
+    % This seems fishy, but by the
+    % monotone class lemma, we get \(\cC(A) = \M(\A)\), so the theorem
+    % is true for all \(E \in \M(\A) = \M(\Ep) = \M \ox \N\). 
   \end{itemize}
   Finally, to get Tonelli for arbitrary functions, see Folland p 67 or
   attempt to use the monotone convergence theorem to get from
@@ -3845,7 +3869,32 @@ Now, we are ready to complete our proof of Tonelli's Theorem.
   For \(f \in \cL^1(X \times Y)\), one simply needs to note \(f = f_+
   - f_-\) and use Tonelli's theorem on \(f_+\) and \(f_-\). 
 \end{proof}
+
 \subsection*{(4/25/17) Lecture 25}
+\subsection{Abstract Change of Variables}
+\begin{defn}
+  Let \((X,\M,\mu)\) be a measure space and \((Y,\cN)\) a measurable
+  space. Then, given a \((\M,\cN)\)-measurable function \(f \from X
+  \to Y\) with \(\cN \subset f_* \M\), we define the \de{push-forward
+    measure} to be \[
+    f_* \mu(B) := \mu(f^{-1}(B))
+  \]
+\end{defn}
+\begin{prop}
+  \((Y,\cN,f_*\mu)\) is a measure space.
+\end{prop}
+\begin{thm} \mbox{}
+  \begin{enumerate}
+  \item If \(\phi \from Y \to [0,\infty]\) is
+    \((\cN,\B_{[0,\infty]})\)-measurable, then \[
+      \int_Y \phi \d(f_*\mu) = \int_X(\phi \circ f) \d\mu
+    \]
+  \item If \(\phi \from Y \to \K\) with \(\phi \in \cL^1(Y,\cN,
+    f_*\mu,\K)\), then \[
+      \int_X \phi\circ f \d\mu = \int_Y \phi \d(f_*\mu)
+    \]
+  \end{enumerate}
+\end{thm}
 \subsection*{(4/27/17) Lecture 26}
 \subsection*{(5/2/17) Lecture 27}
 \end{document}
