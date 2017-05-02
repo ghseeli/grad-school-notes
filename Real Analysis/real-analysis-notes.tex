@@ -3812,14 +3812,17 @@ Now, we are ready to complete our proof of Tonelli's Theorem.
     \end{align*}
     Thus, \(\cC\) is stable by increasing limits of sets. Since
     \(\mu,\nu\) are finite by assumption, \(\cC\) is also stable by
-    decreasing limits of sets using the dominated convergence theorem.
+    decreasing limits of sets using the dominated convergence
+    theorem.   Finally, to get Tonelli for arbitrary functions with
+    finite measures, see Folland p 67 or
+  attempt to use the monotone convergence theorem to get from
+  nonnegative simple functions to arbitrary measurable functions.
   \item (\(\mu,\nu\) are \s finite). Let \(X = \Union_{i=1}^\infty
     X_i\) with \(X_1 \subset X_2 \subset \cdots\) and \(\mu(X_i) <
     \infty\) and similarly let \(Y = \Union_{j=1}^\infty\) with \(Y_1
     \subset Y_2 \subset \cdots\) and \(\mu(Y_i) < \infty\). Then,
-    given \(f \from X \times Y \to [0,\infty]\), we wish to show that
-    it is \(\M \ox \cN,
-    \B_{[0,\infty]}\)-measurable, and we wish to show \(f\) satisfies
+    given \(f \from X \times Y \to [0,\infty]\) that is \(\M \ox \cN,
+    \B_{[0,\infty]}\)-measurable, we wish to show \(f\) satisfies
     Tonelli. To do this, recall the induction to subsets \\
     \begin{tikzcd}
       \text{Topo}, X \arrow[r,"\text{Induce}"] \arrow[d,"\text{Borel}"]&
@@ -3833,17 +3836,55 @@ Now, we are ready to complete our proof of Tonelli's Theorem.
     \end{lem}
     Now, let \(\M_i := \M \intersect \P(X_i)\), \(\cN_i := \cN
     \intersect \P(Y_i)\), \(\mu_i := \mu|_{\M_i}\), \(\nu_i :=
-    \nu|_{\cN_i}\), and \(f_i := f|_{X_i \times Y_i}\)...\\
-
+    \nu|_{\cN_i}\), \(f_i := f|_{X_i \times Y_i}\), and \(\Ep_{X,Y} =
+    \{X_i \times Y_i\} \subset \M \ox \cN\). 
     Because of the lemma, given \(\iota \from X_i \times Y_i \into X
-    \times Y\) the canonical injection,
+    \times Y\), the canonical injection, we get \[
+      (\M \ox \cN)_{X_i \times Y_i} := \iota^{-1}(\M \ox \cN) =
+      \iota^{-1}(\M(\Ep_{X,Y})) = \M(\iota^{-1}(\Ep_{X,Y}).
+    \]
+    So, \(f_i = f \circ \iota\) where \(\iota\) is \(((M \ox \cN)_{X_i
+    \times Y_i},\M\ox\cN)\)-measurable. Thus, \(f_i\) is \(((\M \ox
+    \cN)_{X_i \times Y_i},\B_{[0,\infty]})\)-measurable. Thus, only now
+    can we use Tonelli for \(f_i\). \\
+
+    So, we get, for all \(i\), that
+    \begin{align*}
+      F_i(x) &:= \int_{Y_i} f_i(x,y) \d\nu_i(y) \text{ is
+      }(\M_i,\B_{[0,\infty]})\text{-measurable} \\
+      G_i(y) &:= \int_{X_i} f_i(x,y) \d\mu_i(x) \text{ is }
+      (\cN_i,\B_{[0,\infty]})\text{-measurable} \\
+      \int_{X_i \times Y_i} f_i \d(\mu_i \ox \nu_i) & = \int_{X_i}
+      \left( \int_{Y_i} f_i(x,y) \d\nu_i(y)\right) \d\mu_i(x) =
+      \int_{Y_i} \left( \int_{X_i} f_i(x,y) \d\mu_i(x)\right)\d\nu_i(y)
+    \end{align*}
+    Now, using extension by 0, we get that \(f \chi_X \chi_Y = \tilde{f}_i \from X \times
+    Y \to [0,\infty]\) is \((\M \ox
+    \cN,\B_{[0,\infty]})\)-measurabble. So, for \(x \in X_i\), \[
+      F_i(x) = \int_{Y_i} f_i(x,y) \d\nu_i(t) = \int_Y f(x,y)
+      \chi_{Y_i}(y) \d\nu(y).
+    \]
+    So, since \(F_i\) is measurable on \(X_i\), \(\tilde{F}_i\) is
+    measurable on \(X\). Now, since \(\tilde{F}_i \to F\) pointwise,
+    then applying MCT in \(Y,\nu\) gets us that \(F\) is
+    \((\M,\B_{[0,\infty]})\)-measurable and the same argument applies
+    for \(\tilde{G}_i := \int_x f(x,y)\chi_{X_i}(x) \chi_{Y_i}(y)
+    \d\mu(x)\). \\
+    
+    Finally, we use Tonelli for finite measures and MCT to get
+    \begin{align*}
+      \int f(x,y) &\chi_{X_i}(x)\chi_{Y_i}(y) \d(\mu \ox \nu)
+      & =\int_{X_i \times Y_i} f_i \d(\mu_i \ox \nu_i)
+      &  = \int_X  \left(\int_Y f(x,y) \chi_{X_i}(x) \chi_{Y_i}(y)
+        \d\nu(y)\right) \d\mu(x) \\
+      \downarrow & &&  \downarrow \\
+      \int_{X \times Y} & f \d(\mu \ox \nu)
+       && = \int_X  \int_Y f(x,y)\d\nu(y \d\mu(x))
+    \end{align*}
     % This seems fishy, but by the
     % monotone class lemma, we get \(\cC(A) = \M(\A)\), so the theorem
     % is true for all \(E \in \M(\A) = \M(\Ep) = \M \ox \N\). 
   \end{itemize}
-  Finally, to get Tonelli for arbitrary functions, see Folland p 67 or
-  attempt to use the monotone convergence theorem to get from
-  nonnegative simple functions to arbitrary measurable functions.
 \end{proof}
 \begin{rmk}
   Note that \(f(x,y)\) jointly measurable in \([0,\infty]\) is
