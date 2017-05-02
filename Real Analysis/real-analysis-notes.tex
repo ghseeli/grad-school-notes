@@ -5,16 +5,17 @@
 \usetikzlibrary{cd}
 \newcommand{\mathbbm}[1]{\text{\usefont{U}{bbm}{m}{n}#1}} % from mathbbm.sty
 \numberwithin{thm}{section}
-\renewcommand{\P}{\mathcal{P}}
-\renewcommand{\A}{\mathcal{A}}
-\newcommand{\M}{\mathcal{M}}
+\renewcommand{\P}{\mathcal{P}} % power set
+\renewcommand{\A}{\mathcal{A}} % algebra of sets
+\newcommand{\M}{\mathcal{M}} % sigma algebra
 \newcommand{\F}{\mathcal{F}}
 \newcommand{\E}{\mathcal{E}}
-\newcommand{\Ep}{\mathcal{E}}
+\newcommand{\Ep}{\mathcal{E}} % Elementary family
 \newcommand{\Top}{\mathcal{T}} % Topology
 \newcommand{\cL}{\mathcal{L}}
 \newcommand{\cN}{\mathcal{N}}
 \newcommand{\cS}{\mathcal{S}}
+\newcommand{\cC}{\mathcal{C}} % monotone class and cont functions
 \newcommand{\norms}{\cN}
 \newcommand{\K}{\mathbb{K}} % Arbitrary field
 \newcommand{\supp}{\operatorname{Supp}}
@@ -1539,7 +1540,8 @@ Then, $F$ is increasing, right continuous, and $\mu = \mu_F$.
   \]
 \end{lem}
 \begin{proof}[Proof of lemma]
-  $\mu(E) \leq \inf \left\{ \sum_{i=1}^\infty \mu((a_i,b_i)) \text{
+  Note, Folland also proves this as Lemma 1.17 on page 35.\\
+  First, $\mu(E) \leq \inf \left\{ \sum_{i=1}^\infty \mu((a_i,b_i)) \text{
         finite} \mid E
       \subset \Union_{i=1}^\infty (a_i,b_i) \right\}$ by
     subadditivity. Now, we break into cases.
@@ -1549,21 +1551,26 @@ Then, $F$ is increasing, right continuous, and $\mu = \mu_F$.
         \mu(E) = \mu^+(E) := \inf\{ \sum \mu(A_n) \mid E \subset
         \Union_{n=1}^\infty A_n, A_n \in \A\}.
       \]
-      Let $\epsilon > 0$. Then there exists $A_n \in \A$ such that
-      $\sum_{n=1}^\infty \mu(A_n) \leq \mu(E) + \epsilon$. Then,
+      Let $\epsilon > 0$. Then there exists a sequence of $A_n \in \A$ such that
+      $\sum_{n=1}^\infty \mu(A_n) \leq \mu(E) + \epsilon$ and \(E
+      \subset \Union A_n\). So,
       decompoising $A_n$ into elements of $\Ep$ and renumbering, we
       can assume without loss of generality that $A_n \in \Ep$, since
       if $A_n \not \in \Ep$, we can just take $A_n = A_n \intersect
-      (-m,m)$ with $E \subset (-m,m)$. So, now, take $A_n = (\alpha_n,
+      (-m,m)$ using the assumption $E \subset (-m,m)$. So, now, take $A_n = (\alpha_n,
       \beta_n) \subset \R$. Then, we get that $\mu(A_n) = F(\beta_n) -
       F(\alpha_n)$. Thus, there exists a $\delta_n > 0$ with
       $F(\beta_n + \delta_n) \leq F(\beta_n) +
       \frac{\epsilon}{2^n}$. Therefore, $A_n \subset
       (\alpha_n, \beta_n + \delta_n) \subset (\alpha_n, \beta_n +
       \delta_n]$ and so $\mu((\alpha_n,\beta_n+\delta_n)) \leq
-      F(\beta_n + \delta_n) - F(\beta_n) \leq
-      \frac{\epsilon}{2^n}$. Finally, adding all these terms together
-      yields the desired result.
+      \mu((\alpha_n,\beta_n)) + \frac{\epsilon}{2^n}$. Finally, adding
+      all these terms together 
+      yields the desired result that \[
+        \sum_{n=1}^\infty \mu((\alpha_n,\beta_n+\delta_n]) \leq
+        \sum_{n=1}^\infty \mu((\alpha_n,\beta_n]) + \epsilon \leq
+        \mu(E) + 2 \epsilon
+      \]
     \item ($E$ is unbounded.) If $\mu(E) = \infty$, then we trivially
       get equality. So, let $\mu(E) < \infty$ and let $\epsilon >
       0$. Also, let $g \from \N \to \Z$ be the bijection $g(2k) = k$
@@ -1593,7 +1600,7 @@ Then, $F$ is increasing, right continuous, and $\mu = \mu_F$.
     \item ($\mu_F$ is finite on compact sets).
       $\mu_F$ is finite on compact sets by definition.
     \item (Outer regularity). We have the $\leq$ direction from
-      monotonicity and thus equality if $mu(E) = \infty$. Now, assume
+      monotonicity and thus equality if $\mu(E) = \infty$. Now, assume
       that $\mu(E) < \infty$. Our lemma tells us that \[
         \mu(E) = \inf \left\{ \sum \mu((a_i,b_i)) \mid a_i < b_i
           \text{ finite}, E \subset \Union_{i=1}^\infty (a_i,b_i) \right\}
@@ -1601,7 +1608,7 @@ Then, $F$ is increasing, right continuous, and $\mu = \mu_F$.
       Next, take $\epsilon > 0$. Then, there exists $a_i,b_i$ such
       that $\sum \mu((a_i,b_i)) \leq \mu(E) +\epsilon$ by
       subadditivity. Now, take $V = \Union_{i=1}^\infty (a_i,b_i)$
-      (open) to get $\mu(V) \leq \mu(E) + \epsilon$. Buth $\epsilon$
+      (open) to get $\mu(V) \leq \mu(E) + \epsilon$. But $\epsilon$
       was arbitrary, so $\mu(E) = \inf\{ \cdots \}$ as desired.
     \item (Inner regularity). The $\geq$ direction is trivial, so we
       only need to show $\leq$. We can also reduce to $E$ being
@@ -1611,7 +1618,7 @@ Then, $F$ is increasing, right continuous, and $\mu = \mu_F$.
       $m$ such that $\mu(E \intersect [-m,m]) > \alpha$. Now, if $E$
       is bounded, there exists a
       compact $K \subset E \intersect [-m,m] \subset E$ with $\mu(K) >
-      \alpha > \mu(E)$. Thus, for all $\alpha$, we have $\sup \{\mu(K)
+      \alpha$. Thus, for all $\alpha$, we have $\sup \{\mu(K)
       \mid \text{ compact }K \subset E\} \geq \mu(E)$. Now assume that
       $E$ is bounded. Then, there exists an $m \in \N$ such that $E
       \subset [-m,m]$. Let $\epsilon > 0, F = [-m,m] \setminus E$, and
@@ -3067,7 +3074,7 @@ following lemma
   \]
   and so \((f_n)\) converges in \(L^1\). Thus, \(L^1\) is complete.
 \end{proof}
-\subsection{\(L^p\) spaces}
+\section{\(L^p\) spaces}
 We have introduced the space \(L^1\), but this notion can be
 generalized to the idea of \(L^p\) spaces for \(1 \leq p \leq
 \infty\). For now, we will postpone the discussion of \(p = \infty\).
@@ -3426,7 +3433,7 @@ Now, we go into two important examples.
   \begin{prop}
     The following are equivalent for \(L \from V \to W\) linear.
     \begin{enumerate}
-    \item \(L\)is continuous.
+    \item \(L\) is continuous.
     \item \(\exists c \geq 0\) such that, for all \(x \in V\), we get
       \(\norm[L(x)]_W \leq c \norm[x]_V\).
     \item \(L\) sends bounded sets to bounded sets.
@@ -3670,9 +3677,174 @@ Now, we go into two important examples.
     \end{align*}
   \end{enumerate}
 \end{proof}
-
-
 \subsection*{(4/20/17) Lecture 24}
+In this lecture, we will seek to go into more detail about all the
+things we skipped in the proof of Tonelli's Theorem.
+\begin{proof}[Proof for Tonelli when (\(f = \chi_E,\ E \in \M \ox \cN\))]
+  In this case, the theorem
+    says
+    \begin{align*}
+      x \mapsto \nu(E_x) \text{ is measurable}\\
+      y \mapsto \mu(E_y) \text{ is measurable}
+    \end{align*}
+    and that \[
+      (\mu \ox \nu)(E) = \int_X \nu(E_x) \d\mu(x) = \int_Y \mu(E_y) d\nu(y)
+    \]
+    So, to prove this, let \(A \times B = E \in \Ep\) with \(A \in
+    \M\) and \(B \in \cN\). Then, \[
+      \nu(E_x) = \int_Y \chi_E(x,y) \d\nu(y) = \int_Y \chi_A(x)\chi_B(y)
+      \d\nu(y) = \chi_A(x)\nu(B)
+    \]
+    which is clearly a measurable function. One argues likewise for the
+    measurability of \(y \mapsto \mu(E_y)\). Now, by definition, we
+    get \[
+      (\mu \ox \nu)(E) = \mu(A)\nu(B) = \int_X \chi_A(x) \nu(B)
+      \d\mu(x) = \int_X \nu(E_x) \d\mu(x)
+    \]
+    and similarly for \(\int_Y \mu(E_y) \d\nu(y) = (\mu \ox \nu)(E)\).
+  \end{proof}
+  For the next step of our proof, we need the following definition and
+  some lemmas and propositions.
+  \begin{defn}
+    Let \(X\) be a set and \(\cC \subset \P(X)\). \(\cC\) is called a
+    \de{monotone class} if
+    \begin{itemize}
+    \item \(\emptyset \in \cC\),
+    \item \(\cC\) is closed under countable increasing union,
+    \item \(\cC\) is closed under countable decreasing intersection.
+    \end{itemize}
+  \end{defn}
+  \begin{prop}
+    Given any set of subsets \(\F \subset \P(X)\), there is a unique
+    smallest monotone class containing \(\F\) denoted \(\cC(\F)\). 
+  \end{prop}
+  \begin{proof}[Proof of Proposition]
+    Let \[
+\Omega := \{\cC \in \P(\P(X)) \st \cC \text{ is a monotone
+      class and }\cC \supset \F\}.
+  \]
+  Then, \(\cC(\F) := \Intersect_{\cC \in \Omega} \cC\), the
+  intersection of all monotone classes containing \(\F\). It is
+  straightforward to show that this is a monotone class containing
+  \(\F\). 
+\end{proof}
+\begin{lem}[Monotone Class Lemma; Folland 2.35 p 66]
+  If \(\A\) is an algebra of sets in \(X\), then \(\cC(\A) = \M(\A)\).
+\end{lem}
+\begin{proof}[Proof of Lemma]
+  Since \(\M(\A)\) a \s algebra, it is trivially a monotone class and
+  so \(\cC(\A) \subset \M(\A)\). To show the other direction, we need
+  to show that \(\cC(\A)\) is a \s algebra. Let \(E \in \cC :=
+  \cC(A)\). Then, define \[
+    \cC_E := \{E \in \cC \st E \setminus F, F \setminus E, E
+    \intersect F \in \cC\}.
+  \]
+  Then, we trivially get \(\emptyset \in \cC_E\) and \(E \in
+  \cC_E\). We also note that if \(E,F \in \cC\), then \[
+    E \in \cC_F \iff E \setminus F, F \setminus E, E \intersect F \in
+    \cC \iff F \in \cC_E
+  \]
+  So, we seek to show, for \(E \in \cC\), that \(\cC_E\) is a monotone
+  class. \\
+
+  If \(F_1 \subset F_2 \subset \cdots \in \cC_E\), then
+  \begin{align*}
+    E \setminus \left( \Intersect_{j=1}^\infty F_j \right)
+    & = E \intersect \left( \Union F_j \right)^c \\
+    & = E \intersect \left( \Intersect F_j^c \right) \\
+    & = \Intersect_j \left( E \intersect F_j^c \right) \\
+    & = \Intersect_j (E \setminus F_j)
+  \end{align*}
+  is a decreasing sequence with \(E \setminus F_j \in \cC\). Since
+  \(\cC\) is a monotone class, we get that \(E \setminus F \in \cC\)
+  where \(F = \Union_{j=1}^\infty F_j\). We also get \(F \setminus E =
+  \Union_j (F_j \setminus E)\) an increasing sequence with \(F_j
+  \setminus E \in \cC\), so \(F \setminus E \in \cC\). Finally, \(E
+  \intersect F = \Union_j (E \intersect F_j)\) is increasing, so \(E
+  \intersect F \in \cC\). Thus, \(\cC_E\) is a monotone class. \\
+
+  Now, we show that \(\cC\) is a \s algebra. If \(E \in \A\), then
+  for all \(E \in \A\), we get \(F \in 
+  \cC_E\) because \(\A\) is an algebra. So, for all \(E \in \A\), we
+  get \(\A \subset \cC_E\) and thus \(\cC(\A) \subset \cC_E\). In
+  other words, for all \(E \in \A\) and for all \(F \in \cC\), we get
+  \(F \in \cC_E\) and \(E \in \cC_F\). However, by above, this also
+  means that, for all \(F \in \cC\) and \(E \in \A\), we get \(E \in
+  \cC_F\) and so \(\A \subset \cC_F\). Thus, \(\cC(\A) \subset
+  \cC_F\). Finally, for all \(E,F \in \cC\), we have \(E \in \cC_F\)
+  and so we get \[
+    E \intersect F, E \setminus F, F \setminus E \in \cC
+  \]
+  and stability by monotone limits \(\implies \cC\) is a \s algebra.
+\end{proof}
+Now, we are ready to complete our proof of Tonelli's Theorem.
+\begin{proof}[Proof of Tonelli's Theorem]
+  \begin{itemize}
+  \item (\(\mu, \nu\) are finite). Let \(\cC = \{E \subset \M \ox \cN
+    \st \text{ Tonelli is true for }E\}\). Then, \(\Ep = \{A \times B
+    \st A \in \M, B \in \cN\} \subset \cC\). So, we need to show
+    \(\cC\) is a monotone class. Let \(E_n\) increase to \(E\) in \(\M
+    \ox \cN\). Then, from our proof for Tonelli on characteristic
+    functions, we have, for all \(n\), that
+    \begin{align*}
+      x \mapsto \nu((E_n)_x) \text{ is
+      }(\M,\B_{[0,\infty]})\text{-measurable} \\
+      y \mapsto \mu((E_n)_y) \text{ is
+      }(\cN,\B_{[0,\infty]})\text{-measurable} \\
+      (\mu \ox \nu)(E_n) = \int_X \nu((E_n)_x) \d\mu(x) = \int_Y
+      \mu((E_n)_y) \d\nu(y)
+    \end{align*}
+    Then, taking \(n \to \infty\), we note that the pointwise limits of
+    measurable functions are measurable, so the pointwise increasing
+    limit \(x \mapsto \nu(E_x)\) and \(y \mapsto \mu(E_y)\) are
+    measurable. So, we can use the
+    monotone convergence theorem and continuity from below to get
+    \begin{align*}
+      (\mu \ox \nu)(E_n)
+       = &\int_X \nu((E_n)_x) \d\mu(x)
+      & = \int_Y \mu((E_n)_y) \d\nu(y) \\
+      \text{continuity from below} \downarrow \ \ \ \ \   
+      & \text{ MCT in }X \downarrow
+      & \downarrow\text{MCT in }Y\\
+      (\mu \ox \nu)(E) =
+      & \int_X \nu(E_x) \d\mu(x)
+      & = \int_Y \mu(E_y) \d\nu(y)
+    \end{align*}
+    Thus, \(\cC\) is stable by increasing limits of sets. Since
+    \(\mu,\nu\) are finite by assumption, \(\cC\) is also stable by
+    decreasing limits of sets using the dominated convergence theorem.
+  \item (\(\mu,\nu\) are \s finite). This seems fishy, but by the
+    monotone class lemma, we get \(\cC(A) = \M(\A)\), so the theorem
+    is true for all \(E \in \M(\A) = \M(\Ep) = \M \ox \N\). 
+  \end{itemize}
+  Finally, to get Tonelli for arbitrary functions, see Folland p 67 or
+  attempt to use the monotone convergence theorem to get from
+  nonnegative simple functions to arbitrary measurable functions.
+\end{proof}
+\begin{rmk}
+  Note that \(f(x,y)\) jointly measurable in \([0,\infty]\) is
+  \emph{not} the same as separately measurable. 
+\end{rmk}
+\begin{thm}[Fubini's Theorem]
+  Let \(f \in \cL^1(X\times Y, \M \ox \cN, \mu \ox \nu, \K)\). Then,
+  \(f_x\) is measurable for all \(x \in X\)  and \(f_x \in \cL^1(Y)\)
+  for \(\mu\)-almost all \(x\). Similarly, \(f_y\) is measurable for
+  all \(y \in Y\) and \(f_y \in \cL^1(X)\) for \(\nu\)-almost all
+  \(y\). Furthermore, the functions
+  \begin{align*}
+    x \mapsto \int_X f(x,y) \d\nu(y) \in L^1(X) \\
+    y \mapsto \int_Y f(x,y) \d\mu(x) \in L^1(Y)
+  \end{align*}
+  and finally, \[
+    \int_{X \times Y} f \d(\mu \ox \nu) = \int_X \left( \int_Y f(x,y)
+      \d\nu(y) \right) \d\mu(x) = \int_Y \left( \int_X f(x,y) \d\mu(x)
+    \right) \d\nu(y)
+  \]
+\end{thm}
+\begin{proof}
+  For \(f \in \cL^1(X \times Y)\), one simply needs to note \(f = f_+
+  - f_-\) and use Tonelli's theorem on \(f_+\) and \(f_-\). 
+\end{proof}
 \subsection*{(4/25/17) Lecture 25}
 \subsection*{(4/27/17) Lecture 26}
 \subsection*{(5/2/17) Lecture 27}
