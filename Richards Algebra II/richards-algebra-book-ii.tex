@@ -50,7 +50,7 @@
 \newcommand{\blt}{$\bullet$}   \newcommand{\tn}{\textnormal}   \newcommand{\tb}{\textbf}   \newcommand{\mbb}{\mathbb}
 \newcommand{\bs}{\setminus}   \newcommand{\A}{\mathcal{A}}   \newcommand{\sy}{\textnormal{Syl}}   \newcommand{\size}[1]{\left| #1 \right|}
 \newcommand{\zx}[1]{(\z/#1\z)^{\times}}   \newcommand{\zn}[1]{\z/#1\z}   \newcommand{\pr}[1]{\textbf{Problem #1.}}   \newcommand{\abc}{(\alph*)}
-\newcommand{\nsg}{\mathrel{\unlhd}}   \newcommand{\ind}{\parindent24pt}   \newcommand{\vn}{\varnothing}
+\newcommand{\nsg}{\mathrel{\unlhd}}   \newcommand{\ind}{\parindent24pt}   \newcommand{\vn}{\varnothing}    \newcommand{\lar}{\longrightarrow}
 \newcommand{\ve}{\varepsilon}   \newcommand{\im}{\textnormal{im }}   \newcommand{\re}{\textnormal{Re }}   \newcommand{\mb}[1]{\mathbf{#1}}
 \newcommand{\lra}{\leftrightarrow}   \newcommand{\0}{\mathbf{0}}   \newcommand{\mc}[1]{\mathcal{#1}}   \newcommand{\hra}{\hookrightarrow}   \newcommand{\hla}{\hookleftarrow}
 \newcommand\myeq{\mathrel{\overset{\makebox[0pt]{\mbox{\normalfont\tiny\sffamily \textrm{def}}}}{=}}}
@@ -2024,7 +2024,7 @@ On the other hand,
 \vs
 
 \begin{exercise*}
-Generalizing part (d) above, show that if $I,J \nsg R$, then $R/I \otimes_R R/J \cong R/(I+j)$. 
+Generalizing part (d) above, show that if $I,J \nsg R$, then $R/I \otimes_R R/J \cong R/(I+J)$. 
 \end{exercise*}
 
 \vs
@@ -2039,14 +2039,84 @@ Let $M,N$ be $R$-modules and $S = \{e_i \mid i \in I\} \sub M$.
 \end{enumerate}
 \end{proposition}
 
-%Proof of 5.1.8 through 5.1.11 is missing
+\vs
 
-%The following lemma is actually 5.1.12
+\begin{defn}[Tensor Product of Homomorphisms]
+If $f : M \ra M'$, $g : N \ra N'$ are two $R$-module homomorphisms, then there is a unique well-defined $R$-linear map 
+	\[f \otimes g : M \otimes_R N \ra M' \otimes_R N', \quad m \otimes n \mapsto f(m) \otimes g(n) \]
+A special case of this is when $M = M'$, $f = \id_M$, then we get $\id_M \otimes g : M \otimes_R N \ra M\otimes N'$. In fact, $\id_M \otimes_R$ is a covariant functor $\tn{Mod}_R \ra \tn{Mod}_R$. 
+\end{defn}
+
+\vs
+
+\begin{proposition}
+For any $R$-module $P$, the functor $P \otimes_R$ is \tb{right exact}, i.e., if $L \overset{f}{\lar} M \overset{g}{\lar} N \lar 0$ is an exact sequence $R$-modules, then 
+	\[P \otimes_R L \overset{\id_P \otimes f}{\lar} P \otimes_R M \overset{\id_P \otimes g}{\lar} P \otimes_R N \lar 0 \]
+is exact. 
+\end{proposition}
+
+\begin{proof}
+There are three things to show.
+\begin{enumerate}
+\item[(1)] $g' := \id_P \otimes g$ is surjective. Take any simple tensor $p \otimes n \in P \otimes_R N$. Since $g$ is surjective, there exists $m \in M$ such that $g(m) = n$, hence $g'(p \otimes m) = p \otimes n$. Since $\im g'$ contains all simple tensors, $\im g' = P \otimes_R N$. 
+
+\item[(2)] $\im f' \sub \ker g'$, where $f' := \id_P \otimes f$. Since $\im f = \ker g$, $g \circ f = 0 \implies g' \circ f' = 0$, since 
+	\[g' \circ f'(p \otimes \ell) = g'(p \otimes f(\ell)) = p \otimes g(f(\ell)) = p \otimes 0 = 0 \]
+Hence $\im f' \sub \ker g'$. 
+
+\item[(3)] $\ker g' \sub \im f'$. Because of (2), there exists a well-defined surjective $R$-linear map $\wt{g'} : P \otimes_R M/\im f' P \otimes_R N$, $\ov{x} \mapsto g'(x)$. Note that $\wt{g'}$ is injective iff $\ker g' = \im f'$. We show that $\wt{g'}$ is an isomorphism by constructing an inverse $h : P \otimes_R N \ra P\otimes_R M/\im f'$ of $\wt{g'}$. \\
+
+Define an $R$-bilinear map $\phi : P \times N \ra P \otimes_R M/\im f'$ by $(p,n) \mapsto \ov{p \otimes m}$ with $g(m) = n$. Such $m$ exists since $g$ is surjective. We sort of used the Axiom of Choice right here. \\
+
+$\phi$ is well-defined. If $g(m') = n$, then $m-m' \in \ker g = \im f'$, so $m-m' = f(\ell)$ for some $\ell \in L \implies p \otimes (m-m') = f'(p \otimes \ell)$ $\implies \ov{p \otimes m} - \ov{p \otimes m'} = \ov{p \otimes (m-m')} = \ov{0}$. \\
+
+We apply the universal property of $P \otimes_R N$: 
+{\small\begin{tikzcd}
+P \times N \arrow{r}{\phi} \arrow[swap]{d}{\otimes}  & P \otimes_R M/\im f' \\
+ P \otimes_R N \arrow[dotted]{ur}{h} 
+\end{tikzcd}}
+
+The induced map $h : P \otimes_R N \ra P\otimes_R M/\im f'$ satisfies
+
+\begin{align*}
+h \circ \wt{g'}(\ov{p \otimes m}) &= h(g'(p \otimes m)) = h(p \otimes g(m)) = \ov{p \otimes m} \\
+\implies h \circ \wt{g'}(\ov{x}) &= \ov{x} \tn{ for all } \ov{x} \in P \otimes_R M/\im f' \\
+\implies \wt{g'} & \tn{ is injective} 
+\end{align*}
+This shows that $\wt{g'}$ is an isomorphism. As overkill, we can also observe that
+\[\wt{g'} \circ h(p \otimes n) = \wt{g'}(\ov{p \otimes m}) = g'(p \otimes m) = p \otimes g(m) = p \otimes n \]
+\end{enumerate}
+\end{proof}
+
+\vs
+
+\begin{remark}\ 
+\begin{enumerate}
+\item[(a)] $P \otimes_R$ usually does \tb{not} preserve injectivity, e.g., consider $\z \hookrightarrow \Q$ as $\z$-modules. Applying $\z_n \otimes_{\z}$ to the exact sequence $0 \lar \z \lar \Q$ give us
+	\[0 \lar \z_n \otimes_{\z} \z \lar \z_n \otimes_{\z} \Q, \]
+which is not exact since $\z_N \otimes_{\z} \z \cong \z$ and $\z_n \otimes_{\z} = 0$. 
+
+\item[(b)] For an $R$-module $P$, $P \otimes_R$ preserves injectivity iff $P \otimes_R$ is an exact functor. The ``$\impliedby$'' direction is clear, and for ``$\implies$'', we get by 5.1.10 that $P \otimes_R$ preserves short exact sequences which, as we shall soon see, implies that $P \otimes_R$ is exact. 
+\end{enumerate}
+\end{remark}
+
+\vs
+
+\begin{defn}
+An $R$-module $P$ is called \tb{flat} if $P \otimes_R$ is an exact functor (e.g., free $R$-modules, $D\inv R \otimes_R$). 
+\end{defn}
+
+\vs
+
+\begin{remark*}
+If $R$ is an integral domain with field of fractions $F$ and $M$ is an $R$-module, then $M$ flat $\implies M$ is torsion-free. Of course, if $R$ is a PID, then $M$ is flat $\iff M$ is torsion-free. 
+\end{remark*}
+
 
 Right now, we are working in $\tn{Mod}_R$, the category of $R$-modules, and whenever we talk about a functor $T : \tn{Mod}_R \ra \tn{Mod}_R$, we require that $T 0 = 0$, i.e., $T$ takes the zero module to the zero module. \\
 
 \begin{lemma}
-If a (covariant) functor $T : \tn{Mod}_R \ra \tn{Mor}_R$ preserves the exactness of a short exact sequence, then it is exact.
+If a (covariant) functor $T : \tn{Mod}_R \ra \tn{Mod}_R$ preserves the exactness of a short exact sequence, then it is exact.
 \end{lemma}
 
 \begin{proof}
@@ -2168,7 +2238,376 @@ For ``$\implies$'', if $F$ is the field of fractions of $R$, then by 5.1.11 (a) 
 
 Our first objective in this chapter is the so called ''extension of scalars''. We still assume that $R$ is a commutative ring with $1 \ne 0$. 
 
+\vs
+
+\begin{defn}[+ Remark]
+If $S$ is a (possibly non-commutative) ring with $1$ and $f : R \ra S$ is a ring homomorphism, then $S$ becomes an $R$-module via $r \cdot s := f(r) s$. If $\im f \sub Z(S)$, then $(S,f)$ is called an $\mb{R}$\tb{-algebra.} 
+\end{defn}
 
 
+\vs
+
+\begin{lemma}[+ Definition]
+Let $(S,f)$ be an $R$-algebra as in 5.2.1 and $M$ an $R$-module. Then $S \otimes_R M$, which is an $R$-module, can also be turned into an $S$-module with scalar multiplication satisfying $s \cdot (s' \otimes m) = ss' \otimes m$ for all $s,s' \in S, m \in M$. This $S$-module is called the \tb{extension of scalars} from $R$ to $S$ of $M$.
+\end{lemma}
+
+\begin{proof}
+For $s \in S$, consider the map $L_s : S \times M \ra S \otimes_R M$, $(s',m) \mapsto ss' \otimes m$. Then $L_s$ is $R$-bilinear. Bi-additivity is clear, and 
+\begin{align*}
+L_s(r \cdot s',m) = s f(r) s' \otimes m &= f(r) ss' \otimes m = f(r) \cdot L_s(s \otimes m
+\end{align*}
+and
+	\[L_s(s',r \cdot m') = ss' \otimes r \cdot m = r (ss' \otimes m) = r L_s(s' \otimes m) \]
+Therefore, $L_s$ induces an $R$-linear map $\lambda_s : S \otimes_R M \ra S \otimes_R M$ satisfying $\lambda_s(s' \otimes m) = ss' \otimes m$. It is straightforward to verify that the map $\lambda : S \ra \tn{End}_R(S \otimes_R M), s \mapsto \lambda_s$, is a ring homomorphism, providing an $S$-module structure on $S \otimes_R M$ by setting $s \cdot x := \lambda_s(x)$. 
+\end{proof}
+
+\vs
+
+In the following $(S,f)$ is an $R$-algebra.
+
+\vs
+
+\begin{corollary}
+If $M$ is a free $R$-module with basis $\{e_i \mid i \in I\}$, then $S \otimes_R M$ is a free $S$-module with basis $\{1 \otimes e_i \mid i \in I\}$. 
+\end{corollary}
+
+\begin{proof}
+By 5.1.8, every $x \in S \otimes_R M$ can be uniquely written as $x = \sum_{i \in I} s_i \otimes e_i = \sum_{i \in I} s_i ( 1 \otimes e_i)$. 
+\end{proof}
+
+\vs
+
+\begin{example}
+If $V$ is an $F$-vector space and $K/F$ is a field extension, then
+	\[V_K := K \otimes_F V \]
+is a $K$-vector space with $\dim_K V_K = \dim_F V$. 
+\end{example}
+
+\vs
+
+\begin{proposition}
+If $D \sub R \bs \{0\}$ is multiplicatively closed and $M$ is an $R$-module, then
+	\[D\inv R \otimes_R M \cong D\inv M \]
+as $D\inv R$-modules (and $R$-modules). 
+\end{proposition}
+
+\begin{proof}
+We have the canonical ring homomorphism $j : R \ra D\inv R, r \mapsto \frac{r}{1}$, between commutative rings, making $(D\inv R, j)$ an $R$-algebra and hence $D\inv R \otimes_R M$ a $D\inv R$-module (extension of scalars). \\
+
+Now define the map $\phi : D\inv R \times M \ra D\inv M$ by $(r/d,m) \mapsto (rm)/d$. Now $\phi$ is well-defined, since if $\frac{r}{d} = \frac{r'}{d'}$ for some $r,r' \in R, d,d' \in D$, then there exists $e \in D$ such that
+	\[e(d'r-dr') = 0_R \implies e(d'r-dr')m = 0_M \implies \frac{rm}{d} = \frac{r'm}{d'} \]
+Since $\phi$ is clearly $R$-bilinear, it induces by the universal property of tensor product the $R$-linear map $\Phi : D\inv R \otimes_R M \ra D\inv M$ satisfying $\frac{r}{d} \otimes m \mapsto \frac{rm}{d}$. \\
+
+We now define $\Psi : D\inv M \ra D\inv R \otimes_R M$ by $\frac{m}{d} \mapsto \frac{1}{d} \otimes m$. Now $\Psi$ is well-defined, for if $\frac{m}{d} = \frac{m'}{d'}$ for some $m,m' \in M, d,d' \in D$, then there exists $e \in D$ such that $e(d'm - dm') = 0_M \iff ed'm = edm'$, which implies that
+\begin{align*}
+\Phi \left(\frac{m}{d}\right) = \frac{1}{d} \otimes m = \frac{ed'}{ed' d} \otimes m = \frac{1}{ed' d} \otimes ed'm &= \frac{1}{ed'd} \otimes edm' \\
+&= \frac{ed}{ed'd} \otimes m' \\
+&= \frac{1}{d'} \otimes m' \\
+&= \Psi\left(\frac{m'}{d'}\right)
+\end{align*}
+With that established, it is clear to see from its definition that $\Psi$ is $R$-linear. We note that for all $r \in R, d \in D, m \in M$, we have
+\[\Phi \circ \Psi \left(\frac{m}{d}\right) = \Phi \left(\frac{1}{d} \otimes m\right) = \frac{1 \cdot m}{d} = \frac{m}{d} \]
+and
+\[\Psi \circ \Phi \left(\frac{r}{d} \otimes m\right) = \Psi \left(\frac{rm}{d}\right) = \frac{1}{d} \otimes rm = \frac{r}{d} \otimes m \]
+which is enough to show that $\Phi $ and $\Psi$ are inverses. Finally, note that $\Phi$ is also $D\inv R$-linear:
+\[\Phi \left(\frac{r}{d} \cdot \frac{r'}{d'} \otimes m\right) = \Phi \left(\frac{rr'}{dd'} \otimes m\right) = \frac{rr'm}{dd'} = \frac{r}{d} \cdot \frac{r'm}{d'} = \frac{r}{d} \Phi \left(\frac{r'}{d} \otimes m\right) \]
+Therefore, $D\inv M \cong D\in R \otimes_R M$ as $D\inv R$-modules. 
+\end{proof}
+
+\vs
+
+\begin{corollary}
+For all multiplicatively closed subsets $D \sub R \bs \{0\}$, $D\inv R$ is a flat $R$-module.
+\end{corollary}
+
+\begin{proof}
+This follows from 3.2.5 ($D\inv$ is exact) and 5.2.5. 
+\end{proof}
+
+\vs
+
+A special case of 5.2.5 is when $R$ is an integral domain, $D = R \bs \{0\}$. Then $F = D\inv R$ is a flat $R$-module, i.e., if $A \hookrightarrow B$ is an embedding, then $F \otimes_R A \hookrightarrow F \otimes_R B$ is also an embedding. \\
+
+\noindent \tb{Warning:} This does \tb{not} mean that the canonical map $A \ra F \otimes_R A, a \mapsto 1 \otimes a$, is an embedding, and if $A$ is a proper subset of $B$, then it does not necessarily follow that $F \otimes_R A$ is a proper subset (after the canonical inclusion) of $F \otimes_R B$. 
+
+\vs
+
+NOte that we can reformulate Definition 3.2.10 by saying that for $M$ an $R$-module $\rk M := \dim_F F \otimes_R M$ ($= \dim_F D\inv M$). 
+
+\section*{Tensor Products of Algebras}
+
+In this section, $(A,f)$ and $(B,g)$ are $R$-algebras, hence so is $A \otimes_R B$. Our goal is to make $A \otimes_R B$ an $R$-algebra. The most important application for this enterprise is when $R = F$ is a field, which leads to the discussion of the Brauer group of $F$. If $A \ne 0 \ne B$, then $f : R \ra A$ and $g : R \ra B$ are injective. One often identifies $F$ with $f(F) \sub A$, justifying the equivalence ``$A$ is an $F$-algebra iff $A$ contains $F$ as a subring of $Z(A)$.'' \\
+
+An important example of an algebra to keep in the back of your mind is the ring of Hamilton quaternions $\mbb{H}$, which is an $\R$-algebra but \tb{not} a $\C$-algebra. 
+
+\vs
+
+\begin{lemma}
+For $R$-algebras $A$ and $B$, $A \otimes_R B$ is an $R$-algebra with multiplication satisfying
+	\[(a \otimes b) (a' \otimes b') = aa' \otimes bb' \]
+The homomorphism $R \ra A \otimes_R B$ inducing this $R$-algebra structure is given by 
+	\[r \mapsto f(r) \otimes 1_B = r \cdot 1_A \otimes 1_B = 1_A \otimes r \cdot 1_B = 1_A \otimes g(r) \]
+\end{lemma}
+
+\begin{proof}
+This proof is similar to that of 5.2.2. Fix an element $(a,b) \in A \times B$, and define the $R$-bilinear map $\ell_{a,b} : A \times B \ra A \otimes_R B$ by $(a',b') \mapsto aa' \otimes bb'$, which induces the $R$-linear map $\lambda_{a,b} : A \otimes_R B \ra A\otimes_R B$, $a' \otimes b' \mapsto aa' \otimes bb'$. \\
+
+Note that $\lambda_{a,b} \in \tn{End}_R(A \otimes_R B) =: M$, which is an $R$-module. Now consider the $R$-bilinear map $\lambda : A \times B \ra M, (a,b) \mapsto \lambda_{a,b}$, which itself induces an $R$-linear map $\Lambda : A \otimes_R B \ra M$ satisfying $a \otimes b \mapsto \lambda_{a,b}$. 
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+\begin{tikzcd}
+A \times B \arrow{r}{\ell_{a,b}} \arrow[swap]{d}{\otimes} & A \otimes_R B \\
+A \otimes_R B \arrow[swap,dotted]{ur}{\lambda_{a,b}}
+\end{tikzcd} & 
+
+\begin{tikzcd}
+A \times B \arrow{r}{\lambda} \arrow[swap]{d}{\otimes} & M \\
+A \otimes_R B \arrow[swap,dotted]{ur}{\Lambda}
+\end{tikzcd} \\
+\hline 
+\end{tabular}
+\end{center} 
+
+We now define a binary operation $\cdot$ on $A \otimes_R B$ by $x \cdot y := \Lambda(x)(y)$. 
+
+\begin{enumerate}
+\item[$\bullet$] The distributive laws for $\cdot$ hold by the biadditivity of $\Lambda$: $\Lambda(x + x') = \Lambda(x) + \Lambda(x')$ and $\Lambda(x)(y + y') = \Lambda(x)(y) + \Lambda(x)(y')$. 
+\item[$\bullet$] $(a \otimes b) \cdot (a' \otimes b') = \lambda (a \otimes b)(a' \otimes b') = \lambda_{a,b}(a' \otimes b') = aa' \otimes bb'$. 
+\item[$\bullet$] $1 := 1_A \otimes 1_B$ is the two-sided multiplicative identity.
+\item[$\bullet$] The \tb{associative law}, in light of the distributive laws already established, need only be verified for simple tensors:
+\begin{align*} 
+[(a_1 \otimes b_1) \cdot (a_2 \otimes b_2)] \cdot (a_3 \otimes b_3) &= (a_1 a_2 \otimes b_1 b_2) \cdot (a_3 \otimes b_3) \\
+&= a_1 (a_2 a_3) \otimes b_1 (b_2 b_3) \\
+&= (a_1 \otimes b_2) \cdot (a_2 a_3 \otimes b_2 b_3) \\
+&= (a_1 \otimes b_1) \cdot [(a_2 \otimes b_2) \cdot (a_3 \otimes b_3)]
+\end{align*} 
+\end{enumerate}
+Therefore, $A \otimes_R B$ is a ring, and it is easy to see that the canonical map $h : R \ra A \otimes_R B, r \mapsto r \cdot 1_A \otimes_R 1_B = 1_A \otimes r \cdot 1_B$ is a ring homomorphism. Moreover, $h(R) \sub Z(A \otimes_R B)$, since for simple tensors
+	\begin{align*} 
+	h(r) (a \otimes b) = (f(r) \otimes 1_B)(a \otimes b) &= f(r) a \otimes b \\
+	&= a \otimes g(r) b \\
+	&= a \otimes b g(r) \\
+	&= (a \otimes b)(1_A \otimes g(r)) \\
+	&= (a \otimes b) h(r) 
+	\end{align*} 
+\end{proof}
+
+\vs
+
+\begin{remark}\ 
+\begin{enumerate}
+\item[(a)] $h : R \ra A \otimes_R B$ needn't be injective; in particular, $A \otimes_R B = \{0\}$ is possible. For example, $\mbb{F}_p \otimes \Q = \{0\}$ by 5.1.7 (c).
+\item[(b)] There are canonical $R$-algebra homomorphisms $j_A : A \ra A \otimes_R B, a \mapsto a \otimes 1_B$ and $j_B : B \ra A \otimes_R B, b \mapsto 1_A \otimes b$ with commuting images: $(a \otimes 1_B)(1_A \otimes b) = a \otimes b = (1_A \otimes b)(a \otimes 1_B)$. \\
+
+In general, $j_A$ and $j_B$ needn't be injective, but they \tb{are} if $R = F$ is a field and $A \ne \{0\} \ne B$. This follows from 5.1.8 (b) by extending $1_A$ to an $F$-basis of $A$ and $1_B$ to and $F$-basis of $B$. 
+\end{enumerate}
+\end{remark}
+
+\vs
+
+\begin{exercise}
+Formulate and prove an appropriate universal property for $(A \otimes_R B, j_A, j_B)$ in the category of $R$-algebras. 
+\end{exercise}
+
+
+
+
+
+\part{Fields}
+
+
+
+
+
+
+\chapter{Simple, Finite, and Algebraic Field Extension}
+
+
+
+Recall that for any ring $R$ we have the canonical homomorphism $\phi : \z \ra R$, $1 \mapsto 1_R$.
+
+\begin{defn}\ 
+\begin{enumerate}
+\item[(a)] $\phi(\z) \sub \R$ is called the \tb{prime subring} of $R$.
+\item[(b)] The \tb{characteristic} of $R$, denoted $\tn{char}(R)$, is defined as the unique element $n \in \N_0$ such that $\ker \phi = n\z$. Either $\tn{char}(R) = \min\{k \in \N \mid k \cdot 1_R = 0_R\}$ if this set is nonempty, or else $\tn{char}(R) = 0$. Note that $\tn{char}(R) = 1 \iff R = \{0_R\}$.
+\end{enumerate}
+\end{defn}
+
+\vs
+
+\begin{remark}
+The characteristic of an integral domain either a prime number or $0$, since $\z_k$ for $k \geq 2$ has nontrivial zero divisors when $k$ is not prime.
+\end{remark}
+
+\vs
+
+\begin{defn}
+Each field $F$ contains a unique minimal subfield $P$, called its \tb{prime subfield}. If $\tn{char}(F) = p > 0$, then $P = \phi(\z) \cong \z_p$. If $\tn{char}(F) = 0$, then $\phi$ is an embedding of $\z$ into $F$, hence $\Q$ also embeds into $F$ by Corollary 2.2.4. 
+\end{defn}
+
+\vs
+
+\begin{defn}
+If $K$ and $F$ are fields, we say that $K/F$ is a \tb{field extension} if $F$ is a subring of $K$ (in particular, $1_F = 1_K$). If $K/F$ is a field extension, then $K$ is also an $F$-vector space. We set $[K : F] = \dim_F K$, called the \tb{degree} of $K$ over $F$. $K/F$ is called \tb{finite} if $[K : F] < \infty$ and \tb{infinite} if $[K : F] = \infty$. 
+\end{defn}
+
+\vs
+
+\begin{proposition}
+If $F$ is a finite field, then $|F| = p^n$ where $p = \tn{char}(F)$ and $n = [F : \mathbb{F}_p]$. 
+\end{proposition}
+
+\begin{proof}
+Since $F$ is finite, $\tn{char}(F) \ne 0 \implies \tn{char}(F) = p$ for some prime $p$, hence $\mbb{F}_p \sub F$. Then $n := [F : \mbb{F}_p] < \infty$ because $F$ is finite, and $|F| = p^n$ by basis considerations. 
+\end{proof}
+
+\vs
+
+\begin{remark}\ 
+\begin{enumerate}
+\item[(a)] Later, we will show that if $q = p^n$ is a prime power, then there exists a unique (up to isomorphism) field of order $q$, denoted $\mbb{F}_q$. 
+\item[(b)] If $n \geq 2$, then $\mb{F}_{p^n} \ncong \z_{p^n}$ as the latter is not a field.
+\item[(c)] If $|F| = p^n$, then $(F,+) \cong (\mbb{F}_p^n,+) \cong (\z_{p}^n,+)$ (Corollary 1.2.14), and $(F\x,\cdot) \cong (\z_{p^n-1},+)$ (Corollary 2.3.15). 
+\end{enumerate}
+\end{remark}
+
+\vs
+
+\begin{lemma}
+If $L/K$ and $K/F$ are finite extensions, then $[L : F] = [L : K] [K : F]$.
+\end{lemma}
+
+\begin{proof}
+If $m := [L : K]$, then choose a $K$-basis $\{e_1,\dots,e_m\}$ of $L/K$; if $n := [K : F]$, choose an $F$-basis $\{f_1,\dots,f_n\}$ of $K$. Then $\{e_i f_j \mid 1 \leq i \leq m, 1 \leq j \leq n\}$ is an $F$-basis of $L/K$. The straightforward but messy details are left to the reader.
+\end{proof}
+
+\vs
+
+Fix a field extension $K/F$ and $\alpha \in K$. By the universal property of $F[x]$, we get a unique map $\phi_\alpha : F[x] \ra K$ satisfying $x \mapsto \alpha$ and $\phi_\alpha |_F = \id_F$. Then $F[x] = \im \phi_\alpha$. Define
+	\[F(\alpha) := \left\{\frac{p(\alpha)}{q(\alpha)} \in K  \bigg| \ q,p \in F[x], q(\alpha) \ne 0 \right\} \]
+Then $F(\alpha)$ is a subfield of $K$. In fact, $F(\alpha)$ is isomorphic to the field of fractions of $F[\alpha]$.
+
+\vs
+
+\begin{lemma}[+ Definition]
+Precisely one of the following holds:
+\begin{enumerate}
+\item[(a)] $\phi_\alpha$ is injective. Then $F[\alpha] \cong F[x]$ and $[F(\alpha) : F] = \dim_F F[\alpha] = \infty$, and $F[\alpha] \ne F(\alpha) \cong F(x)$ (the field of fractions of $F[x]$).
+\item[(b)] $\phi_\alpha$ is not injective. Then $F[\alpha] = F(\alpha)$, and $\dim_F F[\alpha] = [F(\alpha) : F] < \infty$. In this case, we say that $\alpha$ is \tb{algebraic over} $F$. 
+\end{enumerate}
+
+$K/F$ is called \tb{algebraic} if every $\alpha \in K$ is algebraic over $F$. $K/F$ is called \tb{simple} if there exists $\alpha \in K$ such that $K = F(\alpha)$. 
+\end{lemma}
+
+\begin{proof}
+(a) is clear. Suppose that $\phi_\alpha$ is not injective. Then $\ker \phi_\alpha \ne 0$, and $\ker \phi_\alpha \ne F[x]$ because $1 \in \im \phi_\alpha$, so $\ker \phi_\alpha = (f(x))$ where $f(x) \in F[x]\bs F \implies F[\alpha] \cong F[x]/(f(x))$. This implies that $F[x]/(f(x))$ is an integral domain $\overset{2.1.2 \ (a)}{\implies} f(x)$ is irreducible $ \implies f(x)$ is a maximal ideal $\overset{2.1.2 \ (b)}{\implies} F[x]/(f(x)) \cong F[\alpha]$ is a field, hence $F[\alpha] = F(\alpha)$ as $F(\alpha)$ is the ring of fractions of $F[\alpha]$. In this case, 
+	\[[F(\alpha) : F] = \dim_F F[\alpha] = \dim_F F[x]/(f(x)) = \deg(f(x)) < \infty \]
+\end{proof}
+
+\vs
+
+\begin{defn}[+ Remarks]
+If $\alpha \in K$ is algebraic over $F$, then $\ker \phi_\alpha = (\mu_{\alpha/F})$, where $\mu_{\alpha/F}$ is monic, called the \tb{minimal polynomial} of $\alpha$ over $F$. Note that $\mu_{\alpha/F} \in F[x]\bs F$ is irreducible in $F[x]$ since $F[x]/(\mu_{\alpha/F}) \cong F[\alpha]$ is an integral domain. If, additionally, $L$ is a field with $F \sub L \sub K$, then $\mu_{\alpha/L} \mid \mu_{\alpha/F}$, since $\mu_{\alpha/F} \in \ker(\phi_\alpha : L[x] \ra K) = (\mu_{\alpha/L})$. 
+\end{defn}
+
+\vs
+
+\begin{lemma}
+Let $K/F$ be a field extension. 
+\begin{enumerate}
+\item[(a)] If $K/F$ is finite, then $K/F$ is algebraic. 
+\item[(b)] If $K = F(\alpha_1,\dots,\alpha_n) = F(\alpha_1,\dots,\alpha_{n-1})(\alpha_n)$ and each $\alpha_i$ is algebraic over $F$, then $K/F$ is finite.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof} \
+\begin{enumerate}
+\item[(a)] If $[K : F] = n < \infty$, then for any $\alpha \in K$ we have $\dim_F F[\alpha] < \infty \overset{6.1.8}{\implies} \alpha$ is algebraic over $F$. 
+\item[(b)] By 6.1.7, 
+	\[[K : F] = \prod_{i=1}^n [F(\alpha_1,\dots,\alpha_i) : F(\alpha_1,\dots,\alpha_{i-1})] = \prod_{i=1}^n \deg \mu_{\alpha_i/F(\alpha_1,\dots,\alpha_{i-1})} \leq \prod_{i=1}^n \deg \mu_{\alpha_i/F} < \infty \]
+because each $\alpha_i$ is algebraic over $F$.
+\end{enumerate}
+\end{proof}
+
+\vs
+
+\chapter{Splitting Fields and Normal Field Extensions}
+
+
+
+In this chapter, $F$ is always a field. 
+
+\vs
+
+\begin{lemma}
+Let $f \in F[x] \bs F$ be a polynomial of degree $n \geq 1$. Then there exists a finite field extension $K/F$ with $[K : F] \leq n!$ such that $f$ \tb{splits} over $K$, i.e., $f = \ell(f) \prod_{i=1}^n (x-\alpha_i)$ where each $\alpha_i \in K$. 
+\end{lemma}
+
+\begin{proof}
+By induction on $n$. The base case $n=1$ is clear since $K = F$. \\
+
+For the induction step, let $n \geq 2$. $F[x]$ is a PID, so in particular, $F[x]$ is a UFD. Consider the prime factorization of $f$ in $f[x]$, and let $p$ be one such (irreducible) prime factor. Write $f = p g$ for some $g \in F[x]$. Define the field extension $K_1 := F[x]/(p)$ ($F$ naturally embeds into $K_1$ as a subfield). By construction, $K_1$ contains a root of $p$, namely $\alpha_1 := \ov{x} = x + (p)$. \\
+
+We have $p(\alpha_1) = 0 \overset{2.3.12}{implies} x-\alpha_1 \mid p$ in $K_1[x] \implies p(x) = (x-\alpha_1) p_1(x)$ for some $p_1(x) \in K_1[x]$ of degree $\deg p - 1$. We now apply the induction hypothesis to $K_1$ and $f_1 := p_1 g$ ($\deg f_1 = \deg f - 1$) to see that there exists a field extension $K/K_1$ ($K/F$ is also a field extension) with $[K : K_1] \leq (n-1)!$ and $f_1$ splits over $K$. But $\alpha_1 \in K_1 \sub K$, so $f$ splits over $K$. Moreover, 
+	\[[K : F] = [K : K_1] [K_1 : F] \leq (n-1)! \cdot n = n! \]
+\end{proof}
+
+\vs
+
+\begin{defn}
+Given $f \in F[x] \bs F$, a field extension $K/F$ is called a \tb{splitting field} of $f$ over $F$ if
+\begin{enumerate}
+\item[(i)] $f$ splits over $K$, and
+\item[(ii)] $f$ does not split over any intermediate field $K'$ with $F \sub K' \subsetneq K$.
+\end{enumerate}
+Note that if $K/F$ is the splitting field of $f$, then $K = K(\alpha_1,\dots,\alpha_n)$ if $\alpha_1,\dots,\alpha_n \in K$ are the roots of $f$.  
+\end{defn}
+
+\vs
+
+\begin{example}\ 
+\begin{enumerate}
+\item[(a)] If $F = \R$, then $K = \C$ is the splitting field of $f(x) = x^2+1, x^4+2, x^2+x+1,$ etc. over $\R$ (for any $f \in \R[x]$ which does not split over $\R$). 
+\item[(b)] $F = \Q(i)$ is the splitting field of $x^2 + 1$ over $\Q$. 
+\item[(c)] $\Q(\sqrt{2},\sqrt{3})$ is the splitting field of $(x^2-2)(x^2-3)$ over $\Q$, and $[\Q(\sqrt{2},\sqrt{3}) : \Q] = 4 < 4!$. 
+\item[(d)] Let $f = x^3-2 \in \Q[x]$. $f$ has roots $\sqrt[3]{2}, \zeta_3 \sqrt[3]{2}, \zeta_3^2 \sqrt[3]{2} \in \C$, where \\ $\zeta_3 = e^{2 \pi i/3} =(-1 + i \sqrt{3})/2$. The splitting field of $f$ over $\Q$ is $K = \Q(\sqrt[3]{2},\zeta_3)$, and \\ $[K : \Q] = [K : \Q(\sqrt[3]{2})] [\Q(\sqrt[3]{2}) : \Q] = 2 \cdot 3 = 3!$. 
+\end{enumerate}
+\end{example}
+
+\vs 
+
+\noindent \tb{Question:} Is the splitting field of a polynomial unique up to isomorphism? Yes! 
+
+\vs
+
+\begin{lemma}
+Let $\phi : F \ra F'$ be an isomorphism of fields, and $\wt{\phi} : F[x] \ra F'[x]$ the induced isomorphism satisfying $\wt{\phi}|_F = \phi$ and $\wt{\phi}(x) = x$. Suppose that $\alpha $ is algebraic over $F$ and $\alpha'$ is algebraic over $F'$ (in some field extensions), and suppose that $\wt{\phi}(\mu_{\alpha/F}) = \mu_{\alpha'/F'}$. Then there exists a unique field isomorphism $\sigma : F(\alpha) \ra F(\alpha')$ such that $\sigma(\alpha) = \alpha'$ and $\sigma|_F = \phi$. That is, the diagram below commutes: 
+
+\begin{center}
+\begin{tikzcd}
+F(\alpha) \arrow[dotted]{rr}{\exists ! \ \sigma\ :\ \alpha \mapsto \alpha'}[swap]{\wt{\qquad}} & & F'(\alpha') \\
+F \arrow[hook]{u} \arrow{rr}{\phi}[swap]{\widetilde{\qquad}} & & F' \arrow[hook]{u}
+\end{tikzcd}
+\end{center}
+\end{lemma}
+
+\begin{proof}
+Set $p = \mu_{\alpha/F} \in F[x] \bs F$ and $p' = \mu_{\alpha'/F'} \in F'[x] \bs F'$, both irreducible. Then $\wt{\phi}(p) = p' \implies \wt{\phi}((p)) = (p')$, hence $\wt{\phi}$ induces an isomorphism $\Phi : F[x]/(p) \ra F'[x]/(p')$ satisfying $\ov{x} \mapsto \ov{x}$ and $\Phi|_F = \phi$. If we let $\sigma : F(\alpha) \ra F'(\alpha')$ be the composite map
+	\[F(\alpha) \cong F[x]/(p) \overset{\Phi}{\lar} F'[x]/(p) \cong F'(\alpha'), \]
+then $\sigma$ is an isomorphism satisfying $\alpha \mapsto \ov{x} \mapsto \ov{x} \mapsto \alpha'$ and $\sigma|_F = \phi$. The uniqueness of $\sigma$ is clear, because every element of $F(\alpha)$ is expressible as a polynomial in $\alpha$ with coefficients in $F$. 
+\end{proof}
+
+\vs
+
+\begin{proposition}
+Let $\phi : F \ra F'$ be a field isomorphism and $\wt{\phi} : F[x] \ra F'[x]$ the associated ring isomorphism. Let $f \in F[x] \bs F, F' := \wt{\phi}(f) \in F'[x]$, $K/F$ the splitting field of $f$ over $F$, and $K'/F'$ the splitting field of $f'$ over $F'$. Then there exists a (not necessarily unique) field isomorphism $\sigma : K \ra K'$ such that $\sigma|_F = \phi$. 
+\end{proposition}
+
+\begin{proof}
+
+\end{proof}
+ 
 
 \end{document} 
