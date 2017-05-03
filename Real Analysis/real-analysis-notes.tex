@@ -24,6 +24,7 @@
 \newcommand{\ox}{\otimes}
 \newcommand{\ess}{\operatorname{ess}}
 \renewcommand{\emptyset}{\varnothing}
+\renewcommand{\H}{\mathcal{H}} % Hilbert space
 
 %%%%%%%%%%%%%%BEGIN CONTENT: %%%%%%%%%%%%%%
 
@@ -3953,5 +3954,71 @@ Much of this lecture has been incorperated into the proofs above.
     \]
   \end{enumerate}
 \end{cor}
+\begin{proof}
+  Omitted for now.
+\end{proof}
+Using this corollary, we now generalize to another one.
+\begin{cor}
+  Let \(\phi \in \cL^1(\R^d,\B_{\R^d},m,\K)\). Then,
+  \begin{enumerate}
+  \item For all \(c \in \R^d\), \[
+      \int_{\R^d} \phi(x+c) \d m(x) = \int_{\R^d} \phi(x) \d m(x)
+    \]
+  \item For all \(\lambda \in \R \setminus \{0\}\)m \[
+      |\lambda| \int_{\R^d} \phi(\lambda x_1, x_2, \ldots, x_d) \d
+      m(x) = \int_{\R^d} \phi(x) \d m(x).
+    \]
+  \item For all \(\sigma \in \Sym_d\), \[
+      \int_{\R^d} \phi(\sigma x) \d m(x) = \int_{\R^d} \phi(x) \d m(x)
+    \]
+  \end{enumerate}
+\end{cor}
+\begin{proof}
+  Omitted for now.
+\end{proof}
+\begin{cor}[Global Change of Variable Formula on \(\R^d\)]
+  Let \(T \from \R^d \to \R^d\) be an invertible linear transormation
+  and let \(f \in \cL^1(\R)\). Then, \[
+    |\det T| \int_{\R^d} f(T \vec{x}) \d m(x) = \int_{\R^d} f(\vec{x})
+    \d m(x)
+  \]
+\end{cor}
+\begin{proof}
+  Omitted for now.
+\end{proof}
+\subsection{Hilbert Spaces}
+\begin{defn}
+  A \de{pre-Hilbert space} \(\H\) is a \(\K\)-vector-space together
+  with a map \(\langle \cdot, \cdot \rangle \from \H \times \H \to
+  \K\) such that
+  \begin{enumerate}
+  \item For all \(u,v,w \in \H\), \(\langle u+v,w \rangle = \langle
+    u,w \rangle + \langle v,w \rangle\) and \(\langle u,v+w \rangle =
+    \langle u,v \rangle + \langle u,w \rangle\).
+  \item For all \(u,v \in \H\), \(\lambda \in \K\), \(\langle u,\lambda
+    v\rangle = \lambda \langle u,v \rangle\) and \(\langle \lambda u,
+    v \rangle = \ov{\lambda} \langle u,v \rangle\) where
+    \(\ov{\lambda}\) is the complex conjugate. (Note that this is the
+    convention in physics; sometimes the convention is flipped).
+  \item \(\langle u,v \rangle = \ov{\langle  v,u \rangle}\).
+  \item For all \(u \in \H\), \(\langle u,u \rangle \in [0,\infty)\).
+  \item If \(\langle u,u \rangle = 0\), then \(u = 0\). 
+  \end{enumerate}
+  More standarly, this is called an \de{inner product
+    space over \(\K\)}.
+\end{defn}
+\begin{rmk}
+  If \(\K = \R\), then properties (a) and (b) say the inner product is
+  bilinear. If \(\K=\C\), properties (a) and (b) say the form is
+  \de{sesquilinear}. Adding in (c) makes the form \de{Hermitian
+    sesquilinear}. Adding in (d) makes it \de{positive semidefinite}
+  and adding in (e) makes it \de{positive definite}.
+\end{rmk}
+\begin{prop}
+  Given \(\H\) a pre-Hilbert space and \(u \in \H\), \[
+    \norm[u] := \sqrt{\langle u,u \rangle}
+  \]
+  is a norm.
+\end{prop}
 \subsection*{(5/2/17) Lecture 27}
 \end{document}
