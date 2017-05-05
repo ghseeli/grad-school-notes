@@ -4020,5 +4020,109 @@ Using this corollary, we now generalize to another one.
   \]
   is a norm.
 \end{prop}
+
 \subsection*{(5/2/17) Lecture 27}
+\subsection*{(5/3/17) Bonus Lecture}
+\section{Appendix: Fourier-Laplace Theorem for Real Integrands}
+Understanding integrals of the form \[
+  \int_0^\epsilon e^{-x\phi(u)} \d u
+\]
+is a difficult problem using naive methods of calculus since \[
+  \int e^{-u^2} \d u
+\]
+has no closed form anti-derivative. However, using methods learned in this
+class and some elementary calculus results, we can get a handle on
+approximating this integral with a high degree of accuracy. First, we
+state an elementary theorem from undergraduate real analysis.
+\begin{thm}[Taylor's Theorem]
+  Let \(k \geq 1\) and \(f \from \R \to \R\)be \(k\) times
+  differentiable at the point \(a \in \R\). Then, there exists a
+  function \(h_k \from \R \to \R\) such that \[
+    f(x) = f(a) + f'(a)(x-a) + \frac{f''(a)}{2!}(x-a)^2 + \cdots +
+    \frac{f^{(k)}(a)}{k!}(x-a)^k + h_k(x)(x-a)^k
+  \]
+  where \(\lim_{x \to a} h_k(x) = 0\). One can also rewrite this as \[
+    f(x) = f(a) + f'(a)(x-a) + \frac{f''(a)}{2!}(x-a)^2 + \cdots +
+    \frac{f^{(k)}(a)}{k!}(x-a)^k + o((x-a)^k)
+  \]
+  using little-``oh'' notation.
+\end{thm}
+One can see this is simply an application of the Taylor series
+expansion, but only taking the Taylor series up to the first \(k+1\)
+terms. So, using this theorem, we know that \[
+  \int e^{-x \phi(u)} \d u = \sum_{k=1}^n \cdots + o\left( \frac{1}{x^n} \right).
+\]
+So, we ask, what happens to this function at \(u = c_c\) where
+\(\phi'(u_c)=0\)? We do the substitution \(v : = u - u_c\) to get \[
+  \int e^{-x \phi(u_c+v)} \d v
+\]
+So, for small enough radius, we get \(\phi(u_c + v) = \phi(u_c) +
+\phi'(u_c)v + \frac{\phi''(u_c)v^2}{2} + \cdots\). However,
+\(\phi'(u_c) = 0\) by our choice of \(u_c\). Thus,
+\begin{align*}
+  \int_{-\epsilon}^\epsilon e^{-x \phi(u_c+v)} \d v
+  & = \int_{-\epsilon}^\epsilon e^{-x \left( \phi(u_c) + \frac{v^2}{2}
+    \phi''(u_c) + \cdots\right)} \d v \\
+  & \approx e^{-x\phi(u_c)} \int_{-\epsilon}^\epsilon e^{-x \frac{v^2}{2}
+    \phi''(u_c)} \d v
+\end{align*}
+Now, using the substitution \(z := v \sqrt{x \phi''(u_c)}\), we get \[
+  \frac{e^{-x \phi(u_c)}}{\sqrt{x \phi''(u_c)}} \int_{- \epsilon
+    \sqrt{x \phi''(u_c)}}^{\epsilon \sqrt{x \phi''(u_c)}}
+  e^{-\frac{z^2}{2}} \d z
+\]
+However, as \(x \to \infty\), we get that the integral goes to
+\(\sqrt{2\pi}\) using the standard fact that \(\int_{-\infty}^\infty
+e^{-z^2} \d z = \sqrt{\pi}\). Thus, we get that \[
+  \int_{u_c-\epsilon}^{u_c+\epsilon} e^{-x \phi(u)} \d u \sim
+  \frac{e^{-x \phi(u_c)}}{\sqrt{x}} \sqrt{\frac{2\pi}{\phi''(u_c)}}
+\]
+Furthermore, as we demonstrated in Homework 7 with \(\phi(u) =
+u-\log(1+u)\), if \(\phi(u)\) is convex, one can bound the integral outside of
+\((u_c-\epsilon,u_c+\epsilon)\) by an \(o(1)\) function of \(x\) using
+the following version of Taylor's Theorem.
+\begin{thm}[Taylor's Theorem (Explicit Formula Version)]
+  Let \(f \from \R \to \R\) be \(k+1\) times differentiable on an
+  open interval \((a,x)\) and \(f^{(k)}\) be continuous on the closed
+  interval \([a,x]\) for \(a,x \in \R\). Then, \[
+    h_k(x)(x-a)^k = \frac{f^{(k+1)}(\zeta)}{(k+1)!}(x-a)^{k+1}
+  \]
+  for some \(\zeta \in (a,x)\). Furthermore, there also exists a
+  \(\zeta' \in (a,x)\) such that \[
+    h_k(x)(x-a)^k = \frac{f^{(k+1)}(\zeta')}{k!}(x-\zeta)^k(x-a)
+  \]
+\end{thm}
+This theorem can be proved using the Mean Value Theorem. For the sake
+of completeness, we also mention one other version of Taylor's Theorem
+\begin{thm}[Taylor's Theorem (Intergral Formula Version)]
+  Let \(f^{(k)}\) be absolutely continuous on \([a,x]\). Then, \[
+    h_k(x)(x-a)^k = \int_a^x \frac{f^{(k+1)}(t)}{k!} (x-t)^k \d t
+  \]
+\end{thm}
+Now, using Taylor's Theorem (Explicit Formula version), we get
+the following theorem.
+\begin{thm}[Fourier-Laplace Theorem for Real Piecewise Convex
+  Twice-Differentiable Phase Functions and Constant Amplitude Functions]
+  Let \(\phi \from \R \to \R\) be a \(k\)-times differentiable
+   function (with \(k \geq 2\)) on an interval
+   \((-\epsilon,\epsilon)\). If, on \((-\epsilon,\epsilon)\) 
+  \[
+    \phi(u) = \sum_{j=0}^k a_j u^j + h_k(u) u^k, \ \lim_{u \to \infty}
+    h_k(u) = 0
+  \]
+  where \(a_0,a_1 = 0\) and, if \(\phi(u)\) is convex and twice differentiable on \((a,-\epsilon)\)
+  and \((\epsilon,b)\). Then, \[
+    \int_{a}^b e^{-x \phi(u)} \d u \sim \frac{e^{-x
+        \phi(0)}}{\sqrt{x}} \sqrt{\frac{2\pi}{\phi''(0)}} (1+o(1))
+  \]
+\end{thm}
+\begin{proof}
+  Seems reasonable from above discussion, but may be missing something.
+\end{proof}
+As proved in Homework 7, this is a generalization of a method used
+to Stirling's
+Asymptotic Formula
+\begin{cor}[Stirling's Asymptotic Formula]
+\[  \Gamma(x+1) = \left( \frac{x}{e} \right)^x \sqrt{2\pi x}(1+o(1))\]
+\end{cor}
 \end{document}
