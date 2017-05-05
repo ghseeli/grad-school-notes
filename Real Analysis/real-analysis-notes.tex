@@ -4092,7 +4092,14 @@ the following version of Taylor's Theorem.
     h_k(x)(x-a)^k = \frac{f^{(k+1)}(\zeta')}{k!}(x-\zeta)^k(x-a)
   \]
 \end{thm}
-This theorem can be proved using the Mean Value Theorem. Thus, we get
+This theorem can be proved using the Mean Value Theorem. For the sake
+of completeness, we also mention one other version of Taylor's Theorem
+\begin{thm}[Taylor's Theorem (Intergral Formula Version)]
+  Let \(f^{(k)}\) be absolutely continuous on \([a,x]\). Then, \[
+    h_k(x)(x-a)^k = \int_a^x \frac{f^{(k+1)}(t)}{k!} (x-t)^k \d t
+  \]
+\end{thm}
+Now, using Taylor's Theorem (Explicit Formula version), we get
 the following theorem.
 \begin{thm}[Fourier-Laplace Theorem for Real Piecewise Convex
   Twice-Differentiable Phase Functions and Constant Amplitude Functions]
@@ -4103,7 +4110,7 @@ the following theorem.
     \phi(u) = \sum_{j=0}^k a_j u^j + h_k(u) u^k, \ \lim_{u \to \infty}
     h_k(u) = 0
   \]
-  where \(a_0,a_1 = 0\) and \(\phi(u)\) is convex and twice differentiable on \((a,-\epsilon)\)
+  where \(a_0,a_1 = 0\) and, if \(\phi(u)\) is convex and twice differentiable on \((a,-\epsilon)\)
   and \((\epsilon,b)\). Then, \[
     \int_{a}^b e^{-x \phi(u)} \d u \sim \frac{e^{-x
         \phi(0)}}{\sqrt{x}} \sqrt{\frac{2\pi}{\phi''(0)}} (1+o(1))
