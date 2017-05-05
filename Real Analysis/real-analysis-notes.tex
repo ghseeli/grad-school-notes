@@ -4081,7 +4081,7 @@ Furthermore, as we demonstrated in Homework 7 with \(\phi(u) =
 u-\log(1+u)\), if \(\phi(u)\) is convex, one can bound the integral outside of
 \((u_c-\epsilon,u_c+\epsilon)\) by an \(o(1)\) function of \(x\) using
 the following version of Taylor's Theorem.
-\begin{thm}[Taylor's Theorem]
+\begin{thm}[Taylor's Theorem (Explicit Formula Version)]
   Let \(f \from \R \to \R\) be \(k+1\) times differentiable on an
   open interval \((a,x)\) and \(f^{(k)}\) be continuous on the closed
   interval \([a,x]\) for \(a,x \in \R\). Then, \[
@@ -4109,7 +4109,11 @@ the following theorem.
         \phi(0)}}{\sqrt{x}} \sqrt{\frac{2\pi}{\phi''(0)}} (1+o(1))
   \]
 \end{thm}
-As proved in Homework 7, this is a generalization of Stirling's
+\begin{proof}
+  Seems reasonable from above discussion, but may be missing something.
+\end{proof}
+As proved in Homework 7, this is a generalization of a method used
+to Stirling's
 Asymptotic Formula
 \begin{cor}[Stirling's Asymptotic Formula]
 \[  \Gamma(x+1) = \left( \frac{x}{e} \right)^x \sqrt{2\pi x}(1+o(1))\]
