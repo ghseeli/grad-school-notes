@@ -2602,12 +2602,519 @@ then $\sigma$ is an isomorphism satisfying $\alpha \mapsto \ov{x} \mapsto \ov{x}
 \vs
 
 \begin{proposition}
-Let $\phi : F \ra F'$ be a field isomorphism and $\wt{\phi} : F[x] \ra F'[x]$ the associated ring isomorphism. Let $f \in F[x] \bs F, F' := \wt{\phi}(f) \in F'[x]$, $K/F$ the splitting field of $f$ over $F$, and $K'/F'$ the splitting field of $f'$ over $F'$. Then there exists a (not necessarily unique) field isomorphism $\sigma : K \ra K'$ such that $\sigma|_F = \phi$. 
+Let $\phi : F \ra F'$ be a field isomorphism and $\wt{\phi} : F[x] \ra F'[x]$ the associated ring isomorphism. Let $f \in F[x] \bs F, F' := \wt{\phi}(f) \in F'[x]$, $K/F$ the splitting field of $f$ over $F$, and $K'/F'$ the splitting field of $f'$ over $F'$. Then there exists a (not necessarily unique) field isomorphism $\sigma : K \ra K'$ such that $\sigma|_F = \phi$. \qquad \qquad
+\begin{tikzcd}
+K \arrow[dotted]{rr}{\sigma}[swap]{\wt{\qquad}} & & K' \\
+F \arrow[hook]{u} \arrow{rr}{\phi}[swap]{\widetilde{\qquad}} & & F' \arrow[hook]{u}
+\end{tikzcd}
+\end{proposition}
+
+
+\begin{proof}
+We show this by induction on $n := \deg f = \deg f'$. When $n = 1$, we have $K = F, K' = F'$, and so we simply take $\sigma = \phi$. \\
+
+For the induction step, let $n \geq 2$. Let $p \in F[x] \bs F$ be a monic irreducible factor of $f$ in $F[x]$ so that $f = pg$ for some $g \in F[x]$ with $\deg g < n$. If we define $p' := \wt{\phi}(p), g' := \wt{\phi}(g) \in F'[x]$, then $p'$ is irreducible in $F'[x]$ because $\wt{\phi}$ is an isomorphism, and we have
+	\[f' = \wt{\phi}(f) = \wt{\phi}(pg) = p' g' \]
+Now $K$ is the splitting field of $f$, and hence of $p$, over $F$, so there exists $\alpha \in K$ with $p(\alpha) = 0$. In the same way, there exists some $\alpha' \in K'$ with $p'(\alpha')$. Since $p,p'$ are irreducible and monic, $p = \mu_{\alpha/F}$ and $p' = \mu_{\alpha'/F'}$. Also, $\wt{\phi}(p) = p'$, so by Lemma 6.2.4 we have that that there exists an isomorphism $\sigma_1 : F(\alpha) \ra F'(\alpha')$ with $\sigma_1(\alpha) = \alpha'$ and $\sigma_1|_F = \phi$. \\
+
+Because $\alpha$ is also a root of $f$, $x-\alpha \mid f$ in $F[x]$, and in the same way $x-\alpha' \mid f'$ in $F'[x]$. That is, $f = (x-\alpha) f_1$ and $f' = (x-\alpha') f_1'$ for some $f_1 \in F[x] \bs F$ and $f_1' \in F'[x] \bs F'$ with $\deg f_1 = \deg f_1' = n-1$. Note that $K$ is the splitting field of $f_1$ over $F(\alpha)$ and $K'$ is the splitting field of $f_1'$ over $F'(\alpha')$. We apply the induction hypothesis to $f_1,f_1'$ and the isomorphism $\sigma_1 : F(\alpha) \ra F'(\alpha')$ to get that there exists an isomorphism $\sigma : K \ra K'$ satisfying $\sigma|_{F(\alpha)} = \sigma_1 \implies \sigma|_F = \sigma_1|_F = \phi$ to complete the proof. 
+\begin{center}
+\begin{tikzcd}
+K \arrow[dotted]{rr}{\sigma}[swap]{\wt{\qquad}} & & K' \\
+F(\alpha) \arrow[hook]{u} \arrow{rr}{\sigma_1}[swap]{\wt{\qquad}} & & F'(\alpha') \arrow[hook]{u} \\
+F \arrow[hook]{u} \arrow{rr}{\phi}[swap]{\widetilde{\qquad}} & & F' \arrow[hook]{u}
+\end{tikzcd}
+\end{center}
+\end{proof}
+
+\vs
+
+\begin{corollary}[of the above proof]
+In the situation of Proposition 6.2.5, if $p$ is any irreducible factor of $f$ in $F[x]$, $p' = \wt{\phi}(p) \in F'[x]$, $\alpha \in K$ is a root of $p$, and $\alpha' \in K'$ is a root of $p'$, then the field isomorphism $\sigma : K \ra K'$ can be chosen such that $\alpha \mapsto \alpha'$. 
+\end{corollary}
+
+\vs
+
+\begin{corollary}
+If $f \in F[x] \bs F$ and $K,K'$ are splitting fields of $f$ over $F$, then there exists an isomorphism $\sigma : K \ra K'$ with $\sigma|_F = \id_F$. 
+\end{corollary}
+
+\vs
+
+\begin{defn}\ 
+\begin{enumerate}
+\item[(a)] If $K/F$ and $L/F$ are field extensions, an $\mb{F}$\tb{-homomorphism} between $K$ and $L$ is a field homomorphism (necessarily injective) $\sigma : K \ra L$ such that $\sigma_F = \id_F$, i.e., $\sigma$ is $F$-linear.
+\item[(b)] an $\mb{F}$\tb{-automorphism} of a field extension $K/F$ is an $F$-homomorphism $\sigma : K \ra K$ which is bijective. The \tb{Galois group} of a (for us, finite) field extension $K/F$ is defined as the subgroup
+	\[G(K/F) := \{\sigma : K \ra k \mid \sigma \tn{ is an } F\tn{-automorphism}\} \]
+of $\aut(K)$. 
+\end{enumerate}
+\end{defn}
+
+\vs
+
+\begin{lemma}
+Let $K$ be the splitting field over $F$ of some $f \in F[x]\bs F$, and let $L/K$ be any field extension.  Then any $F$-homomorphism $\sigma : K \ra L$ satisfies $\sigma(K) = K$. 
+\end{lemma}
+
+\begin{proof}
+If $\alpha_1,\dots,\alpha_m \in K$ are the (not necessarily distinct) roots of $f$, then $K = F(\alpha_1,\dots,\alpha_m) \implies f = \ell(f) \prod_{i=1}^m (x-\alpha_i)$ in $K[x]$. Now $\sigma : K \ra L$ induces a ring homomorphism $\wt{\sigma} : K[x] \ra L[x]$ where $\wt{\sigma}|_{F[x]} = \id_{F[x]}$ and $\wt{\sigma}|_K = \sigma$. Because $f \in F[x]$, $\wt{\sigma}(f) = f$. But
+	\[\wt{\sigma}(f) = \wt{\sigma}\left(\ell(f) \prod_{i=1}^{m} (x-\alpha_i)\right) = \ell(f) \prod_{i=1}^m (x-\sigma(\alpha_i)) \in K[x]\]
+Since $K[x]$ is a UFD, $\{\sigma(\alpha_1),\dots,\sigma(\alpha_m)\} = \{\alpha_1,\dots,\alpha_m\}$. Therefore,
+	\[\sigma(K) = \sigma(F(\alpha_1,\dots,\alpha_m)) = F(\sigma(\alpha_1),\dots,\sigma(\alpha_m)) = F(\alpha_1,\dots,\alpha_m) = K \]
+\end{proof}
+
+\vs
+
+\begin{defn}
+An algebraic extension $K/F$ is called \tn{normal} if every irreducible polynomial $f \in F[x] \bs F$ which has a root in $K$ splits over $K$. 
+\end{defn}
+
+\vs
+
+\begin{theorem}
+A finite field extension $K/F$ is normal if and only if $K$ is the splitting field of some polynomial $f \in F[x] \bs F$. 
+\end{theorem}
+
+\begin{proof}
+Note that because $K/F$ is finite, $K = F(\alpha_1,\dots,\alpha_m)$ for some $\alpha_1,\dots,\alpha_m \in K$. If $K/F$ is normal, then $\mu_{\alpha_i/F}$ splits over $K$ for each $1 \leq i \leq m$, hence $K$ is the splitting field over $F$ of $\prod_{i=1}^m \mu_{\alpha_i/F} \in F[x]$. \\
+
+Assume $K$ is the splitting field over $F$ of some $f \in F[x] \bs F$. Let $p \in F[x]$ be a monic irreducible polynomial such that $K$ contains a root $\alpha$ of $p$, i.e., $p = \mu_{\alpha/F}$. Let $L$ be the splitting field of $P$ over $K$, so $L$ is also the splitting field of $pf \in F[x]$ over $F$. Let $\alpha' \in L$ be any root of $p$. It follows from Corollary 6.2.6 that there exists $\sigma \in G(K/F)$ with $\sigma(\alpha) = \alpha'$. We now apply Lemma 6.2.9 to the $F$-homomorphism $\sigma|_K : K \ra L$ to see that $\sigma(K) = K \implies \alpha' \in \sigma(K) = K$. 
+\end{proof}
+
+\vs
+
+\begin{corollary}
+If $K/F$ is a finite normal field extension and $p \in F[x]$ is irreducible having one, and hence all, of its roots in $K$, then $G(K/F)$ acts transitively on the set of roots of $p$. 
+\end{corollary}
+
+\vs
+
+\begin{corollary}
+Let $K/F$ be a finite normal field extension and $L/K$ a finite extension.
+\begin{enumerate}
+\item[(a)] There exists an exact sequence 
+	\[1 \lar G(L/K) \overset{\iota}{\lar} G(L/F) \overset{\tn{res}}{\lar} G(K/F) \]
+
+\item[(b)] If $L/F$ is normal, then $\tn{res} : G(L/F) \ra G(K/F)$ is surjective, i.e., we can complete the exact sequence above to a short exact sequence
+\[1 \lar G(L/K) \overset{\iota}{\lar} G(L/F) \overset{\tn{res}}{\lar} G(K/F) \lar 1 \]
+\end{enumerate}
+\end{corollary}
+
+\begin{proof}\ 
+\begin{enumerate}
+\item[(a)] We have $\sigma(K) = K$ for all $\sigma \in G(K/F)$ by Lemma 6.2.9, hence $\sigma|_K : K \ra K$ is an isomorphism for all $\sigma \in G(K/F)$. The fact that $\tn{res}$ is a group homomorphism is clear. For $\sigma \in G(L/F)$, $\sigma \in \ker(\tn{res}) \iff \sigma|_K = \id_K \iff \sigma \in G(L/K)$.  
+
+\item[(b)] Since $L/F$ is normal and finite, we have by Theorem 6.2.11 that $L$ is the splitting field over $F$ of some $f \in F[x] \bs F$. Then $L$ is also the splitting field over $K$ of $f$. Now pick any $\phi \in G(K/F)$. By Proposition 6.2.5, $\phi$ extends to an isomorphism $\sigma : L \ra L$, so in particular $\sigma|_F = \phi|_F = \id_F \implies \sigma \in G(L/F)$. Since $\tn{res}(\sigma) = \phi$, this shows that $\tn{res}$ is surjective. 
+\end{enumerate}
+\end{proof}
+
+\vs
+
+\begin{remark*}
+Is $\tn{res}$ necessarily surjective if $L/K$ is normal? The answer is no. Consider $L = \Q(\sqrt[4]{2}), K = \Q(\sqrt{2}), F = \Q$. $K/F$ and $L/K$ are the splitting fields of $x^2-\sqrt{2}$ and $x^2-2$, respectively, hence both are finite normal extensions. Consider $\sigma \in G(K/F)$ defined by $\sigma(\sqrt{2}) = -\sqrt{2}$. We claim $\sigma \notin \im \tn{res}$. Let $\tau \in G(L/F)$. Note that $\tau(\sqrt[4]{2}) = \pm \sqrt[4]{2}$ as $\mu_{\sqrt[4]{2}/\Q} = x^4-2$ has only the roots $\pm \sqrt[4]{2}$ in $L$. But then
+	\[\tau(\sqrt{2}) = \tau((\sqrt[4]{2})^2) = \tau(\sqrt[4]{2})^2 = (\pm \sqrt[4]{2})^2 = \sqrt{2} \]
+Therefore, $\tn{res}(\tau) \ne \sigma$, and it follows that $\sigma \notin \im \tn{res}$. 
+\end{remark*}
+
+\vs
+
+\begin{example}\ 
+\begin{enumerate}
+\item[(a)] If $[K : F] = 2$, then $K/F$ is normal. 
+\item[(b)] $\Q(\sqrt{2},\sqrt{3})$ is the splitting field over $\Q$ of $(x^2-2)(x^2-3)$. 
+\item[(c)] $\Q(\sqrt[3]{2})/\Q$ is not normal, since $e^{2 \pi i/3} \notin \Q(\sqrt[3]{2})$. 
+\end{enumerate}
+\end{example}
+
+\vs
+
+\begin{proposition}[+ Notation]
+If $F$ is a finite field with $q = p^n$ elements (see 6.1.5), then $F$ is the splitting field over $\mbb{F}_p$ of $x^q-x$ (or $x^{q-1}-1)$. In particular, any two fields with $q$ elements are isomorphic in light of Corollary 6.2.7. Therefore, we can use the notation $F = \mbb{F}_q$ unambiguously. 
 \end{proposition}
 
 \begin{proof}
-
+We have $|F| = q \implies |F\x| = q-1$, so $\alpha^{q-1} = 1 \implies \alpha^q = \alpha$ for all $\alpha \in F\x$ by Lagrange's theorem. That is, every element of $F$ is a root of $x^q-x$, and $x^q-q$ has at most $q$ elements, so $F$ is precisely the set of roots of $x^q-x$ from which it follows that $F$ is the splitting field. 
 \end{proof}
+
+
+
+
+\chapter{Separable Polynomials and Field Extensions}
+
+
+
+In this chapter, $F$ always denotes a field, $f \in F[x] \bs F$ is a nonconstant polynomial, $K$ is generally the splitting field over $F$ of $f$, and $\alpha \in K$ is a root of $f$. 
  
+ 
+ \vs
+ 
+ \begin{defn}\ 
+ \begin{enumerate}
+ \item[(a)] If $(x-\alpha)^n \mid f$ and $(x-\alpha)^{n+1} \nmid f$ in $K[x]$, then $n$ is called the \tb{multiplicity} of the root $\alpha$ of $f$. If $n = 1$, then $\alpha$ is called a \tb{simple root} of $f$. If $n \geq 2$, $\alpha$ is called a \tb{repeated/multiple} root of $f$.
+ \item[(b)] $f$ is called \tb{separable} if all of its roots (in $K$) are simple.  
+ \end{enumerate}
+ \end{defn}
+ 
+ \vs
+ 
+ \begin{lemma}
+ Let $L/F$ be any field extension, $f,g \in F[x]$. Then
+ \begin{enumerate}
+ \item[(a)] $f \mid g$ in $F[x]$ iff $f \mid g$ in $L[x]$. 
+ \item[(b)] $\gcd(f,g) = 1$ in $F[x]$ iff $\gcd(f,g) = 1$ in $L[x]$. 
+ \end{enumerate}
+ \end{lemma}
+ 
+ \begin{proof}\ 
+ \begin{enumerate}
+ \item[(a)] The "$\implies$" direction is clear. Suppose $f \mid g$ in $L[x]$. We can safely assume $f \ne 0$, so let us write $g = fh + r$ for some $h,r \in F[x]$ with $\deg r < \deg f$. But $f \mid g$ in $L[x]$, so $f \mid r = g-fh$ in $L[x]$, which implies that $r = 0$ by degree considerations. 
+ 
+ \item[(b)] To see "$\implies$", note that $\gcd(f,g) = 1$ in $F[x]$ implies that $1 = af + bg$ for some $a,b \in F[x] \sub L[x] \implies \gcd(f,g) = 1$ in $L[x]$. Suppose that $\gcd(f,g) = 1$ in $L[x]$. Then $f$ and $g$ have no common prime divisors in $L[x]$, and hence in $F[x]$, which implies that $\gcd(f,g) = 1$. 
+ \end{enumerate}
+ \end{proof}
+ 
+ \vs
+ 
+ \begin{defn}
+ We define the $F$-linear map $D : F[x] \ra F[x]$ by $D(1) = 0$ and $D(x^n) = n x^{n-1}$ for all $n \in \N$. 
+ \end{defn}
+
+\vs
+
+\begin{lemma}[Product Rule]
+$D(fg) = D(f)g + fD(g)$ for all $f,g \in F[x]$. 
+\end{lemma}
+
+\begin{proof}
+This is clear if $f \in F$ or $g \in F$. We write $f = \sum_{i=0}^n a_i x^i$ and $g = \sum_{j=0}^m b_j x^j$, assuming that $n,m \geq 1$. Then
+\begin{align*}
+D(fg) = D\left(a_0 b_0 + \sum_{k=1}^{m+n} \left( \sum_{i+j=k} a_i b_j\right) x^k\right) &= \sum_{k=1}^{m+n} \left( \sum_{i+j=k} a_i b_j\right) k x^{k-1} \\
+&= \sum_{k=0}^{m+n-1} \left(\sum_{i+j=k} a_i b_j\right) (k+1) x^k
+\end{align*}
+and
+\begin{align*}
+D(f)g + fD(g) &= \left(\sum_{i=0}^{n-1} a_{i+1}(i+1) x^{i}\right) \sum_{j=0}^m b_j x^j + \left(\sum_{i=0}^n a_i x^i\right) \left(\sum_{j=0}^{m-1} (j+1) b_{j+1}x^j\right) \\
+&= \sum_{k=0}^{m+n-1} \left(\sum_{i+j=k} (i+1)a_{i+1} b_j\right)x^k + \sum_{k=0}^{m+n-1} \left(\sum_{i+j=k} a_i (j+1) b_{j+1}\right)x^k \\
+&= \sum_{k=1}^{m+n} \left(\sum_{i+j=k} ia_{i} b_j\right)x^{k-1} + \sum_{k=1}^{m+n} \left(\sum_{i+j=k} a_i (j b_{j})\right)x^{k-1} \tag{critical step} \\
+&= \sum_{k=1}^{m+n} \left(\sum_{i+j=k} a_i b_j \right) k x^k \\
+&= D(fg) 
+\end{align*}
+\end{proof}
+
+\vs
+
+\begin{proposition}
+For $f \in F[x] \bs F$, we have that $f$ is separable if and only if $\gcd(f,D(f)) = 1$. 
+\end{proposition}
+
+\begin{proof}
+Let $L$ be the splitting field over $F$ of $f D(f)$. $[\implies]$ Suppose that $f$ is separable, and let $\alpha \in L$ be a root of $f$, so that $f = (x-\alpha) f_1$ for some $f_1 \in L[x]$ with $f_1(\alpha) \ne 0$. Then, by the product rule,
+	\[D(f) = f_1(x) + (x-\alpha) D(f_1(x)) \implies D(f(x))(\alpha) = f_1(\alpha) + 0 \ne 0 \]
+This shows that $f$ and $D(f)$ have no common roots in $L \implies \gcd(f,D(f)) = 1$ in $L[x] \implies \gcd(f,D(f)) = 1$ in $F[x]$ by Lemma 6.3.2. \\
+
+$[\impliedby]$ Suppose that $f$ is \emph{not} separable, so that $f = (x-\beta)^2 g(x)$ for some $g(x) \in L[x]$. Then 
+	\[D(f) = 2(x-\beta) g(x) + (x-\beta)^2 D(g(x)) = (x-\beta)[2g(x) + (x-\beta) D(g(x))] \]
+This shows that $\gcd(f,D(f)) \ne 1$ in $L[x] \implies \gcd(f,D(f)) \ne 1$ in $F[x]$ by the contrapositive of Lemma 6.3.2. 
+\end{proof}
+
+\vs
+
+\begin{corollary}
+Let $f \in F[x] \bs F$ be an irreducible polynomial.
+\begin{enumerate}
+\item[(a)] $f$ is separable if and only if $D(f) = 0$. 
+\item[(b)] If $\tn{char}(F) = 0$, then $f$ is separable. 
+\item[(c)] If $p = \tn{char}(F) > 0$, then $f$ is not separable if and only if $f(x) = g(x^p)$ for some $g \in F[x]$. 
+\end{enumerate}
+\end{corollary}
+
+\begin{proof}\ 
+\begin{enumerate}
+\item[(a)] Given that $f$ is irreducible and $\deg D(f) < \deg f$, we have that $f$ is not separable $\overset{6.3.5}{\iff} \gcd(f,D(f)) \ne 1 \iff f \mid D(f) \iff D(f) = 0$. 
+\item[(b)] If $\tn{char}(F) = 0$, then $f \in F[x] \bs F \implies D(f) \ne 0$, hence $f$ is not separable by (a) above. 
+\item[(c)] The "$\impliedby$" direction is clear. $[\implies]$ We write $f(x) = \sum_{i=0}^d c_i x^i \implies D(f) = \sum_{i=1}^d i c_i x^{i-1}$ for some $c_i \in F$ and $d \geq 1$. Then we have 
+\begin{align*}
+D(f) = 0 & \iff ic_i = 0 \tn{ for all } 1 \leq i \leq d \\
+&\iff c_i = 0 \tn{ for all } p \nmid i \\
+&\iff f(x) = \sum_{j=0}^\infty c_{pj} x^{pj} = \sum_{j=0}^\infty c_{pj} (x^p)^j \\
+&\iff f(x) = g(x^p) \tn{ where } g(x) = \sum_{j=0}^\infty c_{pj} x^j
+\end{align*}
+\end{enumerate}
+\end{proof}
+
+
+\begin{defn}
+Let $K/F$ be an algebraic field extension. 
+\begin{enumerate}
+\item[(a)] $\alpha \in K$ is \tb{separable} over $F$ if $\mu_{\alpha/F} \in F[x]$ is separable. 
+\item[(b)] $K/F$ is called \tb{separable} if every $\alpha \in K$ is separable over $F$. 
+\item[(c)] $F$ is called \tb{perfect} if every algebraic extension of $F$ is separable. 
+\end{enumerate}
+\end{defn}
+
+\vs
+
+\begin{corollary}
+Every field $F$ with $\tn{char}(F) = 0$ is perfect. 
+\end{corollary}
+
+\vs
+
+\begin{lemma}[+ Definition]
+For any integral domain $R$ with $\tn{char}(R) = p > 0$, we get
+\begin{enumerate}
+\item[(a)] $(a+b)^{p^n}  a^{p^n} + b^{p^n}$ for all $a,b \in R$ and $n \in \N$. 
+\item[(b)] The map $\sigma_p : R \ra R, a \mapsto a^p$, is an injective ring homomorphism (called the \tb{Frobenius endomorphism}). 
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}\ 
+\begin{enumerate}
+\item[(a)] We have the binomial theorem $(a+b)^p = \sum_{j=0}^p {p \choose j} a^{p-j} b^j$, where ${p \choose j} = {p \choose j} \cdot 1_R \in R$. Note that the integer ${p \choose j} = \frac{p!}{j!(p-j)!}$ is not divisible by $p$ for all $1 \leq j \leq p-1$, hence ${p \choose j} \cdot 1_R = 0_R$ for all $1 \leq j \leq p-1$. This proves the statement for $n = 1$, and the general result follows by simple induction on $n$. 
+
+\item[(b)] $\sigma_p$ is a ring homomorphism since for all $a,b \in R$, 
+\begin{align*}
+\sigma_p(1) &= 1^p = 1, \\
+\sigma_p(\alpha \beta) &= (\alpha \beta)^p = \alpha^p \beta^p = \sigma_p(\alpha) \sigma_p(\beta), \\
+\sigma_p(\alpha + \beta) &\overset{(a)}{=} \alpha^p + \beta^p = \sigma_p(\alpha) + \sigma_p(\beta)
+\end{align*}
+$\sigma_p$ is injective since $\alpha^p = 0 \implies \alpha = 0$ for all $\alpha \in R$. 
+\end{enumerate}
+\end{proof}
+
+\vs
+
+\begin{remark}
+For any field $F$ with $\tn{char}(F) = p > 0$, $F^p = \im \sigma_p$ is a subfield of $F$. For $F$ finite, $\sigma_p(F) = F^p = F$ by the pigeonhole principle. 
+\end{remark}
+
+\vs
+
+\begin{proposition}
+A field $F$ with $\tn{char}(F) = p > 0$ is perfect if and only if $F = F^p$. In particular, all finite fields are perfect. 
+\end{proposition}
+
+\begin{proof}
+We show $F^p = F \implies F$ is perfect. The other direction is left as an exercise. Assuming $F^p = F$, we must show that every irreducible polynomial $f \in F[x]$ is separable. Suppose to the contrary that there exists an irreducible inseparable polynomial $f \in F[x] \bs F$. Then by Corollary 6.3.6 there exists $g \in F[x]$ with $f(x) = g(x^p)$. That is, we may write $f = \sum_{j=0}^m c_j x^{jp}$ for some $c_j \in F$. Now because $F^p = F$, there exist $d_j \in F$ with $d_j^p = c_j$, hence 
+	\[f(x) = \sum_{J=0}^m d_j^p (x^j)^p \overset{6.3.9}{=} \left(\sum_{j=0}^m d_j x^j\right)^p \]
+contradicting the fact that $f$ is irreducible. 
+\end{proof}
+
+\vs
+
+\begin{proposition}
+If $p \in \N$ is a prime and $q = p^n$ for some $n \in \N$, then the splitting field $F$ of $f(x) = x^q - x$ over $\mbb{F}_p$ has $q$-elements, and $F = \{\alpha \in F \mid \alpha^q = \alpha\}$. 
+\end{proposition}
+
+\begin{proof}
+Note that $D(f) = qx - 1 = -1 \implies \gcd(f,D(f)) = 1 \implies f$ is separable by Proposition 6.3.5, i.e., $f$ has $q$ distinct roots in $F$. Set $F' = \{ \tn{ roots of } f\} \sub F$, so $|F'| = q$. If $F'$ is a subfield of $F$, then $F' = F$ by the minimality of splitting fields. Indeed, $F'$ is a subfield of $F$; it is immediately verified that $0,1 \in F'$, and that $F'$ is closed under addition, multiplication, and multiplicative inverses (in $F' \bs \{0\}$). 
+\end{proof}
+
+\vs
+
+\begin{theorem}
+For all $n \in \N$ and $p \in \N$ prime, there exists a unique (up to isomorphism) field containing $p^n$ elements.
+\end{theorem}
+
+\begin{proof}
+Existence was established by Proposition 6.3.12, and uniqueness was shown in Proposition 6.2.15. 
+\end{proof}
+
+\vs
+
+\begin{proposition}
+If $K/F$ is an extension of finite fields, then it is separable and normal. 
+\end{proposition}
+
+\begin{proof}
+$K/F$ is separable since $F$ is perfect and necessarily $[K : F ] < \infty \implies K/F$ is algebraic. But $K$ is the splitting field over $\mbb{F}_p$, and hence over $F$, of $x^{|K|}-x \implies K/F$ is normal by theorem 6.2.11. 
+\end{proof}
+
+\vs
+
+\noindent \tb{Exercise} Generalize the above result to any field extension $K/F$ where $K$ and $F$ are algebraic over $\mbb{F}_p$, but not necessarily finite. 
+
+\vs
+
+\begin{remark}\ 
+\begin{enumerate}
+\item[(a)] If $\alpha \in \mbb{F}_q$ is such that $\mbb{F}_q = \mbb{F}_p(\alpha)$ (e.g., for $\alpha$ a generator of $\mbb{F}_q\x$), then $\deg \mu_{\alpha/\mbb{F}_q} = [\mbb{F}_q : \mbb{F}_p] = n$, where $q = p^n$. In particular, for every $n \in \N$, there exists an irreducible polynomial of degree $n$ in $\mbb{F}_p[x]$. 
+\item[(b)] One can show that $x^q-x = \prod f$, where this product is taken over all monic irreducible $f \in \mbb{F}_p[x]$ with $\deg f \mid n$ (see Proposition 18 on pp. 586-87 in [DF]). 
+\end{enumerate}
+\end{remark}
+
+\vs
+
+\begin{example}\ 
+\begin{enumerate}
+\item[(a)] $\mbb{F}_{125} = \mbb{F}_5[x]/(x^3+x^2+1)$. 
+\item[(b)] $\mbb{F}_{16} = \mbb{F}_2/(x^4+x+1)$. 
+\end{enumerate}
+\end{example}
+
+\vs
+
+\begin{remark}[about separable extensions]\ 
+\begin{enumerate}
+\item[(a)] If $L/K$ and $K/F$ are field extensions and $L/F$ is separable, then $L/K$ and $K/F$ are separable. 
+\item[(b)] Let $K/F$ be a field extension with $\alpha, \beta \in K$ both separable over $F$. Then $\alpha \pm \beta$ and $ \alpha \beta$ are separable over $F$ (see 6.4.6). In fact, there exists a "separable closure" $K^{\tn{sep}} = \{\alpha \in K \mid \alpha \tn{ is separable over } F\}$ which is a subfield of $K$ containing $F$.
+\begin{proof}
+To see why the first statement is true, put 
+	\[f = \begin{cases}
+	\mu_{\alpha/F} \mu_{\beta/F}, \quad & \tn{ if } \mu_{\alpha/F} = \mu_{\beta/F} \\
+	\mu_{\alpha/F}, & \mu_{\alpha/F} \ne \mu_{\beta/F}
+	\end{cases}\]
+Then $f \in F[x]$ is separable, and we will see in Proposition 6.4.6 that this implies that the splitting field $L$ of $f$ over $F$ is separable (and normal). But $\alpha \pm \beta, \alpha \beta \in L$, so they are separable. Since clearly $1 \in K^{\tn{sep}}$, this also shows that $K^{\tn{sep}}$ is a ring. Moreover, if $\alpha \ne 0$, then $\alpha \in \in L \sub K^{\tn{sep}}$, so $K{\tn{sep}}$ is also actually field. 
+\end{proof} 
+
+\item[(c)] If $L/K$ and $K/F$ are separable field extensions, then $L/F$ is separable. 
+%\begin{proof}
+%Let $\alpha \in L$. Let $p := \mu_{\alpha/F} = \sum_{i=0}^d c_i x^i$, and define $K' := F(c_0,\dots,c_d), L' := K'(\alpha)$. Since $F \sub K' \sub K $ and $K' \sub L' \sub L$, we have that both of the finite extensions $L'/K'$ and $K'/F$ are separable by part (a) above. Note these extensions are simple by Theorem 6.3.21, and also $\mu_{\alpha/K'} = p$. Choose an extension $E/L'$ such that $p$ and $\mu_{c_i/K}$ split over $E$. Then by Lemma 6.4.2 (b), we have that $|\hom_K(L',E)| = [L' : K]$. Choose $\sigma \in \hom_K(L',E)$. Then 
+%\end{proof}
+\end{enumerate}
+\end{remark}
+
+\vs
+
+\begin{example}[of an inseparable extension]
+Let $p \in \N$ be a prime, $F = \mbb{F}_p(t)$ (field of fractions of $\mbb{F}_p[t]$). Consider the polynomial $f(x) = x^p-t \in F[x]$. We have that $f$ is irreducible by Eisenstein's criterion with prime $= t$. However, $f(x)$ is not separable as $D(f) = 0$. Another way to see this is as follows: If $\alpha$ is a root of $f$ in some splitting field over $F$ of $f$, then $x^p-t = x^p-\alpha^p = (x-\alpha)^p$. It follows that $F$ is not perfect and $F \ne F^p$ (e.g., $t \notin F^p$). 
+\end{example}
+
+\vs
+
+\begin{lemma}
+Assume $K = F(\alpha,\beta)$ with $\alpha$ algebraic over $F$ and $\beta$ separable over $F$. Set $f = \mu_{\alpha/F}$, $g = \mu_{\beta/F}$, and let $L$ be the splitting field of $fg$ over $K$. Define
+	\[\mc{S} := \left\{ \frac{\alpha'-\alpha}{\beta - \beta'} \ \bigg | \ \alpha' \tn{ is a root of } f \tn{ in } L, \beta' \ne \beta \tn{ is a root of } g \tn{ in } L \right\} \]
+Then $K = F(\alpha + \lambda \beta)$ for all $\lambda \in F \bs \mc{S}$. 
+\end{lemma}
+
+\begin{proof}
+Set $\gamma = \alpha + \lambda \beta$ for some $\lambda \in F \bs \mc{S}$. It suffices to show that $\beta \in F(\gamma)$. Set $\wt{g} := \mu_{\beta/F(\gamma)} \implies \wt{g} \mid g = \mu_{\beta/F}$, $h := f(\gamma - \lambda x) \in F(\gamma)[x] \sub K[x]$. Note that 
+	\[h(\beta) = f(\gamma - \lambda \beta) = f(\alpha + \lambda \beta - \lambda \beta) = f(\alpha) = 0 \]
+which implies that $\wt{g} \mid h$ in $F(\gamma)[x]$. We claim that $\gcd(g,h) = x-\beta$ in $L[x]$. Recall that $g(\beta) = 0 = h(\beta)$, so $x - \beta \mid g$ and $x-\beta \mid h$, hence $\gcd(g,h) \ne 1$. Assume that $\gcd(g,h) \ne x-\beta$. Then, because $g$ is separable, there exists some root $\beta' \ne \beta$ of $g$ with $x-\beta' \mid g$ and $x-\beta' \mid h$. Therefore,
+\begin{align*}
+0 &= h(\beta') = f(\gamma-\lambda \beta') = f(\alpha + \lambda(\beta-\beta')) \\
+\implies \alpha' &:= \alpha + \gamma(\beta - \beta') \tn{ is a root of } f = \mu_{\alpha/F} \\
+\implies \lambda &= \frac{\alpha'-\alpha}{\beta - \beta'} \in \mc{S},
+\end{align*}
+contradicting our choice of $\lambda$. This proves the claim. Since the monic polynomial $\wt{g}$ divides $g$ and $h$, $\wt{g}$ divides $x-\beta = \gcd(g,h)$, and $\deg \wt{g} \geq 1$, so $\wt{g} = x-\beta$. That is, $x-\beta = \wt{g} = \mu_{\beta/F(\gamma)}$, which shows that $\beta \in F(\gamma)$. 
+\end{proof}
+
+\vs
+
+\begin{example}
+Take $F = \Q$, $\alpha = \sqrt{t}, \beta = \sqrt{3}$, $K = \Q(\sqrt{2},\sqrt{3})$, $f = x^2-2, g = x^2-3$. Then, in the notation of Lemma 4.3.19, $\mc{S} = \{0,\sqrt{2}/\sqrt{3}\}$, so $K = \Q(\sqrt{2} + \lambda \sqrt{3})$ for all $\lambda \in \Q \bs \mc{S} = \Q\x$. In particular, $K = \Q(\sqrt{2} + \sqrt{3})$. 
+\end{example}
+
+\vs
+
+\begin{theorem}[of the Primitive Element]
+Suppose $K = F(\alpha_1,\dots,\alpha_n)$, where $\alpha_1,\dots,\alpha_n$ are each algebraic over $F$ and $\alpha_2,\dots,\alpha_n$ are separable over $F$. Then there exists a primitive element $\gamma \in K$ such that $K = F(\gamma)$. 
+\end{theorem}
+
+\begin{proof}
+If $F$ is finite, then $K$ is finite $\implies K\x = \gen{\gamma}$ for some $\gamma \in K\x \implies K = F(\gamma)$. If $F$ is infinite, then the result follows easily by induction on $n$ using Lemma 6.4.19 and the fact that $\mc{S}$ is always finite. 
+\end{proof}
+
+\vs
+
+\begin{corollary}
+If $F$ is a perfect field and $K/F$ is a finite extension, then $K/F$ is a simple extension. 
+\end{corollary}
+
+
+
+
+
+
+\chapter{Finite Galois Theory}
+
+
+
+
+\begin{defn}
+A field extension $K/F$ is called a \tb{Galois extension} if $K/F$ is normal and separable. 
+\end{defn}
+
+Among the many characterizations of Galois extensions, one has that $K/F$ is Galois if and only if $|G(K/F)| = [K : F]$. This gives us some motivation to count the number of $F$-homomorphisms between finite extensions of $F$, i.e., if $L/F$ and $K/F$ are finite extensions, what is $|\hom_F(K,L)|$? Recall that 
+	\[\hom_F(K.L) = \{ \phi : K \ra L \mid \phi \tn{ is an }F\tn{-homomorphism of rings} \} \]
+	
+\begin{lemma}
+Let $L/F$ be a field extension and $\alpha \in L$ algebraic over $F$. 
+\begin{enumerate}
+\item[(a)] $|\hom_F(F(\alpha),L)| = |\{\tn{distinct roots of } \mu_{\alpha/F} \tn{ in } L\}| \leq [F(\alpha) : F] = \deg \mu_{\alpha/F}$. 
+\item[(b)] $|\hom_F(F(\alpha),L)| = [F(\alpha) : F]$ if and only if $\alpha$ is separable over $F$ and $\mu_{\alpha/F}$ splits over $L$. 
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Let
+	\[H := \hom_F(F(\alpha),L), \quad R := \{\beta \in L \mid f(\beta) = 0\}, \quad f := \mu_{\alpha/F} \in F[x] \]
+\begin{enumerate} 
+\item[(a)] If $\sigma \in H$, then $\sigma(\beta) \in R$ for all $\beta \in R$ since $0 = f(\beta) \implies 0 = \sigma(f(\beta)) = f(\sigma(\beta))$ ($\sigma$ is an $F$-homomorphism). Define the set map $\Phi : H \ra R$ by $\sigma \mapsto \sigma(\alpha)$. \\
+
+$\Phi$ is injective since every $F$-homomorphism $\sigma : F(\alpha) \ra L$ is uniquely determined by $\sigma(\alpha)$. \\
+
+$\Phi$ is injective. Let $\beta \in \R \implies f(\beta) = 0$, and $f$ is irreducible over $F$, so $f = \mu_{\beta/F}$. But this gives us the composite $F$-isomorphism
+\begin{alignat*}{3}
+F(\alpha) & \overset{\wt{\quad}}{\lar} && F[x]/(f) \overset{\wt{\quad}}{\lar} && F(\beta) \\
+& \alpha \longmapsto && \ x + (f) \longmapsto && \beta 
+\end{alignat*}
+Then the composite $F$-homomorphism $\sigma : F(\alpha) \overset{\wt{\quad}}{\lar} F(\beta) \hookrightarrow L$ satisfies $\sigma(\alpha) = \beta$. This shows (a) 
+
+\item[(b)] We have
+\begin{align*}
+|H| = [F(\alpha) : F] & \overset{(a)}{\iff} |R| = [F(\alpha) : F] =: n \\
+&\iff \mu_{\alpha/F} \tn{ has } n \tn{ distinct roots in } L \\
+&\iff \mu_{\alpha/F} \tn{ is separable and splits over } L
+\end{align*}
+\end{enumerate} 
+\end{proof}
+
+\vs
+
+\begin{lemma}
+If $L/K$ and $K/F$ are finite extensions, then $|G(L/F)| \leq |G(L/K)| |\hom_F(K,L)|$. 
+\end{lemma}
+
+\begin{proof}
+Consider the restriction map $\rho : G(L/F) \ra G(K/F), \sigma \mapsto \sigma|_K : K \ra L$. This map $\rho$ is constant on left cosets $\sigma G(L/F)$, since for all $\tau \in G(L/K)$, $\sigma \tau |_K = \sigma|_K$. Therefore, we have an induced map $\hat{\rho} : G(L/F)/G(L/K) \ra \hom_F(K,L)$. \\
+
+We claim that $\hat{\rho}$ is injective. Assume that $\sigma_1,\sigma_2 \in G(L/F)$ with $\sigma_1|_K = \sigma_2|_K$. Then $\sigma_2\inv \sigma_1 |_K = \id_K \implies \sigma_2\inv \sigma_1 \in G(L/K) \implies \sigma_1 G(L/K) = \sigma_2 G(L/K)$. Since $\hat{\rho}$ is injective, we have
+	\[\left| \frac{G(L/F)}{G(L/K)} \right| = \frac{|G(L/F)|}{|G(L/K)|} \leq |\hom_F(K,L)| \]
+\end{proof}
+
+\vs
+
+\begin{corollary}[of the proof]
+$|G(L/F)| = |G(L/K)| |\hom_F(K,L)|$ if and only if $\hat{\rho}$ is surjective if and only if $\rho$ is surjective if and only if every $F$-homomorphism $\phi : K \ra L$ can be extended to an $F$-automorphism of $L$. 
+\end{corollary}
+
+\vs
+
+\begin{proposition}
+For every finite field extension $K/F$, we obtain:
+\begin{enumerate}
+\item[(a)] $|G(K/F)| \leq [K : F]$
+\item[(b)] If $|G(K/F)| = [K : F]$, then $K/F$ is Galois. 
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}\ 
+\begin{enumerate}
+\item[(a)] By induction on $n := [K : F]$. Since $n = 1 \iff K = F \implies G(K/F) = \{\id_F\}$, the base case is clear. For the induction step, let $n \geq 2$. Choose any $\alpha \in K \bs F$. By Lemma 6.4.3,
+	\[|G(K/F)| \leq |G(K/F(\alpha))| |\hom_F(F(\alpha),K)| \]
+Now $|G(K/F(\alpha))| \leq [K : F(\alpha)]$ by the induction hypothesis, and $|\hom_F(F(\alpha),K) \leq [F(\alpha) : K]$ by Lemma 6.4.2 (a), so
+	\[|G(K/F(\alpha))| \leq [K : F(\alpha)] [F(\alpha) : F] = [K : F] \]
+
+\item[(b)] If $|G(K/F)| = [K : F]$, then in particular $|\hom_F(F(\alpha),K)| = [F(\alpha) : F]$, so by Lemma 6.4.2 (b) we see that $\mu_{\alpha/F}$ is separable and splits over $K$. Since $\alpha$ was arbitrary, we have that $K/F$ is separable and normal (Galois). 
+\end{enumerate}
+\end{proof}
+
+\vs
+
+\begin{proposition}
+If $K$ is the splitting field over $F$ of a separable polynomial $f \in F[x] \bs F$, then $|G(K/F)| = [K : F]$, hence $K/F$ is Galois by Proposition 6.4.5. 
+\end{proposition}
 
 \end{document} 
