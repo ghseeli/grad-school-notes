@@ -35,6 +35,7 @@ setspace
 subfiles
 tikz-cd
 times
+tocloft
 tools
 txfonts
 ucs
