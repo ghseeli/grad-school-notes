@@ -105,11 +105,11 @@ In this course, we follow the convention that maps are continuous
 functions unless otherwise stated!
 
 \begin{defn}
-  A \emph{homotopy} from \(f \in \Map(M, N)\) to \(g \in \Map(M, N)\) is a path in $\Map(M, N)$ that starts at $f$ and ends at $g$.  Therefore, $h_0 = f$ and $h_1 = g$.
+  A \de{homotopy} from \(f \in \Map(M, N)\) to \(g \in \Map(M, N)\) is a path in $\Map(M, N)$ that starts at $f$ and ends at $g$.  Therefore, $h_0 = f$ and $h_1 = g$.  (Note that we have not yet defined ``path'', and so you may use the following equivalent definition instead.)
 
-  Equivalently, a \emph{homotopy} from \(f \from M \to N\) to \(g \from M \to N\)
-  is a map \(h\from M \x I \to N\) such that \(h_0=f\) and \(h_1=g\). We say \(f\) and
-  \(g\) are \emph{homotopic} if a homotopy between them exists.
+  Equivalently, a \de{homotopy} from \(f \from M \to N\) to \(g \from M \to N\)
+  is a map \(h\from I \x M \to N\) such that \(h_0=f\) and \(h_1=g\). We say \(f\) and
+  \(g\) are \de{homotopic} if a homotopy between them exists.
 
   Often we write \(h_t(m)\) for \(h(m,t)\).
 \end{defn}
@@ -130,10 +130,10 @@ We denote the homotopy equivalence class of \(f\) by \([f]\).
   We also say that ``$f$ and $g$ are homotopic relative to $A$''.
 \end{defn}
 
-When there are no restrictions placed on a homotopy, it is sometimes called a \emph{free} homotopy.
+When there are no restrictions placed on a homotopy, it is sometimes called a \de{free} homotopy.
 
 \begin{defn}
-  A \emph{path} in a topological space $X$ is a map
+  A \de{path} in a topological space $X$ is a map
   \[f \from I \to X.\]
 \end{defn}
 
@@ -153,7 +153,7 @@ there exists no end point fixing homotopy between the two paths.
     \end{cases}
   \]
 
-  This is called the \emph{concatenation} or \emph{path composition}
+  This is called the \de{concatenation} or \de{path composition}
   of $f$ and $g$.
 
   This operation is well defined on homotopy classes, that is if
@@ -174,7 +174,7 @@ objects in a category. We call this category the Fundamental Groupoid.
   A \de{category} $\mathcal{C}$ consists of
   \begin{itemize}
     \item A class of objects $\Ob(\mathcal{C})$
-    \item For every pair of objects $A, B \in \Ob(\mathcal{C})$, a set $\Hom(A, B)$ of \de{morhpisms}
+    \item For every pair of objects $A, B \in \Ob(\mathcal{C})$, a set $\Hom(A, B)$ of \de{morphisms}
     \item A composition operation.  That is, if $f \in \Hom(A,B)$ and $g \in \Hom(B,C)$, then there exists a morphism $h \in \Hom(A,C)$ s.t. $h = f.g$, where ``.'' denotes the composition operation.  The composition operation must be associative.
     \item For every object $A \in \Ob(\mathcal{C})$, an \de{identity morphism} $\id_A\from A \to A$ s.t. for all $f\from A \to B$ we have $\id_A.f = f$ and for all $g\from B \to A$ we have $g.\id_A = g$, for all $B$.
   \end{itemize}
@@ -317,7 +317,7 @@ group with $\fund(X)$ or $\fund X$.
 \end{example}
 
 \begin{defn}
-  A \emph{covering space} \((\widetilde{X},p)\) of a space \(X\) is a space \(\widetilde{X}\)
+  A \de{covering space} \((\widetilde{X},p)\) of a space \(X\) is a space \(\widetilde{X}\)
   and map \(p \from \widetilde{X} \to X\) where there exists an open cover
   \(\{U_\alpha\}\) of \(X\) and for each $\alpha$, \(p^{-1}(U_\alpha)\) is a
   disjoint union $\dunion V_j$ of open sets in \(\widetilde{X}\) such that for all $j$, $p|_{V_j} \from V_j \to U_\alpha$ is a homeomorphism.
@@ -707,7 +707,7 @@ antipodal points are identified. By induction this gives us a
 \(CW\)-complex structure.
 
 \begin{example}[Something that does not admit a \(CW\) structure]
-  The topological space known as the \emph{Hawaiian earring} is
+  The topological space known as the \de{Hawaiian earring} is
   constructed as follows.  For each \(n \in \N^{> 0}\) consider the circle of
   radius \(1/n\) tangent to the \(y\)-axis inside the space \(R^2\). All of these circles
   together with the subspace topology yield a topological space \(X\).
@@ -746,7 +746,7 @@ free to pick any basepoint we want. This results in
     \times \Z\]
 
 \begin{defn}
-  The \emph{connected sum} of two topological spaces \(X\) and \(Y\)
+  The \de{connected sum} of two topological spaces \(X\) and \(Y\)
   denoted \(X \# Y \) is given by cutting out some neighborhood of
   each \(X\) and \(Y\) and identifying the new boundary.
 \end{defn}
