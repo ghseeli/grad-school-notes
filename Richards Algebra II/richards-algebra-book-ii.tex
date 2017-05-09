@@ -35,7 +35,9 @@
 \newtheorem{theorem}[counter]{Theorem}   \newtheorem*{theorem*}{Theorem}   \newtheorem{lemma}[counter]{Lemma}   \newtheorem{corollary}[counter]{Corollary}
 \newtheorem{proposition}[counter]{Proposition}   \newtheorem{problem}[counter]{Problem}   \newtheorem*{proposition*}{Proposition}   \newtheorem*{lemma*}{Lemma}
 
-\theoremstyle{definition}   \newtheorem{defn}[counter]{Definition} %These theorem environments are not numbered separately 
+\theoremstyle{definition}   \newtheorem{defn}[counter]{Definition} 
+
+%These theorem environments are not numbered separately 
 \newtheorem*{defn*}{Definition}
 \newtheorem{blank}[counter]{}   \newtheorem{remark}[counter]{Remark(s)}   \newtheorem*{remark*}{Remark(s)}   \newtheorem{generalization}[counter]{Generalization}
 \newtheorem{consequence}[counter]{Consequence(s)}   \newtheorem*{consequence*}{Consequence(s)}   \newtheorem*{problem*}{Problem}   \newtheorem{notation}[counter]{Notation}
@@ -80,10 +82,15 @@
 
 \newenvironment{prf}{\paragraph{\textit{Proof}}}{\hfill$\square$}
 
-\newcommand{\vs}{\vspace{8pt}}
-\newcommand{\hs}{\hspace{8pt}}
+\newcommand{\vs}{\vspace{8pt}}   \newcommand{\hs}{\hspace{8pt}}
 
-\numberwithin{counter}{chapter}
+%To fix Table of Contents alignment issues
+\renewcommand*\oldstylenums[1]{\textosf{#1}}
+\usepackage{tocloft}
+
+\addtolength{\cftchapnumwidth}{10pt} \addtolength{\cftsecnumwidth}{10pt}
+
+\numberwithin{counter}{chapter} 
 
 \title{Algebra}
 \author{ Transcribed from the lectures of \\ \ \\ Professor Peter Abramenko \\ \ \\ University of Virginia}
@@ -111,7 +118,7 @@
 
 \part{Modules}
 
-\chapter{\null \quad \ Basic Concepts}
+\chapter{Basic Concepts}
 
 In the following, $R$ always denotes a (not necessarily commutative) ring with 1. 
 
@@ -536,7 +543,7 @@ If $B = \{e_i \mid i \in I \}$ is an infinite basis, we still get, as in 3.1.31 
 
 
 
-\chapter{\null \quad Modules of Fractions}
+\chapter{Modules of Fractions}
 
 We now take $R$ to be a commutative ring with $1 \ne 0$. In II.2, we looked at a multiplicatively closed subset $D \sub R$ (so $1 \in D$) which allowed us to define the \emph{ring of fractions} $D\inv R = \left\{\frac{r}{d} \mid r \in R, d \in D\right\}$. Recall that we have a canonical ring homomorphism $j : R \ra D\inv R, r \mapsto \frac{r}{1}$ with
 	\[\ker j = \{r \in R \mid \exists \ d \in D \tn{ such that } dr = 0\} \ (= R \iff 0 \in D) \]
@@ -626,7 +633,7 @@ In the language of categories, $D\inv$ is in fact a \emph{covariant functor} fro
 
 We call a (finite or infinite) sequence of $R$-module homomorphisms
 	\[...\longrightarrow M_i \overset{\phi_{I-1}}{\longrightarrow} M_i \overset{\phi_i}{\longrightarrow} M_{i+1} \longrightarrow \dots \]
-is called \tb{exact} if $\im \phi_{i-1} = \ker \phi_i$ for all $i$. A \tb{short exact sequence} (SES) is an exact sequence \\ $\mses{L}{\phi}{M}{\psi}{N}$. 
+\tb{exact} if $\im \phi_{i-1} = \ker \phi_i$ for all $i$. A \tb{short exact sequence} (SES) is an exact sequence \\ $\mses{L}{\phi}{M}{\psi}{N}$. 
 \end{defn}
 
 \vs
@@ -2959,14 +2966,14 @@ $K/F$ is separable since $F$ is perfect and necessarily $[K : F ] < \infty \impl
 \begin{enumerate}
 \item[(a)] If $L/K$ and $K/F$ are field extensions and $L/F$ is separable, then $L/K$ and $K/F$ are separable. 
 \item[(b)] Let $K/F$ be a field extension with $\alpha, \beta \in K$ both separable over $F$. Then $\alpha \pm \beta$ and $ \alpha \beta$ are separable over $F$ (see 6.4.6). In fact, there exists a "separable closure" $K^{\tn{sep}} = \{\alpha \in K \mid \alpha \tn{ is separable over } F\}$ which is a subfield of $K$ containing $F$.
-\begin{proof}
-To see why the first statement is true, put 
-	\[f = \begin{cases}
-	\mu_{\alpha/F} \mu_{\beta/F}, \quad & \tn{ if } \mu_{\alpha/F} = \mu_{\beta/F} \\
-	\mu_{\alpha/F}, & \mu_{\alpha/F} \ne \mu_{\beta/F}
-	\end{cases}\]
-Then $f \in F[x]$ is separable, and we will see in Proposition 6.4.6 that this implies that the splitting field $L$ of $f$ over $F$ is separable (and normal). But $\alpha \pm \beta, \alpha \beta \in L$, so they are separable. Since clearly $1 \in K^{\tn{sep}}$, this also shows that $K^{\tn{sep}}$ is a ring. Moreover, if $\alpha \ne 0$, then $\alpha \in \in L \sub K^{\tn{sep}}$, so $K{\tn{sep}}$ is also actually field. 
-\end{proof} 
+%\begin{proof}
+T %o see why the first statement is true, put 
+%	\[f = \begin{cases}
+%	\mu_{\alpha/F} \mu_{\beta/F}, \quad & \tn{ if } \mu_{\alpha/F} = \mu_{\beta/F} \\
+%	\mu_{\alpha/F}, & \mu_{\alpha/F} \ne \mu_{\beta/F}
+%	\end{cases}\]
+%Then $f \in F[x]$ is separable, and we will see in Proposition 6.4.6 that this implies that the splitting field $L$ of $f$ over $F$ is separable (and normal). But $\alpha \pm \beta, \alpha \beta \in L$, so they are separable. Since clearly $1 \in K^{\tn{sep}}$, this also shows that $K^{\tn{sep}}$ is a ring. Moreover, if $\alpha \ne 0$, then $\alpha \in \in L \sub K^{\tn{sep}}$, so $K{\tn{sep}}$ is also actually field. 
+%\end{proof} 
 
 \item[(c)] If $L/K$ and $K/F$ are separable field extensions, then $L/F$ is separable. 
 %\begin{proof}
@@ -3117,5 +3124,207 @@ Now $|G(K/F(\alpha))| \leq [K : F(\alpha)]$ by the induction hypothesis, and $|\
 \begin{proposition}
 If $K$ is the splitting field over $F$ of a separable polynomial $f \in F[x] \bs F$, then $|G(K/F)| = [K : F]$, hence $K/F$ is Galois by Proposition 6.4.5. 
 \end{proposition}
+
+\begin{proof}
+By induction on $n := [K : F]$. When $n = 1$, $K = F \implies |G(K/F)| = 1 = [K : F]$.
+
+For the induction step, let $n \geq 2$. Then $K \ne F$, i.e., $f$ does not split over $F$, hence there exists a (monic) irreducible polynomial $p \in F[x]$ with $p \mid f$ and $m := \deg p \geq 2$. Since $f$ splits over $K$, $p$ does as well. Now pick a root $\alpha$ of $p$ in $K$. Then 
+	\[\mu_{\alpha/F} = p \implies [F(\alpha) : F] = m \geq 2 \]
+\begin{enumerate}
+\item[(i)] By Proposition 6.2.5, every $\phi \in \hom_F(F(\alpha),K)$ can be extended to some $\sigma \in G(K/F)$. Let $\phi : F(\alpha) \ra K$ be an $F$-homomorphism, let $\alpha' := \phi(\alpha)$, and let $\phi' : F(\alpha) \ra F(\alpha')$, $\beta \mapsto \phi(\beta)$ be the isomorphism obtained by restricting the codomain of $\phi$. Then the following diagram commutes
+\begin{center}
+\begin{tikzcd}
+K \arrow[dotted]{rr}{\sigma}[swap]{\wt{\qquad}} & & K \\
+F(\alpha) \arrow[hook]{u} \arrow{urr}{\phi} \arrow{rr}{\phi'}[swap]{\wt{\qquad}} & & F(\alpha') \arrow[hook]{u} 
+\end{tikzcd}
+\end{center}
+Note that $K$ is the splitting field of $f$ over $F(\alpha)$ and $F(\alpha')$. 
+\item[(ii)] By (i) and Corollary 6.4.4, $|G(K/F(\alpha))| = |G(K/F(\alpha))| |\hom_F(F(\alpha),K)|$. 
+\item[(iii)] Moreover,
+	\[[K : F(\alpha)] = \frac{[K : F(\alpha)]}{[F(\alpha) : F]} = \frac{n}{m} < n \tag{$m \geq 2$}\]
+By the induction hypothesis applied to $K/F(\alpha)$ and $f \in F(\alpha)[x]$, we see that  	
+	\[|G(K/F(\alpha))| = [K : F(\alpha)] \]
+\item[(iv)] Because $p \mid f$ in $F[x]$, $p=\mu_{\alpha/F}$ is separable and splits over $K$. By Lemma 6.4.2, this implies that $|\hom_F(F(\alpha),K)| = [F(\alpha) : F]$. Putting (ii), (iii), and (iv) together, we have
+	\[|G(K/F)| = |G(K/F(\alpha)| |\hom_F(F(\alpha),K)| = [K : F(\alpha)] [F(\alpha) : F] = [K : F] \]
+\end{enumerate}
+\end{proof}
+
+\vs
+
+\begin{corollary}[proving Remark 3.3.17 (b)]
+If $\alpha,\beta$ are separable over $F$, then $F(\alpha,\beta)$ is separable over $F$. 
+\end{corollary}
+
+\begin{proof}
+Set $g := \mu_{\alpha/F}, h := \mu_{\beta/F}$, and 
+	\[f := \begin{cases}
+	g, \quad &\tn{if } g = h \\
+	gh, & \tn{if } g \ne h
+	\end{cases}\]
+Note that $f$ is separable. Indeed, because $g,h$ are separable and irreducible, if $g \ne h$, then they share no common roots $\implies f = gh$ is separable. Consider the splitting field $K$ of $f$ over $F(\alpha,\beta)$, hence over $F$ as well. Since $f$ is separable, we have by Proposition 6.4.6 that $|G(K/L)| = [K : F]$, hence $K/F$ is Galois by Proposition 6.4.5 (b). In particular, $K/F$ is separable $\implies F(\alpha,\beta)/F$ is separable. 
+\end{proof}
+
+\vs \vs \vs
+
+\begin{theorem}
+For a finite field extension $K/F$, the following are equivalent:
+\begin{enumerate}
+\item[(a)] $K/F$ is Galois.
+\item[(b)] $K$ is the splitting field over $F$ of a separable polynomial $f \in F[x] \bs F$.
+\item[(c)] $|G(K/F)| = [K : F]$. 
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+$(ii) \implies (iii)$ by 6.4.6 and $(iii) \implies (i)$ by 6.4.5 (b), so it remains to show $(i) \implies (ii)$. If $K/F$ is Galois, then by definition $K/F$ is separable, and by assumption finite, hence by Theorem 6.3.21 $K = F(\alpha)$ for some $\alpha \in K$. Now $\alpha$ is separable over $F \implies f := \mu_{\alpha/F} \in F[x] \bs F$ is separable. But $K/F$ is normal, and $\alpha$ is a root in $K$ of the irreducible polynomial $f$, whence $f$ splits over $K$. But any splitting field of $f$ over $F$ must contain $\alpha$, so we conclude that $K$ is the splitting field of the separable polynomial $f$ over $F$. 
+\end{proof}
+
+\vs
+
+\begin{defn}
+For any field $K$, let $\aut(K)$ denote the group of ring automorphisms of $K$ (under composition). For any subgroup $H \leq \aut(K)$, define
+	\[\tn{Fix}(H) := \{\alpha \in K \mid \sigma(\alpha) = \alpha \tn{ for all } \sigma \in H \} \]
+It is clear to see that $\tn{Fix}(H)$ is a subfield of $K$ containing $F$. 
+\end{defn}
+
+\vs
+
+\begin{theorem}[Artin]
+If $H \leq \aut(K)$ is finite, then $|H| = [K : \tn{Fix}(H)]$. 
+\end{theorem}
+
+\begin{proof}
+Set $F := \tn{Fix}(H)$. 
+\begin{enumerate}
+\item[(1)] We claim that for all $\alpha \in K$, $\alpha$ is separable over $F$ and $[F(\alpha) : F] \leq |H|$. Consider the $H$-orbit $X$ of $\alpha$ in $K$, so $X = \{\sigma(\alpha) \mid \sigma \in H\}$. Then $|X| \leq |H|$. Set $f(x) := \prod_{\beta \in X} (x-\beta) \in K[x]$. For any $\sigma \in H$, we have an associated ring automorphism $\wt{\sigma} : K[x] \ra K[x]$ with $x \mapsto x, \wt{\sigma}|_K = \sigma$. Note that 
+	\[\wt{\sigma}(f) = \prod_{\beta \in X} \wt{\sigma}(x-\beta) = \prod_{\beta \in X} (x-\sigma(\beta)) = \prod_{\beta' \in X} (x-\beta) = f \implies f \in F[x] \]
+Now $\alpha \in X \implies f(\alpha) = 0 \implies \mu_{\alpha/F} \mid F$ in $F[x]$, and $f$ is by construction separable, so $\mu_{\alpha/F}$ is separable $\implies \alpha$ is separable over $F$. Also,
+	\[[F(\alpha) : F] = \deg\mu_{\alpha/F} \leq \deg f = |X| \leq |H| \]
+
+\item[(2)] We now claim that $[K : F] \leq |H|$. Suppose that $[K : F] > |H|$. Then there exist elements $\alpha_1,\dots,\alpha_N \in K$ such that $[F(\alpha_1,\dots,\alpha_n) : F] > |H|$. By part (1), each $\alpha_i$ is separable over $F$, so by Theorem 6.3.21 there exists $\alpha \in F(\alpha_1,\dots,\alpha_n)$ such that $F(\alpha) = F(\alpha_1,\dots,\alpha_n)$. That is, $[F(\alpha) : F] > |H|$, contradicting (1). 
+\item[(2)] To complete the proof, we show that $|H| \leq [K : F]$. Note that $K/F$ is finite by (2). By definition of $F$, $H \leq G(K/F)$, so $|H| \leq |G(K/F)| \leq [K : F]$ by Proposition 6.4.5 (a).
+\end{enumerate}
+\end{proof}
+
+\vs
+
+\begin{remark*}
+For any finite field extension $K/F$, we actually get $|G(K/F)| \mid [K : F]$, since
+	\[|G(K/F)| = [K : \tn{Fix}(G(K/F))] \mid [K : F] \]
+\end{remark*}
+
+\vs
+
+\begin{theorem}
+A finite field extension $K/F$ is Galois if and only if $\tn{Fix}(G(K/F)) = F$. 
+\end{theorem}
+
+\begin{proof}
+Put $F' := \tn{Fix}(G(K/F)) \implies F \sub F' \sub K$. 
+
+$[\implies]$ Suppose that $K/F$ is Galois. Then $|G(K/F)| = [K : F]$ by Theorem 6.4.8. Because $F \sub F'$, $G(K/F') \sub G(K/F)$, but $G(K/F) \sub G(K/F')$ since $F' := \tn{Fix}(G(K/F))$, hence $G(K/F') = G(K/F)$. But then
+\begin{align*}
+[K : F] &= |G(K/F)| = |G(K/F')| \leq [K : F'] = \frac{[K : F]}{[F' : F]} \\
+\implies [F' : F] &= 1 \\
+\implies F' &= F
+\end{align*}
+
+$[\impliedby]$ Suppose $F' = F$. By Theorem 6.4.10, $|G(K/F)| = [K : F'] = [K : F]$, hence $K/F$ is Galois by Proposition 6.4.5 (b). 
+\end{proof}
+
+\vs
+
+\noindent \tb{Notation} For $K/F$ a field extension, denote by $\mc{F}(K/F)$ the set of intermediate fields $L$ with $F \sub L \sub K$. For any group $G$, denote by $\mc{S}(G)$ the set of subgroups of $G$. 
+
+\vs
+
+\begin{theorem}[Galois Correspondence]
+For any finite Galois field extension $K/F$, the maps 
+\begin{alignat*}{2}
+&\Phi : \mc{F}(K/F) \lar \mc{S}(G(K/F)), \qquad && L \longmapsto G(K/L) \\
+&\Psi : \mc{S}(G(K/F)) \lar \mc{F}(K/F), && H \mapsto \tn{Fix}(H)
+\end{alignat*}
+are inclusion-reversing inverses. 
+\end{theorem}
+
+\begin{proof} We first make the following observations:
+\begin{enumerate}
+\item[(1)] If $L,L' \in \mc{F}(K/F)$ with $L \sub L'$, then clearly $G(K/L') \sub G(K/L)$.
+\item[(2)] Conversely, if $H,H' \in \mc{S}(G(K/F))$ with $H \sub H'$, then $F \sub \tn{Fix}(H') \sub \tn{Fix}(H) \sub K$. 
+\item[(3)] $H \leq G(K/\tn{Fix}(H))$ for all $H \in \mc{S}(G(K/F))$. 
+\end{enumerate}
+
+Let $L \in \mc{F}(K/F)$. Since $K/F$ is Galois, it is the splitting field over $F$ of some separable $f \in F[x] \bs F \implies K/L$ is Galois as $K$ is also the splitting field over $L$ of $f \in L[x]$. Therefore,
+	\[\Psi \circ \Phi(L) = \tn{Fix}(G(K/L)) \overset{6.4.11}{=} L \]
+Now let $H \leq G(K/F)$. If $L := \tn{Fix}(H) \in \mc{F}(K/F)$, then $K/L$ is Galois (because $K/F$ is), hence $|G(K/L)| = [K : L]$ by Theorem 6.4.8 (c). By Theorem 6.4.10,
+\begin{align*}
+|H| &= [K : L] = |G(K/L)| \\
+\overset{(3)}{\implies} H &= G(K/L) \\
+\implies \Phi \circ \Psi(H) &= \Phi(L) = G(K/L) = H
+\end{align*}
+\end{proof}
+
+\vs
+
+\begin{corollary}
+If $K/F$ is a finite Galois field extension and $H \leq G(K/F)$, then 
+	\[[\tn{Fix}(H) : F] = [G(K/F) : H] \]
+because $[K : \tn{Fix}(H)] = |G(K/\tn{Fix}(H))| = |H|$. 
+\end{corollary}
+
+\vs
+
+\begin{theorem}
+Let $K/F$ be a finite Galois extension and $L \in \mc{F}(K/F)$. The following are equivalent:
+\begin{enumerate}
+\item[(i)] $L/F$ is Galois.
+\item[(ii)] $L/F$ is normal.
+\item[(iii)] $\sigma(L) = L$ for all $\sigma \in G(K/F)$. 
+\item[(iv)] $G(K/L) \nsg G(K/F)$. 
+\end{enumerate}
+In any case, $G(L/F) \cong G(K/F) / G(K/L)$. 
+\end{theorem}
+
+\begin{proof}
+$(i) \implies (ii)$ is a tautology, and $(ii) \implies (iii)$ by Lemma 6.2.9. $(ii) \implies (iv)$ by Corollary 6.2.13 (b), which also proves $G(L/F) \cong G(K/F) / G(K/L)$. \\
+
+$[(iv) \implies (iii)]$ Let $L \in \mc{F}(K/F)$ and $\sigma \in G(K/F)$. Note that $\sigma G(K/L) \sigma\inv = G(K/\sigma(L))$. If $G(K/L) \nsg G(K/F)$, then $\sigma G(K/L) \sigma\inv G(K/L)$ for all $\sigma \in G(K/F)$. That is, for all $\sigma \in G(K/F)$, 
+	\[G(K/\sigma(L)) = G(K/L) \implies \sigma(L) = L \]
+by the Galois Correspondence.  \\
+
+$[(iii) \implies (i)]$ As in 6.2.13, consider the group homomorphism $\tn{res} : G(K/F) \ra G(K/L)$, \\ $\sigma \mapsto \sigma|_L : L \ra L$ ($\tn{res}(\sigma)$ is well-defined by our assumption of $(iii)$) with $\ker \tn{res} = G(K/L)$. Then
+\[[L : F] \geq |G(L/F)| \geq |\im \tn{res}| = \frac{|G(K/F)|}{|G(K/L)|} = \frac{[K : F]}{[K : L]} = [L : F] \]
+Therefore, $L/F$ is Galois by Proposition 6.4.5 (b) or Theorem 6.4.8. 
+\end{proof}
+
+\vs
+
+\begin{corollary}
+If $K/F$ is a Galois field extension with $G(K/F)$ abelian, then all intermediate extensions are Galois. 
+\end{corollary}
+
+\vs
+
+\begin{example}
+Let $q = p^n \in \N$ for some prime $p \in \N$ and $n \in \N$. By Proposition 6.3.14, $\mbb{F}_q/\mbb{F}_p$ is Galois. Consider the Frobenius automorphism $\sigma_p : \mbb{F}_q \ra \mbb{F}_q, a \mapsto a^p$. It is an easy exercise to show that $G(\mbb{F}_q/\mbb{F}_p) = \gen{\sigma_p} \cong (\z_n,+)$. More generally, if $d \mid n$, then $\mbb{F}_q$ embeds into $\mbb{F}_q$, and $G(\mbb{F}_q/\mbb{F}_{p^d}) = \gen{\sigma_p^d}$. 
+\end{example}
+
+\vs
+
+\begin{example}
+Let $F$ be any field and $n \in \N$ with $\tn{char}(F) \nmid n$. Then
+\begin{align*}
+& \quad D(x^n-1) = nx^{n-1} \ne 0 \\
+&\implies \gcd(x^n-1,D(x^n-1)) = 1 \\
+&\implies x^n - 1  \tn{ is separable over } F
+\end{align*}
+
+Let $K_n$ denote the splitting field over $F$ of the separable polynomial $x^n-1$ (hence $K_n/F$ is Galois) and $U_n \sub K_n$ the set of roots of $x^n-1$ in $K_n$. Note that $U_n$ is a finite subgroup of $K_n\x$, hence $U_n$ is cyclic, say $U_n = \gen{\zeta_n}$. We call such an element $\zeta_n$ a \tb{primitive $\mb{n}$th root of unity}. Then $K_n = F(\zeta_n)$. \\
+
+We actually have an injective group homomorphism $\psi : G(K_n/F) \ra \z_n\x$ given by $\sigma \mapsto i \pmod{n}$, where $i \in \z$ is any integer such that $\sigma(\zeta_n) = \zeta^i$, and $\psi$ is an isomorphism if and only if
+	\[\phi(n) = |G(K_n/F)| = [K_n : F], \]
+where $\phi : \N \ra \N$ is the Euler \emph{totient function}. For example, $\psi$ is an isomorphism when $F = \Q$. For more on this, see Theorem 41 in section 13.6 of [DF]. 
+\end{example}
+
 
 \end{document} 
