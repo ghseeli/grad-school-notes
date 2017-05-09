@@ -545,7 +545,7 @@ which is the product \s algebra coming from the Borel
       Y_n = \left( Y_{B_n} \times \prod_{\alpha \in B \setminus B_n}
         X_\alpha \right) \times \prod_{\alpha \in A \setminus B} X_\alpha.
     \]
-    We also note that $x|_A = (x|_B)|_{B_n}$ (What?!) Thus,
+    We also note that $x|_A = (x|_B)|_{B_n}$ (Needs some revision.) Thus,
     \[
       Y = \bigcup_{n \geq 1} Y_n = \bigcup_{n \geq 1} \left[ \left(
           Y_{B_n} \times \prod_{\alpha \in B \setminus B_n} X_\alpha
@@ -1098,8 +1098,7 @@ finite disjoint unions of elements in $\Ep$. Then clearly $\A$ is an
 algebra of sets. Thus, we have $\Ep \subset \A \subset \M(\A) =
 \B_\R$. Now, we wish to show we can construct a $\mu|_\Ep$, then a
 $\mu|_\A$ and then induce a $\mu|_{\M(\A)}$. What we need to show that
-$\mu$ is \s additive. (This is all oddly worded, but I could not
-quite follow what he was trying to say in class.)\\
+$\mu$ is \s additive. (Needs some revision.)\\
 
 Now, we will define $\mu|_\Ep$ using the function $F \from \R \to \R$
 by saying $F(\infty) := \lim_{x \to \infty} F(x) \in
@@ -1566,7 +1565,7 @@ Then, $F$ is increasing, right continuous, and $\mu = \mu_F$.
       (\alpha_n, \beta_n + \delta_n) \subset (\alpha_n, \beta_n +
       \delta_n]$ and so $\mu((\alpha_n,\beta_n+\delta_n)) \leq
       \mu((\alpha_n,\beta_n)) + \frac{\epsilon}{2^n}$. Finally, adding
-      all these terms together 
+      all these terms together
       yields the desired result that \[
         \sum_{n=1}^\infty \mu((\alpha_n,\beta_n+\delta_n]) \leq
         \sum_{n=1}^\infty \mu((\alpha_n,\beta_n]) + \epsilon \leq
@@ -2169,8 +2168,9 @@ Finally, we can now prove \ref{lem26}.
   \(\alpha = 1\). Now, simply take the supremum over \(\psi\) to get
   the theorem.
 \end{proof}
-Here I will choose to judiciously skip some pages of notes for the
-sake of getting the more important theorems into the notes.
+
+(Some material is skipped here.)
+
 \begin{lem}[Fatou's Lemma]
   Let \((f_n)_{n \geq 1} \in L^+\). Then, \[
     \int (\lim \inf f_n) \d\mu \leq \lim \inf \int f_n \d\mu
@@ -2232,8 +2232,7 @@ subsets.
     \int_X f \d\mu := \int_X g \d\mu - \int_X h \d\mu
   \]
 \end{defn}
-We would need to show this definition makes sense. Once again, I will
-omit such details for the time being.
+We need to show this definition makes sense (details ommitted).
 \begin{prop}
   Let \(\mathbb{K} = \R,\C\), or \([0,\infty]\). Then,
   \begin{enumerate}
@@ -3035,7 +3034,7 @@ DCT. Note that this did not use uniform continuity.
       t}(x,\xi) \right| \leq g(x)\). So, for all \(x \in X\), we
   get \[
     \lim_{\lambda \to t} h(x,\lambda) = \frac{\partial f}{\partial
-      t}(x,t) \text{ (why?)}
+      t}(x,t) \text{(Needs some revision.)}
   \]
   Therefore, \(h(x,\lambda)\) satisfies the hypotheses of DCT v3.0 and
   so \[
@@ -3320,7 +3319,7 @@ Thus, we have that \(\norm_{L^p}\) is a seminorm on
     \(n\) such that, for all \(x\), \(f(x) \leq n\). Then, for
     \(\alpha > n\), \(\mu(f(x) > \alpha) = \mu(\emptyset) = 0\). Then,
     \(s \leq n\), which is a contradiction. So, \(s = f\) gives us
-    \(\sup g = \infty\). (What is going on here?) \\
+    \(\sup g = \infty\). (Needs some revision.) \\
 
     If \(s < \infty\), use the same \(Z\) as above and take \(g = f
     \chi_{Z^c}\). Then, \(g = f\) \(\mu\)-almost everywhere and we
@@ -3569,7 +3568,7 @@ Now, we go into two important examples.
       \item If $A \x B \in \E$, then $$(A \x B)^c = (A^c \x Y) \dunion (A \x B^c).$$
     \end{itemize}
 
-    \item We claim that $\mu \ox \nu$ defined by $(\mu\ox\nu)(A \x B) = \mu(A)\nu(B)$ is a pre-pre-measure (like a measure, but on an elementary family, for now):
+    \item We claim that $\mu \ox \nu$ defined by $(\mu\ox\nu)(A \x B) = \mu(A)\nu(B)$ is a pre-premeasure:
 
     \begin{itemize}
       \item $(\mu\ox\nu)\from\E\to[0, \oo]$
@@ -3594,7 +3593,10 @@ Now, we go into two important examples.
       \end{align*}
     \end{itemize}
   \end{enumerate}
-  Finally, I have a big feeling that we have satisfied the hypothesis of the Practical Catheodary Theorem, and we simply invoke that theorem to get $(\mu\ox\nu)$ for the entire $\M\ox\cN$, not just $\E$.
+  We have satisfied the hypothesis of the Practical Catheodary Theorem for $X \x Y$, $\E$, and $\mu \ox \nu$.  Therefore, there exists a unique measure $\mu\ox\nu$ for the entire $\M(\E) = \M\ox\cN$ defined by, for any $S \in \M\ox\cN$,
+  $$(\mu\ox\nu)(S) = \inf\sum_{n=1}^N (\mu\ox\nu)(E_n)$$
+
+  where the infimum is over disjoint elementary covers of $S$.  Hooray!
 \end{proof}
 \begin{defn}
   For $d > 1$, the \de{Lebesgue measure} $\mu$ on $(\R^d, \B_{\R^d})$ is defined inductively by letting $$\mu := \mu^1 \ox \mu^{d-1}$$ coming from the Lebesgue measure spaces $(\R, \B_{\R}, \mu^1)$ and $(\R^{d-1}, \B_{\R^{d-1}}, \mu^{d-1})$.
@@ -3717,7 +3719,7 @@ things we skipped in the proof of Tonelli's Theorem.
   \end{defn}
   \begin{prop}
     Given any set of subsets \(\F \subset \P(X)\), there is a unique
-    smallest monotone class containing \(\F\) denoted \(\cC(\F)\). 
+    smallest monotone class containing \(\F\) denoted \(\cC(\F)\).
   \end{prop}
   \begin{proof}[Proof of Proposition]
     Let \[
@@ -3727,7 +3729,7 @@ things we skipped in the proof of Tonelli's Theorem.
   Then, \(\cC(\F) := \Intersect_{\cC \in \Omega} \cC\), the
   intersection of all monotone classes containing \(\F\). It is
   straightforward to show that this is a monotone class containing
-  \(\F\). 
+  \(\F\).
 \end{proof}
 \begin{lem}[Monotone Class Lemma; Folland 2.35 p 66]
   If \(\A\) is an algebra of sets in \(X\), then \(\cC(\A) = \M(\A)\).
@@ -3765,7 +3767,7 @@ things we skipped in the proof of Tonelli's Theorem.
   \intersect F \in \cC\). Thus, \(\cC_E\) is a monotone class. \\
 
   Now, we show that \(\cC\) is a \s algebra. If \(E \in \A\), then
-  for all \(E \in \A\), we get \(F \in 
+  for all \(E \in \A\), we get \(F \in
   \cC_E\) because \(\A\) is an algebra. So, for all \(E \in \A\), we
   get \(\A \subset \cC_E\) and thus \(\cC(\A) \subset \cC_E\). In
   other words, for all \(E \in \A\) and for all \(F \in \cC\), we get
@@ -3804,7 +3806,7 @@ Now, we are ready to complete our proof of Tonelli's Theorem.
       (\mu \ox \nu)(E_n)
        = &\int_X \nu((E_n)_x) \d\mu(x)
       & = \int_Y \mu((E_n)_y) \d\nu(y) \\
-      \text{continuity from below} \downarrow \ \ \ \ \   
+      \text{continuity from below} \downarrow \ \ \ \ \
       & \text{ MCT in }X \downarrow
       & \downarrow\text{MCT in }Y\\
       (\mu \ox \nu)(E) =
@@ -3838,7 +3840,7 @@ Now, we are ready to complete our proof of Tonelli's Theorem.
     Now, let \(\M_i := \M \intersect \P(X_i)\), \(\cN_i := \cN
     \intersect \P(Y_i)\), \(\mu_i := \mu|_{\M_i}\), \(\nu_i :=
     \nu|_{\cN_i}\), \(f_i := f|_{X_i \times Y_i}\), and \(\Ep_{X,Y} =
-    \{X_i \times Y_i\} \subset \M \ox \cN\). 
+    \{X_i \times Y_i\} \subset \M \ox \cN\).
     Because of the lemma, given \(\iota \from X_i \times Y_i \into X
     \times Y\), the canonical injection, we get \[
       (\M \ox \cN)_{X_i \times Y_i} := \iota^{-1}(\M \ox \cN) =
@@ -3871,7 +3873,7 @@ Now, we are ready to complete our proof of Tonelli's Theorem.
     \((\M,\B_{[0,\infty]})\)-measurable and the same argument applies
     for \(\tilde{G}_i := \int_x f(x,y)\chi_{X_i}(x) \chi_{Y_i}(y)
     \d\mu(x)\). \\
-    
+
     Finally, we use Tonelli for finite measures and MCT to get
     \begin{align*}
       \int f(x,y) &\chi_{X_i}(x)\chi_{Y_i}(y) \d(\mu \ox \nu)
@@ -3884,12 +3886,12 @@ Now, we are ready to complete our proof of Tonelli's Theorem.
     \end{align*}
     % This seems fishy, but by the
     % monotone class lemma, we get \(\cC(A) = \M(\A)\), so the theorem
-    % is true for all \(E \in \M(\A) = \M(\Ep) = \M \ox \N\). 
+    % is true for all \(E \in \M(\A) = \M(\Ep) = \M \ox \N\).
   \end{itemize}
 \end{proof}
 \begin{rmk}
   Note that \(f(x,y)\) jointly measurable in \([0,\infty]\) is
-  \emph{not} the same as separately measurable. 
+  \emph{not} the same as separately measurable.
 \end{rmk}
 \begin{thm}[Fubini's Theorem]
   Let \(f \in \cL^1(X\times Y, \M \ox \cN, \mu \ox \nu, \K)\). Then,
@@ -3909,7 +3911,7 @@ Now, we are ready to complete our proof of Tonelli's Theorem.
 \end{thm}
 \begin{proof}
   For \(f \in \cL^1(X \times Y)\), one simply needs to note \(f = f_+
-  - f_-\) and use Tonelli's theorem on \(f_+\) and \(f_-\). 
+  - f_-\) and use Tonelli's theorem on \(f_+\) and \(f_-\).
 \end{proof}
 
 \subsection*{(4/25/17) Lecture 25}
@@ -4002,7 +4004,7 @@ Using this corollary, we now generalize to another one.
     convention in physics; sometimes the convention is flipped).
   \item \(\langle u,v \rangle = \ov{\langle  v,u \rangle}\).
   \item For all \(u \in \H\), \(\langle u,u \rangle \in [0,\infty)\).
-  \item If \(\langle u,u \rangle = 0\), then \(u = 0\). 
+  \item If \(\langle u,u \rangle = 0\), then \(u = 0\).
   \end{enumerate}
   More standarly, this is called an \de{inner product
     space over \(\K\)}.
@@ -4052,7 +4054,7 @@ expansion, but only taking the Taylor series up to the first \(k+1\)
 terms. So, using this theorem, we know that \[
   \int e^{-x \phi(u)} \d u = \sum_{k=1}^n \cdots + o\left( \frac{1}{x^n} \right).
 \]
-So, we ask, what happens to this function at \(u = c_c\) where
+So, we ask, what happens to this function at \(u = u_c\) where
 \(\phi'(u_c)=0\)? We do the substitution \(v : = u - u_c\) to get \[
   \int e^{-x \phi(u_c+v)} \d v
 \]
@@ -4105,7 +4107,7 @@ the following theorem.
   Twice-Differentiable Phase Functions and Constant Amplitude Functions]
   Let \(\phi \from \R \to \R\) be a \(k\)-times differentiable
    function (with \(k \geq 2\)) on an interval
-   \((-\epsilon,\epsilon)\). If, on \((-\epsilon,\epsilon)\) 
+   \((-\epsilon,\epsilon)\). If, on \((-\epsilon,\epsilon)\)
   \[
     \phi(u) = \sum_{j=0}^k a_j u^j + h_k(u) u^k, \ \lim_{u \to \infty}
     h_k(u) = 0
