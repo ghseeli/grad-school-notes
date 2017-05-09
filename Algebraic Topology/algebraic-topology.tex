@@ -28,7 +28,6 @@
 }
 
 \numberwithin{thm}{section}
-\setlength\parindent{0pt}
 
 \everymath{\displaystyle}
 
@@ -41,14 +40,22 @@
 \renewcommand{\epsilon}{\varepsilon}
 \renewcommand{\d}{\partial}
 \newcommand{\fund}[1][1]{\pi_{#1}}
+\newcommand{\homl}[1][n]{H_{#1}}
+\newcommand{\rhoml}[1][n]{\widetilde{H}_{#1}}
+\newcommand{\dhoml}[1][n]{\homl^\Delta}
+\newcommand{\chains}[1][n]{C_{#1}}
+\newcommand{\rchains}[1][n]{\widetilde{C}_{#1}}
+\newcommand{\Dcomplex}{$\Delta$-complex}
+\newcommand{\Dcomplexes}{$\Delta$-complexes}
 \newcommand{\transverse}{\pitchfork}
 \newcommand{\x}{\times}
-\newcommand{\Map}{\text{Map}}
-\newcommand{\Mor}{\text{Mor}}
-\newcommand{\id}{\text{id}}
+\newcommand{\Map}{\operatorname{Map}}
+\newcommand{\Mor}{\operatorname{Mor}}
+\newcommand{\id}{\operatorname{id}}
 \newcommand{\adj}{\sim} % for 'adjacent' in a graph
-\newcommand{\Arg}{\text{Arg}}
+\newcommand{\Arg}{\operatorname{Arg}}
 \renewcommand{\bar}{\widebar}
+\newcommand{\rk}{\rank}
 
 %%%%%%%%%%%%%% BEGIN CONTENT: %%%%%%%%%%%%%%
 
@@ -92,17 +99,17 @@ continuous deformations between maps. While homology studies subspaces
 
 We now define homotopies in the space of maps between manifolds \(M\)
 and \(N\) denoted
-\[\Map(M,N)=\{f \from M \to N \mid \text{$f$ is continuous}\}.\]
+\[\Map(M,N)=\{f \from M \to N \suchthat \text{$f$ is continuous}\}.\]
 
 In this course, we follow the convention that maps are continuous
 functions unless otherwise stated!
 
 \begin{defn}
-  A \emph{homotopy} from \(f \in \Map(M, N)\) to \(g \in \Map(M, N)\) is a path in $\Map(M, N)$ that starts at $f$ and ends at $g$.  Therefore, $h_0 = f$ and $h_1 = g$.
+  A \de{homotopy} from \(f \in \Map(M, N)\) to \(g \in \Map(M, N)\) is a path in $\Map(M, N)$ that starts at $f$ and ends at $g$.  Therefore, $h_0 = f$ and $h_1 = g$.  (Note that we have not yet defined ``path'', and so you may use the following equivalent definition instead.)
 
-  Equivalently, a \emph{homotopy} from \(f \from M \to N\) to \(g \from M \to N\)
-  is a map \(h\from M \x I \to N\) such that \(h_0=f\) and \(h_1=g\). We say \(f\) and
-  \(g\) are \emph{homotopic} if a homotopy between them exists.
+  Equivalently, a \de{homotopy} from \(f \from M \to N\) to \(g \from M \to N\)
+  is a map \(h\from I \x M \to N\) such that \(h_0=f\) and \(h_1=g\). We say \(f\) and
+  \(g\) are \de{homotopic} if a homotopy between them exists.
 
   Often we write \(h_t(m)\) for \(h(m,t)\).
 \end{defn}
@@ -123,10 +130,10 @@ We denote the homotopy equivalence class of \(f\) by \([f]\).
   We also say that ``$f$ and $g$ are homotopic relative to $A$''.
 \end{defn}
 
-When there are no restrictions placed on a homotopy, it is sometimes called a \emph{free} homotopy.
+When there are no restrictions placed on a homotopy, it is sometimes called a \de{free} homotopy.
 
 \begin{defn}
-  A \emph{path} in a topological space $X$ is a map
+  A \de{path} in a topological space $X$ is a map
   \[f \from I \to X.\]
 \end{defn}
 
@@ -146,7 +153,7 @@ there exists no end point fixing homotopy between the two paths.
     \end{cases}
   \]
 
-  This is called the \emph{concatenation} or \emph{path composition}
+  This is called the \de{concatenation} or \de{path composition}
   of $f$ and $g$.
 
   This operation is well defined on homotopy classes, that is if
@@ -167,7 +174,7 @@ objects in a category. We call this category the Fundamental Groupoid.
   A \de{category} $\mathcal{C}$ consists of
   \begin{itemize}
     \item A class of objects $\Ob(\mathcal{C})$
-    \item For every pair of objects $A, B \in \Ob(\mathcal{C})$, a set $\Hom(A, B)$ of \de{morhpisms}
+    \item For every pair of objects $A, B \in \Ob(\mathcal{C})$, a set $\Hom(A, B)$ of \de{morphisms}
     \item A composition operation.  That is, if $f \in \Hom(A,B)$ and $g \in \Hom(B,C)$, then there exists a morphism $h \in \Hom(A,C)$ s.t. $h = f.g$, where ``.'' denotes the composition operation.  The composition operation must be associative.
     \item For every object $A \in \Ob(\mathcal{C})$, an \de{identity morphism} $\id_A\from A \to A$ s.t. for all $f\from A \to B$ we have $\id_A.f = f$ and for all $g\from B \to A$ we have $g.\id_A = g$, for all $B$.
   \end{itemize}
@@ -310,29 +317,47 @@ group with $\fund(X)$ or $\fund X$.
 \end{example}
 
 \begin{defn}
-  A \emph{covering space} \((\tilde{X},p)\) of a space \(X\) is a space \(\tilde{X}\)
-  and map \(p \from \tilde{X} \to X\) where there exists an open cover
+  A \de{covering space} \((\widetilde{X},p)\) of a space \(X\) is a space \(\widetilde{X}\)
+  and map \(p \from \widetilde{X} \to X\) where there exists an open cover
   \(\{U_\alpha\}\) of \(X\) and for each $\alpha$, \(p^{-1}(U_\alpha)\) is a
-  disjoint union $\dunion V_j$ of open sets in \(\tilde{X}\) such that for all $j$, $p|_{V_j} \from V_j \to U_\alpha$ is a homeomorphism.
+  disjoint union $\dunion V_j$ of open sets in \(\widetilde{X}\) such that for all $j$, $p|_{V_j} \from V_j \to U_\alpha$ is a homeomorphism.
 \end{defn}
 
 Think of the stack of records theorem from Guillemin and Pollack. See
 page 59 in Hatcher for the covering space of two loops as discussed in
-class. We now discuss homotopy lifting.
+class.
 
+\begin{defn}[local property]
+  If $P$ is a property that a set can have, then a set $S$ is \de{locally} $P$ if for every $s \in S$, there exists a neighborhood of $s$, and for every neighborhood $N$ of $s$, there exists a subneighborhood that has $P$.
+\end{defn}
+\begin{defn}[semilocal property]
+  If $P$ is a property that a set can have, then a set $S$ is \de{semilocally} $P$ if for every $s \in S$, there exists a neighborhood $N$ of $s$ that has $P$.
+\end{defn}
 \begin{prop}
-  Given a covering space \((\tilde{X},p)\) of \(X\) and a homotopy
-  \(h_t \from Y \to X\), and some map
-  \(\tilde{f}_0 \from Y \to \tilde{X}\), then there exists a unique
-  homotopy \(f_t \from Y \to X\) that lifts \(f_0\), that is
+  Let $P$ be any property a set can have.
+  \begin{itemize}
+    \item $S$ has $P$ $\implies$ $S$ is semilocally $P$.
+    \item $S$ is locally $P$ $\implies$ $S$ is semilocally $P$.
+  \end{itemize}
+\end{prop}
+
+We now discuss homotopy lifting.
+
+\begin{prop}[Hatcher, Prop 1.30]
+  Given a covering space \((\widetilde{X},p)\) of \(X\) and a homotopy
+  \(h \from I \x Y \to X\), if just $h_0$ has a lift through $p$, then there exists a lift of \(h\) through $p$.  The lift is unique up to the choice of preimage of the original point.
   \begin{center}
     \begin{tikzcd}
-      & & \tilde{X}\\
-      Y \times \{0\} \arrow[r,hook] \arrow[rru,"\tilde{f}_0", bend
-      left]& Y \times I \arrow[r,"f_t",swap] \arrow[ru,dashed,"\tilde{f}_t"]& X \arrow[u,"p"]
+      & & \widetilde{X}\\
+      Y \times \{0\} \arrow[r,hook] \arrow[rru,"\tilde{h}_0", bend
+      left]& Y \times I \arrow[r,"h",swap] \arrow[ru,dashed,"\tilde{h}_t"]& X \arrow[u,"p"]
     \end{tikzcd}
   \end{center}
 \end{prop}
+
+\begin{rmk}
+  Now would be a great time to read Hatcher, Prop 1.31, 1.32, 1.33, and 1.34.
+\end{rmk}
 
 \mydate{d4}{30}{1}{2017}
 
@@ -354,10 +379,8 @@ $f_* = f'_*$ since $(f \of p) \homotopic (f' \of p)$ via $(h \of p)$.
   \end{tikzcd}$$ commutes.
 \end{thm}
 \begin{proof}
-  ((chris why wont it let me put pairs in this tikzcd diagram below?))
   $$\begin{tikzcd}
-    % &I \x I \arrow[r, "(p,\id)"] &X \x I \arrow[r, "h"] &Y
-    &I \x I \arrow[r, ""] &X \x I \arrow[r, "h"] &Y
+    &I \x I \arrow[r, "(p{,}\id)"] &X \x I \arrow[r, "h"] &Y
   \end{tikzcd}$$
 
   the rectangle is simply connected RECTANGLE: LEFT $f \of p$ RIGHT
@@ -410,37 +433,30 @@ $f_* = f'_*$ since $(f \of p) \homotopic (f' \of p)$ via $(h \of p)$.
     &\fund(X,x) \arrow[r, "f", "\isom"'] \arrow[rr, bend right, "\isom", "f.g"'] &\fund(Y, f(x)) \arrow[r, "g", "\isom"'] &\fund(X, g(f(x))
   \end{tikzcd}$$
 \end{rmk}
-\begin{defn}[retraction, retract, weak deformation retract, strong deformation retract]
-  ((these definitions from wolfram mathworld, and they make perfect sense to me))
-
-  For any subspace $A$ of $X$, a \de{retraction} is a map $f\from X \to A$ s.t. for all $a \in A$, $f(a) = a$.
-
-  $A$ is a \de{retract} (of $X$).
-
-  If additionally there exists a homotopy $F\from X \x I \to X$ s.t. $F_0 = \id_X$ and $F_1 = f$, then $A$ is a \de{weak deformation retract}.
-
-  If additionally we have that for all $t \in I$ and all $a \in A$, $F_t(a) = a$, then $A$ is a \de{strong deformation retract}.
-\end{defn}
 \begin{defn}
-  A \de{weak deformation retract} is when you have a homotopy $f\from A \into X$ and a homotopy inverse $g$ s.t. $[g \of f] = [id_A]$ and $[f \of g] = [id_X]$. ((Webster's def))
+  \mbox{}
+  \begin{enumerate}
+    \item For any subspace $A$ of $X$, a \de{retraction} is a map $f\from X \to A$ s.t. for all $a \in A$, $f(a) = a$.
+
+    \item $A$ is a \de{retract} (of $X$).
+
+    \item If additionally there exists a homotopy $F\from X \x I \to X$ s.t. $F_0 = \id_X$ and $F_1 = f$, then $A$ is a \de{weak deformation retract}.
+
+    \item If additionally we have that for all $t \in I$ and all $a \in A$, $F_t(a) = a$, then $A$ is a \de{strong deformation retract}.
+  \end{enumerate}
+  By convention in this course, \de{deformation retract} refers to strong deformation retract!
 \end{defn}
-\begin{defn}
-  A \de{strong deformation retract} is a weak deformation retract where the homotopy inverse is relative to $A$ and $g \of f = \id_A$. ((Webster's def)) ((umm, what does he mean by "relative"?))
-\end{defn}
-By convention in this course, \de{deformation retract} refers to strong deformation retract!
-\begin{rmk}
-  More generally, $g$ is a retraction of $A$ if $g \of f$ = $id_A$. ((Webster's def))
-\end{rmk}
 \begin{example}
-  $S^1 \into \C\minus\{0\}$ is a d.r. where the homotopy is given by $h_w(x) = \frac{x}{|x|^w}$ where $w \in [0,1]$  and $g(x) = \frac{x}{|x|}$.
+  $S^1 \into \C\minus\{0\}$ is a d.r. (the image of $S^1$ is the ``$A$'') where the homotopy is given by $h_w(x) = \frac{x}{|x|^w}$ where $w \in [0,1]$  and $g(x) = \frac{x}{|x|}$.
 
-  ((i infer)) This allows us to conclude that $\fund(\C\minus\{0\}) \isom \fund(S^1)$.
+  This allows us to conclude that $\fund(\C\minus\{0\}) \isom \fund(S^1)$.
 \end{example}
+\begin{defn}
+  A space $X$ is \de{contractible} if there exists a weak deformation retraction to a point.  Equivalently, $X$ is contractible if there exists a homotopy from the identity map to a constant map. (the identity map is null-homotopic)
+\end{defn}
 \begin{thm}
   Every map $f\from D^2 \to D^2$ has a fixed point.
 \end{thm}
-
-
 
 \begin{proof}
   Draw a circle and the points $x$ and $f(x)$.  Draw a ray from $f(x)$ through $x$ that ends at the boundary.  Consider a function $r$ that sends each $x$ to the endpoint of the ray.  This $r$ turns out to be a retraction.  This is our $g\from D^2 \to S^1$.  This is a deformation retract, so by our previous theorem, $\fund(D^2) \isom \fund(S^1)$.  A contradiction.
@@ -455,10 +471,10 @@ Note that ``cover'' refers to ``covering space'' in this section.
 Convention!  In this class, \textbf{connected} means \textbf{path connected}!
 
 \begin{defn}
-  If $X$ is a space, then the \de{category of X covers} is the category where the objects are the covers of $X$ (such as $(\tilde{X}, p)$) and a function $f \from \tilde{X_1} \to \tilde{X_2}$ is a morphism iff the diagram
+  If $X$ is a space, then the \de{category of X covers} is the category where the objects are the covers of $X$ (such as $(\widetilde{X}, p)$) and a function $f \from \widetilde{X}_1 \to \widetilde{X}_2$ is a morphism iff the diagram
 
   $$\begin{tikzcd}
-    &\tilde{X_1} \arrow[rd, "p_1"] \arrow[rr, "f"] &&\tilde{X_2} \arrow[ld, "p_2"] \\
+    &\widetilde{X}_1 \arrow[rd, "p_1"'] \arrow[rr, "f"] &&\widetilde{X}_2 \arrow[ld, "p_2"] \\
     &&X
   \end{tikzcd}$$
 
@@ -472,7 +488,7 @@ Convention!  In this class, \textbf{connected} means \textbf{path connected}!
   \end{itemize}
 \end{defn}
 \begin{rmk}
-  To better understand this definition, see the ``Special Functors'' section of \cite{functors}.
+  To better understand this definition, see the ``Special Functors'' section of~\cite{functors}.
 
   The above definition describes things that are *essentially* equivalent, in the sense that if we are only looking at the isomorphism classes of objects in $B$, then we have equivalence.  In categories, this is good enough, so we call this term *equivalence* instead of *essentially equivalent*.
 \end{rmk}
@@ -481,15 +497,17 @@ Convention!  In this class, \textbf{connected} means \textbf{path connected}!
 \end{rmk}
 
 \begin{defn}
-  The {category of subgroups of $\fund(X, x_0)$} is just that!  The morphisms of this category are group homomorphisms.  I think this is denoted $\fund$ - set, or something or other.
+  The {category of subgroups of $\fund(X, x_0)$} is just that!  The morphisms of this category are group homomorphisms.
 \end{defn}
+
+Note.  ``$\fund$ - set'' refers to a set that is acted upon by $\fund$.
 
 \begin{thm}
   There is an equivalence between fundamental sets and covers!
 
   That is, if $X$ is connected and SLSC, then there exists an equivalence functor between the category of covers of $X$ and the category of subgroups of $\fund(X)$.
 
-  The functor equivalence maps each cover $(\tilde{X}, p)$ to $p_*(\fund(\tilde{X}, \tilde{x}))$, a subgroup of the fundamental group of $X$.
+  The functor equivalence maps each cover $(\widetilde{X}, p)$ to $p_*(\fund(\widetilde{X}, \tilde{x}))$, a subgroup of the fundamental group of $X$.
 \end{thm}
 
 ((i think the following is strategies for proving something satisfies the above definition))
@@ -543,7 +561,7 @@ free: every point has a trivial stabilizer, that is, something is simply connect
 \end{defn}
 
 Let $X^a$ = {the paths in $X_1$ starting at $X_0$ up to endpoint preserving homotopy }
-$= \{ p \from X_0 \to X' \mid \forall x' \in X \}$
+$= \{ p \from X_0 \to X' \suchthat \forall x' \in X \}$
 
 LOWERCASE x's BELOW!!!
 $p \from x_0 to x'$
@@ -574,7 +592,7 @@ $q \from x_0 \to x''$
 
   preimage?  Fix $\alpha \in \fund(X, x_0)$.  What is the preimage under $\gamma$?, where $\gamma$ is defined by $\gamma \from (p^u)^{-1}(U) \to \fund(X, x_0)$, ((which was originally drawn above))
 
-  so $p^u$ is a cover if $X$ is SLSC.  Wohhoo!
+  so $p^u$ is a cover if $X$ is SLSC.  Woohoo!
 \end{proof}
 ((not sure if we actually finished the proof yet))
 
@@ -607,10 +625,10 @@ Therefore, $X^U$ is connected and simply connected.
   in white) around one of these, you cannot pull it off the interval,
   since the interval goes on ``forever''.
 
-  $A'$ = $K \cap \{(x,y,z) \in \R^3 \mid z > -\epsilon\}$ ($K$ minus
+  $A'$ = $K \cap \{(x,y,z) \in \R^3 \suchthat z > -\epsilon\}$ ($K$ minus
   the tunnels).
 
-  $B'$ = $K \cap \{(x,y,z) \in \R^3 \mid z < \epsilon\}$ ($K$ minus
+  $B'$ = $K \cap \{(x,y,z) \in \R^3 \suchthat z < \epsilon\}$ ($K$ minus
   the bridges).
 
   $A'$ is $m$ open line segments.  In our example, using $K =$
@@ -677,7 +695,7 @@ CW complexes are like a space built by gluing together balls.
   $\R P^n =$ lines in $\R^{n+1}$.
 
   $\R P^n = \{ \R \dot (1, a_1,,, a_{n-1})\} \isom \R^{n}$.
-  $\bunion \{ \R \dot (0, a_1,,, a_{n-1})\} \isom \R P^{n-1}$.
+  $\Union \{ \R \dot (0, a_1,,, a_{n-1})\} \isom \R P^{n-1}$.
 \end{example}
 
 \mydate{d7}{6}{2}{2017}
@@ -689,7 +707,7 @@ antipodal points are identified. By induction this gives us a
 \(CW\)-complex structure.
 
 \begin{example}[Something that does not admit a \(CW\) structure]
-  The topological space known as the \emph{Hawaiian earring} is
+  The topological space known as the \de{Hawaiian earring} is
   constructed as follows.  For each \(n \in \N^{> 0}\) consider the circle of
   radius \(1/n\) tangent to the \(y\)-axis inside the space \(R^2\). All of these circles
   together with the subspace topology yield a topological space \(X\).
@@ -724,11 +742,11 @@ When talking about moding out by the fundamental group we are really
 talking about moding out by the normal subgroup it generates. In
 particular this means that conjugation is trivial, and thus we are
 free to pick any basepoint we want. This results in
-\[\pi_1(T^2) = \left\langle x,y \mid y^{-1}x^{-1}y x = 1 \right\rangle = \Z
+\[\pi_1(T^2) = \left\langle x,y \suchthat y^{-1}x^{-1}y x = 1 \right\rangle = \Z
     \times \Z\]
 
 \begin{defn}
-  The \emph{connected sum} of two topological spaces \(X\) and \(Y\)
+  The \de{connected sum} of two topological spaces \(X\) and \(Y\)
   denoted \(X \# Y \) is given by cutting out some neighborhood of
   each \(X\) and \(Y\) and identifying the new boundary.
 \end{defn}
@@ -739,38 +757,43 @@ It is easy to see that \(T^2 \# T^2\) is the two holed torus, and in general \(\
 
 \section{CW complexes and the fundamental group}
 
-Consider the polygon
-\begin{figure}
-  % \includegraphics{}
-  \label{fig:star}
-\end{figure}
-
 $X_0$ = some points
 
 $X_1$ = some paths attached onto those points
 
 
+\begin{defn}
+  If $X$ is a space and $A$ is a subspace, then the \de{quotient space} $X/A$ is the partition of $X$ resulting from the equivalence relation $$(x \sim x') \quad \text{iff} \quad (x = x' \quad \text{or} \quad x, x' \in A).$$
+\end{defn}
+\begin{example}
+  \includegraphics[scale=0.2]{images/quotient-space}
+\end{example}
 \begin{thm}
   If $X$ is a CW complex and $A$ a contractible subcomplex, $\fund(X) = \fund(X/A)$.
 \end{thm}
 \begin{rmk}
-  If $X$ is a CW complex and $A$ a contractible subcomplex, then $X$ is \textbf{not} equal to $X/A$, but $X$ \textbf{is} homotopy equivalent to $X/A$. (this is the quotient by the equivalence relation $x \sim x'$ iff $x = x'$ or $x, x' \in A$).
+  If $X$ is a CW complex and $A$ a contractible subcomplex, then $X$ is \textbf{not} equal to $X/A$, but $X$ \textbf{is} homotopy equivalent to $X/A$.
 \end{rmk}
+\begin{thm}
+  If $X$ is a CW complex, then the 1-skeleton of $X$ completely determines the connected components of $X$.
+\end{thm}
+\begin{proof}
+  Consider we have $X_1$ and observe its connected components.  Later, we glue in some $n$-dimensional disk where $n > 1$. It's boundary is connected, so that boundary must lie entirely in \textbf{one} of the connected components, and so cannot further connect anything.  Therefore, the connected components of $X_1$ are unchanged under all future glueings.
+\end{proof}
 
-Once we hit $X_1$, the connected components of the complex are determined.
+If $X_0 = \{[*]\}$ (a single point), then $\fund(X_1) \isom F_{|\text{set of 1-cells}|}$
 
-That's because for any $n$-dimensional disk where $n \geq 2$, it's boundary is connected, so that boundary must lie entirely in \textbf{one} of the connected components.
+\subsection{How to glue one disk onto $X_1$}
 
-In $\ref{fig:star}$, the set of connected components is $\fund[0](X_0) = \fund[0](X_1)$ ((let's make the fund command take in an optional argument, which will be the subscript of the pi))
+$\fund\left( \frac{X_1 \dunion D^2}{\sim} \right) \isom \frac{\fund(X_1) * \fund(D^2)}{X_1 \cap D^2} \isom \frac{\fund(X_1)}{[\phi] = 1}$, where * denotes the free group product, and modding out by $X_1 \cap D^2$ denotes the identification of the loop $X_1 \cap D^2 \subset X_1$ with the loop $X_1 \cap D^2 \subset D^2$.
 
-If $X_0 = \{[*]\}$ (a single point), then $\fund(X_1) \isom F_{\text{set of 1-cells}}$
+In general, I have many gluing maps $\phi_\alpha\from S^1 \to X_1$ and I glue $D^2_\alpha$ along $\phi_\alpha(S^1)$.  So $\fund(X_2) \isom \fund(X_1)/\langle[\phi_\alpha]\rangle$.  So when you ``glue'' in a $D^2$, since each $D^2$ is contractible, a path along the boundary of the $D^2$ is now the identity. In other words, each $D^2$ adds a relation!  This is formalized in the following...
 
-$\fund\left( \frac{X_1 \union D^2}{\sim} \right) \isom \frac{\fund(B) * \fund(A)}{A \cap B} \isom \frac{\fund(X_1)}{[\phi] = 1}$, where * denotes the free group product.
-
-In general, I have many gluing maps $\phi_\alpha\from S^1 \to X_1$ and I glue $D^2\alpha$ along $\phi_\alpha(S^1)$.  So $\fund(X_2) \isom \fund(X_1)/\langle[\phi_\alpha]\rangle$.  So when you ``glue'' in a $D^2$, since each $D^2$ is contractible, a path along the boundary of the $D^2$ is now the identity. In other words, each $D^2$ adds a relation!  This is formalized in the following...
-
-\begin{thm}[Not to be proven]
-  Every group is the fundamental group of some CW complex.  Construct as follows:
+\begin{thm}
+  Every group is the fundamental group of some CW complex.
+\end{thm}
+\begin{proof}
+  Construct as follows:
 
   $X_0$ = point
 
@@ -779,15 +802,26 @@ In general, I have many gluing maps $\phi_\alpha\from S^1 \to X_1$ and I glue $D
   $X_2$ = every entry in the multiplication table gets a disk (a relation)
 
   So it's just like a group presentation!
-\end{thm}
-\begin{thm}
+\end{proof}
+\begin{example}
+  \includegraphics[scale=0.4]{images/cw-complex-group-presentation}
+\end{example}
+\begin{cor}
   Every finitely presented group is the fundamental group of a finite CW complex.
-\end{thm}
+\end{cor}
+\begin{lem}
+  If $a, b \in \N$, then $$\d( S^a \x D^{b+1} ) = S^a \x S^b = \d(D^{a+1} \x S^b)$$
+\end{lem}
+\begin{proof}
+  From proposition 4.4 of differential topology notes, we have that the boundary operator $\d$ is a derivation, so we apply the formula to the LHS.  Since $\d^2 = \null$ and $S^a$ is already the boundary of something, then $\d(S^a) = \null$.  This gives the first equality.  The second equality is true by symmetry.
+\end{proof}
 \begin{thm}
-  If $n > 3$, then for any finitely presented group $G$, there exists
-  a compact manifold $M$ such that $G \isom \fund(M)$.
+  If $n \geq 4$, then for any finitely presented group $G$, there exists
+  a compact $n$-dimensional manifold $M$ such that $G \isom \fund(M)$.
 \end{thm}
 \begin{proof}
+  WARNING.  This proof may not be accurate or well explained.  You should read the proof on~\cite{chiasme} instead.
+
   If $n > 2$ and $M$ and $N$ are $n$-manifolds, then consider $M \#
   N$. Recall that $\fund(M \# N) \isom \fund(M) * \fund(N)$. In
   particular, we note that $\fund(\#^n (S^{n-1} \times S^1)) \isom
@@ -795,9 +829,7 @@ In general, I have many gluing maps $\phi_\alpha\from S^1 \to X_1$ and I glue $D
 
   % \includegraphics{} ((that puncture-glueing thing))
 
-  Finally, note that $\d(S^0 \x D^n) = S^0 \x S^{n-1} \setminus
-  \d(D^1 \x S^{n-1})$ (If you really want, you can break these
-  previous facts into lemmas.)
+  Also note that $\d(S^0 \x D^n) = \d(D^1 \x S^{n-1})$.
 
   % Here is where the actual proof starts.
   Let $M = \#^r (S^1 \times S^{n-1})$ be an $n$-manifold and $n > 3$
@@ -836,46 +868,41 @@ In general, I have many gluing maps $\phi_\alpha\from S^1 \to X_1$ and I glue $D
   this process repeatedly until we get all our relations.
 \end{proof}
 \begin{thm}
-  $\fund(X^2) \isom \fund(X)$ ((this is weird.  is $X^2$ derived from $X$ ?  Like does $X$ denote the entire CW complex, and $X^2$ just a piece of it or something?))
+  $\fund(X_2) \isom \fund(X)$
 \end{thm}
 \begin{proof}
-  $\fund(X_{n-1}) \isom \fund(X_n)$.  $n \geq 3$.
-  Why does gluing on a higher level dimension disk not affect $\fund$?  It's because the boundary is simply connected.
+  We will show that when $n > 2$, $\fund(X_{n-1}) \isom \fund(X_n)$.
 
-  $A$ = small disk in A homotopic *
-  $B$ = complement of a small disk homotopic $X^{n-1}$ ((i mean i think he meant underscore...))
+  Why does gluing on a higher level dimension disk not affect $\fund$?  It's because the boundary is simply connected!
 
-  $S^{n-1} \to x^{n-1}$.
-
-  $A \cap B \homotopic S^{n-1}$
+  For example, consider that we have $X_2$ or a higher dimension skeleton, and we want to glue on a disk $D^3$ or higher dimension.  Since the boundary of $D^3$ is $S^2$ or higher, then the boundary is simply connected.  Since the boundary was ALREADY simply connected before the glueing, we haven't allowed any MORE loops to collapse by adding in the glueing.  So we have not altered the fundamental group in any way.
 \end{proof}
-\begin{rmk}
-  Once $n$ reaches $4$, all bets are off ;(
-\end{rmk}
 
 
 
 \mydate{d10}{17}{2}{2017}
 
 \begin{thm}
-  (Continued from last time) Given $X$ is connected and SLSC, and $p1$ and $p2$ are covering maps, then if a map from $X_1$ to $X_2$ exists, it must be unique and is $\fund$ - equivariant.
+  Given $X$ is connected and SLSC, and $p_1$ and $p_2$ are covering maps, then if a map from $X_1$ to $X_2$ exists, it must be unique and is $\fund$ - equivariant.
 \end{thm}
 
-% \includegraphics{} % picture of paths in X, X1, X2.  including alpha, etc.
+\includegraphics[scale=0.4]{images/fund-equivariant}
 
-(AGAIN FROM LAST TIME)
+\begin{defn}
+  A \de{$\fund$-set} is a set that $\fund$ acts on.
+\end{defn}
 \begin{thm}
   The category of covers of $X$ is equivalent to the category of $\fund$-sets.
 \end{thm}
 
-Recall given $H \subset \fund(X, x_0)$, then
+Given $H \subset \fund(X, x_0)$, then we can design a cover that corresponds to $H$:
 $$X_H := X_{\fund/H} = \frac{X^U \x \fund/H}{\fund} = X^U/H$$
 
 \begin{align}
   &\quad (q, \alpha H) \\
   &=(q\alpha, H) \\
-  &=(q\alpha h, H)
-\end{align} for all $h \in H$.
+  &=(q\alpha h, H)~\text{for all $h \in H$.}
+\end{align}
 
 Note.  If $G/H \isom G/H'$ where $H \mapsto gH'$, then $\Stab(H) = H$, $\Stab(gH') = gH'g^{-1}$, and $H = gH'g^{-1}$.
 
@@ -888,9 +915,10 @@ Note.  If $G/H \isom G/H'$ where $H \mapsto gH'$, then $\Stab(H) = H$, $\Stab(gH
   $p_h^{-1}(x_0) = \{ (q_0, gH) \}_{gH \in G/H}$
 
   $gHg^{-1} \isom \fund(X^U/H, (q_0, gH) ) \to \fund(X_1, x_0)$
-
-  % \includegraphics{} % fractal picture labelled "X^U" and "\fund \isom F_2"
 \end{proof}
+
+\includegraphics[scale=0.3]{images/universal-cover-f2}
+
 \begin{example}
   We will use $H =  \langle a \rangle $ in our image above.
 
@@ -898,12 +926,12 @@ Note.  If $G/H \isom G/H'$ where $H \mapsto gH'$, then $\Stab(H) = H$, $\Stab(gH
 
   Now look at the image of $\fund(X^U/ \langle a \rangle )$.
 
-  % \includegraphics{} % loop thing w/ two trees
+  \includegraphics[scale=0.2]{images/loop-tree-cover}
 
   Note that this is homotopic to a loop!  Woohoo!
 \end{example}
 \begin{example}
-  % \includegraphics{} % loopy pic
+  \includegraphics[scale=0.26]{images/loopy}
 
   $1 \mapsto a$
 
@@ -923,20 +951,15 @@ Note.  If $G/H \isom G/H'$ where $H \mapsto gH'$, then $\Stab(H) = H$, $\Stab(gH
 
 $\#p^{-1}(x) = \#$ of sheets in cover.  $X_S$ is a $\#S$-sheeted cover.  $X_H$ is a $[G:H]$ sheeted cover.
 
-Note: very similar to Galois theory.
-
-topological spaces $\bij$ fields
-
-covers $\bij$ field extensions
-
-$\fund(X)$ $\bij$ absolute Galois group
-
-deck transformations of $X$ $\bij$ field extension automorphism
-
-universal cover $\bij$ algebraic closure
-
-theorem about covers and subgroups $\bij$ fundamental theorem of Galois theory
-
+\subsection{Covering spaces are analagous to Galois theory}
+\begin{align}
+  \text{topological spaces} &\bij \text{fields} \\
+  \text{covering spaces} &\bij \text{field extensions} \\
+  \fund(X) &\bij \text{absolute Galois group} \\
+  \text{deck transformations of $X$} &\bij \text{field extension automorphism} \\
+  \text{universal cover} &\bij \text{algebraic closure} \\
+  \text{thm about covers and subgroups} &\bij \text{fundamental thm of Galois theory}
+\end{align}
 
 
 \mydate{d11}{20}{2}{2017}
@@ -950,18 +973,21 @@ theorem about covers and subgroups $\bij$ fundamental theorem of Galois theory
 Distance between two points on a graph is merely the length of the shortest path between the two points on the graph.  Again, since curvature is a local property, this means that graphs have a very negative curvature!
 
 \begin{thm}
+  The fundamental group of any graph is free.
+\end{thm}
+\begin{proof}
   The fundamental group of a graph is obtained by ``pruning'' the graph of all branches.  What is left is cycles and paths between those cycles.  The paths between may be contracted to a point.  The result is a jumble of cycles, which can be organized via contraction and homotopy into a single vertex with loops.
 
-  The funamental group will always be $F_n$ for some $n$.
-\end{thm}
+  So the fundamental group is  $F_n$, where $n$ is the final number of loops.
+\end{proof}
 \begin{thm}
-  A topological space $X$ is a graph iff $X^u$ is a tree.
+  A topological space $X$ is a graph iff $X^U$ is a tree.
 \end{thm}
 \begin{defn}
-  Given a graph $(V, E)$, an \de{automorphism} is a bijection $f \from V \bij V$ and the induced $E \to E$ such that $a \adj b \in V$ iff $f(a) \adj f(b)$.  (note that $\adj$ denotes adjacency)
+  Given a graph $(V, E)$, an \de{automorphism} is a bijection $f \from V \bij V$ and the induced $E \to E$ such that for all $a,b \in V$, $a \adj b$ iff $f(a) \adj f(b)$.  (note that $\adj$ denotes adjacency)
 \end{defn}
 \begin{rmk}
-  In other words, $f(\Gamma) = \Gamma$, up to graph isomorphism.  See \cite{GA} for elaboration.
+  In other words, $f(\Gamma) = \Gamma$, up to graph isomorphism.  See~\cite{GA} for elaboration.
 \end{rmk}
 \begin{defn}
   \de{A group $G$ acts on a graph $\Gamma$} if there is a homomorphism $h \from G \to \Aut(\Gamma)$.
@@ -970,18 +996,26 @@ Distance between two points on a graph is merely the length of the shortest path
   That is, each element $g$ performs an automorphism on $\Gamma$.  For any vertex $v$ or edge $e$, we can write $g(v)$ or $g(e)$ to denote where $g$ sends $v$ or $e$, respectively.
 \end{rmk}
 
-If $G$ is a group acting freely on a graph $\Gamma$, then by definition, $g(v) \cap v = \null$.  If we include the ``edge ends'' touching $v$ in the above, the intersection is still empty.
+If $G$ is a group acting freely on a graph $\Gamma$, then by definition for all $g \neq e$, $g(v) \cap v = \null$.  If we include the ``edge ends'' touching $v$ in the above, the intersection is still empty.
 
-Now $\Gamma/G$ is the set of orbits.  But there is a different way to interpret $\Gamma/G$.  Take the original $\Gamma$, and for each orbit, collapse all the vertices in that orbit into a single vertex (with induced movement on the edges ((do edges collapse too?))).  The result is again a graph, and so $\Gamma \to \Gamma/G$ is a covering map.
+Now $\Gamma/G$ is the set of orbits.  Here is a way to interpret $\Gamma/G$.  Take the original $\Gamma$, and for each orbit of vertices, collapse all those vertices into a single vertex.  Do the same for the edges.  The result is again a graph, and so $\Gamma \to \Gamma/G$ is a covering map.
 
 If additionally $\Gamma$ is a tree, then $\Gamma \to \Gamma/G$ is a universal covering map.
 
 \begin{thm}
-  ((this theorem doesn't make sense.  if Gamma is a tree, and G acts freely, what automorphisms exist on a tree with no fixed points?.  Even if you find one, it seems that $\fund(\Gamma/G)$ would be trivial, which is a contradiction.))
-  If $G$ acts freely on a tree $\Gamma$, then $G$ is free.  Specifically, $$G \isom \fund(\Gamma/G) \isom F_n$$.
+  If $G$ acts freely on a tree $\Gamma$, then $G$ is free.  Specifically, $$G \isom \fund(\Gamma/G).$$
 \end{thm}
+\begin{example}
+  Let $\Gamma$ be the infinite linearly ordered set (the vertices are $\Z$ and there is an edge between every pair of consecutive integers).
+
+  Let $G$ be the group of translations.
+
+  Notice that $G$ acts freely on $\Gamma$ (if any vertex is fixed, then the element of $G$ must be the identity).
+
+  Finally, observe that $G$ is in fact free.  In particular, $G \isom F_1$.
+\end{example}
 \begin{rmk}
-  Note.  If $\Gamma$ is not a tree, then $G$ could be anything.
+  In order for $G$ to act freely on $\Gamma$ in the first place, $\Gamma$ will have to be infinite.  If $\Gamma$ is not a tree, then $G$ could be anything.
 \end{rmk}
 
 $1 \to K \to F_n \to G \to 1$
@@ -992,15 +1026,25 @@ If $\Gamma$ is a tree that $F_n$ acts on, then $G$ acts on $\Gamma/K$.
   The \de{$n$-flower} is a graph with $1$ vertex and $n$ edges.  (Note that all edges are loops.)
 \end{defn}
 \begin{thm}[Nielson Schreier]
-  ((This theorem doesn't make sense either))
-  Subgroups of free groups are free.  Furthermore, a subgroup of finite index has rank determined by the index.  That is, in $F_n$, a subgroup of index $k$ has rank $k(n-1)+1$.
+  \mbox{}
+  \begin{itemize}
+    \item Subgroups of free groups are free.
+    \item If a subgroup $H$ of $F_n$ has finite index $k$, then $\text{rank}(H) = k(n-1)+1$.
+  \end{itemize}
 \end{thm}
 \begin{proof}
-  $\fund(n\text{-flower}) \isom F_n \supset H \isom \fund(k\text{-sheeted cover}) \isom \fund(\text{$k$ vertices, $nk$ edges}) \isom \fund(\text{$nk - k + 1$-flower}) \isom F_{nk - k + 1}$
+  \begin{align}
+    &\fund(n\text{-flower}) \\
+    &\isom F_n \\
+    & \supset H \\
+    &\isom \fund(\text{$k$-sheeted cover}) ~\text{which is path connected}\\
+    &\isom \fund(\text{$k$ vertices, $nk$ edges}) \\
+    &\isom \fund(\text{$(nk - (k - 1))$-flower}) \\
+    &\isom \fund(\text{$(nk-k+1)$-flower}) \\
+    &\isom F_{nk - k + 1}
+  \end{align}
 
   Picture this.  A connected graph with $k$ vertices and $nk$ edges.  Now take a path (with $k-1$ edges) that connects all $k$ vertices.  Contract the path to a single vertex.  Now there are only $nk - (k-1)$ edges left, and they are all loops!
-
-((what remains unclear is $F_n \supset H$.  Should it be facing the other way?  It is crucial to understand this argument.))
 \end{proof}
 
 \begin{defn}
@@ -1008,6 +1052,7 @@ If $\Gamma$ is a tree that $F_n$ acts on, then $G$ acts on $\Gamma/K$.
 \end{defn}
 Note.  The space is unique up to homotopy equivalence.
 \begin{example}
+  \mbox{}
   \begin{itemize}
     \item
     $K(F_n, 1) \isom n$-flower.
@@ -1019,9 +1064,9 @@ Note.  The space is unique up to homotopy equivalence.
     $K(\Z^n, 1) \isom (S^1)^n$
 
     \item
-    $K(G, 1) \isom$ a $g$-holed torus (or non-orientable surface $\not\isom \R P^1$)
+    $K(G, 1) \isom$ a $g$-holed torus (or non-orientable surface $\not\isom \R P^1$),
 
-    $G = \langle a_1,b_1,,,a_g,b_g \st [a_1,b_1]\ldots[a_g,b_g] = e \rangle$
+    where $G = \langle a_1,b_1,,,a_g,b_g \st [a_1,b_1]\cdots[a_g,b_g] = e \rangle$
   \end{itemize}
 \end{example}
 
@@ -1029,17 +1074,17 @@ Given $G$, think of each element as a generator.
 
 So if $g_1, g_2 \in G$, then $g_1$, $g_2$, and $g_1g_2$ are all generators!  They each get a loop!.  But then, of course, we will need to glue faces to build the group.
 
-% \includegraphics[options]{name} pretty picture
+\includegraphics[scale=0.3]{images/group-as-fund-group}
 
 So for example, $g_1.g_2 = g_1g_2$, where the LHS is the directed edge concatenation, and the RHS is its very own directed edge.  The picture for this is the triangle.
 
-Similarly, we can create higher dimensional simplices.  For example
-$g_1g_2g3 = g_1.(g_2g3)$
-in the tetrahedron simplex (see pic).
+Similarly, we can create higher dimensional simplices.  For example $g_1g_2g_3 = g_1.(g_2g_3)$ in the tetrahedron simplex:
+
+\includegraphics[scale=0.4]{images/tetrahedron}
 
 I have an $n$-cell for every $n$-tuple
 
-$D^n \isom \{ (x_0,,,x_n) \in \R^{n+1} \st \sum x_i = 1, x_i \geq 0 \}$
+$$D^n \isom \left\{ (x_0,,,x_n) \in \R^{n+1} \st \sum x_i = 1, x_i \geq 0 \right\}$$
 
 If one of the coordinates is 0, we get a lower $d$-simplex.
 
@@ -1049,29 +1094,1158 @@ If one of the coordinates is 0, we get a lower $d$-simplex.
 
 \mydate{d13}{24}{2}{2017}
 
+\section*{Simplicial homology}
+
+The fundamental group associates to a topological space (a not
+necessarily abelian) group, however we have already seen that this
+comes with many insufficiency. For example, the fundamental group
+fails to detect the cell structure beyond \(2\)-cells. One way to get
+around this problem is to consider the higher homotopy groups, defined
+in an analogous way. While these groups are able to detected the
+higher dimensional cell structure, they are very difficult to compute.
+
+We will now begin to develop the theory of homology, which is much
+easier to compute with. However this easy of use comes with a cost, in
+particular, the basic definitions are more complicated. Instead of
+attaching to a given topology space a single group, we will attach a
+chain of abelian subgroups.
+
+Define the \(n\)-simplex to be the smallest convex figure in
+\(\R^{n+1}\) that does not lay completely in any \(n\)-dim
+hyper-plane. In practice just think \(0\)-simplex is a point
+\(1\)-simplex is a line, \(2\)-simplex is a triangle, \(3\)-simplex is
+a pyramid, etc. Now what Hatcher calls a face is more generally
+commonly referred to as a facet. Normally a face refers to any part of
+the boundary of the simplex, while facet specifically refers to the
+faces of dimension \(n-1\). Another way to say this is that a facet is
+a maximal face. In general usage face includes all of the following
+\(\emptyset\), vertices, edges, and yes even facets.
+
+We will start with simplicial homology as it appears to be more tame
+(key word being appears), than singular homology. However singular
+homology is defined in such a way that many important properties are
+immediately apparent (i.e. homotopy invariance).
+
+Built out of \(n\)-simplices are simplicial-complexes, however we will
+study Hatcher's \(\Delta\)-complex which is more convenient to work with.
+
 \mydate{d14}{27}{2}{2017}
+
+\begin{rmk}
+  Hatcher created the notion of Delta-complexes because they are more
+  convenient than simplicial complexes.  The following are examples of
+  $\Delta$-complexes that are not simplicial complexes.
+  \begin{itemize}
+  \item \includegraphics[scale=0.22]{images/not-delta-complex1}
+  \item \includegraphics[scale=0.2]{images/not-delta-complex2}
+  \item \includegraphics[scale=0.2]{images/not-delta-complex3}
+  \end{itemize}
+  $\Delta$-complexes allow you to glue vertices together, but
+  simplicial complexes do not. ((John Harnois))
+\end{rmk}
+
+An $n$-chain (non-rigorous idea) is a union (with multiplicity, and
+negative multiplicity) of $n$-simplices.  Therefore, an $n$-chain is a
+subspace of dimension $n$.  Also, negative multiplicities represent
+the opposite orientation of their positive counterparts.
+
+An orientation of an $n$-simplex is specified by an order on the
+vertices.  Also, an even permutation (on these vertices) is
+orientation preserving, while an odd permutation is orientation
+reversing.  By convention in Hatcher (and this course), faces are
+oriented according to the induced order from their vertices.
+
+\begin{defn}
+  \de{The group of $n$-chains} \de{$\Delta_n(X)$} is the free abelian
+  group with basis the open $n$-simplices $e_\alpha^n$ of $X$.  An
+  element of $\Delta_n(X)$ is an \de{$n$-chain}, and is written
+  $\sum_\alpha n_\alpha e_\alpha^n$ with coefficients
+  $n_\alpha \in \Z$.
+\end{defn}
+\begin{rmk}
+  Equivalently, we could write $\sum_\alpha n_\alpha \sigma_\alpha$
+  where $\sigma_\alpha \from \Delta^n \to X$ is the characteristic
+  map.
+
+  If there do not exist any $n$-dim simplices, then
+  $\Delta_n(X) = \{0\}$.
+\end{rmk}
+
+\begin{defn}[boundary of an oriented $n$-simplex]
+  The boundary of an $n$-simplex $[0, 1,,, n]$ is defined by
+  $$\d([0, 1,,, n]) := \sum_{i=0}^n (-1)^i [0, 1,,, \hat{i},,, n]$$
+\end{defn}
+\begin{defn}[boundary of an $n$-chain]
+  The boundary map $\d \from \Delta_n(X) \to \Delta_{n-1}(X)$ is
+  linear, and so
+  $$\d(\sum_\alpha n_\alpha e_\alpha^n) := \sum_\alpha n_\alpha
+  \d(e_\alpha^n)$$
+\end{defn}
+
+Houston we have a problem.  The induced orientation on the boundary
+doesn't neccessarily agree with the original orientation on the those
+lower dimensional simplices!  (See above).  So what to do?  I think
+that's where the $(-1)^i$ comes into play.
+
+\begin{example}[Hatcher, p.105]
+  \quad
+
+  \includegraphics[scale=0.5]{images/boundary-of-oriented-simplex}
+\end{example}
+
+Claim: $\d^2 = 0$.
+
+\begin{defn}
+  The nth \de{simplicial homology group} of $X$ is defined by
+  $$H_n^\Delta(X) := \ker(\d \from \Delta_n \to \Delta_{n-1})/\im(\d \from \Delta_{n+1} \to \Delta_{n})$$
+\end{defn}
+
+\begin{example}
+  \includegraphics[scale=0.2]{images/klein-bottle-CW}
+
+  Consider $K =$ the klein bottle above.  The chain complex is
+
+  \begin{tikzcd}
+    &\Delta_2(K) \arrow[r, "\d_2"] &\Delta_1(K) \arrow[r, "\d_1"] &\Delta_0(K) \\
+    &\Z^2 \arrow[r, "M"] &\Z^3 \arrow[r, "0"] &\Z
+  \end{tikzcd}
+
+  where $M = \begin{bmatrix}
+    1 &1 \\
+    -1 &-1 \\
+    1 &-1
+  \end{bmatrix}$
+
+
+  Observe that $\d(U) = -a -b +c$
+
+  and $\d(L) = a - b - c$
+
+  and so $\d(U + L) = -2b$,
+
+  so that $-2b \sim 0$, but $b \not\sim 0$.
+
+  The matrix takes in coefficient vectors $\begin{bmatrix}c_1 \\ c_2\end{bmatrix}$ for $U$ and $L$, and spits out coefficient vectors for $a$, $b$, and $c$.
+
+  Note also that $\d_2$ is 0 because the boundary of any 1-dim chain is 0.
+
+  Finally, we compute $H_1 \isom \Z^3 / \im(\d_1) \isom <a,b,c>/<-a-b+c, a-b-c> \isom <a,b,c \st -a-b+c = 0, a-b-c = 0> \isom <a,b \st a-b-c = 0> \isom <a,b>/<-2b>$.
+
+
+\end{example}
+
+\begin{thm}
+  A cycle in $X$ is \de{hollow} if it is not the boundary of some other chain in $X$.
+\end{thm}
+\begin{rmk}
+  Therefore, we can think of $H_k(X)$ as the homotopy equivalence classes of hollow $k$-cycles in $X$.
+\end{rmk}
+
+
+
 
 \mydate{d15}{1}{3}{2017}
 
 \mydate{d16}{3}{3}{2017}
 
+When using normal subgroups that corr to covering spaces, you get
+maximal symmetry. It looks the same at every point. It's the same as
+taking universal cover and modding out by relations.
+
+When you use regular subgroups that correspond to covering spaces, you cannot
+do the modding out trick.  (or maybe you can only do it locally).  It
+won't be symmetric.  It will look like example (a) in Hatcher for $S^1 \vee
+S^1$.
+
+
+\section*{Singular homology}
+
+\begin{defn}
+  A \de{singular $n$-chain} has the same definition as an $n$-chain, except that the maps from $\Delta^n \to X$ have no restrictions other than continuity.
+\end{defn}
+\begin{rmk}
+  Unlike a $\Delta$-complex, no injectivity is required on the interior!
+  \begin{itemize}
+    \item There are uncountably many complexes for all interesting spaces!
+    \item There are simplices of all dimensions in $\N$.
+  \end{itemize}
+\end{rmk}
+
+
+The definition of \de{singular homology} $H_n(X) = \frac{}{}$ is the same as before, but now notice that these $H$'s can be really big!
+
+If $X$, $Y$ are spaces and $f \from X \to Y$, then I have an induced map $$C_n(X) \to C_n(Y)$$ where $$ \sigma \mapsto f \of \sigma$$ obviously commutes with $\d$.
+
+\begin{thm}
+  $f$ induces a map $$f_\alpha \from H_n(X) \to H_n(Y)$$ and $$(f \of g)_\ast = f_\ast \of g_\ast$$
+\end{thm}
+
+
 \mydate{d17}{13}{3}{2017}
 
 \mydate{d18}{15}{3}{2017}
+
+If $f,g \from X \to Y$ are homotopic, then $f_*=g_* \from \homl(X) \to \homl(Y)$
+
+If $f,\phi$ together create a homotopy equivalence, then $f_*.\phi_* = \id_{\homl(X)}$ and $\phi_*.f_* = \id_{\homl(Y)}$.
+
+If $A \subset X$ is a deformation retract, then the inclusion $\homl(A) \into \homl(X)$ is an isomorphism!
+
+\begin{thm}
+  The homology of a contractible space $X$ satisfies $H_0(X) \isom \Z$ and $\homl(X) = 0$ for all $n > 0$.
+\end{thm}
+
+\subsection{Reduced homology $\rhoml[i](X)$}
+
+$C_2(X) \to C_1(X) \to C_0(X) \to C_{-1}(X) \isom \Z$
+
+$\rhoml[i](X) \isom
+\begin{cases}
+  H_i(X) &\text{if $i > 0$} \\
+  H_0(X)/\Z &\text{if $i=0$}
+\end{cases}$
+
+$H_0 \isom \rhoml[0](X) \dsum \Z$
+
+Assume I have $A \subset X$.  How are $\homl(A) \to \homl(X)$
+
+$A/A \subset X/A$
+
+Let $X/A$ be the quotient space.
+
+$S' = I/{0,1} = I/S^0$
+
+$S^n = D^n/S^{n-1}$
+
+pretty picture below
+connected banana = torus w/ point pinched $\isom S^2/S^0$ = sphere/(NP~SP)
+
+(north pole ~ south pole)
+It's cool that these are isomorphic, even though they don't look it!
+
+NOTE:  The TILDA over the H denotes the REDUCED homology (rhoml) (FIND WHERE THIS IS DEFINED)
+  % &\homl[2](A) \arrow &\homl[2](X) \arrow &\homl[2](X/A) \arrow \\
+
+
+% \overset{~}{H_0}(X/A) \lto(by p_*) \overset{~}{H_0}(X) \lto(by i_*) \overset{~}{H_0}(A) \lto(by \delta) \overset{~}{H_1}(X/A) \lto(and repeat!) \overset{~}{H_1}(X) \lto \overset{~}{H_1}(A) \lto \overset{~}{H_2}(X/A) \lto \overset{~}{H_2}(X) and so forth!
+% (see below)
+
+\begin{thm}
+  $\delta \from H_{i+1}(X/A) \to H_i(A)$
+
+  (note that hatcher uses the $\partial$ symbol for this, but Webster uses the $\delta$ symbol.)
+\end{thm}
+\begin{example}
+  $$\vdots\qquad\qquad\qquad\vdots\qquad\qquad\qquad\vdots$$
+  $$\begin{tikzcd}
+    &\homl[2](A) \arrow[r, "i_*"] &\homl[2](X) \arrow[r, "p_*"] &\homl[2](X/A) \arrow[r, "\delta"] &~ \\
+    &\homl[1](A) \arrow[r, "i_*"] &\homl[1](X) \arrow[r, "p_*"] &\homl[1](X/A) \arrow[r, "\delta"] &~ \\
+    &\homl[0](A) \arrow[r, "i_*"] &\homl[0](X) \arrow[r, "p_*"] &\homl[0](X/A)                     &~
+  \end{tikzcd}$$
+\end{example}
+
+\begin{thm}
+  The sequence of maps shown
+  \begin{enumerate}
+    \item are a complex, that is
+    \begin{itemize}
+      \item $i_*.p_* = 0$
+      \item $\delta.i_* = 0$
+      \item $p_*.\delta_* = 0$
+    \end{itemize}
+    in all degrees.
+
+    \item with trivial homology, that is, it is \textbf{exact}:
+    \begin{itemize}
+      \item $\ker(p_*) = \im(i_*)$
+      \item $\ker(i_*) = \im(\delta)$
+      \item $\ker(\delta) = \im(p_*).$
+    \end{itemize}
+  \end{enumerate}
+\end{thm}
+\begin{proof}
+  Please refer to~\cite{Hatcher}, p.117, theorem 2.16.
+\end{proof}
+
+Then has hypothesis.  A must
+
+pretty picture with red and purple!
+$\d c' \neq 0$, but $\d c' \in \homl(A)$
+
+Note.  If $X$ is contractible,
+\begin{itemize}
+  \item $\rhoml[i](X) = 0$
+  \item $\rhoml[n+1](X/A) \isom \rhoml[n](A)$
+  \item $\rhoml[0](X/A) = 0$
+  \item $H^m(X \dunion Y) \isom H^m(X) \dsum H^m(Y)$
+\end{itemize}
+
+In application,
+\begin{align}
+  &\quad \rhoml[m](S^n) \\
+  &\isom \rhoml[m-1](S^{n-1}) \\
+  &\isom \rhoml[m-2](S^{n-2}) \\
+  &\isom \rhoml[m-n](S^0) \\
+  &\begin{cases}\Z &\text{when $m=n$} \\ 0 &\text{otherwise}\end{cases}
+\end{align}
+
+$$H_m(S^n) \isom
+\begin{cases}
+  \Z &\text{if $m=0$ or $m=n$} \\
+  0 &\text{otherwise}
+\end{cases}$$
+
+$$H_m(S^0) \isom
+\begin{cases}
+  \Z &\text{if $m=0$} \\
+  0 &\text{otherwise}
+\end{cases}$$
+
+
+
 
 \mydate{d19}{17}{3}{2017}
 
 \mydate{d20}{20}{3}{2017}
 
+Applied to $0 \to C_0(A) \into C_0(X) \onto C_0(X,A) \to 0$,
+
+we have the long exact sequence again.
+
+True for $\rhoml$.  So the previous stuff we did is true for reduced homology too!
+
+Note $\rhoml(X) \isom \rhoml(X, \{x\})$ for any $x \in X$.
+
+If $B \subset A \subset X$, then
+$H_n(A,B) \to H_n(X,B) \to H_n(X,A) \to$ ...
+
+Note that $H_n(X) = H_n(X, \null)$.
+
+Excision
+-----------
+(NOT the integers)
+If $Z \subset A \subset X$
+Then $H_n(X \minus Z, A \minus Z) \isomto H_n(X, A)$
+-----------------
+Let $B = X \minus Z$
+$\text{int}(A) + \text{int}(B) = X$
+$H_n(B, A \cap B)$
+
+\begin{defn}
+  We say that two cycles $x, y \in C_n$ are \de{homologous} (denoted $x~y$) if their difference is a boundary.  (Note, they need not be closed)
+\end{defn}
+\begin{example}
+  \includegraphics[scale=0.4]{images/homologous}
+
+  In $C_1(X,A)$, consider $x$ and $y$ are the same in $X \minus A$, but different in $A$.  Then $x ~ a+b = a  = a+c ~ y$.
+\end{example}
+
+Let $C^U_0(X)$ for $U = \{U_i\}$ an open cover be the subcomplex of $C_0(X)$ consisting of all chains $\sigma$ s.t. $\im(\sigma) \subset U_i$
+
+$C_0(U_1 +++ U_n)$
+
+Claim $C^U_0(X) \into C_0(X)$ is a homotopy equivalence.
+
+$A^0 \to B^0$ is a homotopy equivalence if it behaves like $C_0(X)$ for h.e. spaces.
+
+-----------------
+
+Two maps $f,g \from A^0 \to B^0$ are homotopic if $f - g = \delta h + h \delta$ for $h \from A^n \to B^{n+1}$ some map.  We call $f$ a homotopy equivalence if there exists $a_n$ inverse up to homotopy, that is, $k \from B^0 \to A$(def of hom equiv)
+
+
+
+
 \mydate{d21}{22}{3}{2017}
 
+Relative homology has a number of nice properties, one of which is the notion of excision. The intuitive idea being that in some instances removing a subspace of a group does not change the associated relative homology groups, and in this way one can simplify the computation of the homology groups of a space. In particular we have the follwing theorem
+
+\begin{thm}[Excision]
+
+  Given topological spaces \(X,A,Z\) such that
+  \[Z \subset \text{int}{A} \subset X,\]
+  then the inclusion
+  \[(X \setminus Z,A \setminus Z) \hookrightarrow (X,A) \]
+  induces an isomorphism of homology groups.
+\end{thm}
+
+If we have \(X=\text{int} A \cup \text{int} B\), then the inclusion \((B, A \cap B) \into (X,A)\) induces an isomorphism on homology groups as well.
+
+The proof of this theorem is based on the notion of barycentric subdivision. Barycentric subdivision gives a natural means of cutting up an \(n\)-simplex into smaller simplices. Before we define barycentric subdivision we define the barycenter of a simplex itself. Intuitively the barycenter is the point corresponding to the center of mass of the vertices of a simplex. The barycenter of a 0-simplex is just the point itself. The barycenter of a 1-simplex is the center of the line between the two vertices. The barycenter of a 2-simplex is the point at the intersection of all three perpendicular bisectors of the triangle.
+
 \mydate{d22}{24}{3}{2017}
+
+Fixed $V$ f.d. R-VS
+
+$S \actson LC(V)$
+
+$S$ is the ``Slicer'', the ``subdivider'', the ``barycentric subdivider''.  It cuts up a linear simplex.  It is defined recursively!
+
+\begin{defn}
+  $S \from LC_n \to LC_n$ is defined recursively by
+  $$S(k\null) = \null \qquad\text{for any $k \in \Z$}$$
+  $$S(\lambda) = b_\lambda(S \d \lambda)$$
+\end{defn}
+\begin{example}
+  What is $S(\text{empty set})$?
+  $$S(\null) = \null$$
+\end{example}
+\begin{example}
+  What is $S(\text{point})$?
+  $$S([v_0]) = b(S \d [v_0]) = b(S \null) = b(\null) = [b] = [v_0]$$
+\end{example}
+\begin{example}
+  What is $S(\text{interval})$?
+  $$S(I) = b(S \d I) = b(S ([v_1] - [v_0])) = b([v1] - [v0]) = [b,v1] - [b,v0]$$
+\end{example}
+
+Thanks to using the $\d$ operator in the definition, the $S$ function maintains orientation!  Note also that $S$ is linear automatically, as long as we define $S(k\null) := \null$ for all $k \in \Z$.
+
+\begin{thm}
+  $S$ is a chain map.  That is, $\d S = S \d$.
+\end{thm}
+\begin{proof}
+  Since $S$ is defined recursively, we shall use induction on the dimension of $\lambda$.
+  \begin{itemize}
+    \item Base Case ($\dim(\lambda) = 0$):
+      $$\d S(\null) = \d(\null) = \null = S(\null) = \d S(\null)$$
+
+    \item Inductive Step ($\dim(\lambda) > 0$):
+      $$(\d S)(\lambda) = \d b (S \d (\lambda)) = S \d (\lambda) - b \d S \d (\lambda)$$
+
+      We have a $\d S$ in our expression again, but this time it is acting on a linear simplex of lower dimension.  By the inductive hypothesis, $\d S = S \d$ on lower dimensions:
+      $$ = S \d (\lambda) - b S \d\d (\lambda) = S \d (\lambda) - b S \d^2 (\lambda) = S \d (\lambda)$$
+
+      since $\d^2 = 0$.
+  \end{itemize}
+\end{proof}
+\begin{defn}
+  The \de{table} function $T \from LC_n(V) \to LC_{n+1}(V)$ is defined recursively by
+  $$T(\null) = 0$$
+
+  $$T(\lambda) = b(\lambda - T \d (\lambda))$$
+\end{defn}
+\begin{example}
+  What is $T(\text{interval})$?
+
+  \includegraphics[scale=0.3]{images/table-example-2d}
+\end{example}
+\begin{example}
+  What is $T(\text{triangle})$?
+
+  \includegraphics[scale=0.3]{images/table-example-3d}
+\end{example}
+\begin{thm}
+  $\d T + T \d = 1 - S$, where $1$ is the identity function.
+\end{thm}
+\begin{proof}
+  Induct on the dimension $n$.
+  \begin{itemize}
+    \item Base Case ($n = -1$):
+    $$\d T(\null) + T \d(\null) = \d(\null) + T(\null) = \null + \null = 2\null$$
+
+    \item Inductive Step ($n > -1$):
+    \begin{align}
+      &\quad\, \d T (\lambda) \\
+      &= \d b(\lambda - T \d (\lambda)) \\
+      &= \lambda - T \d (\lambda) - b \d(\lambda - T \d (\lambda)) \\
+      &= \lambda - T \d (\lambda) - b (S \d (\lambda)) \\
+      &= \lambda - T \d (\lambda) - S (\lambda)
+    \end{align}
+  \end{itemize}
+  Rearranging, we end with the desired
+  $$\d T (\lambda) + T \d (\lambda) = \lambda - S (\lambda),$$
+
+  Note since $T(\null) = 0$ still works on $LC$ without $LC_{-1}$.
+\end{proof}
+
+$\sigma \from \Delta^n \to X$
+
+$S \sigma = \sum \sigma |_{\text{simplices in subdivision}} = \sigma_{\#} S \Delta^n$
+
+again, $S \d = \d S$ and $\d T + T \d = 1 - S$
+
+$S \from C_n(X) \to C_n(X)$ inducing isomorphism on homology.
+
+
 
 \mydate{d23}{27}{3}{2017}
 
 \mydate{d24}{29}{3}{2017}
+\renewcommand{\homl}[1][i]{H_{#1}}
+
+
+\begin{defn}
+  $(X, A)$ is a \de{good pair} if $A$ is a closed subspace of $X$ and there exists an open $V \supset A$ s.t. $A \into V$ is a deformation retract.
+\end{defn}
+\begin{example}
+  \includegraphics[scale=0.18]{images/good-pair-1} \includegraphics[scale=0.16]{images/good-pair-2}
+\end{example}
+\begin{thm}
+  If $A \subset X$ is a good pair, then $$\homl(X, A) \isom \rhoml(X/A) \isom \homl(X/A, A/A).$$
+\end{thm}
+\begin{proof}
+  $$\begin{tikzcd}
+    &(X, A) \arrow[d] \arrow[r] &(X/A, A/A) \\
+    &(X, V) \arrow[r] &(X/A, V/A) \\
+    &(X \minus A, V \minus A) \arrow[u] \arrow[r, "\isom"] &(X/A \minus A/A, V/A \minus A/A) \arrow[u]
+  \end{tikzcd}$$
+
+  I claim that every arrow in the above diagram induces an isomorphism.  The each bottom arrow uses excision.  Each top arrow uses a long exact sequence.  For example, the top left arrow uses:
+  $$0 = \homl(V, A) \to \homl(X, A) \isomto \homl(X, V)$$
+  $$\homl(A) \isomto \homl(V) \to \homl(V, A) = 0$$
+\end{proof}
+
+\section{Equivalence of singular and simplicial homology}
+
+\begin{thm}
+  Given $A \subset X$ and $B \subset Y$.
+  $$\begin{tikzcd}
+    &X \arrow[r, "f"] &Y \\
+    &A \arrow[r, "f"] &B
+  \end{tikzcd}$$
+
+  and a long exact sequence, then
+  $$\begin{tikzcd}
+    &\homl(A) \arrow[d] \arrow[r, "f_*"] &\homl(B) \arrow[d] \\
+    &\homl(X, \null) \arrow[d] \arrow[r, "f_*"] &\homl(Y, \null) \arrow[d] \\
+    &\homl(X, A) \arrow[d] \arrow[r, "f_*"] &\homl(Y, B) \arrow[d] \\
+    &\homl[i-1](A) \arrow[r, "f_*"] &\homl[i-1](B)
+  \end{tikzcd}$$
+
+  commutes!
+\end{thm}
+
+$$\dhoml(X) \to \homl(X)$$
+
+Think of a simplicial chain as a singular chain.
+
+\begin{thm}
+  If $A \subset X$ is a closed (if you include a simplex, also include its faces) subspace and a sub-$\Delta$-complex, then
+  $$\begin{tikzcd}
+    &\, \arrow[r] &\dhoml(A) \arrow[d] \arrow[r] &\dhoml(X) \arrow[d] \arrow[r] &\dhoml(X, A) \arrow[d] \arrow[r] &\dhoml[i-1](A) \arrow[r] &\, \\
+    &\, \arrow[r] &\homl(A) \arrow[r] &\homl(X) \arrow[r] &\homl(X, A) \arrow[r] &\homl[i-1](A) \arrow[r] &\,
+  \end{tikzcd}$$
+
+  commutes!
+\end{thm}
+
+\begin{thm}
+  $\dhoml(X) \isom \homl(X)$ for any $\Delta$-complex.
+\end{thm}
+\begin{proof}
+  It is enough to prove the statement for finite dimensional \Dcomplexes since $\dhoml(X_{i+1}) \isom \dhoml(X)$.
+
+  We now induct on the dimension $k$ of \Dcomplex:
+  \begin{itemize}
+    \item Base Case ($k=0$):
+
+    $X = U\{*\}$
+
+    $$\dhoml[0](X) \isom \homl[0](X)$$
+    $$\dhoml(X) \isom \homl(X) = 0$$
+
+    \item Inductive Step ($k>0$):
+
+    Assume $X$ is $k$-dimensional.  $X \supset X_{k-1}$.
+
+    $$\begin{tikzcd}
+      &\dhoml[i+1](X, X_{k-1}) \arrow[d] \arrow[r] &\dhoml[i+1](X_{k-1}) \arrow[d, "\isom"] \arrow[r] &\dhoml[i+1](X) \arrow[d] \arrow[r] &\dhoml[i+1](X, X_{k-1}) \arrow[d, "\isom"] \arrow[r] &\dhoml[i+1](X_{k-1}) \\
+      &\homl[i+1](X, X_{k-1}) \arrow[r] &\homl[i+1](X_{k-1}) \arrow[r] &\homl[i+1](X) \arrow[r] &\homl[i+1](X, X_{k-1}) \arrow[r] &\homl[i+1](X_{k-1})
+    \end{tikzcd}$$
+
+    $$\dhoml(X, X_{k-1}) \isom \begin{cases}
+      \Z &\text{if $i=k$} \\
+      0 &\text{otherwise}
+    \end{cases}$$ the number of simplices of dimension $k$.
+
+    $$\homl(X, X_{k-1}) \isom \rhoml(X/X_{k-1}) = \begin{cases}
+      \Z &\text{if $i=k$} \\
+      0 &\text{otherwise}
+    \end{cases}$$
+
+    $$X/X_{k-1} \isom \vee_{\text{simplices of dim $k$}} S^k$$.
+
+    Note that we have shown that the first and second-to-last vertical arrows are also isomorphisms.
+  \end{itemize}
+\end{proof}
+\begin{thm}[5-Lemma]
+  Given a commutative diagram
+  $$\begin{tikzcd}
+    &A \arrow[d, "\isom", "\alpha"'] \arrow[r] &B \arrow[d, "\isom", "\beta"'] \arrow[r] &C \arrow[d, "\gamma"'] \arrow[r] &D \arrow[d, "\isom", "\delta"'] \arrow[r] &E \arrow[d, "\isom", "\epsilon"'] \\
+    &A' \arrow[r] &B' \arrow[r] &C' \arrow[r] &D' \arrow[r] &E'
+  \end{tikzcd}$$
+
+  with exact rows and all but middle vertical map an isomorphism, then the middle map is an isomorphism!
+\end{thm}
+\begin{proof}
+  Assume $\gamma(C) = 0$.  Since $\delta$ is an isomorphism, then $c = \d b$.
+
+  Thus
+  \begin{align}
+    &\d \beta(b) = 0 \\
+    &\d \beta(b) = \d a \\
+    &b = \d \alpha^{-1}(a) \\
+    &c = 0
+  \end{align}
+\end{proof}
+
 
 \mydate{d25}{31}{3}{2017}
+(chris)
+
+\mydate{de}{3}{4}{2017}
+(matt)
+
+\mydate{df}{5}{4}{2017}
+(chris)
+
+\mydate{dg}{7}{4}{2017}
+(matt)
+
+\mydate{dh}{10}{4}{2017}
+(chris)
+
+\mydate{di}{12}{4}{2017}
+
+\begin{thm}[Hatcher, p.140]
+  If $X$ is connected, then the boundary map $d_1 \from \Delta_1 \to \Delta_0$ is 0.
+\end{thm}
+\begin{proof}
+  If $X$ is connected, then
+  $$\Z = \homl[0](X) = \ker(d_0)/\im(d_1) = \Delta_0/\im(d_1) =? \Z/\im(d_1)$$
+
+  which implies that $\im(d_1) = 0$.
+\end{proof}
+
+\begin{thm}
+  All closed 2-manifolds are $S^2$ or $T^2 \#\#\# T^2$ if orientable, or $\R P^2 \#\#\# \R P^2$ if nonorientable.
+\end{thm}
+
+For $M_n = n$ $T^2$'s, then we have the CW-complex representation with the regular $2n$-polygon lined with edges $aba^{-1}b^{-1}$ $n$ times, with different pairs $(a,b)$ each time.
+
+The CW-complex has 1 0-cell, $2n$ 1-cells, and 1 2-cell.  Therefore, the chain-complex is
+$$\begin{tikzcd}
+  &0 \arrow[r, ""] &\Z \arrow[r, ""] &\Z^{2n} \arrow[r, "0"] &\Z \arrow[r, ""] &0
+\end{tikzcd}$$
+
+For the chain-complex, we find the homologies are
+\begin{align}
+  \homl[0](M_n) &= \Z \\
+  \homl[1](M_n) &= \Z^{2n} \\
+  \homl[2](M_n) &= \Z
+\end{align}
+
+For $X = n$ $\R P^2$'s, then we have the CW-complex representation with the regular $2n$-polygon lined with edges $aabb$ $n$ times, with different pairs $(a,b)$ each time.
+
+Under the rules where we could each cell once (no redundancies), we have 1 0-cell, $n$ 1-cells, and 1 2-cell.  Therefore, the chain-complex is
+$$\begin{tikzcd}
+  &0 \arrow[r, ""] &\Z \arrow[r, ""] &\Z^{n} \arrow[r, "0"] &\Z \arrow[r, ""] &0
+\end{tikzcd}$$
+
+For the chain-complex, we find the homologies are
+\begin{align}
+  \homl[0](M_n) &= \Z \\
+  \homl[1](M_n) &= \Z^{n - 1} \dsum \Z_2 \\
+  \homl[2](M_n) &= 0
+\end{align}
+
+\begin{defn}
+  The \de{$\rank$} of a module is the cardinality of a maximal linearly independent subset.
+\end{defn}
+(Note: in our situation, this is the same as finding a maximal free abelian subgroup and looking at its power)
+
+\begin{defn}
+  Let $X$ be a finite CW-complex.  Then the \de{Euler characteristic} is
+  $$\chi(X) := \sum_{i=0}^\oo (-1)^i \#\{\text{i-cells}\}. $$
+\end{defn}
+
+\begin{thm}
+  $\chi(X)$ is a topological invariant (invariant under homeomorphism).  In particular,
+  $$ \chi(X) = \sum_{i=0}^\oo (-1)^i \rank(H_i(X)). $$
+
+  Note that $\rank(H_i(X)) = \dim_{\Q}(\Q \dsum H_i(X))$.
+\end{thm}
+\begin{proof}
+  Recall from the rank-nullity theorem that given a linear transformation $T \from V \to W$, then $\dim(V) = \dim(\ker(T)) + \dim(\im(T))$.  Otherwise stated, given a short exact sequence $0 \to K \to V \to I \to 0$, then $\dim(V) = \dim(K) + \dim(I)$.  The more general version of this theorem refers to $\rank$ instead of $\dim$.
+
+  Let $C_i$ be the set of $i$-chains, $Z_i$ be the set of $i$-cycles, and $B_i$ be the set of $i$-boundaries.  Then by the rank-nullity theorem,
+  $$ H_i = Z_i/B_i $$
+
+  implies $\rank(Z_i) = \rank(B_i) + \rank(H_i)$.  Also, the SES
+  $$ 0 \to Z_i \into C_i \overset{\d}{\onto} B_{i-1} \to 0 $$
+
+  implies $\rank(C_i) = \rank(Z_i) + \rank(B_{i-1})$.  Substituting the first equation into the second, we have
+  $$ \rank(C_i) = \rank(B_i) + \rank(H_i) + \rank(B_{i-1}).$$
+
+  Therefore, we compute (using the hypothesis that $X$ is finite (has dimension $N \in \N$)):
+  \begin{align}
+    \chi(X) &= \sum_{i=0}^\oo (-1)^i \#\{\text{i-cells}\} \\
+    \chi(X) &= \sum_{i=0}^N (-1)^i \#\{\text{i-cells}\} \\
+    \chi(X) &= \sum_{i=0}^N (-1)^i \rank(C_i) \\
+    \chi(X) &= \sum_{i=0}^N (-1)^i (\rank(B_i) + \rank(H_i) + \rank(B_{i-1})) \\
+    \chi(X) &= \rank(B_{-1}) + \left(\sum_{i=0}^\oo (-1)^i \rank(H_i)\right) + \rank(B_N)
+  \end{align}
+
+  But $\rank(B_N) = 0$ since there are no objects of dimension $N+1$.  Also, $\rank(B_{-1})$ is 0 since the boundary of any point is the empty set, so there are no boundaries of dimension $-1$.
+\end{proof}
+
+\mydate{dj}{14}{4}{2017}
+(chris)
+
+\section*{Homology w/ group coefficients}
+\begin{defn}
+  Let $G$ be an abelian group.  Then the \de{n-chains with $G$-coefficients}, denoted $C_n(X; G)$, is the set of $G$-linear combinations of singulart simplices in $X$.
+\end{defn}
+\begin{prop}
+  $$ C_n(X; G) \isom G \tprod_\Z C_n(X) $$
+\end{prop}
+  We still have $C_n(X; G) \overset{\d}{\to} C_{n-1}(X; G)$.
+
+  Thanks to the fact that $G$ is abelian, we still have $H_n(X; G)$ defined from above chain complex!
+
+  ALSO, if you do the simplicial simplices instead of the singular simplices, you can write the chain complex as
+
+  $$G^{\#\{\text{$i$-cells}\}} \to G^{\#\{\text{$i-1$-cells}\}} \to \ldots$$
+
+  intead of
+
+  $$\Z^{\#\{\text{$i$-cells}\}} \to \Z^{\#\{\text{$i-1$-cells}\}} \to \ldots$$
+
+  ...
+
+\begin{thm}
+  For every dimension $n \in \N^{\geq 1}$ and degree $k \in \Z$, there exists a map of degree $k$ from $S^n$ to $S^n$.
+\end{thm}
+\begin{example}[Hatcher p.136, Example 2.31]
+  For any $k \in \N$, a map $S^2 \to S^2$ may be obtained by
+
+  <pretty picture>
+
+  cutting out $k$ open disks on $S^2$, and sending each homeomorphically to all of $S^2$ minus a single point.  All other points get sent to that single point on $S^2$, which is the boundary of the image of the open disks.
+
+  The local degree of each point in the image is $\pm 1$.  If we orient the homeomorphisms how we want, we can make them all $+1$, and so the degree of the map is the sum of the local degrees, hence $k$.
+\end{example}
+\begin{proof}
+  The example above becomes a proof when you substitute $n$ for 2, and allow $k$ to be any integer.  In the case where $k$ is negative, we choose the opposite orientations of the homeomorphisms so that the local degrees are all $-1$.
+\end{proof}
+
+
+\mydate{dk}{17}{4}{2017}
+
+\section*{Torsion of pairs of groups}
+
+Warning!  The notation $\Z^{\dsum X}$ written by Webster means $\Z^{\#X} = \Z^{|X|} = \dsum_X \Z$.
+
+\begin{defn}
+  For $A$ an abelian group presentation of $A$, a \de{free resolution} of $A$ is an exact sequence of free abelian groups ending in $A \to 0$:
+
+  $$0 \lto A \lonto \Z^{\# X} \linto \Z^{\# Y} \lto 0$$
+
+  where $X \subset A$ is the set of generators, and $Y$ is the minimal set of relations.  Note that this exact sequence is short.  There is a more general definition of free resolution where $A$ need not be abelian, and the sequence could even be infinitely long.
+\end{defn}
+
+Note that because $\Z^{\# Y} \into \Z^{\# X} \onto A \to 0$ is right exact, it follows from Algebra II 5.1.10 ($\tprod_\Z B$ is right exact) that $\Z^{\# Y} \tprod B_\Z \to \Z^{\# X} \tprod B_\Z \onto A \tprod B_\Z \to 0$ is also right exact.
+
+Using this information, we can NOW can define $\Tor(A, B)$!  The definition of $\Tor$ is confusing, but look at the examples below to see that it behaves how you would expect.
+
+\begin{defn}
+  If $A, B$ are abelian groups, then $\Tor(A, B) := \ker(\pi \tprod 1_B)$ where
+  $$\ker(\pi \tprod 1_B) \into \Z^{\# Y} \tprod_\Z B \overset{\pi \tprod 1_B}{\to} \Z^{\# X} \tprod_\Z B \onto A \tprod_\Z B \to 0$$
+
+  is the right exact sequence discussed above.
+\end{defn}
+\begin{example}
+  $\Tor(\Z/m\Z, B) = mB$
+\end{example}
+\begin{example}
+  $\Tor(\Z, B) = 0$
+\end{example}
+
+\begin{thm}
+  $\Tor(A, B)$ is independent of choice of presentation.
+\end{thm}
+\begin{proof}
+  $$\begin{tikzcd}
+    & \Z^{\# Y} \arrow[rr, ""] \arrow[d, ""] &\, & \Z^{\# Y'} \arrow[d, ""] \\
+    & \Z^{\# X} \arrow[rr, ""] \arrow[rd, ""] &\, & \Z^{\# X'} \arrow[dl, ""] \\
+    &\, & A
+  \end{tikzcd}$$
+
+  which commutes in the bottom triangle.
+
+  $$\begin{tikzcd}
+    & \Z^X \arrow[r, "f"] \arrow[r, bend left, "f'"] \arrow[rd, "f-f'"] & \Z^{X'} \\
+    & \Z^Y \arrow[r, bend right, "f"] \arrow[r, "f'"] \arrow[u, ""] & \Z^{Y'} \arrow[u, ""]
+  \end{tikzcd}$$
+
+  The map $f - f'$ between these complexes is homotopic to 0.
+
+  $$\begin{tikzcd}
+    & \Z^X \arrow[r, ""] & \Z^{X'} \arrow[r, ""] & \Z
+  \end{tikzcd}$$
+
+  $$\begin{tikzcd}
+    & \Z^X \tprod B \arrow[r, ""] \arrow[rd, ""] & \Z^{X'} \tprod B \\
+    & \Z^Y \tprod B \arrow[r, ""] \arrow[u, ""] \arrow[u, ""] & \Z^{Y'} \tprod B \arrow[u, ""]
+  \end{tikzcd}$$
+
+  is a homotopy equivalence, so induces a map between kernels.
+
+  $\Tor(A, B)$ is a unique up to ``unique isomorphism''.
+
+  $$\Z \lto \Z \lto 0$$
+
+  $$\Z/m\Z \lto \Z \overset{m}{\lto} \Z$$
+
+  $$B/mB \lonto B \overset{m}{\lto} B \linto mB$$
+\end{proof}
+
+\begin{thm}
+  Given a SES $0 \lto B \lto C \lto D \lto 0$, then
+
+  $$\begin{tikzcd}
+    & 0 & A \tprod B \arrow[l, ""] & A \tprod C \arrow[l, ""] & A \tprod D \arrow[l, ""] &\, \arrow[l, ""] \\
+    & \Tor(A, B) & \Tor(A, C) \arrow[l, ""] & \Tor(A, D) \arrow[l, ""] & 0 \arrow[l, ""]
+  \end{tikzcd}$$
+
+  is a LES.
+\end{thm}
+\begin{proof}
+  Use the snake lemma and the diagram
+
+  $$\begin{tikzcd}
+    & 0 & B^X \arrow[l, ""] & C^X \arrow[l, ""] & D^X \arrow[l, ""] & 0 \arrow[l, ""] \\
+    & 0 & B^Y \arrow[l, ""] \arrow[u, ""] & C^Y \arrow[l, ""] \arrow[u, ""] & D^Y \arrow[l, ""] \arrow[u, ""] & 0 \arrow[l, ""]
+  \end{tikzcd}$$
+\end{proof}
+\begin{thm}
+  $\Tor(A, B) \isom \Tor(B, A).$
+\end{thm}
+\begin{proof}
+  Apply previous theorem to $C = \Z^u$ and $D = \Z^w$:  Given $0 \lto B \lto \Z^u \lto \Z^w \lto 0$, then
+
+  $0 \lto A \tprod B \lto A \tprod \Z^u \lto A \tprod \Z^w \lto \Tor(A, B) \lto \Tor(A, \Z^u) \lto \Tor(A, \Z^w) \lto 0$
+
+  or as he wrote,...
+
+  \begin{align}
+    & 0 \lto A \tprod B \lto A \tprod \Z^u \lto A \tprod \Z^w \lto \Tor(A, B) \lto 0 \\
+    & 0 \lto B \tprod A \lto \Z^u \tprod A \lto \Z^w \tprod A \lto \Tor(B, A) \lto 0
+  \end{align}
+
+  and then since $ S \tprod T \isom T \tprod S$ in general, each vertical alignment is an isomorphism, and then each $\Tor$ is defined as the kernel of these isomorphic structures, resulting in $\Tor(A, B) \isom \Tor(B, A)$.
+\end{proof}
+
+\begin{lem}
+  $C_n(X) \isom Z_n \dsum \sigma_n(B_{n-1})$
+
+  where $Z_n$ is the set of $n$-cycles.
+\end{lem}
+\begin{proof}
+  $C = \sigma_n(\d C) + (C - \sigma_n(\d C))$
+  where the first summand is an element of $\sigma_n(B_{n-1})$ and the second summand is an element of $Z_n$ ((or maybe just the second half of the second summand))
+
+  \begin{align}
+    &\quad\, \d(C - \sigma_n(\d C)) \\
+    &= \d C - \d\sigma_n(\d C) \\
+    &= 0
+  \end{align}
+
+  $\begin{bmatrix}
+    0 & \d \\
+    0 & 0
+  \end{bmatrix}$
+  ((the above matrix appeared just above the $B_{n-1}$ below.))
+
+  $$\begin{tikzcd}
+    &Z_{n+1} &\dsum &\sigma_{n+1}(B_n) \arrow[lld, hook', ""] \\
+    &Z_{n} &\dsum &\sigma_{n}(B_{n-1}) \arrow[lld, hook', ""] \\
+    &Z_{n-1} &\dsum &\sigma_{n-1}(B_{n-2})
+  \end{tikzcd}$$
+
+  Note that $0 \to \sigma_{n+1}(B_n) \to Z_n \to H_n \to 0$ is an exact sequence, so this is a free resolution of $H_n$.
+
+  $$\begin{tikzcd}
+    &Z_{n+1} \tprod G &\dsum &\sigma_{n+1}(B_n) \tprod G \arrow[lld, hook', ""] \\
+    &Z_{n} \tprod G &\dsum &\sigma_{n}(B_{n-1}) \tprod G \arrow[lld, hook', ""] \\
+    &Z_{n-1} \tprod G &\dsum &\sigma_{n-1}(B_{n-2}) \tprod G
+  \end{tikzcd}$$
+
+  and then
+
+  $$H_{n+1}(X) \tprod G \quad\dsum\quad \Tor(H_n(X), G)$$
+
+  $$H_{n}(X) \tprod G \quad\dsum\quad \Tor(H_{n-1}(X), G) \isom H_n(X, G)$$
+
+  This splitting is not canonical nor natural.
+\end{proof}
+
+\mydate{dl}{19}{4}{2017}
+(chris)
+
+\mydate{dm}{21}{4}{2017}
+\renewcommand{\homl}[1][n]{H_{#1}}
+\subsection{Mayer-Vietoris sequence}
+
+This is a long exact sequence similar to the one given by the snake lemma.
+
+Let $A$ and $B$ be subspaces of $X$ s.t. $X = \interior{A} \union \interior{B}$.  We know
+$$ \homl(X, A) = \homl(B, B \cap A) $$
+
+We have a commutative diagram (we need that $i_* j_* = i'_* j'_*$, so we make one of the i's negative) (i believe both the $i$'s and $j$'s are just induced by inclusions!)
+
+$$\begin{tikzcd}
+  &\, & \homl(A) \arrow[rd, "j_*"] \\
+  &\homl(A \cap B) \arrow[ru, "i_*"] \arrow[rd, "-i'_*"] & &\homl(X) \\
+  & &\homl(B) \arrow[ru, "j'_*"]
+\end{tikzcd}$$
+
+(Note also that for any $c \in \homl(X)$, there exists an $a \in \homl(A)$ and a $b \in \homl(B)$ s.t. $c = a + b$.  We also have that $\d c = 0$, so $\d a = - \d b$ follows immediately.)
+
+which means that
+$$ \homl(A \cap B) \to \homl(A) \dsum \homl(B) \to \homl(X) $$
+
+is exact.  And then $\d$ sends the last guy to the first guy in one dimension smaller, so you get a long exact sequence like in the snake lemma!
+
+\begin{proof}
+  Consider
+
+  $$\begin{tikzcd}
+  &\, & C_n(A) \arrow[rd, "j"] \\
+  &C_n(A \cap B) \arrow[ru, "i"] \arrow[rd, "-i'"] &\dsum &C_n(A + B) \\
+  & &C_n(B) \arrow[ru, "j'"]
+  \end{tikzcd}$$
+
+  This is a SES.  (To justify, think about which $n$-chains go to 0.  Compute kernel and image directly.)
+
+  Look at the proof of the Snake Lemma.  The same reasoning implies that the boundary map $\d$ sends $C_n(A + B) \to C_{n-1}(A \cap B)$ in an exact way.
+
+  We also know that $\homl(C_\bullet(A+B)) \isom H_n(X)$, so looking at the induced map on homologies gives us the desired LES!
+
+  (Note also that this is the ``homology version of the Van Kampen theorem''.
+\end{proof}
+
+\begin{example}
+  Consider the Klein bottle $K^2$ with the CW-complex structure:
+
+  \includegraphics[scale=0.15]{images/klein-cw-mayer-vietoris}
+
+  where $A$ and $B$ are both mobius bands, and so denoted by $M$.
+
+  Applying Mayer-Vietoris gives
+
+  $$\begin{tikzcd}
+    & & \homl[2](M) = 0 \arrow[rd, "j_*"'] \\
+    & & &\homl[2](K^2) \arrow[r, "\d_2"] &\,\\
+    & &\homl[2](M) = 0 \arrow[ru, "j'_*"] \\
+    \\
+    & & \homl[1](M) \isom \Z \arrow[rd, "j_*"'] \\
+    &\homl[1](S^1 \x I) \isom \Z \arrow[ru, "i_* = 2"'] \arrow[rd, "-i'_* = -2"] & &\homl[1](K^2) \arrow[r, "\d_1 = 0"] &\,\\
+    & &\homl[1](M) \isom \Z \arrow[ru, "j'_*"] \\
+    \\
+    & & \homl[0](M) \isom \Z \arrow[rd, "j_*"'] \\
+    &\homl[0](S^1 \x I) \isom \Z \arrow[ru, "i_* = 1"'] \arrow[rd, "-i'_* = -1"] & &\homl[0](K^2) \arrow[r, "\d_0"] &0 &\,\\
+    & &\homl[0](M) \isom \Z \arrow[ru, "j'_*"] \\
+  \end{tikzcd}$$
+
+  Therefore, from these known homologies of $A \isom M$, $B \isom M$, and $A \cap B$, we are able to deduce that $H_2(K^2) = 0$, $H_1(K^2) \isom \Z_2 \dsum \Z$, and $H_0(K^2) \isom \Z$.
+\end{example}
+\begin{example}
+  Consider the torus $T^2$ with the structure:
+
+  \includegraphics[scale=0.15]{images/torus-cw-mayer-vietoris}
+
+  where $A$ and $B$ are both annuli ($S^1 \x I$), and so denoted by $M$.
+
+  Applying Mayer-Vietoris gives
+
+  $$\begin{tikzcd}
+    & & \homl[2](M) = 0 \arrow[rd, "j_*"'] \\
+    & & &\homl[2](T^2) \arrow[r, "\d_2"] &\,\\
+    & &\homl[2](M) = 0 \arrow[ru, "j'_*"] \\
+    \\
+    & & \homl[1](M) \isom \Z \arrow[rd, "j_*"'] \\
+    &\homl[1](S^1 \x I) \isom \Z \arrow[ru, "i_*"'] \arrow[rd, "-i'_*"] & &\homl[1](T^2) \arrow[r, "\d_1 = 0"] &\,\\
+    & &\homl[1](M) \isom \Z \arrow[ru, "j'_*"] \\
+    \\
+    & & \homl[0](M) \isom \Z \arrow[rd, "j_*"'] \\
+    &\homl[0](S^1 \x I) \isom \Z \arrow[ru, "i_*"'] \arrow[rd, "-i'_*"] & &\homl[0](T^2) \arrow[r, "\d_0"] &0 &\,\\
+    & &\homl[0](M) \isom \Z \arrow[ru, "j'_*"] \\
+  \end{tikzcd}$$
+
+  Therefore, from these known homologies of $A \isom M$, $B \isom M$, and $A \cap B$, we are able to deduce that $H_2(T^2) \isom \Z$, $H_1(T^2) \isom \Z^2$, and $H_0(T^2) \isom \Z$.
+\end{example}
+
+\begin{thm}
+  If we have a LES with finitely many nonzero terms...
+
+  $0 \lto M1 \lto M2 \lto M3 \lto \lto \lto 0$
+
+  ...then the alternating sum (meaning multiply every other dim by negative 1 before adding them) of dim is 0.
+
+
+  $M_1$'s are VS over a field
+  $d$'s a linear maps
+
+  $\dim(M_1) = \rk(d_1)$.  (now repeatedy apply rank nullity theorem...)
+  $\dim(M_2) = \rk(d_1) + \rk(d_2)$
+  $\dim(M_3) = \rk(d_1) + \rk(d_2) + \rk(d_3)$
+  ...
+\end{thm}
+
+\mydate{dn}{24}{4}{2017}
+(chris)
+
+\mydate{do}{26}{4}{2017}
+\renewcommand{\homl}[1][m]{H_{#1}}
+\renewcommand{\rhoml}[1][m]{\widetilde{H}_{#1}}
+\renewcommand{\rchains}[1][m]{\widetilde{C}_{#1}}
+
+
+\begin{thm}[Hatcher Prop 2B.1(a), p.169]
+  If $m, n, k \in \N$ and $h\from D^k \to S^n$ is an embedding, then
+  $$\rhoml(S^n - h(D^k)) = 0.$$
+\end{thm}
+\begin{proof}
+  Let $X = S^n - h(D^k)$.
+
+  <pretty picture w/ squiggly line in a circle>
+
+  Pick a homeomorphism $D^k \isom I \x D^{k-1}$.
+
+  Let $A = S^n - h([0, \tfrac 12] \x D^{k-1})$.
+
+  Let $B = S^n - h([\tfrac 12, 1] \x D^{k-1})$.
+
+  Then $A \cap B = X$,
+
+  and $A \union B = S^n - h(\{\tfrac 12\} \x D^{k-1})$.
+
+  We now proceed by induction on $k \in \N$.
+
+  \begin{itemize}
+    \item Base case ($k=0$):
+
+    $X = S^n - h(D^0) = S^n - \{\text{point}\} \isom D^n$
+
+    \item Inductive step ($k>0$):
+
+    For all $m \in \N$,
+    \begin{align}
+      &\quad\, \rhoml(A \union B) \\
+      &= \rhoml(S^n - h(\{\tfrac 12\} \x D^{k-1})) \\
+      &= \rhoml(S^n - h'(D^{k-1})) \\
+      &= 0
+    \end{align}
+    by the inductive hypothesis, since $k-1 < k$ and $h'$ is an embedding.
+
+    By reduced Mayer Vietoris, we get
+    $$\Phi \from \rhoml(A \cap B) \isomto \rhoml(A) \dsum \rhoml(B)$$
+    or
+    $$\rhoml(X) \isom \rhoml(A) \dsum \rhoml(B)$$
+
+    where the two components of $\Phi$ (modulo signs) are induced by inclusions $X \into A$ and $X \into B$.
+
+    Thus if $c \in \rchains(X)$ represents a nontrivial homology class (hollow cycle), then it must also be hollow in $\rchains(A)$ or $\rchains(B)$ (But not necessarily both).
+
+    By iteration we can then produce a nested sequence of closed intervals $(I_l)_{l=1}^{\oo}$ of length $(\tfrac 12)^l$ s.t. $I \supset I_1 \supset I_2 \supset I_3 \supset \supset \supset$ shrinking down to a point $p \in I$, such that $c$ is hollow in $S^n − h(I_l \x D^{k-1})$ for any $l$.  Also,
+    \begin{align*}
+      \rchains(X) &\to \rchains(S^n - h(I_l \x D^{k-1})) \\
+      c &\mapsto \text{nontrivial homology class}
+    \end{align*}
+
+    If we define $X_l := S^n - h(I_l \x D^{k-1})$, then we have $X \subset X_1 \subset X_2 \subset X_3 \subset \subset \subset$, and the above can be rewritten as
+    \begin{align*}
+      \rchains(X) &\to \rchains(X_l) \\
+      c &\mapsto \text{nontrivial homology class}
+    \end{align*}
+
+    $$\rhoml(X) \to \rhoml(X_1) \to \rhoml(X_2) \to \rhoml(X_3) \to \to \to \rhoml(X_\oo) = 0$$
+
+    where all the $\rhoml$'s above are nonzero (because they contain the hollow $c$) except for the last (so $c$ must be a boundary in $X_\oo$).  This will soon cause a contradiction!
+
+    We know there exists a chain $b$ in $X_\oo$ ($b \in \rchains[m+1](X_\oo)$) s.t. $c = \d b$.  $b$ is a chain, and thus a finite sum of simplices $\Delta^{m+1} \to X_\oo = S^n - h(\{q\} \x D^{k-1})$.
+
+    But since this is only a finite number of simplices, there exists an $l$ large enough such that $b$ is entirely contained within $X_l$ ($b \in \rchains[m+1](X_l)$)!  (Rigorously, for any metric on $S^n$, there exists an $\epsilon$ s.t. $\text{dist}(\text{supp}(b), h(\{q\} \x D^{k-1})) > \epsilon > 0$.)
+
+    But then $c$ is a boundary in $X_l$!  A contradiction! (before we said $c$ was hollow in $X_l$)
+  \end{itemize}
+\end{proof}
+\begin{cor}[Hatcher Prop 2B.1(b), p.169]
+  If $m, n, k \in \N$ and $h \from S^k \to S^n$ is an embedding, then
+  $$\rhoml(S^n - h(S^k)) \isom \begin{cases}
+    \Z &\text{$m = n - k - 1$} \\
+    0 &\text{otherwise}
+  \end{cases}$$
+\end{cor}
+\begin{proof}
+  By induction on $k$:
+
+  \begin{itemize}
+    \item Base case ($k=0$):
+
+    $$S^n - h(S^0) = S^n - \{\text{2 points}\} \isom S^{n-1}$$
+
+    Therefore, $$\rhoml(S^n - h(S^0)) = \rhoml(S^{n-1}) = \begin{cases}
+      \Z &\text{$m = n - 1$} \\
+      0 &\text{otherwise}
+    \end{cases}$$
+
+    \item Inductive step ($k > 0$):
+
+    Let $A = S^n - h(\text{North})$.
+
+    Let $B = S^n - h(\text{South})$.
+
+    Then $A \union B = S^n - h(S^{k-1})$,
+
+    and $A \cap B = S^n - h(S^{k})$.
+
+    $$\rhoml(A \cap B) \isom \rhoml[m+1](A \union B) \isom \begin{cases}
+      \Z &\text{$m + 1 = n - (k-1) - 1$} \\
+      0 &\text{otherwise}
+    \end{cases}$$
+
+    $$\rhoml(\null) \isom \begin{cases}
+      \Z &\text{$m = -1$} \\
+      0 &\text{otherwise}
+    \end{cases}$$
+  \end{itemize}
+\end{proof}
+
+Homology thinks every embedding $S^k \into S^n$ is the obvious one.  True up to homeomorphism?  No.
+
+$k = 0$.  Yes.
+
+$k = 1, n = 2$.  Yes.  (Schöuflies theorem)
+
+$k = 1, n = 3$.  No!  There exist knots!  For example,
+
+\includegraphics[scale=0.1]{images/trefoil}
+
+$k = n-2$.  Higher dimensional knot theory.
+
+$k = n-1$.  Our corollary shows $S^n - h(S^{n-1})$ has two components.  But are they disks?  No!
+
+\begin{example}[Hatcher Example 2B.2, p.170]
+  $k = 2, n = 3$.
+
+  The Alexander horned sphere is obtained as follows. Take a torus, cut it, and insert two handles at the ends that interlock.  Then cut each handle and perform the same trick.  Repeat this process forever.
+
+  \includegraphics[scale=0.05]{images/Alexander_horned_sphere}
+
+  Since the handles split up forever, they never actually connect back to themselves.  So this surface actually has genus 0 and is homeomorphic to $S^2$.  Wowzers!
+\end{example}
+
+
+
+
+\mydate{dp}{28}{4}{2017}
+(chris)
+
+\mydate{dq}{1}{5}{2017}
+(matt)
+
 
 
 
@@ -1085,13 +2259,28 @@ If one of the coordinates is 0, we get a lower $d$-simplex.
     url={https://ncatlab.org/joyalscatlab/published/Categories},
     accessdate={2017-02-06},
     date={2010-05-30},
-  },
+  }
+  \bib{functors}{webpage}{
+    title={Joyal's CatLab},
+    url={https://ncatlab.org/joyalscatlab/published/Functors},
+  }
   \bib{GA}{webpage}{
     title={Graph Automorphism},
     url={http://mathworld.wolfram.com/GraphAutomorphism.html},
     accessdate={2017-02-22},
     author={Weisstein, Eric W.},
-  },
+  }
+  \bib{chiasme}{webpage}{
+    title={Amalgamated products and HNN extensions (IV): Markov properties},
+    url={https://chiasme.wordpress.com/2014/05/28/amalgamated-products-and-hnn-extensions-iv-markov-properties/},
+    accessdate={2017-03-10},
+  }
+  \bib{Hatcher}{book}{
+    title={Algebraic Topology},
+    author={Hatcher, Allen},
+    publisher={Cambridge University Press},
+    date={2002},
+  }
 \end{biblist}
 \end{bibdiv}
 
