@@ -148,8 +148,8 @@ there exists no end point fixing homotopy between the two paths.
   path
   \[f * g :=
     \begin{cases}
-      f(2t), & t \in [0,\frac{1}{2})\\
-      g(2t - 1), & t \in [\frac{1}{2},1].
+      f(2t), & t \in [0,\tfrac{1}{2})\\
+      g(2t - 1), & t \in [\tfrac{1}{2},1].
     \end{cases}
   \]
 
@@ -159,7 +159,7 @@ there exists no end point fixing homotopy between the two paths.
   This operation is well defined on homotopy classes, that is if
   \([f]=[f']\) and \([g]=[g']\) then \([f * g] = [f' * g']\). This
   operation may be generalized to \(*_{k}\) where \(k \in (0,1)\),
-  simply replace \(\frac{1}{2}\) with \(k\). In this notation
+  simply replace \(\tfrac{1}{2}\) with \(k\). In this notation
   \(f * g = f *_{\frac{1}{2}} g\). Concatenation is associative.
 \end{defn}
 
@@ -217,9 +217,20 @@ Note, we see that a groupoid is the same definition of a group, but we
 use a *partial* binary operation instead of a binary operation.
 
 \begin{defn}
+  The \de{inverse path} of a path $p$ is $p^{-1}(s) := p(1-s)$.  In Hatcher, this is denoted $\bar{p}$.
+  (Note: This is *not* the same as the function inverse of $p$)
+\end{defn}
+\begin{prop}
+  If $p$ is a path, then
+  $[p^{-1}*p] = [id_{x}]$, which is the equivalence class of the
+  function where $s \mapsto x$ for
+  all $s \in [0,1]$.
+\end{prop}
+
+\begin{defn}
   The \de{fundamental groupoid} of $X$, denoted $\Pi_1 X$, is the
   category where the objects are the points in $X$ and the morphisms
-  are the paths (up to endpoint fixing homotopy) between those points.
+  are the paths (up to endpoint fixing homotopy) between those points.  Note that every morphism (path) has an inverse (inverse path), so this is a well-defined groupoid.
 \end{defn}
 \begin{defn}
   The \de{fundamental group of $X$ at the basepoint $x_0$}, denoted
@@ -232,17 +243,6 @@ use a *partial* binary operation instead of a binary operation.
   The elements of the group are the morphisms.  The operation is
   composition.
 \end{defn}
-\begin{defn}
-  The \de{inverse path} of a path $p$ is $p^{-1}(s) := p(1-s)$.  In Hatcher, this is denoted $\bar{p}$.
-  (Note: This is *not* the same as the function inverse of $p$)
-\end{defn}
-\begin{prop}
-  If $p$ is a path, then
-  $[p^{-1}*p] = [id_{x}]$, which is the equivalence class of the
-  function where $s \mapsto x$ for
-  all $s \in [0,1]$.
-\end{prop}
-
 \begin{thm}[Hatcher 1.5]
   Let $X$ be a metric space and $x,x' \in X$.  If there exists
   $p\from x \to x'$ and $[q] \in \fund(X,x')$, then
@@ -328,7 +328,9 @@ page 59 in Hatcher for the covering space of two loops as discussed in
 class.
 
 \begin{defn}[local property]
-  If $P$ is a property that a set can have, then a set $S$ is \de{locally} $P$ if for every $s \in S$, there exists a neighborhood of $s$, and for every neighborhood $N$ of $s$, there exists a subneighborhood that has $P$.
+  If $P$ is a property that a set can have, then a set $S$ is \de{locally} $P$ if for every $s \in S$, for every neighborhood $N$ of $s$, there exists a subneighborhood that has $P$.
+
+  Equivalently, $S$ is \de{locally} $P$ if every open cover of $S$ has a refinement whose open subsets are $P$.
 \end{defn}
 \begin{defn}[semilocal property]
   If $P$ is a property that a set can have, then a set $S$ is \de{semilocally} $P$ if for every $s \in S$, there exists a neighborhood $N$ of $s$ that has $P$.
@@ -417,7 +419,7 @@ $f_* = f'_*$ since $(f \of p) \homotopic (f' \of p)$ via $(h \of p)$.
   and $f_* \isom f_*'$ via the transformation defined by: for all $x \in X$, $h_t(x)\from f(x) \to f'(x)$.
 \end{thm}
 \begin{defn}
-  Given spaces $X$ and $Y$, we call the map $f\from X \to Y$ a \de{homotopy equivalence} if there exists $g\from Y \to X$ s.t. $[f.g] = [\id_X]$ and $[g.f] = [\id_Y]$.
+  Given spaces $X$ and $Y$, we call the map $f\from X \to Y$ a \de{homotopy equivalence} if there exists $g\from Y \to X$ s.t. $[f.g] = [\id_X]$ and $[g.f] = [\id_Y]$.  We say that the spaces $X$ and $Y$ are \de{homotopically equivalent}. (See~\cite{heq} for more detail.)
 \end{defn}
 \begin{rmk}
   Note that $f$ is not a homotopy.  The point is that $f.g$ is homotopic to $\id_X$, and the other way around too.
@@ -560,15 +562,15 @@ free: every point has a trivial stabilizer, that is, something is simply connect
   We call a cover \de{universal} if it is connected and simply connected.
 \end{defn}
 
-Let $X^a$ = {the paths in $X_1$ starting at $X_0$ up to endpoint preserving homotopy }
-$= \{ p \from X_0 \to X' \suchthat \forall x' \in X \}$
+Let $X^a$ = {the paths in $X$ starting at $x_0$ (up to endpoint preserving homotopy) }
+$= \{ p \from x_0 \to x' \suchthat \forall x' \in X \}$
 
-LOWERCASE x's BELOW!!!
-$p \from x_0 to x'$
-$q \from x_0 \to x''$
+$$p \from x_0 \to x'$$
+
+$$q \from x_0 \to x''$$
 
 \begin{defn}
-  Topology: given $U \subset X$, then $p$ and $q$ are \de{close} if $p^{-1}*q$ contracts into a neighborhood of $x'$ and $x''$.  Woohoo!
+  Given a space $X$, then paths $p$ and $q$ are \de{close} if $p^{-1}*q$ contracts into a neighborhood of $x'$ and $x''$.
 \end{defn}
 
 \begin{thm}
@@ -1297,17 +1299,25 @@ If $A \subset X$ is a deformation retract, then the inclusion $\homl(A) \into \h
 
 \subsection{Reduced homology $\rhoml[i](X)$}
 
-$C_2(X) \to C_1(X) \to C_0(X) \to C_{-1}(X) \isom \Z$
+\begin{defn}
+  The \de{reduced chain complex} is obtained from the unreduced chain complex by adding a $C_{-1}(X) :\isom \Z$ to the end:
+  $$\to\to\to C_2(X) \to C_1(X) \to C_0(X) \to \Z.$$
+\end{defn}
+\begin{defn}
+  The \de{reduced homology}, denoted $\rhoml(X)$, is merely the homology of the reduced chain complex.
+\end{defn}
+\begin{prop}
+  The reduced homology as a function of the unreduced homology is
+  $$\rhoml[i](X) \isom
+  \begin{cases}
+    H_i(X) &\text{if $i > 0$} \\
+    H_0(X)/\Z &\text{if $i=0$}
+  \end{cases}.$$
+\end{prop}
 
-$\rhoml[i](X) \isom
-\begin{cases}
-  H_i(X) &\text{if $i > 0$} \\
-  H_0(X)/\Z &\text{if $i=0$}
-\end{cases}$
+Also, $H_0 \isom \rhoml[0](X) \dsum \Z$.
 
-$H_0 \isom \rhoml[0](X) \dsum \Z$
-
-Assume I have $A \subset X$.  How are $\homl(A) \to \homl(X)$
+Assume I have $A \subset X$.  How are $\homl(A) \to \homl(X)$ related?
 
 $A/A \subset X/A$
 
@@ -1323,7 +1333,6 @@ connected banana = torus w/ point pinched $\isom S^2/S^0$ = sphere/(NP~SP)
 (north pole ~ south pole)
 It's cool that these are isomorphic, even though they don't look it!
 
-NOTE:  The TILDA over the H denotes the REDUCED homology (rhoml) (FIND WHERE THIS IS DEFINED)
   % &\homl[2](A) \arrow &\homl[2](X) \arrow &\homl[2](X/A) \arrow \\
 
 
@@ -1432,7 +1441,7 @@ $\text{int}(A) + \text{int}(B) = X$
 $H_n(B, A \cap B)$
 
 \begin{defn}
-  We say that two cycles $x, y \in C_n$ are \de{homologous} (denoted $x~y$) if their difference is a boundary.  (Note, they need not be closed)
+  We say that two cycles $x, y \in C_n$ are \de{homologous} if their difference is a boundary.
 \end{defn}
 \begin{example}
   \includegraphics[scale=0.4]{images/homologous}
@@ -2274,6 +2283,11 @@ $k = n-1$.  Our corollary shows $S^n - h(S^{n-1})$ has two components.  But are 
     title={Amalgamated products and HNN extensions (IV): Markov properties},
     url={https://chiasme.wordpress.com/2014/05/28/amalgamated-products-and-hnn-extensions-iv-markov-properties/},
     accessdate={2017-03-10},
+  }
+  \bib{heq}{webpage}{
+    title={Algebraic Topology, Homotopic Functions and Homotopy Classes},
+    url={http://www.mathreference.com/at,topy.html},
+    accessdate={2017-05-09},
   }
   \bib{Hatcher}{book}{
     title={Algebraic Topology},
