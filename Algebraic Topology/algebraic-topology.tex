@@ -1794,14 +1794,21 @@ For the chain-complex, we find the homologies are
 
 \section*{Homology w/ group coefficients}
 \begin{defn}
-  Let $G$ be an abelian group.  Then the \de{n-chains with $G$-coefficients}, denoted $C_n(X; G)$, is the set of $G$-linear combinations of singulart simplices in $X$.
+  Let $G$ be an abelian group.  Then the \de{n-chains with $G$-coefficients}, denoted $C_n(X; G)$, is the set of $G$-linear combinations of singular simplices in $X$.
 \end{defn}
 \begin{prop}
   $$ C_n(X; G) \isom G \tprod_\Z C_n(X) $$
 \end{prop}
   We still have $C_n(X; G) \overset{\d}{\to} C_{n-1}(X; G)$.
 
-  Thanks to the fact that $G$ is abelian, we still have $H_n(X; G)$ defined from above chain complex!
+  Thanks to the fact that $G$ is abelian, we still have $H_n(X; G)$
+  defined from above chain complex!
+  \begin{defn}
+    We define \[
+      H_n(X;G) \isom \frac{\ker (C_n(X;G) \to C_{n-1}(X;G))}{\im
+        (C_{n-1}(X;G) \to C_n(X;G))}
+    \]
+  \end{defn}
 
   ALSO, if you do the simplicial simplices instead of the singular simplices, you can write the chain complex as
 
@@ -1812,7 +1819,75 @@ For the chain-complex, we find the homologies are
   $$\Z^{\#\{\text{$i$-cells}\}} \to \Z^{\#\{\text{$i-1$-cells}\}} \to \ldots$$
 
   ...
-
+  \begin{example}
+    Consider \(X = \R P^n\). If \(G\) is an arbitrary group, then we
+    have chain complex \[
+      G \overset{0}{\leftarrow} G \overset{2}{\leftarrow} G \overset{0}{\leftarrow} G \overset{2}{\leftarrow} \cdots 
+    \]
+    Then, we compute \[
+      H_m(\R P^n;G) \isom
+      \begin{cases}
+        G & m=0 \text{ and } n \text{ odd}\\
+        G/2G & m \text{ odd }, m < n\\
+        \Tor(\Z_2,G) & \text{ even, } 0 < m \leq n
+      \end{cases}
+    \]
+    where
+    \begin{defn}
+      \(\Tor(\Z/m\Z,G) := \{g \in G \st mg = 0\}\). We will generalize
+      this definition in the next lecture.
+    \end{defn}
+    Thus, if \(G = \Z/2\Z\), we get that \[
+      H_m(\R P^n; \Z/2\Z) =
+      \begin{cases}
+        \Z/2\Z & 0 \leq k \leq n \\
+        0 & k > n
+      \end{cases}
+    \]
+  \end{example}
+  \begin{example}
+    Recall Moore spaces \(M_n(\Z/m\Z)\) are constructed by taking an
+    \(n\)-cell, \(e^n\), and attaching an \(e^{n+1}\) cell to it via a
+    map \(\partial e^{n+1} \to e^n\) of degree \(m\). Thus, if we wish
+    to compute the homology of \(M_n(\Z/m\Z)\), we get a chain
+    complex \[
+      \cdots \to 0 \to \Z \overset{m}{\to} \Z \to 0 \to 0 \to \cdots
+    \]
+    From this, we can easily compute \[
+      \tilde{H}_k(M_n(\Z/m\Z)) =
+      \begin{cases}
+        \Z/m\Z & k=n \\
+        0 & \text{otherwise}
+      \end{cases}
+    \]
+    However, if we wish to compute coefficients in \(\Z/m\Z\), we
+    instead have the chain complex \[
+      \cdots \to 0 \to \Z/m\Z \overset{m}{\to} \Z/m\Z \to 0 \to \cdots
+    \]
+    In this chain complex, the kernel of multiplication by \(m\) is
+    the whole group, so we actually get that \[
+      \tilde{H}_k(M_n(\Z.m\Z); \Z/m\Z) =
+      \begin{cases}
+        \Z/m\Z & k = n,n+1 \\
+        0 & \text{otherwise}
+      \end{cases}
+    \]
+  \end{example}
+  \begin{defn}
+    Let \(G,G'\) be finitely generated abelian groups, then \[
+      \Tor(G,G') \isom \bigoplus \Tor(\Z/m_i \Z, G)
+    \]
+    where \(G' \isom \Z^r \oplus \bigoplus_{i=1}^k \Z/m_i\Z\).
+  \end{defn}
+  \begin{thm}[Universal Coefficient Theorem]
+    Let \(G\) be a finitely generated abelian group. Then, there
+    exists a natural short exact sequence \[
+      0 \to H_n(X) \otimes_\Z G \to H_n(X;G) \to \Tor(H_{n-1}(X),G)
+      \to 0
+    \]
+  \end{thm}
+  Now, we move on to a discussion of degree. (This is not the right
+  lecture for this matreial.)
 \begin{thm}
   For every dimension $n \in \N^{\geq 1}$ and degree $k \in \Z$, there exists a map of degree $k$ from $S^n$ to $S^n$.
 \end{thm}
