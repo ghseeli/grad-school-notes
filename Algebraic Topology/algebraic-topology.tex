@@ -1198,8 +1198,8 @@ that's where the $(-1)^i$ comes into play.
 Claim: $\d^2 = 0$.
 
 \begin{defn}
-  The nth \de{simplicial homology group} of $X$ is defined by
-  $$H_n^\Delta(X) := \ker(\d \from \Delta_n \to \Delta_{n-1})/\im(\d \from \Delta_{n+1} \to \Delta_{n})$$
+  The $n$th \de{simplicial homology group} of $X$ is defined by
+  $$\homl^\Delta(X) := \ker(\d \from \Delta_n \to \Delta_{n-1})/\im(\d \from \Delta_{n+1} \to \Delta_{n})$$
 \end{defn}
 
 \begin{example}
@@ -1240,7 +1240,7 @@ Claim: $\d^2 = 0$.
   A cycle in $X$ is \de{hollow} if it is not the boundary of some other chain in $X$.
 \end{thm}
 \begin{rmk}
-  Therefore, we can think of $H_k(X)$ as the homotopy equivalence classes of hollow $k$-cycles in $X$.
+  Therefore, we can think of $\homl(X)$ as the homotopy equivalence classes of hollow $k$-cycles in $X$.
 \end{rmk}
 
 
@@ -1274,12 +1274,12 @@ S^1$.
 \end{rmk}
 
 
-The definition of \de{singular homology} $H_n(X) = \frac{}{}$ is the same as before, but now notice that these $H$'s can be really big!
+The definition of \de{singular homology} $\homl(X) = \frac{}{}$ is the same as before, but now notice that these $H$'s can be really big!
 
 If $X$, $Y$ are spaces and $f \from X \to Y$, then I have an induced map $$C_n(X) \to C_n(Y)$$ where $$ \sigma \mapsto f \of \sigma$$ obviously commutes with $\d$.
 
 \begin{thm}
-  $f$ induces a map $$f_\alpha \from H_n(X) \to H_n(Y)$$ and $$(f \of g)_\ast = f_\ast \of g_\ast$$
+  $f$ induces a map $$f_\alpha \from \homl(X) \to \homl(Y)$$ and $$(f \of g)_\ast = f_\ast \of g_\ast$$
 \end{thm}
 
 
@@ -1426,19 +1426,19 @@ True for $\rhoml$.  So the previous stuff we did is true for reduced homology to
 Note $\rhoml(X) \isom \rhoml(X, \{x\})$ for any $x \in X$.
 
 If $B \subset A \subset X$, then
-$H_n(A,B) \to H_n(X,B) \to H_n(X,A) \to$ ...
+$\homl(A,B) \to \homl(X,B) \to \homl(X,A) \to$ ...
 
-Note that $H_n(X) = H_n(X, \null)$.
+Note that $\homl(X) = \homl(X, \null)$.
 
 Excision
 -----------
 (NOT the integers)
 If $Z \subset A \subset X$
-Then $H_n(X \minus Z, A \minus Z) \isomto H_n(X, A)$
+Then $\homl(X \minus Z, A \minus Z) \isomto \homl(X, A)$
 -----------------
 Let $B = X \minus Z$
 $\text{int}(A) + \text{int}(B) = X$
-$H_n(B, A \cap B)$
+$\homl(B, A \cap B)$
 
 \begin{defn}
   We say that two cycles $x, y \in C_n$ are \de{homologous} if their difference is a boundary.
@@ -1547,22 +1547,30 @@ Thanks to using the $\d$ operator in the definition, the $S$ function maintains 
   $\d T + T \d = 1 - S$, where $1$ is the identity function.
 \end{thm}
 \begin{proof}
-  Induct on the dimension $n$.
+  We shall prove the equivalently that $\d T = 1 - T \d - S$.  Induct on the dimension $n$.
   \begin{itemize}
     \item Base Case ($n = -1$):
-    $$\d T(\null) + T \d(\null) = \d(\null) + T(\null) = \null + \null = 2\null$$
+    Since $\d(\null) = \null$, $T(\null) = \null$, $S(\null) = \null$, and even $1(\null) = \null$, then
+    $$(\d T)(\null) = \null = (1 - T \d - S)(\null).$$
 
     \item Inductive Step ($n > -1$):
     \begin{align}
-      &\quad\, \d T (\lambda) \\
-      &= \d b(\lambda - T \d (\lambda)) \\
-      &= \lambda - T \d (\lambda) - b \d(\lambda - T \d (\lambda)) \\
-      &= \lambda - T \d (\lambda) - b (S \d (\lambda)) \\
-      &= \lambda - T \d (\lambda) - S (\lambda)
+      &\quad\, (\d T) (\lambda) \\
+      &= \d b_\lambda(\lambda - T \d (\lambda)) &\text{by definition of $T$}\\
+      &= \lambda - T \d (\lambda) - b \d(\lambda - T \d (\lambda)) &\text{because $\d b = 1 - b\d$}\\
+      &= \lambda - T \d (\lambda) - b (\d(\lambda) - \d T \d (\lambda))
+    \end{align}
+    At this point, since $\d T$ is acting on something of smaller dimension, we can apply the inductive hypothesis to it.
+    \begin{align}
+      &= \lambda - T \d (\lambda) - b (\d(\lambda) - (1 - T\d - S) \d (\lambda)) \\
+      &= \lambda - T \d (\lambda) - b (\d(\lambda) - (\d(\lambda) - T\d\d(\lambda) - S\d(\lambda)) \\
+      &= \lambda - T \d (\lambda) - b (\d(\lambda) - \d(\lambda) + T\d\d(\lambda) + S\d(\lambda) \\
+      &= \lambda - T \d (\lambda) - b_\lambda (S\d(\lambda)) \quad\text{by cancellation, and $\d\d = 0$}\\
+      &= \lambda - T \d (\lambda) - S (\lambda) \\
+      &= (1 - T \d - S)(\lambda)
     \end{align}
   \end{itemize}
-  Rearranging, we end with the desired
-  $$\d T (\lambda) + T \d (\lambda) = \lambda - S (\lambda),$$
+  Since $\lambda$ was arbitrary, we have $\d T = 1 - T \d - S$, as desired.
 
   Note since $T(\null) = 0$ still works on $LC$ without $LC_{-1}$.
 \end{proof}
@@ -1802,101 +1810,105 @@ For the chain-complex, we find the homologies are
 (chris)
 
 \section*{Homology w/ group coefficients}
+\renewcommand{\homl}[1][k]{H_{#1}}
+\renewcommand{\rhoml}[1][k]{\widetilde{H}_{#1}}
+\renewcommand{\rchains}[1][k]{\widetilde{C}_{#1}}
+
 \begin{defn}
-  Let $G$ be an abelian group.  Then the \de{n-chains with $G$-coefficients}, denoted $C_n(X; G)$, is the set of $G$-linear combinations of singular simplices in $X$.
+  Let $G$ be an abelian group.  Then the \de{n-chains with $G$-coefficients}, denoted $C_n(X; G)$, is the set of $G$-linear combinations of singular $n$-simplices in $X$.
 \end{defn}
 \begin{prop}
-  $$ C_n(X; G) \isom G \tprod_\Z C_n(X) $$
+  $$C_n(X; G) \isom G \tprod_\Z C_n(X).$$
 \end{prop}
-  We still have $C_n(X; G) \overset{\d}{\to} C_{n-1}(X; G)$.
+We still have $C_n(X; G) \overset{\d}{\to} C_{n-1}(X; G)$.
 
-  Thanks to the fact that $G$ is abelian, we still have $H_n(X; G)$
-  defined from above chain complex!
+Thanks to the fact that $G$ is abelian, we still have $\homl(X; G)$
+defined from above chain complex!
+\begin{defn}
+  We define \[
+    \homl(X;G) \isom \frac{\ker (C_n(X;G) \to C_{n-1}(X;G))}{\im
+      (C_{n+1}(X;G) \to C_n(X;G))}
+  \]
+\end{defn}
+
+ALSO, if you do the simplicial simplices instead of the singular simplices, you can write the chain complex as
+
+$$G^{\#\{\text{$i$-cells}\}} \to G^{\#\{\text{$i-1$-cells}\}} \to \ldots$$
+
+intead of
+
+$$\Z^{\#\{\text{$i$-cells}\}} \to \Z^{\#\{\text{$i-1$-cells}\}} \to \ldots$$
+
+...
+\begin{example}
+  Consider \(X = \R P^n\). If \(G\) is an arbitrary group, then we
+  have chain complex \[
+    G \overset{0}{\leftarrow} G \overset{2}{\leftarrow} G \overset{0}{\leftarrow} G \overset{2}{\leftarrow} \cdots
+  \]
+  Then, we compute \[
+    \homl(\R P^n;G) \isom
+    \begin{cases}
+      G & k=0 \text{ and } n \text{ odd}\\
+      G/2G & k \text{ odd }, k < n\\
+      \Tor(\Z_2,G) & k \text{ even, } 0 < k \leq n
+    \end{cases}
+  \]
+  where
   \begin{defn}
-    We define \[
-      H_n(X;G) \isom \frac{\ker (C_n(X;G) \to C_{n-1}(X;G))}{\im
-        (C_{n-1}(X;G) \to C_n(X;G))}
-    \]
+    \(\Tor(\Z/m\Z,G) := \{g \in G \st mg = 0\}\). We will generalize
+    this definition in the next lecture.
   \end{defn}
-
-  ALSO, if you do the simplicial simplices instead of the singular simplices, you can write the chain complex as
-
-  $$G^{\#\{\text{$i$-cells}\}} \to G^{\#\{\text{$i-1$-cells}\}} \to \ldots$$
-
-  intead of
-
-  $$\Z^{\#\{\text{$i$-cells}\}} \to \Z^{\#\{\text{$i-1$-cells}\}} \to \ldots$$
-
-  ...
-  \begin{example}
-    Consider \(X = \R P^n\). If \(G\) is an arbitrary group, then we
-    have chain complex \[
-      G \overset{0}{\leftarrow} G \overset{2}{\leftarrow} G \overset{0}{\leftarrow} G \overset{2}{\leftarrow} \cdots 
-    \]
-    Then, we compute \[
-      H_m(\R P^n;G) \isom
-      \begin{cases}
-        G & m=0 \text{ and } n \text{ odd}\\
-        G/2G & m \text{ odd }, m < n\\
-        \Tor(\Z_2,G) & \text{ even, } 0 < m \leq n
-      \end{cases}
-    \]
-    where
-    \begin{defn}
-      \(\Tor(\Z/m\Z,G) := \{g \in G \st mg = 0\}\). We will generalize
-      this definition in the next lecture.
-    \end{defn}
-    Thus, if \(G = \Z/2\Z\), we get that \[
-      H_m(\R P^n; \Z/2\Z) =
-      \begin{cases}
-        \Z/2\Z & 0 \leq k \leq n \\
-        0 & k > n
-      \end{cases}
-    \]
-  \end{example}
-  \begin{example}
-    Recall Moore spaces \(M_n(\Z/m\Z)\) are constructed by taking an
-    \(n\)-cell, \(e^n\), and attaching an \(e^{n+1}\) cell to it via a
-    map \(\partial e^{n+1} \to e^n\) of degree \(m\). Thus, if we wish
-    to compute the homology of \(M_n(\Z/m\Z)\), we get a chain
-    complex \[
-      \cdots \to 0 \to \Z \overset{m}{\to} \Z \to 0 \to 0 \to \cdots
-    \]
-    From this, we can easily compute \[
-      \tilde{H}_k(M_n(\Z/m\Z)) =
-      \begin{cases}
-        \Z/m\Z & k=n \\
-        0 & \text{otherwise}
-      \end{cases}
-    \]
-    However, if we wish to compute coefficients in \(\Z/m\Z\), we
-    instead have the chain complex \[
-      \cdots \to 0 \to \Z/m\Z \overset{m}{\to} \Z/m\Z \to 0 \to \cdots
-    \]
-    In this chain complex, the kernel of multiplication by \(m\) is
-    the whole group, so we actually get that \[
-      \tilde{H}_k(M_n(\Z.m\Z); \Z/m\Z) =
-      \begin{cases}
-        \Z/m\Z & k = n,n+1 \\
-        0 & \text{otherwise}
-      \end{cases}
-    \]
-  \end{example}
-  \begin{defn}
-    Let \(G,G'\) be finitely generated abelian groups, then \[
-      \Tor(G,G') \isom \bigoplus \Tor(\Z/m_i \Z, G)
-    \]
-    where \(G' \isom \Z^r \oplus \bigoplus_{i=1}^k \Z/m_i\Z\).
-  \end{defn}
-  \begin{thm}[Universal Coefficient Theorem]
-    Let \(G\) be a finitely generated abelian group. Then, there
-    exists a natural short exact sequence \[
-      0 \to H_n(X) \otimes_\Z G \to H_n(X;G) \to \Tor(H_{n-1}(X),G)
-      \to 0
-    \]
-  \end{thm}
-  Now, we move on to a discussion of degree. (This is not the right
-  lecture for this matreial.)
+  Thus, if \(G = \Z/2\Z\), we get that \[
+    \homl(\R P^n; \Z/2\Z) =
+    \begin{cases}
+      \Z/2\Z & 0 \leq k \leq n \\
+      0 & k > n
+    \end{cases}
+  \]
+\end{example}
+\begin{example}
+  Recall a Moore space \(M_n(\Z/m\Z)\) is constructed by taking an
+  \(n\)-cell, \(e^n\), and attaching an \(e^{n+1}\) cell to it via a
+  map \(\partial e^{n+1} \to e^n\) of degree \(m\). Thus, if we wish
+  to compute the homology of \(M_n(\Z/m\Z)\), we get a chain
+  complex \[
+    \cdots \to 0 \to \Z \overset{m}{\to} \Z \to 0 \to 0 \to \cdots
+  \]
+  From this, we can easily compute \[
+    \rhoml(M_n(\Z/m\Z)) =
+    \begin{cases}
+      \Z/m\Z & k=n \\
+      0 & \text{otherwise}
+    \end{cases}
+  \]
+  However, if we wish to compute coefficients in \(\Z/m\Z\), we
+  instead have the chain complex \[
+    \cdots \to 0 \to \Z/m\Z \overset{m}{\to} \Z/m\Z \to 0 \to \cdots
+  \]
+  In this chain complex, the kernel of multiplication by \(m\) is
+  the whole group, so we actually get that \[
+    \rhoml(M_n(\Z/zm\Z); \Z/m\Z) =
+    \begin{cases}
+      \Z/m\Z & k = n,n+1 \\
+      0 & \text{otherwise}
+    \end{cases}
+  \]
+\end{example}
+\begin{defn}
+  Let \(G,G'\) be finitely generated abelian groups, then \[
+    \Tor(G,G') \isom \bigoplus \Tor(\Z/m_i \Z, G)
+  \]
+  where \(G' \isom \Z^r \oplus \bigoplus_{i=1}^k \Z/m_i\Z\).
+\end{defn}
+\begin{thm}[Universal Coefficient Theorem]
+  Let \(G\) be a finitely generated abelian group. Then, there
+  exists a natural short exact sequence \[
+    0 \to \homl(X) \otimes_\Z G \to \homl(X;G) \to \Tor(\homl[k-1](X),G)
+    \to 0
+  \]
+\end{thm}
+Now, we move on to a discussion of degree. (This is not the right
+lecture for this matreial.)
 \begin{thm}
   For every dimension $n \in \N^{\geq 1}$ and degree $k \in \Z$, there exists a map of degree $k$ from $S^n$ to $S^n$.
 \end{thm}
@@ -2047,7 +2059,7 @@ Using this information, we can NOW can define $\Tor(A, B)$!  The definition of $
     &Z_{n-1} &\dsum &\sigma_{n-1}(B_{n-2})
   \end{tikzcd}$$
 
-  Note that $0 \to \sigma_{n+1}(B_n) \to Z_n \to H_n \to 0$ is an exact sequence, so this is a free resolution of $H_n$.
+  Note that $0 \to \sigma_{n+1}(B_n) \to Z_n \to \homl \to 0$ is an exact sequence, so this is a free resolution of $\homl$.
 
   $$\begin{tikzcd}
     &Z_{n+1} \tprod G &\dsum &\sigma_{n+1}(B_n) \tprod G \arrow[lld, hook', ""] \\
@@ -2057,9 +2069,9 @@ Using this information, we can NOW can define $\Tor(A, B)$!  The definition of $
 
   and then
 
-  $$H_{n+1}(X) \tprod G \quad\dsum\quad \Tor(H_n(X), G)$$
+  $$H_{n+1}(X) \tprod G \quad\dsum\quad \Tor(\homl(X), G)$$
 
-  $$H_{n}(X) \tprod G \quad\dsum\quad \Tor(H_{n-1}(X), G) \isom H_n(X, G)$$
+  $$H_{n}(X) \tprod G \quad\dsum\quad \Tor(\homl[n-1](X), G) \isom \homl(X, G)$$
 
   This splitting is not canonical nor natural.
 \end{proof}
@@ -2104,7 +2116,7 @@ is exact.  And then $\d$ sends the last guy to the first guy in one dimension sm
 
   Look at the proof of the Snake Lemma.  The same reasoning implies that the boundary map $\d$ sends $C_n(A + B) \to C_{n-1}(A \cap B)$ in an exact way.
 
-  We also know that $\homl(C_\bullet(A+B)) \isom H_n(X)$, so looking at the induced map on homologies gives us the desired LES!
+  We also know that $\homl(C_\bullet(A+B)) \isom \homl(X)$, so looking at the induced map on homologies gives us the desired LES!
 
   (Note also that this is the ``homology version of the Van Kampen theorem''.
 \end{proof}
