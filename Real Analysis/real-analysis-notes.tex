@@ -4016,6 +4016,9 @@ Using this corollary, we now generalize to another one.
     sesquilinear}. Adding in (d) makes it \de{positive semidefinite}
   and adding in (e) makes it \de{positive definite}.
 \end{rmk}
+\begin{rmk}
+  We also note that \(\langle \cdot,\cdot \rangle\) is continuous.
+\end{rmk}
 \begin{prop}
   Given \(\H\) a pre-Hilbert space and \(u \in \H\), \[
     \norm[u] := \sqrt{\langle u,u \rangle}
@@ -4103,12 +4106,147 @@ Cuachy-Schwarz Inequality
 \begin{proof}
   Not given here.
 \end{proof}
-\begin{thm}
+\begin{thm}\label{convex-subspace-distance-thm}
   Let \((\H,\langle \cdot,\cdot \rangle)\) be a Hilbert space and
   \(C\) a nonempty closed convex subset. The, for all \(u \in \H\),
   there exists a unique \(v \in C\)such that \(d(u,v) = d(u,C)\).
 \end{thm}
-\subsection*{(5/2/17) Lecture 27}
+\begin{proof}
+  First, we seek to show existence. Since \(C \neq \emptyset\), we
+  have \(d(u,C) \in [0,\infty)\). Thus, 
+  for all \(n \in \N\)
+  there exists a \(v_n \in C\) such that \(D := d(u,C) \leq d(u,v_n) \leq
+  d(u,C) +\frac{1}{n}\). Now, let \(w_n = v_n - u\). Then, we can
+  apply the parallelogram identity to get, for all \(m,n\), \[
+    \norm[w_n-w_m]^2 + \norm[w_n+w_m]^2 = 2 \norm[w_n]^2 + 2 \norm[w_m]^2
+  \]
+  So, if we also note that \(\frac{v_n+v_m}{2} \in C\) by convexity,
+  and \(\frac{w_n+w_m}{2} = \frac{v_n+v_m}{2}-u\), we get
+  \begin{align*}
+    \norm[w_n-w_m]^2 & = 2 \norm[w_n]^2 + 2 \norm[w_m]^2 - 4
+                       \norm[\frac{w_n + w_m}{2}]^2 \\
+    & \leq 2 \left( D + \frac{1}{n} \right)^2 + 2\left( D +
+      \frac{1}{m} \right)^2 - 4D^2 \\
+    & = 4D \left( \frac{1}{n} + \frac{1}{m} \right) + 2 D^2 \left(
+      \frac{1}{n^2} + \frac{1}{m^2} \right) \\
+    & \to 0 \text{ as } \min(m,n) \to 0
+  \end{align*}
+  Thus, \((w_n)\) is a Cauchy sequence and thus converges. Therefore,
+  \((v_n)\) converges and since \(d(\cdot, C)\) is a continuous
+  function, we get that \(\lim v_n = v \in C\) since \(C\) is closed.
+
+  \subsection*{(5/2/17) Lecture 27}
+  Now, we show uniqueness. If there are \(v_1, v_2 \in C\) such
+  that \[
+    d(u,v_1) = d(u,v_2) = d(u,C) =: D
+  \]
+  then, we can use the parallelogram identity for \(v_1-u,v_2-u\) to
+  get \[
+    \norm[v_1-v_2]^2 = 2D^2 + 2D^2 - 4 \norm[\frac{v_1+v_2}{2} - u]^2
+    \leq 0 \implies \norm[v_1-v_2]^2 = 0
+  \]
+  and thus \(v_1 = v_2\).
+\end{proof}
+\begin{defn}
+  Let \(V\) be a \(\K\)-subspace of \(\H\), a Hilbert space. The \de{orthogonal subspace}
+  is \[
+    V^\perp := \left\{ v \in \H \st \forall u \in V, \langle u,v
+      \rangle = 0 \right\}
+  \]
+\end{defn}
+\begin{rmk}
+  \(V^\perp\) is also a \(\K\)-subspace.
+\end{rmk}
+\begin{prop}
+  Let \(V\) be a \(\K\)-subspace of \(\H\). Then,
+  \begin{enumerate}
+  \item \(\ov{V}\) is a \(\K\)-subspace.
+  \item \(V^\perp = (\ov{V})^\perp\).
+  \item \(\ov{(V^\perp)} = V^\perp\).
+  \end{enumerate}
+\end{prop}
+\begin{proof}
+  \begin{enumerate}
+  \item   If \(u,v \in \ov{V}\), then there exists sequences \((u_n) \to u\)
+  and \((v_n) \to v\) in \(V\). So, \[
+    \norm[(u_n+v_n) - (u+v)] \leq \norm[u_n-u] + \norm[v_n - v] \to 0
+  \]
+  and thus \(u+v \in \ov{V}\). Furthermore, if \(\lambda \in \K\), we
+  get \[
+    \norm[\lambda u_n - \lambda u] = |\lambda|\norm[u_n-u] \to 0
+  \]
+  and so \(\lambda u \in \ov{V}\).
+  \item We have \(\ov{V}^\perp \subset V^\perp\) trivially. For
+    \((\supset)\), let \(v \in V^\perp, u \in \ov{V}\). Then, there
+    exists a sequence \((u_n)\) in \(V\) such that \(u_n \to u\) and,
+    for all \(n\), \(\langle v,u_n \rangle = 0\). Then,
+    \begin{align*}
+      \left| \langle v,u_n \rangle - \langle v,u \rangle \right|
+      & = |\langle v,u_n-u\rangle| \\
+      & \leq \norm[v]\norm[u-u_n] & \text{ by Cauchy-Schwarz} \\
+      & \to 0 & \text{ since }\norm[u-u_n] \to 0
+    \end{align*}
+    and thus \(\langle v,u \rangle = 0\) and so \(v \in
+    (\ov{V})^\perp\).
+  \item We note that \[
+      V^\perp = \Intersect_{u \in V} \left\{ v \in \H \st \langle u,v
+        \rangle = 0 \right\}.
+    \]
+    Each of these sets is closed since \(\langle u,\cdot \rangle\) is
+    continuous and therefore \(V^\perp\) is closed. Thus,
+    \(\ov{(V^\perp)} = V^\perp\). 
+  \end{enumerate}
+\end{proof}
+\begin{thm}
+  Let \(\H\) be a Hilbert space and \(V\) a closed subspace. Then \[
+    \H = V \oplus V^\perp
+  \]
+  i.e., for all \(u \in \H\), there is a unique \((v,v_\perp) \in V
+  \times V^\perp\) such that \(u = v+v_\perp\). 
+\end{thm}
+\begin{proof}[Proof of Theorem]
+  We first show uniqueness. If \(w \in V \intersect V^\perp\), then,
+  \(w \perp w\) and so \(\langle w,w \rangle = 0 \implies \norm[w]^2 =
+  0 \implies w = 0\). \\
+
+  Next, we show that the direct sum spans \(\H\). Let \(V\) be a
+  closed convex subspace. From \ref{convex-subspace-distance-thm}, we
+  know that there is a \(v \in V\) such that \(d(u,v) = d(u,V)\). Now,
+  let \(w \in V\), \(t \in \R\). Then \(\norm[u-v]^2 \leq
+  \norm[u-(v+tw)]^2\). We note that \(v+tw \in V\). So, expanding, we
+  get \[
+    0 \leq 2t \Re \langle u-v,w \rangle + t^2 \norm[2]^2,\ \forall t
+    \in \R
+  \]
+  and thus \(\Re \langle u-v,w \rangle = 0\). Now, if \(\K = \R\),
+  then \(\langle u-v,w \rangle = 0\) for all \(w \in V\) and so
+  \(v_\perp := u-v \in V^\perp\). If \(\K = \C\), we already have, for
+  all \(w \in V\), that \(\Re \langle u-v,w \rangle = 0\). So, we
+  apply the same result to \(iw\) to get \(\Re \langle u-v,iw \rangle
+  = 0 = i \langle u-vmw \rangle\). Thus, \(\Im \langle u-v,w \rangle =
+  0\) and so \(u-v \perp w\) for all \(w \in V\). Thus, \(u-v \in
+  V^\perp\) and \(u = v + (u-v)\) with \(v \in V\) and \(u-v \in
+  V^\perp\). 
+\end{proof}
+\begin{defn}
+  The \de{orthogonal projection} of \(u = v + v_\perp\) onto \(V\) is given by \[
+    P_V(u) := v
+  \]
+\end{defn}
+\begin{prop}
+  Let \(\H\) be a Hilbert space. Then,
+  \begin{enumerate}
+  \item \(P_V \from \H \to \H\) is \(\K\)-linear and continuous.
+  \item \[
+      \norm[P_v]_{\cL(\H,\H)} =
+      \begin{cases}
+        0 & V = \{0\} \\
+        1 & V \neq \{0\}
+      \end{cases}
+    \]
+  \item The image of \(P_V\) is \(V\). 
+  \end{enumerate}
+\end{prop}
 \subsection*{(5/3/17) Bonus Lecture}
 \section{Appendix: Fourier-Laplace Theorem for Real Integrands}
 Understanding integrals of the form \[
