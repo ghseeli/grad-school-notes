@@ -39,14 +39,14 @@
 \newcommand{\homotopic}{\simeq}
 \renewcommand{\epsilon}{\varepsilon}
 \renewcommand{\d}{\partial}
+\newcommand{\homlindexdefault}{n}
 \newcommand{\fund}[1][1]{\pi_{#1}}
-\newcommand{\homl}[1][n]{H_{#1}}
-\newcommand{\rhoml}[1][n]{\widetilde{H}_{#1}}
-\newcommand{\dhoml}[1][n]{\homl^\Delta}
-\newcommand{\chains}[1][n]{C_{#1}}
-\newcommand{\rchains}[1][n]{\widetilde{C}_{#1}}
-\newcommand{\Dcomplex}{$\Delta$-complex}
-\newcommand{\Dcomplexes}{$\Delta$-complexes}
+\newcommand{\homl}[1][\homlindexdefault]{H_{#1}}
+\newcommand{\rhoml}[1][\homlindexdefault]{\widetilde{H}_{#1}}
+\newcommand{\dhoml}[1][\homlindexdefault]{\homl[#1]^\Delta}
+\newcommand{\chains}[1][\homlindexdefault]{C_{#1}}
+\newcommand{\rchains}[1][\homlindexdefault]{\widetilde{C}_{#1}}
+\newcommand{\D}{$\Delta$-}
 \newcommand{\transverse}{\pitchfork}
 \newcommand{\x}{\times}
 \newcommand{\Map}{\operatorname{Map}}
@@ -1211,34 +1211,37 @@ Claim: $\d^2 = 0$.
     &\Delta_2(K) \arrow[r, "\d_2"] &\Delta_1(K) \arrow[r, "\d_1"] &\Delta_0(K) \\
     &\Z^2 \arrow[r, "M"] &\Z^3 \arrow[r, "0"] &\Z
   \end{tikzcd}
-
   where $M = \begin{bmatrix}
     1 &1 \\
     -1 &-1 \\
     1 &-1
-  \end{bmatrix}$
+  \end{bmatrix}$ and $0 = \begin{bmatrix}
+    0 & 0 & 0
+  \end{bmatrix}$.
 
-
-  Observe that $\d(U) = -a -b +c$
-
-  and $\d(L) = a - b - c$
-
-  and so $\d(U + L) = -2b$,
-
-  so that $-2b \sim 0$, but $b \not\sim 0$.
+  Observe that $\d(U) = -a -b +c$ and $\d(L) = a - b - c$, so that $\d(U + L) = -2b$.  On the other hand, we know the Klein bottle is closed, so that $\d(U + L) = 0$.  This gives us $-2b \sim 0$, but $b \not\sim 0$.
 
   The matrix takes in coefficient vectors $\begin{bmatrix}c_1 \\ c_2\end{bmatrix}$ for $U$ and $L$, and spits out coefficient vectors for $a$, $b$, and $c$.
 
-  Note also that $\d_2$ is 0 because the boundary of any 1-dim chain is 0.
+  Note also that $\d_2$ is 0 because the boundary of any 1-dim chain in $K$ is 0.
 
-  Finally, we compute $H_1 \isom \Z^3 / \im(\d_1) \isom <a,b,c>/<-a-b+c, a-b-c> \isom <a,b,c \st -a-b+c = 0, a-b-c = 0> \isom <a,b \st a-b-c = 0> \isom <a,b>/<-2b>$.
+  Finally, we compute
+  \begin{align}
+    &\quad\, \homl[1](K) \\
+    &\isom \Z^3 / \im(\d_1) \\
+    &\isom \freeabel{a,b,c}/\freeabel{-a-b+c, a-b-c} \\
+    &\isom \freeabel{a,b,c \st -a-b+c = 0, a-b-c = 0} \\
+    &\isom \freeabel{a,b \st a-b-c = 0} \\
+    &\isom \freeabel{a,b\rangle /\langle -2b} \\
+    &\isom \Z \dsum \Z_2
+  \end{align}.
 
 
 \end{example}
 
-\begin{thm}
+\begin{defn}
   A cycle in $X$ is \de{hollow} if it is not the boundary of some other chain in $X$.
-\end{thm}
+\end{defn}
 \begin{rmk}
   Therefore, we can think of $\homl(X)$ as the homotopy equivalence classes of hollow $k$-cycles in $X$.
 \end{rmk}
@@ -1250,13 +1253,13 @@ Claim: $\d^2 = 0$.
 
 \mydate{d16}{3}{3}{2017}
 
-When using normal subgroups that corr to covering spaces, you get
+When using normal subgroups that correspond to covering spaces, you get
 maximal symmetry. It looks the same at every point. It's the same as
 taking universal cover and modding out by relations.
 
 When you use regular subgroups that correspond to covering spaces, you cannot
 do the modding out trick.  (or maybe you can only do it locally).  It
-won't be symmetric.  It will look like example (a) in Hatcher for $S^1 \vee
+won't be symmetric.  It will look like example Hatcher Section 1.3, (1), p.58 for $S^1 \vee
 S^1$.
 
 
@@ -1266,7 +1269,7 @@ S^1$.
   A \de{singular $n$-chain} has the same definition as an $n$-chain, except that the maps from $\Delta^n \to X$ have no restrictions other than continuity.
 \end{defn}
 \begin{rmk}
-  Unlike a $\Delta$-complex, no injectivity is required on the interior!
+  Unlike a $\Delta$-complex, no injectivity is required on the interior!  (And a homeomorphism is not required on the interior.  See Hatcher p.104 if you want to remember the restrictions of the characteristic maps for simplicial complexes.)
   \begin{itemize}
     \item There are uncountably many complexes for all interesting spaces!
     \item There are simplices of all dimensions in $\N$.
@@ -1276,28 +1279,39 @@ S^1$.
 
 The definition of \de{singular homology} $\homl(X) = \frac{}{}$ is the same as before, but now notice that these $H$'s can be really big!
 
-If $X$, $Y$ are spaces and $f \from X \to Y$, then I have an induced map $$C_n(X) \to C_n(Y)$$ where $$ \sigma \mapsto f \of \sigma$$ obviously commutes with $\d$.
+If $X$, $Y$ are spaces and $f \from X \to Y$, then I have an induced map $$C_n(X) \to C_n(Y)$$ where $$ \sigma \mapsto \sigma.f$$ obviously commutes with $\d$.
 
 \begin{thm}
-  $f$ induces a map $$f_\alpha \from \homl(X) \to \homl(Y)$$ and $$(f \of g)_\ast = f_\ast \of g_\ast$$
+  $f$ induces a map $$f_\ast \from \homl(X) \to \homl(Y)$$ and $$(f.g)_\ast = f_\ast.g_\ast$$
 \end{thm}
 
 
 \mydate{d17}{13}{3}{2017}
 
 \mydate{d18}{15}{3}{2017}
-
-If $f,g \from X \to Y$ are homotopic, then $f_*=g_* \from \homl(X) \to \homl(Y)$
-
-If $f,\phi$ together create a homotopy equivalence, then $f_*.\phi_* = \id_{\homl(X)}$ and $\phi_*.f_* = \id_{\homl(Y)}$.
-
-If $A \subset X$ is a deformation retract, then the inclusion $\homl(A) \into \homl(X)$ is an isomorphism!
-
+\begin{lem}
+  If $f,g \from X \to Y$ are homotopic, then $f_*=g_* \from \homl(X) \to \homl(Y)$.
+\end{lem}
+\begin{lem}
+  If $f,\phi$ together create a homotopy equivalence, then $f_*.\phi_* = \id_{\homl(X)}$ and $\phi_*.f_* = \id_{\homl(Y)}$.
+\end{lem}
+\begin{proof}
+  By definition of a homotopy equivalence, $f.\phi = \id_{X}$.  It immediately follows that $f_*.\phi_* = (f.\phi)_* = (\id_{X})_* =\id_{\homl(X)}$.  The other result is symmetric to this one.
+\end{proof}
+\begin{lem}
+  If $A \into X$ is a deformation retract, then the inclusion $\homl(A) \into \homl(X)$ is an isomorphism!
+\end{lem}
+\begin{proof}
+  The goal is to show that there is a homotopy equivalence between $X$ and $A$.  We know $\iota \from A \to X$ and $f \from X \to A$.  We also know that $\iota.f = \id_A$.  So $\iota$ and $f$ are homotopy equivalences, and from the previous thoerem, $\iota_*.f_* = \id_{\homl(A)}$, and vice-versa.  But if two spaces are homotopically equivalent, then they have the same homology too. (need more justification here.  also, why do we need a deformation retract instead of just a retraction?)
+\end{proof}
 \begin{thm}
-  The homology of a contractible space $X$ satisfies $H_0(X) \isom \Z$ and $\homl(X) = 0$ for all $n > 0$.
+  The homology of a contractible space $X$ satisfies $\rhoml(X) = 0$ for all $n > 0$.
 \end{thm}
+\begin{proof}
+  By definition, a contractible space $X$ has a weak deformation retract from $X$ to a point $\{p\}$.  By the previous lemma, $\rhoml(X) \isom \rhoml(\{p\}) = 0$.
+\end{proof}
 
-\subsection{Reduced homology $\rhoml[i](X)$}
+\subsection{Reduced homology $\rhoml(X)$}
 
 \begin{defn}
   The \de{reduced chain complex} is obtained from the unreduced chain complex by adding a $C_{-1}(X) :\isom \Z$ to the end:
@@ -1310,8 +1324,8 @@ If $A \subset X$ is a deformation retract, then the inclusion $\homl(A) \into \h
   The reduced homology as a function of the unreduced homology is
   $$\rhoml[i](X) \isom
   \begin{cases}
-    H_i(X) &\text{if $i > 0$} \\
-    H_0(X)/\Z &\text{if $i=0$}
+    \homl[i](X) &\text{if $i > 0$} \\
+    \homl[0](X)/\Z &\text{if $i=0$}
   \end{cases}.$$
 \end{prop}
 
@@ -1323,7 +1337,7 @@ $A/A \subset X/A$
 
 Let $X/A$ be the quotient space.
 
-$S' = I/{0,1} = I/S^0$
+$S^1 = I/\{0,1\} = I/S^0$
 
 $S^n = D^n/S^{n-1}$
 
@@ -1340,9 +1354,9 @@ It's cool that these are isomorphic, even though they don't look it!
 % (see below)
 
 \begin{thm}
-  $\delta \from H_{i+1}(X/A) \to H_i(A)$
+  $\delta \from H_{i+1}(X/A) \to \homl(A)$ is a homomorphism.
 
-  (note that hatcher uses the $\partial$ symbol for this, but Webster uses the $\delta$ symbol.)
+  (Note that hatcher uses the $\partial$ symbol for this, but Webster uses the $\delta$ symbol.)
 \end{thm}
 \begin{example}
   $$\vdots\qquad\qquad\qquad\vdots\qquad\qquad\qquad\vdots$$
@@ -1376,40 +1390,40 @@ It's cool that these are isomorphic, even though they don't look it!
   Please refer to~\cite{Hatcher}, p.117, theorem 2.16.
 \end{proof}
 
-Then has hypothesis.  A must
-
+A must
 pretty picture with red and purple!
 $\d c' \neq 0$, but $\d c' \in \homl(A)$
 
-Note.  If $X$ is contractible,
-\begin{itemize}
-  \item $\rhoml[i](X) = 0$
-  \item $\rhoml[n+1](X/A) \isom \rhoml[n](A)$
-  \item $\rhoml[0](X/A) = 0$
-  \item $H^m(X \dunion Y) \isom H^m(X) \dsum H^m(Y)$
-\end{itemize}
-
-In application,
-\begin{align}
-  &\quad \rhoml[m](S^n) \\
-  &\isom \rhoml[m-1](S^{n-1}) \\
-  &\isom \rhoml[m-2](S^{n-2}) \\
-  &\isom \rhoml[m-n](S^0) \\
-  &\begin{cases}\Z &\text{when $m=n$} \\ 0 &\text{otherwise}\end{cases}
-\end{align}
-
-$$H_m(S^n) \isom
-\begin{cases}
-  \Z &\text{if $m=0$ or $m=n$} \\
-  0 &\text{otherwise}
-\end{cases}$$
-
-$$H_m(S^0) \isom
-\begin{cases}
-  \Z &\text{if $m=0$} \\
-  0 &\text{otherwise}
-\end{cases}$$
-
+\begin{thm}
+  If $X$ is contractible,
+  \begin{enumerate}
+    \item $\rhoml[i](X) = 0$
+    \item $\rhoml[n](X/A) \isom \rhoml[n-1](A)$
+    \item $\rhoml[0](X/A) = 0$
+  \end{enumerate}
+\end{thm}
+\begin{proof}
+  \mbox{}
+  \begin{enumerate}
+    \item Any cycle that contracts is homotopic to the trivial cycle.
+    \item Use the LES sequence in the previous theorem, and plug in $\rhoml[i](X) = 0$.  The result, for each $i \neq 0$, is the Very Short Exact Sequence (VSES) $0 \to \rhoml[n](X/A) \to \rhoml[n-1](A) \to 0$.  Therefore the homomorphism in the middle must be an isomorphism.
+    \item We know $\rhoml[0](X) = 0$.  But $X/A$ only collapses $X$ further.  It certainly cannot increase the number of path components!
+  \end{enumerate}
+\end{proof}
+\begin{lem}
+  For any forcible disjoint union, $$\homl(X \dunion Y) \isom \homl(X) \dsum \homl(Y).$$
+\end{lem}
+\begin{example}
+  In application,
+  \begin{align}
+    &\quad \rhoml[m](S^n) \\
+    &\isom \rhoml[m](D^n/S^{n-1}) \\
+    &\isom \rhoml[m-1](S^{n-1}) \\
+    &\isom \rhoml[m-2](S^{n-2}) \\
+    &\isom \rhoml[m-n](S^0) \\
+    &\begin{cases}\Z &\text{when $m=n$} \\ 0 &\text{otherwise}\end{cases}
+  \end{align}.
+\end{example}
 
 
 
@@ -1471,15 +1485,19 @@ Relative homology has a number of nice properties, one of which is the notion of
 \begin{thm}[Excision]
 
   Given topological spaces \(X,A,Z\) such that
-  \[Z \subset \text{int}{A} \subset X,\]
+  \[Z \subset \interior{A} \subset X,\]
   then the inclusion
   \[(X \setminus Z,A \setminus Z) \hookrightarrow (X,A) \]
   induces an isomorphism of homology groups.
 \end{thm}
 
-If we have \(X=\text{int} A \cup \text{int} B\), then the inclusion \((B, A \cap B) \into (X,A)\) induces an isomorphism on homology groups as well.
+If we have \(X=\interior{A} \cup \interior{B}\), then the inclusion \((B, A \cap B) \into (X,A)\) induces an isomorphism on homology groups as well.
 
 The proof of this theorem is based on the notion of barycentric subdivision. Barycentric subdivision gives a natural means of cutting up an \(n\)-simplex into smaller simplices. Before we define barycentric subdivision we define the barycenter of a simplex itself. Intuitively the barycenter is the point corresponding to the center of mass of the vertices of a simplex. The barycenter of a 0-simplex is just the point itself. The barycenter of a 1-simplex is the center of the line between the two vertices. The barycenter of a 2-simplex is the point at the intersection of all three perpendicular bisectors of the triangle.
+
+\begin{defn}[Need to dbl check this in Hatcher]
+  The \de{barycenter operator} $b_\lambda$ for some $n$-simplex $\lambda = [0,,,n]$ is $$b_\lambda(\lambda) = b_\lambda([0,,,n]) := [b, 0,,,n]$$ where $b$ is the barycenter of $\lambda$.
+\end{defn}
 
 \mydate{d22}{24}{3}{2017}
 
@@ -1504,13 +1522,16 @@ $S$ is the ``Slicer'', the ``subdivider'', the ``barycentric subdivider''.  It c
 \end{example}
 \begin{example}
   What is $S(\text{interval})$?
-  $$S(I) = b(S \d I) = b(S ([v_1] - [v_0])) = b([v1] - [v0]) = [b,v1] - [b,v0]$$
+  $$S(I) = b(S \d I) = b(S ([v_1] - [v_0])) = b([v_1] - [v_0]) = [b,v_1] - [b,v_0]$$
 \end{example}
 
 Thanks to using the $\d$ operator in the definition, the $S$ function maintains orientation!  Note also that $S$ is linear automatically, as long as we define $S(k\null) := \null$ for all $k \in \Z$.
 
+\begin{defn}
+  Given a chain complex $\cdots \to C_{n+1} \overset{\d}{\to} C_n \overset{\d}{\to} C_{n-1} \to \cdots$, a \de{chain map} is a map $f \from \chains[\bullet] \to D_\bullet$ which induces a map to another chain complex $\cdots \to D_{n+1} \overset{\d}{\to} D_n \overset{\d}{\to} D_{n-1} \to \cdots$ s.t. $$f \d = \d f.$$
+\end{defn}
 \begin{thm}
-  $S$ is a chain map.  That is, $\d S = S \d$.
+  $S$ is a chain map.
 \end{thm}
 \begin{proof}
   Since $S$ is defined recursively, we shall use induction on the dimension of $\lambda$.
@@ -1518,7 +1539,8 @@ Thanks to using the $\d$ operator in the definition, the $S$ function maintains 
     \item Base Case ($\dim(\lambda) = 0$):
       $$\d S(\null) = \d(\null) = \null = S(\null) = \d S(\null)$$
 
-    \item Inductive Step ($\dim(\lambda) > 0$):
+    \item Inductive Step ($\dim(\lambda) > 0$): \\
+    We expand $S$ by its definition and then apply $\d b = 1 - b \d$:
       $$(\d S)(\lambda) = \d b (S \d (\lambda)) = S \d (\lambda) - b \d S \d (\lambda)$$
 
       We have a $\d S$ in our expression again, but this time it is acting on a linear simplex of lower dimension.  By the inductive hypothesis, $\d S = S \d$ on lower dimensions:
@@ -1588,7 +1610,7 @@ $S \from C_n(X) \to C_n(X)$ inducing isomorphism on homology.
 \mydate{d23}{27}{3}{2017}
 
 \mydate{d24}{29}{3}{2017}
-\renewcommand{\homl}[1][i]{H_{#1}}
+\renewcommand{\homlindexdefault}{i}
 
 
 \begin{defn}
@@ -1602,7 +1624,7 @@ $S \from C_n(X) \to C_n(X)$ inducing isomorphism on homology.
 \end{thm}
 \begin{proof}
   $$\begin{tikzcd}
-    &(X, A) \arrow[d] \arrow[r] &(X/A, A/A) \\
+    &(X, A) \arrow[d] \arrow[r] &(X/A, A/A) \arrow[d] \\
     &(X, V) \arrow[r] &(X/A, V/A) \\
     &(X \minus A, V \minus A) \arrow[u] \arrow[r, "\isom"] &(X/A \minus A/A, V/A \minus A/A) \arrow[u]
   \end{tikzcd}$$
@@ -1632,59 +1654,20 @@ $S \from C_n(X) \to C_n(X)$ inducing isomorphism on homology.
   commutes!
 \end{thm}
 
-$$\dhoml(X) \to \homl(X)$$
-
-Think of a simplicial chain as a singular chain.
+Define the inclusion
+$$\dhoml(X) \overset{\iota}{\to} \homl(X)$$
+where we think of a simplicial chain as a singular chain.
 
 \begin{thm}
   If $A \subset X$ is a closed (if you include a simplex, also include its faces) subspace and a sub-$\Delta$-complex, then
   $$\begin{tikzcd}
-    &\, \arrow[r] &\dhoml(A) \arrow[d] \arrow[r] &\dhoml(X) \arrow[d] \arrow[r] &\dhoml(X, A) \arrow[d] \arrow[r] &\dhoml[i-1](A) \arrow[r] &\, \\
+    &\, \arrow[r] &\dhoml(A) \arrow[d, "\iota"] \arrow[r] &\dhoml(X) \arrow[d, "\iota"] \arrow[r] &\dhoml(X, A) \arrow[d, "\iota"] \arrow[r] &\dhoml[i-1](A) \arrow[d, "\iota"] \arrow[r] &\, \\
     &\, \arrow[r] &\homl(A) \arrow[r] &\homl(X) \arrow[r] &\homl(X, A) \arrow[r] &\homl[i-1](A) \arrow[r] &\,
   \end{tikzcd}$$
 
   commutes!
 \end{thm}
 
-\begin{thm}
-  $\dhoml(X) \isom \homl(X)$ for any $\Delta$-complex.
-\end{thm}
-\begin{proof}
-  It is enough to prove the statement for finite dimensional \Dcomplexes since $\dhoml(X_{i+1}) \isom \dhoml(X)$.
-
-  We now induct on the dimension $k$ of \Dcomplex:
-  \begin{itemize}
-    \item Base Case ($k=0$):
-
-    $X = U\{*\}$
-
-    $$\dhoml[0](X) \isom \homl[0](X)$$
-    $$\dhoml(X) \isom \homl(X) = 0$$
-
-    \item Inductive Step ($k>0$):
-
-    Assume $X$ is $k$-dimensional.  $X \supset X_{k-1}$.
-
-    $$\begin{tikzcd}
-      &\dhoml[i+1](X, X_{k-1}) \arrow[d] \arrow[r] &\dhoml[i+1](X_{k-1}) \arrow[d, "\isom"] \arrow[r] &\dhoml[i+1](X) \arrow[d] \arrow[r] &\dhoml[i+1](X, X_{k-1}) \arrow[d, "\isom"] \arrow[r] &\dhoml[i+1](X_{k-1}) \\
-      &\homl[i+1](X, X_{k-1}) \arrow[r] &\homl[i+1](X_{k-1}) \arrow[r] &\homl[i+1](X) \arrow[r] &\homl[i+1](X, X_{k-1}) \arrow[r] &\homl[i+1](X_{k-1})
-    \end{tikzcd}$$
-
-    $$\dhoml(X, X_{k-1}) \isom \begin{cases}
-      \Z &\text{if $i=k$} \\
-      0 &\text{otherwise}
-    \end{cases}$$ the number of simplices of dimension $k$.
-
-    $$\homl(X, X_{k-1}) \isom \rhoml(X/X_{k-1}) = \begin{cases}
-      \Z &\text{if $i=k$} \\
-      0 &\text{otherwise}
-    \end{cases}$$
-
-    $$X/X_{k-1} \isom \vee_{\text{simplices of dim $k$}} S^k$$.
-
-    Note that we have shown that the first and second-to-last vertical arrows are also isomorphisms.
-  \end{itemize}
-\end{proof}
 \begin{thm}[5-Lemma]
   Given a commutative diagram
   $$\begin{tikzcd}
@@ -1704,6 +1687,49 @@ Think of a simplicial chain as a singular chain.
     &b = \d \alpha^{-1}(a) \\
     &c = 0
   \end{align}
+\end{proof}
+
+
+\begin{thm}
+  $\dhoml(X) \isom \homl(X)$ for any $\Delta$-complex.
+\end{thm}
+\begin{proof}
+  It is enough to prove the statement for finite dimensional \D complexes since $\dhoml(X_{i+1}) \isom \dhoml(X)$.
+
+  We now induct on the dimension $k$ of a \D complex:
+  \begin{itemize}
+    \item Base Case ($k=0$):
+
+    $X = \{\text{points}\}$
+
+    $$\dhoml[0](X) = \Z^{|\{\text{points}\}|} = \homl[0](X)$$
+    $$\dhoml(X) = 0 = \homl(X)$$
+
+    \item Inductive Step ($k>0$):
+
+    Assume $X$ is $k$-dimensional.  $X = X_k \supset X_{k-1}$.  Our goal is to use the 5 Lemma.  I will draw the diagram now and justify the isomorphisms after:
+
+    $$\begin{tikzcd}
+      &\dhoml[i+1](X, X_{k-1}) \arrow[d, "\isom"] \arrow[r] &\dhoml(X_{k-1}) \arrow[d, "\isom"] \arrow[r] &\dhoml(X) \arrow[d] \arrow[r] &\dhoml(X, X_{k-1}) \arrow[d, "\isom"] \arrow[r] &\dhoml[i-1](X_{k-1}) \arrow[d, "\isom"] \\
+      &\homl[i+1](X, X_{k-1}) \arrow[r] &\homl(X_{k-1}) \arrow[r] &\homl(X) \arrow[r] &\homl(X, X_{k-1}) \arrow[r] &\homl[i-1](X_{k-1})
+    \end{tikzcd}$$
+
+    Isomorphisms 2 and 4 come from the inductive hypothesis.  As for isomorphisms 1 and 3...
+
+    $$\dhoml(X, X_{k-1}) \isom \begin{cases}
+      \Z^n &\text{if $i=k$} \\
+      0 &\text{otherwise}
+    \end{cases}$$ where $n$ is the number of simplices of dimension $k$.
+
+    $$\homl(X, X_{k-1}) \isom \rhoml(X/X_{k-1}) = \begin{cases}
+      \Z^n &\text{if $i=k$} \\
+      0 &\text{otherwise}
+    \end{cases}$$
+
+    $$X/X_{k-1} \isom \vee_{\text{simplices of dim $k$}} S^k$$.
+
+    By the 5-lemma, the middle vertical arrow is also an isomorphism!
+  \end{itemize}
 \end{proof}
 
 
@@ -1778,29 +1804,29 @@ For the chain-complex, we find the homologies are
 
 \begin{thm}
   $\chi(X)$ is a topological invariant (invariant under homeomorphism).  In particular,
-  $$ \chi(X) = \sum_{i=0}^\oo (-1)^i \rank(H_i(X)). $$
+  $$ \chi(X) = \sum_{i=0}^\oo (-1)^i \rank(\homl[i](X)). $$
 
-  Note that $\rank(H_i(X)) = \dim_{\Q}(\Q \dsum H_i(X))$.
+  Note that $\rank(\homl[i](X)) = \dim_{\Q}(\Q \dsum \homl[i](X))$.
 \end{thm}
 \begin{proof}
   Recall from the rank-nullity theorem that given a linear transformation $T \from V \to W$, then $\dim(V) = \dim(\ker(T)) + \dim(\im(T))$.  Otherwise stated, given a short exact sequence $0 \to K \to V \to I \to 0$, then $\dim(V) = \dim(K) + \dim(I)$.  The more general version of this theorem refers to $\rank$ instead of $\dim$.
 
   Let $C_i$ be the set of $i$-chains, $Z_i$ be the set of $i$-cycles, and $B_i$ be the set of $i$-boundaries.  Then by the rank-nullity theorem,
-  $$ H_i = Z_i/B_i $$
+  $$ \homl[i] = Z_i/B_i $$
 
-  implies $\rank(Z_i) = \rank(B_i) + \rank(H_i)$.  Also, the SES
+  implies $\rank(Z_i) = \rank(B_i) + \rank(\homl[i])$.  Also, the SES
   $$ 0 \to Z_i \into C_i \overset{\d}{\onto} B_{i-1} \to 0 $$
 
   implies $\rank(C_i) = \rank(Z_i) + \rank(B_{i-1})$.  Substituting the first equation into the second, we have
-  $$ \rank(C_i) = \rank(B_i) + \rank(H_i) + \rank(B_{i-1}).$$
+  $$ \rank(C_i) = \rank(B_i) + \rank(\homl[i]) + \rank(B_{i-1}).$$
 
   Therefore, we compute (using the hypothesis that $X$ is finite (has dimension $N \in \N$)):
   \begin{align}
     \chi(X) &= \sum_{i=0}^\oo (-1)^i \#\{\text{i-cells}\} \\
     \chi(X) &= \sum_{i=0}^N (-1)^i \#\{\text{i-cells}\} \\
     \chi(X) &= \sum_{i=0}^N (-1)^i \rank(C_i) \\
-    \chi(X) &= \sum_{i=0}^N (-1)^i (\rank(B_i) + \rank(H_i) + \rank(B_{i-1})) \\
-    \chi(X) &= \rank(B_{-1}) + \left(\sum_{i=0}^\oo (-1)^i \rank(H_i)\right) + \rank(B_N)
+    \chi(X) &= \sum_{i=0}^N (-1)^i (\rank(B_i) + \rank(\homl[i]) + \rank(B_{i-1})) \\
+    \chi(X) &= \rank(B_{-1}) + \left(\sum_{i=0}^\oo (-1)^i \rank(\homl[i])\right) + \rank(B_N)
   \end{align}
 
   But $\rank(B_N) = 0$ since there are no objects of dimension $N+1$.  Also, $\rank(B_{-1})$ is 0 since the boundary of any point is the empty set, so there are no boundaries of dimension $-1$.
@@ -1810,9 +1836,7 @@ For the chain-complex, we find the homologies are
 (chris)
 
 \section*{Homology w/ group coefficients}
-\renewcommand{\homl}[1][k]{H_{#1}}
-\renewcommand{\rhoml}[1][k]{\widetilde{H}_{#1}}
-\renewcommand{\rchains}[1][k]{\widetilde{C}_{#1}}
+\renewcommand{\homlindexdefault}{k}
 
 \begin{defn}
   Let $G$ be an abelian group.  Then the \de{n-chains with $G$-coefficients}, denoted $C_n(X; G)$, is the set of $G$-linear combinations of singular $n$-simplices in $X$.
@@ -2080,7 +2104,7 @@ Using this information, we can NOW can define $\Tor(A, B)$!  The definition of $
 (chris)
 
 \mydate{dm}{21}{4}{2017}
-\renewcommand{\homl}[1][n]{H_{#1}}
+\renewcommand{\homlindexdefault}{n}
 \subsection{Mayer-Vietoris sequence}
 
 This is a long exact sequence similar to the one given by the snake lemma.
@@ -2193,9 +2217,7 @@ is exact.  And then $\d$ sends the last guy to the first guy in one dimension sm
 (chris)
 
 \mydate{do}{26}{4}{2017}
-\renewcommand{\homl}[1][m]{H_{#1}}
-\renewcommand{\rhoml}[1][m]{\widetilde{H}_{#1}}
-\renewcommand{\rchains}[1][m]{\widetilde{C}_{#1}}
+\renewcommand{\homlindexdefault}{m}
 
 
 \begin{thm}[Hatcher Prop 2B.1(a), p.169]
