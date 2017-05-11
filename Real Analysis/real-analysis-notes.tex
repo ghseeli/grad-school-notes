@@ -4022,7 +4022,92 @@ Using this corollary, we now generalize to another one.
   \]
   is a norm.
 \end{prop}
-
+To prove this, we will need to make use of a reformulation of the
+Cuachy-Schwarz Inequality
+\begin{lem}[Cauchy-Schwarz Inequality on Inner Product Spaces]
+  Let \(\H\) be a pre-Hilber space. For all \(u,v \in \H\), we have \[
+    \left| \langle u,v \rangle \right| \leq \langle u,u \rangle
+    \langle v,v \rangle = \norm[u] \norm[v]
+  \]
+\end{lem}
+\begin{proof}[Proof of Lemma]
+  Let \(t \in \R\). Then \[
+    \langle u+tv, u+tv \rangle = \langle u,u \rangle + t (\langle u,v
+    \rangle + \langle v,u \rangle) + t^2 \langle v,v \rangle
+  \]
+  but \(\langle u,v \rangle + \langle v,u \rangle = 2 \Re \langle u,v
+  \rangle\). Now, we have a quadratic polynomial in \(t\) but we note
+  that the discrimant \[
+    (2 \Re \langle u,v \rangle)^2 - 4 t \langle u,u \rangle\langle v,v \rangle
+    \leq 0
+  \]
+  and so we immediately get that \(\left| \Re \langle u,v \rangle
+  \right| \leq \norm[u] \norm[v]\). Thus, over \(\R\), we are
+  done. Now, let \(\langle u,v \rangle = e^{i \alpha} |\langle u,v
+  \rangle|\). Then, using our result for real valued inner products, \[
+    \left| \langle u,v \rangle \right| = \langle  e^{i\alpha} u,v
+    \rangle \leq \norm[e^{i \alpha} u] \norm[v] = \norm[u] \norm[v]
+  \]
+  since, in general, \(\norm[\lambda u] = \sqrt{\langle \lambda u,
+    \lambda v \rangle} = |\lambda|\norm[u]\). 
+\end{proof}
+\begin{proof}[Proof of Proposition]
+  Let \(u,v \in \H\) and \(\lambda \in \K\). 
+  \begin{itemize}
+  \item We showed in the proof above that \(\norm[\lambda u] =
+    |\lambda|\norm[u]\). 
+  \item We have \(\norm[u] = 0 \implies u = 0\) by the definition of
+    \(\langle \cdot,\cdot \rangle\). If \(u = 0\), then \(\norm[u] =
+    0\) by the scalar relation.
+  \item We see that, using our lemma,
+    \begin{align*}
+      \norm[u+v]^2 & = \langle u+v,u+v \rangle \\
+                   & = \norm[u]^2 + 2 \Re \langle u,v \rangle + \norm[v]^2 \\
+                   & \leq \norm[u]^2 + 2 \norm[u] \norm[v] + \norm[v]^2 \\
+      & = (\norm[u] + \norm[v])^2
+    \end{align*}
+  \end{itemize}
+\end{proof}
+\begin{defn}
+  If \((\H,\norm)\) with the inner product norm is complete, then
+  \((\H,\norm)\) is a \de{Hilbert space}. 
+\end{defn}
+\begin{example}
+  Let \(\H = L^2(X,\M,\mu,\K)\) with \[
+    \langle f,g \rangle = \int_X \ov{f(x)} g(x) \d \mu(x).
+  \]
+  Then, \(|\langle  f,g \rangle| = \norm[fg]_{L^1} \leq \norm[f]_{L^2}
+  \norm[g]_{L^2}\) and \[
+    \norm[f]_\H^2 := \langle  f,f \rangle = \int_X |f|^2 \d \mu = \norm[f]_{L^2}^2
+  \]
+\end{example}
+\begin{prop}[Parallelogram Identity]
+  Let \((\H,\langle \cdot, \cdot \rangle)\) be a (pre-)Hilbert
+  space. Then, for all \(u,v \in \H\), we get \[
+    \norm[u+v]^2 + \norm[u-v]^2 = 2(\norm[u]^2 + \norm[v]^2)
+  \]
+\end{prop}
+\begin{proof}
+  Note that
+  \begin{align*}
+    \norm[u+v]^2 & = \norm[u]^2 + 2 \Re \langle u,v \rangle +
+                   \norm[v]^2 \\
+    \norm[u-v]^2 & = \norm[u]^2 - 2 \Re \langle u,b \rangle + \norm[v]^2
+  \end{align*}
+  So, simply add the two identities together to get the result.
+\end{proof}
+\begin{thm}
+  If \((V,\norm)\) is a normed vector space which satisfies the
+  parallelogram identity, then it is a pre-Hilbert space.
+\end{thm}
+\begin{proof}
+  Not given here.
+\end{proof}
+\begin{thm}
+  Let \((\H,\langle \cdot,\cdot \rangle)\) be a Hilbert space and
+  \(C\) a nonempty closed convex subset. The, for all \(u \in \H\),
+  there exists a unique \(v \in C\)such that \(d(u,v) = d(u,C)\).
+\end{thm}
 \subsection*{(5/2/17) Lecture 27}
 \subsection*{(5/3/17) Bonus Lecture}
 \section{Appendix: Fourier-Laplace Theorem for Real Integrands}
