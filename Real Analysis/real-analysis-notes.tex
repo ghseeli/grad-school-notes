@@ -4247,6 +4247,181 @@ Cuachy-Schwarz Inequality
   \item The image of \(P_V\) is \(V\). 
   \end{enumerate}
 \end{prop}
+\begin{proof}
+  \begin{enumerate}
+  \item We use the direct sum property. Since \(u = v + v_\perp\),
+    \begin{align*}
+      \norm[u]^2 & = \norm[v]^2 + 2 \Re \langle v,v_\perp \rangle +
+                   \norm[v_\perp]^2 \\
+                 & = \norm[v]^2 + \norm[v_\perp]^2 \\
+      \implies \norm[v] & \leq \norm[u], \text{ i.e. } \norm[P_V(u)] \leq
+      \norm[u] \\
+      \implies P_V & \text{ is continuous and } \norm[P_V]_{\cL(\H,\H)}
+      \leq 1
+    \end{align*}
+  \item By definition, \[
+      \norm[P_V]_{\cL(\H,\H)} = \sup_{u \neq 0} \frac{\norm[P_V(u)]}{u}.
+    \]
+    Now, if \(V = \{0\}\), then \(V^\perp = \H\) and so \(P_V \equiv
+    0\). If \(V \neq 0\), then, for \(u \in V\), we get \(u = u + 0\)
+    and so \(P_V(u) = u\). Thus, \[
+      \sup \frac{\norm[P_V(u)]}{\norm[u]} \geq 1
+    \]
+    and thus \(\norm[P_V(u)] = 1\) since we also have \(\norm[P_V(u)] \leq
+    \norm[u]\).
+  \item By construction, the image of \(P_V \subset V\). If \(v \in
+    V\), then \(P_V(v) = v\), and so \(V\) is a subset of the image of
+    \(P_V\). Thus, by double inclusion, we are done.
+  \end{enumerate}
+\end{proof}
+\begin{thm}[Riesz Represetnation Theorem]
+  Let \(\Gamma \from (\H,\norm) \to (\H',\norm_{\cL(\H,\K)})\) (where
+  \(\H'\) is the topological dual) be
+  given by \[
+    u \mapsto (v \mapsto \langle u,v \rangle) = \Gamma(u).
+  \]
+  The, \(\Gamma\) is an isometric anti-isomorphism, that is,
+  \(\Gamma\) is
+  \begin{itemize}
+  \item well-defined,
+  \item bijective,
+  \item anti-linear, i.e. \(\Gamma(\lambda u_1 + u_2) = \ov{\lambda}
+    \Gamma(u_1) + \Gamma(u_2)\), and
+  \item \(\norm[\Gamma(u)]_{\cL(\H,\K)} = \norm[u]_\H\)
+  \end{itemize}
+\end{thm}
+\begin{rmk}
+  When \(\H = L^2\), then \((L^2)' = L^2\). This is a particular case
+  of a theorem known as the \(L^p-L^q\) duality theorem, which we do
+  not prove here, but says \((L^p)' = L^q\) for \(1 < p,q < \infty\)
+  where \(\frac{1}{p}+\frac{1}{q} = 1\).
+\end{rmk}
+\begin{proof}[Proof of Riesz Representation Theorem]
+  \begin{itemize}
+  \item (Well-defined). Let \(\Gamma(u)(v) := \langle u,v \rangle\),
+    which we note is \(\K\)-linear in \(v\). Then, \[
+      \left| \langle u,v \rangle \right| \leq \norm[u] \norm[v]
+    \]
+    by the Cauchy-Scwarz inequality. Thus, since \(\norm[u]\) is
+    continuous, we have that \(\Gamma(u)\) is a continuous linear form
+    with \(\Gamma(u) \in \H'\).
+  \item (Anti-linear).Let \(u_1,u_2 \in \H\). Then, for all \(v \in
+    \H\), we get
+    \begin{align*}
+      \Gamma(u_1+u_2)(v) & = \langle u_1 + u_2, v \rangle \\
+                         & = \langle u_1,v \rangle + \langle u_2, v \rangle \\
+                         & = (\Gamma(u_1) + \Gamma(u_2))(v) \\
+      \implies \Gamma(u_1+u_2) & = \Gamma(u_1) + \Gamma(u_2)
+    \end{align*}
+    Furthermore, for \(\lambda \in \K\), we get for all \(v \in \H\)
+    \begin{align*}
+      \Gamma(\lambda u)(v) & = \langle \lambda u, v \rangle \\
+                           & = \ov{\lambda} \langle u,v \rangle \\
+                           & = \ov{\lambda} \Gamma(u)(v) \\
+                           & = (\ov{\lambda} \Gamma(u))(v) \\
+      \implies \Gamma(\lambda u) & = \ov{\lambda} \Gamma(u)
+    \end{align*}
+  \item (Isometry). If \(u = 0\), then \(\Gamma(u) \equiv 0\) and so
+    \(\norm[\Gamma(u)] = 0\). If not, \[
+      \frac{|\Gamma(u)(u)|}{\norm[u]} = \norm[u]
+    \]
+    and so \(\norm[\Gamma(u)]_{\cL(\H,\K)} \geq \norm[u]\). We then
+    get the reverse inequality by Cauchy-Schwarz. Namely, from CS, we
+    get \[
+      |\Gamma(u)(v)| \leq \norm[u]\norm[v] \implies \sup_{v \neq 0}
+      \frac{|\Gamma(u)(v)}{v} \leq \norm[u] \implies \norm[\Gamma(u)]
+      = \norm[u]
+    \]
+  \item (Bijective). Because \(\Gamma\) is an isometry, it is
+    injective since it has trivial kernel. So, we need only show that
+    it is surjective. Let \(L \subset \H'\). So, \(L\) is a continuous
+    linear form. Furthermore, let \(V := \ker L\). Then, \(V\) is a
+    closed subspace. If \(L \equiv 0\), then \(L = \Gamma(0)\) and we are
+    done. So, suppose \(L \not \equiv 0\). Then, \(V \neq \H = V
+    \oplus V^\perp\). Thus, there exists \(0 \neq w \in V^\perp\) and
+    so \(w \not \in V\). Therefore, \(L(w) \neq 0\). Now, for \(v \in
+    \H\), we get \[
+      L \left( v - \frac{L(v)}{L(w)} w \right) = L(v) -
+      \frac{L(v)}{L(w)} L(w) = 0
+    \]
+    and thus
+    \begin{align*}
+      \langle w,v \rangle
+      & = \left\langle w, \underbrace{v - \frac{L(v)}{L(w)} w}_{\in V}
+        +\frac{L(v)}{L(w)} w \right\rangle \\
+      \implies \langle w,v \rangle
+      & = \frac{L(v)}{L(w)} \langle w,w \rangle \\
+      \implies \forall v \in \H, L(v)
+      & = \frac{L(w)}{\norm[w]^2} \langle w,v \rangle \\
+      & = \left\langle \frac{\ov{L(w)}}{\norm[w]^2}w, v \right\rangle
+    \end{align*}
+    and so if we take \(u := \frac{\ov{L(w)}}{\norm[w]^2} w\), then
+    \(L = \Gamma(u)\). 
+  \end{itemize}
+\end{proof}
+\begin{rmk}
+  A particular case when \(\K = \R\) and \(\H = L^2(X,\M,\mu,\R)\). If
+  \(L \from L^2(X,\R) \to \R\) is a continuous linear form, then there
+  exists a unique \(g \in L^2(X,\R)\) such that, for all \(f \in
+  L^2\), \[
+    L(f) = \int_X gf \d \mu
+  \]
+\end{rmk}
+We now apply the Riesz Representation Theorem to get the following
+\begin{thm}[Lebesgue-Radon-Nicodyn Theorem]
+  Let \((X,\M)\) be a measurable space and let \(\mu,\nu\) be two
+  measures on it which both make \(X\) \s finite. Then,
+  \begin{enumerate}
+  \item There exists unique measure \(\nu_{ac}, \nu_s\) on \(\M\) such
+    that \(\nu_{ac} \ll \mu\)m \(\nu_s \perp \mu\), and \(\nu=
+    \nu_{ac} + \nu_s\).
+  \item There exists measurable \(f \from X \to [0,\infty)\) such that
+    \(\nu_{ac} = \nu_f\) (i.e. \(\nu_{ac}(E) = \int_E f \d\mu\)) and
+    \(f\) is unique up to equality \(\mu\)-almost everywhere. 
+  \end{enumerate}
+\end{thm}
+\begin{rmk}
+  The first part of this theorem is often referred to as the Lebesgue
+  Decomposition Theorem and the second part is often referred to as
+  the Radon-Nicodyn Theorem. Furthermore, in the second part, \(f\) is
+  often called the Radon-Nicodyn derivative and denoted \(\frac{d
+    \nu_{ac}}{d\mu}\). 
+\end{rmk}
+\begin{proof}[von Neumann's Proof]
+  We only prove the theorem when \(\mu,\nu\) are \s finite.
+  \begin{itemize}
+  \item (Existence). Let \(\lambda := \mu + \nu\). Then, consider the
+    linear operator \(L \from L^2(\lambda) \to \R\) given by \[
+      L(f) =  \int_X f \d \nu
+    \]
+    We know that, for \(f \in \cL^1(\mu) \intersect \cL^1(\nu)\), \[
+      |L(f)| \leq \int |f| \d\nu \leq \int |f| \d\lambda \leq \left(
+        \int 1 \d\lambda \right)^\frac{1}{2} \left( \int |f|^2
+        \d\lambda \right)^\frac{1}{2} = \norm[f]_{L^2(\lambda)} <
+      \infty
+      % Why should \sqrt {\int 1} < \infty ??
+    \]
+    and so \(L\) is well-defined, linear, and continuous, so we can
+    say \(L \in (L^2(\lambda))'\). Thus, the Riesz Representation
+    Theorem tells us that there exists \(g \in L^2(\lambda)\) such
+    that, for all \(f \in L^2(\lambda)\), we get \[
+      \int f \d\nu = \int fg \d\lambda = \int fg \d\mu + \int fg \d \nu
+    \]
+    and so \[
+      \int f(1-g) \d\nu = \int fg \d\mu
+    \]
+    Now, if we consider the set \(A = \{x \st g(x) < 1\}\) and \(B =
+    \{x \st g(x) = 1\}\) and consider \[
+      \nu(A) = \int \frac{\chi_{A}}{1-g}(1-g) \d\nu = \int g
+      \frac{\chi_A}{1-g} \d \mu
+    \]
+    we get that, taking \(f = \frac{g}{1-g}\) and applying MCT, for
+    all \(E \in \M\) \[
+      \nu(E \intersect A) = \int_A f \d\mu
+    \]
+    From here, I am not sure how to proceed since the class ended. 
+  \end{itemize}
+\end{proof}
 \subsection*{(5/3/17) Bonus Lecture}
 \section{Appendix: Fourier-Laplace Theorem for Real Integrands}
 Understanding integrals of the form \[
