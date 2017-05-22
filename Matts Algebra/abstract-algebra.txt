@@ -377,14 +377,14 @@ A group G is the direct product of n subgroups A1,,,An ≤ G iff
 	2. forall i, Ai ∩ (A1...An) = 1 (where the right side has Ai ommitted)
 	3. forall i, Ai normalin G
 examples
-	1. G = \mathbb{Z}_6.  A = {0, 3} ≤ G.  B = {0, 2, 4} ≤ G.
+	1. G = Z_6.  A = {0, 3} ≤ G.  B = {0, 2, 4} ≤ G.
 	We conclude G iso A x B.
-	2. G = \mathbb{Z}_st.  Prove G iso \mathbb{Z}_s x \mathbb{Z}_t when s,t rel prime. (left as homeowrk to prove)
+	2. G = Z_st.  Prove G iso Z_s x Z_t when s,t rel prime. (left as homeowrk to prove)
 	3. V = {e, (12)(34), (13)(24), (14)(23)} proper normalin S_4.  (verify this)
 		Let A = {e, (12)(34)} and B = {e, (13)(24)} be subgroups of V
 		A ∩ B = 1
 		A, B normalin V
-		|AB| = 2 \cdot 2 = 4 = |V|, so AB = V
+		|AB| = 2 * 2 = 4 = |V|, so AB = V
 		We conclude V iso A x B
 	4. S4 = VS3
 	S3 into S4
@@ -392,11 +392,11 @@ examples
 	V normalin S4 but S3 not normalin S4.  not a direct product but a semi direct product.
 
 thm
-Let a in \Z_n. then
+Let a in Z_n. then
 |a| = n / gcd(n, a)
 
-\Z_n^x = { a_bar | (a,n) = 1 }
-(a,n) = 1 iff there exists b,c \in \Z s.t. ab + nc = 1.
+Z_n^x = { a_bar | (a,n) = 1 }
+(a,n) = 1 iff there exists b,c in Z s.t. ab + nc = 1.
 
 properties of eulers phi (totient) function:
 1. phi(p^m) = p^m - p^{m-1} for p prime
@@ -413,7 +413,7 @@ R is a ring with 1
 	b. For any r in (R, x), the above map is an automorphism of (R,+)
 
 1.2.2
-Aut(\Z_n) iso (\Z_n, x)
+Aut(Z_n) iso (Z_n, x)
 
 1.2.3
 prop [Chinese Remainder Thm]
@@ -436,7 +436,7 @@ If (a,b) = 1, then
 1.2.5
 prop
 homework related
-Given n in \N, then
+Given n in N, then
 	a. (Z_{2^n}, times) iso (Z_2, +) times (Z_{2^{n-2}}, +) if n ≥ 2
 	b. Z_p^x iso Z_{p-1} for any prime p ---------> prove later w/ field theory
 	c. p odd prime implies Z_{p^n}^x iso Z_{p^{n-1}(p-1)} ----------------> homework #2 ex 5 as long as an element of order (p-1) exists.
@@ -475,11 +475,11 @@ Then, for each i there is a ***unique*** number L_i and (m_i)_1 ≤ ≤ ≤ (m_i
 e_i = (m_i)_1 +++ (m_i)_{L_i} (partition of e_i).
 
 A = direct prod B_i 's and each B_i is
-B_i = \Z mod (p_i)^{{m_i}_1} times times times \Z mod (p_i)^{{m_i}_{L_i}}
+B_i = Z mod (p_i)^{{m_i}_1} times times times Z mod (p_i)^{{m_i}_{L_i}}
 whoah!
 
 1.2.11
-Any abelian group is also a \Z-module.
+Any abelian group is also a Z-module.
 
 1.2.12
 def
@@ -997,7 +997,7 @@ rmk (on dihedral grps)
 
 1.6.10
 prop
-G group. |G| = pq, p>q primes.  Then
+G group. |G| = pq, p > q primes.  Then
 	(a) G isom Zp semidir Zq
 	(b) If q does not divide p-1, then G isom Zp x Zq isom Zpq
 
@@ -1011,21 +1011,21 @@ This follows by definition!  check it out!
 1.7
 Sylow Theorems and Applications
 ---------------------------------------
-⊆ THIS SECTION, G is ALWAYS finite. and p is ALWAYS prime.
+IN THIS SECTION, G is ALWAYS finite. and p is ALWAYS prime.
 
 1.7.1
 def
-A __Sylow p-subgroup__ of G is a p-subgroup of G that is maximal with respect to containment in other p-subgroups of G.  (so |H| = p^k, for k maximal)
+A __Sylow p-subgroup__ of G is a p-subgroup of G that is maximal with respect to containment in other p-subgroups of G.
 and
 Syl_p(G) := { Sylow p-subgroups of G }
 
 prop
-	(i) if p does not divide |G|, then Syl_p(G) = 1
+	(i) if p does not divide |G|, then |Syl_p(G)| = 1
 	(ii) If U is a p-subgroup of G, then there exists a Sylow p-subgroup containing U.
 
 prop (will be proven later)
-	(a) H is a Sylow p-subgroup ==> |H| = p^k, for k maximal (i mentioned this above, but it should be proven)
-	(b) All Sylow p-subgroups of G are isomorphic to each other.  (and, as may be shown later, they are conjugates)
+	(a) H is a Sylow p-subgroup <==> |H| = p^k, for k maximal (this should be proven)
+	(b) All Sylow p-subgroups of G are isomorphic to each other.  (and they are conjugates)
 
 1.7.2
 lemma
@@ -1045,7 +1045,7 @@ pf
 thm [Sylow]
 |G| = p^e m, where p does not divide m.  Then
 	(a) The Sylow p-subgroups are conjugates of each other
-	(b) n_p = |Syl_p(G)| = [ G : N(P) ].  And n_p divides m.
+	(b) n_p = |Syl_p(G)| = [ G : N(P) ].  And so n_p divides m.
 	(c) n_p = 1 mod p
 
 pf
@@ -1069,6 +1069,17 @@ If P in Syl_p(G), then TFAE:
 
 cor
 If P in Syl_p(G), then N(N(P)) = N(P).
+pf
+	N(N(P)) contains N(P) since normalizes can only get bigger.
+	P normalin N(P)
+	P sylow in N(P)
+	P char in N(P)
+	any automorphism on N(P) stabilizes P
+	Let g in N(N(P))
+	Then conjugation by g is an automorphism on N(P)
+	Then gPg^{-1} = P
+	Then g in N(P)
+	We conclude N(N(P)) subset N(P).
 
 1.7.7 [generalization of 1.3.5]
 G finite group.  Then TFAE:
@@ -1380,13 +1391,13 @@ def
 x is a __zero divisor__ if there exists a nonzero y s.t. xy = yx = 0.  (note that zero divisors are 2-sided! xy=0 is not enough!)
 
 thm
-S ⊆ R is a subring of R if it is closed under addition and multiplication (minimal things you need to check!).
+S ⊆ R is a subring of R if it has additive closure, additive inverses, and multiplicative closure (minimal things you need to check!).
 
 Abramenko: "FROM NOW ON, R is always a COMMUTATIVE ring with IDENTITY"
-Note: ⊆ THE CONTEXT of R⊆GS, the "normalin" symbol will denote IDEAL⊆.
+Note: IN THE CONTEXT of RINGS, the "normalin" symbol will denote IDEALIN.
 
 def
-An __ideal__ is a nontrivial subgroup of (R,+) with the absorption property.
+An __ideal__ is a subgroup of (R,+) with the absorption property.
 
 2.1.1
 thm
@@ -1395,22 +1406,21 @@ h : R to S is a ring morphism.
 	If N is ideal in S, then h'(N) ideal in R.
 
 def
-quotient ring.  If I ideal in R, then we define the __quotient __ring__ Rbar := R/I = {a+I | a in R}.
+If I ideal in R, then we define the __quotient ring__ Rbar := R/I = {a+I | a in R}.
 
 2.1.2
 prop [isomorphism thm for rings] (see D.F. section 7.3 thm 7.8)
 Let h : R to S be a ring morphism.  Then
 	(a) h(R) is a subring of S
-	(a.ii) {r in R | h(r) = 0} = ker h ideal in R
+	(a.ii) ker(h) ideal in R
 	(b) R/(ker h) isom h(R)
 	(c) I, J ideal in R with I ⊆ J.  Then J/I := {x+I | x in J} ideal in R/I, and (R/I)/(J/I) isom R/J
 
 2.1.3
 prop [correspondence thm]
-I ideal in R.  Rbar = R/I.  pi : R onto Rbar is a surmorphism.
-Then f : {J ideal in R | I ⊆ J} to {ideals in Rbar} is bijective!
+I ideal in R.  pi : R onto R/I is a surmorphism.
+Then f : {J ideal in R | I ⊆ J} to {ideals in R/I} is bijective!
           J                    mapsto    J/I
-with inverse pi'
 
 2.1.4
 def
@@ -1420,13 +1430,12 @@ A proper ideal I of R is
 
 2.1.5
 prop [equivalent to Zorn's Lemma!]
-Strict ideal I in R.  Then there exists a maximal ideal M in R with I ⊆ M.
+If I is a strict ideal in R, then there exists a maximal ideal M in R with I ⊆ M.
 pf
-	Let S = { J proper ideal in R | I ⊆ J } nontrivial since I in R.
-	S is partially ordered by inclusion.
-	J ≤ J' iff J ⊆ J'
-	We check that every chain in S has an upper bound If
-	if (Ja) is a chain in S, that is, for all a,b in A, Ja ⊆ Jb or vice versa.
+	Let S = { J proper ideal in R | I ⊆ J } nontrivial since I in S.
+	S is partially ordered by containment.
+	We check that every chain in S has an upper bound.
+	If (Ja) is a chain in S, that is, for all a,b in A, Ja ⊆ Jb or vice versa.
 	we must verify it has an upper bound
 
 	Take J := union_a Ja
@@ -1434,12 +1443,12 @@ pf
 		1. I ⊆ J
 		2. J ideal in R:
 			x,y in J and r in R implies there exists a,b in A s.t. x in Ja and y in Jb
-		i) assume WLOG Ja ⊆ Jb implies x+y in Jb ⊆ J
+		i) this implies x+y in J_max{a,b} ⊆ J
 		ii) r in R and x in Ja implies ra in Ja ⊆ J.
-	Then we get that J is actually in the chain, and J is an upper bound of the chain by construction.
+	J is an upper bound of the chain by construction, and we quickly verify that J in S (We verify J is strictly contained in R: Every Ja < R.  For all Ja, 1 not in Ja.  1 not in union_a Ja.  1 not in J.  J < R.)
 	By Zorn's lemma, S has a maximal element M.
 
-	Then I ⊆ M ideal in R, and M is a maximal idea of R. (check)
+	Then I ⊆ M, and M is a maximal ideal of R.
 
 2.1.6
 prop
