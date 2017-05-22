@@ -2631,15 +2631,33 @@ $(m), (n) \nsg \z$ are comaximal if and only if $\gcd(m,n) = 1$.
 \vs
 
 \begin{lemma}
-If $I_1, \dots, I_n \nsg R$ are pairwise comaximal, then also $I_1 \cdots I_{n-1}$ and $I_n$ are comaximal, and
-	\[\bigcap_{j=1}^n I_j = I_1 \cdots I_n \]
+	If $I_1, \dots, I_n \nsg R$ are pairwise comaximal, then also
+	\begin{enumerate}
+		\item $I_1 \cdots I_{n-1}$ and $I_n$ are comaximal
+		\item \(\bigcap_{j=1}^n I_j = I_1 \cdots I_n \)
+	\end{enumerate}
 \end{lemma}
 
 \begin{proof}
-By induction on $n \geq 2$. For $n = 2$, we need only to show that $I_1 \cap I_2 \sub I_2 I_2$. By assumption, there exist $a \in I_1$ and $b \in I_2$ such that $a+b = 1$. Take $x \in I_1 \cap I_2$. Then $x = x(a+b) = xa + xb \in I_1 I_2$. \\
+	\begin{enumerate}
+		\item We have that $I_j$ and $I_n$ are comaximal for all $1 \leq j \leq n-1$. Thus, for each $1 \leq j \leq n-1$, there exist $a_j \in I_j, b_j \in I_n$ such that $a_j + b_j = 1 \implies 1 = 1 \cdot 1 \cdots 1 = \prod_{j=1}^{n-1} (a_j + b_j) \in a_1 \cdots a_{n-1} + I_n \sub I_1 \cdots I_{n-1} + I_n$, so $I_1 \cdots I_{n-1}$ and $I_n$ are comaximal.
 
-For the inductive step, let $n \geq 3$. We have that $I_j$ and $I_n$ are comaximal for all $1 \leq j \leq n-1$. Thus, for each $1 \leq j \leq n-1$, there exist $a_j \in I_j, b_j \in I_n$ such that $a_j + b_j = 1 \implies 1 = 1 \cdot 1 \cdots 1 = \prod_{j=1}^{n-1} (a_j + b_j) \in a_1 \cdots a_{n-1} + I_n \sub I_1 \cdots I_{n-1} + I_n$, so $I_1 \cdots I_{n-1}$ and $I_n$ are comaximal. Putting $I = I_1 \cdots I_{n-1}$, it follows from the case $n=2$ that
-	\[\bigcap_{j=1}^n I_j = I \cap I_n = I I_n = I_1 \cdots I_n \]
+		\item We proceed by induction on $n$.
+		\begin{enumerate}
+			\item Base Case ($n = 1$): Clearly.
+
+			\item Base Case ($n = 2$): We need only to show that $I_1 \cap I_2 \sub I_1 I_2$. Since $I_1$ and $I_2$ are comaximal, there exist $a \in I_1$ and $b \in I_2$ such that $a+b = 1$. For every $x \in I_1 \cap I_2$, we have $x = x(a+b) = xa + xb \in I_1 I_2$.
+
+			\item Inductive Step ($n \geq 3$): Observe that
+			\begin{align*}
+				&\quad\, \bigcap_{j=1}^n I_j \\
+				&= \left(\bigcap_{j=1}^{n-1} I_j\right) \cap I_n \\
+				&= I_1\cdots I_{n-1} \cap I_n &\text{by the Inductive Hypothesis} \\
+				&= I_1\cdots I_{n-1}I_n &\text{by part 1 and Base Case $n=2$} \\
+				&= I_1\cdots I_{n}
+			\end{align*}
+		\end{enumerate}
+	\end{enumerate}
 \end{proof}
 
 \vs
