@@ -44,6 +44,7 @@
 \newcommand{\homl}[1][\homlindexdefault]{H_{#1}}
 \newcommand{\rhoml}[1][\homlindexdefault]{\widetilde{H}_{#1}}
 \newcommand{\dhoml}[1][\homlindexdefault]{\homl[#1]^\Delta}
+\newcommand{\cwhoml}[1][\homlindexdefault]{\homl[#1]^{CW}}
 \newcommand{\chains}[1][\homlindexdefault]{C_{#1}}
 \newcommand{\rchains}[1][\homlindexdefault]{\widetilde{C}_{#1}}
 \newcommand{\D}{$\Delta$-}
@@ -1780,15 +1781,15 @@ For the chain-complex, we find the homologies are
 
 For $X = n$ $\R P^2$'s, then we have the CW-complex representation with the regular $2n$-polygon lined with edges $aabb$ $n$ times, with different pairs $(a,b)$ each time.
 
-Under the rules where we could each cell once (no redundancies), we have 1 0-cell, $n$ 1-cells, and 1 2-cell.  Therefore, the chain-complex is
+We have 1 0-cell, $2n$ 1-cells, and 1 2-cell.  Therefore, the chain-complex is
 $$\begin{tikzcd}
-  &0 \arrow[r, ""] &\Z \arrow[r, ""] &\Z^{n} \arrow[r, "0"] &\Z \arrow[r, ""] &0
+  &0 \arrow[r, ""] &\Z \arrow[r, ""] &\Z^{2n} \arrow[r, "0"] &\Z \arrow[r, ""] &0
 \end{tikzcd}$$
 
 For the chain-complex, we find the homologies are
 \begin{align}
   \homl[0](M_n) &= \Z \\
-  \homl[1](M_n) &= \Z^{n - 1} \dsum \Z_2 \\
+  \homl[1](M_n) &= \Z^{2n - 1} \dsum \Z_2 \\
   \homl[2](M_n) &= 0
 \end{align}
 
@@ -1855,15 +1856,21 @@ defined from above chain complex!
   \]
 \end{defn}
 
-ALSO, if you do the simplicial simplices instead of the singular simplices, you can write the chain complex as
+ALSO, the analogue of the CW chain complex
 
-$$G^{\#\{\text{$i$-cells}\}} \to G^{\#\{\text{$i-1$-cells}\}} \to \ldots$$
+$$\to \to \cwhoml[i](X^i, X^{i-1}) \to \cwhoml[i-1](X^{i-1}, X^{i-2}) \to \to$$
+$$\to \to \Z^{\#\{\text{$i$-cells}\}} \to \Z^{\#\{\text{$i-1$-cells}\}} \to \to$$
 
-intead of
+is the CW chain complex with G coefficients
 
-$$\Z^{\#\{\text{$i$-cells}\}} \to \Z^{\#\{\text{$i-1$-cells}\}} \to \ldots$$
+$$\to \to \cwhoml[i](X^i, X^{i-1}; G) \to \cwhoml[i-1](X^{i-1}, X^{i-2}; G) \to \to$$
+$$\to \to G^{\#\{\text{$i$-cells}\}} \to G^{\#\{\text{$i-1$-cells}\}} \to \to$$
+
 
 ...
+
+(Note: Tor stuff is located in Hatcher p.263 - 267)
+
 \begin{example}
   Consider \(X = \R P^n\). If \(G\) is an arbitrary group, then we
   have chain complex \[
