@@ -143,7 +143,7 @@ A subgroup H ≤ G is __characteristic__ in G if for every automorphism alpha of
 notation
 H char G
 examples
-{e}, G, Z(G), [G, G], [G, [G, G]]
+{e}, G, Z(G), [G, G], [G, [G, G]].  Automorphisms preserve properties, so if you define a subgroup by all elements that satisfy a property, chances are its characteristic!
 
 thm
 H characteristic in G implies H normalin G
@@ -163,7 +163,7 @@ synonym
 factor group
 
 thm [first isomorphism theorem]
-Let \phi: G to H be a morphism of groups.  Then then the image \phi(G) is isomorphic to G/ker(\phi).
+Let \phi: G to H be a morphism of groups.  Then the image \phi(G) is isomorphic to G/ker(\phi).
 proof
 	ker(\phi) is normal, so denote N.
 	Consider a new map \phi' from G/N to \phi(G) defined by \phi'(gN) = \phi(g).
@@ -457,12 +457,20 @@ h is morphism from A to B.  For every a in A, the order |a| is a multiple of the
 prop
 A finite abelian group.  For every m s.t. m | |A|, there exists a subgroup of order m.
 
+thm
+Every simple abelian group is cyclic of prime order.
+pf
+	A is abelian, so every subgroup is normal.  A is simple, so it must have only 1 and A as its subgroups!
+	Suppose FSOC that A is infinite.  Then take a cycle <g> in A.  Then <2g> is a polite subgroup.  (Contradiction).
+	A is finite, and by prop 1.2.7, we must require that |A| is prime in order to have only impolite subgroups!
+
 1.2.8
 A finite abelian group.  Given |A| = prod of p_{n}^{e_n} 's.  Then
 A = B_1 x B_2 x times times B_n where each B_i has order p_i^{e_i}.
 Moreover, B_i = { a in A | |a| is a power of p_i }
 
 The B_i are called the "Sylow p_i-subgroups" of A.
+
 
 1.2.9
 A finite abelian group. |A| = n. Then:
@@ -527,7 +535,7 @@ def
 	G[i] = [G, G[i-1]]
 
 	G is __nilpotent__ if there exists i s.t. G[i] = 1
-	G is nilpotent of class i if G[i] = 1 but G[i-1] != 1
+	G is nilpotent of __class__ i if G[i] = 1 but G[i-1] != 1
 
 	b. The __derived (or commutator) series__ of G is defined inductively by
 	G(1) = [G, G]
@@ -536,9 +544,17 @@ def
 	G is __solvable__ if there exists i s.t. G(i) = 1
 
 thm
+G solvable <==> G has a subnormal series where every quotient is abelian
+thm
+G finite solvable <==> G has a composition series where every quotient is a cyclic group of prime order
+pf
+	If G finite solvable, then G has a subnormal series where every quotient is abelian.  For each quotient that is NOT simple, the series can be REFINED by finding a normal group in the quotient, and hence by the correspondence theorem, a normal group between the two guys in the series.  Since G is FINITE, the refinement can't go on forever, and we are left with SIMPLE abelian quotients (hence a composition series).  Every simple abelian group is a cyclic group of prime order, so every quotient is as desired.  The opposite direction is easy.
+thm
 any subgroup of a solvable group is solvable
 thm
-any subgroup of a nilpotent group is nilpotent (verify this one)
+any subgroup of a nilpotent group is nilpotent
+pf
+	Let A subgrp B.  By induction.  Let Ak subgrp of Bk in the lower central series (I.H.).  Then [A, Ak] subgrp [B, Bk].  So the A lower central series is always "contained" in the B lower central series.  If B is nilpotent, then there exists n s.t. Bn = 1.  Then An = 1 too.  So A is nilpotent.
 
 
 1.3.2
@@ -548,7 +564,7 @@ G nilpotent ==> G solvable
 
 G abelian ==> [G, G] = 1 ==> G nilpotent of class 0 if G=1, class 1 otherwise.
 
-G nilpotent of class i <==> G[i-1] is nontrivial and subgrp Z(G)
+G nilpotent of class i <==> G[i-1] is a nontrivial central subgroup of G
 
 1.1.35
 thm
@@ -557,7 +573,7 @@ G[i], G(i) char in G
 1.3.3
 G > 1
 	a. G nilpotent ==> Z(G) > 1
-	b. G solvable ==> there exists abelian subgroup A > 1 with A char in G.
+	b. G solvable ==> there exists abelian subgroup A > 1.
 
 1.3.4 (examples)
 Q nilpotent
@@ -576,6 +592,10 @@ Every finite group of ODD order is solvable.
 1.3.5 [this is proved to be an iff statement (for *finite* groups) in 1.7.7]
 prop
 G nilpotent. H < G ==> H < N(H)
+pf
+	G nilpotent, so G has finite lower central series.
+	Let Gk be the smallest element of the lower central series that contains H.
+	
 
 1.3.6
 def
@@ -589,7 +609,7 @@ A __short__ exact sequence SES is of the form
 thm
 N iso f1(N).
 f2 surj.
-Q iso G/f1(N) iso G/N.
+Q iso G/f1(N) "iso" G/N.
 
 so for any homomorphism s, we can write
 1 ----> ker s ----> G ----> s(G) ----> 1  is a SES
@@ -605,6 +625,9 @@ G group
 
 	Note also that f2(G(i)) = Q(i). This is true for any homomorphism f2
 	(but i don't think it works for G[i] and Q[i])
+
+pf
+	c. Remember solvable iff there exists a subnormal series w/ abelian quotients.  N solvable, so we have such a series from 1 to N.  G/N solvable, so we have such a series from 1 to G/N.  By the correspondence thm, we have such a series from N to G.  Paste the two together, yielding such a series from 1 to G.
 
 1.3.9
 A,B ≤ G, A ≤ N(B), A,B solvable  ==>  AB solvable
@@ -625,12 +648,12 @@ pf
 1.3.10
 G1 G2 groups.
 	a. A1, B1 ≤ G1 and A2, B2 ≤ G2 implies [A1 x A2, B1 x B2] = [A1, B1] x [A2, B2]
-	this can also appear like (A x B)[i] = A[i] x B[i] instead.
+	this can also appear like (A x B)[i] = A[i] x B[i] instead (mayybe).
 	b. G1 x G2 solvable/nilpotent <==> G1 and G2 are both solvable/nilpotent
 
 1.3.11
 prop
-A, B nilpotent normal ≤ G.  THEN AB nilpotent normal ≤ G.
+If A, B nilpotent normal ≤ G, then AB nilpotent normal ≤ G.
 rmk
 In above prop, if A nilp class c and B nilp class d, then AB nilp of class ≤ c+d.
 
