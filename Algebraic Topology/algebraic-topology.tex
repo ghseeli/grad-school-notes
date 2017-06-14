@@ -2117,24 +2117,37 @@ Using this information, we can NOW can define $\Tor(A, B)$!  The definition of $
 
 This is a long exact sequence similar to the one given by the snake lemma.
 
-Let $A$ and $B$ be subspaces of $X$ s.t. $X = \interior{A} \union \interior{B}$.  We know
+Let $A$ and $B$ be subspaces of $X$ such that $X = \interior{A} \union \interior{B}$.  We know
 $$ \homl(X, A) = \homl(B, B \cap A) $$
 
-We have a commutative diagram (we need that $i_* j_* = i'_* j'_*$, so we make one of the i's negative) (i believe both the $i$'s and $j$'s are just induced by inclusions!)
+Let \(i \from A \intersect B \to A\), \(i' \from A \intersect B \to
+B\), \(j \from A \to X\), and \(j' \from B \to X\) be the standard
+inclusions. Then, we have the following commutative diagram. (We need that $i_* j_* = i'_* j'_*$, so we make one of the i's negative.) 
 
 $$\begin{tikzcd}
   &\, & \homl(A) \arrow[rd, "j_*"] \\
-  &\homl(A \cap B) \arrow[ru, "i_*"] \arrow[rd, "-i'_*"] & &\homl(X) \\
-  & &\homl(B) \arrow[ru, "j'_*"]
+  &\homl(A \cap B) \arrow[ru, "i_*"] \arrow[rd, "-i'_*"] & \oplus
+  &\homl(X) \arrow[r,"\partial"]& \ \\
+  & &\homl(B) \arrow[ru, "j'_*"] \\
+  &\, & \homl[n-1](A) \arrow[rd, "j_*"] \\
+  &\homl[n-1](A \cap B) \arrow[ru, "i_*"] \arrow[rd, "-i'_*"] & \oplus
+  &\homl[n-1](X) \\
+  & &\homl[n-1](B) \arrow[ru, "j'_*"]
 \end{tikzcd}$$
-
-(Note also that for any $c \in \homl(X)$, there exists an $a \in \homl(A)$ and a $b \in \homl(B)$ s.t. $c = a + b$.  We also have that $\d c = 0$, so $\d a = - \d b$ follows immediately.)
-
-which means that
+Thus, if \(c \in \homl(X)\), then \(c = c' + c''\) and so \(\d c
+= 0 \implies \d c' = -\d c ''\). This tells us that
 $$ \homl(A \cap B) \to \homl(A) \dsum \homl(B) \to \homl(X) $$
 
-is exact.  And then $\d$ sends the last guy to the first guy in one dimension smaller, so you get a long exact sequence like in the snake lemma!
-
+is exact.  Thus, since $\d$ sends \(\homl(X)\) to \(\homl[n-1](X)\), we get a long exact sequence like in the snake lemma!
+\begin{example}
+  Take \(X = S^n\), \(A\) to be a neighborhood of the top hemisphere,
+  and \(B\) to be a neighborhood of the bottom sphere. Then, \(A
+  \intersect B\) is an equatorial band that retracts onto \(S^{n-1}\). So,
+  we get the sequence \(0 \to \homl(X) \to \homl[n-1](A \intersect B)
+  \to 0 \oplus 0 \isom 0\). However, since \(\homl[n-1](A \intersect
+  B) \isom \homl[n-1](S^{n-1}) \isom \Z\), we get that \(\homl(X)
+  \isom \Z\). 
+\end{example}
 \begin{proof}
   Consider
 
