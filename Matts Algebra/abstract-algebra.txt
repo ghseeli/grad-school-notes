@@ -624,7 +624,7 @@ G group
 	d. G/N nilpotent and N central ==> G nilpotent
 
 	Note also that f2(G(i)) = Q(i). This is true for any homomorphism f2
-	(but i don't think it works for G[i] and Q[i])
+	(i think it works for G[i] and Q[i] too!)
 
 pf
 	c. Remember solvable iff there exists a subnormal series w/ abelian quotients.  N solvable, so we have such a series from 1 to N.  G/N solvable, so we have such a series from 1 to G/N.  By the correspondence thm, we have such a series from N to G.  Paste the two together, yielding such a series from 1 to G.
@@ -636,8 +636,8 @@ pf
 	A ≤ N(B)  ==>  B is a normal subgroup of AB.
 	Consider AB as our new group.  If B is solvable and AB/B is solvable, then it will follow that AB is solvable.
 	We know B is solvable!
-	AB/B = A/(A∩ B) by the 2nd isomorphism theorem.
-	A is solvable, so A/(A∩ B) is solvable, so AB/B is solvable!
+	AB/B = A/(A ∩ B) by the 2nd isomorphism theorem.
+	A is solvable, so A/(A ∩ B) is solvable, so AB/B is solvable!
 
 [matt]
 A,B ≤ G, B ≤ Z(G), A nilpotent  ==>  AB nilpotent
@@ -648,8 +648,9 @@ pf
 1.3.10
 G1 G2 groups.
 	a. A1, B1 ≤ G1 and A2, B2 ≤ G2 implies [A1 x A2, B1 x B2] = [A1, B1] x [A2, B2]
-	this can also appear like (A x B)[i] = A[i] x B[i] instead (mayybe).
-	b. G1 x G2 solvable/nilpotent <==> G1 and G2 are both solvable/nilpotent
+	this can also appear like (A x B)[i] = A[i] x B[i] instead (mayyybe).
+	b.i. G1 x G2 nilpotent <==> G1 and G2 are both nilpotent
+	b.ii. G1 x G2 solvable <==> G1 and G2 are both solvable
 
 1.3.11
 prop
@@ -677,9 +678,10 @@ If N normalin G, then the largest N' normalin G satisfying N'/N ≤ Z(G/N) is N'
 1.3.12
 def
 G group.  The __upper central series__ is obtained by
-	Z0(G) = {e}
-	Z1(G) = Z(G)
-	Zn(G)/Z{n-1}(G) = Z(G/Zn(G))
+	Z0(G) := {e}
+	Zn(G)/Z{n-1}(G) := Z(G/Z{n-1}(G))
+rmk
+Note that Z1(G) = Z(G) automatically, and the inductive definition above makes sense because there is actually a UNIQUE Zn that satisfies the equation.
 
 1.3.13
 rmk
@@ -689,18 +691,21 @@ rmk
 	c. define c'(G) = min{infty, n | Zn(G) = G }
 	c. THEN c(G) = c'(G)
 
+def
+A subgroup is __polite__ if it is nontrivial and strict.
+
 1.4.1
 def
-A nontrivial group G is __simple__ if G and {e} are the ONLY normal subgroups of G.
+A nontrivial group G is __simple__ if the only normal subgroups of G are impolite.
 
 1.4.2
 ex
-\Z_p is simple iff p prime.
+Z_p is simple iff p prime.
 
 1.4.3
 rmk
-	a. G solvable and simple iff G = \Z_p for p prime.
-	b. G simple, G not cyclic of prime order. ==> G solvable by a => G not abelian => Z(G) = 1 => [G, G] = G => G is "perfect".
+	a. G simple + solvable iff G simple + abelian iff G is cyclic of prime order
+	b. G simple, G not cyclic of prime order ==> G not abelian by a ==> [G, G] ==> G is "perfect".
 	c. G simple and \phi : G \to H morphism. Then ker \phi = G or ker \phi = {e}.
 
 1.4.4
@@ -709,13 +714,16 @@ For n ≥ 5, An is simple.
 
 1.4.5
 cor
-For n ≥5, An and Sn are not solvable.  To be more exact, [Sn, Sn] = An, and [An, An] = An.  (Therefore, quintic equations are not solvable (while quartic and quadratic equations, for example, are).  So the word "solvable" is relevant to the definition!)
+For n ≥ 5, An and Sn are not solvable.  To be more exact, [Sn, Sn] = An, and [An, An] = An.  (Therefore, quintic equations are not solvable (while quartic and quadratic equations, for example, are).  So the word "solvable" is relevant to the definition!)
 
 1.4.6
 examples of simple linear groups
-	a. F field.  |F| > 2.  GLn(F) not simple
-	because [GLn(F), GLn(F)] ≤ SLn(F) < GLn(F)
-	b. F field.  |F| = 2 ?
+	a. If is a F field, |F| > 2, and n ≥ 2, then GLn(F) is not simple.
+		pf.  Since n ≥ 2, GLn(F) is nonabelian, so 1 < [GLn(F), GLn(F)] ≤ SLn(F) < GLn(F).
+			Recall that SLn(F) is matrices with determinant 1, and certainly there exist matrices without determinant 1 in GLn(F).
+			[GLn(F), GLn(F)] normalin GLn(F) finishes the proof, or alternatively, SLn(F) normalin GLn(F).
+			To prove SLn(F) normalin GLn(F), note that the determinant of A SLn(F) A' is still 1!
+	b. If alternatively |F| = 2, then
 	[GLn(F), GLn(F)] = SLn(F) = [SLn(F), SLn(F)]
 	c. Is SLn(F) simple?
 	Exactly when Z(SLn(F)) = { Dn(a) | a^n = 1 } = In
