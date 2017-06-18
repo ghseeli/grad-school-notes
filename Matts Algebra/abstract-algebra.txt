@@ -181,7 +181,7 @@ thm [second isomorphism theorem]
 Let G be a group, let A,B be subgroups of G, and let A ≤ N(B).  Then
 	1. The product AB is a subgroup of G. (prev thm)
 	2. The intersection A ∩ B is a normal subgroup of A. (prev thm?)
-	3. The quotient groups (AB)/B and A/(A∩ B) are isomorphic.
+	3. The quotient groups (AB)/B and A/(A ∩ B) are isomorphic.
 proof
 	want proof for statement 3. apply 1.1.10 to the group hom
 
@@ -237,7 +237,7 @@ If A is normal in B (loosely), then A normalin AB (grouply).
 thm
 Given A,B ≤ G.  If |A|,|B| < oo, then |AB| = \frac{|A||B|}{|A ∩ B|}
 proof
-	A/(A∩ B) has left cosets A'={a_1,,,a_n} so that A = \disjoint union a_i(A∩ B) and has |A|/|A ∩ B| elements.
+	A/(A ∩ B) has left cosets A'={a_1,,,a_n} so that A = \disjoint union a_i(A ∩ B) and has |A|/|A ∩ B| elements.
 	Let f : A' x B \to AB be f(a_i, b) = a_ib
 	f is injective proof:
 		if a_ib = a_jb', then
@@ -804,7 +804,16 @@ Stab(g.x) = g Stab(x) g^{-1}
 
 phi : G \to S(X) by
 phi(g) = pi_g is called the "associated group hom"
-In which case, G acts *faithfully* iff Fix(G) = intersection across all x of Stab(x) = {e}
+
+rmk
+Fix(X) = intersection_{x in X} Fix(x) = intersection_{x in X} Stab(x)
+
+def
+G acts __faithfully__ iff (TFAE):
+	i. phi is injective
+	ii. ker(phi) = {e}
+	iii. Fix(X) = {e}
+	iv. For all g in G s.t. g \neq e, there exists an x in X s.t. g.x \neq x
 
 1.5.8
 Corollary [Cayley's Theorem]
@@ -817,7 +826,7 @@ Stab(1) = H and ker \phi = intersection across all g in G of gHg^{-1}
 
 1.5.10
 prop
-G finite gp.  |G| = p1...pn, every p_i prime and p1 ≤ ≤ ≤ pn.  If H ≤ G with [G:H] = p1, then H normalin G.
+G finite gp.  |G| = p1...pn, every p_i prime and p1 ≤ ≤ ≤ pn.  If H ≤ G with [G : H] = p1, then H normalin G.
 
 Tuesday, Sept 27, 2016
 
@@ -829,7 +838,7 @@ Let's consider
 
 |G| = sum |G.x|
 
-If G acts on X by conjugation then G.x is the conjugacy class of x, and G_x is all elements that commute with x, a.k.a. C(x).
+If G acts on X by conjugation then G.x is the conjugacy class of x, and G_x = Stab(x) is all elements that commute with x, a.k.a. C(x).
 
 So
 
@@ -863,7 +872,11 @@ prop
 G p-group. N normal in G. Then:
 	a. If N nontrivial, N ∩ Z(G) nontrivial.
 		pf
-		(Use the conjugacy "class equation")
+		N nontrivial ==> G nontrivial ==> |G| = 0 mod p.
+		Let G act on N by conjugation, so that the orbits are conjugacy classes of elements of N.
+		Suppose for the sake of contradiction that N ∩ Z(G) = 1.  Then the only element of N that commutes with all of G is e.  Then every orbit other than Orb(e) has size |p^n| > 1.
+		|G| = 1 + SUM Orb(n) for n in N.
+		Looking at the equation mod p, we get 0 = 1 mod p, a contradiction.
 	b. If |N| = p^m, then for any 1 ≤ l ≤ m, there exists a subgroup H of order p^l s.t. H ≤ N and H normal in G.
 	c. If H < G, then there exists H < U ≤ G s.t. [U:H] = p.
 		pf
@@ -879,16 +892,10 @@ G p-group. N normal in G. Then:
 
 
 
-
-
-
-
-
-
 1.5.22
 If |G| = p^2 for p prime, then G is abelian.  (And G iso Zp x Zp, or Zp^2 by Fund Thm Finite Abelian Grps)
 	pf
-	Assume not.  Then Z(G) is a strict subgroup of G.  Previous theorem gives that Z(G) is also nontrivial.  So Z(G) is proper.  So |Z(G)| = p.  |G/Z(G)| = p, so G/Z(G) is cyclic.  Z(G) is abelian and G/Z(G) is cyclic, so G is abelian.
+	Assume not.  Then Z(G) is a strict subgroup of G.  Previous theorem gives that Z(G) is also nontrivial.  So Z(G) is polite.  So |Z(G)| = p.  |G/Z(G)| = p, so G/Z(G) is cyclic.  Z(G) is central and G/Z(G) is cyclic, so G is abelian.
 
 rmk
 Are there any nonabelian groups of order p^3?
@@ -1081,19 +1088,13 @@ pf
 thm [Sylow]
 |G| = p^e m, where p does not divide m.  Then
 	(a) The Sylow p-subgroups are conjugates of each other
-	(b) n_p = |Syl_p(G)| = [ G : N(P) ].  And so n_p divides m.
+	(b) n_p = |Syl_p(G)| = [G : N(P)].  And so n_p divides m.
 	(c) n_p = 1 mod p
 
 pf
-	(pictures in camera)
-	(b) and (c)
-	Cool proof that n_p divides m.  Let P = Pp.
-	By induction on |P|:
-	Base case:
-	|P| = 1.  By (a), every Sylow p-subgroup is trivial.  Then n_p = 1, which divides m, and equiv 1 mod p.
-	Ind step:
-	|P| > 1.  A nontrivial p-group has a nontrivial center.  The other p-groups are of the form gPg^{-1}, which is an isomorphism, so they have the center gZ(P)g^{-1} each (I believe this proof is wrong.  originally i thought all the P groups would have the same center Z(P).  However, I assumed that Z(P) ⊆ Z(G), which is not necessarily true).  Z(P) is contained and normal in each Sylow p-subgroup, and in G.  Now mod all of those things out by Z(P).  The P' are the Sylow p-subgroups of G', and since z = |Z(P)| > 1, their orders are LESS.  By the inductive hypothesis, n_p' divides (|G|/p^e)/z and n_p' equiv 1 mod p.  But n_p' = n_p, so n_p divides |G|/p^e and n_p equiv 1 mod p.
-	bazinga.
+	(a) (pictures in camera)
+	(b.i) Given that Sylow p-subgroups are conjugates, then n_p := |Syl_p(G)| = |Orb(P)| under conjugation = [G: Stab(P)] = [G : N(P)].
+	(b.ii) Given n_p = [G : N(P)] = |G|/|N(P)| since G is finite.  N(P) contains P, so |N(P)| is a multiple of p^e.  So n_p divides m.
 
 
 1.7.6
@@ -1103,19 +1104,26 @@ If P in Syl_p(G), then TFAE:
 	ii) P normalin G
 	iii) Syl_p(G) = {P}
 
+lem (sylow subnormal)
+If P in Syl_p(G) and G has a subnormal series in which P occurs, then P normalin G.
+
+pf
+	G has a subnormal series with P in it
+	P normalin H1 normalin H2 normalin normalin normalin G
+	P sylow in G ==> P sylow in H1
+	P sylow + normal in H1 ==> P char H1
+	P char H1 normalin H2 ==> P normalin H2
+	P normalin H2 normalin H3 normalin normalin normalin G
+	By induction, P normalin G
+
 cor
 If P in Syl_p(G), then N(N(P)) = N(P).
 pf
-	N(N(P)) contains N(P) since normalizes can only get bigger.
-	P normalin N(P)
-	P sylow in N(P)
-	P char in N(P)
-	any automorphism on N(P) stabilizes P
-	Let g in N(N(P))
-	Then conjugation by g is an automorphism on N(P)
-	Then gPg^{-1} = P
-	Then g in N(P)
-	We conclude N(N(P)) subset N(P).
+	N(N(P)) contains N(P) since normalizers can only get bigger
+	P sylow in G ==> P sylow in N(N(P))
+	1 normalin P normalin N(P) normalin N(N(P)) is a subnormal series of N(N(P)) in which P occurs
+	P normalin N(N(P))
+	N(N(P)) subset N(P)
 
 1.7.7 [generalization of 1.3.5]
 G finite group.  Then TFAE:
@@ -1129,7 +1137,7 @@ pf
 	ii ==> iii
 		N(P) = N(N(P)), not N(P) < N(N(P)), so N(P) = G
 	iii ==> iv
-		The intersection of any two Sylow groups is trivial.  Each is normal.
+		The intersection of any two Sylow groups is trivial.  Each is normal.  And |G| = |P1...Pr| ==> G = P1...Pr.
 	iv ==> i
 		By 1.3.10, the finite direct product of nilpotent groups is nilpotent
 
@@ -1141,7 +1149,7 @@ G group. |G| = p^em, p maximal, and p > m. Then
 
 1.7.9
 prop
-|G| = pqr is prod of 3 distinct primes.  p > q > r.  Let P=Pp, Q=Pq, R=Pr.  Then
+|G| = pqr is prod of 3 distinct primes.  WLOG p > q > r.  Let P=Pp, Q=Pq, R=Pr.  Then
 	i) P, PQ normalin G
 	ii) G = (P semidir Q) semidir R \isom (Zp semidir Zq) semidir Zr
 
