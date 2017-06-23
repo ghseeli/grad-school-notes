@@ -414,8 +414,9 @@ pf
 
 1.2.1
 R is a ring with 1
-	a. For any r in R, the map which sends x to rx is an endomorphism of (R,+)
-	b. For any r in (R, x), the above map is an automorphism of (R,+)
+	a. For any r in R, the map which sends x to rx is a homomorphism of (R,+)
+	b.i. For any r in (R, x), the above map is an automorphism of (R,+).
+	b.ii. The map (R, x) to Aut((R,+)) given by (a) is an inmorphism.
 
 1.2.2
 Aut(Z_n) iso (Z_n, x)
@@ -424,7 +425,8 @@ Aut(Z_n) iso (Z_n, x)
 prop [Chinese Remainder Thm]
 	a. The function f : Z_ab  to  Z_a times Z_b defined by f(z mod ab) = (z mod a, z mod b) is a ring morphism.
 	b. If (a,b) = 1, then f is a bimorphism
-		proof: Show | Z_ab | = ab = | Z_a || Z_b | = | Z_a times Z_b | by showing that ker(f) = 1, or something.
+		proof: 
+			Firsly, we show f is injective.  Let f(z) = 0.  Then z = 0 mod a and z = 0 mod b.  z is a multiple of a and b.  Since (a,b) = 1, z is a multiple of ab.  So z = 0 mod ab.  Therefore, ker(f) = 0.  Secondly, we show f is surjective.  Since the domain and codomain are finite, it is enough to show they have the same size.  | Z_ab | = ab = | Z_a || Z_b | = | Z_a times Z_b |.
 
 consequence
 Since n = p_1^{e^1}...p_r^{e^r} for p's distinct primes, then we conclude
@@ -435,8 +437,8 @@ if p_1, , , p_r distinct primes and x_1, , , x_r distinct thingys, then there ex
 1.2.4
 cor
 If (a,b) = 1, then
-	a. (Z_ab, times) iso to (Z_a, times) times (Z_b, times) too!  (The multiplicative groups too, since it was a ring bimorphism and not just a group bimorphism)
-	b. phi(ab) = |Z_ab, times| = |Z_a, times||Z_b, times| = phi(a)phi(b)
+	a. (Z_ab, x) iso to (Z_a, x) x (Z_b, x) too!  (The multiplicative groups too, since it was a ring bimorphism and not just a group bimorphism)
+	b. totient(ab) = |(Z_ab, x)| = |(Z_a, x)||(Z_b, x)| = totient(a)totient(b)
 
 1.2.5
 prop
@@ -447,8 +449,8 @@ Given n in N, then
 	c. p odd prime implies Z_{p^n}^x iso Z_{p^{n-1}(p-1)} ----------------> homework #2 ex 5 as long as an element of order (p-1) exists.
 
 1.2.6
-prop [Cauchy's thm for finite abelian groups]
-A abelian finite.  p prime.  p | |A|.  Then there exists a in A such that |a| = p.
+prop (Cauchy's thm for finite abelian groups) (We will prove a STRONGER statement later!)
+A is abelian and finite.  p prime.  p | |A|.  Then there exists a in A such that |a| = p.
 
 thm (un numbered)
 h is morphism from A to B.  For every a in A, the order |a| is a multiple of the order |h(a)|.
@@ -461,8 +463,9 @@ thm
 Every simple abelian group is cyclic of prime order.
 pf
 	A is abelian, so every subgroup is normal.  A is simple, so it must have only 1 and A as its subgroups!
-	Suppose FSOC that A is infinite.  Then take a cycle <g> in A.  Then <2g> is a polite subgroup.  (Contradiction).
+	Suppose FSOC that A is infinite.  Then A has an infinite cycle <g>.  Then <2g> is a polite subgroup.  (Contradiction).
 	A is finite, and by prop 1.2.7, we must require that |A| is prime in order to have only impolite subgroups!
+	Finally, take any nontrivial and it generates the whole group, so A is cyclic.
 
 1.2.8
 A finite abelian group.  Given |A| = prod of p_{n}^{e_n} 's.  Then
@@ -475,11 +478,11 @@ The B_i are called the "Sylow p_i-subgroups" of A.
 1.2.9
 A finite abelian group. |A| = n. Then:
 	a. If A is cyclic and 0 ≤ m ≤ n, then
-	(by the way, know that |a| divides m iff a^m = e)
-	|{a in A |  |a| divies m }|
-		case:  = m if m divides n (MATT: "this should be n | m")
-		case: < m otherwise
-	b. If something something about m, then A is cyclic.
+	(by the way, remember that |a| divides m iff a^m = e)
+	|{a in A |  |a| divides m }|
+		CASE: = m, if m divides n
+		CASE: < m, otherwise
+	b. If for all m|n, |{a in A |  |a| divides m }| <= m, then A is cyclic.
 
 1.2.10
 Fundamental Thm of Finite Abelian Groups
@@ -850,7 +853,7 @@ for the x's on the right *not* in Z(G), and therefore these G.x's have size grea
 
 :)
 
-1.5.17
+1.5.17 (Generalized Cauchy's Theorem)
 thm
 p prime. p^n | |G|  implies there is a subgroup of order p^n.
 
@@ -907,7 +910,7 @@ Semidirect Products
 
 1.6.1
 def
-group B acts on group A.  (a group action!  not any set action see 1.5.3)(so every b is a group morphism from A to A)
+group B acts on group A.  (a group action!  not any set action see 1.5.3)(so every b is a group automorphism from A to A)
 Let phi : B to Aut(A) be the canonical morphism.
 So phi(b)(a) = b.a
 and b.(aa') = (b.a)(b.a')
@@ -927,7 +930,7 @@ rmk
 	d. |A \rtimes B| = |A x B| = |A||B|
 	e. A to A \rtimes B by f(a) = (a,e) is an inmorphism.  Check this!  Do the same for B to A \rtimes B, f(b) = (e,b).
 	We often identify A and B with their images in G = A \rtimes B.
-	These subgroups A, B ≤ G habe the following props:
+	These subgroups A, B ≤ G have the following props:
 		i. G = AB
 		ii. A ∩ B = 1
 		iii. A normalin G (but B NOT normalin G, unless phi = id)
@@ -935,17 +938,12 @@ rmk
 1.6.3
 def
 G group.  A,B ≤ G satisfying
-	i. A and B are permutable complements
+	i, ii. A and B are permutable complements
 	iii. A normalin G
 Then G is the __internal semidirect product__ of A and B (and it's implied that phi is conjugation).
 phi(b) = K_b
 where K_b(a) = bab^{-1}
 (but b's action on A can be any automorphism!)
-
-thm [wiki]
-If G is the internal semidirect product of A and B, where A is the normal subgroup, then B is isomorphic to G/A.
-G iso A semidirect G/A
-(the automorphisms of action are still unknown)
 
 thm
 The internal semidirect product is isomorphic to the external semidirect product.
@@ -969,6 +967,11 @@ thm
 if 1 to N to G to Q to 1 is split, then
 G = f(N) semidir s(Q)
 hooray!
+
+thm [wiki]
+If G is the internal semidirect product of A and B, where A is the normal subgroup, then B is isomorphic to G/A.
+G iso A semidirect G/A
+(the automorphisms of action are still unknown)
 
 1.6.8
 discussion (on dihedral groups)
@@ -1078,9 +1081,9 @@ P in Syl(G), H ≤ G.
 pf
 	P normal in H
 	HP ≤ G
-	HP is a p-subgroup, since both H and P are
+	HP is a p-subgroup, since both H and P are and |HP| = |H||P|/|H ∩ P|
 	P ≤ HP
-	but P is maximal, so P = HP
+	but P is maximal p-subgroup, so P = HP
 	H ≤ P
 
 
@@ -1104,8 +1107,8 @@ If P in Syl_p(G), then TFAE:
 	ii) P normalin G
 	iii) Syl_p(G) = {P}
 
-lem (sylow subnormal)
-If P in Syl_p(G) and G has a subnormal series in which P occurs, then P normalin G.
+lem (sylow subnormal) (aka 'matt lemma')
+If P in Syl_p(G) and G has a subnormal series in which P occurs, then P char G.
 
 pf
 	G has a subnormal series with P in it
