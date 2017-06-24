@@ -1960,8 +1960,114 @@ $$\deg_2(u_z) =
 
 \mydate{d14}{16}{11}{2016}
 
-Some stuff i missed.
+\begin{defi}
+  If \(M,N\) are oriented manifolds, we defined the \de{product
+    orientation} on \(M \times N\) by saying, if \((v_1, \ldots,
+  v_m)\) is positive for \(T_x M\) and \((w_1, \ldots, w_n)\) is
+  positive for \(T_y N\), then, since \(T_{x,y}(M \times N) = T_x M
+  \times T_y N\), we say the ordered basis \(((v_1, 0), \ldots, (v_m,
+  0), (0,w_1), \ldots, (0,w_n))\) is positive. 
+\end{defi}
+\begin{defi}
+  If \(M\) is an oriented manifold with boundary \(\d M\), then we
+  orient \(\d M\) using the \de{boundary orientation} as follows.
+  \begin{itemize}
+  \item For \(x \in \d M\), let \(n(x) \in T_x M\) point outwards.
+  \item Define \((v_1, \ldots, v_{n-1})\), an ordered basis for \(T_x
+    \d M\) to be positive if \((n(x), v_1, \ldots, v_{n-1})\) is
+    positive for \(T_x M\). 
+  \end{itemize}
+\end{defi}
+\begin{example}
+  Given \(B^n\) is oriented with the standard orientation of \(\R^n\),
+  then for \(x \in S^{n-1} = \d B^n\), we say that an ordered basis
+  for \(T_x S^{n-1}\), denoted \((v_1, \ldots, v_{n-1})\), is
+  ``positive'' if \(x, v_1, \ldots, v_{n-1}\) is standard for \(\R^n\).
+\end{example}
+\begin{example}
+  Given a surface \(S \subset \R^3\), an orientation of \(S\)
+  corresponds to a normal direction through \(S\). So, at a point
+  \(x \in S\), we say a basis for \(T_x S\) given by \((v_1, v_2)\)
+  is positive if and only if \(n, v_1, v_2\) is standard for \(n\) our
+  choice of normal direction through \(S\), that is,
+  \((v_1,v_2,n)\) is satisfying the right hand rule.
+\end{example}
+\begin{defi}
+  Let \(f \from M^m \to N^n\) with \(y \in N\) a regular value, so \(K
+  = f^{-1}(y)\) is a smooth manifold. If \(M\) is oriented, then a
+  choice of orientation on \(M\) determines a \de{pre-image orientation} on \(K\) as
+  follows. \\
 
+  Let \(x \in K\). Then, we have that \[
+    T_x K \into T_x M \overset{df_x}{\onto} T_y N
+  \]
+  So, if we choose an orientation of \(T_y N\), say \((w_1, \ldots,
+  w_n)\) is positive, then, there exists \(n\) linearly independent vectors of \(T_x M\)
+  such that \((v_1, \ldots, v_n) \mapsto (w_1, \ldots, w_n)\). Then,
+  we say that an ordered basis \((u_1, \ldots, u_{m-n})\) for \(T_x
+  K\) is positive if \((v_1, \ldots, v_n, u_1, \ldots, u_{m-n})\) is
+  positive for \(T_x M\). 
+\end{defi}
+\begin{example}
+  Let \(f \from +\R^n \to +\R\) be given by \(f(x) = x \cdot
+  x\). Then, \(df_x(v) = 2x \cdot v\) and so \(1 \in \R\) is a regular
+  value. So, we have \(S^{n-1} = f^{-1}(1)\) as a submanifold of
+  \(R^n\). So, for \(x \in S^{n-1}\), we say that \((u_1, \ldots,
+  y_{n-1})\) is a positive basis for \(T_x S^{n-1}\) if \((x, u_1,
+  \ldots, u_{n-1})\) is standard for \(\R^n\). 
+\end{example}
+In fact, we can generalize this pre-image orientation as follows.
+\begin{defi}
+  Let \(f \from M^m \to N^n\), \(L^\ell \subset N\) such that \(f
+  \transverse L\). Then, let \(K = f^{-1}(L)\). Then, if \(M,\ N,\)
+  and \(L\) are all oriented, they induce a \de{pre-image orientation}
+  on \(K\) as follows. \\
+
+  Take \(x \in K\) and let \(y = f(x) \in L\). Then, choose \((w_1,
+  \ldots, w_\ell)\) as a positive basis for \(T_y L\). By
+  transversality, we can find \(v_1, \ldots, v_{n-\ell} \in T_x M\)
+  such that \((df_x(v_1), \ldots, df_x(v_{n-\ell}), w_1, \ldots,
+  w_\ell)\) is positive for \(T_y N\). From this, we say that an
+  ordered basis for \(T_x K\), \((u_1, \ldots, u_{m-n+\ell})\), is
+  positive if \((v_1, \ldots, v_{n-\ell}, u_1, \ldots, u_{m-n+\ell})\)
+  is positive for \(T_x M\). 
+\end{defi}
+However, our definition of an orientation and this whole discussion
+degenerates when we are concerned with 
+the orientation of 0-dimensional manifolds. To remedy this, we provide
+the following definition.
+\begin{defi}
+  A 0-dimensional manifold is oriented by assigning a value \(\pm 1\)
+  to each point. 
+\end{defi}
+\begin{example}
+  Consider the unit interval \(I\). Then, \(\d I = \{0,1\}\). If \(I\)
+  has a positive orientation, then we will see it makes sense to
+  assign \(0\) an orientation of \(-1\) and \(1\) and orientation of
+  \(+1\). 
+\end{example}
+\begin{defi}
+  Given \(f \from M \to N\) where \(M,N\) are oriented manifolds and
+  \(\dim M = \dim N\), then, if \(y \in N\) is regular, \(f^{-1}(0)\)
+  is a 0-dimensional submanifold of \(M\). So, given \(x \in M\) such
+  that \(f(x) = y\), we say the \de{pre-image orientation} on \(x\) is +1 if the
+  linear isomorphism \(T_x M
+  \overset{df_x}{\to} T_y N\) is orientation preserving and \(-1\) if
+  the linear isomorphism is orientation reversing. 
+\end{defi}
+Once again, we can extend the pre-image orientation for 0-dimensional
+manifolds as follows.
+\begin{defi}
+  Given \(f \from M \to N\) with \(L \subset N\) such that \(\dim M +
+  \dim L = \dim N\) and \(M,\ N,\) and \(L\) all oriented, then if \(f(x)
+  = y \in L\), \(x\) gets the \de{pre-image orientation} \(+1\) if, given positive
+  basis for \(T_x M\), \((v_1, \ldots, v_m)\),  and positive basis for
+  \(T_y L\), \(w_1, \ldots, w_\ell\), then \((df_x(v_1), \ldots,
+  df_x(v_n), w_1, \ldots, w_\ell)\) is positive for \(T_y
+  N\). Otherwise, \(x\) gets the orientation \(-1\). 
+\end{defi}
+From this discussion, we are now ready to discuss the idea of an
+oriented intersection. 
 \begin{defi}
 	(still with m + l = n and M compact, L closed, all have no boundaries conditions)
 	The \emph{intersection number} of $f$ and $L$, denoted $I(f, L)$, is the integer $\sum_{x \in g^{-1}(L)} o(x)$ where
