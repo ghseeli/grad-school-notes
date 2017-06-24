@@ -414,12 +414,12 @@ pf
 
 1.2.1
 R is a ring with 1
-	a. For any r in R, the map which sends x to rx is a homomorphism of (R,+)
+	a. For any r in R, the map which sends x to rx is an endomorphism of (R,+)
 	b.i. For any r in (R, x), the above map is an automorphism of (R,+).
 	b.ii. The map (R, x) to Aut((R,+)) given by (a) is an inmorphism.
 
 1.2.2
-Aut(Z_n) iso (Z_n, x)
+(Z_n, x) iso Aut((Z_n, +))
 
 1.2.3
 prop [Chinese Remainder Thm]
@@ -462,10 +462,9 @@ A finite abelian group.  For every m s.t. m | |A|, there exists a subgroup of or
 thm
 Every simple abelian group is cyclic of prime order.
 pf
-	A is abelian, so every subgroup is normal.  A is simple, so it must have only 1 and A as its subgroups!
-	Suppose FSOC that A is infinite.  Then A has an infinite cycle <g>.  Then <2g> is a polite subgroup.  (Contradiction).
-	A is finite, and by prop 1.2.7, we must require that |A| is prime in order to have only impolite subgroups!
-	Finally, take any nontrivial and it generates the whole group, so A is cyclic.
+	A is simple, so by definition nontrivial.  Take a nontrivial element a in A.  <a> subgroup A.
+	<a> is finite, abelian, and nontrivial, so there exists some b in <a> of prime order.  <b> subgroup A.
+	A is abelian, so every subgroup is normal.  A is simple, so every nontrivial subgroup is A.  Therefore, <b> = A.
 
 1.2.8
 A finite abelian group.  Given |A| = prod of p_{n}^{e_n} 's.  Then
@@ -477,11 +476,9 @@ The B_i are called the "Sylow p_i-subgroups" of A.
 
 1.2.9
 A finite abelian group. |A| = n. Then:
-	a. If A is cyclic and 0 ≤ m ≤ n, then
+	a. If A is cyclic and 0 ≤ m ≤ n, then |{a in A |  |a| divides m }| = gcd(m, n).
+	(note that this is m if m divides n, and less than m otherwise)
 	(by the way, remember that |a| divides m iff a^m = e)
-	|{a in A |  |a| divides m }|
-		CASE: = m, if m divides n
-		CASE: < m, otherwise
 	b. If for all m|n, |{a in A |  |a| divides m }| <= m, then A is cyclic.
 
 1.2.10
