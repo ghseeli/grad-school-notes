@@ -2069,29 +2069,31 @@ manifolds as follows.
 From this discussion, we are now ready to discuss the idea of an
 oriented intersection. 
 \begin{defi}
-	(still with m + l = n and M compact, L closed, all have no boundaries conditions)
-	The \emph{intersection number} of $f$ and $L$, denoted $I(f, L)$, is the integer $\sum_{x \in g^{-1}(L)} o(x)$ where
+	Let \(f \from M \to N\) be a smooth map from \(M\) a compact
+        manifold with dimension \(m\) and \(N\) a manifold with
+        dimension \(n\). Then, given a closed submanifold \(L \subset
+        N\) of dimension \(\ell\) with \(m+\ell = n\), we say
+	the \de{intersection number} of $f$ and $L$, denoted $I(f,
+        L)$, is the integer $\sum_{x \in g^{-1}(L)} o(x)$ where 
 	\begin{itemize}
-		\item $g \homotopic f$
-		\item $g \transverse L$
-		\item $o(x) = \pm 1$ is the orientation of $x$
-	\end{itemize}.
+		\item $g \homotopic f$,
+		\item $g \transverse L$,
+		\item $o(x) = \pm 1$ is the orientation of $x$.
+	\end{itemize}
 \end{defi}
 \begin{lemm}
 	If $M$ is a 1-dimensional compact oriented manifold with boundary $\d M$, then $$\sum_{x \in \d M} o(x) = 0$$
 \end{lemm}
 \begin{proof}
-	$g \homotopic f \homotopic h$.
+  Consider \(f \from \d M \to N\) and take maps \(g,h\) homotopic to
+  \(f\) and transverse to \(L \subset N\). Then, given the homotopy
+  \(H \from I \times \d M \to N\), we see that \(\d(I \times M) = M_1
+  - M_0\) and \(\d H = g\) on \(M_1\) and \(h\) on
+  \(M_0\). Consequently, \[
+    I(\d H, L) = I(g, L) - I(h, L) = 0
+  \]
 
-	$g \transverse L$, $h \transverse L$.
-
-	$g \transverse h : I \x M \overset{H}{\to} N$.
-
-	There exists $K$ s.t. $J \x M \overset{\overset{~}{H}}{\to} N$.
-
-	punch line / example.  draw the cyclindar with the level curve things on it.  Compare the level curves intersection the top and bottom boundaries.  these are $h^{-1}(L)$ and $g^{-1}(L)$:
-
-	$\overset{~}{H}(L)^{-1} = h^{-1}(L) - g^{-1}(L) = 0$.
+  Punch line / example.  draw the cyclinder with the level curve things on it.  Compare the level curves intersection the top and bottom boundaries.  these are $h^{-1}(L)$ and $g^{-1}(L)$.
 \end{proof}
 
 \mydate{d17}{21}{11}{2016}
@@ -2116,10 +2118,9 @@ $\mathcal{H} = $ Hypothesis for some things  $f \from M \to N$ is a smooth map o
 
 	(Then to calculate, choose $y$ regular)
 
-	$\deg(f) = \sum_{\text{intersection pts}} o(x)$ where $o(x) = +1$ if $df_x$ is orientation preserving.
+	$\deg(f) = \sum_{x \in f^{-1}(y)} o(x)$ where $o(x) = +1$ if
+        $df_x$ is orientation preserving and \(-1\) otherwise.
 \end{propo}
-
-
 \begin{propo}
 	If $M = \d W$ and $f$ extends to $F\from W \to N$, then $\deg(f) = 0$.
 \end{propo}
@@ -2137,26 +2138,59 @@ $\mathcal{H} = $ Hypothesis for some things  $f \from M \to N$ is a smooth map o
 
 	Then $\deg(f) = d$, as we will show!
 
-	All pts in $S^1$ are regular.  For all $x \in S^1$,
+	All points in $S^1$ are regular unless \(d=0\), in which case
+        all are regular except for 1 point.  For all $x \in S^1$,
 
 	$$o(x) =
 	\begin{cases}
 		+1 	&\text{if $d > 0$} \\
 		-1 	&\text{if $d < 0$} \\
 	\end{cases}$$
-
-	Whoah, so degree as we know it is related to $d$-to-$1$ functions, which is related to intersection numbers!
+        Thus, since \(f^{-1}(y)\) has cardinality \(d\) and all points
+        have the same orientation, \(\deg(f) = d\).
+%	Whoah, so degree as we know it is related to $d$-to-$1$
+%	functions, which is related to intersection numbers!
+        From this computation, we will get that these maps precisely
+        give distinct representatives for smooth homotopy classes of
+        maps from \(S^1\) to \(S^1\). 
 \end{example}
 \begin{example}
 	$p\from \C \to \C$ is a nonconstant polynomial
-	$p$ extends to $\bar{p} \from \C P^1 \to \C P^1$, where $\C P^1$ isom $\C^* \isom mS^2$.
+	$p$ extends to $\bar{p} \from \C P^1 \to \C P^1$, where $\C
+        P^1 \isom \C \union \{\infty\} \isom S^2$.
 
-	$\deg(\bar{p}) = \text{degree}(p)$.  Pick a regular value $c \in C$.  Regular (in the complex plane) means that $p'$ is nonzero, so we get that $\bar{p}^{-1}(c) = \{ z \mid p(z) = c \}$, which has $d$ distinct solutions.
+	$\deg(\bar{p}) =$ the polynomial degree of $p$.  Pick a
+        regular value $c \in C$.  Regular (in the complex plane) means
+        that $p'$ is nonzero, so we get that $(\bar{p})^{-1}(c) = \{ z
+        \mid p(z) = c \}$, which has $d$ distinct solutions. To see
+        that \(c \in \C\) is regular if and only if \(p'(z) \neq 0\), take
+        \(p = u + iv\) and compute \[
+          p'(c) = \left(
+            \begin{array}{cc}
+              \frac{\d u}{\d x}& \frac{\d u}{\d y} \\
+              \frac{\d v}{\d x} & \frac{\d v}{\d y}
+            \end{array}
+\right) =\left(
+\begin{array}{cc}
+  \frac{\d u}{\d x}& -\frac{\d v}{\d x} \\
+  \frac{\d v}{\d x}& \frac{\d u}{\d x}
+\end{array}\right)
+\]
+by the Cauchy-Riemann equations. Thus, we get \[
+  \det(p'(c)) = \left( \frac{\d u}{\d x} \right)^2 + \left(\frac{\d
+      v}{\d x}\right)^2 > 0
+\]
+unless \(p'(c) = 0\). Furthermore, since the determinant is always
+positive on regular values, \(o(z) = +1\). 
 \end{example}
 \begin{thrm}
 	If $M^n$ is compact manifold without boundary, then there exists $f_d \from M \to S^n$ of degree $d$.
 \end{thrm}
-
+\begin{proof}[``Proof'']
+  To see this, take some \(D^n\) on the surface of \(M\) and quotient
+  everything outside of the disk and the boundary of the disk to a
+  point. Since \(D^n / \d D^n = S^n\), we are done.
+\end{proof}
 % "new" stuff starts here.  go over :)
 
 \section{Lefschetz numbers of self maps}
@@ -2165,7 +2199,8 @@ $\mathcal{H} = $ Hypothesis for some things  $f \from M \to N$ is a smooth map o
 	Given the set $M$, the \de{diagonal} of $M$ is $$\Delta M := \{ (x,x) \mid x \in M \}$$
 \end{defi}
 \begin{defi}
-	Given the function $f\from A \to B$, the \de{graph} of $f$ is $$\Gr(f) := \{ (x, f(x)) \mid x \in A \}$$
+	Given the function $f\from A \to B$, the \de{graph} of $f$
+        is $$\Gr(f) := \{ (x, f(x)) \mid x \in A \} \subset A \times B$$
 \end{defi}
 \begin{rmk}
 	If $f\from M \to M$, then
@@ -2178,7 +2213,9 @@ $\mathcal{H} = $ Hypothesis for some things  $f \from M \to N$ is a smooth map o
 	\end{itemize}
 \end{rmk}
 \begin{defi}
-	$f$ is \de{Lefschetz} if it is a smooth map of manifolds $f\from M \to M$ and (TFAE)
+	$f$ is \de{Lefschetz} if it is a smooth map of manifolds
+        $f\from M \to M$ and any of the following equivalent
+        conditions
 	\begin{itemize}
 		\item $Gr(f) \transverse \Delta M$ in $M \x M$
 		\item for every fixed point $x$ of $f$, the intersection is transverse.
@@ -2186,7 +2223,7 @@ $\mathcal{H} = $ Hypothesis for some things  $f \from M \to N$ is a smooth map o
 	\end{itemize}
 \end{defi}
 
-x\begin{thrm}
+\begin{thrm}
 	If $f\from M \to M$ is Lefschetz and $M$ is compact, then $f$ has a finite number of fixed points.
 \end{thrm}
 \begin{defi}
@@ -2209,11 +2246,41 @@ x\begin{thrm}
 		-1 &\text{otherwise} \\
 	\end{cases}$$
 \end{lemm}
+\begin{proof}
+  Let \(x \in \Fix(f)\). Then, we note \(T_{(x,x)}(M \times M) = T_x M
+  \oplus T_x M\) and fix positive basis \((v_1, \ldots, v_n)\) for
+  \(T_x M\). Then, we get \(T_{(x,x)} \Delta M = \Delta(T_x M)\) has
+  basis \[
+    \left( (v_1,0) + (0,v_1), \ldots, (v_n,0) + (0,v_n)\right)
+  \]
+  and \(T_{(x,x)} \Gr(f)\) has basis \[
+    \left( (v_1,0) + (0,df_x(v_1)), \ldots, (v_n,0)+(0,df_x(v_n)) \right)
+  \]
+  We ask, is this positive for \(T_x M \oplus T_x M\)? We compute the
+  determinant of the
+  matrix that sends the standard basis of \(T_x M \oplus T_x M\) to
+  the basis of \(T_{(x,x)} \Delta M + T_{(x,x)} \Gr(f)\) \[
+    \det \left(
+      \begin{array}{cc}
+        I_n & I_n \\
+        I_n & df_x
+      \end{array}
+\right) = \det \left(
+  \begin{array}{cc}
+    I_n & I_n \\
+    0 & A-I_n
+  \end{array}
+\right) = \det(df_x - I)
+  \]
+\end{proof}
+      
 \begin{thrm}
-	If $f$ is Lefschetz, then $$L(f) = \sum_{x \in \Fix(f)} \text{sign}(df_x - I)$$ where $df_x - I : T_xM \overset{~}{\to} T_xM$.
+	If $f$ is Lefschetz, then $$L(f) = \sum_{x \in \Fix(f)}
+        \text{sign}(df_x - I)$$ where $df_x - I : T_xM
+        \overset{~}{\to} T_xM$ is a linear isomorphism.
 \end{thrm}
 \begin{example}
-	$f \from S^2 \to S^2$ is the rotation by $\pi/g$ radians about the $z$-axis.
+	$f \from S^2 \to S^2$ is the rotation by $\pi/2$ radians about the $z$-axis.
 
 	The fixed points are $e_3$ and $-e_3$.
 
@@ -2230,7 +2297,7 @@ x\begin{thrm}
 
 	Interpret this over the positive basis:
 
-	$$\begin{pmatrix}
+	$$df_{e_3} = \begin{pmatrix}
 	0 & -1 \\
 	1 & 0
 	\end{pmatrix}$$
@@ -2250,7 +2317,7 @@ x\begin{thrm}
 
 	Interpret this over the positive basis:
 
-	$$\begin{pmatrix}
+	$$df_{-e_3} = \begin{pmatrix}
 	0 & 1 \\
 	-1 & 0
 	\end{pmatrix}$$
@@ -2262,16 +2329,19 @@ x\begin{thrm}
 	-1 & -1
 	\end{pmatrix}$$
 
-	As before, $\det(\text{above}) = 2 > 0$. We conclude that $L(f) = +2$.
-
-	So we get f homotopic to id, and L(f) = 2.
+	As before, $\det(\text{above}) = 2 > 0$. We conclude that
+        $L(f) = +2$. Furthermore, we note \(2 = L(f) = I(\Delta M,
+        \Gr(f)) = (-1)^4 I(\Gr(f), \Delta M) = L(id)\).
+        From this, once we know that the Lefschetz number is homotopy
+        invariant,
+        we conclude that any smooth function \(g \from S^2 \to S^2\)
+        that is homotopic to the identity has a fixed point.
 \end{example}
-
 \begin{propo}
 	\begin{enumerate}
 		\item If $f \homotopic g$, then $L(f) = L(g)$.
 
-		\item If $f\from M \to M$ has no fixed points, then L(f) = 0.
+		\item If $f\from M \to M$ has no fixed points, then \(L(f) = 0\).
 
 		\item If $L(f) \neq 0$, then every $g \homotopic f$ must have at least one fixed point.
 	\end{enumerate}
