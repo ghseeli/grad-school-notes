@@ -27,7 +27,7 @@
 \floatstyle{plain}%boxed
 \restylefloat{figure}
 \usepackage{chngcntr}
-\counterwithin{chapter}{part}
+\counterwithin{part}{chapter}
 
 \newcounter{counter}
 
@@ -89,7 +89,7 @@
 \addtolength{\cftchapnumwidth}{10pt} \addtolength{\cftsecnumwidth}{10pt}
 
 \numberwithin{counter}{chapter} 
-\renewcommand \thechapter{\arabic{chapter}.\arabic{part}}
+\renewcommand \thechapter{\arabic{part}.\arabic{chapter}}
 
 \title{Algebra}
 \author{ Transcribed from the lectures of \\ \ \\ Professor Peter Abramenko \\ \ \\ University of Virginia}
