@@ -3,7 +3,7 @@
 Link to [PDFs](https://github.com/ghseeli/grad-school-notes/releases/).
 
 This repository is intended to contain working LaTeX drafts of notes from our 
-classes in graduate school for mathematics. The motivation for this undertaking
+first year classes in graduate school for mathematics (2016--2017). The motivation for this undertaking 
 is the following.
 * Going over notes a second time helps with comprehension and memory
 * Often instructors leave details to the student. One can forget one should do
@@ -13,3 +13,10 @@ is the following.
 * One can search typed up notes very easily.
 * Notes are open to collaborators to help us catch mistakes and provide additional
   insight should anyone be so inclined.
+
+We openly admit these notes contain many typos and are sometimes incomplete.
+While we would like to be able to address all these changes, we simply do not
+have the time to perfect every detail, especially since these classes have now
+been completed. That being said, if you find any errors,
+please point them out to us or, even better, create a pull request correcting the
+errors.
