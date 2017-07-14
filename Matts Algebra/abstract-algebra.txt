@@ -2058,20 +2058,21 @@ z is an __algebraic integer__ iff there exists nonzero monic f(x) in Z[x] s.t. f
 [K:Q] < oo    ,   O_K := { z in K | z is integral over Z } subring of K
 
 fact
-K = Q[sqrt(m)] ==> O_k = O(m)
+K = Q[sqrt(m)] ==> O_K = O(m)
 Given s,t in Q, s + t*sqrt(m) is an algebraic integer iff s + t*sqrt(M) in Z[w_m]
 
-m = 1 mod 4 : (x - (1+sqrt(m))/2)(x + (1+sqrt(m))/2) = (x - 1/2)^2 - m/4 = x^2 - x + (1-m)/4 in Z[x]
+If m = 1 mod 4, then (x - (1+sqrt(m))/2)(x + (1+sqrt(m))/2) = (x - 1/2)^2 - m/4 = x^2 - x + (1-m)/4 in Z[x]
 
 Euclidean domain ==> PID ==> UFD ==> "integrally closed"
 
 O(m) = "integral closure" of Z in K_m
 
 consequence
-ring R with Z != R != O(m)
+ring R with Z < R < O(m)
 ==> R is not integrally closed
-==> R is not a PID (and not even a UFD, not E.D., etc)
+==> R is not a UFD
 
+example
 R = Z[sqrt(-3)] < Z[(1+sqrt(-3))/2] = O(-3)
         ^                ^
         |                |
@@ -2080,44 +2081,43 @@ R = Z[sqrt(-3)] < Z[(1+sqrt(-3))/2] = O(-3)
 Facts about imaginary quadratic number rings O(m), where m is negative
 	* O(-1) = Z[i] is E.D.
 	* There are exactly be 9 PIDs, and exactly 5 of them are E.D.  Those are given by m = -1, -2, -3, -7, -11.  (degree function comes from the norm) The non E.D. PIDs are given by m = -19, -43, -67, -163
-	* [DF, section 8.2, p282] O(-19) has a "Dedekind-Hasse" norm, which is a weakening of a degree function
+	* [DF, section 8.2, p282] O(-19) has a "Dedekind-Hasse" norm, which is a weakening of a degree function (in fact, every PID does)
 
 question
 How can one prove that a PID has no Euclidean degree function?
 answer
 idea (Motzkin)
-Let u be a "universal side divisors" u in R \ R*
 def
-for all x in R, there exists y in (R* U {0}) s.t. u |x-y
-iff
-there exists q s.t. qu = x - y
-iff
-x = qu + y
+u in R \ R* is a __universal side divisor__ if for all x in R, there exists y in (R* U {0}) s.t. u | x-y.
+note
+The final condition happens iff there exists q s.t. qu = x - y iff x = qu + y.
 
-Assume R is a E.D., not a field
-
-claim
-R must contain a universal side divisor.
+thm
+If R is a E.D., not a field, then R must contain a universal side divisor.
 
 pf
-d: R\{0} to N
-R \ (R* U {0}) != {}
-
-pick u in above with d(u) minimal
-
-For all x in R, there exist q, r in R with r=0 or d(r) < d(u) and x = qu + r
-==> r in R \ (R* U {0})
-==> u is a universal side divisor
+	R is E.D., so there exists a E. degree function d: R\{0} to N.
+	R is not a field, so R \ (R* U {0}) is nonempty.
+	
+	pick u in above with d(u) minimal.
+	
+	For all x in R, there exist q, r in R with r=0 or d(r) < d(u) and x = qu + r
+	==> d(r) < d(u) case can't happen, by minimality of d(u)
+	==> r = 0
+	==> r in R \ (R* U {0})
+	==> u is a universal side divisor
+	(we actually got that for all x in R, x is a multiple of u, which seems REALLY strong)
 
 example
 R = O(-19) = { (k + l*sqrt(-19))/2 | k,l in Z; k = l mod 2 } = Z[(1 + sqrt(-19))/2]
 
-R* = { +-1 }.  a in R* iff N(a) = +-1
-==> N(a) = k^2/4 + 19l^2/4
-<==> a in Z and a^2 = 1
-<==> a  = +- 1
+R* = { +-1 }.  a in R*
+<==> N(a) = +-1
+<==> k^2/4 + 19l^2/4 = +-1
+<==> l = 0 and k = +-2
+<==> a  = +-1
+...and then somehow show there are no universal side divisors?
 
-l !=0 ==> N(a) ≥ 20/4 = 5
 
 Tue, Nov 29
 
@@ -2339,7 +2339,7 @@ field ==> ED ==> PID ==> noetherian domain ==> factorization into irreducibles
 				  V                                     V
 				  ID where irreducibles are prime  --> UFD ==> ID
 note
-I used single arrow to denote that all single arrow requirements need to be satisfied.
+I used single arrow to denote that ALL single arrow requirements need to be satisfied.
 
 2.5.16
 example
