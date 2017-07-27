@@ -12,9 +12,9 @@ before_install:
 - export PATH=$(pwd)/texlive/bin/x86_64-linux:$PATH
 - sudo apt-get install texlive-full
 - sudo apt-get install latexmk
-- tlmgr install $(cat .tlmgr-dep)
 - tlmgr update --self
 - tlmgr update --all
+- tlmgr install $(cat .tlmgr-dep)
 script:
 - mkdir _build
 - cd Algebra
