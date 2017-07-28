@@ -2552,7 +2552,7 @@ By induction on $n$. The base case $n=1$ is clear since $K = F$. \\
 
 For the induction step, let $n \geq 2$. $F[x]$ is a PID, so in particular, $F[x]$ is a UFD. Consider the prime factorization of $f$ in $f[x]$, and let $p$ be one such (irreducible) prime factor. Write $f = p g$ for some $g \in F[x]$. Define the field extension $K_1 := F[x]/(p)$ ($F$ naturally embeds into $K_1$ as a subfield). By construction, $K_1$ contains a root of $p$, namely $\alpha_1 := \ov{x} = x + (p)$. \\
 
-We have $p(\alpha_1) = 0 \overset{2.3.12}{implies} x-\alpha_1 \mid p$ in $K_1[x] \implies p(x) = (x-\alpha_1) p_1(x)$ for some $p_1(x) \in K_1[x]$ of degree $\deg p - 1$. We now apply the induction hypothesis to $K_1$ and $f_1 := p_1 g$ ($\deg f_1 = \deg f - 1$) to see that there exists a field extension $K/K_1$ ($K/F$ is also a field extension) with $[K : K_1] \leq (n-1)!$ and $f_1$ splits over $K$. But $\alpha_1 \in K_1 \sub K$, so $f$ splits over $K$. Moreover, 
+We have $p(\alpha_1) = 0 \overset{2.3.12}{\implies} x-\alpha_1 \mid p$ in $K_1[x] \implies p(x) = (x-\alpha_1) p_1(x)$ for some $p_1(x) \in K_1[x]$ of degree $\deg p - 1$. We now apply the induction hypothesis to $K_1$ and $f_1 := p_1 g$ ($\deg f_1 = \deg f - 1$) to see that there exists a field extension $K/K_1$ ($K/F$ is also a field extension) with $[K : K_1] \leq (n-1)!$ and $f_1$ splits over $K$. But $\alpha_1 \in K_1 \sub K$, so $f$ splits over $K$. Moreover, 
 	\[[K : F] = [K : K_1] [K_1 : F] \leq (n-1)! \cdot n = n! \]
 \end{proof}
 
