@@ -3017,7 +3017,7 @@ DCT. Note that this did not use uniform continuity.
     F(t) := \int_X f(x,t) \d\mu(x)
   \]
   is differentiable on \(I\) with derivative \[
-    f'(t) = \int_X \frac{\partial f}{\partial t}(x,t) \d\mu(x)
+    F'(t) = \int_X \frac{\partial f}{\partial t}(x,t) \d\mu(x)
   \]
 \end{cor}
 \begin{proof}
@@ -3025,23 +3025,25 @@ DCT. Note that this did not use uniform continuity.
   t\). Define \(h \from X \times (I \setminus \{t\} \to \K)\) by
   \[h(x,\lambda) = \frac{f(x,\lambda) - f(x,t)}{\lambda - t}\]
   Then, for all \(\lambda \in I \setminus \{t\}\), we get \(h(\cdot,
-  \lambda)\) is measurable. Now, we use the Mean Value Theorem to say
+  \lambda)\) is measurable. Now, the Mean Value Theorem guarantees
   that for all \(x \in X\), for all \(\lambda \in I \setminus \{t\}\),
-  there exists \(\xi \in I\) such that \[
+  there exists a \(\xi \in I\) between $t$ and $\lambda$ such that \[
     h(x,\lambda) = \frac{\partial f}{\partial t}(x, \xi)
   \]
   and so \(|h(x,\lambda)| \leq \left| \frac{\partial f}{\partial
-      t}(x,\xi) \right| \leq g(x)\). So, for all \(x \in X\), we
-  get \[
-    \lim_{\lambda \to t} h(x,\lambda) = \frac{\partial f}{\partial
-      t}(x,t) \text{(Needs some revision.)}
-  \]
+      t}(x,\xi) \right| \leq g(x)\).
+
   Therefore, \(h(x,\lambda)\) satisfies the hypotheses of DCT v3.0 and
-  so \[
-    \lim_{\lambda \to t} \int_X h(x,\lambda) \d \mu(x) = \int_X
-    \lim_{\lambda \to t} h(x,\lambda) \d\mu(x) = \int_X \frac{\partial
-      f}{\partial t}(x,t) \d\mu(x)
-  \]
+  so
+  \begin{align*}
+    &\quad\, F'(t) \\
+    &= \lim_{\lambda \to t} \frac{F(\lambda) - F(t)}{\lambda - t} \\
+    &= \lim_{\lambda \to t} \frac{\int_X f(x,\lambda) \d\mu(x) - \int_X f(x,t) \d\mu(x)}{\lambda - t} \\
+    &= \lim_{\lambda \to t} \int_X \frac{ f(x,\lambda) - f(x,t)}{\lambda - t} \d\mu(x) \\
+    &= \lim_{\lambda \to t} \int_X h(x,\lambda) \d \mu(x) \\
+    &= \int_X \lim_{\lambda \to t} h(x,\lambda) \d\mu(x) &\text{by DCT}\\
+    &= \int_X \frac{\partial f}{\partial t}(x,t) \d\mu(x)
+  \end{align*}
 \end{proof}
 \begin{thm}
   \(L^1(X,\M,\mu,\K)\) equipped with norm \(\norm[f]_{L^1} = \int_X
@@ -4052,13 +4054,13 @@ Cuachy-Schwarz Inequality
     \rangle \leq \norm[e^{i \alpha} u] \norm[v] = \norm[u] \norm[v]
   \]
   since, in general, \(\norm[\lambda u] = \sqrt{\langle \lambda u,
-    \lambda v \rangle} = |\lambda|\norm[u]\). 
+    \lambda v \rangle} = |\lambda|\norm[u]\).
 \end{proof}
 \begin{proof}[Proof of Proposition]
-  Let \(u,v \in \H\) and \(\lambda \in \K\). 
+  Let \(u,v \in \H\) and \(\lambda \in \K\).
   \begin{itemize}
   \item We showed in the proof above that \(\norm[\lambda u] =
-    |\lambda|\norm[u]\). 
+    |\lambda|\norm[u]\).
   \item We have \(\norm[u] = 0 \implies u = 0\) by the definition of
     \(\langle \cdot,\cdot \rangle\). If \(u = 0\), then \(\norm[u] =
     0\) by the scalar relation.
@@ -4073,7 +4075,7 @@ Cuachy-Schwarz Inequality
 \end{proof}
 \begin{defn}
   If \((\H,\norm)\) with the inner product norm is complete, then
-  \((\H,\norm)\) is a \de{Hilbert space}. 
+  \((\H,\norm)\) is a \de{Hilbert space}.
 \end{defn}
 \begin{example}
   Let \(\H = L^2(X,\M,\mu,\K)\) with \[
@@ -4113,7 +4115,7 @@ Cuachy-Schwarz Inequality
 \end{thm}
 \begin{proof}
   First, we seek to show existence. Since \(C \neq \emptyset\), we
-  have \(d(u,C) \in [0,\infty)\). Thus, 
+  have \(d(u,C) \in [0,\infty)\). Thus,
   for all \(n \in \N\)
   there exists a \(v_n \in C\) such that \(D := d(u,C) \leq d(u,v_n) \leq
   d(u,C) +\frac{1}{n}\). Now, let \(w_n = v_n - u\). Then, we can
@@ -4194,7 +4196,7 @@ Cuachy-Schwarz Inequality
     \]
     Each of these sets is closed since \(\langle u,\cdot \rangle\) is
     continuous and therefore \(V^\perp\) is closed. Thus,
-    \(\ov{(V^\perp)} = V^\perp\). 
+    \(\ov{(V^\perp)} = V^\perp\).
   \end{enumerate}
 \end{proof}
 \begin{thm}
@@ -4202,7 +4204,7 @@ Cuachy-Schwarz Inequality
     \H = V \oplus V^\perp
   \]
   i.e., for all \(u \in \H\), there is a unique \((v,v_\perp) \in V
-  \times V^\perp\) such that \(u = v+v_\perp\). 
+  \times V^\perp\) such that \(u = v+v_\perp\).
 \end{thm}
 \begin{proof}[Proof of Theorem]
   We first show uniqueness. If \(w \in V \intersect V^\perp\), then,
@@ -4226,7 +4228,7 @@ Cuachy-Schwarz Inequality
   = 0 = i \langle u-vmw \rangle\). Thus, \(\Im \langle u-v,w \rangle =
   0\) and so \(u-v \perp w\) for all \(w \in V\). Thus, \(u-v \in
   V^\perp\) and \(u = v + (u-v)\) with \(v \in V\) and \(u-v \in
-  V^\perp\). 
+  V^\perp\).
 \end{proof}
 \begin{defn}
   The \de{orthogonal projection} of \(u = v + v_\perp\) onto \(V\) is given by \[
@@ -4244,7 +4246,7 @@ Cuachy-Schwarz Inequality
         1 & V \neq \{0\}
       \end{cases}
     \]
-  \item The image of \(P_V\) is \(V\). 
+  \item The image of \(P_V\) is \(V\).
   \end{enumerate}
 \end{prop}
 \begin{proof}
@@ -4356,7 +4358,7 @@ Cuachy-Schwarz Inequality
       & = \left\langle \frac{\ov{L(w)}}{\norm[w]^2}w, v \right\rangle
     \end{align*}
     and so if we take \(u := \frac{\ov{L(w)}}{\norm[w]^2} w\), then
-    \(L = \Gamma(u)\). 
+    \(L = \Gamma(u)\).
   \end{itemize}
 \end{proof}
 \begin{rmk}
@@ -4377,7 +4379,7 @@ We now apply the Riesz Representation Theorem to get the following
     \nu_{ac} + \nu_s\).
   \item There exists measurable \(f \from X \to [0,\infty)\) such that
     \(\nu_{ac} = \nu_f\) (i.e. \(\nu_{ac}(E) = \int_E f \d\mu\)) and
-    \(f\) is unique up to equality \(\mu\)-almost everywhere. 
+    \(f\) is unique up to equality \(\mu\)-almost everywhere.
   \end{enumerate}
 \end{thm}
 \begin{rmk}
@@ -4385,7 +4387,7 @@ We now apply the Riesz Representation Theorem to get the following
   Decomposition Theorem and the second part is often referred to as
   the Radon-Nicodyn Theorem. Furthermore, in the second part, \(f\) is
   often called the Radon-Nicodyn derivative and denoted \(\frac{d
-    \nu_{ac}}{d\mu}\). 
+    \nu_{ac}}{d\mu}\).
 \end{rmk}
 \begin{proof}[von Neumann's Proof]
   We only prove the theorem when \(\mu,\nu\) are \s finite.
@@ -4419,7 +4421,7 @@ We now apply the Riesz Representation Theorem to get the following
     all \(E \in \M\) \[
       \nu(E \intersect A) = \int_A f \d\mu
     \]
-    From here, I am not sure how to proceed since the class ended. 
+    From here, I am not sure how to proceed since the class ended.
   \end{itemize}
 \end{proof}
 \subsection*{(5/3/17) Bonus Lecture}
