@@ -10,5 +10,12 @@ While attending the Mathematics PhD program at the University of Virginia, a few
 
 Other notes maintained for second year courses are currently under very active development. You can view them here.
 
-1. [Algebra 3](https://www.overleaf.com/read/qnjgrnfrzpsg) (Artin-Wedderburn Theory, Representations of Finite Groups) by John Harnois
-1. [Algebraic Topology 2](https://www.overleaf.com/read/ndxspztkpjhb) (Cohomology) by John Harnois
+1. [Algebra 3](https://www.overleaf.com/read/qnjgrnfrzpsg) (Artin-Wedderburn Theory, Representations of Finite Groups) by John Leonard Harnois, Jr.
+1. [Algebraic Topology 2](https://www.overleaf.com/read/ndxspztkpjhb) (Cohomology) by John Leonard Harnois, Jr.
+
+## Collaborators
+* John Leonard Harnois, Jr.
+* [Matthew Lancellotti](http://www.people.virginia.edu/~ml9nn/)
+* Chris Lloyd
+* George H. Seelinger
+* Richard Vradenburgh
