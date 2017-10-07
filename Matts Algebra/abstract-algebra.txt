@@ -334,7 +334,11 @@ thm: A, B ≤ G
 
 1.1.20
 thm: Given H ≤ G, then [G, G] ≤ H iff (H normalin G and G/H is abelian)
-*
+pf
+	Left to right.  Since [G, G] normalin G and [G, G] <= H <= G, then by the correspondence theorem, there is H/[G, G] =: H' <= G' := G/[G, G].  Since G/[G, G] is abelian (this can be proved separately), then H' normalin G'.  By the correspondence theorem again, then H normalin G.  Therefore, G/H is a well-defined quotient group.  G/H is abelian can be proved separately.
+
+	Right to left.  If G/H is abelian, then for all x,y in G, (xH)(yH) = (yH)(xH) <==> xHyH = yHxH <==> xyH = yxH <==> x'y'xyH = H <==> x'y'xy in H <==> [x,y] in H.  Since this was for ALL x,y in G, it follows that [G,G] <= H.
+
 1.1.21
 def: The __external direct product__ of two groups A and B is { (a,b) | a in A and b in B }
 notation: $A x B$ or $A directsum B$ (i think the latter is for finite nonzero els only)
@@ -1214,6 +1218,7 @@ thm (but out of scope of this course)
 Sylow gives us
 	1.
 	|G| < 60 ==> G is solvable
+	(the smallest unsolvable group is A5)
 	In fact, |G| < 120 but |G| != 60 ==> G solvable.
 	2.
 	If |G| = 60 then TFAE:

@@ -276,7 +276,7 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \de{1-forms}.
 	$K \subseteq X$ is \de{compact} in $X$ if whenever $${K \subseteq \bigcup_{i \in I} O_i}$$ of open sets, then there exists a finite $J \subseteq I$ such that $$K \subseteq \bigcup_{j \in J} O_j.$$
 \end{defi}
 \begin{thrm}
-	If $K$ is compact in $X$ and $C$ is closed in $X$, then $K \union C$ is compact in $X$.
+	If $K$ is compact in $X$ and $C$ is closed in $X$, then $K \intersect C$ is compact in $X$.
 \end{thrm}
 \begin{thrm}[Matt]
 	If $K$ is compact in $X$ and $K \subseteq S \subseteq X$, then $K$ is compact in $S$.
@@ -302,7 +302,7 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \de{1-forms}.
 	\end{itemize}
 \end{defi}
 \begin{defi}
-	A topological space $X$ is \de{Hausdorff} if for every $a \neq b$ in $X$, there exists an open neighborhood $A$ of $a$ and an open neighborhood $B$ of $b$ such that $A \union B = \{\}$.  Synonyms: seperated.  $T_2$.
+	A topological space $X$ is \de{Hausdorff} if for every $a \neq b$ in $X$, there exists an open neighborhood $A$ of $a$ and an open neighborhood $B$ of $b$ such that $A \intersect B = \{\}$.  Synonyms: seperated.  $T_2$.
 
 	Properties of Hausdorff spaces $H$:
 	\begin{itemize}
@@ -390,8 +390,6 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \de{1-forms}.
 	For any $k \in \N^+$, if $f\from \R^n \to \R^n$ is $C^k$ and $f'(x)$ is invertible for some $x$, then $f$ is locally a diffeomorphism of class $C^k$ at $x$.
 \end{thrm}
 \begin{example}
-	Counter\end{example}
-\begin{example}
 	Let $$f(x) =
 	\begin{cases}
 		\frac{x}{2} + x^2\sin\left(\frac 1x\right)	&\text{if $x \neq 0$} \\
@@ -429,7 +427,7 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \de{1-forms}.
 \end{thrm}
 
 \begin{defi}
-	$X$ is \de{connected} if whenever $X = A \cup B$ ($A$ and $B$ are both open and nonempty), then $A \union B$ is nonempty.
+	$X$ is \de{connected} if whenever $X = A \cup B$ ($A$ and $B$ are both open and nonempty), then $A \intersect B$ is nonempty.
 \end{defi}
 
 \begin{defi}
@@ -514,7 +512,7 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \de{1-forms}.
 	Given $M$ smooth $m$-manifold with atlas $A = \{ U_a, \,\phi_a \from U_a \to \R^m \}$.
 	Given $N$ smooth $n$-manifold with atlas $B = \{ V_b, \,\psi_b \from V_b \to \R^n \}$.
 	$m \leq n$.
-	A smooth function $f \from M \to N$  is an \de{immersion} if given any $a, b$ such that $\phi_a\from U_a \to \R^m$, $\psi_b\from V_b \to \R^n$, and any $x \in \phi_a(U_a \union V_b.f^{-1})$, then $x.(\phi_a^{-1}.f.\psi_b)'$ has rank $m$.
+	A smooth function $f \from M \to N$  is an \de{immersion} if given any $a, b$ such that $\phi_a\from U_a \to \R^m$, $\psi_b\from V_b \to \R^n$, and any $x \in \phi_a(U_a \intersect V_b.f^{-1})$, then $x.(\phi_a^{-1}.f.\psi_b)'$ has rank $m$.
 \end{defi}
 
 \begin{defi}
@@ -544,6 +542,8 @@ If $f$ is a smooth map of manifolds, then we can differentiate, getting the line
 	An \de{embedding} is a smooth map of manifolds $f\from M \to N$ s.t. $f \from M \to f(M)$ is a homeomorphism.
 
 	Note: $f$ need not be onto $N$.
+
+	Note: Since a homeomorphism is the isomorphism of topology, then we say $M$ \de{embeds} into $N$ if there exists an isomorphism $f$ s.t. $f(M) \sub N$.
 \end{defi}
 \begin{thrm}[minimal criteria for an embedding]
 	$f$ is an \de{embedding} iff $f$ is a smooth map of manifolds that is injective and proper.
@@ -688,18 +688,18 @@ More elegant definition of regular:
 \end{thrm}
 
 \begin{thrm}
-	If $f\from M \to N$ is the inclusion map, $L \subseteq N$, then $f^{-1}(L) = M \union L$.
+	If $f\from M \to N$ is the inclusion map, $L \subseteq N$, then $f^{-1}(L) = M \intersect L$.
 \end{thrm}
 
 \begin{defi}
 	$f$ is \de{transverse} to $L \subset N$, denoted $f \transverse L$, if $f$ is a smooth map of manifolds and whenever $f(x) = y \in L$, then $df_x(T_xM) + T_yL = T_yN$.  (yes, we are adding vector spaces).
 \end{defi}
 \begin{prop}
-	In general, $$\dim(M) + \dim(L) = \dim(M \cup L) + \dim(M \union L),$$ where we are looking at the dimension at a particular point $p \in M \union L$, so that taking the union of $M$ and $L$ corresponds to taking the direct sum of the tangent spaces of $M$ and $L$ at $p$.
+	In general, $$\dim(M) + \dim(L) = \dim(M \union L) + \dim(M \intersect L),$$ where we are looking at the dimension at a particular point $p \in M \intersect L$, so that taking the union of $M$ and $L$ corresponds to taking the direct sum of the tangent spaces of $M$ and $L$ at $p$.
 \end{prop}
 \begin{thrm}
 	If $f$ is transverse to $L$, then $$\dim(M) + \dim(L) = \dim(N) + \dim f^{-1}(L).$$
-	If $M$ is transverse to $L$, then $$\dim(M) + \dim(L) = \dim(N) + \dim(M \union L).$$
+	If $M$ is transverse to $L$, then $$\dim(M) + \dim(L) = \dim(N) + \dim(M \intersect L).$$
 
 	Furthermore, if $x \in (M \cap L)$ and $y = f(x)$, then $T_x (M \cap L) = df^{-1}_x(T_y L) \subset T_x M$.
 \end{thrm}
@@ -719,7 +719,7 @@ More elegant definition of regular:
 	Suppose $y \in L$.
 	By the local immersion thm,
 	there exists $O$ open nbd of $y$, and a submersion $p \from O \to \R^{n-l}$
-	s.t. $p(y) = 0$ and $p^{-1}(0) = L \union O$
+	s.t. $p(y) = 0$ and $p^{-1}(0) = L \intersect O$
 
 	$df_x \from T_xM \to T_yN$.
 	$df_y \from T_yN \to \R^{n-l}$.
@@ -753,7 +753,7 @@ More elegant definition of regular:
 \end{thrm}
 \begin{propo}[sheaf property]
 	If $U$ = union of $A$
-	and $f_i$ in $C(A_i)$ s.t. $f|_{A_i \union A_j} = f_j|_{A_i \union A_j}$ for all $i, j$
+	and $f_i$ in $C(A_i)$ s.t. $f|_{A_i \intersect A_j} = f_j|_{A_i \intersect A_j}$ for all $i, j$
 	then there exists a UNIQUE $f \in C(U)$ s.t. $f|_{A_i} = f_i$ for all $i$.
 \end{propo}
 
@@ -765,7 +765,7 @@ with $U$ is a neighborhood of $p$.
 
 $f\from U \to \R \sim g\from V \to \R$
 iff
-there exists $W$ s.t. $p \in W \subset U \union V$ where $f|_W = g|_W$.
+there exists $W$ s.t. $p \in W \subset U \intersect V$ where $f|_W = g|_W$.
 
 Let $C^\infty(M,p)$ = the set of equiv classes.  This is called the \de{stalk} of the sheaf at point $p$.  Or the \de{germ} of a function about $p$.
 
@@ -1358,7 +1358,7 @@ set of above over all smooth functions
 
 	Take an open cover $\{U_i\}$ of $U$ such that $U_i \subseteq \bar{U_i} \subseteq U$, and each $\bar{U_i}$ is compact.
 
-	Let $S_i := S \union U_i$
+	Let $S_i := S \intersect U_i$
 
 	Then $\bar{S_i} \subseteq \bar{U_i}$, so $\{S_i\}$ is compact
 	$\bar{S_i}$.
@@ -1378,8 +1378,8 @@ set of above over all smooth functions
 \begin{coro}
 	Given any subset $S$ of an $n$-dim smooth manifold $M$, then TFAE:
 	\begin{itemize}
-		\item There exists an atlas $\{U\}$ for $M$ s.t. $\forall i$, $\mu(\phi_i(S \union U_i)) = 0$.
-		\item For any (smooth) chart $\phi\from U \to \R^n$, $\mu(\phi(S \union U)) = 0$.
+		\item There exists an atlas $\{U\}$ for $M$ s.t. $\forall i$, $\mu(\phi_i(S \intersect U_i)) = 0$.
+		\item For any (smooth) chart $\phi\from U \to \R^n$, $\mu(\phi(S \intersect U)) = 0$.
 	\end{itemize}
 	In this case, we say $S$ has \de{measure 0} in $M$, and write $\mu(S) = 0$.
 \end{coro}
@@ -1766,7 +1766,7 @@ other things to notice
 	So $g|_C = f|_C$!
 \end{thrm}
 \begin{lemm}
-	If $H^n \supset U \overset{f}{\to} V \subseteq H^n$ is a diffeomorphism between open sets, then $f( U \union \d H^n ) = V \union \d H^n$
+	If $H^n \supset U \overset{f}{\to} V \subseteq H^n$ is a diffeomorphism between open sets, then $f( U \intersect \d H^n ) = V \intersect \d H^n$
 	(The boundary of $U$ maps to the boundary of $V$!)
 \end{lemm}
 \begin{propo}[Matt]
@@ -1803,7 +1803,7 @@ other things to notice
 
 	By the Preimage theorem, $r^{-1}(y)$ is a smooth manifold of dimension $\dim(M) - \dim(\d M) = 1$.  Since $\{y\}$ is closed, and $r$ is continuous, $r^{-1}(\{y\})$ is also closed.  Since $r^{-1}(\{y\})$ is closed in a compact manifold, $r^{-1}(\{y\})$ is compact.  We conclude that we have a compact one-dimensional submanifold $r^{-1}(\{y\})$.
 
-	The boundary of our compact one-dimensional submanifold is $$\d (r ^{-1}(\{y\})) = r^{-1}(\{y\}) \union \d M = \{x\}.$$  (Note that we concluded $x$ was the only point on the boundary by exploiting that $r$ is the identity on the boundary).   So our submanifold has exactly \textbf{1} boundary point.  But a theorem states that every compact one-dimensional manifold is diffeomorphic to a circle or a closed interval, meaning that it has an \textbf{even} number of boundary points.  This is a contradiction.
+	The boundary of our compact one-dimensional submanifold is $$\d (r ^{-1}(\{y\})) = r^{-1}(\{y\}) \intersect \d M = \{x\}.$$  (Note that we concluded $x$ was the only point on the boundary by exploiting that $r$ is the identity on the boundary).   So our submanifold has exactly \textbf{1} boundary point.  But a theorem states that every compact one-dimensional manifold is diffeomorphic to a circle or a closed interval, meaning that it has an \textbf{even} number of boundary points.  This is a contradiction.
 \end{proof}
 \begin{thrm}[``Smooth'' Brower Fixed Point theorem]
 	Any ``smooth'' $f \from B^n \to B^n$ has a fixed point.  (This is in fact true for ``continuous'', but we won't prove that today)
@@ -1948,8 +1948,8 @@ $$\deg_2(u_z) =
 	A smooth manifold $M$ is \de{orientable} if it has an orientation.
 \end{defi}
 \begin{propo}[Equivalent definition]
-	A manifold is orientable if and only if there exists an atlas $\{ \phi \from U \to \R^n \mid d\phi_x : T_xM \}$ s.t. for all $i,j$ we have $$\phi_i^{-1}.\phi_j : \phi_i(U_i \union U_j) \to \phi_j(U_i \union U_j)$$
-	, for all $x$ in $U_i \union U_j$, we have $$d(\phi_i^{-1}.\phi_j)$$ is orientation preserving.
+	A manifold is orientable if and only if there exists an atlas $\{ \phi \from U \to \R^n \mid d\phi_x : T_xM \}$ s.t. for all $i,j$ we have $$\phi_i^{-1}.\phi_j : \phi_i(U_i \intersect U_j) \to \phi_j(U_i \intersect U_j)$$
+	, for all $x$ in $U_i \intersect U_j$, we have $$d(\phi_i^{-1}.\phi_j)$$ is orientation preserving.
 \end{propo}
 \begin{defi}
 	$-M$ denotes the alternative orientation of $M$.
@@ -1966,7 +1966,7 @@ $$\deg_2(u_z) =
   v_m)\) is positive for \(T_x M\) and \((w_1, \ldots, w_n)\) is
   positive for \(T_y N\), then, since \(T_{x,y}(M \times N) = T_x M
   \times T_y N\), we say the ordered basis \(((v_1, 0), \ldots, (v_m,
-  0), (0,w_1), \ldots, (0,w_n))\) is positive. 
+  0), (0,w_1), \ldots, (0,w_n))\) is positive.
 \end{defi}
 \begin{defi}
   If \(M\) is an oriented manifold with boundary \(\d M\), then we
@@ -1975,14 +1975,14 @@ $$\deg_2(u_z) =
   \item For \(x \in \d M\), let \(n(x) \in T_x M\) point outwards.
   \item Define \((v_1, \ldots, v_{n-1})\), an ordered basis for \(T_x
     \d M\) to be positive if \((n(x), v_1, \ldots, v_{n-1})\) is
-    positive for \(T_x M\). 
+    positive for \(T_x M\).
   \end{itemize}
 \end{defi}
 \begin{example}
   Given \(B^n\) is oriented with the standard orientation of \(\R^n\),
   then for \(x \in S^{n-1} = \d B^n\), we say that an ordered basis
   for \(T_x S^{n-1}\), denoted \((v_1, \ldots, v_{n-1})\), is
-  ``positive'' if \(x, v_1, \ldots, v_{n-1}\) is standard for \(\R^n\).
+  ``positive'' if \(x, v_1, \ldots, v_{n-1}\) is positive for \(\R^n\).
 \end{example}
 \begin{example}
   Given a surface \(S \subset \R^3\), an orientation of \(S\)
@@ -1999,14 +1999,14 @@ $$\deg_2(u_z) =
   follows. \\
 
   Let \(x \in K\). Then, we have that \[
-    T_x K \into T_x M \overset{df_x}{\onto} T_y N
+    0 \to T_x K \into T_x M \overset{df_x}{\onto} T_y N \to 0
   \]
   So, if we choose an orientation of \(T_y N\), say \((w_1, \ldots,
   w_n)\) is positive, then, there exists \(n\) linearly independent vectors of \(T_x M\)
   such that \((v_1, \ldots, v_n) \mapsto (w_1, \ldots, w_n)\). Then,
   we say that an ordered basis \((u_1, \ldots, u_{m-n})\) for \(T_x
   K\) is positive if \((v_1, \ldots, v_n, u_1, \ldots, u_{m-n})\) is
-  positive for \(T_x M\). 
+  positive for \(T_x M\).
 \end{defi}
 \begin{example}
   Let \(f \from +\R^n \to +\R\) be given by \(f(x) = x \cdot
@@ -2014,7 +2014,7 @@ $$\deg_2(u_z) =
   value. So, we have \(S^{n-1} = f^{-1}(1)\) as a submanifold of
   \(R^n\). So, for \(x \in S^{n-1}\), we say that \((u_1, \ldots,
   y_{n-1})\) is a positive basis for \(T_x S^{n-1}\) if \((x, u_1,
-  \ldots, u_{n-1})\) is standard for \(\R^n\). 
+  \ldots, u_{n-1})\) is standard for \(\R^n\).
 \end{example}
 In fact, we can generalize this pre-image orientation as follows.
 \begin{defi}
@@ -2030,21 +2030,21 @@ In fact, we can generalize this pre-image orientation as follows.
   w_\ell)\) is positive for \(T_y N\). From this, we say that an
   ordered basis for \(T_x K\), \((u_1, \ldots, u_{m-n+\ell})\), is
   positive if \((v_1, \ldots, v_{n-\ell}, u_1, \ldots, u_{m-n+\ell})\)
-  is positive for \(T_x M\). 
+  is positive for \(T_x M\).
 \end{defi}
 However, our definition of an orientation and this whole discussion
-degenerates when we are concerned with 
+degenerates when we are concerned with
 the orientation of 0-dimensional manifolds. To remedy this, we provide
 the following definition.
 \begin{defi}
   A 0-dimensional manifold is oriented by assigning a value \(\pm 1\)
-  to each point. 
+  to each point.
 \end{defi}
 \begin{example}
   Consider the unit interval \(I\). Then, \(\d I = \{0,1\}\). If \(I\)
   has a positive orientation, then we will see it makes sense to
   assign \(0\) an orientation of \(-1\) and \(1\) and orientation of
-  \(+1\). 
+  \(+1\).
 \end{example}
 \begin{defi}
   Given \(f \from M \to N\) where \(M,N\) are oriented manifolds and
@@ -2053,7 +2053,7 @@ the following definition.
   that \(f(x) = y\), we say the \de{pre-image orientation} on \(x\) is +1 if the
   linear isomorphism \(T_x M
   \overset{df_x}{\to} T_y N\) is orientation preserving and \(-1\) if
-  the linear isomorphism is orientation reversing. 
+  the linear isomorphism is orientation reversing.
 \end{defi}
 Once again, we can extend the pre-image orientation for 0-dimensional
 manifolds as follows.
@@ -2064,17 +2064,17 @@ manifolds as follows.
   basis for \(T_x M\), \((v_1, \ldots, v_m)\),  and positive basis for
   \(T_y L\), \(w_1, \ldots, w_\ell\), then \((df_x(v_1), \ldots,
   df_x(v_n), w_1, \ldots, w_\ell)\) is positive for \(T_y
-  N\). Otherwise, \(x\) gets the orientation \(-1\). 
+  N\). Otherwise, \(x\) gets the orientation \(-1\).
 \end{defi}
 From this discussion, we are now ready to discuss the idea of an
-oriented intersection. 
+oriented intersection.
 \begin{defi}
 	Let \(f \from M \to N\) be a smooth map from \(M\) a compact
         manifold with dimension \(m\) and \(N\) a manifold with
         dimension \(n\). Then, given a closed submanifold \(L \subset
         N\) of dimension \(\ell\) with \(m+\ell = n\), we say
 	the \de{intersection number} of $f$ and $L$, denoted $I(f,
-        L)$, is the integer $\sum_{x \in g^{-1}(L)} o(x)$ where 
+        L)$, is the integer $\sum_{x \in g^{-1}(L)} o(x)$ where
 	\begin{itemize}
 		\item $g \homotopic f$,
 		\item $g \transverse L$,
@@ -2152,7 +2152,7 @@ $\mathcal{H} = $ Hypothesis for some things  $f \from M \to N$ is a smooth map o
 %	functions, which is related to intersection numbers!
         From this computation, we will get that these maps precisely
         give distinct representatives for smooth homotopy classes of
-        maps from \(S^1\) to \(S^1\). 
+        maps from \(S^1\) to \(S^1\).
 \end{example}
 \begin{example}
 	$p\from \C \to \C$ is a nonconstant polynomial
@@ -2181,7 +2181,7 @@ by the Cauchy-Riemann equations. Thus, we get \[
       v}{\d x}\right)^2 > 0
 \]
 unless \(p'(c) = 0\). Furthermore, since the determinant is always
-positive on regular values, \(o(z) = +1\). 
+positive on regular values, \(o(z) = +1\).
 \end{example}
 \begin{thrm}
 	If $M^n$ is compact manifold without boundary, then there exists $f_d \from M \to S^n$ of degree $d$.
@@ -2235,7 +2235,7 @@ positive on regular values, \(o(z) = +1\).
 \begin{thrm}
 	If $f$ is Lefschetz, then $$L(f) = \sum_{x \in \Fix(f)} o(x,x)$$
 
-	Note that $o(x,x) = o((x,x)) = o((x,f(x)))$, where $(x, f(x))$ is an element of $\Delta M \union \Gr(f)$.
+	Note that $o(x,x) = o((x,x)) = o((x,f(x)))$, where $(x, f(x))$ is an element of $\Delta M \intersect \Gr(f)$.
 \end{thrm}
 
 \begin{lemm}
@@ -2273,7 +2273,7 @@ positive on regular values, \(o(z) = +1\).
 \right) = \det(df_x - I)
   \]
 \end{proof}
-      
+
 \begin{thrm}
 	If $f$ is Lefschetz, then $$L(f) = \sum_{x \in \Fix(f)}
         \text{sign}(df_x - I)$$ where $df_x - I : T_xM
@@ -2395,7 +2395,7 @@ Since $L(\id) \neq 0$, then the vector field function also has fixed points. Thi
 \end{defi}
 
 \begin{propo}
-	If $M$ is compact and $v$ generate, then $$v(M) \union v_0(M) = \{ x \in M \mid v(x) = 0 \}$$ is finite.
+	If $M$ is compact and $v$ generate, then $$v(M) \intersect v_0(M) = \{ x \in M \mid v(x) = 0 \}$$ is finite.
 \end{propo}
 
 \begin{defi}
