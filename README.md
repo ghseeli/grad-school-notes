@@ -22,3 +22,7 @@ have the time to perfect every detail, especially since these classes have now
 been completed. That being said, if you find any errors,
 please point them out to us or, even better, create a pull request correcting the
 errors.
+
+# Licensing
+
+Currently, this project has no license and thus is under the exclusive copyright of the authors by default with limited licensing granted to users under the [GitHub Terms of Service](https://help.github.com/articles/github-terms-of-service/#d-user-generated-content), section D5. For more information, see [choosealicense.com](https://choosealicense.com/no-license/). While the authors are open to alternative licensing, we are still weighing the pros and cons of various public licenses. In the meantime, if you need legal rights beyond those afforded to you by fair use copyright law and the GitHub Terms of Service, please contact the authors.
