@@ -10,8 +10,9 @@ While attending the Mathematics PhD program at the University of Virginia, a few
 
 Other notes maintained for second year courses are currently under very active development. You can view them here.
 
-1. [Algebra 3](https://www.overleaf.com/read/qnjgrnfrzpsg) (Artin-Wedderburn Theory, Representations of Finite Groups) by John Leonard Harnois, Jr.
-1. [Algebraic Topology 2](https://www.overleaf.com/read/ndxspztkpjhb) (Cohomology) by John Leonard Harnois, Jr.
+1. [Algebra 3](https://www.overleaf.com/read/qnjgrnfrzpsg) (Artin-Wedderburn Theory, Central Simple Algebras, Representations of Finite Groups) by John Leonard Harnois, Jr.
+1. [Algebraic Topology 2](https://www.overleaf.com/read/ndxspztkpjhb) (Cohomology and Intro Homotopy Theory) by John Leonard Harnois, Jr.
+1. [Geometric Representation Theory](https://github.com/ghseeli/grad-school-writings/releases/latest) (Representations Theory of Quivers and Springer Theory. Also Representation Theory of Finite Groups) by George H. Seelinger
 
 ## Collaborators
 * John Leonard Harnois, Jr.
