@@ -1,6 +1,7 @@
 \documentclass[11pt,leqno,oneside]{amsart}
 
 \usepackage{../notes}
+\graphicspath{{./images/}}
 \numberwithin{thm}{section}
 
 \newcommand{\Arg}{\operatorname{Arg}}
@@ -385,13 +386,13 @@ theorem later.
 
     \begin{figure}[h]
         \centering
-        \includegraphics[scale=0.2]{images/2i-to-one-third.png}
+        \includegraphics[scale=0.2]{2i-to-one-third.png}
         \caption{$2i^{\frac{1}{3}}$}
         \label{fig:2i13}
     \end{figure}
     \begin{figure}[h]
         \centering
-        \includegraphics[scale=0.2]{images/2i-to-1-over-pi.png}
+        \includegraphics[scale=0.2]{2i-to-1-over-pi.png}
         \caption{$2i^{\frac{1}{\pi}}$ first $k = 0,1, \ldots, 100$}
         \label{fig:2i1pi}
     \end{figure}
@@ -1252,7 +1253,7 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
   on overlaps. If such an extension exists, it is unique. Here is a
   picture illustrating this on the function $\log(z)$. The graphic is
   from Wikipedia and created by Yamashita Makoto. \\
-  \includegraphics{images/Imaginary_log_analytic_continuation.png}
+  \includegraphics{Imaginary_log_analytic_continuation.png}
   In general, a Riemann surface is equivalent to the set of analytic
   continuations modulo the equivalence relation that two analytic
   continuations yield the same function at the endpoint.
@@ -1710,7 +1711,7 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
   \subsection*{Integrands with branch points.}
   Integrands involving $\log x$ or $x^a$ have branch points and one
   way to deal with these is to integrate around a ``keyhole contour.'' \\
-  \includegraphics[scale=0.5]{images/keyhole_contour.png} \\
+  \includegraphics[scale=0.5]{keyhole_contour.png} \\
   \begin{example}
     Consider $\int_0^\infty \frac{x^{-a}}{1+x}dx, 0 < a < 1$. We will
     compute $\oint \frac{z^{-a}}{1+z}dz$ where the branch
