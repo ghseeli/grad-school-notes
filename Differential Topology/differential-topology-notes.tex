@@ -215,8 +215,8 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \de{1-forms}.
 	The set $U$ is open iff for all points in $U$, there exists an open neighborhood of the point that's entirely contained in $U$.
 \end{thrm}
 \begin{defi}
-	$f$ is an \de{open} map if the image of every open (closed) (compact) set under $f$ is open (closed) (compact).
-	For any topological space property, substitute ``open'' above with the name of that property, to get another definition.  Such properties include:
+	$f$ is an \de{open} map if the image of every open set under $f$ is open.
+	For any topological space property, substitute ``open'' above with the name of that property to get another definition.  Such properties include:
 	\begin{itemize}
 		\item open
 		\item closed
@@ -242,7 +242,7 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \de{1-forms}.
 	For any $k \in \N$, the function $f$ has class $C^k$ iff all of its coordinate functions $f_i$ have class $C^k$.
 \end{thrm}
 \begin{defi}
-	Given a set $V$, a \de{distance} is a function $D : V \times V \to \R$ that satisfies, for all $x, y, z \in V$:
+	Given a set $V$, a \de{distance} is a function $D \from V \times V \to \R$ that satisfies, for all $x, y, z \in V$:
 	\begin{enumerate}
 		\item $D(x,x) = 0$
 		\item If $x \neq y$, then $D(x,y) > 0$
@@ -332,12 +332,12 @@ T^*M$ such that $w(x): T_{\vec{x}}M \to \R$ a collection of \de{1-forms}.
 	If $X$ and $Y$ are compact, then $X \times Y$ is compact.
 \end{thrm}
 \begin{thrm}
-	$X$ is a top space and $~$ is an equivalence relation on $X$.  Then there is a topology on $X/~$ (the set of equivalence classes) as follows.  $S \subseteq X/~$ is open iff (let backwards(S) : X/~ to X) backwards(S) is $open \in X$.  [[ f: X/~ to Y is continuous iff f of $g\from X \to Y$ is continuous.
+	$X$ is a top space and $~$ is an equivalence relation on $X$.  Then there is a topology on $X/~$ (the set of equivalence classes) as follows.  $S \subseteq X/~$ is open iff (let $\text{backwards}(S) \from X/~ \to  X$) backwards(S) is $open \in X$.  [[ $f\from X/~ \to  Y$ is continuous iff $f \of g\from X \to Y$ is continuous.
 \end{thrm}
 \begin{defi}
 	A \de{topological group} is a Hausdorff space $G$ that is also a group, which satisfies:
 	\begin{enumerate}
-		\item The function $m : G \times G \to G$ defined by $m((g,h)) = gh$ is continuous.
+		\item The function $m \from G \times G \to G$ defined by $m((g,h)) = gh$ is continuous.
 		\item The function $i \from G \to G$ defined by $i(g) = g^{-1}$ is continuous.
 	\end{enumerate}
 	See Bredon I.15 for more related definitions.
@@ -875,7 +875,7 @@ $D_v$ directional derivative in $v$-direction
 	Let $(gF)(x) = g(x)F(x)$.
 	So $C^\infty(M)$ is a ring and $C^\infty(M, TM)$ is module over $C^\infty(M)$.  Or, more succinctly, ``$C^\infty(M, TM)$ is a $C^\infty(M)$-module''.
 
-	Let $F_i : V to ((TV = V \x \R^n))$
+	Let $F_i \from V \to  ((TV = V \x \R^n))$
 	Let $F_i \from V \to \R^n$ be the constant vector field $F_i(x) = (x,e_i)$, the $i^\text{th}$ basis vector.
 
 	then cool things happen that i missed :(
@@ -1025,7 +1025,7 @@ consider we have $k = n$, best possible
 	\end{tikzcd}$$
 
 \end{defi}
-\begin{thrm}
+\begin{thrm}[equivalent definition of parallelizable]
 	$M$ is \de{parallelizable} iff the maximum number of linearly independent vector fields is $\dim M$.
 \end{thrm}
 \begin{defi}
@@ -1099,7 +1099,7 @@ set of above over all smooth functions
 	$U \subseteq \R^n$
 	A general vector field on $U$ had the form
 	$f_1 \frac{d}{dx}1 +++ fn \frac{d}{dx}n$
-	where $fi : U to \R^n$
+	where $f_i \from U \to  \R^n$
 	then
 	A general 1-form on $U$ has the form
 	$f1 dx1 +++ fn dxn$
@@ -1263,7 +1263,7 @@ set of above over all smooth functions
 \end{thrm}
 
 \begin{thrm}[Tietze Extension Theorem]
-	$X$ is $T_4$. A $closed \in X$.  If $f : A to \R$ is continuous, then $f$ extends to all of $X$.
+	$X$ is $T_4$. A $closed \in X$.  If $f \from A \to  \R$ is continuous, then $f$ extends to all of $X$.
 \end{thrm}
 
 
@@ -1271,7 +1271,7 @@ set of above over all smooth functions
 	If $X$ is $T_4$ and $\{U_1,,,U_r\}$ is a finite open cover of $X$, then for each $i$, there exists $V_i \subseteq \bar{V_i} \subseteq U_i$ such that $\{V_1,,,V_r\}$ is a cover of $X$.
 \end{propo}
 \begin{proof}
-	$U_1 \supseteq X \minus (U_2 \union \union \union U_r) =: C$, which is closed.
+	$U_1 \supseteq X \minus (U_2 \union \union \union U_r) \eqqcolon  C$, which is closed.
 	By lemma, there exists a $V_1$ open s.t. $C \subseteq V_1 \subseteq \bar{V_1} \subseteq U_1$.
 	So $\{V_1, U_2,,,,U_r \}$ is an open cover of $X$.
 	Repeat for all the other $U$'s.
@@ -1308,7 +1308,7 @@ set of above over all smooth functions
 	If $X$ is paracompact, and $\{U\}$ is a locally finite open cover, then there exists open sets $V_a$ with $V_a \subseteq \bar{V_a} \subseteq U_a$ with $\{V_a\}$ is an open cover.
 \end{propo}
 \begin{defi}
-	Given $\{U_a\}$ a locally finite open cover of $X$, then a \de{partition of unity} subordinate to $\{U_a\}$ is a collection of continuous functions $\phi_a : X to [0,1]$ where for each $a$, the support of $\phi_a$ is contained in $U_a$.
+	Given $\{U_a\}$ a locally finite open cover of $X$, then a \de{partition of unity} subordinate to $\{U_a\}$ is a collection of continuous functions $\phi_a \from X \to  [0,1]$ where for each $a$, the support of $\phi_a$ is contained in $U_a$.
 \end{defi}
 
 \begin{thrm}[Bredon, thm II.10.1]
@@ -1358,7 +1358,7 @@ set of above over all smooth functions
 
 	Take an open cover $\{U_i\}$ of $U$ such that $U_i \subseteq \bar{U_i} \subseteq U$, and each $\bar{U_i}$ is compact.
 
-	Let $S_i := S \intersect U_i$
+	Let $S_i \coloneqq  S \intersect U_i$
 
 	Then $\bar{S_i} \subseteq \bar{U_i}$, so $\{S_i\}$ is compact
 	$\bar{S_i}$.
@@ -1455,7 +1455,7 @@ set of above over all smooth functions
 \end{coro}
 \begin{example}
 	Let
-	$$f : \R to S^1 \x S^1$$
+	$$f \from \R \to  S^1 \x S^1$$
 	$$f(t) = (t, \sqrt(2)t) \mod Z^2$$
 	and
 	$$S^1 \x S^1 = \R/\Z \x \R/\Z = \R^2/\Z^2$$
@@ -1483,12 +1483,12 @@ set of above over all smooth functions
 
 % 	claim A:
 % 	"If N > 2n + 1, then there exists nonzero a in RN s.t.
-% 		1. f: Mn to RN \pi_a <a>perp is still an immersion.
+% 		1. f\from Mn \to  RN \pi_a <a>perp is still an immersion.
 % 		2. f.\pi_a is still 1-1.
 % 	If N > 2N, then can still do (1)."
 
 
-% 		Claim implies there exists 1-1 immersion f : M^n to \R{2n+1}
+% 		Claim implies there exists 1-1 immersion f \from M^n \to  \R{2n+1}
 
 % 		If M is compact, this would be an embedding.
 
@@ -1496,9 +1496,9 @@ set of above over all smooth functions
 
 % \end{proof}
 % \begin{proof}[Proof of Claim A]
-% 	Let g : TM to RN be g(x,v) = df_x(v)
+% 	Let g \from TM \to  RN be g(x,v) = df_x(v)
 
-% 	dfx : T_xM to TRN = RN
+% 	dfx \from T_xM \to  TRN = RN
 % 	Let h : M x M x \R to RN be
 % 	h(x,y,t) = t[f(x) - f(y)]
 
@@ -1529,7 +1529,7 @@ set of above over all smooth functions
 % \begin{proof}
 % 					Choose countable cover {U} of M with each Ubar compact.
 
-% 				Let {p_i : M to [0,1]} partition of unity w.r.t. {U}
+% 				Let {p_i \from M \to  [0,1]} partition of unity w.r.t. {U}
 % 				Let p(x) = \sum_{i=1}^oo ip_i(x).
 % 				Claim: this p is proper.
 % 				Fix j
@@ -1538,11 +1538,11 @@ set of above over all smooth functions
 
 % 		Assume the given f has |f(x)| < 1 (we can always shrink f down with arctan)
 
-% 		Let F = (f,p) : M to \R{2n+1}
+% 		Let F = (f,p) \from M \to  \R{2n+1}
 
 % 		again find a nice nonzero a as before, and a not in <e_{2n+2}> (last basis vec) (a 0 in last coord)
 % 		claim
-% 		F.\pi : M to <a>perp = \R{2n+1} is proper.
+% 		F.\pi \from M \to  <a>perp = \R{2n+1} is proper.
 
 % 		x.F.\pi = (x.p, x.f).\pi
 % 		= (f(x), 0).\pi + (0, p(x)).\pi
@@ -1853,13 +1853,13 @@ other things to notice
 \begin{propo}
 	If $A$ and $B$ are cobordant, then $A$ and $B$ are closed and $\dim(W)-1 = \dim(A) = \dim(B)$.
 \end{propo}
-\begin{propo}
-	If $f \homotopic g$, then $f$ is cobordant to $g$.
-\end{propo}
 \begin{defi}
 	$f$ and $g$ are \de{cobordant} maps if there exists $A$ and $B$ cobordant under $W$ and $F\from W \to N$ such that
 	$$F|_A = f \;\text{and}\; F|_B = g.$$
 \end{defi}
+\begin{propo}
+	If $f \homotopic g$, then $f$ is cobordant to $g$.
+\end{propo}
 \begin{propo}
 	Given cobordant maps $f$ and $g$, and $L$ s.t. the mod 2 intersection numbers of $f$ and $g$ are defined, then $I_2(f, L) = I_2(g, L)$.
 \end{propo}
@@ -1886,7 +1886,7 @@ other things to notice
 	If $f$ and $g$ are cobordant and $a=b=n$, then \\$\deg_2(f) = \deg_2(g)$.
 \end{propo}
 \begin{proof}
-	Choose a value $y$ that is regular for both $f$ and $g$ (wiggling to $f'$ and $g'$ if necessary?).  Then $deg_2(f) = I_2(f, \{y\}) = I_2(f', \{y\}) = I_2(g', \{y\}) = I_2(g, \{y\}) = deg_2(g)$.
+	Choose a value $y$ that is regular for both $f$ and $g$ (wiggling to $f'$ and $g'$ if necessary?).  Then $\deg_2(f) = I_2(f, \{y\}) = I_2(f', \{y\}) = I_2(g', \{y\}) = I_2(g, \{y\}) = \deg_2(g)$.
 \end{proof}
 \begin{coro}[actually equivalent to above]
 	If $W$ is a manifold, $M = \d W$, and
@@ -1948,8 +1948,8 @@ $$\deg_2(u_z) =
 	A smooth manifold $M$ is \de{orientable} if it has an orientation.
 \end{defi}
 \begin{propo}[Equivalent definition]
-	A manifold is orientable if and only if there exists an atlas $\{ \phi \from U \to \R^n \mid d\phi_x : T_xM \}$ s.t. for all $i,j$ we have $$\phi_i^{-1}.\phi_j : \phi_i(U_i \intersect U_j) \to \phi_j(U_i \intersect U_j)$$
-	, for all $x$ in $U_i \intersect U_j$, we have $$d(\phi_i^{-1}.\phi_j)$$ is orientation preserving.
+	A manifold is orientable if and only if there exists an atlas $\{ \phi \from U \to \R^n \mid d\phi_x : T_xM \}$ s.t. for all $i,j$ we have $$\phi_i^{-1}.\phi_j \from \phi_i(U_i \intersect U_j) \to \phi_j(U_i \intersect U_j),$$
+	for all $x$ in $U_i \intersect U_j$, we have $$d(\phi_i^{-1}.\phi_j)$$ is orientation preserving.
 \end{propo}
 \begin{defi}
 	$-M$ denotes the alternative orientation of $M$.
@@ -2111,7 +2111,7 @@ oriented intersection.
 $\mathcal{H} = $ Hypothesis for some things  $f \from M \to N$ is a smooth map of manifolds.  $M$ and $N$ are closed, oriented, and $N$  is connected.  $\dim(M) = \dim(N)$.
 
 \begin{defi}
-	If $\mathcal{H}$, then the \de{degree} of $f$ is $$\deg(f) := I(f, \{y\})$$ for any $y \in N$.
+	If $\mathcal{H}$, then the \de{degree} of $f$ is $$\deg(f) \coloneqq  I(f, \{y\})$$ for any $y \in N$.
 \end{defi}
 \begin{propo}
 	$\deg(f)$ is well defined (independent of choice of $y$)
@@ -2140,11 +2140,10 @@ $\mathcal{H} = $ Hypothesis for some things  $f \from M \to N$ is a smooth map o
 
 	All points in $S^1$ are regular unless \(d=0\), in which case
         all are regular except for 1 point.  For all $x \in S^1$,
-
 	$$o(x) =
 	\begin{cases}
 		+1 	&\text{if $d > 0$} \\
-		-1 	&\text{if $d < 0$} \\
+		-1 	&\text{if $d < 0$}
 	\end{cases}$$
         Thus, since \(f^{-1}(y)\) has cardinality \(d\) and all points
         have the same orientation, \(\deg(f) = d\).
@@ -2196,11 +2195,11 @@ positive on regular values, \(o(z) = +1\).
 \section{Lefschetz numbers of self maps}
 
 \begin{defi}
-	Given the set $M$, the \de{diagonal} of $M$ is $$\Delta M := \{ (x,x) \mid x \in M \}$$
+	Given the set $M$, the \de{diagonal} of $M$ is $$\Delta M \coloneqq  \{ (x,x) \mid x \in M \}$$
 \end{defi}
 \begin{defi}
 	Given the function $f\from A \to B$, the \de{graph} of $f$
-        is $$\Gr(f) := \{ (x, f(x)) \mid x \in A \} \subset A \times B$$
+        is $$\Gr(f) \coloneqq  \{ (x, f(x)) \mid x \in A \} \subset A \times B$$
 \end{defi}
 \begin{rmk}
 	If $f\from M \to M$, then
@@ -2227,7 +2226,7 @@ positive on regular values, \(o(z) = +1\).
 	If $f\from M \to M$ is Lefschetz and $M$ is compact, then $f$ has a finite number of fixed points.
 \end{thrm}
 \begin{defi}
-	If $f \from M \to M$ is a smooth map of manifolds, $M$ is compact, and $\d M = 0$, then the \de{Lefschetz number} of the map $f$ is $$L(f) := I(\Delta M, \Gr(f))$$
+	If $f \from M \to M$ is a smooth map of manifolds, $M$ is compact, and $\d M = 0$, then the \de{Lefschetz number} of the map $f$ is $$L(f) \coloneqq  I(\Delta M, \Gr(f))$$
 \end{defi}
 \begin{propo}
 	If the Lefshetz number of $f$ is defined, then $$L(f) = (-1)^n I(Gr(f), \Delta M)$$ where $n = \dim(M)$.
@@ -2383,7 +2382,7 @@ Since $L(\id) \neq 0$, then the vector field function also has fixed points. Thi
 \end{defi}
 
 \begin{defi}
-	The \de{zero} vector field is the vector field defined by $$v_0(x) := (x, 0)$$ for all $x$.
+	The \de{zero} vector field is the vector field defined by $$v_0(x) \coloneqq  (x, 0)$$ for all $x$.
 \end{defi}
 
 \begin{propo}
@@ -2671,7 +2670,7 @@ We will \emph{not} define genus rigorously in this course.
 	$$\int w = \iiint g(y) \,dy_1 \,dy_2 \,dy_3 \text{ (no longer wedge on this side)}$$	% Matt, I shortened it to $(y)$
 
 	Define
-	$$f^*(w)(x) := g(f(x)) \det\left(\left[\frac{df_i}{dx_j}(x)\right]_{i,j}\right) \,dx_1  \wedge  \wedge  \wedge  dx_n$$
+	$$f^*(w)(x) \coloneqq  g(f(x)) \det\left(\left[\frac{df_i}{dx_j}(x)\right]_{i,j}\right) \,dx_1  \wedge  \wedge  \wedge  dx_n$$
 
 	where the $\det$ thing is the Jacobian!
 \end{example}
