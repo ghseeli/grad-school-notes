@@ -32,7 +32,7 @@ What makes complex analysis different than calculus and real analysis?
     The polynomial $x^2+10x+100$ cannot be factored in terms of real factors since its discriminant is negative. However, this can be factored over the complexes.
 \end{example}
 \begin{example}
-    Describing physical phenemenon, such as the flow of a river over a log, is much easier using complex analysis.
+    Describing physical phenomenon, such as the flow of a river over a log, is much easier using complex analysis.
 \end{example}
 \begin{example}
     Solving $\int_{-\infty}^{\infty} \frac{\cos 2x}{x^2+1} dx$ is almost impossible for a standard calculus student and in real analysis, one can show that the integral is finite, but solving it is difficult. In complex analysis, one can easily show that it is $\pi^2/e$.
@@ -96,12 +96,12 @@ We can also take roots effectively using polar form (look it up).
 
 Finally, we can look at the stereographic projection (see textbook for picture) using the one-point compactification of $\C$, namely $\C^* = \C \cup \{\infty\} \cong S^2$.
 
-We also get some nice correspondances from actions on the sphere as in the table. \\
+We also get some nice correspondences from actions on the sphere as in the table. \\
     \begin{tabular}{|c|c|}
         \hline
         Equator & $|z| = 1$ \\
         Upper hemisphere & $\{|z| > 1\} \cup \{\infty\}$ \\
-        Lines of lattitude & Circle centered at origin \\
+        Lines of latitude & Circle centered at origin \\
         Lines of longitude & Rays from origin \\
         Circles on $S^2$ that do not contain the north pole & Circles on $\C^*$ \\
         Circles on $S^2$ that contain the north pole & Lines on $\C^*$ \\
@@ -138,7 +138,7 @@ Let us also examine $f(z) = z^{\frac{1}{2}} = \{w | w^2=z\}$. This is a multival
 
 Now, let us consider $f(z) = e^z$. This is $f(z) = e^{x+iy} = e^x(\cos y +
 i\sin y)$. Notice that $e^x$ is the modulus and $\cos y + i \sin y$ is the
-argument. We also note that $e^z$ maps a grid of cartesian coordinates into a
+argument. We also note that $e^z$ maps a grid of Cartesian coordinates into a
 grid of polar coordinates.
 
 Next, consider the inverse of $e^z$, namely $\log z$ on $\C \smallsetminus
@@ -155,7 +155,7 @@ rotations of $\cos$ and $\sin$ in the complex plane.
 
 Coming back to the function $z^{\frac{1}{2}}$, it is important to discuss the
 branch cut of the function. This creates a 1 dimensional complex manifold or
-2 dimensional real manifold (plus some structure). A good treatement of this
+2 dimensional real manifold (plus some structure). A good treatment of this
 will not be found here, but refer to any standard complex analysis textbook.
 
 \section{Lecture 4}
@@ -192,7 +192,7 @@ isometries of the sphere. Geometrically, there are 4 types of isometries
 Note, just items 1 and 3 form the group $SO(3)$.
 
 \begin{defn}
-    Functions of $z$ that are orientation perserving are known as conformal
+    Functions of $z$ that are orientation preserving are known as conformal
     maps and are also analytic. Similarly, functions of $\overline{z}$ are
     orientation flipping and are thus anti-conformal maps and are also
     anti-analytic.
@@ -228,7 +228,7 @@ imaginary direction.
     $f$ is \emph{analytic} on a domain if it is differentiable at all points on
     the domain and $f'(z)$ is continuous.
 \end{defn}
-We will see that the second assumption is superflous when we prove Goursat's
+We will see that the second assumption is superfluous when we prove Goursat's
 theorem later.
 
 \begin{thm}
@@ -338,7 +338,7 @@ theorem later.
     \end{proof}
 
     Now, recall that we had a theorem stating that a function is analytic if
-    and only if it satisfies the Cauchy-Reimann equation.
+    and only if it satisfies the Cauchy-Riemann equation.
     \begin{proof}
         Let us examine $f'(z) = \lim_{\Delta z \to 0} \frac{f(z+\Delta z) -
         f(z)}{\Delta z}$. Taking $\Delta z = \Delta x$ real, then $f'(z) =
@@ -513,7 +513,7 @@ What if $f' = 0$?
   conformal/analytic map between them.
 \end{defn}
 \begin{example}
-  $\{-\frac{\pi}{2} < \Im z < \frac{\pi}{2}\}$ is conformall equivalent to
+  $\{-\frac{\pi}{2} < \Im z < \frac{\pi}{2}\}$ is conformally equivalent to
   $\{\Re z > 0\}$ using the map $f(z) = e^z$.
 \end{example}
 
@@ -569,7 +569,7 @@ orthogonality.
 
   \subsection{Line Integrals}
   Line integrals are integrals of the form $\int_\gamma Pdx + Qdy$ where
-  $\gamma$ is a path. To solve these, one usually parametrizes the path or uses
+  $\gamma$ is a path. To solve these, one usually parameterizes the path or uses
   theorems such as Green's theorem.
   \begin{defn}
     We call the integrand \emph{closed} if $P_y = Q_x$. We call the integrand
@@ -591,7 +591,7 @@ orthogonality.
   \end{example}
   Finally, to make notions of path precise, we have the following.
 \begin{defn}
-    A \emph{path} is a continuous parametrized function $f:[a,b] \to \C$.  A
+    A \emph{path} is a continuous parameterized function $f:[a,b] \to \C$.  A
     path is \emph{simple} if it is injective (ignoring the endpoint).  A path is
     \emph{closed} if $f(a) = f(b)$.  The \emph{trace} of a path is its image
     $f([a,b])$.  A path is \emph{smooth} if $f(t)$ can be expressed as $(x(t),
@@ -673,14 +673,14 @@ orthogonality.
   \end{thm}
   \begin{proof}
     $|f|$ is continuous on compact $D$, so the maximum is attained
-    somwhere ?? in 0, so $f$ is constant by previous theorem. CHECK THIS!
+    somewhere ?? in 0, so $f$ is constant by previous theorem. CHECK THIS!
   \end{proof}
   \section{(9/20/2016) Lecture 9: Complex Line Integrals}
   A complex line integral is an integral of the form $\int_\gamma
   f(z)dz$ where $\gamma$ is some path in the complex plane, $f(z)$ is
   some complex valued function, and $dz = dx + idy$. Just like a real
   integral, it can be phrased as $\lim \sum_{i=1}^n
-  f(z_i^*)(z_{i+1}-z_i)$ and can be evaluated by parametrizing the
+  f(z_i^*)(z_{i+1}-z_i)$ and can be evaluated by parameterizing the
   path and function. \\
 
   We can also provide an upper bound on such integrals by noting the
@@ -695,7 +695,7 @@ orthogonality.
   This is called the ML estimate.
 
   \begin{example}
-    Consider $\oint_{|z|=R} z^n dz$. We can parametrize this with
+    Consider $\oint_{|z|=R} z^n dz$. We can parameterize this with
     $z(t) = Re^{it}, t \in (0,2\pi]$. Then, $z'(t) = iRe^{it}$ and we
     get our integral to be $\int_0^{2\pi} (Re^{it})^n iRe^{it} dt =
     R^{n+1} i \int_0^{2\pi} e^{it(n+1)} dt =
@@ -739,7 +739,7 @@ orthogonality.
   $z$.
   \section{(9/22/2016) Lecture 10: Integral Formulas}
   Continuing from above, we ask what happens if the domain is not
-  simply connected eith $f = u+iv$ where $u,v \in C^1$? We have that
+  simply connected with $f = u+iv$ where $u,v \in C^1$? We have that
   $f(z)dz$ is closed, which gives us $(u+iv)(dx+idy) =
   (u+iv)dx+(-v+iu)dy$. Next, we have $u_y+iv_y = -v_x+iu_x$, giving us
   the Cauchy-Riemann equations. Thus $f$ is analytic.
@@ -780,7 +780,7 @@ orthogonality.
       \frac{f(w)}{w-z}dw = \int_D \frac{f(w)}{w-z}dw -
       \int_{C_\epsilon} \frac{f(w)}{w-z}dw.\]
     So, it suffices to show $\frac{1}{2 \pi i}\int_{C_\epsilon}
-    \frac{f(w)}{w-z}dw = f(z)$. So, let us parametrize $w(\theta) =
+    \frac{f(w)}{w-z}dw = f(z)$. So, let us parameterize $w(\theta) =
     z+\epsilon e^{i\theta}, \theta \in [0,2 \pi)$. Then, we get that
     $\frac{1}{2 \pi i}\int_{C_\epsilon} \frac{f(w)}{w-z}dw =
     \frac{1}{2\pi i}\int_0^{2 \pi} \frac{f(z+\epsilon
@@ -816,7 +816,7 @@ orthogonality.
     is equivalent to $\frac{1}{2 \pi i} \int_{\partial D}
     \frac{f(w)}{(w-z-\Delta z)(w-z)}dw$. However, as $\Delta z \to 0$,
     the integrand goes uniformly to $\frac{f(w)}{(w-z)^2}$ as a
-    function of $w$. Thus, we get the finaly result of $\frac{1}{2 \pi
+    function of $w$. Thus, we get the finally result of $\frac{1}{2 \pi
 z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
   \end{proof}
   \begin{thm}[Cauchy Estimate]
@@ -851,7 +851,7 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
     gives us that $p(z) = (z-z_1)p_1(z)$ and one can apply the theorem iteratively.
   \end{thm}
   \begin{proof}
-    Suppose $p(z)$ is a nonconstant polynomia and has no root. If
+    Suppose $p(z)$ is a nonconstant polynomial and has no root. If
     $p(z)$ is degree $n$, then $p$ is $O(z^n)$ at $\infty$, so
     $\frac{1}{p(z)} \to 0$ as $z \to \infty$. It follows that
     $\frac{1}{p(z)}$ is entire and bounded. Thus, by Liouville's
@@ -1113,7 +1113,7 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
     $1-x^2+x^4-x^6+\cdots$, but this series does not converge past $x
     \in (-1,1)$. Why is this the case? If we consider the function
     $\frac{1}{z^2+1}$ at 0, it has problems at $\pm i$ and so the
-    Taylor seires converges on $|z|<1$.
+    Taylor series converges on $|z|<1$.
   \end{example}
   For these functions, the radius of convergence is the ``distance to
   the nearest singularity.''
@@ -1632,7 +1632,7 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
   This leads us to a useful theorem.
   \begin{thm}
     Let $D$ be a domain with piecewise smooth boundary. Let $f$ be
-    meromorphic on $D$ and extend continuoussly to the boundary
+    meromorphic on $D$ and extend continuously to the boundary
     $\partial D$. Then \[
       \oint_{\partial D} \frac{f'(z)}{f(z)} dz = 2\pi i (Z - P)
   \]
@@ -1792,8 +1792,8 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
     \int_{C_\epsilon} \frac{A}{z-z_0}dz + \int_{C_\epsilon}
     (\text{analytic})dz \to \alpha i A + 0
   \]
-  by an ML-estimate because $\epsilon \to 0$ and the first integrala
-  is $\alpha i A$ by parametrization. We use this technique when a
+  by an ML-estimate because $\epsilon \to 0$ and the first integral
+  is $\alpha i A$ by parameterization. We use this technique when a
   simple pole is in our path of integration, such as integrating a
   half disk in the upper half plane when there is a simple pole on the
   real axis.
@@ -1813,12 +1813,12 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
   \end{example}
   \begin{example}
     Consider $\int_0^\infty \frac{\log x}{x^a(x-1)}dx, 0 < a <
-    1$. This hsould be integrated along a similar keyhole as above but
+    1$. This should be integrated along a similar keyhole as above but
     with a bump on the bottom part of $z=1$ for a fractional
     residue. This was an assigned homework problem.
   \end{example}
   Now, in real analysis, if $\int |f| < \infty$, we say the integral
-  is abolutely convergent and the integrand is absolutely
+  is absolutely convergent and the integrand is absolutely
   integrable. If we have a function that is not absolutely integrable,
   we have to make a choice to give $\int f$ meaning. This leads us to
   the idea of \emph{principal value}. $\PV \int f$ means excise
@@ -1872,7 +1872,7 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
     not univalent, find $\xi, \zeta \in D$ with $f(\xi) = f(\zeta) =
     w$. Then, $f(\cdot)-w$ has a finite order 0 at $\xi$ and
     $\zeta$. Consider small nonoverlapping disks around $\xi$ and
-    $\zeta$; by Hurwitz, since $f_k(\cdot)-w$ converges normall to
+    $\zeta$; by Hurwitz, since $f_k(\cdot)-w$ converges normally to
     $f(\cdot)-w$ for large $K$, each disk contains a zero of
     $f(\cdot)-w$, violating univalency of $f_k$.
   \end{proof}
@@ -1893,7 +1893,7 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
   characterized by $f' = 0$.
 
   At this point, there was some lecturing about infinite charged
-  rods. This is being ommitted.
+  rods. This is being omitted.
 
   \begin{thm}[Open Mapping Theorem for analytic functions]
     The image of an open set under a nonconstant analytic function is open. (Did
@@ -1932,7 +1932,7 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
     Let $f(z_0) = w_0$. Then, $z_0$ is a critical point of order $m-1$
     if and only if $z_0$ is a zero of $f(z) - w_0$ of order $m$.
   \end{prop}
-  This proposition follows from the fact htat $f(z)-w_0 =
+  This proposition follows from the fact that $f(z)-w_0 =
   (z-z_0)^mg(z)$ where $g(z) \neq 0$ or from the power series $f(z) =
   w_0 + a_m(z-z_0)^m + \ldots$. When $m=1$, $f$ is locally invertible
   for any $0 < |w-w_0| < \delta$ and there is a unique $0 < |z-z_0| <
@@ -1958,7 +1958,7 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
     inverse.
   \end{example}
   \subsection*{Winding numbers}
-  Let $\gamma = \gamma(t), a < t < b$ be a parametrized closed curve
+  Let $\gamma = \gamma(t), a < t < b$ be a parameterized closed curve
   in $\C \setminus \{0\}$. We will give some equivalent definitions of
   winding number.
   \begin{defn}
@@ -1997,7 +1997,7 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
       & = 0 (\text{since } \zeta \not \in D)
     \end{align*}
   \end{proof}
-  If $D$ is undbounded, one can shrink to a bounded domain containing
+  If $D$ is unbounded, one can shrink to a bounded domain containing
   $\gamma$ (the argument is in the textbook.)
   \begin{cor}[Cauchy Integral Formula +]
     Given the same hypotheses as above with $z_0 \in D$, we get \[
@@ -2070,7 +2070,7 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
   \]
   Also, obviously, rotations after this process pose no problems.
   \begin{thm}
-    All conformal equivalences from the unit circle ot the unit circle
+    All conformal equivalences from the unit circle to the unit circle
     have the form \[
       \lambda \frac{z-a}{1-\overline{a}z}, a \in \D, |\lambda| = 1.
     \]
@@ -2079,8 +2079,8 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
   \begin{proof}
     Let $f$ be a conformal equivalence and $a =
     f^{-1}(0)$. Furthermore, let $h(z) = \frac{z-a}{1-\overline{a}z}$
-    be confromal sending $a \mapsto 0$. Consider $f \circ h^{-1}$ a
-    confromal equivalence sending $0 \mapsto 0$. The Schwarz
+    be conformal sending $a \mapsto 0$. Consider $f \circ h^{-1}$ a
+    conformal equivalence sending $0 \mapsto 0$. The Schwarz
     inequality applies to it and its inverse, so it is a
     rotation. Thus $f(h^{-1}(z)) = \lambda z$ for some unimodular
     $\lambda$. So, $f(z) = \lambda h(z)$.
@@ -2120,7 +2120,7 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
   the points in $\R^3$. The formula for this metric is given by \[
     \rho_S(z,w) = \frac{2|z-w|}{\sqrt{1+|z|^2} \sqrt{1+|w|^2}}
   \]
-  This gives us an infinitesmal version, as well, which is much easier
+  This gives us an infinitesimal version, as well, which is much easier
   to remember, namely \[
     d\rho_S(z) = \frac{2|dz|}{1+|z|^2}.
   \]
@@ -2146,7 +2146,7 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
     The \emph{pseudohyperbolic metric on $\D$} is given by \[
       \rho_H(z,w) = \frac{2|z-w|}{|1-\overline{w}z|}
     \]
-    and thus the infinitesmal version is given by
+    and thus the infinitesimal version is given by
     $\frac{2|dz|}{1-|z|^2}$.
   \end{defn}
   Thus, from this definition, we can infer that the hyperbolic length
@@ -2165,7 +2165,7 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
   $f$ is nonexpansive in the pseudohyperbolic metric (it also is
   nonexpansive in the hyperbolic metric). In fact, $f$ is actually
   contractive unless $f$ is conformal, which is isometric. Thus, the
-  confromal self-maps of $\D$ are in bijection with the isometries of
+  conformal self-maps of $\D$ are in bijection with the isometries of
   the hyperbolic plane and are isomorphic as groups. \\
 
   Finally, as an aside, it is worth noting that if one has a circle of
@@ -2185,7 +2185,7 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
   \section{(12/1/2016)}
   \begin{defn}
     A (finite) \emph{Blaschke product} is the product (not
-    compiosition) of finitely many conformal automorphisms $\D \to
+    composition) of finitely many conformal automorphisms $\D \to
     \D$, ie \[
       f(z) = e^{i\phi} \prod_{i=1}^n \frac{z-a_i}{1-\overline{a_i}z}
     \]
@@ -2252,7 +2252,7 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
     Consider $\{f_n\} \subset \mathcal{F}$ with $|f_n'(z_0)|$
     increasing to the supremum. Mantel's theorem tells us that there
     is a normally convergent subsequence of this sequence and the
-    limite of this sequence, $f$, satisfies the following
+    limit of this sequence, $f$, satisfies the following
     \begin{itemize}
     \item $f(z_0) = 0$
     \item $|f'(z_0)| = \sup > 0$
