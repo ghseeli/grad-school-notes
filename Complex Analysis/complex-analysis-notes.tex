@@ -126,7 +126,7 @@ Let us also examine $f(z) = z^{\frac{1}{2}} = \{w | w^2=z\}$. This is a multival
     \ & \ \implies \ w = \sqrt{|z|}e^{\frac{\Arg z}{2}i}, \sqrt{|z|}e^{\frac{\Arg z + 2\pi}{2} i}
 \end{align*}
 \begin{defn}
-    A \emph{domain} is an open subset of $\C$ where every pair of points can be connected by a broken line segment.
+    A \de{domain} is an open subset of $\C$ where every pair of points can be connected by a broken line segment.
 \end{defn}
 \begin{defn}
     A branch of a multivalued function is a (continuous) choice of output on some domain.
@@ -214,9 +214,9 @@ between them is also contained in the domain.
     way around.
 \end{defn}
 \begin{defn}
-    Let $f: \C \to \C$ be defined on a domain containing $z$. If $\lim_{\Delta
+    Let $f\from \C \to \C$ be defined on a domain containing $z$. If $\lim_{\Delta
     z \to 0} \frac{f(z+\Delta z) - f(z)}{\Delta z}$ exists in $\C$, this number
-    is called the \emph{derivative of $f$} at $z$ and we say that $f$ is
+    is called the \de{derivative of $f$} at $z$ and we say that $f$ is
     differentiable at $z$.
 \end{defn}
 
@@ -225,7 +225,7 @@ that $f(z) = \overline{z}$ is not differentiable anywhere because the value of
 the limit changes depending on if you approach in the real direction or the
 imaginary direction.
 \begin{defn}
-    $f$ is \emph{analytic} on a domain if it is differentiable at all points on
+    $f$ is \de{analytic} on a domain if it is differentiable at all points on
     the domain and $f'(z)$ is continuous.
 \end{defn}
 We will see that the second assumption is superfluous when we prove Goursat's
@@ -401,12 +401,12 @@ theorem later.
     Now, a general definition of differentiability for $\R^n$ spaces is as
     follows.
     \begin{defn}
-        A function $f: \R^m \to \R^n$ is differentiable at $x$ if $f(x+h) =
+        A function $f\from \R^m \to \R^n$ is differentiable at $x$ if $f(x+h) =
         f(x)+D(h)+o(h)$ where $D: \R^m \to \R^n$ is linear (a matrix). In fact,
         $D$ is the Jacobian matrix of partial derivatives and $f(x)+D(h)$ is
         the tangent plane.
     \end{defn}
-    For a complex function $f: \C \to \C$, we write $f = u+iv$ where $u,v: \R^2
+    For a complex function $f\from \C \to \C$, we write $f = u+iv$ where $u,v: \R^2
     \to \R$. When $u,v \in C^1$, $D = \left( \begin{array}{cc}
         u_x & u_y \\
         v_x & v_y
@@ -443,7 +443,7 @@ theorem later.
     \end{example}
 
     \begin{defn}
-        A function $u: \R^n \to \R$ is \emph{harmonic} if it is a $C^2$
+        A function $u: \R^n \to \R$ is \de{harmonic} if it is a $C^2$
         solution to $\Delta u = 0$. Note that $\nabla^2u = \Delta u$ and is
         called the Laplacian.
     \end{defn}
@@ -453,7 +453,7 @@ theorem later.
     u_{xx}-u_{xx} = 0$. There is an almost converse which states that ``a
     harmonic function is locally the real part of an analytic function.'' That
     is, on a neighborhood of any point, there is a $v$ with $u+iv$ analytic locally.
-    Such a $v$ is called a \emph{harmonic conjugate} (unique up to an additive
+    Such a $v$ is called a \de{harmonic conjugate} (unique up to an additive
     constant), e.g., there is an $x$ such that $u=xy$ satisfying \[
         \begin{cases}
  u_x = v_y = y \\
@@ -479,16 +479,16 @@ Some follow up facts to note are
 \subsection*{Conformal Maps}
 \begin{defn}
     If $f$ is analytic in a neighborhood at $z_0$ and $f'(z_0) \neq 0$, then
-    $f$ is \emph{conformal} at $z_0$. This is the same as saying directed
+    $f$ is \de{conformal} at $z_0$. This is the same as saying directed
     angles are preserved by $f$ at $z_0$.
 \end{defn}
 \begin{defn}
-    A \emph{conformal mapping} between domains is a one-to-one $C^1$ function
+    A \de{conformal mapping} between domains is a one-to-one $C^1$ function
     that is conformal at each point.
 \end{defn}
 Note the following implications.
 \begin{itemize}
-    \item $f: D \to V$ that is one-to-one and analytic is conformal.
+    \item $f\from D \to V$ that is one-to-one and analytic is conformal.
     \item If $f$ is analytic at $z_0$ and $f'(z_0) \neq 0$, then $f$ maps a
         neighborhood of $z_0$ conformally onto the image.
 \end{itemize}
@@ -497,7 +497,7 @@ Note the following implications.
 In general, a real differentiable function from $\R^2 \to \R^2$ will map some
 small square to some small parallelogram modulo a small
 perturbation. Furthermore, the ratio of the areas is the determinant of the
-Jacobian. Now, if $f: \C \to \C$ is analytic and if $f'(z) \neq 0$, the map will
+Jacobian. Now, if $f\from \C \to \C$ is analytic and if $f'(z) \neq 0$, the map will
 map a small square to another square modulo a small amount of error. This is an
 essential difference between these types of functions. Thus, analytic maps are
 conformal where $f' \neq 0$. \\
@@ -509,7 +509,7 @@ What if $f' = 0$?
 \end{example}
 
 \begin{defn}
-  A \emph{conformal equivalence} between domains is a one to one onto
+  A \de{conformal equivalence} between domains is a one to one onto
   conformal/analytic map between them.
 \end{defn}
 \begin{example}
@@ -540,13 +540,13 @@ orthogonality.
 
 \subsection{Linear Fractional Transformations}
 \begin{defn}
-    A \emph{linear transformation} is of the form $az + b$ with $a,b \in \C$.
+    A \de{linear transformation} is of the form $az + b$ with $a,b \in \C$.
 \end{defn}
 \begin{defn}
-    An \emph{affine transformation} is a nonzero linear transformation.
+    An \de{affine transformation} is a nonzero linear transformation.
 \end{defn}
 \begin{defn}
-    A \emph{linear fractional transformation} is a map of the form $z \mapsto
+    A \de{linear fractional transformation} is a map of the form $z \mapsto
     \frac{az+b}{cz+d}$ with $a,b,c,d \in \C$ and $ad-bc \neq 0$. These are also
     called fractional linear transformations and M{\"o}bius transformations.
   \end{defn}
@@ -572,8 +572,8 @@ orthogonality.
   $\gamma$ is a path. To solve these, one usually parameterizes the path or uses
   theorems such as Green's theorem.
   \begin{defn}
-    We call the integrand \emph{closed} if $P_y = Q_x$. We call the integrand
-    \emph{exact} if there exists an $h(x,y)$ such that $h_x = P, h_y = Q$. Thus,
+    We call the integrand \de{closed} if $P_y = Q_x$. We call the integrand
+    \de{exact} if there exists an $h(x,y)$ such that $h_x = P, h_y = Q$. Thus,
     if we have $h_xdx+h_ydy$, we would say this is an ``exact differential with
     $h$ as a primitive.''
   \end{defn}
@@ -591,12 +591,12 @@ orthogonality.
   \end{example}
   Finally, to make notions of path precise, we have the following.
 \begin{defn}
-    A \emph{path} is a continuous parameterized function $f:[a,b] \to \C$.  A
-    path is \emph{simple} if it is injective (ignoring the endpoint).  A path is
-    \emph{closed} if $f(a) = f(b)$.  The \emph{trace} of a path is its image
-    $f([a,b])$.  A path is \emph{smooth} if $f(t)$ can be expressed as $(x(t),
-    y(t))$ for $x$ and $y$ smooth (such a path is also called a \emph{curve}).
-    A \emph{piecewise} path is a concatenation of paths (two paths must share an
+    A \de{path} is a continuous parameterized function $f\from[a,b] \to \C$.  A
+    path is \de{simple} if it is injective (ignoring the endpoint).  A path is
+    \de{closed} if $f(a) = f(b)$.  The \de{trace} of a path is its image
+    $f([a,b])$.  A path is \de{smooth} if $f(t)$ can be expressed as $(x(t),
+    y(t))$ for $x$ and $y$ smooth (such a path is also called a \de{curve}).
+    A \de{piecewise path} is a concatenation of paths (two paths must share an
     endpoint to be concatenated).
   \end{defn}
 
@@ -624,7 +624,7 @@ orthogonality.
   lines of a river with no log.
 
   \begin{defn}
-    A function on $\R^2$ (or $\R^n$) has the \emph{mean-value
+    A function on $\R^2$ (or $\R^n$) has the \de{mean-value
       property} (MVP) on a domain if its value at any point is the
     average of its values on any sufficiently small circle (or sphere)
     centered at the point. In other words, $u(z_0) = \frac{1}{2\pi}
@@ -826,7 +826,7 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
   \end{thm}
   \section{(9/27/2016) Lecture 11}
   \begin{defn}
-    A function that is analytic on all of $\C$ is called \emph{entire}.
+    A function that is analytic on all of $\C$ is called \de{entire}.
   \end{defn}
   \begin{example}
     Polynomials, $e^z, \sin z, \cos z$ are all entire functions.
@@ -1043,7 +1043,7 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
     then $\int_R f = \lim \int_R f_n = 0$ for a rectangle $R$ and so
     $f$ is analytic.
   \item \begin{defn}
-      $f_n$ \emph{converges normally} to $f$ on $D$ if it converges uniformly
+      $f_n$ \de{converges normally} to $f$ on $D$ if it converges uniformly
       on compact subsets of $D$ (or closed disks in $D$). Note that
       this idea is stronger than pointwise convergence but weaker than
       uniform convergence.
@@ -1262,7 +1262,7 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
   \section*{Laurent Series}
   \begin{defn}
     Let $f$ be an analytic function in annulus $\rho < |z-z_0| <
-    \sigma$. Then, $f$ has \emph{Laurent decomposition} $f(z) = f_0(z)
+    \sigma$. Then, $f$ has \de{Laurent decomposition} $f(z) = f_0(z)
     + f_1(z)$ where $f_0(z)$ is analytic on $|z-z_0| < \sigma$ and
     $f_1(z)$ is analytic on $|z-z_0| > \rho$ with normalization $f_1(\infty) = 0$.
   \end{defn}
@@ -1342,7 +1342,7 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
   Given this situation, then $f$ has a Laurent series valid in a
   punctured disk at $z_0$, $\sum_{-\infty}^\infty a_k(z-z_0)^k$. We
   call the part with negative powers, $\sum_{k < 0} a_k(z-z_0)^k$ the
-  \emph{principal part} or \emph{singular part}.
+  \de{principal part} or \de{singular part}.
 
   \begin{itemize}
   \item If the principal part is empty, we say $z_0$ is removable.
@@ -1435,11 +1435,11 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
     singularity is not essential, proving the contrapositive.
   \end{proof}
   \begin{defn}
-    A function $f$ is \emph{meromorphic} on a domain $D$ if its only
+    A function $f$ is \de{meromorphic} on a domain $D$ if its only
     singularities are isolated points.
   \end{defn}
-  Analytic is $f: D \to \C$ is also called holomorphic. Meromorphic is
-  analogous on $f: D \to \C^*$.
+  Analytic is $f\from D \to \C$ is also called holomorphic. Meromorphic is
+  analogous on $f\from D \to \C^*$.
 
   \section{(10/25/2016) Lecture 18}
   As a summary of our results from the previous lecture, we have the
@@ -1518,7 +1518,7 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
       \oint (z-z_0)^kdz
     \right) = 2\pi i a_{-1}
   \]
-  We say that $a_{-1}$ is the \emph{residue} of $f$ at $z_0$, written
+  We say that $a_{-1}$ is the \de{residue} of $f$ at $z_0$, written
   $\Res[f,z_0]$. Some examples:
   \begin{example}
     \begin{itemize}
@@ -1840,7 +1840,7 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
     \]
     If $f$ is the limit of a harmonic function on the upper half
     plane, $Hf$ is the limit value of the harmonic conjugate. We call
-    $f \mapsto Hf$ the \emph{Hilbert transform} and it is a singular
+    $f \mapsto Hf$ the \de{Hilbert transform} and it is a singular
     integral operator.
   \end{defn}
   \begin{example}
@@ -1853,12 +1853,12 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
   \end{example}
   \begin{defn}
     A one to one analytic function on a domain $D$ is called
-    \emph{univalent}. (This is the same as a conformal equivalence
+    \de{univalent}. (This is the same as a conformal equivalence
     from $D$ to another domain.)
   \end{defn}
   \begin{defn}
     A univalent function $f$ on the unit disk with $f(0) = 0$ and
-    $f'(0) = 1$ is called \emph{schlict}.
+    $f'(0) = 1$ is called \de{schlict}.
   \end{defn}
   \begin{prop}
     If $f_k \to f$ normally on the unit disk, and all $f_k$ are
@@ -1918,8 +1918,8 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
   If $w_0$ is a simple zero of $f(z)-w_0$, then the preimage is
   unique. So, $f$ has a local inverse function.
   \begin{defn}
-    $z_0$ is a \emph{critical point} of $f$ if $f'(z_0) = 0$. Its
-    \emph{order} as a critical point is the order of the
+    $z_0$ is a \de{critical point} of $f$ if $f'(z_0) = 0$. Its
+    \de{order} as a critical point is the order of the
     zero. $f(z_0)$ is then a critical value.
   \end{defn}
   \begin{example}
@@ -2014,8 +2014,8 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
   Similarly, there exist a ``Residue Theorem +'' which is proved in
   the homework.
   \begin{defn}
-    Loops are \emph{contractible} if they can be homotoped to a single
-    point. A domain is \emph{simply connected} if every closed path in
+    Loops are \de{contractible} if they can be homotoped to a single
+    point. A domain is \de{simply connected} if every closed path in
     the domain can be deformed to a point.
   \end{defn}
   \begin{thm}
@@ -2037,7 +2037,7 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
   \end{thm}
   \section{(11/22/2016)}
   \begin{lem}[Schwarz Lemma]
-    Let $f: \D \to \overline{\D}$ be analytic and $f(0) = 0$. Then,
+    Let $f\from \D \to \overline{\D}$ be analytic and $f(0) = 0$. Then,
     $|f(z)| \leq |z|$ for all $z \in \D \setminus \{0\}$ and $|f'(0)|
     \leq 1$. Furthermore, one of these inequalities is an equality
     for a single $z \neq 0$ if and only if the inequalities are equality for
@@ -2058,7 +2058,7 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
     1$. Then, $f(z) = \lambda z$.
   \end{proof}
   Note, the Cauchy estimate also give $|f'(0)| \leq \frac{M}{R} = 1$
-  and that if $f: \D \to \D$ is schlicht, then $f(z) = z$. \\
+  and that if $f\from \D \to \D$ is schlicht, then $f(z) = z$. \\
 
   Now, a natural question to ask is, what are the conformal
   equivalences from $\D \to \D$? We observe that $f(z) =
@@ -2086,7 +2086,7 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
     $\lambda$. So, $f(z) = \lambda h(z)$.
   \end{proof}
   \begin{lem}[Pick's Lemma]
-    If $f: \D \to \D$ and $z_1 \neq z_2 \in \D$, then \[
+    If $f\from \D \to \D$ and $z_1 \neq z_2 \in \D$, then \[
       \frac{|f(z_1)-f(z_2)|}{|1-\overline{f(z_2)}f(z_1)|} \leq \frac{|z_1-z_2|}{|1-\overline{z_2}z_1|}
     \]
     and $|f'(z)| \leq \frac{1-|f(z)|^2}{1-|z|^2}$ for $z \in
@@ -2143,7 +2143,7 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
   unit disk, which is given by arcs that intersect the edge of the
   circle at 90 degree angles. This leads us to the following
   \begin{defn}
-    The \emph{pseudohyperbolic metric on $\D$} is given by \[
+    The \de{pseudohyperbolic metric on $\D$} is given by \[
       \rho_H(z,w) = \frac{2|z-w|}{|1-\overline{w}z|}
     \]
     and thus the infinitesimal version is given by
@@ -2184,7 +2184,7 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
   hyperbolic trig functions.
   \section{(12/1/2016)}
   \begin{defn}
-    A (finite) \emph{Blaschke product} is the product (not
+    A (finite) \de{Blaschke product} is the product (not
     composition) of finitely many conformal automorphisms $\D \to
     \D$, ie \[
       f(z) = e^{i\phi} \prod_{i=1}^n \frac{z-a_i}{1-\overline{a_i}z}
@@ -2225,7 +2225,7 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
   proof does depend on the following two lemmas.
   \begin{lem}
     Let $D$ be a simply connected proper subdomain of $\C$, $z_0 \in
-    D$. Then, there is a univalent $f: D \to D$ with $f(z_0) = 0$ (and
+    D$. Then, there is a univalent $f\from D \to D$ with $f(z_0) = 0$ (and
     $|f'(z_0)| > 0$).
   \end{lem}
   The point of this lemma is to transform really ugly domains into
@@ -2244,7 +2244,7 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
   provide a proof.
   \begin{proof}
     Let $D$ be a simply connected domain not equal to $\C$ and let
-    $z_0 \in D$. Consider $\mathcal{F} = \{f: D \to \D, \text{
+    $z_0 \in D$. Consider $\mathcal{F} = \{f\from D \to \D, \text{
       univalent}, f(z_0) = 0\}$. We want to maximize the derivative
     $|f'(z_0)|$ which we know to be finite by the Cauchy estimate and
     not zero from the first lemma. \\
