@@ -861,25 +861,8 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
   \begin{thm}[Morera's Theorem]
     If $f$ is a continuous complex function on $D$ and
     $\oint_{\partial R} f(z)dz = 0$ for any rectangle with horizontal
-    and vertical sides entirely in $D$, then $f$ is analytic.
+    and vertical sides contained in $D$, then $f$ is analytic.
   \end{thm}
-  This theorem provides a method for dealing with complex functions
-  where it is not assumed the real and imaginary parts are
-  differentiable and is a generalization of the idea that $f(z)dz$ is
-  closed if and only if $f$ is analytic.
-  \begin{thm}[Liouville's Theorem for Harmonic Functions]
-    If $u$ is harmonic on $\R^2$ and bounded above by $M$, then $u$ is
-    constant.
-  \end{thm}
-  \begin{proof}
-    The strategy of this proof is to relate $u$ to an entire function
-    whose modulus is related to $u$. Since $u$ is harmonic, it has a
-    harmonic conjugate $v$. Then, $u+iv$ is entire and so is
-    $e^{u+iv}$. However, $|e^{u+iv}| = e^u \leq e^M$. Thus, by
-    Liouville's theorem, $e^{u+iv}$ is constant so $e^u$ is constant
-    and thus $u$ is constant.
-  \end{proof}
-  \section{(9/29/2016) Morera's Theorem}
   We now provide a proof of Morera's theorem. A historical side note:
   Morera was considering $\int f(z)dz = 0$ for closed curves.
   \begin{proof}
@@ -905,8 +888,24 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
       F(z+\Delta z) - F(z) = f(z) \Delta z + o(|\Delta z|).
     \]
     Thus, it is differentiable at $z$ with derivative $f(z)$, which we
-    assumed to be continuous. So, $F$ is analytic on $D$ and we know
+    assumed to be continuous. So, $F$ is analytic on $D$ and therefore
     $f = F'$ is also analytic on $D$.
+  \end{proof}
+  This theorem provides a method for dealing with complex functions
+  where it is not assumed the real and imaginary parts are
+  differentiable and is a generalization of the idea that $f(z)dz$ is
+  closed if and only if $f$ is analytic.
+  \begin{thm}[Liouville's Theorem for Harmonic Functions]
+    If $u$ is harmonic on $\R^2$ and bounded above by $M$, then $u$ is
+    constant.
+  \end{thm}
+  \begin{proof}
+    The strategy of this proof is to relate $u$ to an entire function
+    whose modulus is related to $u$. Since $u$ is harmonic, it has a
+    harmonic conjugate $v$. Then, $u+iv$ is entire and so is
+    $e^{u+iv}$. However, $|e^{u+iv}| = e^u \leq e^M$. Thus, by
+    Liouville's theorem, $e^{u+iv}$ is constant so $e^u$ is constant
+    and thus $u$ is constant.
   \end{proof}
   This allows us to move on to Goursat's theorem, which allows us to
   drop from the definition of analytic the requirement that the
@@ -919,28 +918,28 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
     For this proof, we will use Morera's theorem, showing that
     $\int_{\partial R} f(z)dz = 0$ for a rectangle entirely contained
     in the domain. Write $\int_{\partial R}$ as a sum of 4
-    sub-rectangles. One of these subrectangles, let us call it $R_1$,
+    congruent subrectangles. One of these subrectangles, let us call it $R_1$,
     has \[
       \left|
-        \int_{\partial R_1}
-      \right| \geq
-      \frac{1}{4}\left|
         \int_{\partial R}
+      \right| \leq
+      4\left|
+        \int_{\partial R_1}
       \right|.
     \]
     Now iterate the process by choosing subrectangles that each have
-    their integrals as $\frac{1}{4}$th their containing rectangle so that \[
+    the magnitude of their integrals at least $\frac{1}{4}$th their containing rectangle so that \[
       \left|
-        \int_{\partial R_n}
-      \right| \geq
-      \frac{1}{4^n}\left|
         \int_{\partial R}
+      \right| \leq
+      4^n\left|
+        \int_{\partial R_n}
       \right|.
     \]
     The intersection of $R_n$ with the interiors is a point $z_0 \in
     D$. Using the existence of $f'(z_0)$, we get that \[
-      \int_{R_n} f(z)dz = \int_{R_n} [f(z_0) + f'(z_0)(z-z_0)]dz +
-      \int_{R_n} [f(z) - (f(z_0) + f'(z_0)(z-z_0))]dz.
+      \int_{\bdy R_n} f(z)dz = \int_{\bdy R_n} [f(z_0) + f'(z_0)(z-z_0)]dz +
+      \int_{\bdy R_n} [f(z) - (f(z_0) + f'(z_0)(z-z_0))]dz.
     \]
     However, the first integral is 0 since the integrand is analytic
     and we can apply an ML-estimate to the second integral. Let $L =
@@ -984,6 +983,7 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
                                          \right)
     \end{align*}
   \end{defn}
+  (In fact, $\frac{\partial}{\partial z} = a \frac{\partial}{\partial x} - i b \frac{\partial}{\partial y}$ as long as $a + b = 1$.  This immediately tells us that for any analytic function $f$, $f_z = f_x = -i f_y$.  However, $\frac{\partial}{\partial \ov{z}} = \frac12 \frac{\partial}{\partial x} + i \frac12 \frac{\partial}{\partial y}$ is the ONLY correct choice for $\frac{\partial}{\partial \ov{z}}$.)
   Why does this make sense? To answer this, let us answer the question
   of what does it mean for $\frac{\partial f}{\partial \ov{z}} =
   0$? \[
