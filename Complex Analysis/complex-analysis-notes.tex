@@ -11,6 +11,7 @@
 \newcommand{\D}{\mathbb{D}}
 \renewcommand{\Re}{\operatorname{Re}}
 \renewcommand{\Im}{\operatorname{Im}}
+\newcommand{\Cc}{\C^*}
 %%%%%%%%%%%%%% BEGIN CONTENT: %%%%%%%%%%%%%%
 
 \title[Complex Analysis]{Complex Analysis}
@@ -1489,18 +1490,21 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
   \begin{prop}
     All meromorphic functions on $\C^*$ are rational functions.
   \end{prop}
-  \begin{proof}[Idea of proof]
-    First, there are only finitely many poles, otherwise they ware not
-    isolated because they would accumulate.
+  \begin{proof}
+    First, we claim there are only finitely many poles.  Suppose not.  Since $\Cc$ is compact, there would be an accumulation point of poles, causing a non-isolated singularity.  But meromorphic functions only have isolated singularities by definition, hence the claim is true.
 
     Second, let $\{z_1, \ldots, z_j\}$ be the poles in $\C$. Let
-    $p_j(z)$ be the principal part at $z_j$ and $p_\infty(z)$ be the
-    principal part at $\infty$. Then $f - (p_\infty + \sum p_j)$ is an
-    entire function that extends to be 0 at $\infty$.
+    $p_j(z)$ be the singular part at $z_j$ and $p_\infty(z)$ be the
+    singular part at $\infty$. I claim that $f - (p_\infty + \sum p_j)$ is an
+    entire function.
 
-    Third, it is bounded. So,
+    We know that $f$ and the $p$ functions are analytic away from the poles.  We need only show $f - (p_\infty + \sum p_j)$ is analytic at the poles.  At each pole, we consider $f$ written in its L. series centered at $z_j$.  But thanks to subtracting off $p_j$, the singular part is now gone.  The other $p$ functions do not interfere because they do not have poles at $z_j$.  We conclude that $f - (p_\infty + \sum p_j)$ has no pole at $z_j$, and this is true for every $j$ and for $\oo$ too.  So the claim is true.
 
-    fourth, by Liouville, it is zero. Thus, $p_\infty + \sum p_j$ is rational.
+    We claim that $f - (p_\infty + \sum p_j)$ extends to 0 at $\oo$.  Consider $f$ written in its L. series centered at $\oo$.  Now take the limit of $f - (p_\infty + \sum p_j)$ as $z$ approaches $\oo$.  $f$ and $p_\oo$ cancel each other (needs more justification).  All other $p_j$ go to 0.  So the claim is true.
+
+    Now $f - (p_\infty + \sum p_j)$ is bounded because it is bounded on a neighborhood of $\oo$ and the remaining domain is itself bounded, so that the continuity of $f - (p_\infty + \sum p_j)$ bounded.
+
+    Finally, by Liouville, $f - (p_\infty + \sum p_j)$ is constant, and that constant must be 0.  We conclude that $f =p_\infty + \sum p_j$, which is rational.
   \end{proof}
   Writing $f = p_\infty + \sum p_j$ is the partial fraction
   decomposition of $f$.
