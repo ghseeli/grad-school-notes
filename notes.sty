@@ -1,32 +1,30 @@
 \usepackage[utf8x]{inputenc} % try to encode as UTF-8 extended.  Remove the 'x' for regular UTF-8.  See https://en.wikibooks.org/wiki/LaTeX/Special_Characters#A_technical_matter
-%\usepackage{amsmath,amsthm}
 \usepackage{amssymb,mathrsfs,amsmath}
-%\usepackage{ytableau}
-%\ytableausetup{smalltableaux,centertableaux}
+\usepackage{mathtools}
 \usepackage{tikz}
 \usepackage{upgreek}
-
-%\usepackage[nohead,nofoot,centering]{geometry}
-
 \usepackage{color}
 %% Some user-defined colors
 	\definecolor{mydefi}{cmyk}{1,0,0,.5}
 	\definecolor{myred}{rgb}{.7,.1,.1}
 	\definecolor{myblue}{rgb}{.1,.1,.6}
 	\definecolor{mygreen}{rgb}{.1,.6,.1}
-
 \usepackage[urlbordercolor={1 1 1}, pdfborder={0 0 0}, bookmarks=true,
   colorlinks=true, linkcolor=myblue, citecolor=myblue,
   urlcolor=myblue, hyperfootnotes=false]{hyperref}
-
 \usepackage[alphabetic,abbrev]{amsrefs} % use AMS ref scheme
 \usepackage{enumitem}
+
+
+
 \addtolength{\footskip}{2\baselineskip} % to lower the page numbers
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%  MACRO DEFINITIONS:  Co-authors -- PLEASE use these!
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\defeq}{\coloneqq} % defined to be equal to (the := symbol)
+\newcommand{\eqdef}{\eqqcolon} % equal by definition (the =: symbol)
 \newcommand{\interior}[1]{\overset{\circ}{#1}}
 \newcommand{\coker}{\operatorname{coker}}% cokernel
 \newcommand{\Tor}{\operatorname{Tor}} % Torsion
