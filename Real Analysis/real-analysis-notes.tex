@@ -110,7 +110,7 @@ it unique? We must prove it.
   \subset \P(\P(X))$ and take a partial order on $\mathcal{Z}$ as
   containment. Now, we need to show that there exists a smallest
   element of $\mathcal{Z}$. Let us define \[
-    \M(\Ep) = \bigcap_{\A \in \mathcal{Z}} \A
+    \M(\Ep) \defeq \bigcap_{\A \in \mathcal{Z}} \A
   \]
   Then we will show $\M(\Ep)$ is a \s algebra.
   \begin{enumerate}
@@ -2715,7 +2715,7 @@ space.
   \]
   (Read ahead to see why this converges.) Then, using a MCT corollary, we
   get \[
-    \int g \d\mu = \sum_{n=1}^\infty \int |f_n| \d\mu < \infty.
+    \int g \d\mu = \sum_{n=1}^\infty \int |f_n| \d\mu = \sum_{n=1}^\infty \norm[f_n]_{L^1} < \infty.
   \]
   Thus, it must be that \(g(x) < \infty\) \(\mu\)-almost everywhere.
   Thus, one construction we could use is, given \(Z \in \M\) the set
@@ -2728,7 +2728,7 @@ space.
   \]
   So, \(\tilde{g} \in \cL^1\) and \(L^1\) with \(\tilde{g}(x) <
   \infty\) for all \(x\). Now, to use DCT v2.0, we note \[
-    \left| \sum_{n=1}^N f_n(x) \leq \tilde{g}(x) \right|, \
+    \left| \sum_{n=1}^N f_n(x) \right| \leq \tilde{g}(x), \
     \mu\text{-almost everywhere}
   \]
   and so \[
