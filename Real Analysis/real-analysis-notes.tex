@@ -1522,7 +1522,7 @@ Then, $F$ is increasing, right continuous, and $\mu = \mu_F$.
   Similarly, $\mu$ is \de{inner regular on $E$} if and only if \[
     \mu(E) = \sup \{\mu(K) \st K \text{ is compact}, K \subset E\}.
   \]
-  Finally, $\mu$ is called \de{regular} is and only if it is inner and
+  Finally, $\mu$ is \de{regular} if and only if it is inner and
   outer regular on every Borel set.
 \end{defn}
 \begin{defn}
@@ -1555,7 +1555,7 @@ Then, $F$ is increasing, right continuous, and $\mu = \mu_F$.
       Let $\epsilon > 0$. Then there exists a sequence of $A_n \in \A$ such that
       $\sum_{n=1}^\infty \mu(A_n) \leq \mu(E) + \epsilon$ and \(E
       \subset \Union A_n\). So,
-      decompoising $A_n$ into elements of $\Ep$ and renumbering, we
+      decomposing $A_n$ into elements of $\Ep$ and renumbering, we
       can assume without loss of generality that $A_n \in \Ep$, since
       if $A_n \not \in \Ep$, we can just take $A_n = A_n \intersect
       (-m,m)$ using the assumption $E \subset (-m,m)$. So, now, take $A_n = (\alpha_n,
@@ -1578,86 +1578,80 @@ Then, $F$ is increasing, right continuous, and $\mu = \mu_F$.
       and $g(2k+1) = -k$. Then, we have \[
         \mu(E) = \sum_{n \geq 1} \mu(E \intersect (g(n),g(n)+1)).
       \]
-      So, for all $n$, let $a_{n,i} < b_{n,i}$. Then, \[
-        \sum_{i=1}^\infty \mu((a_{n,i},b_{n,i})) \leq \sum_{n \geq 1}
+      Each $E \intersect (g(n),g(n)+1)$ is bounded, so by the previous case that we just proved, there exist $a_{n,i} < b_{n,i}$ such that \[
+        \sum_{i=1}^\infty \mu((a_{n,i},b_{n,i})) \leq
         \mu(E \intersect (g(n),g(n)+1)) + \frac{\epsilon}{2^n}
       \]
-      by the previous bounded base. Finally, this gives us $E \subset
+      for each $n$.  Finally, this gives us $E \subset
       \Union_{(n,i) \in \N^2} (a_{n,i},b_{n,i})$ and so \[
         \sum_{(n,i) \in \N^2} \mu((a_{n,i},b_{n,i})) \leq \sum_{n \geq
-        1} \mu(E
-        \intersect (g(n),g(n)+1)) + \epsilon
+        1} \mu(E \intersect (g(n),g(n)+1)) + \epsilon = \mu(E) + \epsilon
       \]
-      thereby completing the proof.
+      thereby proving the lemma.
     \end{itemize}
   \end{proof}
   \subsection*{(2/28/2017) Lecture 9}
   With this lemma in hand, we now seek to prove the theorem (\ref{radon-thm}).
   \begin{proof}[Proof of Theorem]
-    We have to show $\mu_F$ is finite on compact sets, outer
+    We have to show $\mu = \mu_F$ is finite on bounded sets, outer
     regular for all sets in $\B_\R$, and inner regular for all sets in
     $\B_\R$.
     \begin{itemize}
-    \item ($\mu_F$ is finite on compact sets).
-      $\mu_F$ is finite on compact sets by definition.
+    \item ($\mu$ is finite on bounded sets).
+      If $E$ is bounded, then there exists an open bounded interval $(a,b) \supset E$.  Then $\mu(E) \leq \mu((a,b)) = F(b) - F(a) < \oo$.
     \item (Outer regularity). We have the $\leq$ direction from
-      monotonicity and thus equality if $\mu(E) = \infty$. Now, assume
-      that $\mu(E) < \infty$. Our lemma tells us that \[
-        \mu(E) = \inf \left\{ \sum \mu((a_i,b_i)) \st a_i < b_i
-          \text{ finite}, E \subset \Union_{i=1}^\infty (a_i,b_i) \right\}
+      monotonicity, and we want the $\geq$ direction.  Our lemma tells us that \[
+        \mu(E) = \inf \left\{ \sum \mu((a_i,b_i)) \st E \subset \Union_{i=1}^\infty (a_i,b_i) \right\}.
       \]
-      Next, take $\epsilon > 0$. Then, there exists $a_i,b_i$ such
-      that $\sum \mu((a_i,b_i)) \leq \mu(E) +\epsilon$ by
-      subadditivity. Now, take $V = \Union_{i=1}^\infty (a_i,b_i)$
-      (open) to get $\mu(V) \leq \mu(E) + \epsilon$. But $\epsilon$
-      was arbitrary, so $\mu(E) = \inf\{ \cdots \}$ as desired.
+      Now every $\union_{i=1}^\infty (a_i,b_i)$ is open.  Therefore
+       \[
+        \inf \left\{ \sum \mu(\Theta) \st \Theta \:\text{open} \right\}
+        \leq \inf \left\{ \sum \mu((a_i,b_i)) \st E \subset \Union_{i=1}^\infty (a_i,b_i) \right\}
+      \]
+      where the RHS is $\mu(E)$ as desired.
     \item (Inner regularity). The $\geq$ direction is trivial, so we
-      only need to show $\leq$. We can also reduce to $E$ being
-      bounded by using continuity from below and intersecting $E
-      \intersect [-m,m]$ to get $\mu(E) = \lim_{m \to \infty} \mu(E
-      \intersect [-m,m])$. So, if $\alpha < \mu(E)$, there exists an
-      $m$ such that $\mu(E \intersect [-m,m]) > \alpha$. Now, if $E$
-      is bounded, there exists a
-      compact $K \subset E \intersect [-m,m] \subset E$ with $\mu(K) >
-      \alpha$. Thus, for all $\alpha$, we have $\sup \{\mu(K)
-      \st \text{ compact }K \subset E\} \geq \mu(E)$. Now assume that
-      $E$ is bounded. Then, there exists an $m \in \N$ such that $E
-      \subset [-m,m]$. Let $\epsilon > 0, F = [-m,m] \setminus E$, and
-      $\mu(F) < \infty$. Our previous case tells us that there exists
-      an open $V \supset F$  with $\mu(V) \leq \mu(F) + \epsilon$. So,
-      we take $K = [-m,m] \intersect V^c$ which is closed and bounded,
-      and therefore compact.
+      only need to show $\leq$.  We break into two cases:
+      \begin{itemize}
+        \item ($E$ unbounded).  We can reduce to $E$ being
+        bounded by using continuity from below and intersecting $E
+        \intersect [-m,m]$ to get $\mu(E) = \lim_{m \to \infty} \mu(E
+        \intersect [-m,m])$. So, if $\alpha < \mu(E)$, there exists an
+        $m$ such that $\mu(E \intersect [-m,m]) > \alpha$.  There exists a
+        compact $K \subset E \intersect [-m,m] \subset E$ with $\mu(K) >
+        \alpha$. Thus, for all $\alpha$, we have $\sup \{\mu(K)
+        \st \text{ compact }K \subset E\} \geq \mu(E)$.
 
-      Next, we show that $K
-      \subset E$. If $x \in K$ and $x \not \in E$, we get $x \in
-      [-m,m] \setminus E = F \subset V$, yielding that $x \in V^c$ and
-      so $x \in E$, a contradiction. Similarly, we also have that $V
-      \supset F$, and so $\mu(V) \leq \mu(F) + \epsilon$ giving us
-      $\mu(V \setminus F) \leq \epsilon$.
+        \item ($E$ bounded).  There exists an $m \in \N$ such that $E
+        \subset [-m,m]$. Let $\epsilon > 0, F = [-m,m] \setminus E$, and
+        $\mu(F) < \infty$. Our previous case tells us that there exists
+        an open $V \supset F$  with $\mu(V) \leq \mu(F) + \epsilon$ and thus $\mu(V \setminus F) \leq \epsilon$. So,
+        we take $K = [-m,m] \intersect V^c$ which is closed and bounded,
+        and therefore compact.  By design, $K \subset E$.\\
 
-      Finally, we show $E \setminus K \subset V \setminus F$. We note
-      that
-      \begin{align*}
-        E \setminus F & = E \intersect K^c \\
-                      & = E \intersect ([-m,m] \intersect V^c)^c \\
-                      & = E \intersect ([-m,m]^c \union V) \\
-                      & = (E \intersect [-m,m]^c) \union (E \intersect
-                        V)\\
-                      & = E \intersect V
-      \end{align*}
-      since $E \intersect [-m,m]^c = \emptyset$. Furthermore,
-      \begin{align*}
-        V \setminus F & = V \intersect F^c \\
-                      & = V \intersect ([-m,m] \intersect F^c)^c \\
-                      & = V \intersect ([-m,m]^c \union F) \\
-        & = (V \intersect F) \union (V \intersect [-m,m]^c)
-      \end{align*}
-      Thus, we get that $\mu(E \setminus K) \leq \mu(V \setminus F)
-      \leq \epsilon$ for all $\epsilon$.
+        Finally, we show $E \setminus K \subset V \setminus F$. We note
+        that
+        \begin{align*}
+          E \setminus F & = E \intersect K^c \\
+                        & = E \intersect ([-m,m] \intersect V^c)^c \\
+                        & = E \intersect ([-m,m]^c \union V) \\
+                        & = (E \intersect [-m,m]^c) \union (E \intersect
+                          V)\\
+                        & = E \intersect V
+        \end{align*}
+        since $E \intersect [-m,m]^c = \emptyset$. Furthermore,
+        \begin{align*}
+          V \setminus F & = V \intersect F^c \\
+                        & = V \intersect ([-m,m] \intersect F^c)^c \\
+                        & = V \intersect ([-m,m]^c \union F) \\
+          & = (V \intersect F) \union (V \intersect [-m,m]^c)
+        \end{align*}
+        Thus, we get that $\mu(E \setminus K) \leq \mu(V \setminus F)
+        \leq \epsilon$ for all $\epsilon$.
+      \end{itemize}
     \end{itemize}
   \end{proof}
   \begin{defn}
-    We say $\mu$ is \de{tight} if, for all $\epsilon > 0$, there
+    We say that a probability measure $\mu$ is \de{tight} if, for all $\epsilon > 0$, there
     exists a compact $K \subset \R$ such that $\mu(K) \geq
     1-\epsilon$.
   \end{defn}
@@ -1674,7 +1668,7 @@ Then, $F$ is increasing, right continuous, and $\mu = \mu_F$.
   \begin{defn}
     (Aside). We say a sequence of Borel probability measures on $\R$,
     $(\mu_n)_{n \geq 1}$, \de{converges weakly} to a Borel probability
-    measure such that, for all $f \from \R \to \R$ bounded an
+    measure $\mu$ if, for all $f \from \R \to \R$ bounded an
     continuous, \[
       \int f d \mu_n \to \int f \d\mu \text{ as } n \to \infty
     \]
