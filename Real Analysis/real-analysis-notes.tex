@@ -304,10 +304,10 @@ If $d_1,d_2$ are two metrics on $X$, we say that $d_1$ and $d_2$ are
 equivalent (topologically) if and only if $\Top(d_1) = \Top(d_2)$.
 \begin{example}
   On $\R^n$, let \[
-    d_1(x,y) = \max_{1 \leq i \leq n} \left| x_i - y_i \right|
+    d_1(x,y) \defeq \max_{1 \leq i \leq n} \left| x_i - y_i \right|
   \]
   and \[
-    d_2(x,y) = \sqrt{\sum_{i=1}^n (x_i-y_i)^2}.
+    d_2(x,y) \defeq \sqrt{\sum_{i=1}^n (x_i-y_i)^2}.
   \]
   Then, $d_1(x,y) \leq d_2(x,y) \leq \sqrt{n} d_1(x,y)$ for all $x,y
   \in \R^n$ implies that $\Top(d_1) = \Top(d_2)$. We can see this
@@ -360,7 +360,7 @@ of the product topology as follows.
   Let $(X_1,d_1), \ldots, (X_n,d_n)$ be a finite collection of metric
   spaces. The product distance on $V = X_1 \times \cdots \times X_n$
   is given by \[
-    d(x,y) = \min_{1 \leq i \leq n} d(x_i,y_i)
+    d(x,y) = \max_{1 \leq i \leq n} d(x_i,y_i)
   \]
   Then, $\Top(d)$ is the product topology coming from
   $(X_1,\Top(d_1)), \ldots, (X_n,\Top(d_n))$. The proof of this is an
