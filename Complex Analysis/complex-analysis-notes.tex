@@ -11,6 +11,7 @@
 \newcommand{\D}{\mathbb{D}}
 \renewcommand{\Re}{\operatorname{Re}}
 \renewcommand{\Im}{\operatorname{Im}}
+\newcommand{\Cc}{\C^*}
 %%%%%%%%%%%%%% BEGIN CONTENT: %%%%%%%%%%%%%%
 
 \title[Complex Analysis]{Complex Analysis}
@@ -861,25 +862,8 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
   \begin{thm}[Morera's Theorem]
     If $f$ is a continuous complex function on $D$ and
     $\oint_{\partial R} f(z)dz = 0$ for any rectangle with horizontal
-    and vertical sides entirely in $D$, then $f$ is analytic.
+    and vertical sides contained in $D$, then $f$ is analytic.
   \end{thm}
-  This theorem provides a method for dealing with complex functions
-  where it is not assumed the real and imaginary parts are
-  differentiable and is a generalization of the idea that $f(z)dz$ is
-  closed if and only if $f$ is analytic.
-  \begin{thm}[Liouville's Theorem for Harmonic Functions]
-    If $u$ is harmonic on $\R^2$ and bounded above by $M$, then $u$ is
-    constant.
-  \end{thm}
-  \begin{proof}
-    The strategy of this proof is to relate $u$ to an entire function
-    whose modulus is related to $u$. Since $u$ is harmonic, it has a
-    harmonic conjugate $v$. Then, $u+iv$ is entire and so is
-    $e^{u+iv}$. However, $|e^{u+iv}| = e^u \leq e^M$. Thus, by
-    Liouville's theorem, $e^{u+iv}$ is constant so $e^u$ is constant
-    and thus $u$ is constant.
-  \end{proof}
-  \section{(9/29/2016) Morera's Theorem}
   We now provide a proof of Morera's theorem. A historical side note:
   Morera was considering $\int f(z)dz = 0$ for closed curves.
   \begin{proof}
@@ -905,8 +889,24 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
       F(z+\Delta z) - F(z) = f(z) \Delta z + o(|\Delta z|).
     \]
     Thus, it is differentiable at $z$ with derivative $f(z)$, which we
-    assumed to be continuous. So, $F$ is analytic on $D$ and we know
+    assumed to be continuous. So, $F$ is analytic on $D$ and therefore
     $f = F'$ is also analytic on $D$.
+  \end{proof}
+  This theorem provides a method for dealing with complex functions
+  where it is not assumed the real and imaginary parts are
+  differentiable and is a generalization of the idea that $f(z)dz$ is
+  closed if and only if $f$ is analytic.
+  \begin{thm}[Liouville's Theorem for Harmonic Functions]
+    If $u$ is harmonic on $\R^2$ and bounded above by $M$, then $u$ is
+    constant.
+  \end{thm}
+  \begin{proof}
+    The strategy of this proof is to relate $u$ to an entire function
+    whose modulus is related to $u$. Since $u$ is harmonic, it has a
+    harmonic conjugate $v$. Then, $u+iv$ is entire and so is
+    $e^{u+iv}$. However, $|e^{u+iv}| = e^u \leq e^M$. Thus, by
+    Liouville's theorem, $e^{u+iv}$ is constant so $e^u$ is constant
+    and thus $u$ is constant.
   \end{proof}
   This allows us to move on to Goursat's theorem, which allows us to
   drop from the definition of analytic the requirement that the
@@ -919,28 +919,28 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
     For this proof, we will use Morera's theorem, showing that
     $\int_{\partial R} f(z)dz = 0$ for a rectangle entirely contained
     in the domain. Write $\int_{\partial R}$ as a sum of 4
-    sub-rectangles. One of these subrectangles, let us call it $R_1$,
+    congruent subrectangles. One of these subrectangles, let us call it $R_1$,
     has \[
       \left|
-        \int_{\partial R_1}
-      \right| \geq
-      \frac{1}{4}\left|
         \int_{\partial R}
+      \right| \leq
+      4\left|
+        \int_{\partial R_1}
       \right|.
     \]
     Now iterate the process by choosing subrectangles that each have
-    their integrals as $\frac{1}{4}$th their containing rectangle so that \[
+    the magnitude of their integrals at least $\frac{1}{4}$th their containing rectangle so that \[
       \left|
-        \int_{\partial R_n}
-      \right| \geq
-      \frac{1}{4^n}\left|
         \int_{\partial R}
+      \right| \leq
+      4^n\left|
+        \int_{\partial R_n}
       \right|.
     \]
     The intersection of $R_n$ with the interiors is a point $z_0 \in
     D$. Using the existence of $f'(z_0)$, we get that \[
-      \int_{R_n} f(z)dz = \int_{R_n} [f(z_0) + f'(z_0)(z-z_0)]dz +
-      \int_{R_n} [f(z) - (f(z_0) + f'(z_0)(z-z_0))]dz.
+      \int_{\bdy R_n} f(z)dz = \int_{\bdy R_n} [f(z_0) + f'(z_0)(z-z_0)]dz +
+      \int_{\bdy R_n} [f(z) - (f(z_0) + f'(z_0)(z-z_0))]dz.
     \]
     However, the first integral is 0 since the integrand is analytic
     and we can apply an ML-estimate to the second integral. Let $L =
@@ -984,6 +984,7 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
                                          \right)
     \end{align*}
   \end{defn}
+  (In fact, $\frac{\partial}{\partial z} = a \frac{\partial}{\partial x} - i b \frac{\partial}{\partial y}$ as long as $a + b = 1$.  This immediately tells us that for any analytic function $f$, $f_z = f_x = -i f_y$.  However, $\frac{\partial}{\partial \ov{z}} = \frac12 \frac{\partial}{\partial x} + i \frac12 \frac{\partial}{\partial y}$ is the ONLY correct choice for $\frac{\partial}{\partial \ov{z}}$.)
   Why does this make sense? To answer this, let us answer the question
   of what does it mean for $\frac{\partial f}{\partial \ov{z}} =
   0$? \[
@@ -1489,18 +1490,21 @@ z    i} \int_{\partial D} \frac{f(w)}{(w-z)^2}dw$.
   \begin{prop}
     All meromorphic functions on $\C^*$ are rational functions.
   \end{prop}
-  \begin{proof}[Idea of proof]
-    First, there are only finitely many poles, otherwise they ware not
-    isolated because they would accumulate.
+  \begin{proof}
+    First, we claim there are only finitely many poles.  Suppose not.  Since $\Cc$ is compact, there would be an accumulation point of poles, causing a non-isolated singularity.  But meromorphic functions only have isolated singularities by definition, hence the claim is true.
 
     Second, let $\{z_1, \ldots, z_j\}$ be the poles in $\C$. Let
-    $p_j(z)$ be the principal part at $z_j$ and $p_\infty(z)$ be the
-    principal part at $\infty$. Then $f - (p_\infty + \sum p_j)$ is an
-    entire function that extends to be 0 at $\infty$.
+    $p_j(z)$ be the singular part at $z_j$ and $p_\infty(z)$ be the
+    singular part at $\infty$. I claim that $f - (p_\infty + \sum p_j)$ is an
+    entire function.
 
-    Third, it is bounded. So,
+    We know that $f$ and the $p$ functions are analytic away from the poles.  We need only show $f - (p_\infty + \sum p_j)$ is analytic at the poles.  At each pole, we consider $f$ written in its L. series centered at $z_j$.  But thanks to subtracting off $p_j$, the singular part is now gone.  The other $p$ functions do not interfere because they do not have poles at $z_j$.  We conclude that $f - (p_\infty + \sum p_j)$ has no pole at $z_j$, and this is true for every $j$ and for $\oo$ too.  So the claim is true.
 
-    fourth, by Liouville, it is zero. Thus, $p_\infty + \sum p_j$ is rational.
+    We claim that $f - (p_\infty + \sum p_j)$ extends to 0 at $\oo$.  Consider $f$ written in its L. series centered at $\oo$.  Now take the limit of $f - (p_\infty + \sum p_j)$ as $z$ approaches $\oo$.  $f$ and $p_\oo$ cancel each other (needs more justification).  All other $p_j$ go to 0.  So the claim is true.
+
+    Now $f - (p_\infty + \sum p_j)$ is bounded because it is bounded on a neighborhood of $\oo$ and the remaining domain is itself bounded, so that the continuity of $f - (p_\infty + \sum p_j)$ bounded.
+
+    Finally, by Liouville, $f - (p_\infty + \sum p_j)$ is constant, and that constant must be 0.  We conclude that $f =p_\infty + \sum p_j$, which is rational.
   \end{proof}
   Writing $f = p_\infty + \sum p_j$ is the partial fraction
   decomposition of $f$.
