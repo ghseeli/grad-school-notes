@@ -12,11 +12,11 @@ Other notes maintained for second year courses are currently under very active d
 
 1. [Algebra 3](https://www.overleaf.com/read/qnjgrnfrzpsg) (Artin-Wedderburn Theory, Central Simple Algebras, Representations of Finite Groups) by John Leonard Harnois, Jr.
 1. [Algebraic Topology 2](https://www.overleaf.com/read/ndxspztkpjhb) (Cohomology and Intro Homotopy Theory) by John Leonard Harnois, Jr.
-1. [Geometric Representation Theory](https://github.com/ghseeli/grad-school-writings/releases/latest) (Representations Theory of Quivers and Springer Theory. Also Representation Theory of Finite Groups) by George H. Seelinger
+1. [Geometric Representation Theory](https://ghseeli.github.io/grad-school-writings/class-notes) (Representations Theory of Quivers and Springer Theory. Also Representation Theory of Finite Groups) by George H. Seelinger
 
 ## Collaborators
 * John Leonard Harnois, Jr.
 * [Matthew Lancellotti](http://www.people.virginia.edu/~ml9nn/)
 * Chris Lloyd
-* George H. Seelinger
+* [George H. Seelinger](http://ghseeli.github.io)
 * Richard Vradenburgh
