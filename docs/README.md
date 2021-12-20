@@ -15,8 +15,8 @@ Other notes maintained for second year courses are currently under very active d
 1. [Geometric Representation Theory](https://ghseeli.github.io/grad-school-writings/class-notes) (Representations Theory of Quivers and Springer Theory. Also Representation Theory of Finite Groups) by George H. Seelinger
 
 ## Collaborators
-* [John Leonard Harnois, Jr.](https://math.virginia.edu/people/jlh6fp/)
+* John Leonard Harnois, Jr.
 * [Matthew Lancellotti](http://matthewlancellotti.com/)
-* [Chris Lloyd](https://math.virginia.edu/people/cjl8zf/)
+* [Chris Lloyd](https://cjl8zf.github.io/)
 * [George H. Seelinger](http://ghseeli.github.io)
-* [Richard Vradenburgh](https://www.math.uga.edu/directory/people/richard-vradenburgh)
+* Richard Vradenburgh
